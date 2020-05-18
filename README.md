@@ -1,6 +1,6 @@
 # EnergyEnergyCorrelators
 
-This library can be used to compute various Energy-Energy Correlators (EECs) [[1, 2, 3](#references)] on collections of particles. The core computations are carried out efficiently in C++ utilizing the [BOOST Histogram package](https://www.boost.org/doc/libs/1_73_0/libs/histogram/doc/html/index.html). Note that a C++14-compatible compiler is required by the BOOST Histogram package. The C++ interface is header-only to facilitate easy integration into any existing framework, including the [FastJet library](http://fastjet.fr/). A convenient Python interface is also provided using Cython.
+This library can be used to compute various Energy-Energy Correlators (EECs) [[1, 2, 3](#references)] on collections of particles. The core computations are carried out efficiently in C++ utilizing the [BOOST Histogram package](https://www.boost.org/doc/libs/1_73_0/libs/histogram/doc/html/index.html) (a copy of which is distributed with this library). Note that a C++14-compatible compiler is required by the BOOST Histogram package. The C++ interface is header-only to facilitate easy integration into any existing framework, including the [FastJet library](http://fastjet.fr/). A convenient Python interface is also provided using Cython.
 
 ## Documentation
 
@@ -16,13 +16,19 @@ The current EEC computations are described below:
 
 - [EECTriangleOPE](https://github.com/pkomiske/EnergyEnergyCorrelators/blob/master/eec/include/EECComputations.hh#L234): This is a three-dimensional EEEC that uses coordinates that are particularly suited for studying the OPE limit where two of the three particles are close to collinear. There are three template arguments, corresponding to the `xL`, `xi`, and `phi` axes, respectively. The [constructor](https://github.com/pkomiske/EnergyEnergyCorrelators/blob/master/eec/include/EECComputations.hh#L250) takes nine arguments: for each axis (in the same order as the template arguments), the number of bins, axis minimum, and axis maximum. `EECTriangleOPE_id_id_id`, `EECTriangleOPE_log_id_id`, `EECTriangleOPE_id_log_id`, and `EECTriangleOPE_log_log_id` are provided as typedefs of this class with the axes transforms already specified.
 
+The resulting histogram and corresponding errors can be accessed with the [`get_hist`](https://github.com/pkomiske/EnergyEnergyCorrelators/blob/master/eec/include/EECComputations.hh#L221) method, which accepts a boolean for whether or not to include the overflow bins and returns a pair of vectors of doubles, which are the flattened  (C-style) histogram values and uncertainties. There are also `bin_edges` and `bin_centers` methods (specific to each computation class) that return the bins, which take an integer to specify an axis (if there is more than one).
+
+Additionally, if the `FORMATTED_OUTPUT` macro is defined prior to the includion of `EECComputations.hh` (note that this requires that `boost/format.hpp` is available), then the histograms are printable to any output stream using the `output` method.
+
 ## C++ Usage (Header-only)
 
-The entire library is contained in a single header file, [`eec/include/EECComputations.hh`](https://github.com/pkomiske/EnergyEnergyCorrelators/blob/master/eec/include/EECComputations.hh). If you plan on using the EEC library with FastJet, ensure that `PseudoJet.hh` is included prior to including `EECComputations.hh`. This will expose an overloaded [`compute`](https://github.com/pkomiske/EnergyEnergyCorrelators/blob/master/eec/include/EECComputations.hh#L177-L195) method for each EEC computation that accepts a vector of `PseudoJet` objects. Otherwise, there is a `compute` method that takes a vector of `double`s, which must be size `3N` where `N` is the number of particles, arranged as `pT1, rap1, phi1, pT2, rap2, phi2, ..., pTN, rapN, phiN`.
+The entire library is contained in a single header file, [`eec/include/EECComputations.hh`](https://github.com/pkomiske/EnergyEnergyCorrelators/blob/master/eec/include/EECComputations.hh). If you plan on using the EEC library with FastJet, ensure that `PseudoJet.hh` is included prior to including `EECComputations.hh`. This will expose an overloaded [`compute`](https://github.com/pkomiske/EnergyEnergyCorrelators/blob/master/eec/include/EECComputations.hh#L177-L195) method for each EEC computation that accepts a vector of `PseudoJet` objects. Otherwise, there is a `compute` method that takes a vector of doubles, which must be size `3N` where `N` is the number of particles, arranged as `pT1, rap1, phi1, pT2, rap2, phi2, ..., pTN, rapN, phiN`.
 
 ## Python Usage
 
 The EEC library also contains a Cython-based wrapper of the core C++ code. This is most easily used by installing via `pip`, e.g. `pip install eec`. Cython and NumPy are the only required dependencies. Note that a C++14-enabled compiler must be usable by Cython for the installation to succeed.
+
+There is one Python class for each EEC computation. The templated arguments are dealt with by specifying the axis transforms as a tuple of strings. Currently, only `'id'` and `'log'` are supported, in the combinations for which there is a provided C++ typedef (see above). The arguments to the classes are straightforward, and can be examined more closely in [core.pyx](https://github.com/pkomiske/EnergyEnergyCorrelators/blob/master/eec/core.pyx). There is also an [`eec`](https://github.com/pkomiske/EnergyEnergyCorrelators/blob/master/eec/__init__.py#L26) method that can be used to parallelize computations on many events in Python.
 
 ## References
 
