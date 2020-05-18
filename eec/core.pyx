@@ -39,27 +39,27 @@ cdef void compute_events(eeccomps.EECComputation_t * eec,
                          double * hist_ptr, double * hist_errs_ptr, size_t hist_size, 
                          bool overflows, int print_every, int verbose) nogil:
 
-        with gil:
-            start = time.time()
+    with gil:
+        start = time.time()
 
-        cdef size_t j = 0
-        for j in range(nev):
-            eec.compute(event_ptrs[j], event_mults[j], event_weights[j])
+    cdef size_t j = 0
+    for j in range(nev):
+        eec.compute(event_ptrs[j], event_mults[j], event_weights[j])
 
-            if verbose > 0 and (j+1) % print_every == 0:
-                with gil:
-                    print('  {} events done in {:.3f}s'.format(j+1, time.time() - start))
-
-            # check signals (handles interrupt)
-            if (j % 10) == 0:
-                with gil:
-                    PyErr_CheckSignals()
-
-        if verbose > 0 and (j+1) % print_every != 0:
+        if verbose > 0 and (j+1) % print_every == 0:
             with gil:
                 print('  {} events done in {:.3f}s'.format(j+1, time.time() - start))
 
-        eec.get_hist(hist_ptr, hist_errs_ptr, hist_size, overflows)
+        # check signals (handles interrupt)
+        if (j % 10) == 0:
+            with gil:
+                PyErr_CheckSignals()
+
+    if verbose > 0 and (j+1) % print_every != 0:
+        with gil:
+            print('  {} events done in {:.3f}s'.format(j+1, time.time() - start))
+
+    eec.get_hist(hist_ptr, hist_errs_ptr, hist_size, overflows)
 
 ###############################################################################
 # EECComputation base class

@@ -19,7 +19,7 @@
 
 #include <cmath>
 #include <exception>
-#include <iostream>
+#include <ostream>
 #include <vector>
 
 #include "boost/histogram.hpp"
@@ -28,10 +28,6 @@
 #include <iostream>
 #include <ostream>
 #include "boost/format.hpp"
-#endif
-
-#ifdef EVENT_PRODUCER
-#include "EventProducer.hh"
 #endif
 
 // namespace for EEC code
@@ -205,17 +201,6 @@ public:
     // delegate EEC computation to subclass
     compute_eec();
   }
-
-#ifdef EVENT_PRODUCER
-  // compute on an event producer
-  void compute(EventProducer & evp) {
-
-    while (evp.next()) {
-      store_ptyphis(evp.ptyphis(), evp.mult(), evp.weight());
-      compute_eec();
-    }
-  }
-#endif // EVENT_PRODUCER
 
   // get histogram and errors
   std::pair<std::vector<double>, std::vector<double>> get_hist(bool include_overflows = true) {
