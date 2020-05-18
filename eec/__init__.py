@@ -21,7 +21,7 @@ from .core import *
 
 __all__ = core.__all__ + ['eec']
 
-__version__ = '1.0.0'
+__version__ = '0.0.0'
 
 def eec(name, events, *args, njobs=None, weights=None, **kwargs):
 

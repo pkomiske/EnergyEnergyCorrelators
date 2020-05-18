@@ -1,5 +1,7 @@
 __pycache__/**
 .DS_Store
 *.so
-*.cpp
 *.html
+*.egg-info
+dist/
+clean.sh
