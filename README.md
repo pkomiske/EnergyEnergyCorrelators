@@ -12,9 +12,9 @@ Since the value of any EEC on a given event is a distribution, a histogram must 
 
 The current EEC computations are described below:
 
-- [EECLongestSide](https://github.com/pkomiske/EnergyEnergyCorrelators/blob/master/eec/include/EECComputations.hh#L378)
+- [EECLongestSide](https://github.com/pkomiske/EnergyEnergyCorrelators/blob/master/eec/include/EECComputations.hh#L378): Computes the N-point EEC distribution binned according to the longest side (largest angle) between the N particles. Supported values of N are 2, 3, 4, and 5 (larger values are simply computationally untenable). Since the resulting distribution is one-dimensional, there is a single template argument (that defaults to the identity) specifying which type of axis should be used. The [constructor](https://github.com/pkomiske/EnergyEnergyCorrelators/blob/master/eec/include/EECComputations.hh#L397) takes four arguments: the value of N, number of bins, axis minimum, and axis maximum. `EECLongestSide_id` and `EECLongestSide_log` are provided as typdefs of this class with the axis transform already included.
 
-- [EECTriangleOPE](https://github.com/pkomiske/EnergyEnergyCorrelators/blob/master/eec/include/EECComputations.hh#L234)
+- [EECTriangleOPE](https://github.com/pkomiske/EnergyEnergyCorrelators/blob/master/eec/include/EECComputations.hh#L234): This is a three-dimensional EEEC that uses coordinates that are particularly suited for studying the OPE limit where two of the three particles are close to collinear. There are three template arguments, corresponding to the `xL`, `xi`, and `phi` axes, respectively. The [constructor](https://github.com/pkomiske/EnergyEnergyCorrelators/blob/master/eec/include/EECComputations.hh#L250) takes nine arguments: for each axis (in the same order as the template arguments), the number of bins, axis minimum, and axis maximum. `EECTriangleOPE_id_id_id`, `EECTriangleOPE_log_id_id`, `EECTriangleOPE_id_log_id`, and `EECTriangleOPE_log_log_id` are provided as typedefs of this class with the axes transforms already specified.
 
 ## C++ Usage (Header-only)
 
