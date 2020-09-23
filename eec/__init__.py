@@ -45,7 +45,9 @@ __all__ = core.__all__ + ['eec']
 
 __version__ = '0.1.0'
 
-def eec(name, events, *args, njobs=None, weights=None, pt_powers=1, ch_powers=0, **kwargs):
+mpc = multiprocessing.get_context('fork')
+
+def eec(name, events, *args, weights=None, njobs=None, **kwargs):
 
     # check that computation is allowed
     if name not in core.__all__:
@@ -59,8 +61,6 @@ def eec(name, events, *args, njobs=None, weights=None, pt_powers=1, ch_powers=0,
     if kwargs.get('verbose', 0) > 0:
         print('Using {} jobs'.format(njobs))
 
-    kwargs.update({'pt_powers': pt_powers, 'ch_powers': ch_powers})
-
     if njobs > 1:
 
         # compute index ranges that divide up the events
@@ -72,7 +72,8 @@ def eec(name, events, *args, njobs=None, weights=None, pt_powers=1, ch_powers=0,
         eec_args = [(events[start:stop], (weights[start:stop] if weights is not None else None)) for start,stop in index_ranges]
 
         # use a pool of worker processes to compute 
-        with multiprocessing.get_context('fork').Pool(processes=njobs, initializer=_init_eec, initargs=(name, args, kwargs)) as pool:
+        lock = mpc.Lock()
+        with mpc.Pool(processes=njobs, initializer=_init_eec, initargs=(name, args, kwargs, lock)) as pool:
             results = pool.map(_compute_eec_on_events, eec_args, chunksize=1)
 
         # add histograms, add errors in quadrature
@@ -90,10 +91,11 @@ def eec(name, events, *args, njobs=None, weights=None, pt_powers=1, ch_powers=0,
 
     return hists, hist_errs, bin_centers, bin_edges
 
-def _init_eec(name, args, kwargs):
+def _init_eec(name, args, kwargs, lock):
     global eec_obj
     eeccomp = getattr(core, name)
     eec_obj = eeccomp(*args, **kwargs)
+    eec_obj._set_lock(lock)
 
 def _compute_eec_on_events(arg):
     events, weights = arg

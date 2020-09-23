@@ -31,6 +31,13 @@ from eec.eeccomps cimport id_tr, log_tr
 
 __all__ = ['EECTriangleOPE', 'EECLongestSide']
 
+cdef print_atomic(s, lock):
+    if lock is not None:
+        lock.acquire()
+    print(s, end='')
+    if lock is not None:
+        lock.release()
+
 ###############################################################################
 # Helper function that runs the computation and accepts a fused type
 #   - It appears that this cannot be part of the base class due to Cython
@@ -39,7 +46,7 @@ __all__ = ['EECTriangleOPE', 'EECLongestSide']
 cdef void compute_events(eeccomps.EECComputation_t * eec, size_t nev,
                          const vector[double*] & event_ptrs, const vector[unsigned] & event_mults, double[::1] weights_view,
                          size_t hist_size, const vector[double*] & hists_ptrs, const vector[double*] & hist_errs_ptrs,
-                         int verbose, int print_every, bool overflows) nogil:
+                         int verbose, int print_every, bool overflows, object lock) nogil:
 
     with gil:
         start = time.time()
@@ -51,7 +58,7 @@ cdef void compute_events(eeccomps.EECComputation_t * eec, size_t nev,
 
         if verbose > 0 and (j+1) % print_every == 0:
             with gil:
-                print('  {} events done in {:.3f}s'.format(j+1, time.time() - start))
+                print_atomic('  {} events done in {:.3f}s\n'.format(j+1, time.time() - start), lock)
 
         # check signals (handles interrupt)
         if (j % 100) == 0:
@@ -60,7 +67,7 @@ cdef void compute_events(eeccomps.EECComputation_t * eec, size_t nev,
 
     if verbose > 0 and ((j+1) % print_every != 0 or nev == 0):
         with gil:
-            print('  {} events done in {:.3f}s'.format(nev, time.time() - start))
+            print_atomic('  {} events done in {:.3f}s\n'.format(nev, time.time() - start), lock)
 
     # extract histograms
     for j in range(hists_ptrs.size()):
@@ -86,7 +93,9 @@ cdef class EECComputation:
         vector[unsigned] event_mults
         double[::1] weights_view
 
-    def __init__(self, pt_powers, ch_powers, N, norm, overflows, print_every, verbose):
+        object lock
+
+    def __init__(self, pt_powers, ch_powers, N, norm, overflows, print_every, verbose, lock):
 
         self.norm = norm
         self.overflows = overflows
@@ -112,6 +121,12 @@ cdef class EECComputation:
             if self.ch_powers.back() != 0:
                 self.nfeatures = 4
 
+    def _set_lock(self, lock):
+        self.lock = lock
+
+    cdef void print_atomic(self, s):
+        print_atomic(s, self.lock)
+
     cdef void preprocess_events(self, events, weights):
 
         # clear vectors
@@ -121,7 +136,7 @@ cdef class EECComputation:
         self.event_mults.clear()
 
         # initialize fresh histograms
-        self.inithists()
+        self.init_hists()
 
         # preprocess the events
         self.events = []
@@ -146,7 +161,7 @@ cdef class EECComputation:
             self.weights = weights * np.ones(self.nev, dtype=np.double, order='C')
         self.weights_view = self.weights
 
-    cdef void inithists(self):
+    cdef void init_hists(self):
 
         # initialize histograms
         self.hists = np.zeros((self.nhists,) + self.hist_shape, dtype=np.double, order='C')
@@ -175,10 +190,10 @@ cdef class EECTriangleOPE(EECComputation):
     def __cinit__(self):
         self.eec_p_iii = self.eec_p_lii = self.eec_p_ili = self.eec_p_lli = NULL
 
-    def __init__(self, nbins, axis_ranges, axis_transforms, pt_powers, ch_powers,
+    def __init__(self, nbins, axis_ranges, axis_transforms, pt_powers=1, ch_powers=0,
                        norm=True, overflows=True, print_every=1000, verbose=0,
                        check_degen=False, average_verts=False):
-        super(EECTriangleOPE, self).__init__(pt_powers, ch_powers, 3, norm, overflows, print_every, verbose)
+        super(EECTriangleOPE, self).__init__(pt_powers, ch_powers, 3, norm, overflows, print_every, verbose, None)
 
         self.axis_transforms = tuple(axis_transforms)
 
@@ -208,7 +223,7 @@ cdef class EECTriangleOPE(EECComputation):
             
         self.nbins0, self.nbins1, self.nbins2 = nbins
         self.hist_shape = (self.nbins0 + 2, self.nbins1 + 2, self.nbins2 + 2) if self.overflows else tuple(nbins)
-        self.inithists()
+        self.init_hists()
 
         # set pointer to eec
         if self.axis_transforms == ('id', 'id', 'id'):
@@ -270,8 +285,8 @@ cdef class EECTriangleOPE(EECComputation):
     def compute(self, events, weights=None):
 
         if self.verbose > 0:
-            print('  Computing {}, axes - {}, on {} events'.format(self.__class__.__name__, 
-                  self.axis_transforms, len(events)))
+            self.print_atomic('  Computing {}, axes - {}, on {} events\n'.format(
+                              self.__class__.__name__, self.axis_transforms, len(events)))
 
         self.preprocess_events(events, weights)
 
@@ -295,7 +310,7 @@ cdef class EECTriangleOPE(EECComputation):
     cdef void _compute(self, eeccomps.EECTriangleOPE_t * eec) nogil:
         compute_events(eec, self.nev, self.event_ptrs, self.event_mults, self.weights_view,
                             self.hist_size, self.hists_ptrs, self.hist_errs_ptrs,
-                            self.verbose, self.print_every, self.overflows)
+                            self.verbose, self.print_every, self.overflows, self.lock)
 
 ###############################################################################
 # EECLongestSide
@@ -316,10 +331,10 @@ cdef class EECLongestSide(EECComputation):
     def __cinit__(self):
         self.eec_p_i = self.eec_p_l = NULL
 
-    def __init__(self, N, nbins, axis_range, axis_transform, pt_powers, ch_powers,
+    def __init__(self, N, nbins, axis_range, axis_transform, pt_powers=1, ch_powers=0,
                        norm=True, overflows=True, print_every=1000, verbose=0,
                        check_degen=False, average_verts=False):
-        super(EECLongestSide, self).__init__(pt_powers, ch_powers, N, norm, overflows, print_every, verbose)
+        super(EECLongestSide, self).__init__(pt_powers, ch_powers, N, norm, overflows, print_every, verbose, None)
 
         self.axis_transform = str(axis_transform)
         self.nbins = nbins
@@ -339,7 +354,7 @@ cdef class EECLongestSide(EECComputation):
 
         self.axis_min, self.axis_max = axis_range
         self.hist_shape = (self.nbins + 2 if self.overflows else self.nbins,)
-        self.inithists()
+        self.init_hists()
 
         # set pointer to eec
         if self.axis_transform == 'id':
@@ -374,8 +389,8 @@ cdef class EECLongestSide(EECComputation):
     def compute(self, events, weights=None):
 
         if self.verbose > 0:
-            print('  Computing {}, N = {}, axis - {}, on {} events'.format(self.__class__.__name__, 
-                  self.N, self.axis_transform, len(events)))
+            self.print_atomic('  Computing {}, N = {}, axis - {}, on {} events\n'.format(
+                              self.__class__.__name__, self.N, self.axis_transform, len(events)))
 
         self.preprocess_events(events, weights)
 
@@ -395,4 +410,4 @@ cdef class EECLongestSide(EECComputation):
     cdef void _compute(self, eeccomps.EECLongestSide_t * eec) nogil:
         compute_events(eec, self.nev, self.event_ptrs, self.event_mults, self.weights_view,
                             self.hist_size, self.hists_ptrs, self.hist_errs_ptrs,
-                            self.verbose, self.print_every, self.overflows)
+                            self.verbose, self.print_every, self.overflows, self.lock)
