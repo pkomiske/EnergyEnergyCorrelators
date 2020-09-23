@@ -1,1 +1,2 @@
-exclude eec/core.cpp
+include eec/core.pyx eec/eeccomps.pxd eec/include/*.hh
+recursive-include eec/include/boost *.hpp

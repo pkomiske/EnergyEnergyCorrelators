@@ -16,25 +16,40 @@
 
 from libcpp cimport bool
 from libcpp.vector cimport vector
+from libcpp.string cimport string
 
-# external definitions from EECComputations C++ header 
-cdef extern from 'EECComputations.hh' namespace 'eec' nogil:
+# external definitions from EEC C++ header 
+cdef extern from 'EEC.hh' namespace 'eec' nogil:
     cdef cppclass id_tr 'eec::bh::axis::transform::id'
     cdef cppclass log_tr 'eec::bh::axis::transform::log'
 
     cdef cppclass EECTriangleOPE[Tr0, Tr1, Tr2]:
-        EECTriangleOPE(unsigned int, double, double, unsigned int, double, double, unsigned int, double, double)
-        void compute(const double *, size_t mult, double)
-        void get_hist(double *, double *, size_t, bool)
-        vector[double] bin_centers(int)
-        vector[double] bin_edges(int)
+        EECTriangleOPE(unsigned, double, double,
+                       unsigned, double, double,
+                       unsigned, double, double,
+                       bool,
+                       const vector[double] &,
+                       const vector[unsigned] &,
+                       bool, bool) except +
+        void compute(const double *, unsigned, double)
+        void get_hist(double *, double *, size_t, bool, unsigned) except +
+        vector[double] bin_centers(int) except +
+        vector[double] bin_edges(int) except +
+        unsigned nhists()
+        string description() except +
         
     cdef cppclass EECLongestSide[Tr0]:
-        EECLongestSide(unsigned int, unsigned int, double, double)
-        void compute(const double *, size_t mult, double)
-        void get_hist(double *, double *, size_t, bool)
+        EECLongestSide(unsigned, double, double,
+                       unsigned, bool,
+                       const vector[double] &,
+                       const vector[unsigned] &,
+                       bool, bool) except +
+        void compute(const double *, unsigned, double) except +
+        void get_hist(double *, double *, size_t, bool, unsigned) except +
         vector[double] bin_centers()
         vector[double] bin_edges()
+        unsigned nhists()
+        string description() except +
 
 # fused type for EEC TriangleOPE templates
 ctypedef fused EECTriangleOPE_t:
