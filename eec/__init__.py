@@ -69,7 +69,7 @@ def eec(name, events, *args, weights=None, njobs=None, **kwargs):
         index_ranges[-1][1] += remainder
 
         # make iterable for map argument
-        eec_args = [(events[start:stop], (weights[start:stop] if weights is not None else None)) for start,stop in index_ranges]
+        eec_args = [(start, events[start:stop], (weights[start:stop] if weights is not None else None)) for start,stop in index_ranges]
 
         # use a pool of worker processes to compute 
         lock = mpc.Lock()
@@ -98,7 +98,11 @@ def _init_eec(name, args, kwargs, lock):
     eec_obj._set_lock(lock)
 
 def _compute_eec_on_events(arg):
-    events, weights = arg
-    eec_obj.compute(events, weights=weights)
+    start, events, weights = arg
+    try:
+        eec_obj.compute(events, weights=weights)
+    except RuntimeError as e:
+        ind = e.args[1]
+        raise RuntimeError(str(e), 'event ' + str(start + ind))
 
     return eec_obj.hists, eec_obj.hist_errs, eec_obj.bin_centers, eec_obj.bin_edges

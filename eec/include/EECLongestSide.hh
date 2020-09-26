@@ -235,7 +235,7 @@ private:
         unsigned jxm(j*mult_);
 
         for (unsigned k = 0; k < mult_; k++) {
-          double dist_ik(dists_[ixm + k]), dist_jk(dists_[jxm + k]), weight_ijk(weight_ij * ws1[k]);
+          double weight_ijk(weight_ij * ws1[k]), dist_ik(dists_[ixm + k]), dist_jk(dists_[jxm + k]);
 
           // determine maximum distance and if side ij is the largest
           double max_dist(dist_ij);
@@ -278,7 +278,6 @@ private:
         bool ij_match(i == j);
 
         for (unsigned k = 0; k < mult_; k++) {
-          if (ws2[k] == 0) continue;
           double weight_ijk(weight_ij * ws2[k]), dist_ik(dists_[ixm + k]), dist_jk(dists_[jxm + k]);
           bool ik_match(i == k), jk_match(j == k);
 
@@ -351,17 +350,20 @@ private:
     for (unsigned i = 0; i < mult_; i++) {
       inds[0] = i;
       double weight_i(weight_ * ws0[i]);
+      if (weight_i == 0) continue;
       unsigned ixm(i*mult_);
 
       for (unsigned j = 0; j <= i; j++) {
         inds[1] = j;
         double weight_ij(weight_i * ws0[j]);
+        if (weight_ij == 0) continue;
         dists[0] = dists_[ixm + j];
         unsigned jxm(j*mult_);
 
         for (unsigned k = 0; k <= j; k++) {
           inds[2] = k;
           double weight_ijk(weight_ij * ws0[k]);
+          if (weight_ijk == 0) continue;
           dists[1] = dists_[ixm + k];
           dists[2] = dists_[jxm + k];
           unsigned kxm(k*mult_);
@@ -391,17 +393,20 @@ private:
     for (unsigned i = 0; i < mult_; i++) {
       inds[0] = i;
       double weight_i(weight_ * ws0[i]);
+      if (weight_i == 0) continue;
       unsigned ixm(i*mult_);
 
       for (unsigned j = 0; j <= i; j++) {
         inds[1] = j;
         double weight_ij(weight_i * ws0[j]);
+        if (weight_ij == 0) continue;
         dists[0] = dists_[ixm + j];
         unsigned jxm(j*mult_);
 
         for (unsigned k = 0; k <= j; k++) {
           inds[2] = k;
           double weight_ijk(weight_ij * ws0[k]);
+          if (weight_ijk == 0) continue;
           dists[1] = dists_[ixm + k];
           dists[2] = dists_[jxm + k];
           unsigned kxm(k*mult_);
@@ -409,6 +414,7 @@ private:
           for (unsigned l = 0; l <= k; l++) {
             inds[3] = l;
             double weight_ijkl(weight_ijk * ws0[l]);
+            if (weight_ijkl == 0) continue;
             dists[3] = dists_[ixm + l];
             dists[4] = dists_[jxm + l];
             dists[5] = dists_[kxm + l];

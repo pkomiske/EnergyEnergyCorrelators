@@ -35,6 +35,7 @@ cdef print_atomic(s, lock):
     if lock is not None:
         lock.acquire()
     print(s, end='')
+    sys.stdout.flush()
     if lock is not None:
         lock.release()
 
@@ -46,32 +47,33 @@ cdef print_atomic(s, lock):
 cdef void compute_events(eeccomps.EECComputation_t * eec, size_t nev,
                          const vector[double*] & event_ptrs, const vector[unsigned] & event_mults, double[::1] weights_view,
                          size_t hist_size, const vector[double*] & hists_ptrs, const vector[double*] & hist_errs_ptrs,
-                         int verbose, int print_every, bool overflows, object lock) nogil:
+                         int verbose, int print_every, bool overflows, object lock) except *:
 
-    with gil:
-        start = time.time()
+    start = time.time()
 
     # get size of histograms
     cdef size_t j = 0
     for j in range(nev):
-        eec.compute(event_ptrs[j], event_mults[j], weights_view[j])
+        try:
+            with nogil:
+                eec.compute(event_ptrs[j], event_mults[j], weights_view[j])
+        except Exception as e:
+            raise RuntimeError(str(e), j)
 
         if verbose > 0 and (j+1) % print_every == 0:
-            with gil:
-                print_atomic('  {} events done in {:.3f}s\n'.format(j+1, time.time() - start), lock)
+            print_atomic('  {} events done in {:.3f}s\n'.format(j+1, time.time() - start), lock)
 
         # check signals (handles interrupt)
         if (j % 100) == 0:
-            with gil:
-                PyErr_CheckSignals()
+            PyErr_CheckSignals()
 
     if verbose > 0 and ((j+1) % print_every != 0 or nev == 0):
-        with gil:
-            print_atomic('  {} events done in {:.3f}s\n'.format(nev, time.time() - start), lock)
+        print_atomic('  {} events done in {:.3f}s\n'.format(nev, time.time() - start), lock)
 
     # extract histograms
-    for j in range(hists_ptrs.size()):
-        eec.get_hist(hists_ptrs[j], hist_errs_ptrs[j], hist_size, overflows, j)
+    with nogil:
+        for j in range(hists_ptrs.size()):
+            eec.get_hist(hists_ptrs[j], hist_errs_ptrs[j], hist_size, overflows, j)
 
 ###############################################################################
 # EECComputation base class
@@ -191,8 +193,8 @@ cdef class EECTriangleOPE(EECComputation):
         self.eec_p_iii = self.eec_p_lii = self.eec_p_ili = self.eec_p_lli = NULL
 
     def __init__(self, nbins, axis_ranges, axis_transforms, pt_powers=1, ch_powers=0,
-                       norm=True, overflows=True, print_every=1000, verbose=0,
-                       check_degen=False, average_verts=False):
+                       norm=True, overflows=True, check_degen=False, average_verts=False,
+                       print_every=1000, verbose=0):
         super(EECTriangleOPE, self).__init__(pt_powers, ch_powers, 3, norm, overflows, print_every, verbose, None)
 
         self.axis_transforms = tuple(axis_transforms)
@@ -307,7 +309,7 @@ cdef class EECTriangleOPE(EECComputation):
         elif self.transform_i == 3:
             self._compute(self.eec_p_lli)
 
-    cdef void _compute(self, eeccomps.EECTriangleOPE_t * eec) nogil:
+    cdef void _compute(self, eeccomps.EECTriangleOPE_t * eec) except *:
         compute_events(eec, self.nev, self.event_ptrs, self.event_mults, self.weights_view,
                             self.hist_size, self.hists_ptrs, self.hist_errs_ptrs,
                             self.verbose, self.print_every, self.overflows, self.lock)
@@ -332,9 +334,13 @@ cdef class EECLongestSide(EECComputation):
         self.eec_p_i = self.eec_p_l = NULL
 
     def __init__(self, N, nbins, axis_range, axis_transform, pt_powers=1, ch_powers=0,
-                       norm=True, overflows=True, print_every=1000, verbose=0,
-                       check_degen=False, average_verts=False):
+                       norm=True, overflows=True, check_degen=False, average_verts=False,
+                       print_every=1000, verbose=0):
         super(EECLongestSide, self).__init__(pt_powers, ch_powers, N, norm, overflows, print_every, verbose, None)
+
+        if isinstance(axis_transform, (list, tuple)):
+            assert len(axis_transform) == 1, 'can only pass a single axis_transform to EECLongestSide'
+            axis_transform = axis_transform[0]
 
         self.axis_transform = str(axis_transform)
         self.nbins = nbins
@@ -407,7 +413,7 @@ cdef class EECLongestSide(EECComputation):
         elif self.transform_i == 1:
             self._compute(self.eec_p_l)
 
-    cdef void _compute(self, eeccomps.EECLongestSide_t * eec) nogil:
+    cdef void _compute(self, eeccomps.EECLongestSide_t * eec) except *:
         compute_events(eec, self.nev, self.event_ptrs, self.event_mults, self.weights_view,
                             self.hist_size, self.hists_ptrs, self.hist_errs_ptrs,
                             self.verbose, self.print_every, self.overflows, self.lock)

@@ -148,6 +148,7 @@ private:
         dists[0] = dists_[ixm + j];
 
         for (unsigned k = 0; k <= j; k++) {
+          if (ws0[k] == 0) continue;
           bool ik_match(i == k), jk_match(j == k);
           int sym(!(ij_match || ik_match || jk_match) ? 6 : (ij_match && ik_match ? 1 : 3));
           dists[1] = dists_[ixm + k];
@@ -177,9 +178,10 @@ private:
         dists[0] = dists_[ixm + j];
 
         for (unsigned k = 0; k < mult_; k++) {
+          if (ws1[k] == 0) continue;
+          double weight_ijk(weight_ij * ws1[k]);
           dists[1] = dists_[ixm + k];
           dists[2] = dists_[jxm + k];
-          double weight_ijk(weight_ij * ws1[k]);
 
           // (arg)sort distances
           std::array<std::pair<double,int>, 3> dists_inds(argsort3(dists));

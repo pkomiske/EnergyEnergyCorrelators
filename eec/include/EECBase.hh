@@ -19,6 +19,7 @@
 
 #include <cassert>
 #include <cmath>
+#include <iostream>
 #include <sstream>
 #include <string>
 #include <unordered_set>
@@ -246,9 +247,14 @@ public:
       std::unordered_set<double> dists_set;
       for (unsigned i = 0; i < mult_; i++) {
         unsigned ixm(i*mult_);
-        for (unsigned j = i + 1; j < mult_; j++)
-          if (!dists_set.insert(dists_[ixm + j]).second)
-            throw std::runtime_error("distance degeneracy encountered");
+        for (unsigned j = 0; j < i; j++) {
+          auto x(dists_set.insert(dists_[ixm + j]));
+          if (!x.second) {
+            std::cerr << "distance degeneracy encountered, particles " << i << " and " << j << ", distance is " << *x.first << std::endl;
+            //throw std::runtime_error("distance degeneracy encountered, particles " 
+            //                         + std::to_string(i) + " and " + std::to_string(j) + ", distance is " + std::to_string(*x.first));
+          }
+        }
       }
     }
 
@@ -305,6 +311,13 @@ protected:
 
   // get weights as powers of pts and charges
   void set_weights() {
+
+    // normalize pts
+    if (norm_) {
+      double pttot(0);
+      for (double pt : pts_) pttot += pt;
+      for (double & pt : pts_) pt /= pttot;
+    }
 
     for (unsigned i = 0, npowers = pt_powers_.size(); i < npowers; i++) {
       std::vector<double> & weights(weights_[i]);
