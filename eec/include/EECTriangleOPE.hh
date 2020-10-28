@@ -78,7 +78,7 @@ public:
 
       case 2:
         compute_eec_ptr_ = &EECTriangleOPE::eeec_ij_sym;
-        this->duplicate_hists(3);
+        if (!average_verts_) this->duplicate_hists(3);
         break;
 
       case 0:
@@ -145,12 +145,13 @@ private:
         if (weight_ij == 0) continue;
         unsigned jxm(j*mult_);
         bool ij_match(i == j);
-        dists[0] = dists_[ixm + j];
+        double dist_ij(dists_[ixm + j]);
 
         for (unsigned k = 0; k <= j; k++) {
-          if (ws0[k] == 0) continue;
+          //if (ws0[k] == 0) continue;
           bool ik_match(i == k), jk_match(j == k);
           int sym(!(ij_match || ik_match || jk_match) ? 6 : (ij_match && ik_match ? 1 : 3));
+          dists[0] = dist_ij;
           dists[1] = dists_[ixm + k];
           dists[2] = dists_[jxm + k];
 
@@ -175,11 +176,12 @@ private:
         double weight_ij(weight_i * ws0[j] * (i == j ? 1 : 2));
         if (weight_ij == 0) continue;
         unsigned jxm(j*mult_);
-        dists[0] = dists_[ixm + j];
+        double dist_ij(dists_[ixm + j]);
 
         for (unsigned k = 0; k < mult_; k++) {
-          if (ws1[k] == 0) continue;
+          //if (ws1[k] == 0) continue;
           double weight_ijk(weight_ij * ws1[k]);
+          dists[0] = dist_ij;
           dists[1] = dists_[ixm + k];
           dists[2] = dists_[jxm + k];
 
@@ -189,8 +191,12 @@ private:
           // check for overlapping particles
           bool ik_match(i == k), jk_match(j == k);
 
+          // averaging over verts
+          if (average_verts_)
+            fill_hist(0, weight_ijk, dists_inds[0].first, dists_inds[1].first, dists_inds[2].first);
+
           // fill specific histogram
-          if (!(ik_match || jk_match))
+          else if (!(ik_match || jk_match))
             fill_hist(dists_inds[0].second == 0 ? 0 : (dists_inds[1].second == 0 ? 1 : 2),
                       weight_ijk, dists_inds[0].first, dists_inds[1].first, dists_inds[2].first);
 
@@ -225,12 +231,13 @@ private:
         double weight_ij(weight_i * ws1[j]);
         if (weight_ij == 0) continue;
         unsigned jxm(j*mult_);
-        dists[0] = dists_[ixm + j];
+        double dist_ij(dists_[ixm + j]);
         bool ij_match(i == j);
 
         for (unsigned k = 0; k < mult_; k++) {
-          if (ws2[k] == 0) continue;
+          //if (ws2[k] == 0) continue;
           double weight_ijk(weight_ij * ws2[k]);
+          dists[0] = dist_ij;
           dists[1] = dists_[ixm + k];
           dists[2] = dists_[jxm + k];
           bool ik_match(i == k), jk_match(j == k);
@@ -296,8 +303,7 @@ private:
           }
 
           // should never get here
-          else
-            throw std::runtime_error("should never get here in EECTriangleOPE::eeec_no_sym");
+          else throw std::runtime_error("should never get here in EECTriangleOPE::eeec_no_sym");
         }
       }
     }

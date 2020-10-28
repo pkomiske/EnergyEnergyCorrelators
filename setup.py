@@ -21,7 +21,7 @@ ext_kwargs = {
 if len(sys.argv) >= 2 and sys.argv[1].lower() == 'cython':
     from Cython.Build import cythonize
 
-    cythonize([Extension('eec.core', sources=[os.path.join('eec', 'core.pyx')], **ext_kwargs)], 
+    cythonize([Extension('eec.eeccore', sources=[os.path.join('eec', 'eeccore.pyx')], **ext_kwargs)], 
               compiler_directives={'language_level': 3, 
                                    'boundscheck': False, 
                                    'wraparound': False,
@@ -29,7 +29,7 @@ if len(sys.argv) >= 2 and sys.argv[1].lower() == 'cython':
               annotate=False)
 
 else:
-    extensions = [Extension('eec.core', sources=[os.path.join('eec', 'core.cpp')], **ext_kwargs)]
+    extensions = [Extension('eec.eeccore', sources=[os.path.join('eec', 'eeccore.cpp')], **ext_kwargs)]
 
     # other options specified in setup.cfg
     setup(version=__version__, ext_modules=extensions)

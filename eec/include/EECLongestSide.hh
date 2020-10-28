@@ -87,7 +87,7 @@ public:
 
           case 2:
             compute_eec_ptr_ = &EECLongestSide::eeec_ij_sym;
-            this->duplicate_hists(2);
+            if (!average_verts_) this->duplicate_hists(2);
             break;
 
           case 0:
@@ -250,12 +250,18 @@ private:
             max_dist = dist_ik;
           }
 
-          // fill histogram
-          this->hists[hist_i](bh::weight(weight_ijk), max_dist);
+          // handle case of averaging over verts
+          if (average_verts_)
+            this->hists[0](bh::weight(weight_ijk), max_dist);
 
-          // fill other histogram if k == i or k == j
-          if (k == i || k == j)
-            this->hists[hist_i == 0 ? 1 : 0](bh::weight(weight_ijk), max_dist);
+          // no averaging here, fill the targeted hist
+          else {
+            this->hists[hist_i](bh::weight(weight_ijk), max_dist);
+
+            // fill other histogram if k == i or k == j
+            if (k == i || k == j)
+              this->hists[hist_i == 0 ? 1 : 0](bh::weight(weight_ijk), max_dist);  
+          }
         }
       }
     }
@@ -333,8 +339,7 @@ private:
           }
 
           // should never get here
-          else
-            throw std::runtime_error("should never get here in EECLongestSide::eeec_no_sym");
+          else throw std::runtime_error("should never get here in EECLongestSide::eeec_no_sym");
         }
       }
     }
@@ -350,20 +355,17 @@ private:
     for (unsigned i = 0; i < mult_; i++) {
       inds[0] = i;
       double weight_i(weight_ * ws0[i]);
-      if (weight_i == 0) continue;
       unsigned ixm(i*mult_);
 
       for (unsigned j = 0; j <= i; j++) {
         inds[1] = j;
         double weight_ij(weight_i * ws0[j]);
-        if (weight_ij == 0) continue;
         dists[0] = dists_[ixm + j];
         unsigned jxm(j*mult_);
 
         for (unsigned k = 0; k <= j; k++) {
           inds[2] = k;
           double weight_ijk(weight_ij * ws0[k]);
-          if (weight_ijk == 0) continue;
           dists[1] = dists_[ixm + k];
           dists[2] = dists_[jxm + k];
           unsigned kxm(k*mult_);
@@ -393,20 +395,17 @@ private:
     for (unsigned i = 0; i < mult_; i++) {
       inds[0] = i;
       double weight_i(weight_ * ws0[i]);
-      if (weight_i == 0) continue;
       unsigned ixm(i*mult_);
 
       for (unsigned j = 0; j <= i; j++) {
         inds[1] = j;
         double weight_ij(weight_i * ws0[j]);
-        if (weight_ij == 0) continue;
         dists[0] = dists_[ixm + j];
         unsigned jxm(j*mult_);
 
         for (unsigned k = 0; k <= j; k++) {
           inds[2] = k;
           double weight_ijk(weight_ij * ws0[k]);
-          if (weight_ijk == 0) continue;
           dists[1] = dists_[ixm + k];
           dists[2] = dists_[jxm + k];
           unsigned kxm(k*mult_);
@@ -414,7 +413,6 @@ private:
           for (unsigned l = 0; l <= k; l++) {
             inds[3] = l;
             double weight_ijkl(weight_ijk * ws0[l]);
-            if (weight_ijkl == 0) continue;
             dists[3] = dists_[ixm + l];
             dists[4] = dists_[jxm + l];
             dists[5] = dists_[kxm + l];

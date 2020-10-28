@@ -114,19 +114,19 @@ public:
           ch_powers_ = {ch_powers_[0]};
           compname_ = "eeec_ijk_sym";
         }
-        else if (ptpowmatch01 && chpowmatch01 && !average_verts_) {
+        else if (ptpowmatch01 && chpowmatch01) {
           pt_powers_ = {pt_powers_[0], pt_powers_[2]};
           ch_powers_ = {ch_powers_[0], ch_powers_[2]};
           compname_ = "eeec_ij_sym";
           nsym_ = 2;
         }
-        else if (ptpowmatch12 && chpowmatch12 && !average_verts_) {
+        else if (ptpowmatch12 && chpowmatch12) {
           pt_powers_ = {pt_powers_[1], pt_powers_[0]};
           ch_powers_ = {ch_powers_[1], ch_powers_[0]};
           compname_ = "eeec_ij_sym";
           nsym_ = 2;
         }
-        else if (ptpowmatch02 && chpowmatch02 && !average_verts_) {
+        else if (ptpowmatch02 && chpowmatch02) {
           pt_powers_ = {pt_powers_[2], pt_powers_[1]};
           ch_powers_ = {ch_powers_[2], ch_powers_[1]};
           compname_ = "eeec_ij_sym";
@@ -245,17 +245,22 @@ public:
     // check for degeneracy
     if (check_degen_) {
       std::unordered_set<double> dists_set;
+      unsigned ndegen(0);
       for (unsigned i = 0; i < mult_; i++) {
         unsigned ixm(i*mult_);
         for (unsigned j = 0; j < i; j++) {
           auto x(dists_set.insert(dists_[ixm + j]));
           if (!x.second) {
-            std::cerr << "distance degeneracy encountered, particles " << i << " and " << j << ", distance is " << *x.first << std::endl;
+            if (ndegen++ == 0)
+              std::cerr << "Begin Event\n";
+            std::cerr << "  distance degeneracy encountered, particles " << i << " and " << j << ", distance is " << *x.first << std::endl;
             //throw std::runtime_error("distance degeneracy encountered, particles " 
             //                         + std::to_string(i) + " and " + std::to_string(j) + ", distance is " + std::to_string(*x.first));
           }
         }
       }
+      if (ndegen > 0)
+        std::cerr << "End Event\n";
     }
 
     // run actual computation

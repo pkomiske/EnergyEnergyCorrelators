@@ -19,6 +19,7 @@ from __future__ import absolute_import, division, print_function
 import sys
 import time
 
+import cython
 import numpy as np
 
 from cpython.exc cimport PyErr_CheckSignals
@@ -129,7 +130,7 @@ cdef class EECComputation:
     cdef void print_atomic(self, s):
         print_atomic(s, self.lock)
 
-    cdef void preprocess_events(self, events, weights):
+    cdef void preprocess_events(self, events, weights) except *:
 
         # clear vectors
         self.event_ptrs.clear()
@@ -157,10 +158,13 @@ cdef class EECComputation:
             self.event_ptrs.push_back(&data_view_2d[0,0])
             self.event_mults.push_back(len(event))
 
+        self.weights = weights
         if weights is None:
             self.weights = np.ones(self.nev, dtype=np.double, order='C')
         if isinstance(weights, (float, int)):
             self.weights = weights * np.ones(self.nev, dtype=np.double, order='C')
+        if len(self.weights) != len(self.events):
+            raise ValueError('len(weights) does not match len(events)')
         self.weights_view = self.weights
 
     cdef void init_hists(self):
@@ -194,7 +198,7 @@ cdef class EECTriangleOPE(EECComputation):
 
     def __init__(self, nbins, axis_ranges, axis_transforms, pt_powers=1, ch_powers=0,
                        norm=True, overflows=True, check_degen=False, average_verts=False,
-                       print_every=1000, verbose=0):
+                       print_every=10000, verbose=0):
         super(EECTriangleOPE, self).__init__(pt_powers, ch_powers, 3, norm, overflows, print_every, verbose, None)
 
         self.axis_transforms = tuple(axis_transforms)
@@ -281,8 +285,9 @@ cdef class EECTriangleOPE(EECComputation):
 
     cdef void store_bins(self, eeccomps.EECTriangleOPE_t * eec):
         self.nhists = eec.nhists()
-        self.bin_centers = np.array([list(eec.bin_centers(0)), list(eec.bin_centers(1)), list(eec.bin_centers(2))])
-        self.bin_edges = np.array([list(eec.bin_edges(0)), list(eec.bin_edges(1)), list(eec.bin_edges(2))])
+        dtype = np.double if min(self.hist_shape) == max(self.hist_shape) else object
+        self.bin_centers = np.array([list(eec.bin_centers(0)), list(eec.bin_centers(1)), list(eec.bin_centers(2))], dtype=dtype)
+        self.bin_edges = np.array([list(eec.bin_edges(0)), list(eec.bin_edges(1)), list(eec.bin_edges(2))], dtype=dtype)
 
     def compute(self, events, weights=None):
 
@@ -335,7 +340,7 @@ cdef class EECLongestSide(EECComputation):
 
     def __init__(self, N, nbins, axis_range, axis_transform, pt_powers=1, ch_powers=0,
                        norm=True, overflows=True, check_degen=False, average_verts=False,
-                       print_every=1000, verbose=0):
+                       print_every=10000, verbose=0):
         super(EECLongestSide, self).__init__(pt_powers, ch_powers, N, norm, overflows, print_every, verbose, None)
 
         if isinstance(axis_transform, (list, tuple)):
