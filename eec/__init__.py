@@ -53,11 +53,13 @@ def eec(name, events, *args, weights=None, njobs=None, **kwargs):
         index_ranges[-1][1] += remainder
 
         # make iterable for map argument
-        eec_args = [(start, events[start:stop], (weights[start:stop] if weights is not None else None)) for start,stop in index_ranges]
+        eec_args = [(start, events[start:stop], (weights[start:stop] if weights is not None else None),
+                     name, args, kwargs)
+                    for start,stop in index_ranges]
 
-        # use a pool of worker processes to compute 
+        # use a pool of worker processes to compute
         lock = mpc.Lock()
-        with mpc.Pool(processes=njobs, initializer=_init_eec, initargs=(name, args, kwargs, lock)) as pool:
+        with mpc.Pool(processes=njobs, initializer=_init_eec, initargs=(lock,)) as pool:
             results = pool.map(_compute_eec_on_events, eec_args, chunksize=1)
 
         # add histograms, add errors in quadrature
@@ -75,7 +77,8 @@ def eec(name, events, *args, weights=None, njobs=None, **kwargs):
 
     return hists, hist_errs, bin_centers, bin_edges, description
 
-def combine_bins(hist, nbins2combine, axes=None, overflows=True, keep_overflows=False, bins=None):
+def combine_bins(hist, nbins2combine, axes=None, overflows=True, keep_overflows=False,
+                                      add_in_quadrature=False, bins=None):
     
     # process arguments
     nax = len(hist.shape)
@@ -107,7 +110,10 @@ def combine_bins(hist, nbins2combine, axes=None, overflows=True, keep_overflows=
         axtrans = [i for i in range(nax) if i != ax] + [ax]
         h = hist.transpose(axtrans)
         h = h[...,start:end].reshape(h.shape[:-1] + (nbins//nb2c, nb2c))
-        h = np.sum(h, axis=-1).transpose(np.argsort(axtrans))
+        if add_in_quadrature:
+            h = np.sqrt(np.sum(h**2, axis=-1).transpose(np.argsort(axtrans)))
+        else:
+            h = np.sum(h, axis=-1).transpose(np.argsort(axtrans))
         
         # add overflows back if requested
         if kov:
@@ -141,14 +147,14 @@ def midbins(bins, axis='id'):
     else:
         return (bins[:-1] + bins[1:])/2
 
-def _init_eec(name, args, kwargs, lock):
-    global eec_obj
-    eeccomp = getattr(eeccore, name)
-    eec_obj = eeccomp(*args, **kwargs)
-    eec_obj._set_lock(lock)
+def _init_eec(l):
+    global lock
+    lock = l
 
 def _compute_eec_on_events(arg):
-    start, events, weights = arg
+    start, events, weights, name, args, kwargs = arg
+    eec_obj = getattr(eeccore, name)(*args, **kwargs, lock=lock)
+
     try:
         eec_obj.compute(events, weights=weights)
     except RuntimeError as e:

@@ -31,7 +31,7 @@ cdef extern from 'EEC.hh' namespace 'eec' nogil:
                        const vector[double] &,
                        const vector[unsigned] &,
                        bool, bool) except +
-        void compute(const double *, unsigned, double)
+        void compute(const double *, unsigned, double) except +
         void get_hist(double *, double *, size_t, bool, unsigned) except +
         vector[double] bin_centers(int) except +
         vector[double] bin_edges(int) except +
@@ -43,7 +43,7 @@ cdef extern from 'EEC.hh' namespace 'eec' nogil:
                        unsigned, bool,
                        const vector[double] &,
                        const vector[unsigned] &,
-                       bool, bool) except +
+                       bool, bool, bool) except +
         void compute(const double *, unsigned, double) except +
         void get_hist(double *, double *, size_t, bool, unsigned) except +
         vector[double] bin_centers()

@@ -104,6 +104,7 @@ cdef class EECComputation:
         self.overflows = overflows
         self.print_every = print_every
         self.verbose = verbose
+        self.lock = lock
         self.nfeatures = 3
 
         if hasattr(pt_powers, '__getitem__'):
@@ -123,9 +124,6 @@ cdef class EECComputation:
             self.ch_powers.push_back(ch_powers[i])
             if self.ch_powers.back() != 0:
                 self.nfeatures = 4
-
-    def _set_lock(self, lock):
-        self.lock = lock
 
     cdef void print_atomic(self, s):
         print_atomic(s, self.lock)
@@ -198,8 +196,8 @@ cdef class EECTriangleOPE(EECComputation):
 
     def __init__(self, nbins, axis_ranges, axis_transforms, pt_powers=1, ch_powers=0,
                        norm=True, overflows=True, check_degen=False, average_verts=False,
-                       print_every=10000, verbose=0):
-        super(EECTriangleOPE, self).__init__(pt_powers, ch_powers, 3, norm, overflows, print_every, verbose, None)
+                       print_every=10000, verbose=0, lock=None):
+        super(EECTriangleOPE, self).__init__(pt_powers, ch_powers, 3, norm, overflows, print_every, verbose, lock)
 
         self.axis_transforms = tuple(axis_transforms)
 
@@ -340,8 +338,9 @@ cdef class EECLongestSide(EECComputation):
 
     def __init__(self, N, nbins, axis_range, axis_transform, pt_powers=1, ch_powers=0,
                        norm=True, overflows=True, check_degen=False, average_verts=False,
-                       print_every=10000, verbose=0):
-        super(EECLongestSide, self).__init__(pt_powers, ch_powers, N, norm, overflows, print_every, verbose, None)
+                       use_general_eNc=False,
+                       print_every=10000, verbose=0, lock=None):
+        super(EECLongestSide, self).__init__(pt_powers, ch_powers, N, norm, overflows, print_every, verbose, lock)
 
         if isinstance(axis_transform, (list, tuple)):
             assert len(axis_transform) == 1, 'can only pass a single axis_transform to EECLongestSide'
@@ -351,8 +350,8 @@ cdef class EECLongestSide(EECComputation):
         self.nbins = nbins
         self.N = N
 
-        if self.N < 2 or self.N > 5:
-            raise ValueError('N must be 2, 3, 4, or 5')
+        if self.N < 2:
+            raise ValueError('N must be greater than 2')
 
         if self.nbins <= 0:
             raise ValueError('nbins must be a positive integer')
@@ -372,14 +371,14 @@ cdef class EECLongestSide(EECComputation):
             self.transform_i = 0
             self.eec_p_i = new eeccomps.EECLongestSide[id_tr](self.nbins, self.axis_min, self.axis_max, 
                                                               self.N, self.norm, self.pt_powers, self.ch_powers,
-                                                              check_degen, average_verts)
+                                                              check_degen, average_verts, use_general_eNc)
             self.store_bins(self.eec_p_i)
 
         elif self.axis_transform == 'log':
             self.transform_i = 1
             self.eec_p_l = new eeccomps.EECLongestSide[log_tr](self.nbins, self.axis_min, self.axis_max, 
                                                                self.N, self.norm, self.pt_powers, self.ch_powers,
-                                                               check_degen, average_verts)
+                                                               check_degen, average_verts, use_general_eNc)
             self.store_bins(self.eec_p_l)
 
     def __dealloc__(self):

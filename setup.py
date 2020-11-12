@@ -26,7 +26,7 @@ if len(sys.argv) >= 2 and sys.argv[1].lower() == 'cython':
                                    'boundscheck': False, 
                                    'wraparound': False,
                                    'cdivision': True},
-              annotate=False)
+              annotate=True)
 
 else:
     extensions = [Extension('eec.eeccore', sources=[os.path.join('eec', 'eeccore.cpp')], **ext_kwargs)]

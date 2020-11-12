@@ -61,26 +61,29 @@ std::vector<double> get_bin_edges(const Axis & axis) {
 
 #ifdef EEC_HIST_FORMATTED_OUTPUT
 template<class Axis>
-void output_axis(std::ostream & os, const Axis & axis) {
+void output_axis(std::ostream & os, const Axis & axis, int nspaces=0) {
   for (int i = 0; i < axis.size(); i++) {
     const auto & bin(axis.bin(i));
-    os << boost::format("%i : %.16g %.16g %.16g\n") % i % bin.lower() % bin.center() % bin.upper();
+    os << std::string(nspaces, ' ')
+       << boost::format("%i: %.16g %.16g %.16g\n") % i % bin.lower() % bin.center() % bin.upper();
   }
   os << '\n';
 }
 template<class Hist>
-void output_1d_hist(std::ostream & os, const Hist & hist) {
-  for (const auto & x : bh::indexed(hist, bh::coverage::all)) {
+void output_1d_hist(std::ostream & os, const Hist & hist, int nspaces=0) {
+  for (auto && x : bh::indexed(hist, bh::coverage::all)) {
     const auto & wsum(*x);
-    os << boost::format("%u : %.16g %.16g\n") % x.index(0) % wsum.value() % sqrt(wsum.variance());
+    os << std::string(nspaces, ' ')
+       << boost::format("%u: %.16g %.16g\n") % x.index(0) % wsum.value() % sqrt(wsum.variance());
   }
   os << '\n';
 }
 template<class Hist>
-void output_3d_hist(std::ostream & os, const Hist & hist) {
-  for (const auto & x : bh::indexed(hist, bh::coverage::all)) {
+void output_3d_hist(std::ostream & os, const Hist & hist, int nspaces=0) {
+  for (auto && x : bh::indexed(hist, bh::coverage::all)) {
     const auto & wsum(*x);
-    os << boost::format("%u %u %u : %.16g %.16g\n") % x.index(0) % x.index(1) % x.index(2) % wsum.value() % sqrt(wsum.variance());
+    os << std::string(nspaces, ' ')
+       << boost::format("%u %u %u: %.16g %.16g\n") % x.index(0) % x.index(1) % x.index(2) % wsum.value() % sqrt(wsum.variance());
   }
   os << '\n';
 }
@@ -93,14 +96,14 @@ void output_3d_hist(std::ostream & os, const Hist & hist) {
 class HistBase {
 public:
 
-  virtual std::size_t get_hist_size(bool) const = 0;
-  virtual void get_hist(double *, double *, std::size_t, bool, unsigned) const = 0;
+  virtual size_t get_hist_size(bool) const = 0;
+  virtual void get_hist(double *, double *, size_t, bool, unsigned) const = 0;
 
   // get histogram and errors
-  std::pair<std::vector<double>, std::vector<double>> get_hist(bool include_overflows = true, unsigned hist_i = 0) {
-    std::size_t hist_size(get_hist_size(include_overflows));
+  std::pair<std::vector<double>, std::vector<double>> get_hist_errs(bool include_overflows = true, unsigned hist_i = 0) {
+    size_t hist_size(get_hist_size(include_overflows));
     std::vector<double> hist_vals(hist_size), hist_errs(hist_size);
-    get_hist(hist_vals.data(), hist_errs.data(), hist_size, hist_i, include_overflows);
+    get_hist(hist_vals.data(), hist_errs.data(), hist_size, include_overflows, hist_i);
     return std::make_pair(std::move(hist_vals), std::move(hist_errs));
   }
 
@@ -138,28 +141,29 @@ public:
       hists.insert(hists.end(), nhists - 1, bh::make_weighted_histogram(axis));
   }
 
-  std::size_t nhists() const { return hists.size(); }
+  size_t nhists() const { return hists.size(); }
 
   std::vector<double> bin_centers() const { return get_bin_centers(axis); }
   std::vector<double> bin_edges() const { return get_bin_edges(axis); }
 
 #ifdef EEC_HIST_FORMATTED_OUTPUT
-  void output(std::ostream & os = std::cout, unsigned hist_i = 0) const {
+  void output(std::ostream & os = std::cout, unsigned hist_i = 0, int nspaces = 0) const {
     os << "axis0\n";
-    output_axis(os, axis);
+    output_axis(os, axis, nspaces);
 
     os << "hist-1d\n";
-    output_1d_hist(os, hists[0]);
+    output_1d_hist(os, hists[0], nspaces);
   }
 #endif
 
-  std::size_t get_hist_size(bool include_overflows = true) const {
-    std::ptrdiff_t start(include_overflows ? -1 : 0), end_off(include_overflows ? 1 : 0),
-                   size(axis.size() + end_off - start);
+  size_t get_hist_size(bool include_overflows = true) const {
+    auto size(axis.size());
+    if (include_overflows)
+      size += 2;
     return size;
   }
 
-  void get_hist(double * hist_vals, double * hist_errs, std::size_t size, bool include_overflows = true, unsigned hist_i = 0) const {
+  void get_hist(double * hist_vals, double * hist_errs, size_t size, bool include_overflows = true, unsigned hist_i = 0) const {
 
     if (size != get_hist_size(include_overflows)) 
       throw std::invalid_argument("Size of histogram doesn't match provided arrays");
@@ -220,7 +224,7 @@ public:
       hists.insert(hists.end(), nhists - 1, bh::make_weighted_histogram(axis0, axis1, axis2));
   }
 
-  std::size_t nhists() const { return hists.size(); }
+  size_t nhists() const { return hists.size(); }
 
   std::vector<double> bin_centers(int i) const {
     if (i == 0) return get_bin_centers(axis0);
@@ -254,14 +258,13 @@ public:
   }
 #endif
 
-  std::size_t get_hist_size(bool include_overflows = true) const {
-    std::ptrdiff_t start(include_overflows ? -1 : 0), end_offset(include_overflows ? 1 : 0), 
-                   diff(end_offset - start),
-                   size((axis0.size() + diff)*(axis1.size() + diff)*(axis2.size() + diff));
+  size_t get_hist_size(bool include_overflows = true) const {
+    size_t diff(include_overflows ? 2 : 0),
+           size((axis0.size() + diff)*(axis1.size() + diff)*(axis2.size() + diff));
     return size;
   }
 
-  void get_hist(double * hist_vals, double * hist_errs, std::size_t size, bool include_overflows = true, unsigned hist_i = 0) const {
+  void get_hist(double * hist_vals, double * hist_errs, size_t size, bool include_overflows = true, unsigned hist_i = 0) const {
 
     if (size != get_hist_size(include_overflows)) 
       throw std::invalid_argument("Size of histogram doesn't match provided arrays");
@@ -270,7 +273,7 @@ public:
 
     const Hist & hist(hists[hist_i]);
     int start(include_overflows ? -1 : 0), end_off(include_overflows ? 1 : 0);
-    std::size_t a(0);
+    size_t a(0);
     for (int i = start; i < axis0.size() + end_off; i++) {
       for (int j = start; j < axis1.size() + end_off; j++) {
         for (int k = start; k < axis2.size() + end_off; k++, a++) {

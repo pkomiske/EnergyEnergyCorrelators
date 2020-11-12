@@ -100,7 +100,7 @@ public:
     oss << "EECTriangleOPE::" << compname_ << '\n'
         << EECBase::description()
         << '\n'
-        << "  There " << (nh == 1 ? "is " : "are ") << nh << " histogram";
+        << "  there " << (nh == 1 ? "is " : "are ") << nh << " histogram";
 
     if (nh == 1) 
       oss << '\n';

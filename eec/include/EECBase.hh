@@ -67,8 +67,6 @@ protected:
   double (*pj_charge_)(const fastjet::PseudoJet &);
   #endif
 
-public:
-
   EECBase(const std::vector<double> & pt_powers, const std::vector<unsigned> & ch_powers,
           unsigned N, bool norm, bool check_degen, bool average_verts) : 
     orig_pt_powers_(pt_powers), orig_ch_powers_(ch_powers),
@@ -144,7 +142,7 @@ public:
           if (pt_powers_[i] != pt_powers_[0] || ch_powers_[i] != ch_powers_[0])
             throw std::invalid_argument("N = 4 only supports the fully symmetric correlator currently");
         }
-        compname_ = "eeec_ijkl_sym";
+        compname_ = "eeeec_ijkl_sym";
         break;
       }
 
@@ -153,12 +151,25 @@ public:
           if (pt_powers_[i] != pt_powers_[0] || ch_powers_[i] != ch_powers_[0])
             throw std::invalid_argument("N = 5 only supports the fully symmetric correlator currently");
         }
-        compname_ = "eeec_ijklm_sym";
+        compname_ = "eeeeec_ijklm_sym";
+        break;
+      }
+
+      case 6: {
+        for (int i = 1; i < 6; i++) {
+          if (pt_powers_[i] != pt_powers_[0] || ch_powers_[i] != ch_powers_[0])
+            throw std::invalid_argument("N = 6 only supports the fully symmetric correlator currently");
+        }
+        compname_ = "eeeeeec_ijklm_sym";
         break;
       }
 
       default:
-        throw std::invalid_argument("N must be 2, 3, 4, or 5 currently");
+        for (unsigned i = 1; i < N_; i++) {
+          if (pt_powers_[i] != pt_powers_[0] || ch_powers_[i] != ch_powers_[0])
+            throw std::invalid_argument("this N only supports the fully symmetric correlator currently");
+        }
+        compname_ = "eNc_sym";
     }
 
     // check for using charges at all
@@ -175,7 +186,7 @@ public:
 
   virtual ~EECBase() {}
 
-  virtual std::string description() const {
+  std::string description() const {
     std::ostringstream oss;
     oss << "  N - " << N_ << '\n'
         << "  norm - " << (norm_ ? "true" : "false") << '\n'
@@ -197,6 +208,8 @@ public:
 
     return oss.str();
   }
+
+public:
 
   // compute on a vector of particles
   void compute(const std::vector<double> & particles, double weight = 1.0) {
@@ -285,6 +298,9 @@ public:
     weight_ = weight;
     mult_ = pjs.size();
 
+    // compute pairwise distances and extract pts
+    dists_.resize(mult_*mult_);
+    pts_.resize(mult_);
     for (unsigned i = 0; i < mult_; i++) {
       unsigned ixm(i*mult_);
       pts_[i] = pjs[i].pt();
@@ -295,7 +311,10 @@ public:
     }
 
     // store charges if provided a function to do so
-    if (pj_charge_ != nullptr) {
+    if (use_charges_) {
+      if (pj_charge_ == nullptr)
+        throw std::runtime_error("No function provided to get charges from PseudoJets");
+      
       charges_.resize(pjs.size());
       for (unsigned i = 0; i < mult_; i++)
         charges_[i] = pj_charge_(pjs[i]);  
