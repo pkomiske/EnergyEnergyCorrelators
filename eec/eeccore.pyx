@@ -14,6 +14,13 @@
 # You should have received a copy of the GNU General Public License
 # along with this program.  If not, see <https://www.gnu.org/licenses/>.
 
+#  ______ ______ _____ _____ ____  _____  ______ 
+# |  ____|  ____/ ____/ ____/ __ \|  __ \|  ____|
+# | |__  | |__ | |   | |   | |  | | |__) | |__   
+# |  __| |  __|| |   | |   | |  | |  _  /|  __|  
+# | |____| |___| |___| |___| |__| | | \ \| |____ 
+# |______|______\_____\_____\____/|_|  \_\______|
+
 from __future__ import absolute_import, division, print_function
 
 import sys

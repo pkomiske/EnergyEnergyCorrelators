@@ -14,6 +14,13 @@
 // You should have received a copy of the GNU General Public License
 // along with this program.  If not, see <https://www.gnu.org/licenses/>.
 
+//  ______ ______ _____ 
+// |  ____|  ____/ ____|
+// | |__  | |__ | |     
+// |  __| |  __|| |     
+// | |____| |___| |____ 
+// |______|______\_____|
+
 #ifndef EEC_HH
 #define EEC_HH
 
