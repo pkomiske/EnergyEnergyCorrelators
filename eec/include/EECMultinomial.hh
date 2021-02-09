@@ -56,8 +56,9 @@ inline unsigned multinomial(const std::array<unsigned, N> & inds) noexcept {
 }
 
 inline unsigned multinomial_vector(const std::vector<unsigned> & inds) noexcept {
+
   unsigned denom(1), count(1);
-  for (unsigned i = 2; i < inds.size(); i++) {
+  for (unsigned i = 1; i < inds.size(); i++) {
     if (inds[i] == inds[i-1]) count++;
     else {
       denom *= FACTORIALS[count];

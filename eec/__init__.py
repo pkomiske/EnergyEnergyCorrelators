@@ -25,71 +25,16 @@ GNU General Public License for more details.
 You should have received a copy of the GNU General Public License
 along with this program.  If not, see <https://www.gnu.org/licenses/>.
 """
-from __future__ import absolute_import, division, print_function
+from __future__ import absolute_import
 
-import multiprocessing
+from .eec import *
 
-import numpy as np
-
-from . import eeccore
-from .eeccore import *
-
-__all__ = eeccore.__all__ + ['eec', 'combine_bins', 'midbins']
-__version__ = '0.2.0'
-
-mpc = multiprocessing.get_context('spawn')
-
-def eec(name, events, *args, weights=None, njobs=None, **kwargs):
-
-    # check that computation is allowed
-    if name not in eeccore.__all__:
-        raise ValueError('not implemented'.format(name))
-
-    # handle using all cores
-    if njobs is None or njobs == -1:
-        njobs = multiprocessing.cpu_count() or 1
-    njobs = max(min(njobs, len(events)), 1)
-
-    if kwargs.get('verbose', 0) > 0:
-        print('Using {} jobs'.format(njobs))
-
-    if weights is not None and len(weights) != len(events):
-        raise ValueError('len(weights) does not match len(events)')
-
-    if njobs > 1:
-
-        # compute index ranges that divide up the events
-        num_per_job, remainder = divmod(len(events), njobs)
-        index_ranges = [[i*num_per_job, (i+1)*num_per_job] for i in range(njobs)]
-        index_ranges[-1][1] += remainder
-
-        # make iterable for map argument
-        eec_args = [(start, events[start:stop], (weights[start:stop] if weights is not None else None),
-                     name, args, kwargs)
-                    for start,stop in index_ranges]
-
-        # use a pool of worker processes to compute
-        lock = mpc.Lock()
-        with mpc.Pool(processes=njobs, initializer=_init_eec, initargs=(lock,)) as pool:
-            results = pool.map(_compute_eec_on_events, eec_args, chunksize=1)
-
-        # add histograms, add errors in quadrature
-        hists, hist_errs, bin_centers, bin_edges, description = results[0]
-        hist_errs2 = hist_errs**2
-        for i in range(1, njobs):
-            hists += results[i][0]
-            hist_errs2 += results[i][1]**2
-        hist_errs = np.sqrt(hist_errs2)
-
-    else:
-        eec_obj = getattr(eeccore, name)(*args, **kwargs)
-        eec_obj.compute(events, weights=weights)
-        hists, hist_errs, bin_centers, bin_edges, description = eec_obj.hists, eec_obj.hist_errs, eec_obj.bin_centers, eec_obj.bin_edges, str(eec_obj)
-
-    return hists, hist_errs, bin_centers, bin_edges, description
+__version__ = '0.3.0'
 
 def combine_bins(hist, nbins2combine, axes=None, overflows=True, keep_overflows=False,
                                       add_in_quadrature=False, bins=None):
+
+    import numpy as np
     
     # process arguments
     nax = len(hist.shape)
@@ -154,6 +99,7 @@ def combine_bins(hist, nbins2combine, axes=None, overflows=True, keep_overflows=
 
 def midbins(bins, axis='id'):
     if axis == 'log' or axis == True:
+        import numpy as np
         return np.sqrt(bins[:-1]*bins[1:])
     else:
         return (bins[:-1] + bins[1:])/2
@@ -175,4 +121,5 @@ def _compute_eec_on_events(arg):
     return eec_obj.hists, eec_obj.hist_errs, eec_obj.bin_centers, eec_obj.bin_edges, str(eec_obj)
 
 def _to_iterable(arg):
+    import numpy as np
     return arg if isinstance(arg, (tuple, list, np.ndarray)) else [arg]

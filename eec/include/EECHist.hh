@@ -42,10 +42,25 @@
 #include "boost/format.hpp"
 #endif
 
+#include "EECUtils.hh"
+
 namespace eec {
 
-// naming shortcuts
-namespace bh = boost::histogram;
+#ifndef SWIG_PREPROCESSOR
+  // naming shortcuts
+  namespace bh = boost::histogram;
+#endif
+
+//-----------------------------------------------------------------------------
+// boost::histogram::axis::transform using statements
+//-----------------------------------------------------------------------------
+
+namespace axis {
+
+using id = boost::histogram::axis::transform::id;
+using log = boost::histogram::axis::transform::log;
+
+}
 
 //-----------------------------------------------------------------------------
 // Histogram helper functions
@@ -70,6 +85,18 @@ std::vector<double> get_bin_edges(const Axis & axis) {
   for (int i = 0; i < axis.size(); i++)
     bins_vec[i+1] = axis.bin(i).upper();
   return bins_vec;
+}
+
+// tally a specific histogram across threads (assumed to be the first axis)
+template<class Hist>
+Hist combine_hists(const std::vector<std::vector<Hist>> & hists, unsigned hist_i) {
+
+  // do the combining
+  Hist hist;
+  for (unsigned thread_i = 0; thread_i < hists.size(); thread_i++)
+    hist += hists[thread_i][hist_i];
+
+  return hist;
 }
 
 #ifdef EEC_HIST_FORMATTED_OUTPUT
@@ -109,16 +136,25 @@ void output_3d_hist(std::ostream & os, const Hist & hist, int nspaces=0) {
 class HistBase {
 public:
 
+  HistBase() : HistBase(1) {}
+  HistBase(int num_threads) : num_threads_(determine_num_threads(num_threads)) {}
+
+  int num_threads() const { return num_threads_; }
+
   virtual size_t get_hist_size(bool) const = 0;
   virtual void get_hist(double *, double *, size_t, bool, unsigned) const = 0;
 
-  // get histogram and errors
+  // return histogram and errors as a pair of vectors
   std::pair<std::vector<double>, std::vector<double>> get_hist_errs(bool include_overflows = true, unsigned hist_i = 0) {
     size_t hist_size(get_hist_size(include_overflows));
     std::vector<double> hist_vals(hist_size), hist_errs(hist_size);
     get_hist(hist_vals.data(), hist_errs.data(), hist_size, include_overflows, hist_i);
     return std::make_pair(std::move(hist_vals), std::move(hist_errs));
   }
+
+private:
+
+  int num_threads_;
 
 }; // HistBase
 
@@ -130,19 +166,27 @@ template<class T>
 class Hist1D : public HistBase {
 public:
 
-  // axis
+#ifndef SWIG_PREPROCESSOR
+  // typedefs
   typedef T Transform;
   typedef bh::axis::regular<double, Transform> Axis;
-  Axis axis;
+private:
+  Axis axis_;
+public:
+  typedef decltype(bh::make_weighted_histogram(axis_)) Hist;
+private:
+  std::vector<std::vector<Hist>> hists_;
+#endif
 
-  // histogram
-  typedef decltype(bh::make_weighted_histogram(axis)) Hist;
-  std::vector<Hist> hists;
+public:
 
-  Hist1D(unsigned nbins, double axis_min, double axis_max) :
-    axis(nbins, axis_min, axis_max),
-    hists(1, bh::make_weighted_histogram(axis))
+  Hist1D() : Hist1D(0, 0, 0) {}
+  Hist1D(unsigned nbins, double axis_min, double axis_max, int num_threads = 1) :
+    HistBase(num_threads),
+    axis_(nbins, axis_min, axis_max),
+    hists_(this->num_threads(), {bh::make_weighted_histogram(axis())})
   {}
+
   virtual ~Hist1D() {}
 
   void duplicate_hists(unsigned nhists) {
@@ -150,27 +194,43 @@ public:
       throw std::invalid_argument("nhists must be at least 1");
 
     // create histograms
-    if (nhists > 1)
-      hists.insert(hists.end(), nhists - 1, bh::make_weighted_histogram(axis));
+    int nnewhists(int(nhists) - int(this->nhists()));
+    if (nnewhists > 0) {
+      for (int i = 0; i < num_threads(); i++)
+        hists(i).insert(hists(i).end(), nnewhists, bh::make_weighted_histogram(axis()));
+    }
   }
+  
+#ifndef SWIG_PREPROCESSOR
+  // access functions for axis and histogram
+  const Axis & axis() const { return axis_; }
+  std::vector<Hist> & hists(int thread_i = 0) { return hists_[thread_i]; }
+  const std::vector<Hist> & hists(int thread_i = 0) const { return hists_[thread_i]; }
 
-  size_t nhists() const { return hists.size(); }
+  // combined histograms
+  Hist combined_hist(unsigned hist_i) const { return combine_hists(hists_, hist_i); }
+#endif
 
-  std::vector<double> bin_centers() const { return get_bin_centers(axis); }
-  std::vector<double> bin_edges() const { return get_bin_edges(axis); }
+  unsigned nhists() const { return hists().size(); }
+
+  // bin information
+  std::vector<double> bin_centers() const { return get_bin_centers(axis()); }
+  std::vector<double> bin_edges() const { return get_bin_edges(axis()); }
 
 #ifdef EEC_HIST_FORMATTED_OUTPUT
-  void output(std::ostream & os = std::cout, unsigned hist_i = 0, int nspaces = 0) const {
+  void output(std::ostream & os = std::cout, int nspaces = 0) const {
     os << "axis0\n";
-    output_axis(os, axis, nspaces);
+    output_axis(os, axis(), nspaces);
 
-    os << "hist-1d\n";
-    output_1d_hist(os, hists[0], nspaces);
+    for (unsigned i = 0; i < nhists(); i++) {
+      os << "hist-1d " << i << '\n';
+      output_1d_hist(os, combined_hist(i), nspaces);
+    }
   }
 #endif
 
   size_t get_hist_size(bool include_overflows = true) const {
-    auto size(axis.size());
+    auto size(axis().size());
     if (include_overflows)
       size += 2;
     return size;
@@ -180,10 +240,12 @@ public:
 
     if (size != get_hist_size(include_overflows)) 
       throw std::invalid_argument("Size of histogram doesn't match provided arrays");
+    if (hist_i >= nhists())
+      throw std::out_of_range("Requested histogram out of range");
 
-    const Hist & hist(hists[0]);
+    Hist hist(combined_hist(hist_i));
     unsigned a(0);
-    for (int i = (include_overflows ? -1 : 0); i < axis.size() + (include_overflows ? 1 : 0); i++, a++) {
+    for (int i = (include_overflows ? -1 : 0), end = axis().size() + (include_overflows ? 1 : 0); i < end; i++, a++) {
       const auto & x(hist.at(i));
       hist_vals[a] = x.value();
       hist_errs[a] = std::sqrt(x.variance());
@@ -200,32 +262,37 @@ template<class T0, class T1, class T2>
 class Hist3D : public HistBase {
 public:
 
-  // typedefs of transform types
+#ifndef SWIG_PREPROCESSOR
+  // typedefs
   typedef T0 Transform0;
   typedef T1 Transform1;
   typedef T2 Transform2;
-
-  // axis
   typedef bh::axis::regular<double, Transform0> Axis0;
   typedef bh::axis::regular<double, Transform1> Axis1;
   typedef bh::axis::regular<double, Transform2> Axis2;
+private:
+  Axis0 axis0_;
+  Axis1 axis1_;
+  Axis2 axis2_;
+public:
+  typedef decltype(bh::make_weighted_histogram(axis0_, axis1_, axis2_)) Hist;
+private:
+  std::vector<std::vector<Hist>> hists_;
+#endif
 
-  Axis0 axis0;
-  Axis1 axis1;
-  Axis2 axis2;
-
-  // histogram
-  typedef decltype(bh::make_weighted_histogram(axis0, axis1, axis2)) Hist;
-  std::vector<Hist> hists;
+public:
 
   Hist3D(unsigned nbins0, double axis0_min, double axis0_max,
          unsigned nbins1, double axis1_min, double axis1_max,
-         unsigned nbins2, double axis2_min, double axis2_max) :
-    axis0(nbins0, axis0_min, axis0_max),
-    axis1(nbins1, axis1_min, axis1_max),
-    axis2(nbins2, axis2_min, axis2_max),
-    hists(1, bh::make_weighted_histogram(axis0, axis1, axis2))
+         unsigned nbins2, double axis2_min, double axis2_max,
+         int num_threads = 1) :
+    HistBase(num_threads),
+    axis0_(nbins0, axis0_min, axis0_max),
+    axis1_(nbins1, axis1_min, axis1_max),
+    axis2_(nbins2, axis2_min, axis2_max),
+    hists_(this->num_threads(), {bh::make_weighted_histogram(axis0(), axis1(), axis2())})
   {}
+
   virtual ~Hist3D() {}
 
   void duplicate_hists(unsigned nhists) {
@@ -233,47 +300,64 @@ public:
       throw std::invalid_argument("nhists must be at least 1");
 
     // create histograms
-    if (nhists > 1)
-      hists.insert(hists.end(), nhists - 1, bh::make_weighted_histogram(axis0, axis1, axis2));
+    int nnewhists(int(nhists) - int(this->nhists()));
+    if (nnewhists > 0) {
+      for (int i = 0; i < num_threads(); i++)
+        hists(i).insert(hists(i).end(), nnewhists, bh::make_weighted_histogram(axis0(), axis1(), axis2()));
+    }
   }
 
-  size_t nhists() const { return hists.size(); }
+#ifndef SWIG_PREPROCESSOR
+  // access functions for axis and histogram
+  const Axis0 & axis0() const { return axis0_; }
+  const Axis1 & axis1() const { return axis1_; }
+  const Axis2 & axis2() const { return axis2_; }
+  std::vector<Hist> & hists(int thread_i = 0) { return hists_[thread_i]; }
+  const std::vector<Hist> & hists(int thread_i = 0) const { return hists_[thread_i]; }
+
+  // combined histograms
+  Hist combined_hist(unsigned hist_i) const { return combine_hists(hists_, hist_i); }
+#endif
+
+  unsigned nhists() const { return hists().size(); }
 
   std::vector<double> bin_centers(int i) const {
-    if (i == 0) return get_bin_centers(axis0);
-    else if (i == 1) return get_bin_centers(axis1);
-    else if (i == 2) return get_bin_centers(axis2);
+    if (i == 0) return get_bin_centers(axis0());
+    else if (i == 1) return get_bin_centers(axis1());
+    else if (i == 2) return get_bin_centers(axis2());
     else throw std::invalid_argument("axis index i must be 0, 1, or 2");
-    return std::vector<double>();
+    return {};
   }
 
   std::vector<double> bin_edges(int i) const {
-    if (i == 0) return get_bin_edges(axis0);
-    else if (i == 1) return get_bin_edges(axis1);
-    else if (i == 2) return get_bin_edges(axis2);
+    if (i == 0) return get_bin_edges(axis0());
+    else if (i == 1) return get_bin_edges(axis1());
+    else if (i == 2) return get_bin_edges(axis2());
     else throw std::invalid_argument("axis index i must be 0, 1, or 2");
-    return std::vector<double>();
+    return {};
   }
 
 #ifdef EEC_HIST_FORMATTED_OUTPUT
-  void output(std::ostream & os = std::cout, unsigned hist_i = 0) const {
+  void output(std::ostream & os = std::cout, int nspaces = 0) const {
     os << "axis0\n";
-    output_axis(os, axis0);
+    output_axis(os, axis0(), nspaces);
 
     os << "axis1\n";
-    output_axis(os, axis1);
+    output_axis(os, axis1(), nspaces);
 
     os << "axis2\n";
-    output_axis(os, axis2);
+    output_axis(os, axis2(), nspaces);
 
-    os << "hist-3d\n";
-    output_3d_hist(os, hists[hist_i]);
+    for (unsigned i = 0; i < nhists(); i++) {
+      os << "hist-3d " << i << '\n';
+      output_3d_hist(os, combined_hist(i), nspaces);
+    }
   }
 #endif
 
   size_t get_hist_size(bool include_overflows = true) const {
     size_t diff(include_overflows ? 2 : 0),
-           size((axis0.size() + diff)*(axis1.size() + diff)*(axis2.size() + diff));
+           size((axis0().size() + diff)*(axis1().size() + diff)*(axis2().size() + diff));
     return size;
   }
 
@@ -281,15 +365,15 @@ public:
 
     if (size != get_hist_size(include_overflows)) 
       throw std::invalid_argument("Size of histogram doesn't match provided arrays");
-    if (hist_i >= hists.size())
+    if (hist_i >= nhists())
       throw std::out_of_range("Requested histogram out of range");
 
-    const Hist & hist(hists[hist_i]);
+    Hist hist(combined_hist(hist_i));
     int start(include_overflows ? -1 : 0), end_off(include_overflows ? 1 : 0);
     size_t a(0);
-    for (int i = start; i < axis0.size() + end_off; i++) {
-      for (int j = start; j < axis1.size() + end_off; j++) {
-        for (int k = start; k < axis2.size() + end_off; k++, a++) {
+    for (int i = start; i < axis0().size() + end_off; i++) {
+      for (int j = start; j < axis1().size() + end_off; j++) {
+        for (int k = start; k < axis2().size() + end_off; k++, a++) {
           const auto & x(hist.at(i, j, k));
           hist_vals[a] = x.value();
           hist_errs[a] = std::sqrt(x.variance());

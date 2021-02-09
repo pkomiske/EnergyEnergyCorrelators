@@ -20,32 +20,42 @@
 // |  __| |  __|| |     
 // | |____| |___| |____ 
 // |______|______\_____|
+//  _    _ _______ _____ _       _____ 
+// | |  | |__   __|_   _| |     / ____|
+// | |  | |  | |    | | | |    | (___  
+// | |  | |  | |    | | | |     \___ \
+// | |__| |  | |   _| |_| |____ ____) |
+//  \____/   |_|  |_____|______|_____/
 
-#ifndef EEC_HH
-#define EEC_HH
+#ifndef EEC_UTILS_HH
+#define EEC_UTILS_HH
 
-#include "EECLongestSide.hh"
-#include "EECTriangleOPE.hh"
-
-// namespace for EEC code
-namespace eec {
-
-//-----------------------------------------------------------------------------
-// EECLongestSide typedefs
-//-----------------------------------------------------------------------------
-
-typedef EECLongestSide<axis::id> EECLongestSideId;
-typedef EECLongestSide<axis::log> EECLongestSideLog;
+// OpenMP for multithreading
+#ifdef _OPENMP
+#include <omp.h>
+#endif
 
 //-----------------------------------------------------------------------------
-// EECTriangleOPE typedefs
+// Global variables
 //-----------------------------------------------------------------------------
 
-typedef EECTriangleOPE<axis::id, axis::id, axis::id> EECTriangleOPEIdIdId;
-typedef EECTriangleOPE<axis::log, axis::id, axis::id> EECTriangleOPELogIdId;
-typedef EECTriangleOPE<axis::id, axis::log, axis::id> EECTriangleOPEIdLogId;
-typedef EECTriangleOPE<axis::log, axis::log, axis::id> EECTriangleOPELogLogId;
+const double REG = 1e-100;
+const double PI = 3.14159265358979323846;
+const double TWOPI = 6.28318530717958647693;
 
-} // namespace eec
+//-----------------------------------------------------------------------------
+// Helper functions
+//-----------------------------------------------------------------------------
 
-#endif // EEC_HH
+// determine the number of threads to use
+int determine_num_threads(int num_threads) {
+  #ifdef _OPENMP
+    if (num_threads == -1 || num_threads > omp_get_max_threads())
+      return omp_get_max_threads();
+    return num_threads;
+  #else
+    return 1;
+  #endif
+}
+
+#endif // EEC_UTILS_HH

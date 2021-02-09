@@ -48,14 +48,14 @@ namespace eec {
 // EEC class for histogramming according to the maximum particle distance
 //-----------------------------------------------------------------------------
 
-template<class Transform = bh::axis::transform::id>
+template<class Transform>
 class EECLongestSide : public EECBase, public Hist1D<Transform> {
 
   bool use_general_eNc_;
   unsigned N_choose_2_;
 
   // function pointer to the actual computation that will be run
-  void (EECLongestSide::*compute_eec_ptr_)();
+  void (EECLongestSide::*compute_eec_ptr_)(int);
 
 public:
 
@@ -65,19 +65,20 @@ public:
                  unsigned N, bool norm = true,
                  const std::vector<double> & pt_powers = {1},
                  const std::vector<unsigned> & ch_powers = {0},
+                 int num_threads = -1,
                  bool check_degen = false,
                  bool average_verts = false,
                  bool use_general_eNc = false) :
-    EECBase(pt_powers, ch_powers, N, norm, check_degen, average_verts),
-    Hist1D<Transform>(nbins, axis_min, axis_max),
+    EECBase(pt_powers, ch_powers, N, norm, num_threads, check_degen, average_verts),
+    Hist1D<Transform>(nbins, axis_min, axis_max, num_threads),
     use_general_eNc_(use_general_eNc),
-    N_choose_2_(N_*(N_-1)/2),
+    N_choose_2_(this->N()*(this->N()-1)/2),
     compute_eec_ptr_(&EECLongestSide::eNc_sym)
   {
     // set pointer to function that will do the computation
-    switch (N_) {
+    switch (this->N()) {
       case 2:
-        if (nsym_ == 2) {
+        if (nsym() == 2) {
           if (!use_general_eNc_)
             compute_eec_ptr_ = &EECLongestSide::eec_ij_sym;
         }
@@ -86,7 +87,7 @@ public:
         break;
 
       case 3:
-        switch (nsym_) {
+        switch (nsym()) {
           case 3:
             if (!use_general_eNc_)
               compute_eec_ptr_ = &EECLongestSide::eeec_ijk_sym;
@@ -94,39 +95,39 @@ public:
 
           case 2:
             compute_eec_ptr_ = &EECLongestSide::eeec_ij_sym;
-            if (!average_verts_) this->duplicate_hists(2);
+            if (!this->average_verts()) this->duplicate_hists(2);
             break;
 
           case 0:
             compute_eec_ptr_ = &EECLongestSide::eeec_no_sym;
-            if (!average_verts_) this->duplicate_hists(3);
+            if (!this->average_verts()) this->duplicate_hists(3);
             break;
 
           default:
-            throw std::runtime_error("Invalid number of symmetries " + std::to_string(nsym_));
+            throw std::runtime_error("Invalid number of symmetries " + std::to_string(nsym()));
         }
         break;
 
       case 4:
-        assert(nsym_ == 4);
+        assert(nsym() == 4);
         if (!use_general_eNc_)
           compute_eec_ptr_ = &EECLongestSide::eeeec_ijkl_sym;
         break;
 
       case 5:
-        assert(nsym_ == 5);
+        assert(nsym() == 5);
         if (!use_general_eNc_)
           compute_eec_ptr_ = &EECLongestSide::eeeeec_ijklm_sym;
         break;
 
       case 6:
-        assert(nsym_ == 6);
+        assert(nsym() == 6);
         if (!use_general_eNc_)
           compute_eec_ptr_ = &EECLongestSide::eeeeeec_ijklmn_sym;
         break;
 
       default:
-        if (N_ > 12)
+        if (this->N() > 12)
           throw std::invalid_argument("N must be 12 or less due to the use of 32-bit integers (13! > 2^32)");
     }
   }
@@ -137,9 +138,7 @@ public:
     unsigned nh(this->nhists());
 
     std::ostringstream oss;
-    oss << "EECLongestSide::" << compname_ << '\n'
-        << EECBase::description()
-        << '\n'
+    oss << "EECLongestSide::" << EECBase::description() << '\n'
         << "  using eNc_sym - " << (use_general_eNc_ ? "true" : "false") << '\n'
         << "  there " << (nh == 1 ? "is " : "are ") << nh << " histogram";
 
@@ -165,17 +164,20 @@ public:
 
 private:
   
-  void compute_eec() { (this->*compute_eec_ptr_)(); }
+  void compute_eec(int thread_i) { (this->*compute_eec_ptr_)(thread_i); }
 
-  void eec_ij_sym() {
-    const std::vector<double> & ws0(weights_[0]);
-    Hist & hist(this->hists[0]);
+  void eec_ij_sym(int thread_i) {
+    const std::vector<double> & ws0(this->weights(thread_i)[0]),
+                              & dists(this->dists(thread_i));
+    double event_weight(this->event_weight(thread_i));
+    unsigned mult(this->mult(thread_i));
+    Hist & hist(this->hists(thread_i)[0]);
 
     // loop over symmetric pairs of particles
-    for (unsigned i = 0; i < mult_; i++) {
-      double weight_i(weight_ * ws0[i]);
+    for (unsigned i = 0; i < mult; i++) {
+      double weight_i(event_weight * ws0[i]);
       if (weight_i == 0) continue;
-      unsigned ixm(i*mult_);
+      unsigned ixm(i*mult);
 
       // i == j term
       hist(bh::weight(weight_i * ws0[i]), 0);
@@ -183,44 +185,51 @@ private:
       // off diagonal terms
       weight_i *= 2;
       for (unsigned j = 0; j < i; j++)
-        hist(bh::weight(weight_i * ws0[j]), dists_[ixm + j]);
+        hist(bh::weight(weight_i * ws0[j]), dists[ixm + j]);
     }
   }
 
-  void eec_no_sym() {
-    const std::vector<double> & ws0(weights_[0]), & ws1(weights_[1]);
-    Hist & hist(this->hists[0]);
+  void eec_no_sym(int thread_i) {
+    const std::vector<double> & ws0(this->weights(thread_i)[0]),
+                              & ws1(this->weights(thread_i)[1]),
+                              & dists(this->dists(thread_i));
+    double event_weight(this->event_weight(thread_i));
+    unsigned mult(this->mult(thread_i));
+    Hist & hist(this->hists(thread_i)[0]);
 
     // loop over all pairs of particles
-    for (unsigned i = 0; i < mult_; i++) {
-      double weight_i(weight_ * ws0[i]);
+    for (unsigned i = 0; i < mult; i++) {
+      double weight_i(event_weight * ws0[i]);
       if (weight_i == 0) continue;
-      unsigned ixm(i*mult_);
+      unsigned ixm(i*mult);
 
-      for (unsigned j = 0; j < mult_; j++)
-        hist(bh::weight(weight_i * ws1[j]), dists_[ixm + j]);
+      for (unsigned j = 0; j < mult; j++)
+        hist(bh::weight(weight_i * ws1[j]), dists[ixm + j]);
     }
   }
 
-  void eeec_ijk_sym() {
-    const std::vector<double> & ws0(weights_[0]);
-    Hist & hist(this->hists[0]);
+  void eeec_ijk_sym(int thread_i) {
+    const std::vector<double> & ws0(this->weights(thread_i)[0]),
+                              & dists(this->dists(thread_i));
+    double event_weight(this->event_weight(thread_i));
+    unsigned mult(this->mult(thread_i));
+    Hist & hist(this->hists(thread_i)[0]);
 
     // loop over triplets of particles
-    for (unsigned i = 0; i < mult_; i++) {
-      double weight_i(weight_ * ws0[i]);
+    for (unsigned i = 0; i < mult; i++) {
+      double weight_i(event_weight * ws0[i]);
       if (weight_i == 0) continue;
-      unsigned ixm(i*mult_);
+      unsigned ixm(i*mult);
 
       for (unsigned j = 0; j <= i; j++) {
         double weight_ij(weight_i * ws0[j]);
         if (weight_ij == 0) continue;
-        double dist_ij(dists_[ixm + j]);
-        unsigned jxm(j*mult_);
+        double dist_ij(dists[ixm + j]);
+        unsigned jxm(j*mult);
         bool ij_match(i == j);
 
         for (unsigned k = 0; k <= j; k++) {
-          double dist_ik(dists_[ixm + k]), dist_jk(dists_[jxm + k]);
+          double dist_ik(dists[ixm + k]), dist_jk(dists[jxm + k]);
           bool ik_match(i == k), jk_match(j == k);
           int sym(!(ij_match || ik_match || jk_match) ? 6 : (ij_match && ik_match ? 1 : 3));
 
@@ -239,23 +248,28 @@ private:
     }
   }
 
-  void eeec_ij_sym() {
-    const std::vector<double> & ws0(weights_[0]), & ws1(weights_[1]);
+  void eeec_ij_sym(int thread_i) {
+    const std::vector<double> & ws0(this->weights(thread_i)[0]),
+                              & ws1(this->weights(thread_i)[1]),
+                              & dists(this->dists(thread_i));
+    double event_weight(this->event_weight(thread_i));
+    unsigned mult(this->mult(thread_i));
+    std::vector<Hist> & hists(this->hists(thread_i));
 
     // loop over triplets of particles
-    for (unsigned i = 0; i < mult_; i++) {
-      double weight_i(weight_ * ws0[i]);
+    for (unsigned i = 0; i < mult; i++) {
+      double weight_i(event_weight * ws0[i]);
       if (weight_i == 0) continue;
-      unsigned ixm(i*mult_);
+      unsigned ixm(i*mult);
 
       for (unsigned j = 0; j <= i; j++) {
         double weight_ij(weight_i * ws0[j] * (i == j ? 1 : 2));
         if (weight_ij == 0) continue;
-        double dist_ij(dists_[ixm + j]);
-        unsigned jxm(j*mult_);
+        double dist_ij(dists[ixm + j]);
+        unsigned jxm(j*mult);
 
-        for (unsigned k = 0; k < mult_; k++) {
-          double weight_ijk(weight_ij * ws1[k]), dist_ik(dists_[ixm + k]), dist_jk(dists_[jxm + k]);
+        for (unsigned k = 0; k < mult; k++) {
+          double weight_ijk(weight_ij * ws1[k]), dist_ik(dists[ixm + k]), dist_jk(dists[jxm + k]);
 
           // determine maximum distance and if side ij is the largest
           double max_dist(dist_ij);
@@ -271,40 +285,46 @@ private:
           }
 
           // handle case of averaging over verts
-          if (average_verts_)
-            this->hists[0](bh::weight(weight_ijk), max_dist);
+          if (average_verts())
+            hists[0](bh::weight(weight_ijk), max_dist);
 
           // no averaging here, fill the targeted hist
           else {
-            this->hists[hist_i](bh::weight(weight_ijk), max_dist);
+            hists[hist_i](bh::weight(weight_ijk), max_dist);
 
             // fill other histogram if k == i or k == j
             if (k == i || k == j)
-              this->hists[hist_i == 0 ? 1 : 0](bh::weight(weight_ijk), max_dist);  
+              hists[hist_i == 0 ? 1 : 0](bh::weight(weight_ijk), max_dist);  
           }
         }
       }
     }
   }
 
-  void eeec_no_sym() {
-    const std::vector<double> & ws0(weights_[0]), & ws1(weights_[1]), & ws2(weights_[2]);
+  void eeec_no_sym(int thread_i) {
+    const std::vector<double> & ws0(this->weights(thread_i)[0]),
+                              & ws1(this->weights(thread_i)[1]),
+                              & ws2(this->weights(thread_i)[2]),
+                              & dists(this->dists(thread_i));
+    double event_weight(this->event_weight(thread_i));
+    unsigned mult(this->mult(thread_i));
+    std::vector<Hist> & hists(this->hists(thread_i));
 
     // loop over unique triplets of particles
-    for (unsigned i = 0; i < mult_; i++) {
-      double weight_i(weight_ * ws0[i]);
+    for (unsigned i = 0; i < mult; i++) {
+      double weight_i(event_weight * ws0[i]);
       if (weight_i == 0) continue;
-      unsigned ixm(i*mult_);
+      unsigned ixm(i*mult);
 
-      for (unsigned j = 0; j < mult_; j++) {
+      for (unsigned j = 0; j < mult; j++) {
         double weight_ij(weight_i * ws1[j]);
         if (weight_ij == 0) continue;
-        unsigned jxm(j*mult_);
-        double dist_ij(dists_[ixm + j]);
+        unsigned jxm(j*mult);
+        double dist_ij(dists[ixm + j]);
         bool ij_match(i == j);
 
-        for (unsigned k = 0; k < mult_; k++) {
-          double weight_ijk(weight_ij * ws2[k]), dist_ik(dists_[ixm + k]), dist_jk(dists_[jxm + k]);
+        for (unsigned k = 0; k < mult; k++) {
+          double weight_ijk(weight_ij * ws2[k]), dist_ik(dists[ixm + k]), dist_jk(dists[jxm + k]);
           bool ik_match(i == k), jk_match(j == k);
 
           // determine maximum distance
@@ -326,36 +346,36 @@ private:
           }
 
           // always use hist_i = 0 if averaging over verts
-          if (average_verts_)
-            this->hists[0](bh::weight(weight_ijk), max_dist);
+          if (average_verts())
+            hists[0](bh::weight(weight_ijk), max_dist);
 
           // no degeneracy at all
           else if (!(ij_match || ik_match || jk_match))
-            this->hists[hist_i](bh::weight(weight_ijk), max_dist);
+            hists[hist_i](bh::weight(weight_ijk), max_dist);
 
           // everything is degenerate
           else if (ij_match && ik_match) {
-            this->hists[0](bh::weight(weight_ijk), max_dist);
-            this->hists[1](bh::weight(weight_ijk), max_dist);
-            this->hists[2](bh::weight(weight_ijk), max_dist);
+            hists[0](bh::weight(weight_ijk), max_dist);
+            hists[1](bh::weight(weight_ijk), max_dist);
+            hists[2](bh::weight(weight_ijk), max_dist);
           }
 
           // ij overlap, largest sides are ik and jk
           else if (ij_match) {
-            this->hists[1](bh::weight(weight_ijk), max_dist);
-            this->hists[2](bh::weight(weight_ijk), max_dist);
+            hists[1](bh::weight(weight_ijk), max_dist);
+            hists[2](bh::weight(weight_ijk), max_dist);
           }
 
           // jk overlap, largest sides are ij, ik
           else if (jk_match) {
-            this->hists[0](bh::weight(weight_ijk), max_dist);
-            this->hists[2](bh::weight(weight_ijk), max_dist);
+            hists[0](bh::weight(weight_ijk), max_dist);
+            hists[2](bh::weight(weight_ijk), max_dist);
           }
 
           // ik overlap, largest sides are ij, jk
           else if (ik_match) {
-            this->hists[0](bh::weight(weight_ijk), max_dist);
-            this->hists[1](bh::weight(weight_ijk), max_dist);
+            hists[0](bh::weight(weight_ijk), max_dist);
+            hists[1](bh::weight(weight_ijk), max_dist);
           }
 
           // should never get here
@@ -365,94 +385,100 @@ private:
     }
   }
 
-  void eeeec_ijkl_sym() {
-    const std::vector<double> & ws0(weights_[0]);
-    Hist & hist(this->hists[0]);
+  void eeeec_ijkl_sym(int thread_i) {
+    const std::vector<double> & ws0(this->weights(thread_i)[0]),
+                              & dists(this->dists(thread_i));
+    double event_weight(this->event_weight(thread_i));
+    unsigned mult(this->mult(thread_i));
+    Hist & hist(this->hists(thread_i)[0]);
 
     // loop over quadruplets of particles
-    std::array<double, 6> dists;
+    std::array<double, 6> dists_arr;
     Multinomial<4> multinom;
-    for (unsigned i = 0; i < mult_; i++) {
-      unsigned ixm(i*mult_);
-      double weight_i(weight_ * ws0[i]);
+    for (unsigned i = 0; i < mult; i++) {
+      unsigned ixm(i*mult);
+      double weight_i(event_weight * ws0[i]);
       multinom.set_index_0(i);
 
       for (unsigned j = 0; j <= i; j++) {
         double weight_ij(weight_i * ws0[j]);
-        dists[0] = dists_[ixm + j];
+        dists_arr[0] = dists[ixm + j];
         multinom.set_index<1>(j);
 
         for (unsigned k = 0; k <= j; k++) {
-          unsigned kxm(k*mult_);
+          unsigned kxm(k*mult);
           double weight_ijk(weight_ij * ws0[k]);
-          dists[1] = dists_[kxm + i];
-          dists[2] = dists_[kxm + j];
-          dists[2] = *std::max_element(dists.cbegin(), dists.cbegin() + 3);
+          dists_arr[1] = dists[kxm + i];
+          dists_arr[2] = dists[kxm + j];
+          dists_arr[2] = *std::max_element(dists_arr.cbegin(), dists_arr.cbegin() + 3);
           multinom.set_index<2>(k);
 
           for (unsigned l = 0; l <= k; l++) {
-            unsigned lxm(l*mult_);
+            unsigned lxm(l*mult);
             double weight_ijkl(weight_ijk * ws0[l]);
-            dists[3] = dists_[lxm + i];
-            dists[4] = dists_[lxm + j];
-            dists[5] = dists_[lxm + k];
+            dists_arr[3] = dists[lxm + i];
+            dists_arr[4] = dists[lxm + j];
+            dists_arr[5] = dists[lxm + k];
             multinom.set_index_final(l);
 
             // fill histogram
             hist(bh::weight(multinom.value() * weight_ijkl),
-                 *std::max_element(dists.cbegin() + 2, dists.cend()));
+                 *std::max_element(dists_arr.cbegin() + 2, dists_arr.cend()));
           }
         }
       }
     }
   }
 
-  void eeeeec_ijklm_sym() {
-    const std::vector<double> & ws0(weights_[0]);
-    Hist & hist(this->hists[0]);
+  void eeeeec_ijklm_sym(int thread_i) {
+    const std::vector<double> & ws0(this->weights(thread_i)[0]),
+                              & dists(this->dists(thread_i));
+    double event_weight(this->event_weight(thread_i));
+    unsigned mult(this->mult(thread_i));
+    Hist & hist(this->hists(thread_i)[0]);
 
     // loop over quintuplets of particles
-    std::array<double, 10> dists;
+    std::array<double, 10> dists_arr;
     Multinomial<5> multinom;
-    for (unsigned i = 0; i < mult_; i++) {
-      unsigned ixm(i*mult_);
-      double weight_i(weight_ * ws0[i]);
+    for (unsigned i = 0; i < mult; i++) {
+      unsigned ixm(i*mult);
+      double weight_i(event_weight * ws0[i]);
       multinom.set_index_0(i);
 
       for (unsigned j = 0; j <= i; j++) {
         double weight_ij(weight_i * ws0[j]);
-        dists[0] = dists_[ixm + j];
+        dists_arr[0] = dists[ixm + j];
         multinom.set_index<1>(j);
 
         for (unsigned k = 0; k <= j; k++) {
-          unsigned kxm(k*mult_);
+          unsigned kxm(k*mult);
           double weight_ijk(weight_ij * ws0[k]);
-          dists[1] = dists_[kxm + i];
-          dists[2] = dists_[kxm + j];
-          dists[2] = *std::max_element(dists.cbegin(), dists.cbegin() + 3);
+          dists_arr[1] = dists[kxm + i];
+          dists_arr[2] = dists[kxm + j];
+          dists_arr[2] = *std::max_element(dists_arr.cbegin(), dists_arr.cbegin() + 3);
           multinom.set_index<2>(k);
 
           for (unsigned l = 0; l <= k; l++) {
-            unsigned lxm(l*mult_);
+            unsigned lxm(l*mult);
             double weight_ijkl(weight_ijk * ws0[l]);
-            dists[3] = dists_[lxm + i];
-            dists[4] = dists_[lxm + j];
-            dists[5] = dists_[lxm + k];
-            dists[5] = *std::max_element(dists.cbegin() + 2, dists.cbegin() + 6);
+            dists_arr[3] = dists[lxm + i];
+            dists_arr[4] = dists[lxm + j];
+            dists_arr[5] = dists[lxm + k];
+            dists_arr[5] = *std::max_element(dists_arr.cbegin() + 2, dists_arr.cbegin() + 6);
             multinom.set_index<3>(l);
 
             for (unsigned m = 0; m <= l; m++) {
-              unsigned mxm(m*mult_);
+              unsigned mxm(m*mult);
               double weight_ijklm(weight_ijkl * ws0[m]);
-              dists[6] = dists_[mxm + i];
-              dists[7] = dists_[mxm + j];
-              dists[8] = dists_[mxm + k];
-              dists[9] = dists_[mxm + l];
+              dists_arr[6] = dists[mxm + i];
+              dists_arr[7] = dists[mxm + j];
+              dists_arr[8] = dists[mxm + k];
+              dists_arr[9] = dists[mxm + l];
               multinom.set_index_final(m);
 
               // fill histogram
               hist(bh::weight(multinom.value() * weight_ijklm),
-                   *std::max_element(dists.cbegin() + 5, dists.cend()));
+                   *std::max_element(dists_arr.cbegin() + 5, dists_arr.cend()));
             }
           }
         }
@@ -460,63 +486,66 @@ private:
     }
   }
 
-  void eeeeeec_ijklmn_sym() {
-    const std::vector<double> & ws0(weights_[0]);
-    Hist & hist(this->hists[0]);
+  void eeeeeec_ijklmn_sym(int thread_i) {
+    const std::vector<double> & ws0(this->weights(thread_i)[0]),
+                              & dists(this->dists(thread_i));
+    double event_weight(this->event_weight(thread_i));
+    unsigned mult(this->mult(thread_i));
+    Hist & hist(this->hists(thread_i)[0]);
 
     // loop over quintuplets of particles
-    std::array<double, 15> dists;
+    std::array<double, 15> dists_arr;
     Multinomial<6> multinom;
-    for (unsigned i = 0; i < mult_; i++) {
-      unsigned ixm(i*mult_);
-      double weight_i(weight_ * ws0[i]);
+    for (unsigned i = 0; i < mult; i++) {
+      unsigned ixm(i*mult);
+      double weight_i(event_weight * ws0[i]);
       multinom.set_index_0(i);
 
       for (unsigned j = 0; j <= i; j++) {
         double weight_ij(weight_i * ws0[j]);
-        dists[0] = dists_[ixm + j];
+        dists_arr[0] = dists[ixm + j];
         multinom.set_index<1>(j);
 
         for (unsigned k = 0; k <= j; k++) {
-          unsigned kxm(k*mult_);
+          unsigned kxm(k*mult);
           double weight_ijk(weight_ij * ws0[k]);
-          dists[1] = dists_[kxm + i];
-          dists[2] = dists_[kxm + j];
-          dists[2] = *std::max_element(dists.cbegin(), dists.cbegin() + 3);
+          dists_arr[1] = dists[kxm + i];
+          dists_arr[2] = dists[kxm + j];
+          dists_arr[2] = *std::max_element(dists_arr.cbegin(), dists_arr.cbegin() + 3);
           multinom.set_index<2>(k);
 
           for (unsigned l = 0; l <= k; l++) {
-            unsigned lxm(l*mult_);
+            unsigned lxm(l*mult);
             double weight_ijkl(weight_ijk * ws0[l]);
-            dists[3] = dists_[lxm + i];
-            dists[4] = dists_[lxm + j];
-            dists[5] = dists_[lxm + k];
-            dists[5] = *std::max_element(dists.cbegin() + 2, dists.cbegin() + 6);
+            dists_arr[3] = dists[lxm + i];
+            dists_arr[4] = dists[lxm + j];
+            dists_arr[5] = dists[lxm + k];
+            dists_arr[5] = *std::max_element(dists_arr.cbegin() + 2, dists_arr.cbegin() + 6);
             multinom.set_index<3>(l);
 
             for (unsigned m = 0; m <= l; m++) {
-              unsigned mxm(m*mult_);
+              unsigned mxm(m*mult);
               double weight_ijklm(weight_ijkl * ws0[m]);
-              dists[6] = dists_[mxm + i];
-              dists[7] = dists_[mxm + j];
-              dists[8] = dists_[mxm + k];
-              dists[9] = dists_[mxm + l];
-              dists[9] = *std::max_element(dists.cbegin() + 5, dists.cbegin() + 10);
+              dists_arr[6] = dists[mxm + i];
+              dists_arr[7] = dists[mxm + j];
+              dists_arr[8] = dists[mxm + k];
+              dists_arr[9] = dists[mxm + l];
+              dists_arr[9] = *std::max_element(dists_arr.cbegin() + 5, dists_arr.cbegin() + 10);
               multinom.set_index<4>(m);
 
               for (unsigned n = 0; n <= m; n++) {
-                unsigned nxm(n*mult_);
+                unsigned nxm(n*mult);
                 double weight_ijklmn(weight_ijklm * ws0[n]);
-                dists[10] = dists_[nxm + i];
-                dists[11] = dists_[nxm + j];
-                dists[12] = dists_[nxm + k];
-                dists[13] = dists_[nxm + l];
-                dists[14] = dists_[nxm + m];
+                dists_arr[10] = dists[nxm + i];
+                dists_arr[11] = dists[nxm + j];
+                dists_arr[12] = dists[nxm + k];
+                dists_arr[13] = dists[nxm + l];
+                dists_arr[14] = dists[nxm + m];
                 multinom.set_index_final(n);
 
                 // fill histogram
                 hist(bh::weight(multinom.value() * weight_ijklmn),
-                     *std::max_element(dists.cbegin() + 9, dists.cend()));
+                     *std::max_element(dists_arr.cbegin() + 9, dists_arr.cend()));
               }
             }
           }
@@ -525,43 +554,46 @@ private:
     }
   }
 
-  void eNc_sym() {
-    const std::vector<double> & ws0(weights_[0]);
-    Hist & hist(this->hists[0]);
+  void eNc_sym(int thread_i) {
+    const std::vector<double> & ws0(this->weights(thread_i)[0]),
+                              & dists(this->dists(thread_i));
+    double event_weight(this->event_weight(thread_i));
+    unsigned mult(this->mult(thread_i));
+    Hist & hist(this->hists(thread_i)[0]);
 
     // nothing to do for empty events
-    if (mult_ == 0) return;
+    if (mult == 0) return;
 
     // containers for computation
-    std::vector<double> dists(N_choose_2_), weights(N_+1);
-    std::vector<unsigned> inds(N_+1);
-    DynamicMultinomial multinom(N_);
+    std::vector<double> dists_local(N_choose_2_), weights(N() + 1);
+    std::vector<unsigned> inds(N()+1);
+    DynamicMultinomial multinom(N());
     
     // initialize dists
     for (unsigned i = 0; i < N_choose_2_; i++)
-      dists[i] = 0;
+      dists_local[i] = 0;
 
     // initialize weights
-    weights[0] = 1;
-    for (unsigned i = 1; i <= N_; i++)
+    weights[0] = event_weight;
+    for (unsigned i = 1; i <= N(); i++)
       weights[i] = weights[i-1]*ws0[0];
 
     // initialize multinom and inds
-    inds[0] = mult_ - 1;
-    for (unsigned i = 0; i < N_;) {
+    inds[0] = mult - 1;
+    for (unsigned i = 0; i < N();) {
       multinom.set_index(i, 0);
       inds[++i] = 0;
     }
 
     // infinite loop
-    double & max_dist(dists[N_choose_2_ - 1]), & weight(weights[N_]);
+    double & max_dist(dists_local[N_choose_2_ - 1]), & weight(weights[N()]);
     while (true) {
 
       // fill hist
       hist(bh::weight(multinom.value() * weight), max_dist);
 
       // start w at N and work down to 0
-      unsigned w(N_);
+      unsigned w(N());
       for (; w > 0; w--) {
 
         // try to increment inner-most loop, if we can't set inds[w] = 0 and move on
@@ -571,16 +603,16 @@ private:
         else {
 
           // update everything depending on index w and beyond
-          for (unsigned k = w; k <= N_; k++) {
+          for (unsigned k = w; k <= N(); k++) {
 
             // set max dist properly
-            unsigned ikxm(inds[k]*mult_), m((k-1)*(k-2)/2), mstart(m - 1);
+            unsigned ikxm(inds[k]*mult), m((k-1)*(k-2)/2), mstart(m - 1);
             for (unsigned n = 1; n < k; m++, n++)
-              dists[m] = dists_[ikxm + inds[n]];
+              dists_local[m] = dists[ikxm + inds[n]];
 
             // determine max element for the appropriate range
             if (k > 2)
-              dists[m-1] = *std::max_element(dists.cbegin() + mstart, dists.cbegin() + m);
+              dists_local[m-1] = *std::max_element(dists_local.cbegin() + mstart, dists_local.cbegin() + m);
 
             // set weight
             weights[k] = weights[k-1]*ws0[inds[k]];

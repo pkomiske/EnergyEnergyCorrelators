@@ -1,35 +1,62 @@
+# EnergyEnergyCorrelators - Evaluates EECs on particle physics events
+# Copyright (C) 2020 Patrick T. Komiske III
+# 
+# This program is free software: you can redistribute it and/or modify
+# it under the terms of the GNU General Public License as published by
+# the Free Software Foundation, either version 3 of the License, or
+# (at your option) any later version.
+# 
+# This program is distributed in the hope that it will be useful,
+# but WITHOUT ANY WARRANTY; without even the implied warranty of
+# MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+# GNU General Public License for more details.
+# 
+# You should have received a copy of the GNU General Public License
+# along with this program.  If not, see <https://www.gnu.org/licenses/>.
+
 import os
+import platform
 import re
+import subprocess
 import sys
 
-import numpy as np
 from setuptools import setup
 from setuptools.extension import Extension
 
-# determine version
-with open('eec/__init__.py', 'r') as f:
+import numpy as np
+
+with open(os.path.join('eec', '__init__.py'), 'r') as f:
     __version__ = re.search(r'__version__\s*=\s*[\'"]([^\'"]*)[\'"]', f.read()).group(1)
 
-path = os.path.abspath(os.path.dirname(__file__))
-ext_kwargs = {
-    'language': 'c++',
-    'include_dirs': [np.get_include(), os.path.join(path, 'eec', 'include')],
-    'extra_compile_args': ['-std=c++14']
-}
+cxxflags = ['-fopenmp', '-std=c++14', '-ffast-math']
+ldflags = ['-fopenmp']
+libs = []
+if platform.system() == 'Darwin':
+    cxxflags.insert(0, '-Xpreprocessor')
+    del ldflags[0]
+    libs = ['omp']
+elif platform.system() == 'Windows':
+    cxxflags[0] = ldflags[0] = '/openmp'
+    cxxflags[1] = '/std:c++14'
+    del cxxflags[2], ldflags[0]
 
-# run cython if specified
-if len(sys.argv) >= 2 and sys.argv[1].lower() == 'cython':
-    from Cython.Build import cythonize
-
-    cythonize([Extension('eec.eeccore', sources=[os.path.join('eec', 'eeccore.pyx')], **ext_kwargs)], 
-              compiler_directives={'language_level': 3, 
-                                   'boundscheck': False, 
-                                   'wraparound': False,
-                                   'cdivision': True},
-              annotate=True)
+if sys.argv[1] == 'swig':
+    opts = '-fastproxy -w511 -keyword -Ieec/include'
+    if len(sys.argv) >= 3 and sys.argv[2] == '-py3':
+        opts += ' -py3'
+    command = 'swig -python -c++ {} -o eec/eec.cpp eec/swig/eec.i'.format(opts)
+    print(command)
+    subprocess.run(command.split())
 
 else:
-    extensions = [Extension('eec.eeccore', sources=[os.path.join('eec', 'eeccore.cpp')], **ext_kwargs)]
+    eec = Extension('eec._eec',
+                    sources=[os.path.join('eec', 'eec.cpp')],
+                    include_dirs=[np.get_include(), os.path.join('eec', 'include')],
+                    extra_compile_args=cxxflags,
+                    extra_link_args=ldflags,
+                    libraries=libs)
 
-    # other options specified in setup.cfg
-    setup(version=__version__, ext_modules=extensions)
+    setup(
+        ext_modules=[eec],
+        version=__version__
+    )

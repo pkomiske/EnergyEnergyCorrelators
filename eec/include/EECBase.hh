@@ -38,55 +38,69 @@
 #include <unordered_set>
 #include <vector>
 
+#include "EECUtils.hh"
+
 namespace eec {
-
-//-----------------------------------------------------------------------------
-// Global variables
-//-----------------------------------------------------------------------------
-
-const double REG = 1e-100;
-const double PI = 3.14159265358979323846;
-const double TWOPI = 6.28318530717958647693;
 
 //-----------------------------------------------------------------------------
 // Base class for all EEC computations
 //-----------------------------------------------------------------------------
 
 class EECBase {
-protected:
+private:
 
-  // the pairwise distances, pts, and powers of pt
-  std::vector<double> dists_, pts_, charges_, orig_pt_powers_, pt_powers_;
+  // the pt and charge powers
+  std::vector<double> orig_pt_powers_, pt_powers_;
   std::vector<unsigned> orig_ch_powers_, ch_powers_;
 
   // number of particles to correlate, features per particle, unique weights to compute
   // 3 by default, charge optional (pt, y, phi, [charge])
-  unsigned N_, nfeatures_, nsym_;
+  unsigned N_, nsym_, nfeatures_;
   bool norm_, use_charges_, check_degen_, average_verts_;
-
-  // vector of weights for each index
-  std::vector<std::vector<double>> weights_;
+  int num_threads_, omp_chunksize_;
 
   // name of method used for core computation
   std::string compname_;
-
-  // the current weight of the event
-  double weight_;
-
-  // the current multiplicity of the event
-  unsigned mult_;
 
   #ifdef __FASTJET_PSEUDOJET_HH__
   double (*pj_charge_)(const fastjet::PseudoJet &);
   #endif
 
+  // vectors used by the computations (outer axis is the thread axis)
+  std::vector<std::vector<std::vector<double>>> weights_;
+  std::vector<std::vector<double>> dists_;
+  std::vector<double> event_weights_;
+  std::vector<unsigned> mults_;
+
+protected:
+
+  // method that carries out the specific EEC computation
+  virtual void compute_eec(int thread_i) = 0;
+
+  // access to vector storage by derived classes
+  const std::vector<std::vector<double>> & weights(int thread_i) const { return weights_[thread_i]; }
+  const std::vector<double> & dists(int thread_i) const { return dists_[thread_i]; }
+  double event_weight(int thread_i) const { return event_weights_[thread_i]; }
+  unsigned mult(int thread_i) const { return mults_[thread_i]; }
+
+public:
+
+  EECBase() : EECBase({}, {}, 0, false, 1, false, false) {}
   EECBase(const std::vector<double> & pt_powers, const std::vector<unsigned> & ch_powers,
-          unsigned N, bool norm, bool check_degen, bool average_verts) : 
+          unsigned N, bool norm, int num_threads, bool check_degen, bool average_verts) : 
     orig_pt_powers_(pt_powers), orig_ch_powers_(ch_powers),
     N_(N), nsym_(N_),
     norm_(norm), use_charges_(false), check_degen_(check_degen), average_verts_(average_verts),
-    weights_(N_)
+    num_threads_(determine_num_threads(num_threads)),
+    weights_(num_threads_, std::vector<std::vector<double>>(N_)),
+    dists_(num_threads_),
+    event_weights_(num_threads_),
+    mults_(num_threads_)
   {
+
+    // set default thread chunksize
+    set_omp_chunksize();
+
     if (orig_pt_powers_.size() == 1)
       orig_pt_powers_ = std::vector<double>(N_, orig_pt_powers_[0]);
     if (orig_ch_powers_.size() == 1)
@@ -199,12 +213,13 @@ protected:
 
   virtual ~EECBase() {}
 
-  std::string description() const {
+  virtual std::string description() const {
     std::ostringstream oss;
-    oss << "  N - " << N_ << '\n'
+    oss << compname_ << '\n'
+        << "  N - " << N() << '\n'
         << "  norm - " << (norm_ ? "true" : "false") << '\n'
         << "  use_charges - " << (use_charges_ ? "true" : "false") << '\n'
-        << "  nfeatures - " << nfeatures_ << '\n'
+        << "  nfeatures - " << nfeatures() << '\n'
         << "  check_for_degeneracy - " << (check_degen_ ? "true" : "false") << '\n'
         << "  average_verts - " << (average_verts_ ? "true" : "false");
 
@@ -222,60 +237,109 @@ protected:
     return oss.str();
   }
 
-public:
+  // access the number of threads
+  unsigned N() const { return N_; }
+  unsigned nsym() const { return nsym_; }
+  unsigned nfeatures() const { return nfeatures_; }
+  int num_threads() const { return num_threads_; }
+  bool average_verts() const { return average_verts_; }
+
+  // externally set the number of EEC evaluations that will be spooled to each OpenMP thread at a time
+  void set_omp_chunksize(int chunksize = 100) {
+    omp_chunksize_ = std::abs(chunksize);
+  }
+
+  // compute on a vector of events (themselves vectors of particles)
+  void compute(const std::vector<std::vector<double>> & events, const std::vector<double> & weights) {
+    if (events.size() != weights.size())
+      throw std::runtime_error("events and weights are different sizes");
+
+    std::vector<const double *> event_ptrs(events.size());
+    std::vector<unsigned> mults(events.size());
+    for (unsigned i = 0; i < events.size(); i++) {
+      event_ptrs[i] = events[i].data();
+      mults[i] = events[i].size()/nfeatures();
+      if (events[i].size() % nfeatures() != 0)
+        throw std::runtime_error("incorrect particles size");
+    }
+
+    compute(event_ptrs, mults, weights);
+  }
+
+  // compute on a vector of events (pointers to arrays of particles)
+  void compute(const std::vector<const double *> & events, const std::vector<unsigned> & mults, const std::vector<double> & weights) {
+  
+    long long nevents(events.size());
+    if (events.size() != mults.size())
+      throw std::runtime_error("events and mults are different sizes");
+    if (events.size() != weights.size())
+      throw std::runtime_error("events and weights are different sizes");
+
+    #pragma omp parallel num_threads(num_threads()) default(shared)
+    {
+      #pragma omp for schedule(static, omp_chunksize_)
+      for (long long i = 0; i < nevents; i++) {
+        compute(events[i], mults[i], weights[i], omp_get_thread_num());
+      }
+    }
+  }
 
   // compute on a vector of particles
-  void compute(const std::vector<double> & particles, double weight = 1.0) {
-    assert(particles.size() % nfeatures_ == 0);
-    compute(particles.data(), particles.size()/nfeatures_, weight);
+  void compute(const std::vector<double> & particles, double weight = 1.0, int thread_i = 0) {
+    if (particles.size() % nfeatures() != 0)
+      throw std::runtime_error("incorrect particles size");
+
+    compute(particles.data(), particles.size()/nfeatures(), weight, thread_i);
   }
 
   // compute on a C array of particles
-  void compute(const double * particles, unsigned mult, double weight = 1.0) {
+  void compute(const double * particles, unsigned mult, double weight = 1.0, int thread_i = 0) {
 
     // store event weight and multiplicity
-    weight_ = weight;
-    mult_ = mult;
+    event_weights_[thread_i] = weight;
+    mults_[thread_i] = mult;
     
     // compute pairwise distances and extract pts
-    dists_.resize(mult_*mult_);
-    pts_.resize(mult_);
-    for (unsigned i = 0; i < mult_; i++) {
-      unsigned ixm(i*mult_), ixnf(i*nfeatures_);
+    std::vector<double> & dists(dists_[thread_i]);
+    dists.resize(mult*mult);
+    std::vector<double> pts(mult);
+    for (unsigned i = 0; i < mult; i++) {
+      unsigned ixm(i*mult), ixnf(i*nfeatures());
 
       // store pt
-      pts_[i] = particles[ixnf];
+      pts[i] = particles[ixnf];
 
       // zero out diagonal
-      dists_[ixm + i] = 0;
+      dists[ixm + i] = 0;
 
       double y_i(particles[ixnf + 1]), phi_i(particles[ixnf + 2]);
       for (unsigned j = 0; j < i; j++) {
-        unsigned jxnf(j*nfeatures_);
+        unsigned jxnf(j*nfeatures());
         double ydiff(y_i - particles[jxnf + 1]), 
                phidiffabs(std::fabs(phi_i - particles[jxnf + 2]));
 
         // ensure that the phi difference is properly handled
         if (phidiffabs > PI) phidiffabs -= TWOPI;
-        dists_[ixm + j] = dists_[j * mult_ + i] = std::sqrt(ydiff*ydiff + phidiffabs*phidiffabs);
+        dists[ixm + j] = dists[j * mult + i] = std::sqrt(ydiff*ydiff + phidiffabs*phidiffabs);
       }
     }
 
     // store charges
+    std::vector<double> charges;
     if (use_charges_) {
-      charges_.resize(mult_);
-      for (unsigned i = 0; i < mult_; i++)
-        charges_[i] = particles[i*nfeatures_ + 3];
+      charges.resize(mult);
+      for (unsigned i = 0; i < mult; i++)
+        charges[i] = particles[i*nfeatures() + 3];
     }
 
     // check for degeneracy
     if (check_degen_) {
       std::unordered_set<double> dists_set;
       unsigned ndegen(0);
-      for (unsigned i = 0; i < mult_; i++) {
-        unsigned ixm(i*mult_);
+      for (unsigned i = 0; i < mult; i++) {
+        unsigned ixm(i*mult);
         for (unsigned j = 0; j < i; j++) {
-          auto x(dists_set.insert(dists_[ixm + j]));
+          auto x(dists_set.insert(dists[ixm + j]));
           if (!x.second) {
             if (ndegen++ == 0)
               std::cerr << "Begin Event\n";
@@ -293,10 +357,10 @@ public:
     else {
 
       // fill weights with powers of pts and charges
-      set_weights();
+      set_weights(pts, charges, thread_i);
 
       // delegate EEC computation to subclass
-      compute_eec();
+      compute_eec(thread_i);
     }
   }
 
@@ -308,86 +372,86 @@ public:
 
   void compute(const std::vector<fastjet::PseudoJet> & pjs, const double weight = 1.0) {
 
-    weight_ = weight;
-    mult_ = pjs.size();
+    event_weights_[0] = weight;
+    mults_[0] = pjs.size();
 
     // compute pairwise distances and extract pts
-    dists_.resize(mult_*mult_);
-    pts_.resize(mult_);
-    for (unsigned i = 0; i < mult_; i++) {
-      unsigned ixm(i*mult_);
-      pts_[i] = pjs[i].pt();
-      dists_[ixm + i] = 0;
+    std::vector<double> dists(dists_[0]);
+    dists.resize(mults_[0]*mults_[0]);
+    std::vector<double> pts(mults_[0]);
+    for (unsigned i = 0; i < mults_[0]; i++) {
+      unsigned ixm(i*mults_[0]);
+      pts[i] = pjs[i].pt();
+      dists[ixm + i] = 0;
 
       for (unsigned j = 0; j < i; j++)
-        dists_[ixm + j] = dists_[j * mult_ + i] = pjs[i].delta_R(pjs[j]);
+        dists[ixm + j] = dists[j * mults_[0] + i] = pjs[i].delta_R(pjs[j]);
     }
 
     // store charges if provided a function to do so
+    std::vector<double> charges;
     if (use_charges_) {
       if (pj_charge_ == nullptr)
         throw std::runtime_error("No function provided to get charges from PseudoJets");
       
-      charges_.resize(pjs.size());
-      for (unsigned i = 0; i < mult_; i++)
-        charges_[i] = pj_charge_(pjs[i]);  
+      charges.resize(pjs.size());
+      for (unsigned i = 0; i < mults_[0]; i++)
+        charges[i] = pj_charge_(pjs[i]);  
     }
 
     // fill weights with powers of pts and charges
-    set_weights();
+    set_weights(pts, charges, 0);
 
     // delegate EEC computation to subclass
-    compute_eec();
+    compute_eec(0);
   }
   #endif // __FASTJET_PSEUDOJET_HH__
 
-protected:
-
-  // method that carries out the specific EEC computation
-  virtual void compute_eec() = 0;
+private:
 
   // get weights as powers of pts and charges
-  void set_weights() {
+  void set_weights(std::vector<double> & pts, const std::vector<double> & charges, int thread_i) {
 
     // normalize pts
     if (norm_) {
       double pttot(0);
-      for (double pt : pts_) pttot += pt;
-      for (double & pt : pts_) pt /= pttot;
+      for (double pt : pts) pttot += pt;
+      for (double & pt : pts) pt /= pttot;
     }
 
+    unsigned mult(mults_[thread_i]);
     for (unsigned i = 0, npowers = pt_powers_.size(); i < npowers; i++) {
-      std::vector<double> & weights(weights_[i]);
-      weights.resize(mult_);
+      std::vector<double> & weights(weights_[thread_i][i]);
+      weights.resize(mult);
 
       // set weights to pt^ptpower
       double pt_power(pt_powers_[i]);
       if (pt_power == 1)
-        for (unsigned j = 0; j < mult_; j++)
-            weights[j] = pts_[j];
+        for (unsigned j = 0; j < mult; j++)
+            weights[j] = pts[j];
       else if (pt_power == 2)
-        for (unsigned j = 0; j < mult_; j++)
-            weights[j] = pts_[j]*pts_[j];
+        for (unsigned j = 0; j < mult; j++)
+            weights[j] = pts[j]*pts[j];
       else if (pt_power == 0.5)
-        for (unsigned j = 0; j < mult_; j++)
-            weights[j] = std::sqrt(pts_[j]);
+        for (unsigned j = 0; j < mult; j++)
+            weights[j] = std::sqrt(pts[j]);
       else
-        for (unsigned j = 0; j < mult_; j++)
-            weights[j] = std::pow(pts_[j], pt_power);
+        for (unsigned j = 0; j < mult; j++)
+            weights[j] = std::pow(pts[j], pt_power);
 
       // include effect of charge
       if (use_charges_) {
         double ch_power(ch_powers_[i]);
         if (ch_power == 0) {}
         else if (ch_power == 1)
-          for (unsigned j = 0; j < mult_; j++)
-            weights[j] *= charges_[j];
+          for (unsigned j = 0; j < mult; j++)
+            weights[j] *= charges[j];
         else if (ch_power == 2)
-          for (unsigned j = 0; j < mult_; j++)
-            weights[j] *= charges_[j]*charges_[j];
+          for (unsigned j = 0; j < mult; j++)
+            weights[j] *= charges[j]*charges[j];
         else
-          for (unsigned j = 0; j < mult_; j++)
-            weights[j] *= std::pow(charges_[j], ch_power);
+          for (unsigned j = 0; j < mult; j++)
+            weights[j] *= std::pow(charges[j], ch_power);
       }
     }
   }

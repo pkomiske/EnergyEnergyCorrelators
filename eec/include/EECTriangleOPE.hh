@@ -43,12 +43,12 @@ namespace eec {
 // Helper functions
 //-----------------------------------------------------------------------------
 
-inline std::array<std::pair<double,int>, 3> argsort3(const std::array<double, 3> & dists) {
+inline std::array<std::pair<double,int>, 3> argsort3(const std::array<double, 3> & dists_arr) {
 
   // create array of dists with indices
-  std::array<std::pair<double,int>, 3> dists_inds{std::make_pair(dists[0], 0),
-                                                  std::make_pair(dists[1], 1),
-                                                  std::make_pair(dists[2], 2)};
+  std::array<std::pair<double,int>, 3> dists_inds{std::make_pair(dists_arr[0], 0),
+                                                  std::make_pair(dists_arr[1], 1),
+                                                  std::make_pair(dists_arr[2], 2)};
 
   // sort according to dists
   std::sort(dists_inds.begin(), dists_inds.end(), 
@@ -57,19 +57,30 @@ inline std::array<std::pair<double,int>, 3> argsort3(const std::array<double, 3>
   return dists_inds;
 }
 
+template<class Hist>
+inline void fill_hist(Hist & hist, double weight, double xS, double xM, double xL) {
+
+    // define coordinate mapping
+    double xi(xS/(xM + REG)), diff(xL - xM), 
+           phi(std::asin(std::sqrt(std::fabs(1 - diff*diff/(xS*xS + REG)))));
+
+    // fill histogram
+    hist(bh::weight(weight), xL, xi, phi);
+  }
+
 //-----------------------------------------------------------------------------
 // EEEC class fully differential in the three particle distances
 //-----------------------------------------------------------------------------
 
-template<class Transform0 = bh::axis::transform::id,
-         class Transform1 = bh::axis::transform::id,
-         class Transform2 = bh::axis::transform::id>
+template<class Transform0, class Transform1, class Transform2>
 class EECTriangleOPE : public EECBase, public Hist3D<Transform0, Transform1, Transform2> {
 
   // function pointer to the actual computation that will be run
-  void (EECTriangleOPE::*compute_eec_ptr_)();
+  void (EECTriangleOPE::*compute_eec_ptr_)(int);
 
 public:
+
+  typedef typename Hist3D<Transform0, Transform1, Transform2>::Hist Hist;
 
   EECTriangleOPE(unsigned nbins0, double axis0_min, double axis0_max,
                  unsigned nbins1, double axis1_min, double axis1_max,
@@ -77,30 +88,32 @@ public:
                  bool norm = true,
                  const std::vector<double> & pt_powers = {1},
                  const std::vector<unsigned> & ch_powers = {0},
+                 int num_threads = -1,
                  bool check_degen = false,
                  bool average_verts = false) :
-    EECBase(pt_powers, ch_powers, 3, norm, check_degen, average_verts),
+    EECBase(pt_powers, ch_powers, 3, norm, num_threads, check_degen, average_verts),
     Hist3D<Transform0, Transform1, Transform2>(nbins0, axis0_min, axis0_max,
                                                nbins1, axis1_min, axis1_max,
-                                               nbins2, axis2_min, axis2_max)
+                                               nbins2, axis2_min, axis2_max,
+                                               num_threads)
   {
-    switch (nsym_) {
+    switch (nsym()) {
       case 3:
         compute_eec_ptr_ = &EECTriangleOPE::eeec_ijk_sym;
         break;
 
       case 2:
         compute_eec_ptr_ = &EECTriangleOPE::eeec_ij_sym;
-        if (!average_verts_) this->duplicate_hists(3);
+        if (!this->average_verts()) this->duplicate_hists(3);
         break;
 
       case 0:
         compute_eec_ptr_ = &EECTriangleOPE::eeec_no_sym;
-        if (!average_verts_) this->duplicate_hists(6);
+        if (!this->average_verts()) this->duplicate_hists(6);
         break;
 
       default:
-        throw std::runtime_error("Invalid number of symmetries " + std::to_string(nsym_));
+        throw std::runtime_error("Invalid number of symmetries " + std::to_string(nsym()));
     }
   }
 
@@ -110,9 +123,7 @@ public:
     unsigned nh(this->nhists());
 
     std::ostringstream oss;
-    oss << "EECTriangleOPE::" << compname_ << '\n'
-        << EECBase::description()
-        << '\n'
+    oss << "EECTriangleOPE::" << EECBase::description() << '\n'
         << "  there " << (nh == 1 ? "is " : "are ") << nh << " histogram";
 
     if (nh == 1) 
@@ -141,126 +152,141 @@ public:
 
 private:
 
-  void compute_eec() { (this->*compute_eec_ptr_)(); }
+  void compute_eec(int thread_i) { (this->*compute_eec_ptr_)(thread_i); }
 
-  void eeec_ijk_sym() {
-    const std::vector<double> & ws0(weights_[0]);
-    std::array<double, 3> dists;
+  void eeec_ijk_sym(int thread_i) {
+    const std::vector<double> & ws0(this->weights(thread_i)[0]),
+                              & dists(this->dists(thread_i));
+    double event_weight(this->event_weight(thread_i));
+    unsigned mult(this->mult(thread_i));
+    Hist & hist(this->hists(thread_i)[0]);
 
     // loop over symmetric triplets of particles
-    for (unsigned i = 0; i < mult_; i++) {
-      double weight_i(weight_ * ws0[i]);
+    std::array<double, 3> dists_arr;
+    for (unsigned i = 0; i < mult; i++) {
+      double weight_i(event_weight * ws0[i]);
       if (weight_i == 0) continue;
-      unsigned ixm(i*mult_);
+      unsigned ixm(i*mult);
 
       for (unsigned j = 0; j <= i; j++) {
         double weight_ij(weight_i * ws0[j]);
         if (weight_ij == 0) continue;
-        unsigned jxm(j*mult_);
+        unsigned jxm(j*mult);
         bool ij_match(i == j);
-        double dist_ij(dists_[ixm + j]);
+        double dist_ij(dists[ixm + j]);
 
         for (unsigned k = 0; k <= j; k++) {
           //if (ws0[k] == 0) continue;
           bool ik_match(i == k), jk_match(j == k);
           int sym(!(ij_match || ik_match || jk_match) ? 6 : (ij_match && ik_match ? 1 : 3));
-          dists[0] = dist_ij;
-          dists[1] = dists_[ixm + k];
-          dists[2] = dists_[jxm + k];
+          dists_arr[0] = dist_ij;
+          dists_arr[1] = dists[ixm + k];
+          dists_arr[2] = dists[jxm + k];
 
-          std::sort(dists.begin(), dists.end());
-          fill_hist(0, weight_ij * ws0[k] * sym, dists[0], dists[1], dists[2]);
+          std::sort(dists_arr.begin(), dists_arr.end());
+          fill_hist(hist, weight_ij * ws0[k] * sym, dists_arr[0], dists_arr[1], dists_arr[2]);
         }
       }
     }
   }
 
-  void eeec_ij_sym() {
-    const std::vector<double> & ws0(weights_[0]), & ws1(weights_[1]);
-    std::array<double, 3> dists;
+  void eeec_ij_sym(int thread_i) {
+    const std::vector<double> & ws0(this->weights(thread_i)[0]),
+                              & ws1(this->weights(thread_i)[1]),
+                              & dists(this->dists(thread_i));
+    double event_weight(this->event_weight(thread_i));
+    unsigned mult(this->mult(thread_i));
+    std::vector<Hist> & hists(this->hists(thread_i));
 
     // first index is special, second is symmetric
-    for (unsigned i = 0; i < mult_; i++) {
-      double weight_i(weight_ * ws0[i]);
+    std::array<double, 3> dists_arr;
+    for (unsigned i = 0; i < mult; i++) {
+      double weight_i(event_weight * ws0[i]);
       if (weight_i == 0) continue;
-      unsigned ixm(i*mult_);
+      unsigned ixm(i*mult);
 
       for (unsigned j = 0; j <= i; j++) {
         double weight_ij(weight_i * ws0[j] * (i == j ? 1 : 2));
         if (weight_ij == 0) continue;
-        unsigned jxm(j*mult_);
-        double dist_ij(dists_[ixm + j]);
+        unsigned jxm(j*mult);
+        double dist_ij(dists[ixm + j]);
 
-        for (unsigned k = 0; k < mult_; k++) {
+        for (unsigned k = 0; k < mult; k++) {
           //if (ws1[k] == 0) continue;
           double weight_ijk(weight_ij * ws1[k]);
-          dists[0] = dist_ij;
-          dists[1] = dists_[ixm + k];
-          dists[2] = dists_[jxm + k];
+          dists_arr[0] = dist_ij;
+          dists_arr[1] = dists[ixm + k];
+          dists_arr[2] = dists[jxm + k];
 
           // (arg)sort distances
-          std::array<std::pair<double,int>, 3> dists_inds(argsort3(dists));
+          std::array<std::pair<double,int>, 3> dists_inds(argsort3(dists_arr));
 
           // check for overlapping particles
           bool ik_match(i == k), jk_match(j == k);
 
           // averaging over verts
-          if (average_verts_)
-            fill_hist(0, weight_ijk, dists_inds[0].first, dists_inds[1].first, dists_inds[2].first);
+          if (average_verts())
+            fill_hist(hists[0], weight_ijk, dists_inds[0].first, dists_inds[1].first, dists_inds[2].first);
 
           // fill specific histogram
           else if (!(ik_match || jk_match))
-            fill_hist(dists_inds[0].second == 0 ? 0 : (dists_inds[1].second == 0 ? 1 : 2),
+            fill_hist(hists[dists_inds[0].second == 0 ? 0 : (dists_inds[1].second == 0 ? 1 : 2)],
                       weight_ijk, dists_inds[0].first, dists_inds[1].first, dists_inds[2].first);
 
           // fill medium and large histograms
           else if (ik_match || jk_match) {
-            fill_hist(1, weight_ijk, 0, dists_inds[1].first, dists_inds[2].first);
-            fill_hist(2, weight_ijk, 0, dists_inds[1].first, dists_inds[2].first);
+            fill_hist(hists[1], weight_ijk, 0, dists_inds[1].first, dists_inds[2].first);
+            fill_hist(hists[2], weight_ijk, 0, dists_inds[1].first, dists_inds[2].first);
           }
 
           // fill all histograms
           else if (ik_match && jk_match) {
-            fill_hist(0, weight_ijk, 0, 0, 0);
-            fill_hist(1, weight_ijk, 0, 0, 0);
-            fill_hist(2, weight_ijk, 0, 0, 0);
+            fill_hist(hists[0], weight_ijk, 0, 0, 0);
+            fill_hist(hists[1], weight_ijk, 0, 0, 0);
+            fill_hist(hists[2], weight_ijk, 0, 0, 0);
           }  
         }
       }
     }
   }
 
-  void eeec_no_sym() {
-    const std::vector<double> & ws0(weights_[0]), & ws1(weights_[1]), & ws2(weights_[2]);
-    std::array<double, 3> dists;
+  void eeec_no_sym(int thread_i) {
+    const std::vector<double> & ws0(this->weights(thread_i)[0]),
+                              & ws1(this->weights(thread_i)[1]),
+                              & ws2(this->weights(thread_i)[2]),
+                              & dists(this->dists(thread_i));
+    double event_weight(this->event_weight(thread_i));
+    unsigned mult(this->mult(thread_i));
+    std::vector<Hist> & hists(this->hists(thread_i));
 
     // all indices are different
-    for (unsigned i = 0; i < mult_; i++) {
-      double weight_i(weight_ * ws0[i]);
+    std::array<double, 3> dists_arr;
+    for (unsigned i = 0; i < mult; i++) {
+      double weight_i(event_weight * ws0[i]);
       if (weight_i == 0) continue;
-      unsigned ixm(i*mult_);
+      unsigned ixm(i*mult);
 
-      for (unsigned j = 0; j < mult_; j++) {
+      for (unsigned j = 0; j < mult; j++) {
         double weight_ij(weight_i * ws1[j]);
         if (weight_ij == 0) continue;
-        unsigned jxm(j*mult_);
-        double dist_ij(dists_[ixm + j]);
+        unsigned jxm(j*mult);
+        double dist_ij(dists[ixm + j]);
         bool ij_match(i == j);
 
-        for (unsigned k = 0; k < mult_; k++) {
+        for (unsigned k = 0; k < mult; k++) {
           //if (ws2[k] == 0) continue;
           double weight_ijk(weight_ij * ws2[k]);
-          dists[0] = dist_ij;
-          dists[1] = dists_[ixm + k];
-          dists[2] = dists_[jxm + k];
+          dists_arr[0] = dist_ij;
+          dists_arr[1] = dists[ixm + k];
+          dists_arr[2] = dists[jxm + k];
           bool ik_match(i == k), jk_match(j == k);
 
           // (arg)sort distances
-          std::array<std::pair<double,int>, 3> dists_inds(argsort3(dists));
+          std::array<std::pair<double,int>, 3> dists_inds(argsort3(dists_arr));
 
           // check for averaging the vertices
-          if (average_verts_)
-            fill_hist(0, weight_ijk, dists_inds[0].first, dists_inds[1].first, dists_inds[2].first);
+          if (average_verts())
+            fill_hist(hists[0], weight_ijk, dists_inds[0].first, dists_inds[1].first, dists_inds[2].first);
 
           // no degeneracy 
           else if (!(ij_match || ik_match || jk_match)) {
@@ -288,31 +314,35 @@ private:
               else hist_i = 5;
             }
 
-            fill_hist(hist_i, weight_ijk, dists_inds[0].first, dists_inds[1].first, dists_inds[2].first);
+            fill_hist(hists[hist_i], weight_ijk, dists_inds[0].first, dists_inds[1].first, dists_inds[2].first);
           }
 
           // everything is degenerate
           else if (ij_match && ik_match) {
-            for (unsigned hist_i : {0, 1, 2, 3, 4, 5})
-              fill_hist(hist_i, weight_ijk, 0, 0, 0);
+            fill_hist(hists[0], weight_ijk, 0, 0, 0);
+            fill_hist(hists[1], weight_ijk, 0, 0, 0);
+            fill_hist(hists[2], weight_ijk, 0, 0, 0);
+            fill_hist(hists[3], weight_ijk, 0, 0, 0);
+            fill_hist(hists[4], weight_ijk, 0, 0, 0);
+            fill_hist(hists[5], weight_ijk, 0, 0, 0);
           }
 
           // ij are degenerate, fill hists 0 and 1
           else if (ij_match) {
-            fill_hist(0, weight_ijk, 0, dists_inds[1].first, dists_inds[2].first);
-            fill_hist(1, weight_ijk, 0, dists_inds[1].first, dists_inds[2].first);
+            fill_hist(hists[0], weight_ijk, 0, dists_inds[1].first, dists_inds[2].first);
+            fill_hist(hists[1], weight_ijk, 0, dists_inds[1].first, dists_inds[2].first);
           }
 
           // ik are degenerate, fill hists 2 and 4
           else if (ik_match) {
-            fill_hist(2, weight_ijk, 0, dists_inds[1].first, dists_inds[2].first);
-            fill_hist(4, weight_ijk, 0, dists_inds[1].first, dists_inds[2].first);
+            fill_hist(hists[2], weight_ijk, 0, dists_inds[1].first, dists_inds[2].first);
+            fill_hist(hists[4], weight_ijk, 0, dists_inds[1].first, dists_inds[2].first);
           }
 
           // jk are degenerate, fill hists 3 and 5
           else if (jk_match) {
-            fill_hist(3, weight_ijk, 0, dists_inds[1].first, dists_inds[2].first);
-            fill_hist(5, weight_ijk, 0, dists_inds[1].first, dists_inds[2].first);
+            fill_hist(hists[3], weight_ijk, 0, dists_inds[1].first, dists_inds[2].first);
+            fill_hist(hists[5], weight_ijk, 0, dists_inds[1].first, dists_inds[2].first);
           }
 
           // should never get here
@@ -320,16 +350,6 @@ private:
         }
       }
     }
-  }
-
-  void fill_hist(unsigned hist_i, double weight, double xS, double xM, double xL) {
-
-    // define coordinate mapping
-    double xi(xS/(xM + REG)), diff(xL - xM), 
-           phi(std::asin(std::sqrt(std::fabs(1 - diff*diff/(xS*xS + REG)))));
-
-    // fill histogram
-    this->hists[hist_i](bh::weight(weight), xL, xi, phi);
   }
 
 }; // EECTriangleOPE
