@@ -43,6 +43,43 @@
 namespace eec {
 
 //-----------------------------------------------------------------------------
+// Class to help store multiple events for multithreaded computation
+//-----------------------------------------------------------------------------
+
+class EECEvents {
+private:
+
+  std::vector<const double *> events_;
+  std::vector<unsigned> mults_;
+  std::vector<double> weights_;
+
+public:
+
+  EECEvents(size_t nev = 0) {
+    events_.reserve(nev);
+    mults_.reserve(nev);
+    weights_.reserve(nev);
+  }
+
+  // access functions
+  const std::vector<const double *> & events() const { return events_; }
+  const std::vector<unsigned> & mults() const { return mults_; }
+  const std::vector<double> & weights() const { return weights_; }
+
+  // add event 
+  void append(const double * event_ptr, unsigned mult, double weight) {
+    events_.push_back(event_ptr);
+    mults_.push_back(mult);
+    weights_.push_back(weight);
+  }
+  void append(const double * event_ptr, unsigned mult) {
+    events_.push_back(event_ptr);
+    mults_.push_back(mult);
+  }
+
+}; // EECEvents
+
+//-----------------------------------------------------------------------------
 // Base class for all EEC computations
 //-----------------------------------------------------------------------------
 
@@ -85,7 +122,7 @@ protected:
 
 public:
 
-  EECBase() : EECBase({}, {}, 0, false, 1, false, false) {}
+  //EECBase() : EECBase({}, {}, 0, false, 1, false, false) {}
   EECBase(const std::vector<double> & pt_powers, const std::vector<unsigned> & ch_powers,
           unsigned N, bool norm, int num_threads, bool check_degen, bool average_verts) : 
     orig_pt_powers_(pt_powers), orig_ch_powers_(ch_powers),
@@ -250,24 +287,29 @@ public:
   }
 
   // compute on a vector of events (themselves vectors of particles)
-  void compute(const std::vector<std::vector<double>> & events, const std::vector<double> & weights) {
+  void batch_compute(const std::vector<std::vector<double>> & events,
+                     const std::vector<double> & weights) {
     if (events.size() != weights.size())
       throw std::runtime_error("events and weights are different sizes");
 
-    std::vector<const double *> event_ptrs(events.size());
-    std::vector<unsigned> mults(events.size());
+    EECEvents evs(events.size());
     for (unsigned i = 0; i < events.size(); i++) {
-      event_ptrs[i] = events[i].data();
-      mults[i] = events[i].size()/nfeatures();
+      evs.append(events[i].data(), events[i].size()/nfeatures());
       if (events[i].size() % nfeatures() != 0)
         throw std::runtime_error("incorrect particles size");
     }
 
-    compute(event_ptrs, mults, weights);
+    batch_compute(evs.events(), evs.mults(), weights);
+  }
+
+  void batch_compute(const EECEvents & evs) {
+    batch_compute(evs.events(), evs.mults(), evs.weights());
   }
 
   // compute on a vector of events (pointers to arrays of particles)
-  void compute(const std::vector<const double *> & events, const std::vector<unsigned> & mults, const std::vector<double> & weights) {
+  void batch_compute(const std::vector<const double *> & events,
+                     const std::vector<unsigned> & mults,
+                     const std::vector<double> & weights) {
   
     long long nevents(events.size());
     if (events.size() != mults.size())

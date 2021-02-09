@@ -207,10 +207,9 @@ class HistBase(object):
     def __init__(self, *args, **kwargs):
         raise AttributeError("No constructor defined - class is abstract")
     __repr__ = _swig_repr
-    num_threads = _swig_new_instance_method(_eec.HistBase_num_threads)
-    get_hist_size = _swig_new_instance_method(_eec.HistBase_get_hist_size)
-    get_hist = _swig_new_instance_method(_eec.HistBase_get_hist)
     __swig_destroy__ = _eec.delete_HistBase
+    num_threads = _swig_new_instance_method(_eec.HistBase_num_threads)
+    hist_size = _swig_new_instance_method(_eec.HistBase_hist_size)
 
 # Register HistBase in _eec:
 _eec.HistBase_swigregister(HistBase)
@@ -221,17 +220,18 @@ class Hist1DId(HistBase):
     thisown = property(lambda x: x.this.own(), lambda x, v: x.this.own(v), doc="The membership flag")
     __repr__ = _swig_repr
 
-    def __init__(self, *args):
-        r"""
-        __init__(Hist1DId self) -> Hist1DId
-        __init__(Hist1DId self, unsigned int nbins, double axis_min, double axis_max, int num_threads=1) -> Hist1DId
-        """
-        _eec.Hist1DId_swiginit(self, _eec.new_Hist1DId(*args))
+    def __init__(self, nbins, axis_min, axis_max, num_threads=1):
+        r"""__init__(Hist1DId self, unsigned int nbins, double axis_min, double axis_max, int num_threads=1) -> Hist1DId"""
+        _eec.Hist1DId_swiginit(self, _eec.new_Hist1DId(nbins, axis_min, axis_max, num_threads))
     __swig_destroy__ = _eec.delete_Hist1DId
     nhists = _swig_new_instance_method(_eec.Hist1DId_nhists)
+    bin_centers_vec = _swig_new_instance_method(_eec.Hist1DId_bin_centers_vec)
+    bin_edges_vec = _swig_new_instance_method(_eec.Hist1DId_bin_edges_vec)
+    hist_size = _swig_new_instance_method(_eec.Hist1DId_hist_size)
+    nbins = _swig_new_instance_method(_eec.Hist1DId_nbins)
     bin_centers = _swig_new_instance_method(_eec.Hist1DId_bin_centers)
     bin_edges = _swig_new_instance_method(_eec.Hist1DId_bin_edges)
-    get_hist_size = _swig_new_instance_method(_eec.Hist1DId_get_hist_size)
+    get_hist_errs = _swig_new_instance_method(_eec.Hist1DId_get_hist_errs)
 
 # Register Hist1DId in _eec:
 _eec.Hist1DId_swigregister(Hist1DId)
@@ -242,17 +242,18 @@ class Hist1DLog(HistBase):
     thisown = property(lambda x: x.this.own(), lambda x, v: x.this.own(v), doc="The membership flag")
     __repr__ = _swig_repr
 
-    def __init__(self, *args):
-        r"""
-        __init__(Hist1DLog self) -> Hist1DLog
-        __init__(Hist1DLog self, unsigned int nbins, double axis_min, double axis_max, int num_threads=1) -> Hist1DLog
-        """
-        _eec.Hist1DLog_swiginit(self, _eec.new_Hist1DLog(*args))
+    def __init__(self, nbins, axis_min, axis_max, num_threads=1):
+        r"""__init__(Hist1DLog self, unsigned int nbins, double axis_min, double axis_max, int num_threads=1) -> Hist1DLog"""
+        _eec.Hist1DLog_swiginit(self, _eec.new_Hist1DLog(nbins, axis_min, axis_max, num_threads))
     __swig_destroy__ = _eec.delete_Hist1DLog
     nhists = _swig_new_instance_method(_eec.Hist1DLog_nhists)
+    bin_centers_vec = _swig_new_instance_method(_eec.Hist1DLog_bin_centers_vec)
+    bin_edges_vec = _swig_new_instance_method(_eec.Hist1DLog_bin_edges_vec)
+    hist_size = _swig_new_instance_method(_eec.Hist1DLog_hist_size)
+    nbins = _swig_new_instance_method(_eec.Hist1DLog_nbins)
     bin_centers = _swig_new_instance_method(_eec.Hist1DLog_bin_centers)
     bin_edges = _swig_new_instance_method(_eec.Hist1DLog_bin_edges)
-    get_hist_size = _swig_new_instance_method(_eec.Hist1DLog_get_hist_size)
+    get_hist_errs = _swig_new_instance_method(_eec.Hist1DLog_get_hist_errs)
 
 # Register Hist1DLog in _eec:
 _eec.Hist1DLog_swigregister(Hist1DLog)
@@ -268,9 +269,13 @@ class Hist3DIdIdId(HistBase):
         _eec.Hist3DIdIdId_swiginit(self, _eec.new_Hist3DIdIdId(nbins0, axis0_min, axis0_max, nbins1, axis1_min, axis1_max, nbins2, axis2_min, axis2_max, num_threads))
     __swig_destroy__ = _eec.delete_Hist3DIdIdId
     nhists = _swig_new_instance_method(_eec.Hist3DIdIdId_nhists)
+    nbins = _swig_new_instance_method(_eec.Hist3DIdIdId_nbins)
+    bin_centers_vec = _swig_new_instance_method(_eec.Hist3DIdIdId_bin_centers_vec)
+    bin_edges_vec = _swig_new_instance_method(_eec.Hist3DIdIdId_bin_edges_vec)
+    hist_size = _swig_new_instance_method(_eec.Hist3DIdIdId_hist_size)
     bin_centers = _swig_new_instance_method(_eec.Hist3DIdIdId_bin_centers)
     bin_edges = _swig_new_instance_method(_eec.Hist3DIdIdId_bin_edges)
-    get_hist_size = _swig_new_instance_method(_eec.Hist3DIdIdId_get_hist_size)
+    get_hist_errs = _swig_new_instance_method(_eec.Hist3DIdIdId_get_hist_errs)
 
 # Register Hist3DIdIdId in _eec:
 _eec.Hist3DIdIdId_swigregister(Hist3DIdIdId)
@@ -286,9 +291,13 @@ class Hist3DLogIdId(HistBase):
         _eec.Hist3DLogIdId_swiginit(self, _eec.new_Hist3DLogIdId(nbins0, axis0_min, axis0_max, nbins1, axis1_min, axis1_max, nbins2, axis2_min, axis2_max, num_threads))
     __swig_destroy__ = _eec.delete_Hist3DLogIdId
     nhists = _swig_new_instance_method(_eec.Hist3DLogIdId_nhists)
+    nbins = _swig_new_instance_method(_eec.Hist3DLogIdId_nbins)
+    bin_centers_vec = _swig_new_instance_method(_eec.Hist3DLogIdId_bin_centers_vec)
+    bin_edges_vec = _swig_new_instance_method(_eec.Hist3DLogIdId_bin_edges_vec)
+    hist_size = _swig_new_instance_method(_eec.Hist3DLogIdId_hist_size)
     bin_centers = _swig_new_instance_method(_eec.Hist3DLogIdId_bin_centers)
     bin_edges = _swig_new_instance_method(_eec.Hist3DLogIdId_bin_edges)
-    get_hist_size = _swig_new_instance_method(_eec.Hist3DLogIdId_get_hist_size)
+    get_hist_errs = _swig_new_instance_method(_eec.Hist3DLogIdId_get_hist_errs)
 
 # Register Hist3DLogIdId in _eec:
 _eec.Hist3DLogIdId_swigregister(Hist3DLogIdId)
@@ -304,9 +313,13 @@ class Hist3DIdLogId(HistBase):
         _eec.Hist3DIdLogId_swiginit(self, _eec.new_Hist3DIdLogId(nbins0, axis0_min, axis0_max, nbins1, axis1_min, axis1_max, nbins2, axis2_min, axis2_max, num_threads))
     __swig_destroy__ = _eec.delete_Hist3DIdLogId
     nhists = _swig_new_instance_method(_eec.Hist3DIdLogId_nhists)
+    nbins = _swig_new_instance_method(_eec.Hist3DIdLogId_nbins)
+    bin_centers_vec = _swig_new_instance_method(_eec.Hist3DIdLogId_bin_centers_vec)
+    bin_edges_vec = _swig_new_instance_method(_eec.Hist3DIdLogId_bin_edges_vec)
+    hist_size = _swig_new_instance_method(_eec.Hist3DIdLogId_hist_size)
     bin_centers = _swig_new_instance_method(_eec.Hist3DIdLogId_bin_centers)
     bin_edges = _swig_new_instance_method(_eec.Hist3DIdLogId_bin_edges)
-    get_hist_size = _swig_new_instance_method(_eec.Hist3DIdLogId_get_hist_size)
+    get_hist_errs = _swig_new_instance_method(_eec.Hist3DIdLogId_get_hist_errs)
 
 # Register Hist3DIdLogId in _eec:
 _eec.Hist3DIdLogId_swigregister(Hist3DIdLogId)
@@ -322,12 +335,34 @@ class Hist3DLogLogId(HistBase):
         _eec.Hist3DLogLogId_swiginit(self, _eec.new_Hist3DLogLogId(nbins0, axis0_min, axis0_max, nbins1, axis1_min, axis1_max, nbins2, axis2_min, axis2_max, num_threads))
     __swig_destroy__ = _eec.delete_Hist3DLogLogId
     nhists = _swig_new_instance_method(_eec.Hist3DLogLogId_nhists)
+    nbins = _swig_new_instance_method(_eec.Hist3DLogLogId_nbins)
+    bin_centers_vec = _swig_new_instance_method(_eec.Hist3DLogLogId_bin_centers_vec)
+    bin_edges_vec = _swig_new_instance_method(_eec.Hist3DLogLogId_bin_edges_vec)
+    hist_size = _swig_new_instance_method(_eec.Hist3DLogLogId_hist_size)
     bin_centers = _swig_new_instance_method(_eec.Hist3DLogLogId_bin_centers)
     bin_edges = _swig_new_instance_method(_eec.Hist3DLogLogId_bin_edges)
-    get_hist_size = _swig_new_instance_method(_eec.Hist3DLogLogId_get_hist_size)
+    get_hist_errs = _swig_new_instance_method(_eec.Hist3DLogLogId_get_hist_errs)
 
 # Register Hist3DLogLogId in _eec:
 _eec.Hist3DLogLogId_swigregister(Hist3DLogLogId)
+
+class EECEvents(object):
+    r"""Proxy of C++ eec::EECEvents class."""
+
+    thisown = property(lambda x: x.this.own(), lambda x, v: x.this.own(v), doc="The membership flag")
+    __repr__ = _swig_repr
+
+    def __init__(self, nev=0):
+        r"""__init__(EECEvents self, size_t nev=0) -> EECEvents"""
+        _eec.EECEvents_swiginit(self, _eec.new_EECEvents(nev))
+    events = _swig_new_instance_method(_eec.EECEvents_events)
+    mults = _swig_new_instance_method(_eec.EECEvents_mults)
+    weights = _swig_new_instance_method(_eec.EECEvents_weights)
+    add_event = _swig_new_instance_method(_eec.EECEvents_add_event)
+    __swig_destroy__ = _eec.delete_EECEvents
+
+# Register EECEvents in _eec:
+_eec.EECEvents_swigregister(EECEvents)
 
 class EECBase(object):
     r"""Proxy of C++ eec::EECBase class."""
@@ -336,7 +371,6 @@ class EECBase(object):
 
     def __init__(self, *args, **kwargs):
         raise AttributeError("No constructor defined - class is abstract")
-    __repr__ = _swig_repr
     __swig_destroy__ = _eec.delete_EECBase
     description = _swig_new_instance_method(_eec.EECBase_description)
     N = _swig_new_instance_method(_eec.EECBase_N)
@@ -345,6 +379,25 @@ class EECBase(object):
     num_threads = _swig_new_instance_method(_eec.EECBase_num_threads)
     average_verts = _swig_new_instance_method(_eec.EECBase_average_verts)
     set_omp_chunksize = _swig_new_instance_method(_eec.EECBase_set_omp_chunksize)
+    __str__ = _swig_new_instance_method(_eec.EECBase___str__)
+    __repr__ = _swig_new_instance_method(_eec.EECBase___repr__)
+    compute = _swig_new_instance_method(_eec.EECBase_compute)
+    __call__ = _swig_new_instance_method(_eec.EECBase___call__)
+
+
+    def batch_compute(self, events, weights=None):
+
+        if weights is None:
+            weights = np.ones(len(events), order='C', dtype=np.double)
+        elif len(weights) != len(events):
+            raise ValueError('events and weights have different length')
+
+        eecevents = EECEvents(len(events))
+        for event,weight in zip(events, weights):
+            eecevents.add_event(event, weight)
+
+        self(eecevents)
+
 
 # Register EECBase in _eec:
 _eec.EECBase_swigregister(EECBase)

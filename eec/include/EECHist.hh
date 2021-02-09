@@ -136,21 +136,21 @@ void output_3d_hist(std::ostream & os, const Hist & hist, int nspaces=0) {
 class HistBase {
 public:
 
-  HistBase() : HistBase(1) {}
   HistBase(int num_threads) : num_threads_(determine_num_threads(num_threads)) {}
+  virtual ~HistBase() {}
 
   int num_threads() const { return num_threads_; }
 
-  virtual size_t get_hist_size(bool) const = 0;
-  virtual void get_hist(double *, double *, size_t, bool, unsigned) const = 0;
-
   // return histogram and errors as a pair of vectors
   std::pair<std::vector<double>, std::vector<double>> get_hist_errs(bool include_overflows = true, unsigned hist_i = 0) {
-    size_t hist_size(get_hist_size(include_overflows));
-    std::vector<double> hist_vals(hist_size), hist_errs(hist_size);
-    get_hist(hist_vals.data(), hist_errs.data(), hist_size, include_overflows, hist_i);
-    return std::make_pair(std::move(hist_vals), std::move(hist_errs));
+    size_t hist_size(this->hist_size(include_overflows));
+    std::pair<std::vector<double>, std::vector<double>> hist_errs{std::vector<double>(hist_size), std::vector<double>(hist_size)};
+    get_hist_errs(hist_errs.first.data(), hist_errs.second.data(), include_overflows, hist_i);
+    return hist_errs;
   }
+
+  virtual size_t hist_size(bool, int = -1) const = 0;
+  virtual void get_hist_errs(double *, double *, bool, unsigned) const = 0;
 
 private:
 
@@ -180,7 +180,6 @@ private:
 
 public:
 
-  Hist1D() : Hist1D(0, 0, 0) {}
   Hist1D(unsigned nbins, double axis_min, double axis_max, int num_threads = 1) :
     HistBase(num_threads),
     axis_(nbins, axis_min, axis_max),
@@ -229,17 +228,16 @@ public:
   }
 #endif
 
-  size_t get_hist_size(bool include_overflows = true) const {
+  size_t hist_size(bool include_overflows = true, int tmp = -1) const {
     auto size(axis().size());
     if (include_overflows)
       size += 2;
     return size;
   }
+  size_t nbins() const { return axis().size(); }
 
-  void get_hist(double * hist_vals, double * hist_errs, size_t size, bool include_overflows = true, unsigned hist_i = 0) const {
+  void get_hist_errs(double * hist_vals, double * hist_errs, bool include_overflows = true, unsigned hist_i = 0) const {
 
-    if (size != get_hist_size(include_overflows)) 
-      throw std::invalid_argument("Size of histogram doesn't match provided arrays");
     if (hist_i >= nhists())
       throw std::out_of_range("Requested histogram out of range");
 
@@ -320,7 +318,12 @@ public:
 #endif
 
   unsigned nhists() const { return hists().size(); }
-
+  size_t nbins(int i) const {
+    if (i == 0) return axis0().size();
+    else if (i == 1) return axis1().size();
+    else if (i == 2) return axis2().size();
+    else throw std::invalid_argument("axis index i must be 0, 1, or 2");
+  }
   std::vector<double> bin_centers(int i) const {
     if (i == 0) return get_bin_centers(axis0());
     else if (i == 1) return get_bin_centers(axis1());
@@ -328,7 +331,6 @@ public:
     else throw std::invalid_argument("axis index i must be 0, 1, or 2");
     return {};
   }
-
   std::vector<double> bin_edges(int i) const {
     if (i == 0) return get_bin_edges(axis0());
     else if (i == 1) return get_bin_edges(axis1());
@@ -355,16 +357,15 @@ public:
   }
 #endif
 
-  size_t get_hist_size(bool include_overflows = true) const {
-    size_t diff(include_overflows ? 2 : 0),
-           size((axis0().size() + diff)*(axis1().size() + diff)*(axis2().size() + diff));
-    return size;
+  size_t hist_size(bool include_overflows = true, int i = -1) const {
+    size_t diff(include_overflows ? 2 : 0);
+    if (i == -1)
+      return (nbins(0) + diff)*(nbins(1) + diff)*(nbins(2) + diff);
+    return nbins(i) + diff;
   }
 
-  void get_hist(double * hist_vals, double * hist_errs, size_t size, bool include_overflows = true, unsigned hist_i = 0) const {
+  void get_hist_errs(double * hist_vals, double * hist_errs, bool include_overflows = true, unsigned hist_i = 0) const {
 
-    if (size != get_hist_size(include_overflows)) 
-      throw std::invalid_argument("Size of histogram doesn't match provided arrays");
     if (hist_i >= nhists())
       throw std::out_of_range("Requested histogram out of range");
 

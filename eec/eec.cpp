@@ -2699,9 +2699,9 @@ SWIGINTERN PyObject *SWIG_PyStaticMethod_New(PyObject *SWIGUNUSEDPARM(self), PyO
 #define SWIGTYPE_p_boost__histogram__axis__transform__log swig_types[3]
 #define SWIGTYPE_p_char swig_types[4]
 #define SWIGTYPE_p_difference_type swig_types[5]
-#define SWIGTYPE_p_double swig_types[6]
-#define SWIGTYPE_p_eec__DynamicMultinomial swig_types[7]
-#define SWIGTYPE_p_eec__EECBase swig_types[8]
+#define SWIGTYPE_p_eec__DynamicMultinomial swig_types[6]
+#define SWIGTYPE_p_eec__EECBase swig_types[7]
+#define SWIGTYPE_p_eec__EECEvents swig_types[8]
 #define SWIGTYPE_p_eec__EECLongestSideT_boost__histogram__axis__transform__id_t swig_types[9]
 #define SWIGTYPE_p_eec__EECLongestSideT_boost__histogram__axis__transform__log_t swig_types[10]
 #define SWIGTYPE_p_eec__EECTriangleOPET_boost__histogram__axis__transform__id_boost__histogram__axis__transform__id_boost__histogram__axis__transform__id_t swig_types[11]
@@ -2720,20 +2720,23 @@ SWIGINTERN PyObject *SWIG_PyStaticMethod_New(PyObject *SWIGUNUSEDPARM(self), PyO
 #define SWIGTYPE_p_eec__MultinomialT_4_t swig_types[24]
 #define SWIGTYPE_p_eec__MultinomialT_5_t swig_types[25]
 #define SWIGTYPE_p_eec__MultinomialT_6_t swig_types[26]
-#define SWIGTYPE_p_p_PyObject swig_types[27]
-#define SWIGTYPE_p_size_type swig_types[28]
-#define SWIGTYPE_p_std__allocatorT_double_t swig_types[29]
-#define SWIGTYPE_p_std__allocatorT_unsigned_int_t swig_types[30]
-#define SWIGTYPE_p_std__arrayT_double_3_t swig_types[31]
-#define SWIGTYPE_p_std__arrayT_std__pairT_double_int_t_3_t swig_types[32]
-#define SWIGTYPE_p_std__arrayT_unsigned_int_13_t swig_types[33]
-#define SWIGTYPE_p_std__invalid_argument swig_types[34]
-#define SWIGTYPE_p_std__vectorT_double_std__allocatorT_double_t_t swig_types[35]
-#define SWIGTYPE_p_std__vectorT_unsigned_int_std__allocatorT_unsigned_int_t_t swig_types[36]
-#define SWIGTYPE_p_swig__SwigPyIterator swig_types[37]
-#define SWIGTYPE_p_value_type swig_types[38]
-static swig_type_info *swig_types[40];
-static swig_module_info swig_module = {swig_types, 39, 0, 0, 0, 0};
+#define SWIGTYPE_p_int swig_types[27]
+#define SWIGTYPE_p_p_PyObject swig_types[28]
+#define SWIGTYPE_p_p_double swig_types[29]
+#define SWIGTYPE_p_size_type swig_types[30]
+#define SWIGTYPE_p_std__allocatorT_double_t swig_types[31]
+#define SWIGTYPE_p_std__allocatorT_unsigned_int_t swig_types[32]
+#define SWIGTYPE_p_std__arrayT_double_3_t swig_types[33]
+#define SWIGTYPE_p_std__arrayT_std__pairT_double_int_t_3_t swig_types[34]
+#define SWIGTYPE_p_std__arrayT_unsigned_int_13_t swig_types[35]
+#define SWIGTYPE_p_std__invalid_argument swig_types[36]
+#define SWIGTYPE_p_std__vectorT_double_const_p_std__allocatorT_double_const_p_t_t swig_types[37]
+#define SWIGTYPE_p_std__vectorT_double_std__allocatorT_double_t_t swig_types[38]
+#define SWIGTYPE_p_std__vectorT_unsigned_int_std__allocatorT_unsigned_int_t_t swig_types[39]
+#define SWIGTYPE_p_swig__SwigPyIterator swig_types[40]
+#define SWIGTYPE_p_value_type swig_types[41]
+static swig_type_info *swig_types[43];
+static swig_module_info swig_module = {swig_types, 42, 0, 0, 0, 0};
 #define SWIG_TypeQuery(name) SWIG_TypeQueryModule(&swig_module, &swig_module, name)
 #define SWIG_MangledTypeQuery(name) SWIG_MangledTypeQueryModule(&swig_module, &swig_module, name)
 
@@ -4948,6 +4951,826 @@ SWIG_AsVal_int (PyObject * obj, int *val)
 }
 
 
+#if NPY_API_VERSION < 0x00000007
+#define NPY_ARRAY_DEFAULT NPY_DEFAULT
+#define NPY_ARRAY_FARRAY  NPY_FARRAY
+#define NPY_FORTRANORDER  NPY_FORTRAN
+#endif
+
+
+  /* Given a PyObject, return a string describing its type.
+   */
+  const char* pytype_string(PyObject* py_obj)
+  {
+    if (py_obj == NULL          ) return "C NULL value";
+    if (py_obj == Py_None       ) return "Python None" ;
+    if (PyCallable_Check(py_obj)) return "callable"    ;
+    if (PyBytes_Check(   py_obj)) return "string"      ;
+    if (PyLong_Check(    py_obj)) return "int"         ;
+    if (PyFloat_Check(   py_obj)) return "float"       ;
+    if (PyDict_Check(    py_obj)) return "dict"        ;
+    if (PyList_Check(    py_obj)) return "list"        ;
+    if (PyTuple_Check(   py_obj)) return "tuple"       ;
+
+    return "unknown type";
+  }
+
+  /* Given a NumPy typecode, return a string describing the type.
+   */
+  const char* typecode_string(int typecode)
+  {
+    static const char* type_names[25] = {"bool",
+                                         "byte",
+                                         "unsigned byte",
+                                         "short",
+                                         "unsigned short",
+                                         "int",
+                                         "unsigned int",
+                                         "long",
+                                         "unsigned long",
+                                         "long long",
+                                         "unsigned long long",
+                                         "float",
+                                         "double",
+                                         "long double",
+                                         "complex float",
+                                         "complex double",
+                                         "complex long double",
+                                         "object",
+                                         "string",
+                                         "unicode",
+                                         "void",
+                                         "ntypes",
+                                         "notype",
+                                         "char",
+                                         "unknown"};
+    return typecode < 24 ? type_names[typecode] : type_names[24];
+  }
+
+  /* Make sure input has correct numpy type.  This now just calls
+     PyArray_EquivTypenums().
+   */
+  int type_match(int actual_type,
+                 int desired_type)
+  {
+    return PyArray_EquivTypenums(actual_type, desired_type);
+  }
+
+#ifdef SWIGPY_USE_CAPSULE
+  void free_cap(PyObject * cap)
+  {
+    void* array = (void*) PyCapsule_GetPointer(cap,SWIGPY_CAPSULE_NAME);
+    if (array != NULL) free(array);
+  }
+#endif
+
+
+
+SWIGINTERN void eec_Hist1D_Sl_eec_axis_id_Sg__npy_bin_centers(eec::Hist1D< eec::axis::id > *self,double **arr_out0,int *n0){
+  /*@SWIG:eec/swig/eec.i,95,MALLOC_1D_VALUE_ARRAY@*/
+  *n0 = self->nbins();
+  size_t nbytes = size_t(*n0)*sizeof(double);
+  *arr_out0 = (double *) malloc(nbytes);
+  if (*arr_out0 == NULL) {
+    PyErr_Format(PyExc_MemoryError, "Failed to allocate %zu bytes", nbytes);
+    return;
+  }
+/*@SWIG@*/
+  memcpy(*arr_out0, self->bin_centers().data(), nbytes);
+}
+SWIGINTERN void eec_Hist1D_Sl_eec_axis_id_Sg__npy_bin_edges(eec::Hist1D< eec::axis::id > *self,double **arr_out0,int *n0){
+  /*@SWIG:eec/swig/eec.i,95,MALLOC_1D_VALUE_ARRAY@*/
+  *n0 = self->nbins();
+  size_t nbytes = size_t(*n0)*sizeof(double);
+  *arr_out0 = (double *) malloc(nbytes);
+  if (*arr_out0 == NULL) {
+    PyErr_Format(PyExc_MemoryError, "Failed to allocate %zu bytes", nbytes);
+    return;
+  }
+/*@SWIG@*/
+  memcpy(*arr_out0, self->bin_edges().data(), nbytes);
+}
+SWIGINTERN void eec_Hist1D_Sl_eec_axis_id_Sg__npy_get_hist_errs(eec::Hist1D< eec::axis::id > *self,double **arr_out0,int *n0,double **arr_out1,int *n1,bool include_overflows=true,unsigned int hist_i=0){
+    /*@SWIG:eec/swig/eec.i,95,MALLOC_1D_VALUE_ARRAY@*/
+  *n0 = self->hist_size(include_overflows);
+  size_t nbytes0 = size_t(*n0)*sizeof(double);
+  *arr_out0 = (double *) malloc(nbytes0);
+  if (*arr_out0 == NULL) {
+    PyErr_Format(PyExc_MemoryError, "Failed to allocate %zu bytes", nbytes0);
+    return;
+  }
+/*@SWIG@*/
+    /*@SWIG:eec/swig/eec.i,95,MALLOC_1D_VALUE_ARRAY@*/
+  *n1 = self->hist_size(include_overflows);
+  size_t nbytes1 = size_t(*n1)*sizeof(double);
+  *arr_out1 = (double *) malloc(nbytes1);
+  if (*arr_out1 == NULL) {
+    PyErr_Format(PyExc_MemoryError, "Failed to allocate %zu bytes", nbytes1);
+    return;
+  }
+/*@SWIG@*/
+    try {
+      self->get_hist_errs(*arr_out0, *arr_out1, include_overflows, hist_i);
+    }
+    catch (std::exception & e) {
+      free(*arr_out0);
+      free(*arr_out1);
+      throw e;
+    }
+  }
+SWIGINTERN void eec_Hist1D_Sl_eec_axis_log_Sg__npy_bin_centers(eec::Hist1D< eec::axis::log > *self,double **arr_out0,int *n0){
+  /*@SWIG:eec/swig/eec.i,95,MALLOC_1D_VALUE_ARRAY@*/
+  *n0 = self->nbins();
+  size_t nbytes = size_t(*n0)*sizeof(double);
+  *arr_out0 = (double *) malloc(nbytes);
+  if (*arr_out0 == NULL) {
+    PyErr_Format(PyExc_MemoryError, "Failed to allocate %zu bytes", nbytes);
+    return;
+  }
+/*@SWIG@*/
+  memcpy(*arr_out0, self->bin_centers().data(), nbytes);
+}
+SWIGINTERN void eec_Hist1D_Sl_eec_axis_log_Sg__npy_bin_edges(eec::Hist1D< eec::axis::log > *self,double **arr_out0,int *n0){
+  /*@SWIG:eec/swig/eec.i,95,MALLOC_1D_VALUE_ARRAY@*/
+  *n0 = self->nbins();
+  size_t nbytes = size_t(*n0)*sizeof(double);
+  *arr_out0 = (double *) malloc(nbytes);
+  if (*arr_out0 == NULL) {
+    PyErr_Format(PyExc_MemoryError, "Failed to allocate %zu bytes", nbytes);
+    return;
+  }
+/*@SWIG@*/
+  memcpy(*arr_out0, self->bin_edges().data(), nbytes);
+}
+SWIGINTERN void eec_Hist1D_Sl_eec_axis_log_Sg__npy_get_hist_errs(eec::Hist1D< eec::axis::log > *self,double **arr_out0,int *n0,double **arr_out1,int *n1,bool include_overflows=true,unsigned int hist_i=0){
+    /*@SWIG:eec/swig/eec.i,95,MALLOC_1D_VALUE_ARRAY@*/
+  *n0 = self->hist_size(include_overflows);
+  size_t nbytes0 = size_t(*n0)*sizeof(double);
+  *arr_out0 = (double *) malloc(nbytes0);
+  if (*arr_out0 == NULL) {
+    PyErr_Format(PyExc_MemoryError, "Failed to allocate %zu bytes", nbytes0);
+    return;
+  }
+/*@SWIG@*/
+    /*@SWIG:eec/swig/eec.i,95,MALLOC_1D_VALUE_ARRAY@*/
+  *n1 = self->hist_size(include_overflows);
+  size_t nbytes1 = size_t(*n1)*sizeof(double);
+  *arr_out1 = (double *) malloc(nbytes1);
+  if (*arr_out1 == NULL) {
+    PyErr_Format(PyExc_MemoryError, "Failed to allocate %zu bytes", nbytes1);
+    return;
+  }
+/*@SWIG@*/
+    try {
+      self->get_hist_errs(*arr_out0, *arr_out1, include_overflows, hist_i);
+    }
+    catch (std::exception & e) {
+      free(*arr_out0);
+      free(*arr_out1);
+      throw e;
+    }
+  }
+SWIGINTERN void eec_Hist3D_Sl_eec_axis_id_Sc_eec_axis_id_Sc_eec_axis_id_Sg__npy_bin_centers(eec::Hist3D< eec::axis::id,eec::axis::id,eec::axis::id > *self,double **arr_out0,int *n0,int i){
+  /*@SWIG:eec/swig/eec.i,95,MALLOC_1D_VALUE_ARRAY@*/
+  *n0 = self->nbins(i);
+  size_t nbytes = size_t(*n0)*sizeof(double);
+  *arr_out0 = (double *) malloc(nbytes);
+  if (*arr_out0 == NULL) {
+    PyErr_Format(PyExc_MemoryError, "Failed to allocate %zu bytes", nbytes);
+    return;
+  }
+/*@SWIG@*/
+  memcpy(*arr_out0, self->bin_centers(i).data(), nbytes);
+}
+SWIGINTERN void eec_Hist3D_Sl_eec_axis_id_Sc_eec_axis_id_Sc_eec_axis_id_Sg__npy_bin_edges(eec::Hist3D< eec::axis::id,eec::axis::id,eec::axis::id > *self,double **arr_out0,int *n0,int i){
+  /*@SWIG:eec/swig/eec.i,95,MALLOC_1D_VALUE_ARRAY@*/
+  *n0 = self->nbins(i);
+  size_t nbytes = size_t(*n0)*sizeof(double);
+  *arr_out0 = (double *) malloc(nbytes);
+  if (*arr_out0 == NULL) {
+    PyErr_Format(PyExc_MemoryError, "Failed to allocate %zu bytes", nbytes);
+    return;
+  }
+/*@SWIG@*/
+  memcpy(*arr_out0, self->bin_edges(i).data(), nbytes);
+}
+SWIGINTERN void eec_Hist3D_Sl_eec_axis_id_Sc_eec_axis_id_Sc_eec_axis_id_Sg__npy_get_hist_errs(eec::Hist3D< eec::axis::id,eec::axis::id,eec::axis::id > *self,double **arr_out0,int *n0,int *n1,int *n2,double **arr_out1,int *m0,int *m1,int *m2,bool include_overflows=true,unsigned int hist_i=0){
+    /*@SWIG:eec/swig/eec.i,106,MALLOC_3D_VALUE_ARRAY@*/
+  *n0 = self->hist_size(include_overflows, 0);
+  *n1 = self->hist_size(include_overflows, 1);
+  *n2 = self->hist_size(include_overflows, 2);
+  size_t nbytes0 = size_t(*n0)*size_t(*n1)*size_t(*n2)*sizeof(double);
+  *arr_out0 = (double *) malloc(nbytes0);
+  if (*arr_out0 == NULL) {
+    PyErr_Format(PyExc_MemoryError, "Failed to allocate %zu bytes", nbytes0);
+    return;
+  }
+/*@SWIG@*/
+
+
+    /*@SWIG:eec/swig/eec.i,106,MALLOC_3D_VALUE_ARRAY@*/
+  *m0 = self->hist_size(include_overflows, 0);
+  *m1 = self->hist_size(include_overflows, 1);
+  *m2 = self->hist_size(include_overflows, 2);
+  size_t nbytes1 = size_t(*m0)*size_t(*m1)*size_t(*m2)*sizeof(double);
+  *arr_out1 = (double *) malloc(nbytes1);
+  if (*arr_out1 == NULL) {
+    PyErr_Format(PyExc_MemoryError, "Failed to allocate %zu bytes", nbytes1);
+    return;
+  }
+/*@SWIG@*/
+
+
+    try {
+      self->get_hist_errs(*arr_out0, *arr_out1, include_overflows, hist_i);
+    }
+    catch (std::exception & e) {
+      free(*arr_out0);
+      free(*arr_out1);
+      throw e;
+    }
+  }
+SWIGINTERN void eec_Hist3D_Sl_eec_axis_log_Sc_eec_axis_id_Sc_eec_axis_id_Sg__npy_bin_centers(eec::Hist3D< eec::axis::log,eec::axis::id,eec::axis::id > *self,double **arr_out0,int *n0,int i){
+  /*@SWIG:eec/swig/eec.i,95,MALLOC_1D_VALUE_ARRAY@*/
+  *n0 = self->nbins(i);
+  size_t nbytes = size_t(*n0)*sizeof(double);
+  *arr_out0 = (double *) malloc(nbytes);
+  if (*arr_out0 == NULL) {
+    PyErr_Format(PyExc_MemoryError, "Failed to allocate %zu bytes", nbytes);
+    return;
+  }
+/*@SWIG@*/
+  memcpy(*arr_out0, self->bin_centers(i).data(), nbytes);
+}
+SWIGINTERN void eec_Hist3D_Sl_eec_axis_log_Sc_eec_axis_id_Sc_eec_axis_id_Sg__npy_bin_edges(eec::Hist3D< eec::axis::log,eec::axis::id,eec::axis::id > *self,double **arr_out0,int *n0,int i){
+  /*@SWIG:eec/swig/eec.i,95,MALLOC_1D_VALUE_ARRAY@*/
+  *n0 = self->nbins(i);
+  size_t nbytes = size_t(*n0)*sizeof(double);
+  *arr_out0 = (double *) malloc(nbytes);
+  if (*arr_out0 == NULL) {
+    PyErr_Format(PyExc_MemoryError, "Failed to allocate %zu bytes", nbytes);
+    return;
+  }
+/*@SWIG@*/
+  memcpy(*arr_out0, self->bin_edges(i).data(), nbytes);
+}
+SWIGINTERN void eec_Hist3D_Sl_eec_axis_log_Sc_eec_axis_id_Sc_eec_axis_id_Sg__npy_get_hist_errs(eec::Hist3D< eec::axis::log,eec::axis::id,eec::axis::id > *self,double **arr_out0,int *n0,int *n1,int *n2,double **arr_out1,int *m0,int *m1,int *m2,bool include_overflows=true,unsigned int hist_i=0){
+    /*@SWIG:eec/swig/eec.i,106,MALLOC_3D_VALUE_ARRAY@*/
+  *n0 = self->hist_size(include_overflows, 0);
+  *n1 = self->hist_size(include_overflows, 1);
+  *n2 = self->hist_size(include_overflows, 2);
+  size_t nbytes0 = size_t(*n0)*size_t(*n1)*size_t(*n2)*sizeof(double);
+  *arr_out0 = (double *) malloc(nbytes0);
+  if (*arr_out0 == NULL) {
+    PyErr_Format(PyExc_MemoryError, "Failed to allocate %zu bytes", nbytes0);
+    return;
+  }
+/*@SWIG@*/
+
+
+    /*@SWIG:eec/swig/eec.i,106,MALLOC_3D_VALUE_ARRAY@*/
+  *m0 = self->hist_size(include_overflows, 0);
+  *m1 = self->hist_size(include_overflows, 1);
+  *m2 = self->hist_size(include_overflows, 2);
+  size_t nbytes1 = size_t(*m0)*size_t(*m1)*size_t(*m2)*sizeof(double);
+  *arr_out1 = (double *) malloc(nbytes1);
+  if (*arr_out1 == NULL) {
+    PyErr_Format(PyExc_MemoryError, "Failed to allocate %zu bytes", nbytes1);
+    return;
+  }
+/*@SWIG@*/
+
+
+    try {
+      self->get_hist_errs(*arr_out0, *arr_out1, include_overflows, hist_i);
+    }
+    catch (std::exception & e) {
+      free(*arr_out0);
+      free(*arr_out1);
+      throw e;
+    }
+  }
+SWIGINTERN void eec_Hist3D_Sl_eec_axis_id_Sc_eec_axis_log_Sc_eec_axis_id_Sg__npy_bin_centers(eec::Hist3D< eec::axis::id,eec::axis::log,eec::axis::id > *self,double **arr_out0,int *n0,int i){
+  /*@SWIG:eec/swig/eec.i,95,MALLOC_1D_VALUE_ARRAY@*/
+  *n0 = self->nbins(i);
+  size_t nbytes = size_t(*n0)*sizeof(double);
+  *arr_out0 = (double *) malloc(nbytes);
+  if (*arr_out0 == NULL) {
+    PyErr_Format(PyExc_MemoryError, "Failed to allocate %zu bytes", nbytes);
+    return;
+  }
+/*@SWIG@*/
+  memcpy(*arr_out0, self->bin_centers(i).data(), nbytes);
+}
+SWIGINTERN void eec_Hist3D_Sl_eec_axis_id_Sc_eec_axis_log_Sc_eec_axis_id_Sg__npy_bin_edges(eec::Hist3D< eec::axis::id,eec::axis::log,eec::axis::id > *self,double **arr_out0,int *n0,int i){
+  /*@SWIG:eec/swig/eec.i,95,MALLOC_1D_VALUE_ARRAY@*/
+  *n0 = self->nbins(i);
+  size_t nbytes = size_t(*n0)*sizeof(double);
+  *arr_out0 = (double *) malloc(nbytes);
+  if (*arr_out0 == NULL) {
+    PyErr_Format(PyExc_MemoryError, "Failed to allocate %zu bytes", nbytes);
+    return;
+  }
+/*@SWIG@*/
+  memcpy(*arr_out0, self->bin_edges(i).data(), nbytes);
+}
+SWIGINTERN void eec_Hist3D_Sl_eec_axis_id_Sc_eec_axis_log_Sc_eec_axis_id_Sg__npy_get_hist_errs(eec::Hist3D< eec::axis::id,eec::axis::log,eec::axis::id > *self,double **arr_out0,int *n0,int *n1,int *n2,double **arr_out1,int *m0,int *m1,int *m2,bool include_overflows=true,unsigned int hist_i=0){
+    /*@SWIG:eec/swig/eec.i,106,MALLOC_3D_VALUE_ARRAY@*/
+  *n0 = self->hist_size(include_overflows, 0);
+  *n1 = self->hist_size(include_overflows, 1);
+  *n2 = self->hist_size(include_overflows, 2);
+  size_t nbytes0 = size_t(*n0)*size_t(*n1)*size_t(*n2)*sizeof(double);
+  *arr_out0 = (double *) malloc(nbytes0);
+  if (*arr_out0 == NULL) {
+    PyErr_Format(PyExc_MemoryError, "Failed to allocate %zu bytes", nbytes0);
+    return;
+  }
+/*@SWIG@*/
+
+
+    /*@SWIG:eec/swig/eec.i,106,MALLOC_3D_VALUE_ARRAY@*/
+  *m0 = self->hist_size(include_overflows, 0);
+  *m1 = self->hist_size(include_overflows, 1);
+  *m2 = self->hist_size(include_overflows, 2);
+  size_t nbytes1 = size_t(*m0)*size_t(*m1)*size_t(*m2)*sizeof(double);
+  *arr_out1 = (double *) malloc(nbytes1);
+  if (*arr_out1 == NULL) {
+    PyErr_Format(PyExc_MemoryError, "Failed to allocate %zu bytes", nbytes1);
+    return;
+  }
+/*@SWIG@*/
+
+
+    try {
+      self->get_hist_errs(*arr_out0, *arr_out1, include_overflows, hist_i);
+    }
+    catch (std::exception & e) {
+      free(*arr_out0);
+      free(*arr_out1);
+      throw e;
+    }
+  }
+SWIGINTERN void eec_Hist3D_Sl_eec_axis_log_Sc_eec_axis_log_Sc_eec_axis_id_Sg__npy_bin_centers(eec::Hist3D< eec::axis::log,eec::axis::log,eec::axis::id > *self,double **arr_out0,int *n0,int i){
+  /*@SWIG:eec/swig/eec.i,95,MALLOC_1D_VALUE_ARRAY@*/
+  *n0 = self->nbins(i);
+  size_t nbytes = size_t(*n0)*sizeof(double);
+  *arr_out0 = (double *) malloc(nbytes);
+  if (*arr_out0 == NULL) {
+    PyErr_Format(PyExc_MemoryError, "Failed to allocate %zu bytes", nbytes);
+    return;
+  }
+/*@SWIG@*/
+  memcpy(*arr_out0, self->bin_centers(i).data(), nbytes);
+}
+SWIGINTERN void eec_Hist3D_Sl_eec_axis_log_Sc_eec_axis_log_Sc_eec_axis_id_Sg__npy_bin_edges(eec::Hist3D< eec::axis::log,eec::axis::log,eec::axis::id > *self,double **arr_out0,int *n0,int i){
+  /*@SWIG:eec/swig/eec.i,95,MALLOC_1D_VALUE_ARRAY@*/
+  *n0 = self->nbins(i);
+  size_t nbytes = size_t(*n0)*sizeof(double);
+  *arr_out0 = (double *) malloc(nbytes);
+  if (*arr_out0 == NULL) {
+    PyErr_Format(PyExc_MemoryError, "Failed to allocate %zu bytes", nbytes);
+    return;
+  }
+/*@SWIG@*/
+  memcpy(*arr_out0, self->bin_edges(i).data(), nbytes);
+}
+SWIGINTERN void eec_Hist3D_Sl_eec_axis_log_Sc_eec_axis_log_Sc_eec_axis_id_Sg__npy_get_hist_errs(eec::Hist3D< eec::axis::log,eec::axis::log,eec::axis::id > *self,double **arr_out0,int *n0,int *n1,int *n2,double **arr_out1,int *m0,int *m1,int *m2,bool include_overflows=true,unsigned int hist_i=0){
+    /*@SWIG:eec/swig/eec.i,106,MALLOC_3D_VALUE_ARRAY@*/
+  *n0 = self->hist_size(include_overflows, 0);
+  *n1 = self->hist_size(include_overflows, 1);
+  *n2 = self->hist_size(include_overflows, 2);
+  size_t nbytes0 = size_t(*n0)*size_t(*n1)*size_t(*n2)*sizeof(double);
+  *arr_out0 = (double *) malloc(nbytes0);
+  if (*arr_out0 == NULL) {
+    PyErr_Format(PyExc_MemoryError, "Failed to allocate %zu bytes", nbytes0);
+    return;
+  }
+/*@SWIG@*/
+
+
+    /*@SWIG:eec/swig/eec.i,106,MALLOC_3D_VALUE_ARRAY@*/
+  *m0 = self->hist_size(include_overflows, 0);
+  *m1 = self->hist_size(include_overflows, 1);
+  *m2 = self->hist_size(include_overflows, 2);
+  size_t nbytes1 = size_t(*m0)*size_t(*m1)*size_t(*m2)*sizeof(double);
+  *arr_out1 = (double *) malloc(nbytes1);
+  if (*arr_out1 == NULL) {
+    PyErr_Format(PyExc_MemoryError, "Failed to allocate %zu bytes", nbytes1);
+    return;
+  }
+/*@SWIG@*/
+
+
+    try {
+      self->get_hist_errs(*arr_out0, *arr_out1, include_overflows, hist_i);
+    }
+    catch (std::exception & e) {
+      free(*arr_out0);
+      free(*arr_out1);
+      throw e;
+    }
+  }
+
+/* Macros to extract array attributes.
+ */
+#if NPY_API_VERSION < 0x00000007
+#define is_array(a)            ((a) && PyArray_Check((PyArrayObject*)a))
+#define array_type(a)          (int)(PyArray_TYPE((PyArrayObject*)a))
+#define array_numdims(a)       (((PyArrayObject*)a)->nd)
+#define array_dimensions(a)    (((PyArrayObject*)a)->dimensions)
+#define array_size(a,i)        (((PyArrayObject*)a)->dimensions[i])
+#define array_strides(a)       (((PyArrayObject*)a)->strides)
+#define array_stride(a,i)      (((PyArrayObject*)a)->strides[i])
+#define array_data(a)          (((PyArrayObject*)a)->data)
+#define array_descr(a)         (((PyArrayObject*)a)->descr)
+#define array_flags(a)         (((PyArrayObject*)a)->flags)
+#define array_clearflags(a,f)  (((PyArrayObject*)a)->flags) &= ~f
+#define array_enableflags(a,f) (((PyArrayObject*)a)->flags) = f
+#define array_is_fortran(a)    (PyArray_ISFORTRAN((PyArrayObject*)a))
+#else
+#define is_array(a)            ((a) && PyArray_Check(a))
+#define array_type(a)          PyArray_TYPE((PyArrayObject*)a)
+#define array_numdims(a)       PyArray_NDIM((PyArrayObject*)a)
+#define array_dimensions(a)    PyArray_DIMS((PyArrayObject*)a)
+#define array_strides(a)       PyArray_STRIDES((PyArrayObject*)a)
+#define array_stride(a,i)      PyArray_STRIDE((PyArrayObject*)a,i)
+#define array_size(a,i)        PyArray_DIM((PyArrayObject*)a,i)
+#define array_data(a)          PyArray_DATA((PyArrayObject*)a)
+#define array_descr(a)         PyArray_DESCR((PyArrayObject*)a)
+#define array_flags(a)         PyArray_FLAGS((PyArrayObject*)a)
+#define array_enableflags(a,f) PyArray_ENABLEFLAGS((PyArrayObject*)a,f)
+#define array_clearflags(a,f)  PyArray_CLEARFLAGS((PyArrayObject*)a,f)
+#define array_is_fortran(a)    (PyArray_IS_F_CONTIGUOUS((PyArrayObject*)a))
+#endif
+#define array_is_contiguous(a) (PyArray_ISCONTIGUOUS((PyArrayObject*)a))
+#define array_is_native(a)     (PyArray_ISNOTSWAPPED((PyArrayObject*)a))
+
+
+  /* Given a PyObject pointer, cast it to a PyArrayObject pointer if
+   * legal.  If not, set the python error string appropriately and
+   * return NULL.
+   */
+  PyArrayObject* obj_to_array_no_conversion(PyObject* input,
+                                            int        typecode)
+  {
+    PyArrayObject* ary = NULL;
+    if (is_array(input) && (typecode == NPY_NOTYPE ||
+                            PyArray_EquivTypenums(array_type(input), typecode)))
+    {
+      ary = (PyArrayObject*) input;
+    }
+    else if is_array(input)
+    {
+      const char* desired_type = typecode_string(typecode);
+      const char* actual_type  = typecode_string(array_type(input));
+      PyErr_Format(PyExc_TypeError,
+                   "Array of type '%s' required.  Array of type '%s' given",
+                   desired_type, actual_type);
+      ary = NULL;
+    }
+    else
+    {
+      const char* desired_type = typecode_string(typecode);
+      const char* actual_type  = pytype_string(input);
+      PyErr_Format(PyExc_TypeError,
+                   "Array of type '%s' required.  A '%s' was given",
+                   desired_type,
+                   actual_type);
+      ary = NULL;
+    }
+    return ary;
+  }
+
+  /* Convert the given PyObject to a NumPy array with the given
+   * typecode.  On success, return a valid PyArrayObject* with the
+   * correct type.  On failure, the python error string will be set and
+   * the routine returns NULL.
+   */
+  PyArrayObject* obj_to_array_allow_conversion(PyObject* input,
+                                               int       typecode,
+                                               int*      is_new_object)
+  {
+    PyArrayObject* ary = NULL;
+    PyObject*      py_obj;
+    if (is_array(input) && (typecode == NPY_NOTYPE ||
+                            PyArray_EquivTypenums(array_type(input),typecode)))
+    {
+      ary = (PyArrayObject*) input;
+      *is_new_object = 0;
+    }
+    else
+    {
+      py_obj = PyArray_FROMANY(input, typecode, 0, 0, NPY_ARRAY_DEFAULT);
+      /* If NULL, PyArray_FromObject will have set python error value.*/
+      ary = (PyArrayObject*) py_obj;
+      *is_new_object = 1;
+    }
+    return ary;
+  }
+
+  /* Given a PyArrayObject, check to see if it is contiguous.  If so,
+   * return the input pointer and flag it as not a new object.  If it is
+   * not contiguous, create a new PyArrayObject using the original data,
+   * flag it as a new object and return the pointer.
+   */
+  PyArrayObject* make_contiguous(PyArrayObject* ary,
+                                 int*           is_new_object,
+                                 int            min_dims,
+                                 int            max_dims)
+  {
+    PyArrayObject* result;
+    if (array_is_contiguous(ary))
+    {
+      result = ary;
+      *is_new_object = 0;
+    }
+    else
+    {
+      result = (PyArrayObject*) PyArray_ContiguousFromObject((PyObject*)ary,
+                                                              array_type(ary),
+                                                              min_dims,
+                                                              max_dims);
+      *is_new_object = 1;
+    }
+    return result;
+  }
+
+  /* Given a PyArrayObject, check to see if it is Fortran-contiguous.
+   * If so, return the input pointer, but do not flag it as not a new
+   * object.  If it is not Fortran-contiguous, create a new
+   * PyArrayObject using the original data, flag it as a new object
+   * and return the pointer.
+   */
+  PyArrayObject* make_fortran(PyArrayObject* ary,
+                              int*           is_new_object)
+  {
+    PyArrayObject* result;
+    if (array_is_fortran(ary))
+    {
+      result = ary;
+      *is_new_object = 0;
+    }
+    else
+    {
+      Py_INCREF(array_descr(ary));
+      result = (PyArrayObject*) PyArray_FromArray(ary,
+                                                  array_descr(ary),
+#if NPY_API_VERSION < 0x00000007
+                                                  NPY_FORTRANORDER);
+#else
+                                                  NPY_ARRAY_F_CONTIGUOUS);
+#endif
+      *is_new_object = 1;
+    }
+    return result;
+  }
+
+  /* Convert a given PyObject to a contiguous PyArrayObject of the
+   * specified type.  If the input object is not a contiguous
+   * PyArrayObject, a new one will be created and the new object flag
+   * will be set.
+   */
+  PyArrayObject* obj_to_array_contiguous_allow_conversion(PyObject* input,
+                                                          int       typecode,
+                                                          int*      is_new_object)
+  {
+    int is_new1 = 0;
+    int is_new2 = 0;
+    PyArrayObject* ary2;
+    PyArrayObject* ary1 = obj_to_array_allow_conversion(input,
+                                                        typecode,
+                                                        &is_new1);
+    if (ary1)
+    {
+      ary2 = make_contiguous(ary1, &is_new2, 0, 0);
+      if ( is_new1 && is_new2)
+      {
+        Py_DECREF(ary1);
+      }
+      ary1 = ary2;
+    }
+    *is_new_object = is_new1 || is_new2;
+    return ary1;
+  }
+
+  /* Convert a given PyObject to a Fortran-ordered PyArrayObject of the
+   * specified type.  If the input object is not a Fortran-ordered
+   * PyArrayObject, a new one will be created and the new object flag
+   * will be set.
+   */
+  PyArrayObject* obj_to_array_fortran_allow_conversion(PyObject* input,
+                                                       int       typecode,
+                                                       int*      is_new_object)
+  {
+    int is_new1 = 0;
+    int is_new2 = 0;
+    PyArrayObject* ary2;
+    PyArrayObject* ary1 = obj_to_array_allow_conversion(input,
+                                                        typecode,
+                                                        &is_new1);
+    if (ary1)
+    {
+      ary2 = make_fortran(ary1, &is_new2);
+      if (is_new1 && is_new2)
+      {
+        Py_DECREF(ary1);
+      }
+      ary1 = ary2;
+    }
+    *is_new_object = is_new1 || is_new2;
+    return ary1;
+  }
+
+
+  /* Test whether a python object is contiguous.  If array is
+   * contiguous, return 1.  Otherwise, set the python error string and
+   * return 0.
+   */
+  int require_contiguous(PyArrayObject* ary)
+  {
+    int contiguous = 1;
+    if (!array_is_contiguous(ary))
+    {
+      PyErr_SetString(PyExc_TypeError,
+                      "Array must be contiguous.  A non-contiguous array was given");
+      contiguous = 0;
+    }
+    return contiguous;
+  }
+
+  /* Test whether a python object is (C_ or F_) contiguous.  If array is
+   * contiguous, return 1.  Otherwise, set the python error string and
+   * return 0.
+   */
+  int require_c_or_f_contiguous(PyArrayObject* ary)
+  {
+    int contiguous = 1;
+    if (!(array_is_contiguous(ary) || array_is_fortran(ary)))
+    {
+      PyErr_SetString(PyExc_TypeError,
+                      "Array must be contiguous (C_ or F_).  A non-contiguous array was given");
+      contiguous = 0;
+    }
+    return contiguous;
+  }
+
+  /* Require that a numpy array is not byte-swapped.  If the array is
+   * not byte-swapped, return 1.  Otherwise, set the python error string
+   * and return 0.
+   */
+  int require_native(PyArrayObject* ary)
+  {
+    int native = 1;
+    if (!array_is_native(ary))
+    {
+      PyErr_SetString(PyExc_TypeError,
+                      "Array must have native byteorder.  "
+                      "A byte-swapped array was given");
+      native = 0;
+    }
+    return native;
+  }
+
+  /* Require the given PyArrayObject to have a specified number of
+   * dimensions.  If the array has the specified number of dimensions,
+   * return 1.  Otherwise, set the python error string and return 0.
+   */
+  int require_dimensions(PyArrayObject* ary,
+                         int            exact_dimensions)
+  {
+    int success = 1;
+    if (array_numdims(ary) != exact_dimensions)
+    {
+      PyErr_Format(PyExc_TypeError,
+                   "Array must have %d dimensions.  Given array has %d dimensions",
+                   exact_dimensions,
+                   array_numdims(ary));
+      success = 0;
+    }
+    return success;
+  }
+
+  /* Require the given PyArrayObject to have one of a list of specified
+   * number of dimensions.  If the array has one of the specified number
+   * of dimensions, return 1.  Otherwise, set the python error string
+   * and return 0.
+   */
+  int require_dimensions_n(PyArrayObject* ary,
+                           int*           exact_dimensions,
+                           int            n)
+  {
+    int success = 0;
+    int i;
+    char dims_str[255] = "";
+    char s[255];
+    for (i = 0; i < n && !success; i++)
+    {
+      if (array_numdims(ary) == exact_dimensions[i])
+      {
+        success = 1;
+      }
+    }
+    if (!success)
+    {
+      for (i = 0; i < n-1; i++)
+      {
+        sprintf(s, "%d, ", exact_dimensions[i]);
+        strcat(dims_str,s);
+      }
+      sprintf(s, " or %d", exact_dimensions[n-1]);
+      strcat(dims_str,s);
+      PyErr_Format(PyExc_TypeError,
+                   "Array must have %s dimensions.  Given array has %d dimensions",
+                   dims_str,
+                   array_numdims(ary));
+    }
+    return success;
+  }
+
+  /* Require the given PyArrayObject to have a specified shape.  If the
+   * array has the specified shape, return 1.  Otherwise, set the python
+   * error string and return 0.
+   */
+  int require_size(PyArrayObject* ary,
+                   npy_intp*      size,
+                   int            n)
+  {
+    int i;
+    int success = 1;
+    size_t len;
+    char desired_dims[255] = "[";
+    char s[255];
+    char actual_dims[255] = "[";
+    for(i=0; i < n;i++)
+    {
+      if (size[i] != -1 &&  size[i] != array_size(ary,i))
+      {
+        success = 0;
+      }
+    }
+    if (!success)
+    {
+      for (i = 0; i < n; i++)
+      {
+        if (size[i] == -1)
+        {
+          sprintf(s, "*,");
+        }
+        else
+        {
+          sprintf(s, "%ld,", (long int)size[i]);
+        }
+        strcat(desired_dims,s);
+      }
+      len = strlen(desired_dims);
+      desired_dims[len-1] = ']';
+      for (i = 0; i < n; i++)
+      {
+        sprintf(s, "%ld,", (long int)array_size(ary,i));
+        strcat(actual_dims,s);
+      }
+      len = strlen(actual_dims);
+      actual_dims[len-1] = ']';
+      PyErr_Format(PyExc_TypeError,
+                   "Array must have shape of %s.  Given array has shape of %s",
+                   desired_dims,
+                   actual_dims);
+    }
+    return success;
+  }
+
+  /* Require the given PyArrayObject to to be Fortran ordered.  If the
+   * the PyArrayObject is already Fortran ordered, do nothing.  Else,
+   * set the Fortran ordering flag and recompute the strides.
+   */
+  int require_fortran(PyArrayObject* ary)
+  {
+    int success = 1;
+    int nd = array_numdims(ary);
+    int i;
+    npy_intp * strides = array_strides(ary);
+    if (array_is_fortran(ary)) return success;
+    int n_non_one = 0;
+    /* Set the Fortran ordered flag */
+    const npy_intp *dims = array_dimensions(ary);
+    for (i=0; i < nd; ++i)
+      n_non_one += (dims[i] != 1) ? 1 : 0;
+    if (n_non_one > 1)
+      array_clearflags(ary,NPY_ARRAY_CARRAY);
+    array_enableflags(ary,NPY_ARRAY_FARRAY);
+    /* Recompute the strides */
+    strides[0] = strides[nd-1];
+    for (i=1; i < nd; ++i)
+      strides[i] = strides[i-1] * array_size(ary,i-1);
+    return success;
+  }
+
+
+
+SWIGINTERN void eec_EECEvents_add_event(eec::EECEvents *self,double *particles,int mult,int nfeatures,double weight=1.0){
+    self->append(particles, mult, weight);
+  }
+
 SWIGINTERN swig_type_info*
 SWIG_pchar_descriptor(void)
 {
@@ -4992,6 +5815,25 @@ SWIG_From_std_string  (const std::string& s)
   return SWIG_FromCharPtrAndSize(s.data(), s.size());
 }
 
+SWIGINTERN std::string eec_EECBase___str__(eec::EECBase const *self){
+  return self->description();
+}
+SWIGINTERN std::string eec_EECBase___repr__(eec::EECBase const *self){
+  return self->description();
+}
+SWIGINTERN void eec_EECBase_npy_compute(eec::EECBase *self,double *particles,int mult,int nfeatures,double weight=1.0,int thread_i=0){
+    if (nfeatures != (int) self->nfeatures()) {
+      std::ostringstream oss;
+      oss << "Got array with " << nfeatures << " per particle, expected "
+          << self->nfeatures() << " per particle";
+      throw std::runtime_error(oss.str());
+      return;
+    }
+    self->compute(particles, mult, weight, thread_i);
+  }
+SWIGINTERN void eec_EECBase_operator_Sp__SP_(eec::EECBase *self,eec::EECEvents const &evs){
+    self->batch_compute(evs);
+  }
 #ifdef __cplusplus
 extern "C" {
 #endif
@@ -9425,6 +10267,33 @@ SWIGINTERN PyObject *vectorUnsigned_swiginit(PyObject *SWIGUNUSEDPARM(self), PyO
   return SWIG_Python_InitShadowInstance(args);
 }
 
+SWIGINTERN PyObject *_wrap_delete_HistBase(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
+  PyObject *resultobj = 0;
+  eec::HistBase *arg1 = (eec::HistBase *) 0 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  PyObject *swig_obj[1] ;
+  
+  if (!args) SWIG_fail;
+  swig_obj[0] = args;
+  res1 = SWIG_ConvertPtr(swig_obj[0], &argp1,SWIGTYPE_p_eec__HistBase, SWIG_POINTER_DISOWN |  0 );
+  if (!SWIG_IsOK(res1)) {
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "delete_HistBase" "', argument " "1"" of type '" "eec::HistBase *""'"); 
+  }
+  arg1 = reinterpret_cast< eec::HistBase * >(argp1);
+  {
+    try {
+      delete arg1; 
+    }
+    CATCH_STD_EXCEPTION
+  }
+  resultobj = SWIG_Py_Void();
+  return resultobj;
+fail:
+  return NULL;
+}
+
+
 SWIGINTERN PyObject *_wrap_HistBase_num_threads(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
   PyObject *resultobj = 0;
   eec::HistBase *arg1 = (eec::HistBase *) 0 ;
@@ -9453,140 +10322,50 @@ fail:
 }
 
 
-SWIGINTERN PyObject *_wrap_HistBase_get_hist_size(PyObject *SWIGUNUSEDPARM(self), PyObject *args, PyObject *kwargs) {
+SWIGINTERN PyObject *_wrap_HistBase_hist_size(PyObject *SWIGUNUSEDPARM(self), PyObject *args, PyObject *kwargs) {
   PyObject *resultobj = 0;
   eec::HistBase *arg1 = (eec::HistBase *) 0 ;
   bool arg2 ;
+  int arg3 = (int) -1 ;
   void *argp1 = 0 ;
   int res1 = 0 ;
   bool val2 ;
   int ecode2 = 0 ;
+  int val3 ;
+  int ecode3 = 0 ;
   PyObject * obj0 = 0 ;
   PyObject * obj1 = 0 ;
+  PyObject * obj2 = 0 ;
   char * kwnames[] = {
-    (char *)"self",  (char *)"arg2",  NULL 
+    (char *)"self",  (char *)"arg2",  (char *)"arg3",  NULL 
   };
   size_t result;
   
-  if (!PyArg_ParseTupleAndKeywords(args, kwargs, "OO:HistBase_get_hist_size", kwnames, &obj0, &obj1)) SWIG_fail;
+  if (!PyArg_ParseTupleAndKeywords(args, kwargs, "OO|O:HistBase_hist_size", kwnames, &obj0, &obj1, &obj2)) SWIG_fail;
   res1 = SWIG_ConvertPtr(obj0, &argp1,SWIGTYPE_p_eec__HistBase, 0 |  0 );
   if (!SWIG_IsOK(res1)) {
-    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "HistBase_get_hist_size" "', argument " "1"" of type '" "eec::HistBase const *""'"); 
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "HistBase_hist_size" "', argument " "1"" of type '" "eec::HistBase const *""'"); 
   }
   arg1 = reinterpret_cast< eec::HistBase * >(argp1);
   ecode2 = SWIG_AsVal_bool(obj1, &val2);
   if (!SWIG_IsOK(ecode2)) {
-    SWIG_exception_fail(SWIG_ArgError(ecode2), "in method '" "HistBase_get_hist_size" "', argument " "2"" of type '" "bool""'");
+    SWIG_exception_fail(SWIG_ArgError(ecode2), "in method '" "HistBase_hist_size" "', argument " "2"" of type '" "bool""'");
   } 
   arg2 = static_cast< bool >(val2);
+  if (obj2) {
+    ecode3 = SWIG_AsVal_int(obj2, &val3);
+    if (!SWIG_IsOK(ecode3)) {
+      SWIG_exception_fail(SWIG_ArgError(ecode3), "in method '" "HistBase_hist_size" "', argument " "3"" of type '" "int""'");
+    } 
+    arg3 = static_cast< int >(val3);
+  }
   {
     try {
-      result = ((eec::HistBase const *)arg1)->get_hist_size(arg2); 
+      result = ((eec::HistBase const *)arg1)->hist_size(arg2,arg3); 
     }
     CATCH_STD_EXCEPTION
   }
   resultobj = SWIG_From_size_t(static_cast< size_t >(result));
-  return resultobj;
-fail:
-  return NULL;
-}
-
-
-SWIGINTERN PyObject *_wrap_HistBase_get_hist(PyObject *SWIGUNUSEDPARM(self), PyObject *args, PyObject *kwargs) {
-  PyObject *resultobj = 0;
-  eec::HistBase *arg1 = (eec::HistBase *) 0 ;
-  double *arg2 = (double *) 0 ;
-  double *arg3 = (double *) 0 ;
-  size_t arg4 ;
-  bool arg5 ;
-  unsigned int arg6 ;
-  void *argp1 = 0 ;
-  int res1 = 0 ;
-  void *argp2 = 0 ;
-  int res2 = 0 ;
-  void *argp3 = 0 ;
-  int res3 = 0 ;
-  size_t val4 ;
-  int ecode4 = 0 ;
-  bool val5 ;
-  int ecode5 = 0 ;
-  unsigned int val6 ;
-  int ecode6 = 0 ;
-  PyObject * obj0 = 0 ;
-  PyObject * obj1 = 0 ;
-  PyObject * obj2 = 0 ;
-  PyObject * obj3 = 0 ;
-  PyObject * obj4 = 0 ;
-  PyObject * obj5 = 0 ;
-  char * kwnames[] = {
-    (char *)"self",  (char *)"arg2",  (char *)"arg3",  (char *)"arg4",  (char *)"arg5",  (char *)"arg6",  NULL 
-  };
-  
-  if (!PyArg_ParseTupleAndKeywords(args, kwargs, "OOOOOO:HistBase_get_hist", kwnames, &obj0, &obj1, &obj2, &obj3, &obj4, &obj5)) SWIG_fail;
-  res1 = SWIG_ConvertPtr(obj0, &argp1,SWIGTYPE_p_eec__HistBase, 0 |  0 );
-  if (!SWIG_IsOK(res1)) {
-    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "HistBase_get_hist" "', argument " "1"" of type '" "eec::HistBase const *""'"); 
-  }
-  arg1 = reinterpret_cast< eec::HistBase * >(argp1);
-  res2 = SWIG_ConvertPtr(obj1, &argp2,SWIGTYPE_p_double, 0 |  0 );
-  if (!SWIG_IsOK(res2)) {
-    SWIG_exception_fail(SWIG_ArgError(res2), "in method '" "HistBase_get_hist" "', argument " "2"" of type '" "double *""'"); 
-  }
-  arg2 = reinterpret_cast< double * >(argp2);
-  res3 = SWIG_ConvertPtr(obj2, &argp3,SWIGTYPE_p_double, 0 |  0 );
-  if (!SWIG_IsOK(res3)) {
-    SWIG_exception_fail(SWIG_ArgError(res3), "in method '" "HistBase_get_hist" "', argument " "3"" of type '" "double *""'"); 
-  }
-  arg3 = reinterpret_cast< double * >(argp3);
-  ecode4 = SWIG_AsVal_size_t(obj3, &val4);
-  if (!SWIG_IsOK(ecode4)) {
-    SWIG_exception_fail(SWIG_ArgError(ecode4), "in method '" "HistBase_get_hist" "', argument " "4"" of type '" "size_t""'");
-  } 
-  arg4 = static_cast< size_t >(val4);
-  ecode5 = SWIG_AsVal_bool(obj4, &val5);
-  if (!SWIG_IsOK(ecode5)) {
-    SWIG_exception_fail(SWIG_ArgError(ecode5), "in method '" "HistBase_get_hist" "', argument " "5"" of type '" "bool""'");
-  } 
-  arg5 = static_cast< bool >(val5);
-  ecode6 = SWIG_AsVal_unsigned_SS_int(obj5, &val6);
-  if (!SWIG_IsOK(ecode6)) {
-    SWIG_exception_fail(SWIG_ArgError(ecode6), "in method '" "HistBase_get_hist" "', argument " "6"" of type '" "unsigned int""'");
-  } 
-  arg6 = static_cast< unsigned int >(val6);
-  {
-    try {
-      ((eec::HistBase const *)arg1)->get_hist(arg2,arg3,arg4,arg5,arg6); 
-    }
-    CATCH_STD_EXCEPTION
-  }
-  resultobj = SWIG_Py_Void();
-  return resultobj;
-fail:
-  return NULL;
-}
-
-
-SWIGINTERN PyObject *_wrap_delete_HistBase(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
-  PyObject *resultobj = 0;
-  eec::HistBase *arg1 = (eec::HistBase *) 0 ;
-  void *argp1 = 0 ;
-  int res1 = 0 ;
-  PyObject *swig_obj[1] ;
-  
-  if (!args) SWIG_fail;
-  swig_obj[0] = args;
-  res1 = SWIG_ConvertPtr(swig_obj[0], &argp1,SWIGTYPE_p_eec__HistBase, SWIG_POINTER_DISOWN |  0 );
-  if (!SWIG_IsOK(res1)) {
-    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "delete_HistBase" "', argument " "1"" of type '" "eec::HistBase *""'"); 
-  }
-  arg1 = reinterpret_cast< eec::HistBase * >(argp1);
-  {
-    try {
-      delete arg1; 
-    }
-    CATCH_STD_EXCEPTION
-  }
-  resultobj = SWIG_Py_Void();
   return resultobj;
 fail:
   return NULL;
@@ -9600,25 +10379,7 @@ SWIGINTERN PyObject *HistBase_swigregister(PyObject *SWIGUNUSEDPARM(self), PyObj
   return SWIG_Py_Void();
 }
 
-SWIGINTERN PyObject *_wrap_new_Hist1DId__SWIG_0(PyObject *SWIGUNUSEDPARM(self), Py_ssize_t nobjs, PyObject **SWIGUNUSEDPARM(swig_obj)) {
-  PyObject *resultobj = 0;
-  eec::Hist1D< eec::axis::id > *result = 0 ;
-  
-  if ((nobjs < 0) || (nobjs > 0)) SWIG_fail;
-  {
-    try {
-      result = (eec::Hist1D< eec::axis::id > *)new eec::Hist1D< eec::axis::id >(); 
-    }
-    CATCH_STD_EXCEPTION
-  }
-  resultobj = SWIG_NewPointerObj(SWIG_as_voidptr(result), SWIGTYPE_p_eec__Hist1DT_boost__histogram__axis__transform__id_t, SWIG_POINTER_NEW |  0 );
-  return resultobj;
-fail:
-  return NULL;
-}
-
-
-SWIGINTERN PyObject *_wrap_new_Hist1DId__SWIG_1(PyObject *SWIGUNUSEDPARM(self), Py_ssize_t nobjs, PyObject **swig_obj) {
+SWIGINTERN PyObject *_wrap_new_Hist1DId(PyObject *SWIGUNUSEDPARM(self), PyObject *args, PyObject *kwargs) {
   PyObject *resultobj = 0;
   unsigned int arg1 ;
   double arg2 ;
@@ -9632,26 +10393,33 @@ SWIGINTERN PyObject *_wrap_new_Hist1DId__SWIG_1(PyObject *SWIGUNUSEDPARM(self), 
   int ecode3 = 0 ;
   int val4 ;
   int ecode4 = 0 ;
+  PyObject * obj0 = 0 ;
+  PyObject * obj1 = 0 ;
+  PyObject * obj2 = 0 ;
+  PyObject * obj3 = 0 ;
+  char * kwnames[] = {
+    (char *)"nbins",  (char *)"axis_min",  (char *)"axis_max",  (char *)"num_threads",  NULL 
+  };
   eec::Hist1D< eec::axis::id > *result = 0 ;
   
-  if ((nobjs < 3) || (nobjs > 4)) SWIG_fail;
-  ecode1 = SWIG_AsVal_unsigned_SS_int(swig_obj[0], &val1);
+  if (!PyArg_ParseTupleAndKeywords(args, kwargs, "OOO|O:new_Hist1DId", kwnames, &obj0, &obj1, &obj2, &obj3)) SWIG_fail;
+  ecode1 = SWIG_AsVal_unsigned_SS_int(obj0, &val1);
   if (!SWIG_IsOK(ecode1)) {
     SWIG_exception_fail(SWIG_ArgError(ecode1), "in method '" "new_Hist1DId" "', argument " "1"" of type '" "unsigned int""'");
   } 
   arg1 = static_cast< unsigned int >(val1);
-  ecode2 = SWIG_AsVal_double(swig_obj[1], &val2);
+  ecode2 = SWIG_AsVal_double(obj1, &val2);
   if (!SWIG_IsOK(ecode2)) {
     SWIG_exception_fail(SWIG_ArgError(ecode2), "in method '" "new_Hist1DId" "', argument " "2"" of type '" "double""'");
   } 
   arg2 = static_cast< double >(val2);
-  ecode3 = SWIG_AsVal_double(swig_obj[2], &val3);
+  ecode3 = SWIG_AsVal_double(obj2, &val3);
   if (!SWIG_IsOK(ecode3)) {
     SWIG_exception_fail(SWIG_ArgError(ecode3), "in method '" "new_Hist1DId" "', argument " "3"" of type '" "double""'");
   } 
   arg3 = static_cast< double >(val3);
-  if (swig_obj[3]) {
-    ecode4 = SWIG_AsVal_int(swig_obj[3], &val4);
+  if (obj3) {
+    ecode4 = SWIG_AsVal_int(obj3, &val4);
     if (!SWIG_IsOK(ecode4)) {
       SWIG_exception_fail(SWIG_ArgError(ecode4), "in method '" "new_Hist1DId" "', argument " "4"" of type '" "int""'");
     } 
@@ -9667,58 +10435,6 @@ SWIGINTERN PyObject *_wrap_new_Hist1DId__SWIG_1(PyObject *SWIGUNUSEDPARM(self), 
   return resultobj;
 fail:
   return NULL;
-}
-
-
-SWIGINTERN PyObject *_wrap_new_Hist1DId(PyObject *self, PyObject *args) {
-  Py_ssize_t argc;
-  PyObject *argv[5] = {
-    0
-  };
-  
-  if (!(argc = SWIG_Python_UnpackTuple(args, "new_Hist1DId", 0, 4, argv))) SWIG_fail;
-  --argc;
-  if (argc == 0) {
-    return _wrap_new_Hist1DId__SWIG_0(self, argc, argv);
-  }
-  if ((argc >= 3) && (argc <= 4)) {
-    int _v;
-    {
-      int res = SWIG_AsVal_unsigned_SS_int(argv[0], NULL);
-      _v = SWIG_CheckState(res);
-    }
-    if (_v) {
-      {
-        int res = SWIG_AsVal_double(argv[1], NULL);
-        _v = SWIG_CheckState(res);
-      }
-      if (_v) {
-        {
-          int res = SWIG_AsVal_double(argv[2], NULL);
-          _v = SWIG_CheckState(res);
-        }
-        if (_v) {
-          if (argc <= 3) {
-            return _wrap_new_Hist1DId__SWIG_1(self, argc, argv);
-          }
-          {
-            int res = SWIG_AsVal_int(argv[3], NULL);
-            _v = SWIG_CheckState(res);
-          }
-          if (_v) {
-            return _wrap_new_Hist1DId__SWIG_1(self, argc, argv);
-          }
-        }
-      }
-    }
-  }
-  
-fail:
-  SWIG_Python_RaiseOrModifyTypeError("Wrong number or type of arguments for overloaded function 'new_Hist1DId'.\n"
-    "  Possible C/C++ prototypes are:\n"
-    "    eec::Hist1D< eec::axis::id >::Hist1D()\n"
-    "    eec::Hist1D< eec::axis::id >::Hist1D(unsigned int,double,double,int)\n");
-  return 0;
 }
 
 
@@ -9777,7 +10493,7 @@ fail:
 }
 
 
-SWIGINTERN PyObject *_wrap_Hist1DId_bin_centers(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
+SWIGINTERN PyObject *_wrap_Hist1DId_bin_centers_vec(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
   PyObject *resultobj = 0;
   eec::Hist1D< eec::axis::id > *arg1 = (eec::Hist1D< eec::axis::id > *) 0 ;
   void *argp1 = 0 ;
@@ -9789,7 +10505,7 @@ SWIGINTERN PyObject *_wrap_Hist1DId_bin_centers(PyObject *SWIGUNUSEDPARM(self), 
   swig_obj[0] = args;
   res1 = SWIG_ConvertPtr(swig_obj[0], &argp1,SWIGTYPE_p_eec__Hist1DT_boost__histogram__axis__transform__id_t, 0 |  0 );
   if (!SWIG_IsOK(res1)) {
-    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "Hist1DId_bin_centers" "', argument " "1"" of type '" "eec::Hist1D< eec::axis::id > const *""'"); 
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "Hist1DId_bin_centers_vec" "', argument " "1"" of type '" "eec::Hist1D< eec::axis::id > const *""'"); 
   }
   arg1 = reinterpret_cast< eec::Hist1D< eec::axis::id > * >(argp1);
   {
@@ -9805,7 +10521,7 @@ fail:
 }
 
 
-SWIGINTERN PyObject *_wrap_Hist1DId_bin_edges(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
+SWIGINTERN PyObject *_wrap_Hist1DId_bin_edges_vec(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
   PyObject *resultobj = 0;
   eec::Hist1D< eec::axis::id > *arg1 = (eec::Hist1D< eec::axis::id > *) 0 ;
   void *argp1 = 0 ;
@@ -9817,7 +10533,7 @@ SWIGINTERN PyObject *_wrap_Hist1DId_bin_edges(PyObject *SWIGUNUSEDPARM(self), Py
   swig_obj[0] = args;
   res1 = SWIG_ConvertPtr(swig_obj[0], &argp1,SWIGTYPE_p_eec__Hist1DT_boost__histogram__axis__transform__id_t, 0 |  0 );
   if (!SWIG_IsOK(res1)) {
-    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "Hist1DId_bin_edges" "', argument " "1"" of type '" "eec::Hist1D< eec::axis::id > const *""'"); 
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "Hist1DId_bin_edges_vec" "', argument " "1"" of type '" "eec::Hist1D< eec::axis::id > const *""'"); 
   }
   arg1 = reinterpret_cast< eec::Hist1D< eec::axis::id > * >(argp1);
   {
@@ -9833,41 +10549,309 @@ fail:
 }
 
 
-SWIGINTERN PyObject *_wrap_Hist1DId_get_hist_size(PyObject *SWIGUNUSEDPARM(self), PyObject *args, PyObject *kwargs) {
+SWIGINTERN PyObject *_wrap_Hist1DId_hist_size(PyObject *SWIGUNUSEDPARM(self), PyObject *args, PyObject *kwargs) {
   PyObject *resultobj = 0;
   eec::Hist1D< eec::axis::id > *arg1 = (eec::Hist1D< eec::axis::id > *) 0 ;
   bool arg2 = (bool) true ;
+  int arg3 = (int) -1 ;
   void *argp1 = 0 ;
   int res1 = 0 ;
   bool val2 ;
   int ecode2 = 0 ;
+  int val3 ;
+  int ecode3 = 0 ;
   PyObject * obj0 = 0 ;
   PyObject * obj1 = 0 ;
+  PyObject * obj2 = 0 ;
   char * kwnames[] = {
-    (char *)"self",  (char *)"include_overflows",  NULL 
+    (char *)"self",  (char *)"include_overflows",  (char *)"tmp",  NULL 
   };
   size_t result;
   
-  if (!PyArg_ParseTupleAndKeywords(args, kwargs, "O|O:Hist1DId_get_hist_size", kwnames, &obj0, &obj1)) SWIG_fail;
+  if (!PyArg_ParseTupleAndKeywords(args, kwargs, "O|OO:Hist1DId_hist_size", kwnames, &obj0, &obj1, &obj2)) SWIG_fail;
   res1 = SWIG_ConvertPtr(obj0, &argp1,SWIGTYPE_p_eec__Hist1DT_boost__histogram__axis__transform__id_t, 0 |  0 );
   if (!SWIG_IsOK(res1)) {
-    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "Hist1DId_get_hist_size" "', argument " "1"" of type '" "eec::Hist1D< eec::axis::id > const *""'"); 
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "Hist1DId_hist_size" "', argument " "1"" of type '" "eec::Hist1D< eec::axis::id > const *""'"); 
   }
   arg1 = reinterpret_cast< eec::Hist1D< eec::axis::id > * >(argp1);
   if (obj1) {
     ecode2 = SWIG_AsVal_bool(obj1, &val2);
     if (!SWIG_IsOK(ecode2)) {
-      SWIG_exception_fail(SWIG_ArgError(ecode2), "in method '" "Hist1DId_get_hist_size" "', argument " "2"" of type '" "bool""'");
+      SWIG_exception_fail(SWIG_ArgError(ecode2), "in method '" "Hist1DId_hist_size" "', argument " "2"" of type '" "bool""'");
     } 
     arg2 = static_cast< bool >(val2);
   }
+  if (obj2) {
+    ecode3 = SWIG_AsVal_int(obj2, &val3);
+    if (!SWIG_IsOK(ecode3)) {
+      SWIG_exception_fail(SWIG_ArgError(ecode3), "in method '" "Hist1DId_hist_size" "', argument " "3"" of type '" "int""'");
+    } 
+    arg3 = static_cast< int >(val3);
+  }
   {
     try {
-      result = ((eec::Hist1D< eec::axis::id > const *)arg1)->get_hist_size(arg2); 
+      result = ((eec::Hist1D< eec::axis::id > const *)arg1)->hist_size(arg2,arg3); 
     }
     CATCH_STD_EXCEPTION
   }
   resultobj = SWIG_From_size_t(static_cast< size_t >(result));
+  return resultobj;
+fail:
+  return NULL;
+}
+
+
+SWIGINTERN PyObject *_wrap_Hist1DId_nbins(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
+  PyObject *resultobj = 0;
+  eec::Hist1D< eec::axis::id > *arg1 = (eec::Hist1D< eec::axis::id > *) 0 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  PyObject *swig_obj[1] ;
+  size_t result;
+  
+  if (!args) SWIG_fail;
+  swig_obj[0] = args;
+  res1 = SWIG_ConvertPtr(swig_obj[0], &argp1,SWIGTYPE_p_eec__Hist1DT_boost__histogram__axis__transform__id_t, 0 |  0 );
+  if (!SWIG_IsOK(res1)) {
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "Hist1DId_nbins" "', argument " "1"" of type '" "eec::Hist1D< eec::axis::id > const *""'"); 
+  }
+  arg1 = reinterpret_cast< eec::Hist1D< eec::axis::id > * >(argp1);
+  {
+    try {
+      result = ((eec::Hist1D< eec::axis::id > const *)arg1)->nbins(); 
+    }
+    CATCH_STD_EXCEPTION
+  }
+  resultobj = SWIG_From_size_t(static_cast< size_t >(result));
+  return resultobj;
+fail:
+  return NULL;
+}
+
+
+SWIGINTERN PyObject *_wrap_Hist1DId_bin_centers(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
+  PyObject *resultobj = 0;
+  eec::Hist1D< eec::axis::id > *arg1 = (eec::Hist1D< eec::axis::id > *) 0 ;
+  double **arg2 = (double **) 0 ;
+  int *arg3 = (int *) 0 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  double *data_temp2 = NULL ;
+  int dim_temp2 ;
+  PyObject *swig_obj[1] ;
+  
+  {
+    arg2 = &data_temp2;
+    arg3 = &dim_temp2;
+  }
+  if (!args) SWIG_fail;
+  swig_obj[0] = args;
+  res1 = SWIG_ConvertPtr(swig_obj[0], &argp1,SWIGTYPE_p_eec__Hist1DT_boost__histogram__axis__transform__id_t, 0 |  0 );
+  if (!SWIG_IsOK(res1)) {
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "Hist1DId_bin_centers" "', argument " "1"" of type '" "eec::Hist1D< eec::axis::id > *""'"); 
+  }
+  arg1 = reinterpret_cast< eec::Hist1D< eec::axis::id > * >(argp1);
+  {
+    try {
+      eec_Hist1D_Sl_eec_axis_id_Sg__npy_bin_centers(arg1,arg2,arg3); 
+    }
+    CATCH_STD_EXCEPTION
+  }
+  resultobj = SWIG_Py_Void();
+  {
+    npy_intp dims[1] = {
+      *arg3 
+    };
+    PyObject* obj = PyArray_SimpleNewFromData(1, dims, NPY_DOUBLE, (void*)(*arg2));
+    PyArrayObject* array = (PyArrayObject*) obj;
+    
+    if (!array) SWIG_fail;
+    
+#ifdef SWIGPY_USE_CAPSULE
+    PyObject* cap = PyCapsule_New((void*)(*arg2), SWIGPY_CAPSULE_NAME, free_cap);
+#else
+    PyObject* cap = PyCObject_FromVoidPtr((void*)(*arg2), free);
+#endif
+    
+#if NPY_API_VERSION < 0x00000007
+    PyArray_BASE(array) = cap;
+#else
+    PyArray_SetBaseObject(array,cap);
+#endif
+    
+    resultobj = SWIG_Python_AppendOutput(resultobj,obj);
+  }
+  return resultobj;
+fail:
+  return NULL;
+}
+
+
+SWIGINTERN PyObject *_wrap_Hist1DId_bin_edges(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
+  PyObject *resultobj = 0;
+  eec::Hist1D< eec::axis::id > *arg1 = (eec::Hist1D< eec::axis::id > *) 0 ;
+  double **arg2 = (double **) 0 ;
+  int *arg3 = (int *) 0 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  double *data_temp2 = NULL ;
+  int dim_temp2 ;
+  PyObject *swig_obj[1] ;
+  
+  {
+    arg2 = &data_temp2;
+    arg3 = &dim_temp2;
+  }
+  if (!args) SWIG_fail;
+  swig_obj[0] = args;
+  res1 = SWIG_ConvertPtr(swig_obj[0], &argp1,SWIGTYPE_p_eec__Hist1DT_boost__histogram__axis__transform__id_t, 0 |  0 );
+  if (!SWIG_IsOK(res1)) {
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "Hist1DId_bin_edges" "', argument " "1"" of type '" "eec::Hist1D< eec::axis::id > *""'"); 
+  }
+  arg1 = reinterpret_cast< eec::Hist1D< eec::axis::id > * >(argp1);
+  {
+    try {
+      eec_Hist1D_Sl_eec_axis_id_Sg__npy_bin_edges(arg1,arg2,arg3); 
+    }
+    CATCH_STD_EXCEPTION
+  }
+  resultobj = SWIG_Py_Void();
+  {
+    npy_intp dims[1] = {
+      *arg3 
+    };
+    PyObject* obj = PyArray_SimpleNewFromData(1, dims, NPY_DOUBLE, (void*)(*arg2));
+    PyArrayObject* array = (PyArrayObject*) obj;
+    
+    if (!array) SWIG_fail;
+    
+#ifdef SWIGPY_USE_CAPSULE
+    PyObject* cap = PyCapsule_New((void*)(*arg2), SWIGPY_CAPSULE_NAME, free_cap);
+#else
+    PyObject* cap = PyCObject_FromVoidPtr((void*)(*arg2), free);
+#endif
+    
+#if NPY_API_VERSION < 0x00000007
+    PyArray_BASE(array) = cap;
+#else
+    PyArray_SetBaseObject(array,cap);
+#endif
+    
+    resultobj = SWIG_Python_AppendOutput(resultobj,obj);
+  }
+  return resultobj;
+fail:
+  return NULL;
+}
+
+
+SWIGINTERN PyObject *_wrap_Hist1DId_get_hist_errs(PyObject *SWIGUNUSEDPARM(self), PyObject *args, PyObject *kwargs) {
+  PyObject *resultobj = 0;
+  eec::Hist1D< eec::axis::id > *arg1 = (eec::Hist1D< eec::axis::id > *) 0 ;
+  double **arg2 = (double **) 0 ;
+  int *arg3 = (int *) 0 ;
+  double **arg4 = (double **) 0 ;
+  int *arg5 = (int *) 0 ;
+  bool arg6 = (bool) true ;
+  unsigned int arg7 = (unsigned int) 0 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  double *data_temp2 = NULL ;
+  int dim_temp2 ;
+  double *data_temp4 = NULL ;
+  int dim_temp4 ;
+  bool val6 ;
+  int ecode6 = 0 ;
+  unsigned int val7 ;
+  int ecode7 = 0 ;
+  PyObject * obj0 = 0 ;
+  PyObject * obj1 = 0 ;
+  PyObject * obj2 = 0 ;
+  char * kwnames[] = {
+    (char *)"self",  (char *)"include_overflows",  (char *)"hist_i",  NULL 
+  };
+  
+  {
+    arg2 = &data_temp2;
+    arg3 = &dim_temp2;
+  }
+  {
+    arg4 = &data_temp4;
+    arg5 = &dim_temp4;
+  }
+  if (!PyArg_ParseTupleAndKeywords(args, kwargs, "O|OO:Hist1DId_get_hist_errs", kwnames, &obj0, &obj1, &obj2)) SWIG_fail;
+  res1 = SWIG_ConvertPtr(obj0, &argp1,SWIGTYPE_p_eec__Hist1DT_boost__histogram__axis__transform__id_t, 0 |  0 );
+  if (!SWIG_IsOK(res1)) {
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "Hist1DId_get_hist_errs" "', argument " "1"" of type '" "eec::Hist1D< eec::axis::id > *""'"); 
+  }
+  arg1 = reinterpret_cast< eec::Hist1D< eec::axis::id > * >(argp1);
+  if (obj1) {
+    ecode6 = SWIG_AsVal_bool(obj1, &val6);
+    if (!SWIG_IsOK(ecode6)) {
+      SWIG_exception_fail(SWIG_ArgError(ecode6), "in method '" "Hist1DId_get_hist_errs" "', argument " "6"" of type '" "bool""'");
+    } 
+    arg6 = static_cast< bool >(val6);
+  }
+  if (obj2) {
+    ecode7 = SWIG_AsVal_unsigned_SS_int(obj2, &val7);
+    if (!SWIG_IsOK(ecode7)) {
+      SWIG_exception_fail(SWIG_ArgError(ecode7), "in method '" "Hist1DId_get_hist_errs" "', argument " "7"" of type '" "unsigned int""'");
+    } 
+    arg7 = static_cast< unsigned int >(val7);
+  }
+  {
+    try {
+      eec_Hist1D_Sl_eec_axis_id_Sg__npy_get_hist_errs(arg1,arg2,arg3,arg4,arg5,arg6,arg7); 
+    }
+    CATCH_STD_EXCEPTION
+  }
+  resultobj = SWIG_Py_Void();
+  {
+    npy_intp dims[1] = {
+      *arg3 
+    };
+    PyObject* obj = PyArray_SimpleNewFromData(1, dims, NPY_DOUBLE, (void*)(*arg2));
+    PyArrayObject* array = (PyArrayObject*) obj;
+    
+    if (!array) SWIG_fail;
+    
+#ifdef SWIGPY_USE_CAPSULE
+    PyObject* cap = PyCapsule_New((void*)(*arg2), SWIGPY_CAPSULE_NAME, free_cap);
+#else
+    PyObject* cap = PyCObject_FromVoidPtr((void*)(*arg2), free);
+#endif
+    
+#if NPY_API_VERSION < 0x00000007
+    PyArray_BASE(array) = cap;
+#else
+    PyArray_SetBaseObject(array,cap);
+#endif
+    
+    resultobj = SWIG_Python_AppendOutput(resultobj,obj);
+  }
+  {
+    npy_intp dims[1] = {
+      *arg5 
+    };
+    PyObject* obj = PyArray_SimpleNewFromData(1, dims, NPY_DOUBLE, (void*)(*arg4));
+    PyArrayObject* array = (PyArrayObject*) obj;
+    
+    if (!array) SWIG_fail;
+    
+#ifdef SWIGPY_USE_CAPSULE
+    PyObject* cap = PyCapsule_New((void*)(*arg4), SWIGPY_CAPSULE_NAME, free_cap);
+#else
+    PyObject* cap = PyCObject_FromVoidPtr((void*)(*arg4), free);
+#endif
+    
+#if NPY_API_VERSION < 0x00000007
+    PyArray_BASE(array) = cap;
+#else
+    PyArray_SetBaseObject(array,cap);
+#endif
+    
+    resultobj = SWIG_Python_AppendOutput(resultobj,obj);
+  }
   return resultobj;
 fail:
   return NULL;
@@ -9885,25 +10869,7 @@ SWIGINTERN PyObject *Hist1DId_swiginit(PyObject *SWIGUNUSEDPARM(self), PyObject 
   return SWIG_Python_InitShadowInstance(args);
 }
 
-SWIGINTERN PyObject *_wrap_new_Hist1DLog__SWIG_0(PyObject *SWIGUNUSEDPARM(self), Py_ssize_t nobjs, PyObject **SWIGUNUSEDPARM(swig_obj)) {
-  PyObject *resultobj = 0;
-  eec::Hist1D< eec::axis::log > *result = 0 ;
-  
-  if ((nobjs < 0) || (nobjs > 0)) SWIG_fail;
-  {
-    try {
-      result = (eec::Hist1D< eec::axis::log > *)new eec::Hist1D< eec::axis::log >(); 
-    }
-    CATCH_STD_EXCEPTION
-  }
-  resultobj = SWIG_NewPointerObj(SWIG_as_voidptr(result), SWIGTYPE_p_eec__Hist1DT_boost__histogram__axis__transform__log_t, SWIG_POINTER_NEW |  0 );
-  return resultobj;
-fail:
-  return NULL;
-}
-
-
-SWIGINTERN PyObject *_wrap_new_Hist1DLog__SWIG_1(PyObject *SWIGUNUSEDPARM(self), Py_ssize_t nobjs, PyObject **swig_obj) {
+SWIGINTERN PyObject *_wrap_new_Hist1DLog(PyObject *SWIGUNUSEDPARM(self), PyObject *args, PyObject *kwargs) {
   PyObject *resultobj = 0;
   unsigned int arg1 ;
   double arg2 ;
@@ -9917,26 +10883,33 @@ SWIGINTERN PyObject *_wrap_new_Hist1DLog__SWIG_1(PyObject *SWIGUNUSEDPARM(self),
   int ecode3 = 0 ;
   int val4 ;
   int ecode4 = 0 ;
+  PyObject * obj0 = 0 ;
+  PyObject * obj1 = 0 ;
+  PyObject * obj2 = 0 ;
+  PyObject * obj3 = 0 ;
+  char * kwnames[] = {
+    (char *)"nbins",  (char *)"axis_min",  (char *)"axis_max",  (char *)"num_threads",  NULL 
+  };
   eec::Hist1D< eec::axis::log > *result = 0 ;
   
-  if ((nobjs < 3) || (nobjs > 4)) SWIG_fail;
-  ecode1 = SWIG_AsVal_unsigned_SS_int(swig_obj[0], &val1);
+  if (!PyArg_ParseTupleAndKeywords(args, kwargs, "OOO|O:new_Hist1DLog", kwnames, &obj0, &obj1, &obj2, &obj3)) SWIG_fail;
+  ecode1 = SWIG_AsVal_unsigned_SS_int(obj0, &val1);
   if (!SWIG_IsOK(ecode1)) {
     SWIG_exception_fail(SWIG_ArgError(ecode1), "in method '" "new_Hist1DLog" "', argument " "1"" of type '" "unsigned int""'");
   } 
   arg1 = static_cast< unsigned int >(val1);
-  ecode2 = SWIG_AsVal_double(swig_obj[1], &val2);
+  ecode2 = SWIG_AsVal_double(obj1, &val2);
   if (!SWIG_IsOK(ecode2)) {
     SWIG_exception_fail(SWIG_ArgError(ecode2), "in method '" "new_Hist1DLog" "', argument " "2"" of type '" "double""'");
   } 
   arg2 = static_cast< double >(val2);
-  ecode3 = SWIG_AsVal_double(swig_obj[2], &val3);
+  ecode3 = SWIG_AsVal_double(obj2, &val3);
   if (!SWIG_IsOK(ecode3)) {
     SWIG_exception_fail(SWIG_ArgError(ecode3), "in method '" "new_Hist1DLog" "', argument " "3"" of type '" "double""'");
   } 
   arg3 = static_cast< double >(val3);
-  if (swig_obj[3]) {
-    ecode4 = SWIG_AsVal_int(swig_obj[3], &val4);
+  if (obj3) {
+    ecode4 = SWIG_AsVal_int(obj3, &val4);
     if (!SWIG_IsOK(ecode4)) {
       SWIG_exception_fail(SWIG_ArgError(ecode4), "in method '" "new_Hist1DLog" "', argument " "4"" of type '" "int""'");
     } 
@@ -9952,58 +10925,6 @@ SWIGINTERN PyObject *_wrap_new_Hist1DLog__SWIG_1(PyObject *SWIGUNUSEDPARM(self),
   return resultobj;
 fail:
   return NULL;
-}
-
-
-SWIGINTERN PyObject *_wrap_new_Hist1DLog(PyObject *self, PyObject *args) {
-  Py_ssize_t argc;
-  PyObject *argv[5] = {
-    0
-  };
-  
-  if (!(argc = SWIG_Python_UnpackTuple(args, "new_Hist1DLog", 0, 4, argv))) SWIG_fail;
-  --argc;
-  if (argc == 0) {
-    return _wrap_new_Hist1DLog__SWIG_0(self, argc, argv);
-  }
-  if ((argc >= 3) && (argc <= 4)) {
-    int _v;
-    {
-      int res = SWIG_AsVal_unsigned_SS_int(argv[0], NULL);
-      _v = SWIG_CheckState(res);
-    }
-    if (_v) {
-      {
-        int res = SWIG_AsVal_double(argv[1], NULL);
-        _v = SWIG_CheckState(res);
-      }
-      if (_v) {
-        {
-          int res = SWIG_AsVal_double(argv[2], NULL);
-          _v = SWIG_CheckState(res);
-        }
-        if (_v) {
-          if (argc <= 3) {
-            return _wrap_new_Hist1DLog__SWIG_1(self, argc, argv);
-          }
-          {
-            int res = SWIG_AsVal_int(argv[3], NULL);
-            _v = SWIG_CheckState(res);
-          }
-          if (_v) {
-            return _wrap_new_Hist1DLog__SWIG_1(self, argc, argv);
-          }
-        }
-      }
-    }
-  }
-  
-fail:
-  SWIG_Python_RaiseOrModifyTypeError("Wrong number or type of arguments for overloaded function 'new_Hist1DLog'.\n"
-    "  Possible C/C++ prototypes are:\n"
-    "    eec::Hist1D< eec::axis::log >::Hist1D()\n"
-    "    eec::Hist1D< eec::axis::log >::Hist1D(unsigned int,double,double,int)\n");
-  return 0;
 }
 
 
@@ -10062,7 +10983,7 @@ fail:
 }
 
 
-SWIGINTERN PyObject *_wrap_Hist1DLog_bin_centers(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
+SWIGINTERN PyObject *_wrap_Hist1DLog_bin_centers_vec(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
   PyObject *resultobj = 0;
   eec::Hist1D< eec::axis::log > *arg1 = (eec::Hist1D< eec::axis::log > *) 0 ;
   void *argp1 = 0 ;
@@ -10074,7 +10995,7 @@ SWIGINTERN PyObject *_wrap_Hist1DLog_bin_centers(PyObject *SWIGUNUSEDPARM(self),
   swig_obj[0] = args;
   res1 = SWIG_ConvertPtr(swig_obj[0], &argp1,SWIGTYPE_p_eec__Hist1DT_boost__histogram__axis__transform__log_t, 0 |  0 );
   if (!SWIG_IsOK(res1)) {
-    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "Hist1DLog_bin_centers" "', argument " "1"" of type '" "eec::Hist1D< eec::axis::log > const *""'"); 
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "Hist1DLog_bin_centers_vec" "', argument " "1"" of type '" "eec::Hist1D< eec::axis::log > const *""'"); 
   }
   arg1 = reinterpret_cast< eec::Hist1D< eec::axis::log > * >(argp1);
   {
@@ -10090,7 +11011,7 @@ fail:
 }
 
 
-SWIGINTERN PyObject *_wrap_Hist1DLog_bin_edges(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
+SWIGINTERN PyObject *_wrap_Hist1DLog_bin_edges_vec(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
   PyObject *resultobj = 0;
   eec::Hist1D< eec::axis::log > *arg1 = (eec::Hist1D< eec::axis::log > *) 0 ;
   void *argp1 = 0 ;
@@ -10102,7 +11023,7 @@ SWIGINTERN PyObject *_wrap_Hist1DLog_bin_edges(PyObject *SWIGUNUSEDPARM(self), P
   swig_obj[0] = args;
   res1 = SWIG_ConvertPtr(swig_obj[0], &argp1,SWIGTYPE_p_eec__Hist1DT_boost__histogram__axis__transform__log_t, 0 |  0 );
   if (!SWIG_IsOK(res1)) {
-    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "Hist1DLog_bin_edges" "', argument " "1"" of type '" "eec::Hist1D< eec::axis::log > const *""'"); 
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "Hist1DLog_bin_edges_vec" "', argument " "1"" of type '" "eec::Hist1D< eec::axis::log > const *""'"); 
   }
   arg1 = reinterpret_cast< eec::Hist1D< eec::axis::log > * >(argp1);
   {
@@ -10118,41 +11039,309 @@ fail:
 }
 
 
-SWIGINTERN PyObject *_wrap_Hist1DLog_get_hist_size(PyObject *SWIGUNUSEDPARM(self), PyObject *args, PyObject *kwargs) {
+SWIGINTERN PyObject *_wrap_Hist1DLog_hist_size(PyObject *SWIGUNUSEDPARM(self), PyObject *args, PyObject *kwargs) {
   PyObject *resultobj = 0;
   eec::Hist1D< eec::axis::log > *arg1 = (eec::Hist1D< eec::axis::log > *) 0 ;
   bool arg2 = (bool) true ;
+  int arg3 = (int) -1 ;
   void *argp1 = 0 ;
   int res1 = 0 ;
   bool val2 ;
   int ecode2 = 0 ;
+  int val3 ;
+  int ecode3 = 0 ;
   PyObject * obj0 = 0 ;
   PyObject * obj1 = 0 ;
+  PyObject * obj2 = 0 ;
   char * kwnames[] = {
-    (char *)"self",  (char *)"include_overflows",  NULL 
+    (char *)"self",  (char *)"include_overflows",  (char *)"tmp",  NULL 
   };
   size_t result;
   
-  if (!PyArg_ParseTupleAndKeywords(args, kwargs, "O|O:Hist1DLog_get_hist_size", kwnames, &obj0, &obj1)) SWIG_fail;
+  if (!PyArg_ParseTupleAndKeywords(args, kwargs, "O|OO:Hist1DLog_hist_size", kwnames, &obj0, &obj1, &obj2)) SWIG_fail;
   res1 = SWIG_ConvertPtr(obj0, &argp1,SWIGTYPE_p_eec__Hist1DT_boost__histogram__axis__transform__log_t, 0 |  0 );
   if (!SWIG_IsOK(res1)) {
-    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "Hist1DLog_get_hist_size" "', argument " "1"" of type '" "eec::Hist1D< eec::axis::log > const *""'"); 
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "Hist1DLog_hist_size" "', argument " "1"" of type '" "eec::Hist1D< eec::axis::log > const *""'"); 
   }
   arg1 = reinterpret_cast< eec::Hist1D< eec::axis::log > * >(argp1);
   if (obj1) {
     ecode2 = SWIG_AsVal_bool(obj1, &val2);
     if (!SWIG_IsOK(ecode2)) {
-      SWIG_exception_fail(SWIG_ArgError(ecode2), "in method '" "Hist1DLog_get_hist_size" "', argument " "2"" of type '" "bool""'");
+      SWIG_exception_fail(SWIG_ArgError(ecode2), "in method '" "Hist1DLog_hist_size" "', argument " "2"" of type '" "bool""'");
     } 
     arg2 = static_cast< bool >(val2);
   }
+  if (obj2) {
+    ecode3 = SWIG_AsVal_int(obj2, &val3);
+    if (!SWIG_IsOK(ecode3)) {
+      SWIG_exception_fail(SWIG_ArgError(ecode3), "in method '" "Hist1DLog_hist_size" "', argument " "3"" of type '" "int""'");
+    } 
+    arg3 = static_cast< int >(val3);
+  }
   {
     try {
-      result = ((eec::Hist1D< eec::axis::log > const *)arg1)->get_hist_size(arg2); 
+      result = ((eec::Hist1D< eec::axis::log > const *)arg1)->hist_size(arg2,arg3); 
     }
     CATCH_STD_EXCEPTION
   }
   resultobj = SWIG_From_size_t(static_cast< size_t >(result));
+  return resultobj;
+fail:
+  return NULL;
+}
+
+
+SWIGINTERN PyObject *_wrap_Hist1DLog_nbins(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
+  PyObject *resultobj = 0;
+  eec::Hist1D< eec::axis::log > *arg1 = (eec::Hist1D< eec::axis::log > *) 0 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  PyObject *swig_obj[1] ;
+  size_t result;
+  
+  if (!args) SWIG_fail;
+  swig_obj[0] = args;
+  res1 = SWIG_ConvertPtr(swig_obj[0], &argp1,SWIGTYPE_p_eec__Hist1DT_boost__histogram__axis__transform__log_t, 0 |  0 );
+  if (!SWIG_IsOK(res1)) {
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "Hist1DLog_nbins" "', argument " "1"" of type '" "eec::Hist1D< eec::axis::log > const *""'"); 
+  }
+  arg1 = reinterpret_cast< eec::Hist1D< eec::axis::log > * >(argp1);
+  {
+    try {
+      result = ((eec::Hist1D< eec::axis::log > const *)arg1)->nbins(); 
+    }
+    CATCH_STD_EXCEPTION
+  }
+  resultobj = SWIG_From_size_t(static_cast< size_t >(result));
+  return resultobj;
+fail:
+  return NULL;
+}
+
+
+SWIGINTERN PyObject *_wrap_Hist1DLog_bin_centers(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
+  PyObject *resultobj = 0;
+  eec::Hist1D< eec::axis::log > *arg1 = (eec::Hist1D< eec::axis::log > *) 0 ;
+  double **arg2 = (double **) 0 ;
+  int *arg3 = (int *) 0 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  double *data_temp2 = NULL ;
+  int dim_temp2 ;
+  PyObject *swig_obj[1] ;
+  
+  {
+    arg2 = &data_temp2;
+    arg3 = &dim_temp2;
+  }
+  if (!args) SWIG_fail;
+  swig_obj[0] = args;
+  res1 = SWIG_ConvertPtr(swig_obj[0], &argp1,SWIGTYPE_p_eec__Hist1DT_boost__histogram__axis__transform__log_t, 0 |  0 );
+  if (!SWIG_IsOK(res1)) {
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "Hist1DLog_bin_centers" "', argument " "1"" of type '" "eec::Hist1D< eec::axis::log > *""'"); 
+  }
+  arg1 = reinterpret_cast< eec::Hist1D< eec::axis::log > * >(argp1);
+  {
+    try {
+      eec_Hist1D_Sl_eec_axis_log_Sg__npy_bin_centers(arg1,arg2,arg3); 
+    }
+    CATCH_STD_EXCEPTION
+  }
+  resultobj = SWIG_Py_Void();
+  {
+    npy_intp dims[1] = {
+      *arg3 
+    };
+    PyObject* obj = PyArray_SimpleNewFromData(1, dims, NPY_DOUBLE, (void*)(*arg2));
+    PyArrayObject* array = (PyArrayObject*) obj;
+    
+    if (!array) SWIG_fail;
+    
+#ifdef SWIGPY_USE_CAPSULE
+    PyObject* cap = PyCapsule_New((void*)(*arg2), SWIGPY_CAPSULE_NAME, free_cap);
+#else
+    PyObject* cap = PyCObject_FromVoidPtr((void*)(*arg2), free);
+#endif
+    
+#if NPY_API_VERSION < 0x00000007
+    PyArray_BASE(array) = cap;
+#else
+    PyArray_SetBaseObject(array,cap);
+#endif
+    
+    resultobj = SWIG_Python_AppendOutput(resultobj,obj);
+  }
+  return resultobj;
+fail:
+  return NULL;
+}
+
+
+SWIGINTERN PyObject *_wrap_Hist1DLog_bin_edges(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
+  PyObject *resultobj = 0;
+  eec::Hist1D< eec::axis::log > *arg1 = (eec::Hist1D< eec::axis::log > *) 0 ;
+  double **arg2 = (double **) 0 ;
+  int *arg3 = (int *) 0 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  double *data_temp2 = NULL ;
+  int dim_temp2 ;
+  PyObject *swig_obj[1] ;
+  
+  {
+    arg2 = &data_temp2;
+    arg3 = &dim_temp2;
+  }
+  if (!args) SWIG_fail;
+  swig_obj[0] = args;
+  res1 = SWIG_ConvertPtr(swig_obj[0], &argp1,SWIGTYPE_p_eec__Hist1DT_boost__histogram__axis__transform__log_t, 0 |  0 );
+  if (!SWIG_IsOK(res1)) {
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "Hist1DLog_bin_edges" "', argument " "1"" of type '" "eec::Hist1D< eec::axis::log > *""'"); 
+  }
+  arg1 = reinterpret_cast< eec::Hist1D< eec::axis::log > * >(argp1);
+  {
+    try {
+      eec_Hist1D_Sl_eec_axis_log_Sg__npy_bin_edges(arg1,arg2,arg3); 
+    }
+    CATCH_STD_EXCEPTION
+  }
+  resultobj = SWIG_Py_Void();
+  {
+    npy_intp dims[1] = {
+      *arg3 
+    };
+    PyObject* obj = PyArray_SimpleNewFromData(1, dims, NPY_DOUBLE, (void*)(*arg2));
+    PyArrayObject* array = (PyArrayObject*) obj;
+    
+    if (!array) SWIG_fail;
+    
+#ifdef SWIGPY_USE_CAPSULE
+    PyObject* cap = PyCapsule_New((void*)(*arg2), SWIGPY_CAPSULE_NAME, free_cap);
+#else
+    PyObject* cap = PyCObject_FromVoidPtr((void*)(*arg2), free);
+#endif
+    
+#if NPY_API_VERSION < 0x00000007
+    PyArray_BASE(array) = cap;
+#else
+    PyArray_SetBaseObject(array,cap);
+#endif
+    
+    resultobj = SWIG_Python_AppendOutput(resultobj,obj);
+  }
+  return resultobj;
+fail:
+  return NULL;
+}
+
+
+SWIGINTERN PyObject *_wrap_Hist1DLog_get_hist_errs(PyObject *SWIGUNUSEDPARM(self), PyObject *args, PyObject *kwargs) {
+  PyObject *resultobj = 0;
+  eec::Hist1D< eec::axis::log > *arg1 = (eec::Hist1D< eec::axis::log > *) 0 ;
+  double **arg2 = (double **) 0 ;
+  int *arg3 = (int *) 0 ;
+  double **arg4 = (double **) 0 ;
+  int *arg5 = (int *) 0 ;
+  bool arg6 = (bool) true ;
+  unsigned int arg7 = (unsigned int) 0 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  double *data_temp2 = NULL ;
+  int dim_temp2 ;
+  double *data_temp4 = NULL ;
+  int dim_temp4 ;
+  bool val6 ;
+  int ecode6 = 0 ;
+  unsigned int val7 ;
+  int ecode7 = 0 ;
+  PyObject * obj0 = 0 ;
+  PyObject * obj1 = 0 ;
+  PyObject * obj2 = 0 ;
+  char * kwnames[] = {
+    (char *)"self",  (char *)"include_overflows",  (char *)"hist_i",  NULL 
+  };
+  
+  {
+    arg2 = &data_temp2;
+    arg3 = &dim_temp2;
+  }
+  {
+    arg4 = &data_temp4;
+    arg5 = &dim_temp4;
+  }
+  if (!PyArg_ParseTupleAndKeywords(args, kwargs, "O|OO:Hist1DLog_get_hist_errs", kwnames, &obj0, &obj1, &obj2)) SWIG_fail;
+  res1 = SWIG_ConvertPtr(obj0, &argp1,SWIGTYPE_p_eec__Hist1DT_boost__histogram__axis__transform__log_t, 0 |  0 );
+  if (!SWIG_IsOK(res1)) {
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "Hist1DLog_get_hist_errs" "', argument " "1"" of type '" "eec::Hist1D< eec::axis::log > *""'"); 
+  }
+  arg1 = reinterpret_cast< eec::Hist1D< eec::axis::log > * >(argp1);
+  if (obj1) {
+    ecode6 = SWIG_AsVal_bool(obj1, &val6);
+    if (!SWIG_IsOK(ecode6)) {
+      SWIG_exception_fail(SWIG_ArgError(ecode6), "in method '" "Hist1DLog_get_hist_errs" "', argument " "6"" of type '" "bool""'");
+    } 
+    arg6 = static_cast< bool >(val6);
+  }
+  if (obj2) {
+    ecode7 = SWIG_AsVal_unsigned_SS_int(obj2, &val7);
+    if (!SWIG_IsOK(ecode7)) {
+      SWIG_exception_fail(SWIG_ArgError(ecode7), "in method '" "Hist1DLog_get_hist_errs" "', argument " "7"" of type '" "unsigned int""'");
+    } 
+    arg7 = static_cast< unsigned int >(val7);
+  }
+  {
+    try {
+      eec_Hist1D_Sl_eec_axis_log_Sg__npy_get_hist_errs(arg1,arg2,arg3,arg4,arg5,arg6,arg7); 
+    }
+    CATCH_STD_EXCEPTION
+  }
+  resultobj = SWIG_Py_Void();
+  {
+    npy_intp dims[1] = {
+      *arg3 
+    };
+    PyObject* obj = PyArray_SimpleNewFromData(1, dims, NPY_DOUBLE, (void*)(*arg2));
+    PyArrayObject* array = (PyArrayObject*) obj;
+    
+    if (!array) SWIG_fail;
+    
+#ifdef SWIGPY_USE_CAPSULE
+    PyObject* cap = PyCapsule_New((void*)(*arg2), SWIGPY_CAPSULE_NAME, free_cap);
+#else
+    PyObject* cap = PyCObject_FromVoidPtr((void*)(*arg2), free);
+#endif
+    
+#if NPY_API_VERSION < 0x00000007
+    PyArray_BASE(array) = cap;
+#else
+    PyArray_SetBaseObject(array,cap);
+#endif
+    
+    resultobj = SWIG_Python_AppendOutput(resultobj,obj);
+  }
+  {
+    npy_intp dims[1] = {
+      *arg5 
+    };
+    PyObject* obj = PyArray_SimpleNewFromData(1, dims, NPY_DOUBLE, (void*)(*arg4));
+    PyArrayObject* array = (PyArrayObject*) obj;
+    
+    if (!array) SWIG_fail;
+    
+#ifdef SWIGPY_USE_CAPSULE
+    PyObject* cap = PyCapsule_New((void*)(*arg4), SWIGPY_CAPSULE_NAME, free_cap);
+#else
+    PyObject* cap = PyCObject_FromVoidPtr((void*)(*arg4), free);
+#endif
+    
+#if NPY_API_VERSION < 0x00000007
+    PyArray_BASE(array) = cap;
+#else
+    PyArray_SetBaseObject(array,cap);
+#endif
+    
+    resultobj = SWIG_Python_AppendOutput(resultobj,obj);
+  }
   return resultobj;
 fail:
   return NULL;
@@ -10338,7 +11527,46 @@ fail:
 }
 
 
-SWIGINTERN PyObject *_wrap_Hist3DIdIdId_bin_centers(PyObject *SWIGUNUSEDPARM(self), PyObject *args, PyObject *kwargs) {
+SWIGINTERN PyObject *_wrap_Hist3DIdIdId_nbins(PyObject *SWIGUNUSEDPARM(self), PyObject *args, PyObject *kwargs) {
+  PyObject *resultobj = 0;
+  eec::Hist3D< eec::axis::id,eec::axis::id,eec::axis::id > *arg1 = (eec::Hist3D< eec::axis::id,eec::axis::id,eec::axis::id > *) 0 ;
+  int arg2 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  int val2 ;
+  int ecode2 = 0 ;
+  PyObject * obj0 = 0 ;
+  PyObject * obj1 = 0 ;
+  char * kwnames[] = {
+    (char *)"self",  (char *)"i",  NULL 
+  };
+  size_t result;
+  
+  if (!PyArg_ParseTupleAndKeywords(args, kwargs, "OO:Hist3DIdIdId_nbins", kwnames, &obj0, &obj1)) SWIG_fail;
+  res1 = SWIG_ConvertPtr(obj0, &argp1,SWIGTYPE_p_eec__Hist3DT_boost__histogram__axis__transform__id_boost__histogram__axis__transform__id_boost__histogram__axis__transform__id_t, 0 |  0 );
+  if (!SWIG_IsOK(res1)) {
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "Hist3DIdIdId_nbins" "', argument " "1"" of type '" "eec::Hist3D< eec::axis::id,eec::axis::id,eec::axis::id > const *""'"); 
+  }
+  arg1 = reinterpret_cast< eec::Hist3D< eec::axis::id,eec::axis::id,eec::axis::id > * >(argp1);
+  ecode2 = SWIG_AsVal_int(obj1, &val2);
+  if (!SWIG_IsOK(ecode2)) {
+    SWIG_exception_fail(SWIG_ArgError(ecode2), "in method '" "Hist3DIdIdId_nbins" "', argument " "2"" of type '" "int""'");
+  } 
+  arg2 = static_cast< int >(val2);
+  {
+    try {
+      result = ((eec::Hist3D< eec::axis::id,eec::axis::id,eec::axis::id > const *)arg1)->nbins(arg2); 
+    }
+    CATCH_STD_EXCEPTION
+  }
+  resultobj = SWIG_From_size_t(static_cast< size_t >(result));
+  return resultobj;
+fail:
+  return NULL;
+}
+
+
+SWIGINTERN PyObject *_wrap_Hist3DIdIdId_bin_centers_vec(PyObject *SWIGUNUSEDPARM(self), PyObject *args, PyObject *kwargs) {
   PyObject *resultobj = 0;
   eec::Hist3D< eec::axis::id,eec::axis::id,eec::axis::id > *arg1 = (eec::Hist3D< eec::axis::id,eec::axis::id,eec::axis::id > *) 0 ;
   int arg2 ;
@@ -10353,15 +11581,15 @@ SWIGINTERN PyObject *_wrap_Hist3DIdIdId_bin_centers(PyObject *SWIGUNUSEDPARM(sel
   };
   std::vector< double,std::allocator< double > > result;
   
-  if (!PyArg_ParseTupleAndKeywords(args, kwargs, "OO:Hist3DIdIdId_bin_centers", kwnames, &obj0, &obj1)) SWIG_fail;
+  if (!PyArg_ParseTupleAndKeywords(args, kwargs, "OO:Hist3DIdIdId_bin_centers_vec", kwnames, &obj0, &obj1)) SWIG_fail;
   res1 = SWIG_ConvertPtr(obj0, &argp1,SWIGTYPE_p_eec__Hist3DT_boost__histogram__axis__transform__id_boost__histogram__axis__transform__id_boost__histogram__axis__transform__id_t, 0 |  0 );
   if (!SWIG_IsOK(res1)) {
-    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "Hist3DIdIdId_bin_centers" "', argument " "1"" of type '" "eec::Hist3D< eec::axis::id,eec::axis::id,eec::axis::id > const *""'"); 
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "Hist3DIdIdId_bin_centers_vec" "', argument " "1"" of type '" "eec::Hist3D< eec::axis::id,eec::axis::id,eec::axis::id > const *""'"); 
   }
   arg1 = reinterpret_cast< eec::Hist3D< eec::axis::id,eec::axis::id,eec::axis::id > * >(argp1);
   ecode2 = SWIG_AsVal_int(obj1, &val2);
   if (!SWIG_IsOK(ecode2)) {
-    SWIG_exception_fail(SWIG_ArgError(ecode2), "in method '" "Hist3DIdIdId_bin_centers" "', argument " "2"" of type '" "int""'");
+    SWIG_exception_fail(SWIG_ArgError(ecode2), "in method '" "Hist3DIdIdId_bin_centers_vec" "', argument " "2"" of type '" "int""'");
   } 
   arg2 = static_cast< int >(val2);
   {
@@ -10377,7 +11605,7 @@ fail:
 }
 
 
-SWIGINTERN PyObject *_wrap_Hist3DIdIdId_bin_edges(PyObject *SWIGUNUSEDPARM(self), PyObject *args, PyObject *kwargs) {
+SWIGINTERN PyObject *_wrap_Hist3DIdIdId_bin_edges_vec(PyObject *SWIGUNUSEDPARM(self), PyObject *args, PyObject *kwargs) {
   PyObject *resultobj = 0;
   eec::Hist3D< eec::axis::id,eec::axis::id,eec::axis::id > *arg1 = (eec::Hist3D< eec::axis::id,eec::axis::id,eec::axis::id > *) 0 ;
   int arg2 ;
@@ -10392,15 +11620,15 @@ SWIGINTERN PyObject *_wrap_Hist3DIdIdId_bin_edges(PyObject *SWIGUNUSEDPARM(self)
   };
   std::vector< double,std::allocator< double > > result;
   
-  if (!PyArg_ParseTupleAndKeywords(args, kwargs, "OO:Hist3DIdIdId_bin_edges", kwnames, &obj0, &obj1)) SWIG_fail;
+  if (!PyArg_ParseTupleAndKeywords(args, kwargs, "OO:Hist3DIdIdId_bin_edges_vec", kwnames, &obj0, &obj1)) SWIG_fail;
   res1 = SWIG_ConvertPtr(obj0, &argp1,SWIGTYPE_p_eec__Hist3DT_boost__histogram__axis__transform__id_boost__histogram__axis__transform__id_boost__histogram__axis__transform__id_t, 0 |  0 );
   if (!SWIG_IsOK(res1)) {
-    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "Hist3DIdIdId_bin_edges" "', argument " "1"" of type '" "eec::Hist3D< eec::axis::id,eec::axis::id,eec::axis::id > const *""'"); 
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "Hist3DIdIdId_bin_edges_vec" "', argument " "1"" of type '" "eec::Hist3D< eec::axis::id,eec::axis::id,eec::axis::id > const *""'"); 
   }
   arg1 = reinterpret_cast< eec::Hist3D< eec::axis::id,eec::axis::id,eec::axis::id > * >(argp1);
   ecode2 = SWIG_AsVal_int(obj1, &val2);
   if (!SWIG_IsOK(ecode2)) {
-    SWIG_exception_fail(SWIG_ArgError(ecode2), "in method '" "Hist3DIdIdId_bin_edges" "', argument " "2"" of type '" "int""'");
+    SWIG_exception_fail(SWIG_ArgError(ecode2), "in method '" "Hist3DIdIdId_bin_edges_vec" "', argument " "2"" of type '" "int""'");
   } 
   arg2 = static_cast< int >(val2);
   {
@@ -10416,41 +11644,315 @@ fail:
 }
 
 
-SWIGINTERN PyObject *_wrap_Hist3DIdIdId_get_hist_size(PyObject *SWIGUNUSEDPARM(self), PyObject *args, PyObject *kwargs) {
+SWIGINTERN PyObject *_wrap_Hist3DIdIdId_hist_size(PyObject *SWIGUNUSEDPARM(self), PyObject *args, PyObject *kwargs) {
   PyObject *resultobj = 0;
   eec::Hist3D< eec::axis::id,eec::axis::id,eec::axis::id > *arg1 = (eec::Hist3D< eec::axis::id,eec::axis::id,eec::axis::id > *) 0 ;
   bool arg2 = (bool) true ;
+  int arg3 = (int) -1 ;
   void *argp1 = 0 ;
   int res1 = 0 ;
   bool val2 ;
   int ecode2 = 0 ;
+  int val3 ;
+  int ecode3 = 0 ;
   PyObject * obj0 = 0 ;
   PyObject * obj1 = 0 ;
+  PyObject * obj2 = 0 ;
   char * kwnames[] = {
-    (char *)"self",  (char *)"include_overflows",  NULL 
+    (char *)"self",  (char *)"include_overflows",  (char *)"i",  NULL 
   };
   size_t result;
   
-  if (!PyArg_ParseTupleAndKeywords(args, kwargs, "O|O:Hist3DIdIdId_get_hist_size", kwnames, &obj0, &obj1)) SWIG_fail;
+  if (!PyArg_ParseTupleAndKeywords(args, kwargs, "O|OO:Hist3DIdIdId_hist_size", kwnames, &obj0, &obj1, &obj2)) SWIG_fail;
   res1 = SWIG_ConvertPtr(obj0, &argp1,SWIGTYPE_p_eec__Hist3DT_boost__histogram__axis__transform__id_boost__histogram__axis__transform__id_boost__histogram__axis__transform__id_t, 0 |  0 );
   if (!SWIG_IsOK(res1)) {
-    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "Hist3DIdIdId_get_hist_size" "', argument " "1"" of type '" "eec::Hist3D< eec::axis::id,eec::axis::id,eec::axis::id > const *""'"); 
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "Hist3DIdIdId_hist_size" "', argument " "1"" of type '" "eec::Hist3D< eec::axis::id,eec::axis::id,eec::axis::id > const *""'"); 
   }
   arg1 = reinterpret_cast< eec::Hist3D< eec::axis::id,eec::axis::id,eec::axis::id > * >(argp1);
   if (obj1) {
     ecode2 = SWIG_AsVal_bool(obj1, &val2);
     if (!SWIG_IsOK(ecode2)) {
-      SWIG_exception_fail(SWIG_ArgError(ecode2), "in method '" "Hist3DIdIdId_get_hist_size" "', argument " "2"" of type '" "bool""'");
+      SWIG_exception_fail(SWIG_ArgError(ecode2), "in method '" "Hist3DIdIdId_hist_size" "', argument " "2"" of type '" "bool""'");
     } 
     arg2 = static_cast< bool >(val2);
   }
+  if (obj2) {
+    ecode3 = SWIG_AsVal_int(obj2, &val3);
+    if (!SWIG_IsOK(ecode3)) {
+      SWIG_exception_fail(SWIG_ArgError(ecode3), "in method '" "Hist3DIdIdId_hist_size" "', argument " "3"" of type '" "int""'");
+    } 
+    arg3 = static_cast< int >(val3);
+  }
   {
     try {
-      result = ((eec::Hist3D< eec::axis::id,eec::axis::id,eec::axis::id > const *)arg1)->get_hist_size(arg2); 
+      result = ((eec::Hist3D< eec::axis::id,eec::axis::id,eec::axis::id > const *)arg1)->hist_size(arg2,arg3); 
     }
     CATCH_STD_EXCEPTION
   }
   resultobj = SWIG_From_size_t(static_cast< size_t >(result));
+  return resultobj;
+fail:
+  return NULL;
+}
+
+
+SWIGINTERN PyObject *_wrap_Hist3DIdIdId_bin_centers(PyObject *SWIGUNUSEDPARM(self), PyObject *args, PyObject *kwargs) {
+  PyObject *resultobj = 0;
+  eec::Hist3D< eec::axis::id,eec::axis::id,eec::axis::id > *arg1 = (eec::Hist3D< eec::axis::id,eec::axis::id,eec::axis::id > *) 0 ;
+  double **arg2 = (double **) 0 ;
+  int *arg3 = (int *) 0 ;
+  int arg4 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  double *data_temp2 = NULL ;
+  int dim_temp2 ;
+  int val4 ;
+  int ecode4 = 0 ;
+  PyObject * obj0 = 0 ;
+  PyObject * obj1 = 0 ;
+  char * kwnames[] = {
+    (char *)"self",  (char *)"i",  NULL 
+  };
+  
+  {
+    arg2 = &data_temp2;
+    arg3 = &dim_temp2;
+  }
+  if (!PyArg_ParseTupleAndKeywords(args, kwargs, "OO:Hist3DIdIdId_bin_centers", kwnames, &obj0, &obj1)) SWIG_fail;
+  res1 = SWIG_ConvertPtr(obj0, &argp1,SWIGTYPE_p_eec__Hist3DT_boost__histogram__axis__transform__id_boost__histogram__axis__transform__id_boost__histogram__axis__transform__id_t, 0 |  0 );
+  if (!SWIG_IsOK(res1)) {
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "Hist3DIdIdId_bin_centers" "', argument " "1"" of type '" "eec::Hist3D< eec::axis::id,eec::axis::id,eec::axis::id > *""'"); 
+  }
+  arg1 = reinterpret_cast< eec::Hist3D< eec::axis::id,eec::axis::id,eec::axis::id > * >(argp1);
+  ecode4 = SWIG_AsVal_int(obj1, &val4);
+  if (!SWIG_IsOK(ecode4)) {
+    SWIG_exception_fail(SWIG_ArgError(ecode4), "in method '" "Hist3DIdIdId_bin_centers" "', argument " "4"" of type '" "int""'");
+  } 
+  arg4 = static_cast< int >(val4);
+  {
+    try {
+      eec_Hist3D_Sl_eec_axis_id_Sc_eec_axis_id_Sc_eec_axis_id_Sg__npy_bin_centers(arg1,arg2,arg3,arg4); 
+    }
+    CATCH_STD_EXCEPTION
+  }
+  resultobj = SWIG_Py_Void();
+  {
+    npy_intp dims[1] = {
+      *arg3 
+    };
+    PyObject* obj = PyArray_SimpleNewFromData(1, dims, NPY_DOUBLE, (void*)(*arg2));
+    PyArrayObject* array = (PyArrayObject*) obj;
+    
+    if (!array) SWIG_fail;
+    
+#ifdef SWIGPY_USE_CAPSULE
+    PyObject* cap = PyCapsule_New((void*)(*arg2), SWIGPY_CAPSULE_NAME, free_cap);
+#else
+    PyObject* cap = PyCObject_FromVoidPtr((void*)(*arg2), free);
+#endif
+    
+#if NPY_API_VERSION < 0x00000007
+    PyArray_BASE(array) = cap;
+#else
+    PyArray_SetBaseObject(array,cap);
+#endif
+    
+    resultobj = SWIG_Python_AppendOutput(resultobj,obj);
+  }
+  return resultobj;
+fail:
+  return NULL;
+}
+
+
+SWIGINTERN PyObject *_wrap_Hist3DIdIdId_bin_edges(PyObject *SWIGUNUSEDPARM(self), PyObject *args, PyObject *kwargs) {
+  PyObject *resultobj = 0;
+  eec::Hist3D< eec::axis::id,eec::axis::id,eec::axis::id > *arg1 = (eec::Hist3D< eec::axis::id,eec::axis::id,eec::axis::id > *) 0 ;
+  double **arg2 = (double **) 0 ;
+  int *arg3 = (int *) 0 ;
+  int arg4 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  double *data_temp2 = NULL ;
+  int dim_temp2 ;
+  int val4 ;
+  int ecode4 = 0 ;
+  PyObject * obj0 = 0 ;
+  PyObject * obj1 = 0 ;
+  char * kwnames[] = {
+    (char *)"self",  (char *)"i",  NULL 
+  };
+  
+  {
+    arg2 = &data_temp2;
+    arg3 = &dim_temp2;
+  }
+  if (!PyArg_ParseTupleAndKeywords(args, kwargs, "OO:Hist3DIdIdId_bin_edges", kwnames, &obj0, &obj1)) SWIG_fail;
+  res1 = SWIG_ConvertPtr(obj0, &argp1,SWIGTYPE_p_eec__Hist3DT_boost__histogram__axis__transform__id_boost__histogram__axis__transform__id_boost__histogram__axis__transform__id_t, 0 |  0 );
+  if (!SWIG_IsOK(res1)) {
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "Hist3DIdIdId_bin_edges" "', argument " "1"" of type '" "eec::Hist3D< eec::axis::id,eec::axis::id,eec::axis::id > *""'"); 
+  }
+  arg1 = reinterpret_cast< eec::Hist3D< eec::axis::id,eec::axis::id,eec::axis::id > * >(argp1);
+  ecode4 = SWIG_AsVal_int(obj1, &val4);
+  if (!SWIG_IsOK(ecode4)) {
+    SWIG_exception_fail(SWIG_ArgError(ecode4), "in method '" "Hist3DIdIdId_bin_edges" "', argument " "4"" of type '" "int""'");
+  } 
+  arg4 = static_cast< int >(val4);
+  {
+    try {
+      eec_Hist3D_Sl_eec_axis_id_Sc_eec_axis_id_Sc_eec_axis_id_Sg__npy_bin_edges(arg1,arg2,arg3,arg4); 
+    }
+    CATCH_STD_EXCEPTION
+  }
+  resultobj = SWIG_Py_Void();
+  {
+    npy_intp dims[1] = {
+      *arg3 
+    };
+    PyObject* obj = PyArray_SimpleNewFromData(1, dims, NPY_DOUBLE, (void*)(*arg2));
+    PyArrayObject* array = (PyArrayObject*) obj;
+    
+    if (!array) SWIG_fail;
+    
+#ifdef SWIGPY_USE_CAPSULE
+    PyObject* cap = PyCapsule_New((void*)(*arg2), SWIGPY_CAPSULE_NAME, free_cap);
+#else
+    PyObject* cap = PyCObject_FromVoidPtr((void*)(*arg2), free);
+#endif
+    
+#if NPY_API_VERSION < 0x00000007
+    PyArray_BASE(array) = cap;
+#else
+    PyArray_SetBaseObject(array,cap);
+#endif
+    
+    resultobj = SWIG_Python_AppendOutput(resultobj,obj);
+  }
+  return resultobj;
+fail:
+  return NULL;
+}
+
+
+SWIGINTERN PyObject *_wrap_Hist3DIdIdId_get_hist_errs(PyObject *SWIGUNUSEDPARM(self), PyObject *args, PyObject *kwargs) {
+  PyObject *resultobj = 0;
+  eec::Hist3D< eec::axis::id,eec::axis::id,eec::axis::id > *arg1 = (eec::Hist3D< eec::axis::id,eec::axis::id,eec::axis::id > *) 0 ;
+  double **arg2 = (double **) 0 ;
+  int *arg3 = (int *) 0 ;
+  int *arg4 = (int *) 0 ;
+  int *arg5 = (int *) 0 ;
+  double **arg6 = (double **) 0 ;
+  int *arg7 = (int *) 0 ;
+  int *arg8 = (int *) 0 ;
+  int *arg9 = (int *) 0 ;
+  bool arg10 = (bool) true ;
+  unsigned int arg11 = (unsigned int) 0 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  double *data_temp2 = NULL ;
+  int dim1_temp2 ;
+  int dim2_temp2 ;
+  int dim3_temp2 ;
+  double *data_temp6 = NULL ;
+  int dim1_temp6 ;
+  int dim2_temp6 ;
+  int dim3_temp6 ;
+  bool val10 ;
+  int ecode10 = 0 ;
+  unsigned int val11 ;
+  int ecode11 = 0 ;
+  PyObject * obj0 = 0 ;
+  PyObject * obj1 = 0 ;
+  PyObject * obj2 = 0 ;
+  char * kwnames[] = {
+    (char *)"self",  (char *)"include_overflows",  (char *)"hist_i",  NULL 
+  };
+  
+  {
+    arg2 = &data_temp2;
+    arg3 = &dim1_temp2;
+    arg4 = &dim2_temp2;
+    arg5 = &dim3_temp2;
+  }
+  {
+    arg6 = &data_temp6;
+    arg7 = &dim1_temp6;
+    arg8 = &dim2_temp6;
+    arg9 = &dim3_temp6;
+  }
+  if (!PyArg_ParseTupleAndKeywords(args, kwargs, "O|OO:Hist3DIdIdId_get_hist_errs", kwnames, &obj0, &obj1, &obj2)) SWIG_fail;
+  res1 = SWIG_ConvertPtr(obj0, &argp1,SWIGTYPE_p_eec__Hist3DT_boost__histogram__axis__transform__id_boost__histogram__axis__transform__id_boost__histogram__axis__transform__id_t, 0 |  0 );
+  if (!SWIG_IsOK(res1)) {
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "Hist3DIdIdId_get_hist_errs" "', argument " "1"" of type '" "eec::Hist3D< eec::axis::id,eec::axis::id,eec::axis::id > *""'"); 
+  }
+  arg1 = reinterpret_cast< eec::Hist3D< eec::axis::id,eec::axis::id,eec::axis::id > * >(argp1);
+  if (obj1) {
+    ecode10 = SWIG_AsVal_bool(obj1, &val10);
+    if (!SWIG_IsOK(ecode10)) {
+      SWIG_exception_fail(SWIG_ArgError(ecode10), "in method '" "Hist3DIdIdId_get_hist_errs" "', argument " "10"" of type '" "bool""'");
+    } 
+    arg10 = static_cast< bool >(val10);
+  }
+  if (obj2) {
+    ecode11 = SWIG_AsVal_unsigned_SS_int(obj2, &val11);
+    if (!SWIG_IsOK(ecode11)) {
+      SWIG_exception_fail(SWIG_ArgError(ecode11), "in method '" "Hist3DIdIdId_get_hist_errs" "', argument " "11"" of type '" "unsigned int""'");
+    } 
+    arg11 = static_cast< unsigned int >(val11);
+  }
+  {
+    try {
+      eec_Hist3D_Sl_eec_axis_id_Sc_eec_axis_id_Sc_eec_axis_id_Sg__npy_get_hist_errs(arg1,arg2,arg3,arg4,arg5,arg6,arg7,arg8,arg9,arg10,arg11); 
+    }
+    CATCH_STD_EXCEPTION
+  }
+  resultobj = SWIG_Py_Void();
+  {
+    npy_intp dims[3] = {
+      *arg3, *arg4, *arg5 
+    };
+    PyObject* obj = PyArray_SimpleNewFromData(3, dims, NPY_DOUBLE, (void*)(*arg2));
+    PyArrayObject* array = (PyArrayObject*) obj;
+    
+    if (!array) SWIG_fail;
+    
+#ifdef SWIGPY_USE_CAPSULE
+    PyObject* cap = PyCapsule_New((void*)(*arg2), SWIGPY_CAPSULE_NAME, free_cap);
+#else
+    PyObject* cap = PyCObject_FromVoidPtr((void*)(*arg2), free);
+#endif
+    
+#if NPY_API_VERSION < 0x00000007
+    PyArray_BASE(array) = cap;
+#else
+    PyArray_SetBaseObject(array,cap);
+#endif
+    
+    resultobj = SWIG_Python_AppendOutput(resultobj,obj);
+  }
+  {
+    npy_intp dims[3] = {
+      *arg7, *arg8, *arg9 
+    };
+    PyObject* obj = PyArray_SimpleNewFromData(3, dims, NPY_DOUBLE, (void*)(*arg6));
+    PyArrayObject* array = (PyArrayObject*) obj;
+    
+    if (!array) SWIG_fail;
+    
+#ifdef SWIGPY_USE_CAPSULE
+    PyObject* cap = PyCapsule_New((void*)(*arg6), SWIGPY_CAPSULE_NAME, free_cap);
+#else
+    PyObject* cap = PyCObject_FromVoidPtr((void*)(*arg6), free);
+#endif
+    
+#if NPY_API_VERSION < 0x00000007
+    PyArray_BASE(array) = cap;
+#else
+    PyArray_SetBaseObject(array,cap);
+#endif
+    
+    resultobj = SWIG_Python_AppendOutput(resultobj,obj);
+  }
   return resultobj;
 fail:
   return NULL;
@@ -10636,7 +12138,46 @@ fail:
 }
 
 
-SWIGINTERN PyObject *_wrap_Hist3DLogIdId_bin_centers(PyObject *SWIGUNUSEDPARM(self), PyObject *args, PyObject *kwargs) {
+SWIGINTERN PyObject *_wrap_Hist3DLogIdId_nbins(PyObject *SWIGUNUSEDPARM(self), PyObject *args, PyObject *kwargs) {
+  PyObject *resultobj = 0;
+  eec::Hist3D< eec::axis::log,eec::axis::id,eec::axis::id > *arg1 = (eec::Hist3D< eec::axis::log,eec::axis::id,eec::axis::id > *) 0 ;
+  int arg2 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  int val2 ;
+  int ecode2 = 0 ;
+  PyObject * obj0 = 0 ;
+  PyObject * obj1 = 0 ;
+  char * kwnames[] = {
+    (char *)"self",  (char *)"i",  NULL 
+  };
+  size_t result;
+  
+  if (!PyArg_ParseTupleAndKeywords(args, kwargs, "OO:Hist3DLogIdId_nbins", kwnames, &obj0, &obj1)) SWIG_fail;
+  res1 = SWIG_ConvertPtr(obj0, &argp1,SWIGTYPE_p_eec__Hist3DT_boost__histogram__axis__transform__log_boost__histogram__axis__transform__id_boost__histogram__axis__transform__id_t, 0 |  0 );
+  if (!SWIG_IsOK(res1)) {
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "Hist3DLogIdId_nbins" "', argument " "1"" of type '" "eec::Hist3D< eec::axis::log,eec::axis::id,eec::axis::id > const *""'"); 
+  }
+  arg1 = reinterpret_cast< eec::Hist3D< eec::axis::log,eec::axis::id,eec::axis::id > * >(argp1);
+  ecode2 = SWIG_AsVal_int(obj1, &val2);
+  if (!SWIG_IsOK(ecode2)) {
+    SWIG_exception_fail(SWIG_ArgError(ecode2), "in method '" "Hist3DLogIdId_nbins" "', argument " "2"" of type '" "int""'");
+  } 
+  arg2 = static_cast< int >(val2);
+  {
+    try {
+      result = ((eec::Hist3D< eec::axis::log,eec::axis::id,eec::axis::id > const *)arg1)->nbins(arg2); 
+    }
+    CATCH_STD_EXCEPTION
+  }
+  resultobj = SWIG_From_size_t(static_cast< size_t >(result));
+  return resultobj;
+fail:
+  return NULL;
+}
+
+
+SWIGINTERN PyObject *_wrap_Hist3DLogIdId_bin_centers_vec(PyObject *SWIGUNUSEDPARM(self), PyObject *args, PyObject *kwargs) {
   PyObject *resultobj = 0;
   eec::Hist3D< eec::axis::log,eec::axis::id,eec::axis::id > *arg1 = (eec::Hist3D< eec::axis::log,eec::axis::id,eec::axis::id > *) 0 ;
   int arg2 ;
@@ -10651,15 +12192,15 @@ SWIGINTERN PyObject *_wrap_Hist3DLogIdId_bin_centers(PyObject *SWIGUNUSEDPARM(se
   };
   std::vector< double,std::allocator< double > > result;
   
-  if (!PyArg_ParseTupleAndKeywords(args, kwargs, "OO:Hist3DLogIdId_bin_centers", kwnames, &obj0, &obj1)) SWIG_fail;
+  if (!PyArg_ParseTupleAndKeywords(args, kwargs, "OO:Hist3DLogIdId_bin_centers_vec", kwnames, &obj0, &obj1)) SWIG_fail;
   res1 = SWIG_ConvertPtr(obj0, &argp1,SWIGTYPE_p_eec__Hist3DT_boost__histogram__axis__transform__log_boost__histogram__axis__transform__id_boost__histogram__axis__transform__id_t, 0 |  0 );
   if (!SWIG_IsOK(res1)) {
-    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "Hist3DLogIdId_bin_centers" "', argument " "1"" of type '" "eec::Hist3D< eec::axis::log,eec::axis::id,eec::axis::id > const *""'"); 
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "Hist3DLogIdId_bin_centers_vec" "', argument " "1"" of type '" "eec::Hist3D< eec::axis::log,eec::axis::id,eec::axis::id > const *""'"); 
   }
   arg1 = reinterpret_cast< eec::Hist3D< eec::axis::log,eec::axis::id,eec::axis::id > * >(argp1);
   ecode2 = SWIG_AsVal_int(obj1, &val2);
   if (!SWIG_IsOK(ecode2)) {
-    SWIG_exception_fail(SWIG_ArgError(ecode2), "in method '" "Hist3DLogIdId_bin_centers" "', argument " "2"" of type '" "int""'");
+    SWIG_exception_fail(SWIG_ArgError(ecode2), "in method '" "Hist3DLogIdId_bin_centers_vec" "', argument " "2"" of type '" "int""'");
   } 
   arg2 = static_cast< int >(val2);
   {
@@ -10675,7 +12216,7 @@ fail:
 }
 
 
-SWIGINTERN PyObject *_wrap_Hist3DLogIdId_bin_edges(PyObject *SWIGUNUSEDPARM(self), PyObject *args, PyObject *kwargs) {
+SWIGINTERN PyObject *_wrap_Hist3DLogIdId_bin_edges_vec(PyObject *SWIGUNUSEDPARM(self), PyObject *args, PyObject *kwargs) {
   PyObject *resultobj = 0;
   eec::Hist3D< eec::axis::log,eec::axis::id,eec::axis::id > *arg1 = (eec::Hist3D< eec::axis::log,eec::axis::id,eec::axis::id > *) 0 ;
   int arg2 ;
@@ -10690,15 +12231,15 @@ SWIGINTERN PyObject *_wrap_Hist3DLogIdId_bin_edges(PyObject *SWIGUNUSEDPARM(self
   };
   std::vector< double,std::allocator< double > > result;
   
-  if (!PyArg_ParseTupleAndKeywords(args, kwargs, "OO:Hist3DLogIdId_bin_edges", kwnames, &obj0, &obj1)) SWIG_fail;
+  if (!PyArg_ParseTupleAndKeywords(args, kwargs, "OO:Hist3DLogIdId_bin_edges_vec", kwnames, &obj0, &obj1)) SWIG_fail;
   res1 = SWIG_ConvertPtr(obj0, &argp1,SWIGTYPE_p_eec__Hist3DT_boost__histogram__axis__transform__log_boost__histogram__axis__transform__id_boost__histogram__axis__transform__id_t, 0 |  0 );
   if (!SWIG_IsOK(res1)) {
-    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "Hist3DLogIdId_bin_edges" "', argument " "1"" of type '" "eec::Hist3D< eec::axis::log,eec::axis::id,eec::axis::id > const *""'"); 
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "Hist3DLogIdId_bin_edges_vec" "', argument " "1"" of type '" "eec::Hist3D< eec::axis::log,eec::axis::id,eec::axis::id > const *""'"); 
   }
   arg1 = reinterpret_cast< eec::Hist3D< eec::axis::log,eec::axis::id,eec::axis::id > * >(argp1);
   ecode2 = SWIG_AsVal_int(obj1, &val2);
   if (!SWIG_IsOK(ecode2)) {
-    SWIG_exception_fail(SWIG_ArgError(ecode2), "in method '" "Hist3DLogIdId_bin_edges" "', argument " "2"" of type '" "int""'");
+    SWIG_exception_fail(SWIG_ArgError(ecode2), "in method '" "Hist3DLogIdId_bin_edges_vec" "', argument " "2"" of type '" "int""'");
   } 
   arg2 = static_cast< int >(val2);
   {
@@ -10714,41 +12255,315 @@ fail:
 }
 
 
-SWIGINTERN PyObject *_wrap_Hist3DLogIdId_get_hist_size(PyObject *SWIGUNUSEDPARM(self), PyObject *args, PyObject *kwargs) {
+SWIGINTERN PyObject *_wrap_Hist3DLogIdId_hist_size(PyObject *SWIGUNUSEDPARM(self), PyObject *args, PyObject *kwargs) {
   PyObject *resultobj = 0;
   eec::Hist3D< eec::axis::log,eec::axis::id,eec::axis::id > *arg1 = (eec::Hist3D< eec::axis::log,eec::axis::id,eec::axis::id > *) 0 ;
   bool arg2 = (bool) true ;
+  int arg3 = (int) -1 ;
   void *argp1 = 0 ;
   int res1 = 0 ;
   bool val2 ;
   int ecode2 = 0 ;
+  int val3 ;
+  int ecode3 = 0 ;
   PyObject * obj0 = 0 ;
   PyObject * obj1 = 0 ;
+  PyObject * obj2 = 0 ;
   char * kwnames[] = {
-    (char *)"self",  (char *)"include_overflows",  NULL 
+    (char *)"self",  (char *)"include_overflows",  (char *)"i",  NULL 
   };
   size_t result;
   
-  if (!PyArg_ParseTupleAndKeywords(args, kwargs, "O|O:Hist3DLogIdId_get_hist_size", kwnames, &obj0, &obj1)) SWIG_fail;
+  if (!PyArg_ParseTupleAndKeywords(args, kwargs, "O|OO:Hist3DLogIdId_hist_size", kwnames, &obj0, &obj1, &obj2)) SWIG_fail;
   res1 = SWIG_ConvertPtr(obj0, &argp1,SWIGTYPE_p_eec__Hist3DT_boost__histogram__axis__transform__log_boost__histogram__axis__transform__id_boost__histogram__axis__transform__id_t, 0 |  0 );
   if (!SWIG_IsOK(res1)) {
-    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "Hist3DLogIdId_get_hist_size" "', argument " "1"" of type '" "eec::Hist3D< eec::axis::log,eec::axis::id,eec::axis::id > const *""'"); 
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "Hist3DLogIdId_hist_size" "', argument " "1"" of type '" "eec::Hist3D< eec::axis::log,eec::axis::id,eec::axis::id > const *""'"); 
   }
   arg1 = reinterpret_cast< eec::Hist3D< eec::axis::log,eec::axis::id,eec::axis::id > * >(argp1);
   if (obj1) {
     ecode2 = SWIG_AsVal_bool(obj1, &val2);
     if (!SWIG_IsOK(ecode2)) {
-      SWIG_exception_fail(SWIG_ArgError(ecode2), "in method '" "Hist3DLogIdId_get_hist_size" "', argument " "2"" of type '" "bool""'");
+      SWIG_exception_fail(SWIG_ArgError(ecode2), "in method '" "Hist3DLogIdId_hist_size" "', argument " "2"" of type '" "bool""'");
     } 
     arg2 = static_cast< bool >(val2);
   }
+  if (obj2) {
+    ecode3 = SWIG_AsVal_int(obj2, &val3);
+    if (!SWIG_IsOK(ecode3)) {
+      SWIG_exception_fail(SWIG_ArgError(ecode3), "in method '" "Hist3DLogIdId_hist_size" "', argument " "3"" of type '" "int""'");
+    } 
+    arg3 = static_cast< int >(val3);
+  }
   {
     try {
-      result = ((eec::Hist3D< eec::axis::log,eec::axis::id,eec::axis::id > const *)arg1)->get_hist_size(arg2); 
+      result = ((eec::Hist3D< eec::axis::log,eec::axis::id,eec::axis::id > const *)arg1)->hist_size(arg2,arg3); 
     }
     CATCH_STD_EXCEPTION
   }
   resultobj = SWIG_From_size_t(static_cast< size_t >(result));
+  return resultobj;
+fail:
+  return NULL;
+}
+
+
+SWIGINTERN PyObject *_wrap_Hist3DLogIdId_bin_centers(PyObject *SWIGUNUSEDPARM(self), PyObject *args, PyObject *kwargs) {
+  PyObject *resultobj = 0;
+  eec::Hist3D< eec::axis::log,eec::axis::id,eec::axis::id > *arg1 = (eec::Hist3D< eec::axis::log,eec::axis::id,eec::axis::id > *) 0 ;
+  double **arg2 = (double **) 0 ;
+  int *arg3 = (int *) 0 ;
+  int arg4 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  double *data_temp2 = NULL ;
+  int dim_temp2 ;
+  int val4 ;
+  int ecode4 = 0 ;
+  PyObject * obj0 = 0 ;
+  PyObject * obj1 = 0 ;
+  char * kwnames[] = {
+    (char *)"self",  (char *)"i",  NULL 
+  };
+  
+  {
+    arg2 = &data_temp2;
+    arg3 = &dim_temp2;
+  }
+  if (!PyArg_ParseTupleAndKeywords(args, kwargs, "OO:Hist3DLogIdId_bin_centers", kwnames, &obj0, &obj1)) SWIG_fail;
+  res1 = SWIG_ConvertPtr(obj0, &argp1,SWIGTYPE_p_eec__Hist3DT_boost__histogram__axis__transform__log_boost__histogram__axis__transform__id_boost__histogram__axis__transform__id_t, 0 |  0 );
+  if (!SWIG_IsOK(res1)) {
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "Hist3DLogIdId_bin_centers" "', argument " "1"" of type '" "eec::Hist3D< eec::axis::log,eec::axis::id,eec::axis::id > *""'"); 
+  }
+  arg1 = reinterpret_cast< eec::Hist3D< eec::axis::log,eec::axis::id,eec::axis::id > * >(argp1);
+  ecode4 = SWIG_AsVal_int(obj1, &val4);
+  if (!SWIG_IsOK(ecode4)) {
+    SWIG_exception_fail(SWIG_ArgError(ecode4), "in method '" "Hist3DLogIdId_bin_centers" "', argument " "4"" of type '" "int""'");
+  } 
+  arg4 = static_cast< int >(val4);
+  {
+    try {
+      eec_Hist3D_Sl_eec_axis_log_Sc_eec_axis_id_Sc_eec_axis_id_Sg__npy_bin_centers(arg1,arg2,arg3,arg4); 
+    }
+    CATCH_STD_EXCEPTION
+  }
+  resultobj = SWIG_Py_Void();
+  {
+    npy_intp dims[1] = {
+      *arg3 
+    };
+    PyObject* obj = PyArray_SimpleNewFromData(1, dims, NPY_DOUBLE, (void*)(*arg2));
+    PyArrayObject* array = (PyArrayObject*) obj;
+    
+    if (!array) SWIG_fail;
+    
+#ifdef SWIGPY_USE_CAPSULE
+    PyObject* cap = PyCapsule_New((void*)(*arg2), SWIGPY_CAPSULE_NAME, free_cap);
+#else
+    PyObject* cap = PyCObject_FromVoidPtr((void*)(*arg2), free);
+#endif
+    
+#if NPY_API_VERSION < 0x00000007
+    PyArray_BASE(array) = cap;
+#else
+    PyArray_SetBaseObject(array,cap);
+#endif
+    
+    resultobj = SWIG_Python_AppendOutput(resultobj,obj);
+  }
+  return resultobj;
+fail:
+  return NULL;
+}
+
+
+SWIGINTERN PyObject *_wrap_Hist3DLogIdId_bin_edges(PyObject *SWIGUNUSEDPARM(self), PyObject *args, PyObject *kwargs) {
+  PyObject *resultobj = 0;
+  eec::Hist3D< eec::axis::log,eec::axis::id,eec::axis::id > *arg1 = (eec::Hist3D< eec::axis::log,eec::axis::id,eec::axis::id > *) 0 ;
+  double **arg2 = (double **) 0 ;
+  int *arg3 = (int *) 0 ;
+  int arg4 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  double *data_temp2 = NULL ;
+  int dim_temp2 ;
+  int val4 ;
+  int ecode4 = 0 ;
+  PyObject * obj0 = 0 ;
+  PyObject * obj1 = 0 ;
+  char * kwnames[] = {
+    (char *)"self",  (char *)"i",  NULL 
+  };
+  
+  {
+    arg2 = &data_temp2;
+    arg3 = &dim_temp2;
+  }
+  if (!PyArg_ParseTupleAndKeywords(args, kwargs, "OO:Hist3DLogIdId_bin_edges", kwnames, &obj0, &obj1)) SWIG_fail;
+  res1 = SWIG_ConvertPtr(obj0, &argp1,SWIGTYPE_p_eec__Hist3DT_boost__histogram__axis__transform__log_boost__histogram__axis__transform__id_boost__histogram__axis__transform__id_t, 0 |  0 );
+  if (!SWIG_IsOK(res1)) {
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "Hist3DLogIdId_bin_edges" "', argument " "1"" of type '" "eec::Hist3D< eec::axis::log,eec::axis::id,eec::axis::id > *""'"); 
+  }
+  arg1 = reinterpret_cast< eec::Hist3D< eec::axis::log,eec::axis::id,eec::axis::id > * >(argp1);
+  ecode4 = SWIG_AsVal_int(obj1, &val4);
+  if (!SWIG_IsOK(ecode4)) {
+    SWIG_exception_fail(SWIG_ArgError(ecode4), "in method '" "Hist3DLogIdId_bin_edges" "', argument " "4"" of type '" "int""'");
+  } 
+  arg4 = static_cast< int >(val4);
+  {
+    try {
+      eec_Hist3D_Sl_eec_axis_log_Sc_eec_axis_id_Sc_eec_axis_id_Sg__npy_bin_edges(arg1,arg2,arg3,arg4); 
+    }
+    CATCH_STD_EXCEPTION
+  }
+  resultobj = SWIG_Py_Void();
+  {
+    npy_intp dims[1] = {
+      *arg3 
+    };
+    PyObject* obj = PyArray_SimpleNewFromData(1, dims, NPY_DOUBLE, (void*)(*arg2));
+    PyArrayObject* array = (PyArrayObject*) obj;
+    
+    if (!array) SWIG_fail;
+    
+#ifdef SWIGPY_USE_CAPSULE
+    PyObject* cap = PyCapsule_New((void*)(*arg2), SWIGPY_CAPSULE_NAME, free_cap);
+#else
+    PyObject* cap = PyCObject_FromVoidPtr((void*)(*arg2), free);
+#endif
+    
+#if NPY_API_VERSION < 0x00000007
+    PyArray_BASE(array) = cap;
+#else
+    PyArray_SetBaseObject(array,cap);
+#endif
+    
+    resultobj = SWIG_Python_AppendOutput(resultobj,obj);
+  }
+  return resultobj;
+fail:
+  return NULL;
+}
+
+
+SWIGINTERN PyObject *_wrap_Hist3DLogIdId_get_hist_errs(PyObject *SWIGUNUSEDPARM(self), PyObject *args, PyObject *kwargs) {
+  PyObject *resultobj = 0;
+  eec::Hist3D< eec::axis::log,eec::axis::id,eec::axis::id > *arg1 = (eec::Hist3D< eec::axis::log,eec::axis::id,eec::axis::id > *) 0 ;
+  double **arg2 = (double **) 0 ;
+  int *arg3 = (int *) 0 ;
+  int *arg4 = (int *) 0 ;
+  int *arg5 = (int *) 0 ;
+  double **arg6 = (double **) 0 ;
+  int *arg7 = (int *) 0 ;
+  int *arg8 = (int *) 0 ;
+  int *arg9 = (int *) 0 ;
+  bool arg10 = (bool) true ;
+  unsigned int arg11 = (unsigned int) 0 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  double *data_temp2 = NULL ;
+  int dim1_temp2 ;
+  int dim2_temp2 ;
+  int dim3_temp2 ;
+  double *data_temp6 = NULL ;
+  int dim1_temp6 ;
+  int dim2_temp6 ;
+  int dim3_temp6 ;
+  bool val10 ;
+  int ecode10 = 0 ;
+  unsigned int val11 ;
+  int ecode11 = 0 ;
+  PyObject * obj0 = 0 ;
+  PyObject * obj1 = 0 ;
+  PyObject * obj2 = 0 ;
+  char * kwnames[] = {
+    (char *)"self",  (char *)"include_overflows",  (char *)"hist_i",  NULL 
+  };
+  
+  {
+    arg2 = &data_temp2;
+    arg3 = &dim1_temp2;
+    arg4 = &dim2_temp2;
+    arg5 = &dim3_temp2;
+  }
+  {
+    arg6 = &data_temp6;
+    arg7 = &dim1_temp6;
+    arg8 = &dim2_temp6;
+    arg9 = &dim3_temp6;
+  }
+  if (!PyArg_ParseTupleAndKeywords(args, kwargs, "O|OO:Hist3DLogIdId_get_hist_errs", kwnames, &obj0, &obj1, &obj2)) SWIG_fail;
+  res1 = SWIG_ConvertPtr(obj0, &argp1,SWIGTYPE_p_eec__Hist3DT_boost__histogram__axis__transform__log_boost__histogram__axis__transform__id_boost__histogram__axis__transform__id_t, 0 |  0 );
+  if (!SWIG_IsOK(res1)) {
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "Hist3DLogIdId_get_hist_errs" "', argument " "1"" of type '" "eec::Hist3D< eec::axis::log,eec::axis::id,eec::axis::id > *""'"); 
+  }
+  arg1 = reinterpret_cast< eec::Hist3D< eec::axis::log,eec::axis::id,eec::axis::id > * >(argp1);
+  if (obj1) {
+    ecode10 = SWIG_AsVal_bool(obj1, &val10);
+    if (!SWIG_IsOK(ecode10)) {
+      SWIG_exception_fail(SWIG_ArgError(ecode10), "in method '" "Hist3DLogIdId_get_hist_errs" "', argument " "10"" of type '" "bool""'");
+    } 
+    arg10 = static_cast< bool >(val10);
+  }
+  if (obj2) {
+    ecode11 = SWIG_AsVal_unsigned_SS_int(obj2, &val11);
+    if (!SWIG_IsOK(ecode11)) {
+      SWIG_exception_fail(SWIG_ArgError(ecode11), "in method '" "Hist3DLogIdId_get_hist_errs" "', argument " "11"" of type '" "unsigned int""'");
+    } 
+    arg11 = static_cast< unsigned int >(val11);
+  }
+  {
+    try {
+      eec_Hist3D_Sl_eec_axis_log_Sc_eec_axis_id_Sc_eec_axis_id_Sg__npy_get_hist_errs(arg1,arg2,arg3,arg4,arg5,arg6,arg7,arg8,arg9,arg10,arg11); 
+    }
+    CATCH_STD_EXCEPTION
+  }
+  resultobj = SWIG_Py_Void();
+  {
+    npy_intp dims[3] = {
+      *arg3, *arg4, *arg5 
+    };
+    PyObject* obj = PyArray_SimpleNewFromData(3, dims, NPY_DOUBLE, (void*)(*arg2));
+    PyArrayObject* array = (PyArrayObject*) obj;
+    
+    if (!array) SWIG_fail;
+    
+#ifdef SWIGPY_USE_CAPSULE
+    PyObject* cap = PyCapsule_New((void*)(*arg2), SWIGPY_CAPSULE_NAME, free_cap);
+#else
+    PyObject* cap = PyCObject_FromVoidPtr((void*)(*arg2), free);
+#endif
+    
+#if NPY_API_VERSION < 0x00000007
+    PyArray_BASE(array) = cap;
+#else
+    PyArray_SetBaseObject(array,cap);
+#endif
+    
+    resultobj = SWIG_Python_AppendOutput(resultobj,obj);
+  }
+  {
+    npy_intp dims[3] = {
+      *arg7, *arg8, *arg9 
+    };
+    PyObject* obj = PyArray_SimpleNewFromData(3, dims, NPY_DOUBLE, (void*)(*arg6));
+    PyArrayObject* array = (PyArrayObject*) obj;
+    
+    if (!array) SWIG_fail;
+    
+#ifdef SWIGPY_USE_CAPSULE
+    PyObject* cap = PyCapsule_New((void*)(*arg6), SWIGPY_CAPSULE_NAME, free_cap);
+#else
+    PyObject* cap = PyCObject_FromVoidPtr((void*)(*arg6), free);
+#endif
+    
+#if NPY_API_VERSION < 0x00000007
+    PyArray_BASE(array) = cap;
+#else
+    PyArray_SetBaseObject(array,cap);
+#endif
+    
+    resultobj = SWIG_Python_AppendOutput(resultobj,obj);
+  }
   return resultobj;
 fail:
   return NULL;
@@ -10934,7 +12749,46 @@ fail:
 }
 
 
-SWIGINTERN PyObject *_wrap_Hist3DIdLogId_bin_centers(PyObject *SWIGUNUSEDPARM(self), PyObject *args, PyObject *kwargs) {
+SWIGINTERN PyObject *_wrap_Hist3DIdLogId_nbins(PyObject *SWIGUNUSEDPARM(self), PyObject *args, PyObject *kwargs) {
+  PyObject *resultobj = 0;
+  eec::Hist3D< eec::axis::id,eec::axis::log,eec::axis::id > *arg1 = (eec::Hist3D< eec::axis::id,eec::axis::log,eec::axis::id > *) 0 ;
+  int arg2 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  int val2 ;
+  int ecode2 = 0 ;
+  PyObject * obj0 = 0 ;
+  PyObject * obj1 = 0 ;
+  char * kwnames[] = {
+    (char *)"self",  (char *)"i",  NULL 
+  };
+  size_t result;
+  
+  if (!PyArg_ParseTupleAndKeywords(args, kwargs, "OO:Hist3DIdLogId_nbins", kwnames, &obj0, &obj1)) SWIG_fail;
+  res1 = SWIG_ConvertPtr(obj0, &argp1,SWIGTYPE_p_eec__Hist3DT_boost__histogram__axis__transform__id_boost__histogram__axis__transform__log_boost__histogram__axis__transform__id_t, 0 |  0 );
+  if (!SWIG_IsOK(res1)) {
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "Hist3DIdLogId_nbins" "', argument " "1"" of type '" "eec::Hist3D< eec::axis::id,eec::axis::log,eec::axis::id > const *""'"); 
+  }
+  arg1 = reinterpret_cast< eec::Hist3D< eec::axis::id,eec::axis::log,eec::axis::id > * >(argp1);
+  ecode2 = SWIG_AsVal_int(obj1, &val2);
+  if (!SWIG_IsOK(ecode2)) {
+    SWIG_exception_fail(SWIG_ArgError(ecode2), "in method '" "Hist3DIdLogId_nbins" "', argument " "2"" of type '" "int""'");
+  } 
+  arg2 = static_cast< int >(val2);
+  {
+    try {
+      result = ((eec::Hist3D< eec::axis::id,eec::axis::log,eec::axis::id > const *)arg1)->nbins(arg2); 
+    }
+    CATCH_STD_EXCEPTION
+  }
+  resultobj = SWIG_From_size_t(static_cast< size_t >(result));
+  return resultobj;
+fail:
+  return NULL;
+}
+
+
+SWIGINTERN PyObject *_wrap_Hist3DIdLogId_bin_centers_vec(PyObject *SWIGUNUSEDPARM(self), PyObject *args, PyObject *kwargs) {
   PyObject *resultobj = 0;
   eec::Hist3D< eec::axis::id,eec::axis::log,eec::axis::id > *arg1 = (eec::Hist3D< eec::axis::id,eec::axis::log,eec::axis::id > *) 0 ;
   int arg2 ;
@@ -10949,15 +12803,15 @@ SWIGINTERN PyObject *_wrap_Hist3DIdLogId_bin_centers(PyObject *SWIGUNUSEDPARM(se
   };
   std::vector< double,std::allocator< double > > result;
   
-  if (!PyArg_ParseTupleAndKeywords(args, kwargs, "OO:Hist3DIdLogId_bin_centers", kwnames, &obj0, &obj1)) SWIG_fail;
+  if (!PyArg_ParseTupleAndKeywords(args, kwargs, "OO:Hist3DIdLogId_bin_centers_vec", kwnames, &obj0, &obj1)) SWIG_fail;
   res1 = SWIG_ConvertPtr(obj0, &argp1,SWIGTYPE_p_eec__Hist3DT_boost__histogram__axis__transform__id_boost__histogram__axis__transform__log_boost__histogram__axis__transform__id_t, 0 |  0 );
   if (!SWIG_IsOK(res1)) {
-    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "Hist3DIdLogId_bin_centers" "', argument " "1"" of type '" "eec::Hist3D< eec::axis::id,eec::axis::log,eec::axis::id > const *""'"); 
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "Hist3DIdLogId_bin_centers_vec" "', argument " "1"" of type '" "eec::Hist3D< eec::axis::id,eec::axis::log,eec::axis::id > const *""'"); 
   }
   arg1 = reinterpret_cast< eec::Hist3D< eec::axis::id,eec::axis::log,eec::axis::id > * >(argp1);
   ecode2 = SWIG_AsVal_int(obj1, &val2);
   if (!SWIG_IsOK(ecode2)) {
-    SWIG_exception_fail(SWIG_ArgError(ecode2), "in method '" "Hist3DIdLogId_bin_centers" "', argument " "2"" of type '" "int""'");
+    SWIG_exception_fail(SWIG_ArgError(ecode2), "in method '" "Hist3DIdLogId_bin_centers_vec" "', argument " "2"" of type '" "int""'");
   } 
   arg2 = static_cast< int >(val2);
   {
@@ -10973,7 +12827,7 @@ fail:
 }
 
 
-SWIGINTERN PyObject *_wrap_Hist3DIdLogId_bin_edges(PyObject *SWIGUNUSEDPARM(self), PyObject *args, PyObject *kwargs) {
+SWIGINTERN PyObject *_wrap_Hist3DIdLogId_bin_edges_vec(PyObject *SWIGUNUSEDPARM(self), PyObject *args, PyObject *kwargs) {
   PyObject *resultobj = 0;
   eec::Hist3D< eec::axis::id,eec::axis::log,eec::axis::id > *arg1 = (eec::Hist3D< eec::axis::id,eec::axis::log,eec::axis::id > *) 0 ;
   int arg2 ;
@@ -10988,15 +12842,15 @@ SWIGINTERN PyObject *_wrap_Hist3DIdLogId_bin_edges(PyObject *SWIGUNUSEDPARM(self
   };
   std::vector< double,std::allocator< double > > result;
   
-  if (!PyArg_ParseTupleAndKeywords(args, kwargs, "OO:Hist3DIdLogId_bin_edges", kwnames, &obj0, &obj1)) SWIG_fail;
+  if (!PyArg_ParseTupleAndKeywords(args, kwargs, "OO:Hist3DIdLogId_bin_edges_vec", kwnames, &obj0, &obj1)) SWIG_fail;
   res1 = SWIG_ConvertPtr(obj0, &argp1,SWIGTYPE_p_eec__Hist3DT_boost__histogram__axis__transform__id_boost__histogram__axis__transform__log_boost__histogram__axis__transform__id_t, 0 |  0 );
   if (!SWIG_IsOK(res1)) {
-    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "Hist3DIdLogId_bin_edges" "', argument " "1"" of type '" "eec::Hist3D< eec::axis::id,eec::axis::log,eec::axis::id > const *""'"); 
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "Hist3DIdLogId_bin_edges_vec" "', argument " "1"" of type '" "eec::Hist3D< eec::axis::id,eec::axis::log,eec::axis::id > const *""'"); 
   }
   arg1 = reinterpret_cast< eec::Hist3D< eec::axis::id,eec::axis::log,eec::axis::id > * >(argp1);
   ecode2 = SWIG_AsVal_int(obj1, &val2);
   if (!SWIG_IsOK(ecode2)) {
-    SWIG_exception_fail(SWIG_ArgError(ecode2), "in method '" "Hist3DIdLogId_bin_edges" "', argument " "2"" of type '" "int""'");
+    SWIG_exception_fail(SWIG_ArgError(ecode2), "in method '" "Hist3DIdLogId_bin_edges_vec" "', argument " "2"" of type '" "int""'");
   } 
   arg2 = static_cast< int >(val2);
   {
@@ -11012,41 +12866,315 @@ fail:
 }
 
 
-SWIGINTERN PyObject *_wrap_Hist3DIdLogId_get_hist_size(PyObject *SWIGUNUSEDPARM(self), PyObject *args, PyObject *kwargs) {
+SWIGINTERN PyObject *_wrap_Hist3DIdLogId_hist_size(PyObject *SWIGUNUSEDPARM(self), PyObject *args, PyObject *kwargs) {
   PyObject *resultobj = 0;
   eec::Hist3D< eec::axis::id,eec::axis::log,eec::axis::id > *arg1 = (eec::Hist3D< eec::axis::id,eec::axis::log,eec::axis::id > *) 0 ;
   bool arg2 = (bool) true ;
+  int arg3 = (int) -1 ;
   void *argp1 = 0 ;
   int res1 = 0 ;
   bool val2 ;
   int ecode2 = 0 ;
+  int val3 ;
+  int ecode3 = 0 ;
   PyObject * obj0 = 0 ;
   PyObject * obj1 = 0 ;
+  PyObject * obj2 = 0 ;
   char * kwnames[] = {
-    (char *)"self",  (char *)"include_overflows",  NULL 
+    (char *)"self",  (char *)"include_overflows",  (char *)"i",  NULL 
   };
   size_t result;
   
-  if (!PyArg_ParseTupleAndKeywords(args, kwargs, "O|O:Hist3DIdLogId_get_hist_size", kwnames, &obj0, &obj1)) SWIG_fail;
+  if (!PyArg_ParseTupleAndKeywords(args, kwargs, "O|OO:Hist3DIdLogId_hist_size", kwnames, &obj0, &obj1, &obj2)) SWIG_fail;
   res1 = SWIG_ConvertPtr(obj0, &argp1,SWIGTYPE_p_eec__Hist3DT_boost__histogram__axis__transform__id_boost__histogram__axis__transform__log_boost__histogram__axis__transform__id_t, 0 |  0 );
   if (!SWIG_IsOK(res1)) {
-    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "Hist3DIdLogId_get_hist_size" "', argument " "1"" of type '" "eec::Hist3D< eec::axis::id,eec::axis::log,eec::axis::id > const *""'"); 
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "Hist3DIdLogId_hist_size" "', argument " "1"" of type '" "eec::Hist3D< eec::axis::id,eec::axis::log,eec::axis::id > const *""'"); 
   }
   arg1 = reinterpret_cast< eec::Hist3D< eec::axis::id,eec::axis::log,eec::axis::id > * >(argp1);
   if (obj1) {
     ecode2 = SWIG_AsVal_bool(obj1, &val2);
     if (!SWIG_IsOK(ecode2)) {
-      SWIG_exception_fail(SWIG_ArgError(ecode2), "in method '" "Hist3DIdLogId_get_hist_size" "', argument " "2"" of type '" "bool""'");
+      SWIG_exception_fail(SWIG_ArgError(ecode2), "in method '" "Hist3DIdLogId_hist_size" "', argument " "2"" of type '" "bool""'");
     } 
     arg2 = static_cast< bool >(val2);
   }
+  if (obj2) {
+    ecode3 = SWIG_AsVal_int(obj2, &val3);
+    if (!SWIG_IsOK(ecode3)) {
+      SWIG_exception_fail(SWIG_ArgError(ecode3), "in method '" "Hist3DIdLogId_hist_size" "', argument " "3"" of type '" "int""'");
+    } 
+    arg3 = static_cast< int >(val3);
+  }
   {
     try {
-      result = ((eec::Hist3D< eec::axis::id,eec::axis::log,eec::axis::id > const *)arg1)->get_hist_size(arg2); 
+      result = ((eec::Hist3D< eec::axis::id,eec::axis::log,eec::axis::id > const *)arg1)->hist_size(arg2,arg3); 
     }
     CATCH_STD_EXCEPTION
   }
   resultobj = SWIG_From_size_t(static_cast< size_t >(result));
+  return resultobj;
+fail:
+  return NULL;
+}
+
+
+SWIGINTERN PyObject *_wrap_Hist3DIdLogId_bin_centers(PyObject *SWIGUNUSEDPARM(self), PyObject *args, PyObject *kwargs) {
+  PyObject *resultobj = 0;
+  eec::Hist3D< eec::axis::id,eec::axis::log,eec::axis::id > *arg1 = (eec::Hist3D< eec::axis::id,eec::axis::log,eec::axis::id > *) 0 ;
+  double **arg2 = (double **) 0 ;
+  int *arg3 = (int *) 0 ;
+  int arg4 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  double *data_temp2 = NULL ;
+  int dim_temp2 ;
+  int val4 ;
+  int ecode4 = 0 ;
+  PyObject * obj0 = 0 ;
+  PyObject * obj1 = 0 ;
+  char * kwnames[] = {
+    (char *)"self",  (char *)"i",  NULL 
+  };
+  
+  {
+    arg2 = &data_temp2;
+    arg3 = &dim_temp2;
+  }
+  if (!PyArg_ParseTupleAndKeywords(args, kwargs, "OO:Hist3DIdLogId_bin_centers", kwnames, &obj0, &obj1)) SWIG_fail;
+  res1 = SWIG_ConvertPtr(obj0, &argp1,SWIGTYPE_p_eec__Hist3DT_boost__histogram__axis__transform__id_boost__histogram__axis__transform__log_boost__histogram__axis__transform__id_t, 0 |  0 );
+  if (!SWIG_IsOK(res1)) {
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "Hist3DIdLogId_bin_centers" "', argument " "1"" of type '" "eec::Hist3D< eec::axis::id,eec::axis::log,eec::axis::id > *""'"); 
+  }
+  arg1 = reinterpret_cast< eec::Hist3D< eec::axis::id,eec::axis::log,eec::axis::id > * >(argp1);
+  ecode4 = SWIG_AsVal_int(obj1, &val4);
+  if (!SWIG_IsOK(ecode4)) {
+    SWIG_exception_fail(SWIG_ArgError(ecode4), "in method '" "Hist3DIdLogId_bin_centers" "', argument " "4"" of type '" "int""'");
+  } 
+  arg4 = static_cast< int >(val4);
+  {
+    try {
+      eec_Hist3D_Sl_eec_axis_id_Sc_eec_axis_log_Sc_eec_axis_id_Sg__npy_bin_centers(arg1,arg2,arg3,arg4); 
+    }
+    CATCH_STD_EXCEPTION
+  }
+  resultobj = SWIG_Py_Void();
+  {
+    npy_intp dims[1] = {
+      *arg3 
+    };
+    PyObject* obj = PyArray_SimpleNewFromData(1, dims, NPY_DOUBLE, (void*)(*arg2));
+    PyArrayObject* array = (PyArrayObject*) obj;
+    
+    if (!array) SWIG_fail;
+    
+#ifdef SWIGPY_USE_CAPSULE
+    PyObject* cap = PyCapsule_New((void*)(*arg2), SWIGPY_CAPSULE_NAME, free_cap);
+#else
+    PyObject* cap = PyCObject_FromVoidPtr((void*)(*arg2), free);
+#endif
+    
+#if NPY_API_VERSION < 0x00000007
+    PyArray_BASE(array) = cap;
+#else
+    PyArray_SetBaseObject(array,cap);
+#endif
+    
+    resultobj = SWIG_Python_AppendOutput(resultobj,obj);
+  }
+  return resultobj;
+fail:
+  return NULL;
+}
+
+
+SWIGINTERN PyObject *_wrap_Hist3DIdLogId_bin_edges(PyObject *SWIGUNUSEDPARM(self), PyObject *args, PyObject *kwargs) {
+  PyObject *resultobj = 0;
+  eec::Hist3D< eec::axis::id,eec::axis::log,eec::axis::id > *arg1 = (eec::Hist3D< eec::axis::id,eec::axis::log,eec::axis::id > *) 0 ;
+  double **arg2 = (double **) 0 ;
+  int *arg3 = (int *) 0 ;
+  int arg4 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  double *data_temp2 = NULL ;
+  int dim_temp2 ;
+  int val4 ;
+  int ecode4 = 0 ;
+  PyObject * obj0 = 0 ;
+  PyObject * obj1 = 0 ;
+  char * kwnames[] = {
+    (char *)"self",  (char *)"i",  NULL 
+  };
+  
+  {
+    arg2 = &data_temp2;
+    arg3 = &dim_temp2;
+  }
+  if (!PyArg_ParseTupleAndKeywords(args, kwargs, "OO:Hist3DIdLogId_bin_edges", kwnames, &obj0, &obj1)) SWIG_fail;
+  res1 = SWIG_ConvertPtr(obj0, &argp1,SWIGTYPE_p_eec__Hist3DT_boost__histogram__axis__transform__id_boost__histogram__axis__transform__log_boost__histogram__axis__transform__id_t, 0 |  0 );
+  if (!SWIG_IsOK(res1)) {
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "Hist3DIdLogId_bin_edges" "', argument " "1"" of type '" "eec::Hist3D< eec::axis::id,eec::axis::log,eec::axis::id > *""'"); 
+  }
+  arg1 = reinterpret_cast< eec::Hist3D< eec::axis::id,eec::axis::log,eec::axis::id > * >(argp1);
+  ecode4 = SWIG_AsVal_int(obj1, &val4);
+  if (!SWIG_IsOK(ecode4)) {
+    SWIG_exception_fail(SWIG_ArgError(ecode4), "in method '" "Hist3DIdLogId_bin_edges" "', argument " "4"" of type '" "int""'");
+  } 
+  arg4 = static_cast< int >(val4);
+  {
+    try {
+      eec_Hist3D_Sl_eec_axis_id_Sc_eec_axis_log_Sc_eec_axis_id_Sg__npy_bin_edges(arg1,arg2,arg3,arg4); 
+    }
+    CATCH_STD_EXCEPTION
+  }
+  resultobj = SWIG_Py_Void();
+  {
+    npy_intp dims[1] = {
+      *arg3 
+    };
+    PyObject* obj = PyArray_SimpleNewFromData(1, dims, NPY_DOUBLE, (void*)(*arg2));
+    PyArrayObject* array = (PyArrayObject*) obj;
+    
+    if (!array) SWIG_fail;
+    
+#ifdef SWIGPY_USE_CAPSULE
+    PyObject* cap = PyCapsule_New((void*)(*arg2), SWIGPY_CAPSULE_NAME, free_cap);
+#else
+    PyObject* cap = PyCObject_FromVoidPtr((void*)(*arg2), free);
+#endif
+    
+#if NPY_API_VERSION < 0x00000007
+    PyArray_BASE(array) = cap;
+#else
+    PyArray_SetBaseObject(array,cap);
+#endif
+    
+    resultobj = SWIG_Python_AppendOutput(resultobj,obj);
+  }
+  return resultobj;
+fail:
+  return NULL;
+}
+
+
+SWIGINTERN PyObject *_wrap_Hist3DIdLogId_get_hist_errs(PyObject *SWIGUNUSEDPARM(self), PyObject *args, PyObject *kwargs) {
+  PyObject *resultobj = 0;
+  eec::Hist3D< eec::axis::id,eec::axis::log,eec::axis::id > *arg1 = (eec::Hist3D< eec::axis::id,eec::axis::log,eec::axis::id > *) 0 ;
+  double **arg2 = (double **) 0 ;
+  int *arg3 = (int *) 0 ;
+  int *arg4 = (int *) 0 ;
+  int *arg5 = (int *) 0 ;
+  double **arg6 = (double **) 0 ;
+  int *arg7 = (int *) 0 ;
+  int *arg8 = (int *) 0 ;
+  int *arg9 = (int *) 0 ;
+  bool arg10 = (bool) true ;
+  unsigned int arg11 = (unsigned int) 0 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  double *data_temp2 = NULL ;
+  int dim1_temp2 ;
+  int dim2_temp2 ;
+  int dim3_temp2 ;
+  double *data_temp6 = NULL ;
+  int dim1_temp6 ;
+  int dim2_temp6 ;
+  int dim3_temp6 ;
+  bool val10 ;
+  int ecode10 = 0 ;
+  unsigned int val11 ;
+  int ecode11 = 0 ;
+  PyObject * obj0 = 0 ;
+  PyObject * obj1 = 0 ;
+  PyObject * obj2 = 0 ;
+  char * kwnames[] = {
+    (char *)"self",  (char *)"include_overflows",  (char *)"hist_i",  NULL 
+  };
+  
+  {
+    arg2 = &data_temp2;
+    arg3 = &dim1_temp2;
+    arg4 = &dim2_temp2;
+    arg5 = &dim3_temp2;
+  }
+  {
+    arg6 = &data_temp6;
+    arg7 = &dim1_temp6;
+    arg8 = &dim2_temp6;
+    arg9 = &dim3_temp6;
+  }
+  if (!PyArg_ParseTupleAndKeywords(args, kwargs, "O|OO:Hist3DIdLogId_get_hist_errs", kwnames, &obj0, &obj1, &obj2)) SWIG_fail;
+  res1 = SWIG_ConvertPtr(obj0, &argp1,SWIGTYPE_p_eec__Hist3DT_boost__histogram__axis__transform__id_boost__histogram__axis__transform__log_boost__histogram__axis__transform__id_t, 0 |  0 );
+  if (!SWIG_IsOK(res1)) {
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "Hist3DIdLogId_get_hist_errs" "', argument " "1"" of type '" "eec::Hist3D< eec::axis::id,eec::axis::log,eec::axis::id > *""'"); 
+  }
+  arg1 = reinterpret_cast< eec::Hist3D< eec::axis::id,eec::axis::log,eec::axis::id > * >(argp1);
+  if (obj1) {
+    ecode10 = SWIG_AsVal_bool(obj1, &val10);
+    if (!SWIG_IsOK(ecode10)) {
+      SWIG_exception_fail(SWIG_ArgError(ecode10), "in method '" "Hist3DIdLogId_get_hist_errs" "', argument " "10"" of type '" "bool""'");
+    } 
+    arg10 = static_cast< bool >(val10);
+  }
+  if (obj2) {
+    ecode11 = SWIG_AsVal_unsigned_SS_int(obj2, &val11);
+    if (!SWIG_IsOK(ecode11)) {
+      SWIG_exception_fail(SWIG_ArgError(ecode11), "in method '" "Hist3DIdLogId_get_hist_errs" "', argument " "11"" of type '" "unsigned int""'");
+    } 
+    arg11 = static_cast< unsigned int >(val11);
+  }
+  {
+    try {
+      eec_Hist3D_Sl_eec_axis_id_Sc_eec_axis_log_Sc_eec_axis_id_Sg__npy_get_hist_errs(arg1,arg2,arg3,arg4,arg5,arg6,arg7,arg8,arg9,arg10,arg11); 
+    }
+    CATCH_STD_EXCEPTION
+  }
+  resultobj = SWIG_Py_Void();
+  {
+    npy_intp dims[3] = {
+      *arg3, *arg4, *arg5 
+    };
+    PyObject* obj = PyArray_SimpleNewFromData(3, dims, NPY_DOUBLE, (void*)(*arg2));
+    PyArrayObject* array = (PyArrayObject*) obj;
+    
+    if (!array) SWIG_fail;
+    
+#ifdef SWIGPY_USE_CAPSULE
+    PyObject* cap = PyCapsule_New((void*)(*arg2), SWIGPY_CAPSULE_NAME, free_cap);
+#else
+    PyObject* cap = PyCObject_FromVoidPtr((void*)(*arg2), free);
+#endif
+    
+#if NPY_API_VERSION < 0x00000007
+    PyArray_BASE(array) = cap;
+#else
+    PyArray_SetBaseObject(array,cap);
+#endif
+    
+    resultobj = SWIG_Python_AppendOutput(resultobj,obj);
+  }
+  {
+    npy_intp dims[3] = {
+      *arg7, *arg8, *arg9 
+    };
+    PyObject* obj = PyArray_SimpleNewFromData(3, dims, NPY_DOUBLE, (void*)(*arg6));
+    PyArrayObject* array = (PyArrayObject*) obj;
+    
+    if (!array) SWIG_fail;
+    
+#ifdef SWIGPY_USE_CAPSULE
+    PyObject* cap = PyCapsule_New((void*)(*arg6), SWIGPY_CAPSULE_NAME, free_cap);
+#else
+    PyObject* cap = PyCObject_FromVoidPtr((void*)(*arg6), free);
+#endif
+    
+#if NPY_API_VERSION < 0x00000007
+    PyArray_BASE(array) = cap;
+#else
+    PyArray_SetBaseObject(array,cap);
+#endif
+    
+    resultobj = SWIG_Python_AppendOutput(resultobj,obj);
+  }
   return resultobj;
 fail:
   return NULL;
@@ -11232,7 +13360,46 @@ fail:
 }
 
 
-SWIGINTERN PyObject *_wrap_Hist3DLogLogId_bin_centers(PyObject *SWIGUNUSEDPARM(self), PyObject *args, PyObject *kwargs) {
+SWIGINTERN PyObject *_wrap_Hist3DLogLogId_nbins(PyObject *SWIGUNUSEDPARM(self), PyObject *args, PyObject *kwargs) {
+  PyObject *resultobj = 0;
+  eec::Hist3D< eec::axis::log,eec::axis::log,eec::axis::id > *arg1 = (eec::Hist3D< eec::axis::log,eec::axis::log,eec::axis::id > *) 0 ;
+  int arg2 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  int val2 ;
+  int ecode2 = 0 ;
+  PyObject * obj0 = 0 ;
+  PyObject * obj1 = 0 ;
+  char * kwnames[] = {
+    (char *)"self",  (char *)"i",  NULL 
+  };
+  size_t result;
+  
+  if (!PyArg_ParseTupleAndKeywords(args, kwargs, "OO:Hist3DLogLogId_nbins", kwnames, &obj0, &obj1)) SWIG_fail;
+  res1 = SWIG_ConvertPtr(obj0, &argp1,SWIGTYPE_p_eec__Hist3DT_boost__histogram__axis__transform__log_boost__histogram__axis__transform__log_boost__histogram__axis__transform__id_t, 0 |  0 );
+  if (!SWIG_IsOK(res1)) {
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "Hist3DLogLogId_nbins" "', argument " "1"" of type '" "eec::Hist3D< eec::axis::log,eec::axis::log,eec::axis::id > const *""'"); 
+  }
+  arg1 = reinterpret_cast< eec::Hist3D< eec::axis::log,eec::axis::log,eec::axis::id > * >(argp1);
+  ecode2 = SWIG_AsVal_int(obj1, &val2);
+  if (!SWIG_IsOK(ecode2)) {
+    SWIG_exception_fail(SWIG_ArgError(ecode2), "in method '" "Hist3DLogLogId_nbins" "', argument " "2"" of type '" "int""'");
+  } 
+  arg2 = static_cast< int >(val2);
+  {
+    try {
+      result = ((eec::Hist3D< eec::axis::log,eec::axis::log,eec::axis::id > const *)arg1)->nbins(arg2); 
+    }
+    CATCH_STD_EXCEPTION
+  }
+  resultobj = SWIG_From_size_t(static_cast< size_t >(result));
+  return resultobj;
+fail:
+  return NULL;
+}
+
+
+SWIGINTERN PyObject *_wrap_Hist3DLogLogId_bin_centers_vec(PyObject *SWIGUNUSEDPARM(self), PyObject *args, PyObject *kwargs) {
   PyObject *resultobj = 0;
   eec::Hist3D< eec::axis::log,eec::axis::log,eec::axis::id > *arg1 = (eec::Hist3D< eec::axis::log,eec::axis::log,eec::axis::id > *) 0 ;
   int arg2 ;
@@ -11247,15 +13414,15 @@ SWIGINTERN PyObject *_wrap_Hist3DLogLogId_bin_centers(PyObject *SWIGUNUSEDPARM(s
   };
   std::vector< double,std::allocator< double > > result;
   
-  if (!PyArg_ParseTupleAndKeywords(args, kwargs, "OO:Hist3DLogLogId_bin_centers", kwnames, &obj0, &obj1)) SWIG_fail;
+  if (!PyArg_ParseTupleAndKeywords(args, kwargs, "OO:Hist3DLogLogId_bin_centers_vec", kwnames, &obj0, &obj1)) SWIG_fail;
   res1 = SWIG_ConvertPtr(obj0, &argp1,SWIGTYPE_p_eec__Hist3DT_boost__histogram__axis__transform__log_boost__histogram__axis__transform__log_boost__histogram__axis__transform__id_t, 0 |  0 );
   if (!SWIG_IsOK(res1)) {
-    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "Hist3DLogLogId_bin_centers" "', argument " "1"" of type '" "eec::Hist3D< eec::axis::log,eec::axis::log,eec::axis::id > const *""'"); 
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "Hist3DLogLogId_bin_centers_vec" "', argument " "1"" of type '" "eec::Hist3D< eec::axis::log,eec::axis::log,eec::axis::id > const *""'"); 
   }
   arg1 = reinterpret_cast< eec::Hist3D< eec::axis::log,eec::axis::log,eec::axis::id > * >(argp1);
   ecode2 = SWIG_AsVal_int(obj1, &val2);
   if (!SWIG_IsOK(ecode2)) {
-    SWIG_exception_fail(SWIG_ArgError(ecode2), "in method '" "Hist3DLogLogId_bin_centers" "', argument " "2"" of type '" "int""'");
+    SWIG_exception_fail(SWIG_ArgError(ecode2), "in method '" "Hist3DLogLogId_bin_centers_vec" "', argument " "2"" of type '" "int""'");
   } 
   arg2 = static_cast< int >(val2);
   {
@@ -11271,7 +13438,7 @@ fail:
 }
 
 
-SWIGINTERN PyObject *_wrap_Hist3DLogLogId_bin_edges(PyObject *SWIGUNUSEDPARM(self), PyObject *args, PyObject *kwargs) {
+SWIGINTERN PyObject *_wrap_Hist3DLogLogId_bin_edges_vec(PyObject *SWIGUNUSEDPARM(self), PyObject *args, PyObject *kwargs) {
   PyObject *resultobj = 0;
   eec::Hist3D< eec::axis::log,eec::axis::log,eec::axis::id > *arg1 = (eec::Hist3D< eec::axis::log,eec::axis::log,eec::axis::id > *) 0 ;
   int arg2 ;
@@ -11286,15 +13453,15 @@ SWIGINTERN PyObject *_wrap_Hist3DLogLogId_bin_edges(PyObject *SWIGUNUSEDPARM(sel
   };
   std::vector< double,std::allocator< double > > result;
   
-  if (!PyArg_ParseTupleAndKeywords(args, kwargs, "OO:Hist3DLogLogId_bin_edges", kwnames, &obj0, &obj1)) SWIG_fail;
+  if (!PyArg_ParseTupleAndKeywords(args, kwargs, "OO:Hist3DLogLogId_bin_edges_vec", kwnames, &obj0, &obj1)) SWIG_fail;
   res1 = SWIG_ConvertPtr(obj0, &argp1,SWIGTYPE_p_eec__Hist3DT_boost__histogram__axis__transform__log_boost__histogram__axis__transform__log_boost__histogram__axis__transform__id_t, 0 |  0 );
   if (!SWIG_IsOK(res1)) {
-    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "Hist3DLogLogId_bin_edges" "', argument " "1"" of type '" "eec::Hist3D< eec::axis::log,eec::axis::log,eec::axis::id > const *""'"); 
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "Hist3DLogLogId_bin_edges_vec" "', argument " "1"" of type '" "eec::Hist3D< eec::axis::log,eec::axis::log,eec::axis::id > const *""'"); 
   }
   arg1 = reinterpret_cast< eec::Hist3D< eec::axis::log,eec::axis::log,eec::axis::id > * >(argp1);
   ecode2 = SWIG_AsVal_int(obj1, &val2);
   if (!SWIG_IsOK(ecode2)) {
-    SWIG_exception_fail(SWIG_ArgError(ecode2), "in method '" "Hist3DLogLogId_bin_edges" "', argument " "2"" of type '" "int""'");
+    SWIG_exception_fail(SWIG_ArgError(ecode2), "in method '" "Hist3DLogLogId_bin_edges_vec" "', argument " "2"" of type '" "int""'");
   } 
   arg2 = static_cast< int >(val2);
   {
@@ -11310,41 +13477,315 @@ fail:
 }
 
 
-SWIGINTERN PyObject *_wrap_Hist3DLogLogId_get_hist_size(PyObject *SWIGUNUSEDPARM(self), PyObject *args, PyObject *kwargs) {
+SWIGINTERN PyObject *_wrap_Hist3DLogLogId_hist_size(PyObject *SWIGUNUSEDPARM(self), PyObject *args, PyObject *kwargs) {
   PyObject *resultobj = 0;
   eec::Hist3D< eec::axis::log,eec::axis::log,eec::axis::id > *arg1 = (eec::Hist3D< eec::axis::log,eec::axis::log,eec::axis::id > *) 0 ;
   bool arg2 = (bool) true ;
+  int arg3 = (int) -1 ;
   void *argp1 = 0 ;
   int res1 = 0 ;
   bool val2 ;
   int ecode2 = 0 ;
+  int val3 ;
+  int ecode3 = 0 ;
   PyObject * obj0 = 0 ;
   PyObject * obj1 = 0 ;
+  PyObject * obj2 = 0 ;
   char * kwnames[] = {
-    (char *)"self",  (char *)"include_overflows",  NULL 
+    (char *)"self",  (char *)"include_overflows",  (char *)"i",  NULL 
   };
   size_t result;
   
-  if (!PyArg_ParseTupleAndKeywords(args, kwargs, "O|O:Hist3DLogLogId_get_hist_size", kwnames, &obj0, &obj1)) SWIG_fail;
+  if (!PyArg_ParseTupleAndKeywords(args, kwargs, "O|OO:Hist3DLogLogId_hist_size", kwnames, &obj0, &obj1, &obj2)) SWIG_fail;
   res1 = SWIG_ConvertPtr(obj0, &argp1,SWIGTYPE_p_eec__Hist3DT_boost__histogram__axis__transform__log_boost__histogram__axis__transform__log_boost__histogram__axis__transform__id_t, 0 |  0 );
   if (!SWIG_IsOK(res1)) {
-    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "Hist3DLogLogId_get_hist_size" "', argument " "1"" of type '" "eec::Hist3D< eec::axis::log,eec::axis::log,eec::axis::id > const *""'"); 
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "Hist3DLogLogId_hist_size" "', argument " "1"" of type '" "eec::Hist3D< eec::axis::log,eec::axis::log,eec::axis::id > const *""'"); 
   }
   arg1 = reinterpret_cast< eec::Hist3D< eec::axis::log,eec::axis::log,eec::axis::id > * >(argp1);
   if (obj1) {
     ecode2 = SWIG_AsVal_bool(obj1, &val2);
     if (!SWIG_IsOK(ecode2)) {
-      SWIG_exception_fail(SWIG_ArgError(ecode2), "in method '" "Hist3DLogLogId_get_hist_size" "', argument " "2"" of type '" "bool""'");
+      SWIG_exception_fail(SWIG_ArgError(ecode2), "in method '" "Hist3DLogLogId_hist_size" "', argument " "2"" of type '" "bool""'");
     } 
     arg2 = static_cast< bool >(val2);
   }
+  if (obj2) {
+    ecode3 = SWIG_AsVal_int(obj2, &val3);
+    if (!SWIG_IsOK(ecode3)) {
+      SWIG_exception_fail(SWIG_ArgError(ecode3), "in method '" "Hist3DLogLogId_hist_size" "', argument " "3"" of type '" "int""'");
+    } 
+    arg3 = static_cast< int >(val3);
+  }
   {
     try {
-      result = ((eec::Hist3D< eec::axis::log,eec::axis::log,eec::axis::id > const *)arg1)->get_hist_size(arg2); 
+      result = ((eec::Hist3D< eec::axis::log,eec::axis::log,eec::axis::id > const *)arg1)->hist_size(arg2,arg3); 
     }
     CATCH_STD_EXCEPTION
   }
   resultobj = SWIG_From_size_t(static_cast< size_t >(result));
+  return resultobj;
+fail:
+  return NULL;
+}
+
+
+SWIGINTERN PyObject *_wrap_Hist3DLogLogId_bin_centers(PyObject *SWIGUNUSEDPARM(self), PyObject *args, PyObject *kwargs) {
+  PyObject *resultobj = 0;
+  eec::Hist3D< eec::axis::log,eec::axis::log,eec::axis::id > *arg1 = (eec::Hist3D< eec::axis::log,eec::axis::log,eec::axis::id > *) 0 ;
+  double **arg2 = (double **) 0 ;
+  int *arg3 = (int *) 0 ;
+  int arg4 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  double *data_temp2 = NULL ;
+  int dim_temp2 ;
+  int val4 ;
+  int ecode4 = 0 ;
+  PyObject * obj0 = 0 ;
+  PyObject * obj1 = 0 ;
+  char * kwnames[] = {
+    (char *)"self",  (char *)"i",  NULL 
+  };
+  
+  {
+    arg2 = &data_temp2;
+    arg3 = &dim_temp2;
+  }
+  if (!PyArg_ParseTupleAndKeywords(args, kwargs, "OO:Hist3DLogLogId_bin_centers", kwnames, &obj0, &obj1)) SWIG_fail;
+  res1 = SWIG_ConvertPtr(obj0, &argp1,SWIGTYPE_p_eec__Hist3DT_boost__histogram__axis__transform__log_boost__histogram__axis__transform__log_boost__histogram__axis__transform__id_t, 0 |  0 );
+  if (!SWIG_IsOK(res1)) {
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "Hist3DLogLogId_bin_centers" "', argument " "1"" of type '" "eec::Hist3D< eec::axis::log,eec::axis::log,eec::axis::id > *""'"); 
+  }
+  arg1 = reinterpret_cast< eec::Hist3D< eec::axis::log,eec::axis::log,eec::axis::id > * >(argp1);
+  ecode4 = SWIG_AsVal_int(obj1, &val4);
+  if (!SWIG_IsOK(ecode4)) {
+    SWIG_exception_fail(SWIG_ArgError(ecode4), "in method '" "Hist3DLogLogId_bin_centers" "', argument " "4"" of type '" "int""'");
+  } 
+  arg4 = static_cast< int >(val4);
+  {
+    try {
+      eec_Hist3D_Sl_eec_axis_log_Sc_eec_axis_log_Sc_eec_axis_id_Sg__npy_bin_centers(arg1,arg2,arg3,arg4); 
+    }
+    CATCH_STD_EXCEPTION
+  }
+  resultobj = SWIG_Py_Void();
+  {
+    npy_intp dims[1] = {
+      *arg3 
+    };
+    PyObject* obj = PyArray_SimpleNewFromData(1, dims, NPY_DOUBLE, (void*)(*arg2));
+    PyArrayObject* array = (PyArrayObject*) obj;
+    
+    if (!array) SWIG_fail;
+    
+#ifdef SWIGPY_USE_CAPSULE
+    PyObject* cap = PyCapsule_New((void*)(*arg2), SWIGPY_CAPSULE_NAME, free_cap);
+#else
+    PyObject* cap = PyCObject_FromVoidPtr((void*)(*arg2), free);
+#endif
+    
+#if NPY_API_VERSION < 0x00000007
+    PyArray_BASE(array) = cap;
+#else
+    PyArray_SetBaseObject(array,cap);
+#endif
+    
+    resultobj = SWIG_Python_AppendOutput(resultobj,obj);
+  }
+  return resultobj;
+fail:
+  return NULL;
+}
+
+
+SWIGINTERN PyObject *_wrap_Hist3DLogLogId_bin_edges(PyObject *SWIGUNUSEDPARM(self), PyObject *args, PyObject *kwargs) {
+  PyObject *resultobj = 0;
+  eec::Hist3D< eec::axis::log,eec::axis::log,eec::axis::id > *arg1 = (eec::Hist3D< eec::axis::log,eec::axis::log,eec::axis::id > *) 0 ;
+  double **arg2 = (double **) 0 ;
+  int *arg3 = (int *) 0 ;
+  int arg4 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  double *data_temp2 = NULL ;
+  int dim_temp2 ;
+  int val4 ;
+  int ecode4 = 0 ;
+  PyObject * obj0 = 0 ;
+  PyObject * obj1 = 0 ;
+  char * kwnames[] = {
+    (char *)"self",  (char *)"i",  NULL 
+  };
+  
+  {
+    arg2 = &data_temp2;
+    arg3 = &dim_temp2;
+  }
+  if (!PyArg_ParseTupleAndKeywords(args, kwargs, "OO:Hist3DLogLogId_bin_edges", kwnames, &obj0, &obj1)) SWIG_fail;
+  res1 = SWIG_ConvertPtr(obj0, &argp1,SWIGTYPE_p_eec__Hist3DT_boost__histogram__axis__transform__log_boost__histogram__axis__transform__log_boost__histogram__axis__transform__id_t, 0 |  0 );
+  if (!SWIG_IsOK(res1)) {
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "Hist3DLogLogId_bin_edges" "', argument " "1"" of type '" "eec::Hist3D< eec::axis::log,eec::axis::log,eec::axis::id > *""'"); 
+  }
+  arg1 = reinterpret_cast< eec::Hist3D< eec::axis::log,eec::axis::log,eec::axis::id > * >(argp1);
+  ecode4 = SWIG_AsVal_int(obj1, &val4);
+  if (!SWIG_IsOK(ecode4)) {
+    SWIG_exception_fail(SWIG_ArgError(ecode4), "in method '" "Hist3DLogLogId_bin_edges" "', argument " "4"" of type '" "int""'");
+  } 
+  arg4 = static_cast< int >(val4);
+  {
+    try {
+      eec_Hist3D_Sl_eec_axis_log_Sc_eec_axis_log_Sc_eec_axis_id_Sg__npy_bin_edges(arg1,arg2,arg3,arg4); 
+    }
+    CATCH_STD_EXCEPTION
+  }
+  resultobj = SWIG_Py_Void();
+  {
+    npy_intp dims[1] = {
+      *arg3 
+    };
+    PyObject* obj = PyArray_SimpleNewFromData(1, dims, NPY_DOUBLE, (void*)(*arg2));
+    PyArrayObject* array = (PyArrayObject*) obj;
+    
+    if (!array) SWIG_fail;
+    
+#ifdef SWIGPY_USE_CAPSULE
+    PyObject* cap = PyCapsule_New((void*)(*arg2), SWIGPY_CAPSULE_NAME, free_cap);
+#else
+    PyObject* cap = PyCObject_FromVoidPtr((void*)(*arg2), free);
+#endif
+    
+#if NPY_API_VERSION < 0x00000007
+    PyArray_BASE(array) = cap;
+#else
+    PyArray_SetBaseObject(array,cap);
+#endif
+    
+    resultobj = SWIG_Python_AppendOutput(resultobj,obj);
+  }
+  return resultobj;
+fail:
+  return NULL;
+}
+
+
+SWIGINTERN PyObject *_wrap_Hist3DLogLogId_get_hist_errs(PyObject *SWIGUNUSEDPARM(self), PyObject *args, PyObject *kwargs) {
+  PyObject *resultobj = 0;
+  eec::Hist3D< eec::axis::log,eec::axis::log,eec::axis::id > *arg1 = (eec::Hist3D< eec::axis::log,eec::axis::log,eec::axis::id > *) 0 ;
+  double **arg2 = (double **) 0 ;
+  int *arg3 = (int *) 0 ;
+  int *arg4 = (int *) 0 ;
+  int *arg5 = (int *) 0 ;
+  double **arg6 = (double **) 0 ;
+  int *arg7 = (int *) 0 ;
+  int *arg8 = (int *) 0 ;
+  int *arg9 = (int *) 0 ;
+  bool arg10 = (bool) true ;
+  unsigned int arg11 = (unsigned int) 0 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  double *data_temp2 = NULL ;
+  int dim1_temp2 ;
+  int dim2_temp2 ;
+  int dim3_temp2 ;
+  double *data_temp6 = NULL ;
+  int dim1_temp6 ;
+  int dim2_temp6 ;
+  int dim3_temp6 ;
+  bool val10 ;
+  int ecode10 = 0 ;
+  unsigned int val11 ;
+  int ecode11 = 0 ;
+  PyObject * obj0 = 0 ;
+  PyObject * obj1 = 0 ;
+  PyObject * obj2 = 0 ;
+  char * kwnames[] = {
+    (char *)"self",  (char *)"include_overflows",  (char *)"hist_i",  NULL 
+  };
+  
+  {
+    arg2 = &data_temp2;
+    arg3 = &dim1_temp2;
+    arg4 = &dim2_temp2;
+    arg5 = &dim3_temp2;
+  }
+  {
+    arg6 = &data_temp6;
+    arg7 = &dim1_temp6;
+    arg8 = &dim2_temp6;
+    arg9 = &dim3_temp6;
+  }
+  if (!PyArg_ParseTupleAndKeywords(args, kwargs, "O|OO:Hist3DLogLogId_get_hist_errs", kwnames, &obj0, &obj1, &obj2)) SWIG_fail;
+  res1 = SWIG_ConvertPtr(obj0, &argp1,SWIGTYPE_p_eec__Hist3DT_boost__histogram__axis__transform__log_boost__histogram__axis__transform__log_boost__histogram__axis__transform__id_t, 0 |  0 );
+  if (!SWIG_IsOK(res1)) {
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "Hist3DLogLogId_get_hist_errs" "', argument " "1"" of type '" "eec::Hist3D< eec::axis::log,eec::axis::log,eec::axis::id > *""'"); 
+  }
+  arg1 = reinterpret_cast< eec::Hist3D< eec::axis::log,eec::axis::log,eec::axis::id > * >(argp1);
+  if (obj1) {
+    ecode10 = SWIG_AsVal_bool(obj1, &val10);
+    if (!SWIG_IsOK(ecode10)) {
+      SWIG_exception_fail(SWIG_ArgError(ecode10), "in method '" "Hist3DLogLogId_get_hist_errs" "', argument " "10"" of type '" "bool""'");
+    } 
+    arg10 = static_cast< bool >(val10);
+  }
+  if (obj2) {
+    ecode11 = SWIG_AsVal_unsigned_SS_int(obj2, &val11);
+    if (!SWIG_IsOK(ecode11)) {
+      SWIG_exception_fail(SWIG_ArgError(ecode11), "in method '" "Hist3DLogLogId_get_hist_errs" "', argument " "11"" of type '" "unsigned int""'");
+    } 
+    arg11 = static_cast< unsigned int >(val11);
+  }
+  {
+    try {
+      eec_Hist3D_Sl_eec_axis_log_Sc_eec_axis_log_Sc_eec_axis_id_Sg__npy_get_hist_errs(arg1,arg2,arg3,arg4,arg5,arg6,arg7,arg8,arg9,arg10,arg11); 
+    }
+    CATCH_STD_EXCEPTION
+  }
+  resultobj = SWIG_Py_Void();
+  {
+    npy_intp dims[3] = {
+      *arg3, *arg4, *arg5 
+    };
+    PyObject* obj = PyArray_SimpleNewFromData(3, dims, NPY_DOUBLE, (void*)(*arg2));
+    PyArrayObject* array = (PyArrayObject*) obj;
+    
+    if (!array) SWIG_fail;
+    
+#ifdef SWIGPY_USE_CAPSULE
+    PyObject* cap = PyCapsule_New((void*)(*arg2), SWIGPY_CAPSULE_NAME, free_cap);
+#else
+    PyObject* cap = PyCObject_FromVoidPtr((void*)(*arg2), free);
+#endif
+    
+#if NPY_API_VERSION < 0x00000007
+    PyArray_BASE(array) = cap;
+#else
+    PyArray_SetBaseObject(array,cap);
+#endif
+    
+    resultobj = SWIG_Python_AppendOutput(resultobj,obj);
+  }
+  {
+    npy_intp dims[3] = {
+      *arg7, *arg8, *arg9 
+    };
+    PyObject* obj = PyArray_SimpleNewFromData(3, dims, NPY_DOUBLE, (void*)(*arg6));
+    PyArrayObject* array = (PyArrayObject*) obj;
+    
+    if (!array) SWIG_fail;
+    
+#ifdef SWIGPY_USE_CAPSULE
+    PyObject* cap = PyCapsule_New((void*)(*arg6), SWIGPY_CAPSULE_NAME, free_cap);
+#else
+    PyObject* cap = PyCObject_FromVoidPtr((void*)(*arg6), free);
+#endif
+    
+#if NPY_API_VERSION < 0x00000007
+    PyArray_BASE(array) = cap;
+#else
+    PyArray_SetBaseObject(array,cap);
+#endif
+    
+    resultobj = SWIG_Python_AppendOutput(resultobj,obj);
+  }
   return resultobj;
 fail:
   return NULL;
@@ -11359,6 +13800,230 @@ SWIGINTERN PyObject *Hist3DLogLogId_swigregister(PyObject *SWIGUNUSEDPARM(self),
 }
 
 SWIGINTERN PyObject *Hist3DLogLogId_swiginit(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
+  return SWIG_Python_InitShadowInstance(args);
+}
+
+SWIGINTERN PyObject *_wrap_new_EECEvents(PyObject *SWIGUNUSEDPARM(self), PyObject *args, PyObject *kwargs) {
+  PyObject *resultobj = 0;
+  size_t arg1 = (size_t) 0 ;
+  size_t val1 ;
+  int ecode1 = 0 ;
+  PyObject * obj0 = 0 ;
+  char * kwnames[] = {
+    (char *)"nev",  NULL 
+  };
+  eec::EECEvents *result = 0 ;
+  
+  if (!PyArg_ParseTupleAndKeywords(args, kwargs, "|O:new_EECEvents", kwnames, &obj0)) SWIG_fail;
+  if (obj0) {
+    ecode1 = SWIG_AsVal_size_t(obj0, &val1);
+    if (!SWIG_IsOK(ecode1)) {
+      SWIG_exception_fail(SWIG_ArgError(ecode1), "in method '" "new_EECEvents" "', argument " "1"" of type '" "size_t""'");
+    } 
+    arg1 = static_cast< size_t >(val1);
+  }
+  {
+    try {
+      result = (eec::EECEvents *)new eec::EECEvents(arg1); 
+    }
+    CATCH_STD_EXCEPTION
+  }
+  resultobj = SWIG_NewPointerObj(SWIG_as_voidptr(result), SWIGTYPE_p_eec__EECEvents, SWIG_POINTER_NEW |  0 );
+  return resultobj;
+fail:
+  return NULL;
+}
+
+
+SWIGINTERN PyObject *_wrap_EECEvents_events(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
+  PyObject *resultobj = 0;
+  eec::EECEvents *arg1 = (eec::EECEvents *) 0 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  PyObject *swig_obj[1] ;
+  std::vector< double const *,std::allocator< double const * > > *result = 0 ;
+  
+  if (!args) SWIG_fail;
+  swig_obj[0] = args;
+  res1 = SWIG_ConvertPtr(swig_obj[0], &argp1,SWIGTYPE_p_eec__EECEvents, 0 |  0 );
+  if (!SWIG_IsOK(res1)) {
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "EECEvents_events" "', argument " "1"" of type '" "eec::EECEvents const *""'"); 
+  }
+  arg1 = reinterpret_cast< eec::EECEvents * >(argp1);
+  {
+    try {
+      result = (std::vector< double const *,std::allocator< double const * > > *) &((eec::EECEvents const *)arg1)->events(); 
+    }
+    CATCH_STD_EXCEPTION
+  }
+  resultobj = SWIG_NewPointerObj(SWIG_as_voidptr(result), SWIGTYPE_p_std__vectorT_double_const_p_std__allocatorT_double_const_p_t_t, 0 |  0 );
+  return resultobj;
+fail:
+  return NULL;
+}
+
+
+SWIGINTERN PyObject *_wrap_EECEvents_mults(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
+  PyObject *resultobj = 0;
+  eec::EECEvents *arg1 = (eec::EECEvents *) 0 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  PyObject *swig_obj[1] ;
+  std::vector< unsigned int,std::allocator< unsigned int > > *result = 0 ;
+  
+  if (!args) SWIG_fail;
+  swig_obj[0] = args;
+  res1 = SWIG_ConvertPtr(swig_obj[0], &argp1,SWIGTYPE_p_eec__EECEvents, 0 |  0 );
+  if (!SWIG_IsOK(res1)) {
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "EECEvents_mults" "', argument " "1"" of type '" "eec::EECEvents const *""'"); 
+  }
+  arg1 = reinterpret_cast< eec::EECEvents * >(argp1);
+  {
+    try {
+      result = (std::vector< unsigned int,std::allocator< unsigned int > > *) &((eec::EECEvents const *)arg1)->mults(); 
+    }
+    CATCH_STD_EXCEPTION
+  }
+  resultobj = swig::from(static_cast< std::vector< unsigned int,std::allocator< unsigned int > > >(*result));
+  return resultobj;
+fail:
+  return NULL;
+}
+
+
+SWIGINTERN PyObject *_wrap_EECEvents_weights(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
+  PyObject *resultobj = 0;
+  eec::EECEvents *arg1 = (eec::EECEvents *) 0 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  PyObject *swig_obj[1] ;
+  std::vector< double,std::allocator< double > > *result = 0 ;
+  
+  if (!args) SWIG_fail;
+  swig_obj[0] = args;
+  res1 = SWIG_ConvertPtr(swig_obj[0], &argp1,SWIGTYPE_p_eec__EECEvents, 0 |  0 );
+  if (!SWIG_IsOK(res1)) {
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "EECEvents_weights" "', argument " "1"" of type '" "eec::EECEvents const *""'"); 
+  }
+  arg1 = reinterpret_cast< eec::EECEvents * >(argp1);
+  {
+    try {
+      result = (std::vector< double,std::allocator< double > > *) &((eec::EECEvents const *)arg1)->weights(); 
+    }
+    CATCH_STD_EXCEPTION
+  }
+  resultobj = swig::from(static_cast< std::vector< double,std::allocator< double > > >(*result));
+  return resultobj;
+fail:
+  return NULL;
+}
+
+
+SWIGINTERN PyObject *_wrap_EECEvents_add_event(PyObject *SWIGUNUSEDPARM(self), PyObject *args, PyObject *kwargs) {
+  PyObject *resultobj = 0;
+  eec::EECEvents *arg1 = (eec::EECEvents *) 0 ;
+  double *arg2 = (double *) 0 ;
+  int arg3 ;
+  int arg4 ;
+  double arg5 = (double) 1.0 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  PyArrayObject *array2 = NULL ;
+  int is_new_object2 = 0 ;
+  double val5 ;
+  int ecode5 = 0 ;
+  PyObject * obj0 = 0 ;
+  PyObject * obj1 = 0 ;
+  PyObject * obj2 = 0 ;
+  char * kwnames[] = {
+    (char *)"self",  (char *)"particles",  (char *)"weight",  NULL 
+  };
+  
+  if (!PyArg_ParseTupleAndKeywords(args, kwargs, "OO|O:EECEvents_add_event", kwnames, &obj0, &obj1, &obj2)) SWIG_fail;
+  res1 = SWIG_ConvertPtr(obj0, &argp1,SWIGTYPE_p_eec__EECEvents, 0 |  0 );
+  if (!SWIG_IsOK(res1)) {
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "EECEvents_add_event" "', argument " "1"" of type '" "eec::EECEvents *""'"); 
+  }
+  arg1 = reinterpret_cast< eec::EECEvents * >(argp1);
+  {
+    npy_intp size[2] = {
+      -1, -1 
+    };
+    array2 = obj_to_array_contiguous_allow_conversion(obj1, NPY_DOUBLE,
+      &is_new_object2);
+    if (!array2 || !require_dimensions(array2, 2) ||
+      !require_size(array2, size, 2)) SWIG_fail;
+    arg2 = (double*) array_data(array2);
+    arg3 = (int) array_size(array2,0);
+    arg4 = (int) array_size(array2,1);
+  }
+  if (obj2) {
+    ecode5 = SWIG_AsVal_double(obj2, &val5);
+    if (!SWIG_IsOK(ecode5)) {
+      SWIG_exception_fail(SWIG_ArgError(ecode5), "in method '" "EECEvents_add_event" "', argument " "5"" of type '" "double""'");
+    } 
+    arg5 = static_cast< double >(val5);
+  }
+  {
+    try {
+      eec_EECEvents_add_event(arg1,arg2,arg3,arg4,arg5); 
+    }
+    CATCH_STD_EXCEPTION
+  }
+  resultobj = SWIG_Py_Void();
+  {
+    if (is_new_object2 && array2)
+    {
+      Py_DECREF(array2); 
+    }
+  }
+  return resultobj;
+fail:
+  {
+    if (is_new_object2 && array2)
+    {
+      Py_DECREF(array2); 
+    }
+  }
+  return NULL;
+}
+
+
+SWIGINTERN PyObject *_wrap_delete_EECEvents(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
+  PyObject *resultobj = 0;
+  eec::EECEvents *arg1 = (eec::EECEvents *) 0 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  PyObject *swig_obj[1] ;
+  
+  if (!args) SWIG_fail;
+  swig_obj[0] = args;
+  res1 = SWIG_ConvertPtr(swig_obj[0], &argp1,SWIGTYPE_p_eec__EECEvents, SWIG_POINTER_DISOWN |  0 );
+  if (!SWIG_IsOK(res1)) {
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "delete_EECEvents" "', argument " "1"" of type '" "eec::EECEvents *""'"); 
+  }
+  arg1 = reinterpret_cast< eec::EECEvents * >(argp1);
+  {
+    try {
+      delete arg1; 
+    }
+    CATCH_STD_EXCEPTION
+  }
+  resultobj = SWIG_Py_Void();
+  return resultobj;
+fail:
+  return NULL;
+}
+
+
+SWIGINTERN PyObject *EECEvents_swigregister(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
+  PyObject *obj;
+  if (!SWIG_Python_UnpackTuple(args, "swigregister", 1, 1, &obj)) return NULL;
+  SWIG_TypeNewClientData(SWIGTYPE_p_eec__EECEvents, SWIG_NewClientData(obj));
+  return SWIG_Py_Void();
+}
+
+SWIGINTERN PyObject *EECEvents_swiginit(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
   return SWIG_Python_InitShadowInstance(args);
 }
 
@@ -11587,6 +14252,184 @@ SWIGINTERN PyObject *_wrap_EECBase_set_omp_chunksize(PyObject *SWIGUNUSEDPARM(se
   {
     try {
       (arg1)->set_omp_chunksize(arg2); 
+    }
+    CATCH_STD_EXCEPTION
+  }
+  resultobj = SWIG_Py_Void();
+  return resultobj;
+fail:
+  return NULL;
+}
+
+
+SWIGINTERN PyObject *_wrap_EECBase___str__(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
+  PyObject *resultobj = 0;
+  eec::EECBase *arg1 = (eec::EECBase *) 0 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  PyObject *swig_obj[1] ;
+  std::string result;
+  
+  if (!args) SWIG_fail;
+  swig_obj[0] = args;
+  res1 = SWIG_ConvertPtr(swig_obj[0], &argp1,SWIGTYPE_p_eec__EECBase, 0 |  0 );
+  if (!SWIG_IsOK(res1)) {
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "EECBase___str__" "', argument " "1"" of type '" "eec::EECBase const *""'"); 
+  }
+  arg1 = reinterpret_cast< eec::EECBase * >(argp1);
+  {
+    try {
+      result = eec_EECBase___str__((eec::EECBase const *)arg1); 
+    }
+    CATCH_STD_EXCEPTION
+  }
+  resultobj = SWIG_From_std_string(static_cast< std::string >(result));
+  return resultobj;
+fail:
+  return NULL;
+}
+
+
+SWIGINTERN PyObject *_wrap_EECBase___repr__(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
+  PyObject *resultobj = 0;
+  eec::EECBase *arg1 = (eec::EECBase *) 0 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  PyObject *swig_obj[1] ;
+  std::string result;
+  
+  if (!args) SWIG_fail;
+  swig_obj[0] = args;
+  res1 = SWIG_ConvertPtr(swig_obj[0], &argp1,SWIGTYPE_p_eec__EECBase, 0 |  0 );
+  if (!SWIG_IsOK(res1)) {
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "EECBase___repr__" "', argument " "1"" of type '" "eec::EECBase const *""'"); 
+  }
+  arg1 = reinterpret_cast< eec::EECBase * >(argp1);
+  {
+    try {
+      result = eec_EECBase___repr__((eec::EECBase const *)arg1); 
+    }
+    CATCH_STD_EXCEPTION
+  }
+  resultobj = SWIG_From_std_string(static_cast< std::string >(result));
+  return resultobj;
+fail:
+  return NULL;
+}
+
+
+SWIGINTERN PyObject *_wrap_EECBase_compute(PyObject *SWIGUNUSEDPARM(self), PyObject *args, PyObject *kwargs) {
+  PyObject *resultobj = 0;
+  eec::EECBase *arg1 = (eec::EECBase *) 0 ;
+  double *arg2 = (double *) 0 ;
+  int arg3 ;
+  int arg4 ;
+  double arg5 = (double) 1.0 ;
+  int arg6 = (int) 0 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  PyArrayObject *array2 = NULL ;
+  int is_new_object2 = 0 ;
+  double val5 ;
+  int ecode5 = 0 ;
+  int val6 ;
+  int ecode6 = 0 ;
+  PyObject * obj0 = 0 ;
+  PyObject * obj1 = 0 ;
+  PyObject * obj2 = 0 ;
+  PyObject * obj3 = 0 ;
+  char * kwnames[] = {
+    (char *)"self",  (char *)"particles",  (char *)"weight",  (char *)"thread_i",  NULL 
+  };
+  
+  if (!PyArg_ParseTupleAndKeywords(args, kwargs, "OO|OO:EECBase_compute", kwnames, &obj0, &obj1, &obj2, &obj3)) SWIG_fail;
+  res1 = SWIG_ConvertPtr(obj0, &argp1,SWIGTYPE_p_eec__EECBase, 0 |  0 );
+  if (!SWIG_IsOK(res1)) {
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "EECBase_compute" "', argument " "1"" of type '" "eec::EECBase *""'"); 
+  }
+  arg1 = reinterpret_cast< eec::EECBase * >(argp1);
+  {
+    npy_intp size[2] = {
+      -1, -1 
+    };
+    array2 = obj_to_array_contiguous_allow_conversion(obj1, NPY_DOUBLE,
+      &is_new_object2);
+    if (!array2 || !require_dimensions(array2, 2) ||
+      !require_size(array2, size, 2)) SWIG_fail;
+    arg2 = (double*) array_data(array2);
+    arg3 = (int) array_size(array2,0);
+    arg4 = (int) array_size(array2,1);
+  }
+  if (obj2) {
+    ecode5 = SWIG_AsVal_double(obj2, &val5);
+    if (!SWIG_IsOK(ecode5)) {
+      SWIG_exception_fail(SWIG_ArgError(ecode5), "in method '" "EECBase_compute" "', argument " "5"" of type '" "double""'");
+    } 
+    arg5 = static_cast< double >(val5);
+  }
+  if (obj3) {
+    ecode6 = SWIG_AsVal_int(obj3, &val6);
+    if (!SWIG_IsOK(ecode6)) {
+      SWIG_exception_fail(SWIG_ArgError(ecode6), "in method '" "EECBase_compute" "', argument " "6"" of type '" "int""'");
+    } 
+    arg6 = static_cast< int >(val6);
+  }
+  {
+    try {
+      eec_EECBase_npy_compute(arg1,arg2,arg3,arg4,arg5,arg6); 
+    }
+    CATCH_STD_EXCEPTION
+  }
+  resultobj = SWIG_Py_Void();
+  {
+    if (is_new_object2 && array2)
+    {
+      Py_DECREF(array2); 
+    }
+  }
+  return resultobj;
+fail:
+  {
+    if (is_new_object2 && array2)
+    {
+      Py_DECREF(array2); 
+    }
+  }
+  return NULL;
+}
+
+
+SWIGINTERN PyObject *_wrap_EECBase___call__(PyObject *SWIGUNUSEDPARM(self), PyObject *args, PyObject *kwargs) {
+  PyObject *resultobj = 0;
+  eec::EECBase *arg1 = (eec::EECBase *) 0 ;
+  eec::EECEvents *arg2 = 0 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  void *argp2 = 0 ;
+  int res2 = 0 ;
+  PyObject * obj0 = 0 ;
+  PyObject * obj1 = 0 ;
+  char * kwnames[] = {
+    (char *)"self",  (char *)"evs",  NULL 
+  };
+  
+  if (!PyArg_ParseTupleAndKeywords(args, kwargs, "OO:EECBase___call__", kwnames, &obj0, &obj1)) SWIG_fail;
+  res1 = SWIG_ConvertPtr(obj0, &argp1,SWIGTYPE_p_eec__EECBase, 0 |  0 );
+  if (!SWIG_IsOK(res1)) {
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "EECBase___call__" "', argument " "1"" of type '" "eec::EECBase *""'"); 
+  }
+  arg1 = reinterpret_cast< eec::EECBase * >(argp1);
+  res2 = SWIG_ConvertPtr(obj1, &argp2, SWIGTYPE_p_eec__EECEvents,  0  | 0);
+  if (!SWIG_IsOK(res2)) {
+    SWIG_exception_fail(SWIG_ArgError(res2), "in method '" "EECBase___call__" "', argument " "2"" of type '" "eec::EECEvents const &""'"); 
+  }
+  if (!argp2) {
+    SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in method '" "EECBase___call__" "', argument " "2"" of type '" "eec::EECEvents const &""'"); 
+  }
+  arg2 = reinterpret_cast< eec::EECEvents * >(argp2);
+  {
+    try {
+      eec_EECBase_operator_Sp__SP_(arg1,(eec::EECEvents const &)*arg2); 
     }
     CATCH_STD_EXCEPTION
   }
@@ -14235,65 +17078,90 @@ static PyMethodDef SwigMethods[] = {
 	 { "delete_vectorUnsigned", _wrap_delete_vectorUnsigned, METH_O, "delete_vectorUnsigned(vectorUnsigned self)"},
 	 { "vectorUnsigned_swigregister", vectorUnsigned_swigregister, METH_O, NULL},
 	 { "vectorUnsigned_swiginit", vectorUnsigned_swiginit, METH_VARARGS, NULL},
-	 { "HistBase_num_threads", _wrap_HistBase_num_threads, METH_O, "HistBase_num_threads(HistBase self) -> int"},
-	 { "HistBase_get_hist_size", (PyCFunction)(void(*)(void))_wrap_HistBase_get_hist_size, METH_VARARGS|METH_KEYWORDS, "HistBase_get_hist_size(HistBase self, bool arg2) -> size_t"},
-	 { "HistBase_get_hist", (PyCFunction)(void(*)(void))_wrap_HistBase_get_hist, METH_VARARGS|METH_KEYWORDS, "HistBase_get_hist(HistBase self, double * arg2, double * arg3, size_t arg4, bool arg5, unsigned int arg6)"},
 	 { "delete_HistBase", _wrap_delete_HistBase, METH_O, "delete_HistBase(HistBase self)"},
+	 { "HistBase_num_threads", _wrap_HistBase_num_threads, METH_O, "HistBase_num_threads(HistBase self) -> int"},
+	 { "HistBase_hist_size", (PyCFunction)(void(*)(void))_wrap_HistBase_hist_size, METH_VARARGS|METH_KEYWORDS, "HistBase_hist_size(HistBase self, bool arg2, int arg3=-1) -> size_t"},
 	 { "HistBase_swigregister", HistBase_swigregister, METH_O, NULL},
-	 { "new_Hist1DId", _wrap_new_Hist1DId, METH_VARARGS, "\n"
-		"Hist1DId()\n"
-		"new_Hist1DId(unsigned int nbins, double axis_min, double axis_max, int num_threads=1) -> Hist1DId\n"
-		""},
+	 { "new_Hist1DId", (PyCFunction)(void(*)(void))_wrap_new_Hist1DId, METH_VARARGS|METH_KEYWORDS, "new_Hist1DId(unsigned int nbins, double axis_min, double axis_max, int num_threads=1) -> Hist1DId"},
 	 { "delete_Hist1DId", _wrap_delete_Hist1DId, METH_O, "delete_Hist1DId(Hist1DId self)"},
 	 { "Hist1DId_nhists", _wrap_Hist1DId_nhists, METH_O, "Hist1DId_nhists(Hist1DId self) -> unsigned int"},
-	 { "Hist1DId_bin_centers", _wrap_Hist1DId_bin_centers, METH_O, "Hist1DId_bin_centers(Hist1DId self) -> vectorDouble"},
-	 { "Hist1DId_bin_edges", _wrap_Hist1DId_bin_edges, METH_O, "Hist1DId_bin_edges(Hist1DId self) -> vectorDouble"},
-	 { "Hist1DId_get_hist_size", (PyCFunction)(void(*)(void))_wrap_Hist1DId_get_hist_size, METH_VARARGS|METH_KEYWORDS, "Hist1DId_get_hist_size(Hist1DId self, bool include_overflows=True) -> size_t"},
+	 { "Hist1DId_bin_centers_vec", _wrap_Hist1DId_bin_centers_vec, METH_O, "Hist1DId_bin_centers_vec(Hist1DId self) -> vectorDouble"},
+	 { "Hist1DId_bin_edges_vec", _wrap_Hist1DId_bin_edges_vec, METH_O, "Hist1DId_bin_edges_vec(Hist1DId self) -> vectorDouble"},
+	 { "Hist1DId_hist_size", (PyCFunction)(void(*)(void))_wrap_Hist1DId_hist_size, METH_VARARGS|METH_KEYWORDS, "Hist1DId_hist_size(Hist1DId self, bool include_overflows=True, int tmp=-1) -> size_t"},
+	 { "Hist1DId_nbins", _wrap_Hist1DId_nbins, METH_O, "Hist1DId_nbins(Hist1DId self) -> size_t"},
+	 { "Hist1DId_bin_centers", _wrap_Hist1DId_bin_centers, METH_O, "Hist1DId_bin_centers(Hist1DId self)"},
+	 { "Hist1DId_bin_edges", _wrap_Hist1DId_bin_edges, METH_O, "Hist1DId_bin_edges(Hist1DId self)"},
+	 { "Hist1DId_get_hist_errs", (PyCFunction)(void(*)(void))_wrap_Hist1DId_get_hist_errs, METH_VARARGS|METH_KEYWORDS, "Hist1DId_get_hist_errs(Hist1DId self, bool include_overflows=True, unsigned int hist_i=0)"},
 	 { "Hist1DId_swigregister", Hist1DId_swigregister, METH_O, NULL},
 	 { "Hist1DId_swiginit", Hist1DId_swiginit, METH_VARARGS, NULL},
-	 { "new_Hist1DLog", _wrap_new_Hist1DLog, METH_VARARGS, "\n"
-		"Hist1DLog()\n"
-		"new_Hist1DLog(unsigned int nbins, double axis_min, double axis_max, int num_threads=1) -> Hist1DLog\n"
-		""},
+	 { "new_Hist1DLog", (PyCFunction)(void(*)(void))_wrap_new_Hist1DLog, METH_VARARGS|METH_KEYWORDS, "new_Hist1DLog(unsigned int nbins, double axis_min, double axis_max, int num_threads=1) -> Hist1DLog"},
 	 { "delete_Hist1DLog", _wrap_delete_Hist1DLog, METH_O, "delete_Hist1DLog(Hist1DLog self)"},
 	 { "Hist1DLog_nhists", _wrap_Hist1DLog_nhists, METH_O, "Hist1DLog_nhists(Hist1DLog self) -> unsigned int"},
-	 { "Hist1DLog_bin_centers", _wrap_Hist1DLog_bin_centers, METH_O, "Hist1DLog_bin_centers(Hist1DLog self) -> vectorDouble"},
-	 { "Hist1DLog_bin_edges", _wrap_Hist1DLog_bin_edges, METH_O, "Hist1DLog_bin_edges(Hist1DLog self) -> vectorDouble"},
-	 { "Hist1DLog_get_hist_size", (PyCFunction)(void(*)(void))_wrap_Hist1DLog_get_hist_size, METH_VARARGS|METH_KEYWORDS, "Hist1DLog_get_hist_size(Hist1DLog self, bool include_overflows=True) -> size_t"},
+	 { "Hist1DLog_bin_centers_vec", _wrap_Hist1DLog_bin_centers_vec, METH_O, "Hist1DLog_bin_centers_vec(Hist1DLog self) -> vectorDouble"},
+	 { "Hist1DLog_bin_edges_vec", _wrap_Hist1DLog_bin_edges_vec, METH_O, "Hist1DLog_bin_edges_vec(Hist1DLog self) -> vectorDouble"},
+	 { "Hist1DLog_hist_size", (PyCFunction)(void(*)(void))_wrap_Hist1DLog_hist_size, METH_VARARGS|METH_KEYWORDS, "Hist1DLog_hist_size(Hist1DLog self, bool include_overflows=True, int tmp=-1) -> size_t"},
+	 { "Hist1DLog_nbins", _wrap_Hist1DLog_nbins, METH_O, "Hist1DLog_nbins(Hist1DLog self) -> size_t"},
+	 { "Hist1DLog_bin_centers", _wrap_Hist1DLog_bin_centers, METH_O, "Hist1DLog_bin_centers(Hist1DLog self)"},
+	 { "Hist1DLog_bin_edges", _wrap_Hist1DLog_bin_edges, METH_O, "Hist1DLog_bin_edges(Hist1DLog self)"},
+	 { "Hist1DLog_get_hist_errs", (PyCFunction)(void(*)(void))_wrap_Hist1DLog_get_hist_errs, METH_VARARGS|METH_KEYWORDS, "Hist1DLog_get_hist_errs(Hist1DLog self, bool include_overflows=True, unsigned int hist_i=0)"},
 	 { "Hist1DLog_swigregister", Hist1DLog_swigregister, METH_O, NULL},
 	 { "Hist1DLog_swiginit", Hist1DLog_swiginit, METH_VARARGS, NULL},
 	 { "new_Hist3DIdIdId", (PyCFunction)(void(*)(void))_wrap_new_Hist3DIdIdId, METH_VARARGS|METH_KEYWORDS, "new_Hist3DIdIdId(unsigned int nbins0, double axis0_min, double axis0_max, unsigned int nbins1, double axis1_min, double axis1_max, unsigned int nbins2, double axis2_min, double axis2_max, int num_threads=1) -> Hist3DIdIdId"},
 	 { "delete_Hist3DIdIdId", _wrap_delete_Hist3DIdIdId, METH_O, "delete_Hist3DIdIdId(Hist3DIdIdId self)"},
 	 { "Hist3DIdIdId_nhists", _wrap_Hist3DIdIdId_nhists, METH_O, "Hist3DIdIdId_nhists(Hist3DIdIdId self) -> unsigned int"},
-	 { "Hist3DIdIdId_bin_centers", (PyCFunction)(void(*)(void))_wrap_Hist3DIdIdId_bin_centers, METH_VARARGS|METH_KEYWORDS, "Hist3DIdIdId_bin_centers(Hist3DIdIdId self, int i) -> vectorDouble"},
-	 { "Hist3DIdIdId_bin_edges", (PyCFunction)(void(*)(void))_wrap_Hist3DIdIdId_bin_edges, METH_VARARGS|METH_KEYWORDS, "Hist3DIdIdId_bin_edges(Hist3DIdIdId self, int i) -> vectorDouble"},
-	 { "Hist3DIdIdId_get_hist_size", (PyCFunction)(void(*)(void))_wrap_Hist3DIdIdId_get_hist_size, METH_VARARGS|METH_KEYWORDS, "Hist3DIdIdId_get_hist_size(Hist3DIdIdId self, bool include_overflows=True) -> size_t"},
+	 { "Hist3DIdIdId_nbins", (PyCFunction)(void(*)(void))_wrap_Hist3DIdIdId_nbins, METH_VARARGS|METH_KEYWORDS, "Hist3DIdIdId_nbins(Hist3DIdIdId self, int i) -> size_t"},
+	 { "Hist3DIdIdId_bin_centers_vec", (PyCFunction)(void(*)(void))_wrap_Hist3DIdIdId_bin_centers_vec, METH_VARARGS|METH_KEYWORDS, "Hist3DIdIdId_bin_centers_vec(Hist3DIdIdId self, int i) -> vectorDouble"},
+	 { "Hist3DIdIdId_bin_edges_vec", (PyCFunction)(void(*)(void))_wrap_Hist3DIdIdId_bin_edges_vec, METH_VARARGS|METH_KEYWORDS, "Hist3DIdIdId_bin_edges_vec(Hist3DIdIdId self, int i) -> vectorDouble"},
+	 { "Hist3DIdIdId_hist_size", (PyCFunction)(void(*)(void))_wrap_Hist3DIdIdId_hist_size, METH_VARARGS|METH_KEYWORDS, "Hist3DIdIdId_hist_size(Hist3DIdIdId self, bool include_overflows=True, int i=-1) -> size_t"},
+	 { "Hist3DIdIdId_bin_centers", (PyCFunction)(void(*)(void))_wrap_Hist3DIdIdId_bin_centers, METH_VARARGS|METH_KEYWORDS, "Hist3DIdIdId_bin_centers(Hist3DIdIdId self, int i)"},
+	 { "Hist3DIdIdId_bin_edges", (PyCFunction)(void(*)(void))_wrap_Hist3DIdIdId_bin_edges, METH_VARARGS|METH_KEYWORDS, "Hist3DIdIdId_bin_edges(Hist3DIdIdId self, int i)"},
+	 { "Hist3DIdIdId_get_hist_errs", (PyCFunction)(void(*)(void))_wrap_Hist3DIdIdId_get_hist_errs, METH_VARARGS|METH_KEYWORDS, "Hist3DIdIdId_get_hist_errs(Hist3DIdIdId self, bool include_overflows=True, unsigned int hist_i=0)"},
 	 { "Hist3DIdIdId_swigregister", Hist3DIdIdId_swigregister, METH_O, NULL},
 	 { "Hist3DIdIdId_swiginit", Hist3DIdIdId_swiginit, METH_VARARGS, NULL},
 	 { "new_Hist3DLogIdId", (PyCFunction)(void(*)(void))_wrap_new_Hist3DLogIdId, METH_VARARGS|METH_KEYWORDS, "new_Hist3DLogIdId(unsigned int nbins0, double axis0_min, double axis0_max, unsigned int nbins1, double axis1_min, double axis1_max, unsigned int nbins2, double axis2_min, double axis2_max, int num_threads=1) -> Hist3DLogIdId"},
 	 { "delete_Hist3DLogIdId", _wrap_delete_Hist3DLogIdId, METH_O, "delete_Hist3DLogIdId(Hist3DLogIdId self)"},
 	 { "Hist3DLogIdId_nhists", _wrap_Hist3DLogIdId_nhists, METH_O, "Hist3DLogIdId_nhists(Hist3DLogIdId self) -> unsigned int"},
-	 { "Hist3DLogIdId_bin_centers", (PyCFunction)(void(*)(void))_wrap_Hist3DLogIdId_bin_centers, METH_VARARGS|METH_KEYWORDS, "Hist3DLogIdId_bin_centers(Hist3DLogIdId self, int i) -> vectorDouble"},
-	 { "Hist3DLogIdId_bin_edges", (PyCFunction)(void(*)(void))_wrap_Hist3DLogIdId_bin_edges, METH_VARARGS|METH_KEYWORDS, "Hist3DLogIdId_bin_edges(Hist3DLogIdId self, int i) -> vectorDouble"},
-	 { "Hist3DLogIdId_get_hist_size", (PyCFunction)(void(*)(void))_wrap_Hist3DLogIdId_get_hist_size, METH_VARARGS|METH_KEYWORDS, "Hist3DLogIdId_get_hist_size(Hist3DLogIdId self, bool include_overflows=True) -> size_t"},
+	 { "Hist3DLogIdId_nbins", (PyCFunction)(void(*)(void))_wrap_Hist3DLogIdId_nbins, METH_VARARGS|METH_KEYWORDS, "Hist3DLogIdId_nbins(Hist3DLogIdId self, int i) -> size_t"},
+	 { "Hist3DLogIdId_bin_centers_vec", (PyCFunction)(void(*)(void))_wrap_Hist3DLogIdId_bin_centers_vec, METH_VARARGS|METH_KEYWORDS, "Hist3DLogIdId_bin_centers_vec(Hist3DLogIdId self, int i) -> vectorDouble"},
+	 { "Hist3DLogIdId_bin_edges_vec", (PyCFunction)(void(*)(void))_wrap_Hist3DLogIdId_bin_edges_vec, METH_VARARGS|METH_KEYWORDS, "Hist3DLogIdId_bin_edges_vec(Hist3DLogIdId self, int i) -> vectorDouble"},
+	 { "Hist3DLogIdId_hist_size", (PyCFunction)(void(*)(void))_wrap_Hist3DLogIdId_hist_size, METH_VARARGS|METH_KEYWORDS, "Hist3DLogIdId_hist_size(Hist3DLogIdId self, bool include_overflows=True, int i=-1) -> size_t"},
+	 { "Hist3DLogIdId_bin_centers", (PyCFunction)(void(*)(void))_wrap_Hist3DLogIdId_bin_centers, METH_VARARGS|METH_KEYWORDS, "Hist3DLogIdId_bin_centers(Hist3DLogIdId self, int i)"},
+	 { "Hist3DLogIdId_bin_edges", (PyCFunction)(void(*)(void))_wrap_Hist3DLogIdId_bin_edges, METH_VARARGS|METH_KEYWORDS, "Hist3DLogIdId_bin_edges(Hist3DLogIdId self, int i)"},
+	 { "Hist3DLogIdId_get_hist_errs", (PyCFunction)(void(*)(void))_wrap_Hist3DLogIdId_get_hist_errs, METH_VARARGS|METH_KEYWORDS, "Hist3DLogIdId_get_hist_errs(Hist3DLogIdId self, bool include_overflows=True, unsigned int hist_i=0)"},
 	 { "Hist3DLogIdId_swigregister", Hist3DLogIdId_swigregister, METH_O, NULL},
 	 { "Hist3DLogIdId_swiginit", Hist3DLogIdId_swiginit, METH_VARARGS, NULL},
 	 { "new_Hist3DIdLogId", (PyCFunction)(void(*)(void))_wrap_new_Hist3DIdLogId, METH_VARARGS|METH_KEYWORDS, "new_Hist3DIdLogId(unsigned int nbins0, double axis0_min, double axis0_max, unsigned int nbins1, double axis1_min, double axis1_max, unsigned int nbins2, double axis2_min, double axis2_max, int num_threads=1) -> Hist3DIdLogId"},
 	 { "delete_Hist3DIdLogId", _wrap_delete_Hist3DIdLogId, METH_O, "delete_Hist3DIdLogId(Hist3DIdLogId self)"},
 	 { "Hist3DIdLogId_nhists", _wrap_Hist3DIdLogId_nhists, METH_O, "Hist3DIdLogId_nhists(Hist3DIdLogId self) -> unsigned int"},
-	 { "Hist3DIdLogId_bin_centers", (PyCFunction)(void(*)(void))_wrap_Hist3DIdLogId_bin_centers, METH_VARARGS|METH_KEYWORDS, "Hist3DIdLogId_bin_centers(Hist3DIdLogId self, int i) -> vectorDouble"},
-	 { "Hist3DIdLogId_bin_edges", (PyCFunction)(void(*)(void))_wrap_Hist3DIdLogId_bin_edges, METH_VARARGS|METH_KEYWORDS, "Hist3DIdLogId_bin_edges(Hist3DIdLogId self, int i) -> vectorDouble"},
-	 { "Hist3DIdLogId_get_hist_size", (PyCFunction)(void(*)(void))_wrap_Hist3DIdLogId_get_hist_size, METH_VARARGS|METH_KEYWORDS, "Hist3DIdLogId_get_hist_size(Hist3DIdLogId self, bool include_overflows=True) -> size_t"},
+	 { "Hist3DIdLogId_nbins", (PyCFunction)(void(*)(void))_wrap_Hist3DIdLogId_nbins, METH_VARARGS|METH_KEYWORDS, "Hist3DIdLogId_nbins(Hist3DIdLogId self, int i) -> size_t"},
+	 { "Hist3DIdLogId_bin_centers_vec", (PyCFunction)(void(*)(void))_wrap_Hist3DIdLogId_bin_centers_vec, METH_VARARGS|METH_KEYWORDS, "Hist3DIdLogId_bin_centers_vec(Hist3DIdLogId self, int i) -> vectorDouble"},
+	 { "Hist3DIdLogId_bin_edges_vec", (PyCFunction)(void(*)(void))_wrap_Hist3DIdLogId_bin_edges_vec, METH_VARARGS|METH_KEYWORDS, "Hist3DIdLogId_bin_edges_vec(Hist3DIdLogId self, int i) -> vectorDouble"},
+	 { "Hist3DIdLogId_hist_size", (PyCFunction)(void(*)(void))_wrap_Hist3DIdLogId_hist_size, METH_VARARGS|METH_KEYWORDS, "Hist3DIdLogId_hist_size(Hist3DIdLogId self, bool include_overflows=True, int i=-1) -> size_t"},
+	 { "Hist3DIdLogId_bin_centers", (PyCFunction)(void(*)(void))_wrap_Hist3DIdLogId_bin_centers, METH_VARARGS|METH_KEYWORDS, "Hist3DIdLogId_bin_centers(Hist3DIdLogId self, int i)"},
+	 { "Hist3DIdLogId_bin_edges", (PyCFunction)(void(*)(void))_wrap_Hist3DIdLogId_bin_edges, METH_VARARGS|METH_KEYWORDS, "Hist3DIdLogId_bin_edges(Hist3DIdLogId self, int i)"},
+	 { "Hist3DIdLogId_get_hist_errs", (PyCFunction)(void(*)(void))_wrap_Hist3DIdLogId_get_hist_errs, METH_VARARGS|METH_KEYWORDS, "Hist3DIdLogId_get_hist_errs(Hist3DIdLogId self, bool include_overflows=True, unsigned int hist_i=0)"},
 	 { "Hist3DIdLogId_swigregister", Hist3DIdLogId_swigregister, METH_O, NULL},
 	 { "Hist3DIdLogId_swiginit", Hist3DIdLogId_swiginit, METH_VARARGS, NULL},
 	 { "new_Hist3DLogLogId", (PyCFunction)(void(*)(void))_wrap_new_Hist3DLogLogId, METH_VARARGS|METH_KEYWORDS, "new_Hist3DLogLogId(unsigned int nbins0, double axis0_min, double axis0_max, unsigned int nbins1, double axis1_min, double axis1_max, unsigned int nbins2, double axis2_min, double axis2_max, int num_threads=1) -> Hist3DLogLogId"},
 	 { "delete_Hist3DLogLogId", _wrap_delete_Hist3DLogLogId, METH_O, "delete_Hist3DLogLogId(Hist3DLogLogId self)"},
 	 { "Hist3DLogLogId_nhists", _wrap_Hist3DLogLogId_nhists, METH_O, "Hist3DLogLogId_nhists(Hist3DLogLogId self) -> unsigned int"},
-	 { "Hist3DLogLogId_bin_centers", (PyCFunction)(void(*)(void))_wrap_Hist3DLogLogId_bin_centers, METH_VARARGS|METH_KEYWORDS, "Hist3DLogLogId_bin_centers(Hist3DLogLogId self, int i) -> vectorDouble"},
-	 { "Hist3DLogLogId_bin_edges", (PyCFunction)(void(*)(void))_wrap_Hist3DLogLogId_bin_edges, METH_VARARGS|METH_KEYWORDS, "Hist3DLogLogId_bin_edges(Hist3DLogLogId self, int i) -> vectorDouble"},
-	 { "Hist3DLogLogId_get_hist_size", (PyCFunction)(void(*)(void))_wrap_Hist3DLogLogId_get_hist_size, METH_VARARGS|METH_KEYWORDS, "Hist3DLogLogId_get_hist_size(Hist3DLogLogId self, bool include_overflows=True) -> size_t"},
+	 { "Hist3DLogLogId_nbins", (PyCFunction)(void(*)(void))_wrap_Hist3DLogLogId_nbins, METH_VARARGS|METH_KEYWORDS, "Hist3DLogLogId_nbins(Hist3DLogLogId self, int i) -> size_t"},
+	 { "Hist3DLogLogId_bin_centers_vec", (PyCFunction)(void(*)(void))_wrap_Hist3DLogLogId_bin_centers_vec, METH_VARARGS|METH_KEYWORDS, "Hist3DLogLogId_bin_centers_vec(Hist3DLogLogId self, int i) -> vectorDouble"},
+	 { "Hist3DLogLogId_bin_edges_vec", (PyCFunction)(void(*)(void))_wrap_Hist3DLogLogId_bin_edges_vec, METH_VARARGS|METH_KEYWORDS, "Hist3DLogLogId_bin_edges_vec(Hist3DLogLogId self, int i) -> vectorDouble"},
+	 { "Hist3DLogLogId_hist_size", (PyCFunction)(void(*)(void))_wrap_Hist3DLogLogId_hist_size, METH_VARARGS|METH_KEYWORDS, "Hist3DLogLogId_hist_size(Hist3DLogLogId self, bool include_overflows=True, int i=-1) -> size_t"},
+	 { "Hist3DLogLogId_bin_centers", (PyCFunction)(void(*)(void))_wrap_Hist3DLogLogId_bin_centers, METH_VARARGS|METH_KEYWORDS, "Hist3DLogLogId_bin_centers(Hist3DLogLogId self, int i)"},
+	 { "Hist3DLogLogId_bin_edges", (PyCFunction)(void(*)(void))_wrap_Hist3DLogLogId_bin_edges, METH_VARARGS|METH_KEYWORDS, "Hist3DLogLogId_bin_edges(Hist3DLogLogId self, int i)"},
+	 { "Hist3DLogLogId_get_hist_errs", (PyCFunction)(void(*)(void))_wrap_Hist3DLogLogId_get_hist_errs, METH_VARARGS|METH_KEYWORDS, "Hist3DLogLogId_get_hist_errs(Hist3DLogLogId self, bool include_overflows=True, unsigned int hist_i=0)"},
 	 { "Hist3DLogLogId_swigregister", Hist3DLogLogId_swigregister, METH_O, NULL},
 	 { "Hist3DLogLogId_swiginit", Hist3DLogLogId_swiginit, METH_VARARGS, NULL},
+	 { "new_EECEvents", (PyCFunction)(void(*)(void))_wrap_new_EECEvents, METH_VARARGS|METH_KEYWORDS, "new_EECEvents(size_t nev=0) -> EECEvents"},
+	 { "EECEvents_events", _wrap_EECEvents_events, METH_O, "EECEvents_events(EECEvents self) -> std::vector< double const *,std::allocator< double const * > > const &"},
+	 { "EECEvents_mults", _wrap_EECEvents_mults, METH_O, "EECEvents_mults(EECEvents self) -> vectorUnsigned"},
+	 { "EECEvents_weights", _wrap_EECEvents_weights, METH_O, "EECEvents_weights(EECEvents self) -> vectorDouble"},
+	 { "EECEvents_add_event", (PyCFunction)(void(*)(void))_wrap_EECEvents_add_event, METH_VARARGS|METH_KEYWORDS, "EECEvents_add_event(EECEvents self, double * particles, double weight=1.0)"},
+	 { "delete_EECEvents", _wrap_delete_EECEvents, METH_O, "delete_EECEvents(EECEvents self)"},
+	 { "EECEvents_swigregister", EECEvents_swigregister, METH_O, NULL},
+	 { "EECEvents_swiginit", EECEvents_swiginit, METH_VARARGS, NULL},
 	 { "delete_EECBase", _wrap_delete_EECBase, METH_O, "delete_EECBase(EECBase self)"},
 	 { "EECBase_description", _wrap_EECBase_description, METH_O, "EECBase_description(EECBase self) -> std::string"},
 	 { "EECBase_N", _wrap_EECBase_N, METH_O, "EECBase_N(EECBase self) -> unsigned int"},
@@ -14302,6 +17170,10 @@ static PyMethodDef SwigMethods[] = {
 	 { "EECBase_num_threads", _wrap_EECBase_num_threads, METH_O, "EECBase_num_threads(EECBase self) -> int"},
 	 { "EECBase_average_verts", _wrap_EECBase_average_verts, METH_O, "EECBase_average_verts(EECBase self) -> bool"},
 	 { "EECBase_set_omp_chunksize", (PyCFunction)(void(*)(void))_wrap_EECBase_set_omp_chunksize, METH_VARARGS|METH_KEYWORDS, "EECBase_set_omp_chunksize(EECBase self, int chunksize=100)"},
+	 { "EECBase___str__", _wrap_EECBase___str__, METH_O, "EECBase___str__(EECBase self) -> std::string"},
+	 { "EECBase___repr__", _wrap_EECBase___repr__, METH_O, "EECBase___repr__(EECBase self) -> std::string"},
+	 { "EECBase_compute", (PyCFunction)(void(*)(void))_wrap_EECBase_compute, METH_VARARGS|METH_KEYWORDS, "EECBase_compute(EECBase self, double * particles, double weight=1.0, int thread_i=0)"},
+	 { "EECBase___call__", (PyCFunction)(void(*)(void))_wrap_EECBase___call__, METH_VARARGS|METH_KEYWORDS, "EECBase___call__(EECBase self, EECEvents evs)"},
 	 { "EECBase_swigregister", EECBase_swigregister, METH_O, NULL},
 	 { "multinomial", (PyCFunction)(void(*)(void))_wrap_multinomial, METH_VARARGS|METH_KEYWORDS, "multinomial(vectorUnsigned inds) -> unsigned int"},
 	 { "new_DynamicMultinomial", (PyCFunction)(void(*)(void))_wrap_new_DynamicMultinomial, METH_VARARGS|METH_KEYWORDS, "new_DynamicMultinomial(unsigned int N) -> DynamicMultinomial"},
@@ -14527,65 +17399,90 @@ static PyMethodDef SwigMethods_proxydocs[] = {
 	 { "delete_vectorUnsigned", _wrap_delete_vectorUnsigned, METH_O, "delete_vectorUnsigned(vectorUnsigned self)"},
 	 { "vectorUnsigned_swigregister", vectorUnsigned_swigregister, METH_O, NULL},
 	 { "vectorUnsigned_swiginit", vectorUnsigned_swiginit, METH_VARARGS, NULL},
-	 { "HistBase_num_threads", _wrap_HistBase_num_threads, METH_O, "num_threads(HistBase self) -> int"},
-	 { "HistBase_get_hist_size", (PyCFunction)(void(*)(void))_wrap_HistBase_get_hist_size, METH_VARARGS|METH_KEYWORDS, "get_hist_size(HistBase self, bool arg2) -> size_t"},
-	 { "HistBase_get_hist", (PyCFunction)(void(*)(void))_wrap_HistBase_get_hist, METH_VARARGS|METH_KEYWORDS, "get_hist(HistBase self, double * arg2, double * arg3, size_t arg4, bool arg5, unsigned int arg6)"},
 	 { "delete_HistBase", _wrap_delete_HistBase, METH_O, "delete_HistBase(HistBase self)"},
+	 { "HistBase_num_threads", _wrap_HistBase_num_threads, METH_O, "num_threads(HistBase self) -> int"},
+	 { "HistBase_hist_size", (PyCFunction)(void(*)(void))_wrap_HistBase_hist_size, METH_VARARGS|METH_KEYWORDS, "hist_size(HistBase self, bool arg2, int arg3=-1) -> size_t"},
 	 { "HistBase_swigregister", HistBase_swigregister, METH_O, NULL},
-	 { "new_Hist1DId", _wrap_new_Hist1DId, METH_VARARGS, "\n"
-		"Hist1DId()\n"
-		"new_Hist1DId(unsigned int nbins, double axis_min, double axis_max, int num_threads=1) -> Hist1DId\n"
-		""},
+	 { "new_Hist1DId", (PyCFunction)(void(*)(void))_wrap_new_Hist1DId, METH_VARARGS|METH_KEYWORDS, "new_Hist1DId(unsigned int nbins, double axis_min, double axis_max, int num_threads=1) -> Hist1DId"},
 	 { "delete_Hist1DId", _wrap_delete_Hist1DId, METH_O, "delete_Hist1DId(Hist1DId self)"},
 	 { "Hist1DId_nhists", _wrap_Hist1DId_nhists, METH_O, "nhists(Hist1DId self) -> unsigned int"},
-	 { "Hist1DId_bin_centers", _wrap_Hist1DId_bin_centers, METH_O, "bin_centers(Hist1DId self) -> vectorDouble"},
-	 { "Hist1DId_bin_edges", _wrap_Hist1DId_bin_edges, METH_O, "bin_edges(Hist1DId self) -> vectorDouble"},
-	 { "Hist1DId_get_hist_size", (PyCFunction)(void(*)(void))_wrap_Hist1DId_get_hist_size, METH_VARARGS|METH_KEYWORDS, "get_hist_size(Hist1DId self, bool include_overflows=True) -> size_t"},
+	 { "Hist1DId_bin_centers_vec", _wrap_Hist1DId_bin_centers_vec, METH_O, "bin_centers_vec(Hist1DId self) -> vectorDouble"},
+	 { "Hist1DId_bin_edges_vec", _wrap_Hist1DId_bin_edges_vec, METH_O, "bin_edges_vec(Hist1DId self) -> vectorDouble"},
+	 { "Hist1DId_hist_size", (PyCFunction)(void(*)(void))_wrap_Hist1DId_hist_size, METH_VARARGS|METH_KEYWORDS, "hist_size(Hist1DId self, bool include_overflows=True, int tmp=-1) -> size_t"},
+	 { "Hist1DId_nbins", _wrap_Hist1DId_nbins, METH_O, "nbins(Hist1DId self) -> size_t"},
+	 { "Hist1DId_bin_centers", _wrap_Hist1DId_bin_centers, METH_O, "bin_centers(Hist1DId self)"},
+	 { "Hist1DId_bin_edges", _wrap_Hist1DId_bin_edges, METH_O, "bin_edges(Hist1DId self)"},
+	 { "Hist1DId_get_hist_errs", (PyCFunction)(void(*)(void))_wrap_Hist1DId_get_hist_errs, METH_VARARGS|METH_KEYWORDS, "get_hist_errs(Hist1DId self, bool include_overflows=True, unsigned int hist_i=0)"},
 	 { "Hist1DId_swigregister", Hist1DId_swigregister, METH_O, NULL},
 	 { "Hist1DId_swiginit", Hist1DId_swiginit, METH_VARARGS, NULL},
-	 { "new_Hist1DLog", _wrap_new_Hist1DLog, METH_VARARGS, "\n"
-		"Hist1DLog()\n"
-		"new_Hist1DLog(unsigned int nbins, double axis_min, double axis_max, int num_threads=1) -> Hist1DLog\n"
-		""},
+	 { "new_Hist1DLog", (PyCFunction)(void(*)(void))_wrap_new_Hist1DLog, METH_VARARGS|METH_KEYWORDS, "new_Hist1DLog(unsigned int nbins, double axis_min, double axis_max, int num_threads=1) -> Hist1DLog"},
 	 { "delete_Hist1DLog", _wrap_delete_Hist1DLog, METH_O, "delete_Hist1DLog(Hist1DLog self)"},
 	 { "Hist1DLog_nhists", _wrap_Hist1DLog_nhists, METH_O, "nhists(Hist1DLog self) -> unsigned int"},
-	 { "Hist1DLog_bin_centers", _wrap_Hist1DLog_bin_centers, METH_O, "bin_centers(Hist1DLog self) -> vectorDouble"},
-	 { "Hist1DLog_bin_edges", _wrap_Hist1DLog_bin_edges, METH_O, "bin_edges(Hist1DLog self) -> vectorDouble"},
-	 { "Hist1DLog_get_hist_size", (PyCFunction)(void(*)(void))_wrap_Hist1DLog_get_hist_size, METH_VARARGS|METH_KEYWORDS, "get_hist_size(Hist1DLog self, bool include_overflows=True) -> size_t"},
+	 { "Hist1DLog_bin_centers_vec", _wrap_Hist1DLog_bin_centers_vec, METH_O, "bin_centers_vec(Hist1DLog self) -> vectorDouble"},
+	 { "Hist1DLog_bin_edges_vec", _wrap_Hist1DLog_bin_edges_vec, METH_O, "bin_edges_vec(Hist1DLog self) -> vectorDouble"},
+	 { "Hist1DLog_hist_size", (PyCFunction)(void(*)(void))_wrap_Hist1DLog_hist_size, METH_VARARGS|METH_KEYWORDS, "hist_size(Hist1DLog self, bool include_overflows=True, int tmp=-1) -> size_t"},
+	 { "Hist1DLog_nbins", _wrap_Hist1DLog_nbins, METH_O, "nbins(Hist1DLog self) -> size_t"},
+	 { "Hist1DLog_bin_centers", _wrap_Hist1DLog_bin_centers, METH_O, "bin_centers(Hist1DLog self)"},
+	 { "Hist1DLog_bin_edges", _wrap_Hist1DLog_bin_edges, METH_O, "bin_edges(Hist1DLog self)"},
+	 { "Hist1DLog_get_hist_errs", (PyCFunction)(void(*)(void))_wrap_Hist1DLog_get_hist_errs, METH_VARARGS|METH_KEYWORDS, "get_hist_errs(Hist1DLog self, bool include_overflows=True, unsigned int hist_i=0)"},
 	 { "Hist1DLog_swigregister", Hist1DLog_swigregister, METH_O, NULL},
 	 { "Hist1DLog_swiginit", Hist1DLog_swiginit, METH_VARARGS, NULL},
 	 { "new_Hist3DIdIdId", (PyCFunction)(void(*)(void))_wrap_new_Hist3DIdIdId, METH_VARARGS|METH_KEYWORDS, "new_Hist3DIdIdId(unsigned int nbins0, double axis0_min, double axis0_max, unsigned int nbins1, double axis1_min, double axis1_max, unsigned int nbins2, double axis2_min, double axis2_max, int num_threads=1) -> Hist3DIdIdId"},
 	 { "delete_Hist3DIdIdId", _wrap_delete_Hist3DIdIdId, METH_O, "delete_Hist3DIdIdId(Hist3DIdIdId self)"},
 	 { "Hist3DIdIdId_nhists", _wrap_Hist3DIdIdId_nhists, METH_O, "nhists(Hist3DIdIdId self) -> unsigned int"},
-	 { "Hist3DIdIdId_bin_centers", (PyCFunction)(void(*)(void))_wrap_Hist3DIdIdId_bin_centers, METH_VARARGS|METH_KEYWORDS, "bin_centers(Hist3DIdIdId self, int i) -> vectorDouble"},
-	 { "Hist3DIdIdId_bin_edges", (PyCFunction)(void(*)(void))_wrap_Hist3DIdIdId_bin_edges, METH_VARARGS|METH_KEYWORDS, "bin_edges(Hist3DIdIdId self, int i) -> vectorDouble"},
-	 { "Hist3DIdIdId_get_hist_size", (PyCFunction)(void(*)(void))_wrap_Hist3DIdIdId_get_hist_size, METH_VARARGS|METH_KEYWORDS, "get_hist_size(Hist3DIdIdId self, bool include_overflows=True) -> size_t"},
+	 { "Hist3DIdIdId_nbins", (PyCFunction)(void(*)(void))_wrap_Hist3DIdIdId_nbins, METH_VARARGS|METH_KEYWORDS, "nbins(Hist3DIdIdId self, int i) -> size_t"},
+	 { "Hist3DIdIdId_bin_centers_vec", (PyCFunction)(void(*)(void))_wrap_Hist3DIdIdId_bin_centers_vec, METH_VARARGS|METH_KEYWORDS, "bin_centers_vec(Hist3DIdIdId self, int i) -> vectorDouble"},
+	 { "Hist3DIdIdId_bin_edges_vec", (PyCFunction)(void(*)(void))_wrap_Hist3DIdIdId_bin_edges_vec, METH_VARARGS|METH_KEYWORDS, "bin_edges_vec(Hist3DIdIdId self, int i) -> vectorDouble"},
+	 { "Hist3DIdIdId_hist_size", (PyCFunction)(void(*)(void))_wrap_Hist3DIdIdId_hist_size, METH_VARARGS|METH_KEYWORDS, "hist_size(Hist3DIdIdId self, bool include_overflows=True, int i=-1) -> size_t"},
+	 { "Hist3DIdIdId_bin_centers", (PyCFunction)(void(*)(void))_wrap_Hist3DIdIdId_bin_centers, METH_VARARGS|METH_KEYWORDS, "bin_centers(Hist3DIdIdId self, int i)"},
+	 { "Hist3DIdIdId_bin_edges", (PyCFunction)(void(*)(void))_wrap_Hist3DIdIdId_bin_edges, METH_VARARGS|METH_KEYWORDS, "bin_edges(Hist3DIdIdId self, int i)"},
+	 { "Hist3DIdIdId_get_hist_errs", (PyCFunction)(void(*)(void))_wrap_Hist3DIdIdId_get_hist_errs, METH_VARARGS|METH_KEYWORDS, "get_hist_errs(Hist3DIdIdId self, bool include_overflows=True, unsigned int hist_i=0)"},
 	 { "Hist3DIdIdId_swigregister", Hist3DIdIdId_swigregister, METH_O, NULL},
 	 { "Hist3DIdIdId_swiginit", Hist3DIdIdId_swiginit, METH_VARARGS, NULL},
 	 { "new_Hist3DLogIdId", (PyCFunction)(void(*)(void))_wrap_new_Hist3DLogIdId, METH_VARARGS|METH_KEYWORDS, "new_Hist3DLogIdId(unsigned int nbins0, double axis0_min, double axis0_max, unsigned int nbins1, double axis1_min, double axis1_max, unsigned int nbins2, double axis2_min, double axis2_max, int num_threads=1) -> Hist3DLogIdId"},
 	 { "delete_Hist3DLogIdId", _wrap_delete_Hist3DLogIdId, METH_O, "delete_Hist3DLogIdId(Hist3DLogIdId self)"},
 	 { "Hist3DLogIdId_nhists", _wrap_Hist3DLogIdId_nhists, METH_O, "nhists(Hist3DLogIdId self) -> unsigned int"},
-	 { "Hist3DLogIdId_bin_centers", (PyCFunction)(void(*)(void))_wrap_Hist3DLogIdId_bin_centers, METH_VARARGS|METH_KEYWORDS, "bin_centers(Hist3DLogIdId self, int i) -> vectorDouble"},
-	 { "Hist3DLogIdId_bin_edges", (PyCFunction)(void(*)(void))_wrap_Hist3DLogIdId_bin_edges, METH_VARARGS|METH_KEYWORDS, "bin_edges(Hist3DLogIdId self, int i) -> vectorDouble"},
-	 { "Hist3DLogIdId_get_hist_size", (PyCFunction)(void(*)(void))_wrap_Hist3DLogIdId_get_hist_size, METH_VARARGS|METH_KEYWORDS, "get_hist_size(Hist3DLogIdId self, bool include_overflows=True) -> size_t"},
+	 { "Hist3DLogIdId_nbins", (PyCFunction)(void(*)(void))_wrap_Hist3DLogIdId_nbins, METH_VARARGS|METH_KEYWORDS, "nbins(Hist3DLogIdId self, int i) -> size_t"},
+	 { "Hist3DLogIdId_bin_centers_vec", (PyCFunction)(void(*)(void))_wrap_Hist3DLogIdId_bin_centers_vec, METH_VARARGS|METH_KEYWORDS, "bin_centers_vec(Hist3DLogIdId self, int i) -> vectorDouble"},
+	 { "Hist3DLogIdId_bin_edges_vec", (PyCFunction)(void(*)(void))_wrap_Hist3DLogIdId_bin_edges_vec, METH_VARARGS|METH_KEYWORDS, "bin_edges_vec(Hist3DLogIdId self, int i) -> vectorDouble"},
+	 { "Hist3DLogIdId_hist_size", (PyCFunction)(void(*)(void))_wrap_Hist3DLogIdId_hist_size, METH_VARARGS|METH_KEYWORDS, "hist_size(Hist3DLogIdId self, bool include_overflows=True, int i=-1) -> size_t"},
+	 { "Hist3DLogIdId_bin_centers", (PyCFunction)(void(*)(void))_wrap_Hist3DLogIdId_bin_centers, METH_VARARGS|METH_KEYWORDS, "bin_centers(Hist3DLogIdId self, int i)"},
+	 { "Hist3DLogIdId_bin_edges", (PyCFunction)(void(*)(void))_wrap_Hist3DLogIdId_bin_edges, METH_VARARGS|METH_KEYWORDS, "bin_edges(Hist3DLogIdId self, int i)"},
+	 { "Hist3DLogIdId_get_hist_errs", (PyCFunction)(void(*)(void))_wrap_Hist3DLogIdId_get_hist_errs, METH_VARARGS|METH_KEYWORDS, "get_hist_errs(Hist3DLogIdId self, bool include_overflows=True, unsigned int hist_i=0)"},
 	 { "Hist3DLogIdId_swigregister", Hist3DLogIdId_swigregister, METH_O, NULL},
 	 { "Hist3DLogIdId_swiginit", Hist3DLogIdId_swiginit, METH_VARARGS, NULL},
 	 { "new_Hist3DIdLogId", (PyCFunction)(void(*)(void))_wrap_new_Hist3DIdLogId, METH_VARARGS|METH_KEYWORDS, "new_Hist3DIdLogId(unsigned int nbins0, double axis0_min, double axis0_max, unsigned int nbins1, double axis1_min, double axis1_max, unsigned int nbins2, double axis2_min, double axis2_max, int num_threads=1) -> Hist3DIdLogId"},
 	 { "delete_Hist3DIdLogId", _wrap_delete_Hist3DIdLogId, METH_O, "delete_Hist3DIdLogId(Hist3DIdLogId self)"},
 	 { "Hist3DIdLogId_nhists", _wrap_Hist3DIdLogId_nhists, METH_O, "nhists(Hist3DIdLogId self) -> unsigned int"},
-	 { "Hist3DIdLogId_bin_centers", (PyCFunction)(void(*)(void))_wrap_Hist3DIdLogId_bin_centers, METH_VARARGS|METH_KEYWORDS, "bin_centers(Hist3DIdLogId self, int i) -> vectorDouble"},
-	 { "Hist3DIdLogId_bin_edges", (PyCFunction)(void(*)(void))_wrap_Hist3DIdLogId_bin_edges, METH_VARARGS|METH_KEYWORDS, "bin_edges(Hist3DIdLogId self, int i) -> vectorDouble"},
-	 { "Hist3DIdLogId_get_hist_size", (PyCFunction)(void(*)(void))_wrap_Hist3DIdLogId_get_hist_size, METH_VARARGS|METH_KEYWORDS, "get_hist_size(Hist3DIdLogId self, bool include_overflows=True) -> size_t"},
+	 { "Hist3DIdLogId_nbins", (PyCFunction)(void(*)(void))_wrap_Hist3DIdLogId_nbins, METH_VARARGS|METH_KEYWORDS, "nbins(Hist3DIdLogId self, int i) -> size_t"},
+	 { "Hist3DIdLogId_bin_centers_vec", (PyCFunction)(void(*)(void))_wrap_Hist3DIdLogId_bin_centers_vec, METH_VARARGS|METH_KEYWORDS, "bin_centers_vec(Hist3DIdLogId self, int i) -> vectorDouble"},
+	 { "Hist3DIdLogId_bin_edges_vec", (PyCFunction)(void(*)(void))_wrap_Hist3DIdLogId_bin_edges_vec, METH_VARARGS|METH_KEYWORDS, "bin_edges_vec(Hist3DIdLogId self, int i) -> vectorDouble"},
+	 { "Hist3DIdLogId_hist_size", (PyCFunction)(void(*)(void))_wrap_Hist3DIdLogId_hist_size, METH_VARARGS|METH_KEYWORDS, "hist_size(Hist3DIdLogId self, bool include_overflows=True, int i=-1) -> size_t"},
+	 { "Hist3DIdLogId_bin_centers", (PyCFunction)(void(*)(void))_wrap_Hist3DIdLogId_bin_centers, METH_VARARGS|METH_KEYWORDS, "bin_centers(Hist3DIdLogId self, int i)"},
+	 { "Hist3DIdLogId_bin_edges", (PyCFunction)(void(*)(void))_wrap_Hist3DIdLogId_bin_edges, METH_VARARGS|METH_KEYWORDS, "bin_edges(Hist3DIdLogId self, int i)"},
+	 { "Hist3DIdLogId_get_hist_errs", (PyCFunction)(void(*)(void))_wrap_Hist3DIdLogId_get_hist_errs, METH_VARARGS|METH_KEYWORDS, "get_hist_errs(Hist3DIdLogId self, bool include_overflows=True, unsigned int hist_i=0)"},
 	 { "Hist3DIdLogId_swigregister", Hist3DIdLogId_swigregister, METH_O, NULL},
 	 { "Hist3DIdLogId_swiginit", Hist3DIdLogId_swiginit, METH_VARARGS, NULL},
 	 { "new_Hist3DLogLogId", (PyCFunction)(void(*)(void))_wrap_new_Hist3DLogLogId, METH_VARARGS|METH_KEYWORDS, "new_Hist3DLogLogId(unsigned int nbins0, double axis0_min, double axis0_max, unsigned int nbins1, double axis1_min, double axis1_max, unsigned int nbins2, double axis2_min, double axis2_max, int num_threads=1) -> Hist3DLogLogId"},
 	 { "delete_Hist3DLogLogId", _wrap_delete_Hist3DLogLogId, METH_O, "delete_Hist3DLogLogId(Hist3DLogLogId self)"},
 	 { "Hist3DLogLogId_nhists", _wrap_Hist3DLogLogId_nhists, METH_O, "nhists(Hist3DLogLogId self) -> unsigned int"},
-	 { "Hist3DLogLogId_bin_centers", (PyCFunction)(void(*)(void))_wrap_Hist3DLogLogId_bin_centers, METH_VARARGS|METH_KEYWORDS, "bin_centers(Hist3DLogLogId self, int i) -> vectorDouble"},
-	 { "Hist3DLogLogId_bin_edges", (PyCFunction)(void(*)(void))_wrap_Hist3DLogLogId_bin_edges, METH_VARARGS|METH_KEYWORDS, "bin_edges(Hist3DLogLogId self, int i) -> vectorDouble"},
-	 { "Hist3DLogLogId_get_hist_size", (PyCFunction)(void(*)(void))_wrap_Hist3DLogLogId_get_hist_size, METH_VARARGS|METH_KEYWORDS, "get_hist_size(Hist3DLogLogId self, bool include_overflows=True) -> size_t"},
+	 { "Hist3DLogLogId_nbins", (PyCFunction)(void(*)(void))_wrap_Hist3DLogLogId_nbins, METH_VARARGS|METH_KEYWORDS, "nbins(Hist3DLogLogId self, int i) -> size_t"},
+	 { "Hist3DLogLogId_bin_centers_vec", (PyCFunction)(void(*)(void))_wrap_Hist3DLogLogId_bin_centers_vec, METH_VARARGS|METH_KEYWORDS, "bin_centers_vec(Hist3DLogLogId self, int i) -> vectorDouble"},
+	 { "Hist3DLogLogId_bin_edges_vec", (PyCFunction)(void(*)(void))_wrap_Hist3DLogLogId_bin_edges_vec, METH_VARARGS|METH_KEYWORDS, "bin_edges_vec(Hist3DLogLogId self, int i) -> vectorDouble"},
+	 { "Hist3DLogLogId_hist_size", (PyCFunction)(void(*)(void))_wrap_Hist3DLogLogId_hist_size, METH_VARARGS|METH_KEYWORDS, "hist_size(Hist3DLogLogId self, bool include_overflows=True, int i=-1) -> size_t"},
+	 { "Hist3DLogLogId_bin_centers", (PyCFunction)(void(*)(void))_wrap_Hist3DLogLogId_bin_centers, METH_VARARGS|METH_KEYWORDS, "bin_centers(Hist3DLogLogId self, int i)"},
+	 { "Hist3DLogLogId_bin_edges", (PyCFunction)(void(*)(void))_wrap_Hist3DLogLogId_bin_edges, METH_VARARGS|METH_KEYWORDS, "bin_edges(Hist3DLogLogId self, int i)"},
+	 { "Hist3DLogLogId_get_hist_errs", (PyCFunction)(void(*)(void))_wrap_Hist3DLogLogId_get_hist_errs, METH_VARARGS|METH_KEYWORDS, "get_hist_errs(Hist3DLogLogId self, bool include_overflows=True, unsigned int hist_i=0)"},
 	 { "Hist3DLogLogId_swigregister", Hist3DLogLogId_swigregister, METH_O, NULL},
 	 { "Hist3DLogLogId_swiginit", Hist3DLogLogId_swiginit, METH_VARARGS, NULL},
+	 { "new_EECEvents", (PyCFunction)(void(*)(void))_wrap_new_EECEvents, METH_VARARGS|METH_KEYWORDS, "new_EECEvents(size_t nev=0) -> EECEvents"},
+	 { "EECEvents_events", _wrap_EECEvents_events, METH_O, "events(EECEvents self) -> std::vector< double const *,std::allocator< double const * > > const &"},
+	 { "EECEvents_mults", _wrap_EECEvents_mults, METH_O, "mults(EECEvents self) -> vectorUnsigned"},
+	 { "EECEvents_weights", _wrap_EECEvents_weights, METH_O, "weights(EECEvents self) -> vectorDouble"},
+	 { "EECEvents_add_event", (PyCFunction)(void(*)(void))_wrap_EECEvents_add_event, METH_VARARGS|METH_KEYWORDS, "add_event(EECEvents self, double * particles, double weight=1.0)"},
+	 { "delete_EECEvents", _wrap_delete_EECEvents, METH_O, "delete_EECEvents(EECEvents self)"},
+	 { "EECEvents_swigregister", EECEvents_swigregister, METH_O, NULL},
+	 { "EECEvents_swiginit", EECEvents_swiginit, METH_VARARGS, NULL},
 	 { "delete_EECBase", _wrap_delete_EECBase, METH_O, "delete_EECBase(EECBase self)"},
 	 { "EECBase_description", _wrap_EECBase_description, METH_O, "description(EECBase self) -> std::string"},
 	 { "EECBase_N", _wrap_EECBase_N, METH_O, "N(EECBase self) -> unsigned int"},
@@ -14594,6 +17491,10 @@ static PyMethodDef SwigMethods_proxydocs[] = {
 	 { "EECBase_num_threads", _wrap_EECBase_num_threads, METH_O, "num_threads(EECBase self) -> int"},
 	 { "EECBase_average_verts", _wrap_EECBase_average_verts, METH_O, "average_verts(EECBase self) -> bool"},
 	 { "EECBase_set_omp_chunksize", (PyCFunction)(void(*)(void))_wrap_EECBase_set_omp_chunksize, METH_VARARGS|METH_KEYWORDS, "set_omp_chunksize(EECBase self, int chunksize=100)"},
+	 { "EECBase___str__", _wrap_EECBase___str__, METH_O, "__str__(EECBase self) -> std::string"},
+	 { "EECBase___repr__", _wrap_EECBase___repr__, METH_O, "__repr__(EECBase self) -> std::string"},
+	 { "EECBase_compute", (PyCFunction)(void(*)(void))_wrap_EECBase_compute, METH_VARARGS|METH_KEYWORDS, "compute(EECBase self, double * particles, double weight=1.0, int thread_i=0)"},
+	 { "EECBase___call__", (PyCFunction)(void(*)(void))_wrap_EECBase___call__, METH_VARARGS|METH_KEYWORDS, "__call__(EECBase self, EECEvents evs)"},
 	 { "EECBase_swigregister", EECBase_swigregister, METH_O, NULL},
 	 { "multinomial", (PyCFunction)(void(*)(void))_wrap_multinomial, METH_VARARGS|METH_KEYWORDS, "multinomial(vectorUnsigned inds) -> unsigned int"},
 	 { "new_DynamicMultinomial", (PyCFunction)(void(*)(void))_wrap_new_DynamicMultinomial, METH_VARARGS|METH_KEYWORDS, "new_DynamicMultinomial(unsigned int N) -> DynamicMultinomial"},
@@ -14752,9 +17653,9 @@ static swig_type_info _swigt__p_boost__histogram__axis__transform__id = {"_p_boo
 static swig_type_info _swigt__p_boost__histogram__axis__transform__log = {"_p_boost__histogram__axis__transform__log", "boost::histogram::axis::transform::log *|eec::axis::log *", 0, 0, (void*)0, 0};
 static swig_type_info _swigt__p_char = {"_p_char", "char *", 0, 0, (void*)0, 0};
 static swig_type_info _swigt__p_difference_type = {"_p_difference_type", "difference_type *", 0, 0, (void*)0, 0};
-static swig_type_info _swigt__p_double = {"_p_double", "double *", 0, 0, (void*)0, 0};
 static swig_type_info _swigt__p_eec__DynamicMultinomial = {"_p_eec__DynamicMultinomial", "eec::DynamicMultinomial *", 0, 0, (void*)0, 0};
 static swig_type_info _swigt__p_eec__EECBase = {"_p_eec__EECBase", "eec::EECBase *", 0, 0, (void*)0, 0};
+static swig_type_info _swigt__p_eec__EECEvents = {"_p_eec__EECEvents", "eec::EECEvents *", 0, 0, (void*)0, 0};
 static swig_type_info _swigt__p_eec__EECLongestSideT_boost__histogram__axis__transform__id_t = {"_p_eec__EECLongestSideT_boost__histogram__axis__transform__id_t", "eec::EECLongestSide< boost::histogram::axis::transform::id > *|eec::EECLongestSide< eec::axis::id > *", 0, 0, (void*)0, 0};
 static swig_type_info _swigt__p_eec__EECLongestSideT_boost__histogram__axis__transform__log_t = {"_p_eec__EECLongestSideT_boost__histogram__axis__transform__log_t", "eec::EECLongestSide< boost::histogram::axis::transform::log > *|eec::EECLongestSide< eec::axis::log > *", 0, 0, (void*)0, 0};
 static swig_type_info _swigt__p_eec__EECTriangleOPET_boost__histogram__axis__transform__id_boost__histogram__axis__transform__id_boost__histogram__axis__transform__id_t = {"_p_eec__EECTriangleOPET_boost__histogram__axis__transform__id_boost__histogram__axis__transform__id_boost__histogram__axis__transform__id_t", "eec::EECTriangleOPE< boost::histogram::axis::transform::id,boost::histogram::axis::transform::id,boost::histogram::axis::transform::id > *|eec::EECTriangleOPE< eec::axis::id,eec::axis::id,eec::axis::id > *", 0, 0, (void*)0, 0};
@@ -14773,7 +17674,9 @@ static swig_type_info _swigt__p_eec__MultinomialT_3_t = {"_p_eec__MultinomialT_3
 static swig_type_info _swigt__p_eec__MultinomialT_4_t = {"_p_eec__MultinomialT_4_t", "eec::Multinomial< 4 > *", 0, 0, (void*)0, 0};
 static swig_type_info _swigt__p_eec__MultinomialT_5_t = {"_p_eec__MultinomialT_5_t", "eec::Multinomial< 5 > *", 0, 0, (void*)0, 0};
 static swig_type_info _swigt__p_eec__MultinomialT_6_t = {"_p_eec__MultinomialT_6_t", "eec::Multinomial< 6 > *", 0, 0, (void*)0, 0};
+static swig_type_info _swigt__p_int = {"_p_int", "int *", 0, 0, (void*)0, 0};
 static swig_type_info _swigt__p_p_PyObject = {"_p_p_PyObject", "PyObject **", 0, 0, (void*)0, 0};
+static swig_type_info _swigt__p_p_double = {"_p_p_double", "double **", 0, 0, (void*)0, 0};
 static swig_type_info _swigt__p_size_type = {"_p_size_type", "size_type *", 0, 0, (void*)0, 0};
 static swig_type_info _swigt__p_std__allocatorT_double_t = {"_p_std__allocatorT_double_t", "std::vector< double >::allocator_type *|std::allocator< double > *", 0, 0, (void*)0, 0};
 static swig_type_info _swigt__p_std__allocatorT_unsigned_int_t = {"_p_std__allocatorT_unsigned_int_t", "std::vector< unsigned int >::allocator_type *|std::allocator< unsigned int > *", 0, 0, (void*)0, 0};
@@ -14781,6 +17684,7 @@ static swig_type_info _swigt__p_std__arrayT_double_3_t = {"_p_std__arrayT_double
 static swig_type_info _swigt__p_std__arrayT_std__pairT_double_int_t_3_t = {"_p_std__arrayT_std__pairT_double_int_t_3_t", "std::array< std::pair< double,int >,3 > *", 0, 0, (void*)0, 0};
 static swig_type_info _swigt__p_std__arrayT_unsigned_int_13_t = {"_p_std__arrayT_unsigned_int_13_t", "std::array< unsigned int,13 > *", 0, 0, (void*)0, 0};
 static swig_type_info _swigt__p_std__invalid_argument = {"_p_std__invalid_argument", "std::invalid_argument *", 0, 0, (void*)0, 0};
+static swig_type_info _swigt__p_std__vectorT_double_const_p_std__allocatorT_double_const_p_t_t = {"_p_std__vectorT_double_const_p_std__allocatorT_double_const_p_t_t", "std::vector< double const *,std::allocator< double const * > > *", 0, 0, (void*)0, 0};
 static swig_type_info _swigt__p_std__vectorT_double_std__allocatorT_double_t_t = {"_p_std__vectorT_double_std__allocatorT_double_t_t", "std::vector< double,std::allocator< double > > *|std::vector< double > *", 0, 0, (void*)0, 0};
 static swig_type_info _swigt__p_std__vectorT_unsigned_int_std__allocatorT_unsigned_int_t_t = {"_p_std__vectorT_unsigned_int_std__allocatorT_unsigned_int_t_t", "std::vector< unsigned int,std::allocator< unsigned int > > *|std::vector< unsigned int > *", 0, 0, (void*)0, 0};
 static swig_type_info _swigt__p_swig__SwigPyIterator = {"_p_swig__SwigPyIterator", "swig::SwigPyIterator *", 0, 0, (void*)0, 0};
@@ -14793,9 +17697,9 @@ static swig_type_info *swig_type_initial[] = {
   &_swigt__p_boost__histogram__axis__transform__log,
   &_swigt__p_char,
   &_swigt__p_difference_type,
-  &_swigt__p_double,
   &_swigt__p_eec__DynamicMultinomial,
   &_swigt__p_eec__EECBase,
+  &_swigt__p_eec__EECEvents,
   &_swigt__p_eec__EECLongestSideT_boost__histogram__axis__transform__id_t,
   &_swigt__p_eec__EECLongestSideT_boost__histogram__axis__transform__log_t,
   &_swigt__p_eec__EECTriangleOPET_boost__histogram__axis__transform__id_boost__histogram__axis__transform__id_boost__histogram__axis__transform__id_t,
@@ -14814,7 +17718,9 @@ static swig_type_info *swig_type_initial[] = {
   &_swigt__p_eec__MultinomialT_4_t,
   &_swigt__p_eec__MultinomialT_5_t,
   &_swigt__p_eec__MultinomialT_6_t,
+  &_swigt__p_int,
   &_swigt__p_p_PyObject,
+  &_swigt__p_p_double,
   &_swigt__p_size_type,
   &_swigt__p_std__allocatorT_double_t,
   &_swigt__p_std__allocatorT_unsigned_int_t,
@@ -14822,6 +17728,7 @@ static swig_type_info *swig_type_initial[] = {
   &_swigt__p_std__arrayT_std__pairT_double_int_t_3_t,
   &_swigt__p_std__arrayT_unsigned_int_13_t,
   &_swigt__p_std__invalid_argument,
+  &_swigt__p_std__vectorT_double_const_p_std__allocatorT_double_const_p_t_t,
   &_swigt__p_std__vectorT_double_std__allocatorT_double_t_t,
   &_swigt__p_std__vectorT_unsigned_int_std__allocatorT_unsigned_int_t_t,
   &_swigt__p_swig__SwigPyIterator,
@@ -14834,9 +17741,9 @@ static swig_cast_info _swigc__p_boost__histogram__axis__transform__id[] = {  {&_
 static swig_cast_info _swigc__p_boost__histogram__axis__transform__log[] = {  {&_swigt__p_boost__histogram__axis__transform__log, 0, 0, 0},{0, 0, 0, 0}};
 static swig_cast_info _swigc__p_char[] = {  {&_swigt__p_char, 0, 0, 0},{0, 0, 0, 0}};
 static swig_cast_info _swigc__p_difference_type[] = {  {&_swigt__p_difference_type, 0, 0, 0},{0, 0, 0, 0}};
-static swig_cast_info _swigc__p_double[] = {  {&_swigt__p_double, 0, 0, 0},{0, 0, 0, 0}};
 static swig_cast_info _swigc__p_eec__DynamicMultinomial[] = {  {&_swigt__p_eec__DynamicMultinomial, 0, 0, 0},{0, 0, 0, 0}};
 static swig_cast_info _swigc__p_eec__EECBase[] = {  {&_swigt__p_eec__EECBase, 0, 0, 0},  {&_swigt__p_eec__EECLongestSideT_boost__histogram__axis__transform__id_t, _p_eec__EECLongestSideT_boost__histogram__axis__transform__id_tTo_p_eec__EECBase, 0, 0},  {&_swigt__p_eec__EECLongestSideT_boost__histogram__axis__transform__log_t, _p_eec__EECLongestSideT_boost__histogram__axis__transform__log_tTo_p_eec__EECBase, 0, 0},  {&_swigt__p_eec__EECTriangleOPET_boost__histogram__axis__transform__id_boost__histogram__axis__transform__id_boost__histogram__axis__transform__id_t, _p_eec__EECTriangleOPET_boost__histogram__axis__transform__id_boost__histogram__axis__transform__id_boost__histogram__axis__transform__id_tTo_p_eec__EECBase, 0, 0},  {&_swigt__p_eec__EECTriangleOPET_boost__histogram__axis__transform__log_boost__histogram__axis__transform__id_boost__histogram__axis__transform__id_t, _p_eec__EECTriangleOPET_boost__histogram__axis__transform__log_boost__histogram__axis__transform__id_boost__histogram__axis__transform__id_tTo_p_eec__EECBase, 0, 0},  {&_swigt__p_eec__EECTriangleOPET_boost__histogram__axis__transform__id_boost__histogram__axis__transform__log_boost__histogram__axis__transform__id_t, _p_eec__EECTriangleOPET_boost__histogram__axis__transform__id_boost__histogram__axis__transform__log_boost__histogram__axis__transform__id_tTo_p_eec__EECBase, 0, 0},  {&_swigt__p_eec__EECTriangleOPET_boost__histogram__axis__transform__log_boost__histogram__axis__transform__log_boost__histogram__axis__transform__id_t, _p_eec__EECTriangleOPET_boost__histogram__axis__transform__log_boost__histogram__axis__transform__log_boost__histogram__axis__transform__id_tTo_p_eec__EECBase, 0, 0},{0, 0, 0, 0}};
+static swig_cast_info _swigc__p_eec__EECEvents[] = {  {&_swigt__p_eec__EECEvents, 0, 0, 0},{0, 0, 0, 0}};
 static swig_cast_info _swigc__p_eec__EECLongestSideT_boost__histogram__axis__transform__id_t[] = {  {&_swigt__p_eec__EECLongestSideT_boost__histogram__axis__transform__id_t, 0, 0, 0},{0, 0, 0, 0}};
 static swig_cast_info _swigc__p_eec__EECLongestSideT_boost__histogram__axis__transform__log_t[] = {  {&_swigt__p_eec__EECLongestSideT_boost__histogram__axis__transform__log_t, 0, 0, 0},{0, 0, 0, 0}};
 static swig_cast_info _swigc__p_eec__EECTriangleOPET_boost__histogram__axis__transform__id_boost__histogram__axis__transform__id_boost__histogram__axis__transform__id_t[] = {  {&_swigt__p_eec__EECTriangleOPET_boost__histogram__axis__transform__id_boost__histogram__axis__transform__id_boost__histogram__axis__transform__id_t, 0, 0, 0},{0, 0, 0, 0}};
@@ -14855,7 +17762,9 @@ static swig_cast_info _swigc__p_eec__MultinomialT_3_t[] = {  {&_swigt__p_eec__Mu
 static swig_cast_info _swigc__p_eec__MultinomialT_4_t[] = {  {&_swigt__p_eec__MultinomialT_4_t, 0, 0, 0},{0, 0, 0, 0}};
 static swig_cast_info _swigc__p_eec__MultinomialT_5_t[] = {  {&_swigt__p_eec__MultinomialT_5_t, 0, 0, 0},{0, 0, 0, 0}};
 static swig_cast_info _swigc__p_eec__MultinomialT_6_t[] = {  {&_swigt__p_eec__MultinomialT_6_t, 0, 0, 0},{0, 0, 0, 0}};
+static swig_cast_info _swigc__p_int[] = {  {&_swigt__p_int, 0, 0, 0},{0, 0, 0, 0}};
 static swig_cast_info _swigc__p_p_PyObject[] = {  {&_swigt__p_p_PyObject, 0, 0, 0},{0, 0, 0, 0}};
+static swig_cast_info _swigc__p_p_double[] = {  {&_swigt__p_p_double, 0, 0, 0},{0, 0, 0, 0}};
 static swig_cast_info _swigc__p_size_type[] = {  {&_swigt__p_size_type, 0, 0, 0},{0, 0, 0, 0}};
 static swig_cast_info _swigc__p_std__allocatorT_double_t[] = {  {&_swigt__p_std__allocatorT_double_t, 0, 0, 0},{0, 0, 0, 0}};
 static swig_cast_info _swigc__p_std__allocatorT_unsigned_int_t[] = {  {&_swigt__p_std__allocatorT_unsigned_int_t, 0, 0, 0},{0, 0, 0, 0}};
@@ -14863,6 +17772,7 @@ static swig_cast_info _swigc__p_std__arrayT_double_3_t[] = {  {&_swigt__p_std__a
 static swig_cast_info _swigc__p_std__arrayT_std__pairT_double_int_t_3_t[] = {  {&_swigt__p_std__arrayT_std__pairT_double_int_t_3_t, 0, 0, 0},{0, 0, 0, 0}};
 static swig_cast_info _swigc__p_std__arrayT_unsigned_int_13_t[] = {  {&_swigt__p_std__arrayT_unsigned_int_13_t, 0, 0, 0},{0, 0, 0, 0}};
 static swig_cast_info _swigc__p_std__invalid_argument[] = {  {&_swigt__p_std__invalid_argument, 0, 0, 0},{0, 0, 0, 0}};
+static swig_cast_info _swigc__p_std__vectorT_double_const_p_std__allocatorT_double_const_p_t_t[] = {  {&_swigt__p_std__vectorT_double_const_p_std__allocatorT_double_const_p_t_t, 0, 0, 0},{0, 0, 0, 0}};
 static swig_cast_info _swigc__p_std__vectorT_double_std__allocatorT_double_t_t[] = {  {&_swigt__p_std__vectorT_double_std__allocatorT_double_t_t, 0, 0, 0},{0, 0, 0, 0}};
 static swig_cast_info _swigc__p_std__vectorT_unsigned_int_std__allocatorT_unsigned_int_t_t[] = {  {&_swigt__p_std__vectorT_unsigned_int_std__allocatorT_unsigned_int_t_t, 0, 0, 0},{0, 0, 0, 0}};
 static swig_cast_info _swigc__p_swig__SwigPyIterator[] = {  {&_swigt__p_swig__SwigPyIterator, 0, 0, 0},{0, 0, 0, 0}};
@@ -14875,9 +17785,9 @@ static swig_cast_info *swig_cast_initial[] = {
   _swigc__p_boost__histogram__axis__transform__log,
   _swigc__p_char,
   _swigc__p_difference_type,
-  _swigc__p_double,
   _swigc__p_eec__DynamicMultinomial,
   _swigc__p_eec__EECBase,
+  _swigc__p_eec__EECEvents,
   _swigc__p_eec__EECLongestSideT_boost__histogram__axis__transform__id_t,
   _swigc__p_eec__EECLongestSideT_boost__histogram__axis__transform__log_t,
   _swigc__p_eec__EECTriangleOPET_boost__histogram__axis__transform__id_boost__histogram__axis__transform__id_boost__histogram__axis__transform__id_t,
@@ -14896,7 +17806,9 @@ static swig_cast_info *swig_cast_initial[] = {
   _swigc__p_eec__MultinomialT_4_t,
   _swigc__p_eec__MultinomialT_5_t,
   _swigc__p_eec__MultinomialT_6_t,
+  _swigc__p_int,
   _swigc__p_p_PyObject,
+  _swigc__p_p_double,
   _swigc__p_size_type,
   _swigc__p_std__allocatorT_double_t,
   _swigc__p_std__allocatorT_unsigned_int_t,
@@ -14904,6 +17816,7 @@ static swig_cast_info *swig_cast_initial[] = {
   _swigc__p_std__arrayT_std__pairT_double_int_t_3_t,
   _swigc__p_std__arrayT_unsigned_int_13_t,
   _swigc__p_std__invalid_argument,
+  _swigc__p_std__vectorT_double_const_p_std__allocatorT_double_const_p_t_t,
   _swigc__p_std__vectorT_double_std__allocatorT_double_t_t,
   _swigc__p_std__vectorT_unsigned_int_std__allocatorT_unsigned_int_t_t,
   _swigc__p_swig__SwigPyIterator,
