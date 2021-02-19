@@ -256,7 +256,7 @@ public:
   std::vector<double> bin_edges(unsigned i = 0) const { return get_bin_edges(hists()[0].axis(i)); }
 
   void get_hist_errs(double * hist_vals, double * hist_errs,
-                     bool include_overflows = true, unsigned hist_i = 0) const {
+                     unsigned hist_i = 0, bool include_overflows = true) const {
 
     if (hist_i >= this->nhists())
       throw std::out_of_range("Requested histogram out of range");
@@ -379,18 +379,6 @@ public:
   auto make_simple_hist() const { return bh::make_histogram_with(simple_weight_storage(), axis_); }
 #endif
 
-#ifdef EEC_HIST_FORMATTED_OUTPUT
-  void output(std::ostream & os = std::cout, int nspaces = 0) const {
-    os << "axis0\n";
-    output_axis(os, axis(), nspaces);
-
-    for (unsigned i = 0; i < nhists(); i++) {
-      os << "hist-1d " << i << '\n';
-      output_1d_hist(os, combined_hist(i), nspaces);
-    }
-  }
-#endif
-
 }; // EECHist1D
 
 // EECHistTraits for EECHist1D
@@ -446,24 +434,6 @@ public:
 #ifndef SWIG_PREPROCESSOR
   auto make_hist() const { return bh::make_weighted_histogram(axis0_, axis1_, axis2_); }
   auto make_simple_hist() const { return bh::make_histogram_with(simple_weight_storage(), axis0_, axis1_, axis2_); }
-#endif
-
-#ifdef EEC_HIST_FORMATTED_OUTPUT
-  void output(std::ostream & os = std::cout, int nspaces = 0) const {
-    os << "axis0\n";
-    output_axis(os, axis0(), nspaces);
-
-    os << "axis1\n";
-    output_axis(os, axis1(), nspaces);
-
-    os << "axis2\n";
-    output_axis(os, axis2(), nspaces);
-
-    for (unsigned i = 0; i < nhists(); i++) {
-      os << "hist-3d " << i << '\n';
-      output_3d_hist(os, combined_hist(i), nspaces);
-    }
-  }
 #endif
 
 }; // EECHist3D

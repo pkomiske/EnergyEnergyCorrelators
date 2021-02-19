@@ -175,18 +175,15 @@ private:
     std::array<double, 3> dists_arr;
     for (unsigned i = 0; i < mult; i++) {
       double weight_i(event_weight * ws0[i]);
-      if (weight_i == 0) continue;
       unsigned ixm(i*mult);
 
       for (unsigned j = 0; j <= i; j++) {
         double weight_ij(weight_i * ws0[j]);
-        if (weight_ij == 0) continue;
         unsigned jxm(j*mult);
         bool ij_match(i == j);
         double dist_ij(dists[ixm + j]);
 
         for (unsigned k = 0; k <= j; k++) {
-          //if (ws0[k] == 0) continue;
           bool ik_match(i == k), jk_match(j == k);
           int sym(!(ij_match || ik_match || jk_match) ? 6 : (ij_match && ik_match ? 1 : 3));
           dists_arr[0] = dist_ij;
@@ -222,7 +219,6 @@ private:
         double dist_ij(dists[ixm + j]);
 
         for (unsigned k = 0; k < mult; k++) {
-          //if (ws1[k] == 0) continue;
           double weight_ijk(weight_ij * ws1[k]);
           dists_arr[0] = dist_ij;
           dists_arr[1] = dists[ixm + k];
@@ -284,7 +280,6 @@ private:
         bool ij_match(i == j);
 
         for (unsigned k = 0; k < mult; k++) {
-          //if (ws2[k] == 0) continue;
           double weight_ijk(weight_ij * ws2[k]);
           dists_arr[0] = dist_ij;
           dists_arr[1] = dists[ixm + k];

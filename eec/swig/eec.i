@@ -185,11 +185,11 @@ namespace EECNAMESPACE {
     %extend EECHist1D {
       void npy_get_hist_errs(double** arr_out0, int* n0,
                              double** arr_out1, int* n1,
-                             bool include_overflows = true, unsigned hist_i = 0) {
+                             unsigned hist_i = 0, bool include_overflows = true) {
         MALLOC_1D_VALUE_ARRAY(arr_out0, n0, $self->hist_size(include_overflows), nbytes0)
         MALLOC_1D_VALUE_ARRAY(arr_out1, n1, $self->hist_size(include_overflows), nbytes1)
         try {
-          $self->get_hist_errs(*arr_out0, *arr_out1, include_overflows, hist_i);
+          $self->get_hist_errs(*arr_out0, *arr_out1, hist_i, include_overflows);
         }
         catch (std::exception & e) {
           free(*arr_out0);
@@ -203,7 +203,7 @@ namespace EECNAMESPACE {
     %extend EECHist3D {
       void npy_get_hist_errs(double** arr_out0, int* n0, int* n1, int* n2,
                              double** arr_out1, int* m0, int* m1, int* m2,
-                             bool include_overflows = true, unsigned hist_i = 0) {
+                             unsigned hist_i = 0, bool include_overflows = true) {
         MALLOC_3D_VALUE_ARRAY(arr_out0, n0, n1, n2, $self->hist_size(include_overflows, 0),
                                                     $self->hist_size(include_overflows, 1),
                                                     $self->hist_size(include_overflows, 2), nbytes0)
@@ -211,7 +211,7 @@ namespace EECNAMESPACE {
                                                     $self->hist_size(include_overflows, 1),
                                                     $self->hist_size(include_overflows, 2), nbytes1)
         try {
-          $self->get_hist_errs(*arr_out0, *arr_out1, include_overflows, hist_i);
+          $self->get_hist_errs(*arr_out0, *arr_out1, hist_i, include_overflows);
         }
         catch (std::exception & e) {
           free(*arr_out0);

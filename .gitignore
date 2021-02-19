@@ -9,5 +9,5 @@ clean.sh
 build/
 **/.deps
 basic_example
-*.sublime-project
+*.sublime-*
 **/.ipynb_checkpoints

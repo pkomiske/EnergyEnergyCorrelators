@@ -187,7 +187,6 @@ private:
     // loop over symmetric pairs of particles
     for (unsigned i = 0; i < mult; i++) {
       double weight_i(event_weight * ws0[i]);
-      if (weight_i == 0) continue;
       unsigned ixm(i*mult);
 
       // i == j term
@@ -229,12 +228,10 @@ private:
     // loop over triplets of particles
     for (unsigned i = 0; i < mult; i++) {
       double weight_i(event_weight * ws0[i]);
-      if (weight_i == 0) continue;
       unsigned ixm(i*mult);
 
       for (unsigned j = 0; j <= i; j++) {
         double weight_ij(weight_i * ws0[j]);
-        if (weight_ij == 0) continue;
         double dist_ij(dists[ixm + j]);
         unsigned jxm(j*mult);
         bool ij_match(i == j);
@@ -303,8 +300,8 @@ private:
           else {
             simple_hists[hist_i](hist::weight(weight_ijk), max_dist);
 
-            // fill other histogram if k == i or k == j
-            if (k == i || k == j)
+            // fill other histogram if max_dist is tied at zero
+            if (max_dist == 0)
               simple_hists[hist_i == 0 ? 1 : 0](hist::weight(weight_ijk), max_dist);  
           }
         }

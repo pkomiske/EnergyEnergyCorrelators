@@ -190,27 +190,27 @@ public:
       }
 
       case 3: {
-        bool ptpowmatch01(pt_powers_[0] == pt_powers_[1]), chpowmatch01(ch_powers_[0] == ch_powers_[1]),
-             ptpowmatch12(pt_powers_[1] == pt_powers_[2]), chpowmatch12(ch_powers_[1] == ch_powers_[2]),
-             ptpowmatch02(pt_powers_[0] == pt_powers_[2]), chpowmatch02(ch_powers_[0] == ch_powers_[2]);
-        if (ptpowmatch01 && ptpowmatch12 && chpowmatch01 && chpowmatch12) {
+        bool match01(pt_powers_[0] == pt_powers_[1] && ch_powers_[0] == ch_powers_[1]),
+             match12(pt_powers_[1] == pt_powers_[2] && ch_powers_[1] == ch_powers_[2]),
+             match02(pt_powers_[0] == pt_powers_[2] && ch_powers_[0] == ch_powers_[2]);
+        if (match01 && match12) {
           pt_powers_ = {pt_powers_[0]};
           ch_powers_ = {ch_powers_[0]};
           compname_ = "eeec_ijk_sym";
         }
-        else if (ptpowmatch01 && chpowmatch01) {
+        else if (match01) {
           pt_powers_ = {pt_powers_[0], pt_powers_[2]};
           ch_powers_ = {ch_powers_[0], ch_powers_[2]};
           compname_ = "eeec_ij_sym";
           nsym_ = 2;
         }
-        else if (ptpowmatch12 && chpowmatch12) {
+        else if (match12) {
           pt_powers_ = {pt_powers_[1], pt_powers_[0]};
           ch_powers_ = {ch_powers_[1], ch_powers_[0]};
           compname_ = "eeec_ij_sym";
           nsym_ = 2;
         }
-        else if (ptpowmatch02 && chpowmatch02) {
+        else if (match02) {
           pt_powers_ = {pt_powers_[2], pt_powers_[1]};
           ch_powers_ = {ch_powers_[2], ch_powers_[1]};
           compname_ = "eeec_ij_sym";

@@ -1,6 +1,7 @@
 from collections import Counter
 import itertools
 import math
+from operator import itemgetter
 
 import energyflow as ef
 import numpy as np
@@ -15,11 +16,14 @@ events, y = ef.qg_jets.load(num_data=500, pad=False)
 for i in range(len(events)):
     events[i][:,3] = ef.pids2chrgs(events[i][:,3])
 
-def epsilon_diff(X, Y, epsilon=10**-14):
+def epsilon_diff(X, Y, epsilon=1e-14):
     return np.all(np.abs(X - Y) < epsilon)
 
-def epsilon_percent(X, Y, epsilon=10**-14):
+def epsilon_percent(X, Y, epsilon=1e-14):
     return np.all(2*np.abs(X - Y)/(np.abs(X) + np.abs(Y) + 1e-100) < epsilon)
+
+def epsilon_either(X, Y, eps_diff, eps_percent):
+    return epsilon_diff(X, Y, eps_diff) or epsilon_percent(X, Y, eps_percent)
 
 # function for getting histograms from observable values
 def calc_eec_hist_on_event(vals, bins, weights):
@@ -227,6 +231,128 @@ class SuperSlowEECLongestSide(SlowEECBase):
 
         return calc_eec_hist_on_event(np.asarray(hist_vals), self.bins[0], weight * np.asarray(hist_weights))
 
+class SuperSlowEECLongestSideAsymN3(SlowEECBase):
+    
+    def __init__(self, *args, **kwargs):
+        super().__init__(*args, **kwargs)
+        assert self.N == 3
+
+        match01 = (self.pt_powers[0] == self.pt_powers[1]) and (self.ch_powers[0] == self.ch_powers[1])
+        match02 = (self.pt_powers[0] == self.pt_powers[2]) and (self.ch_powers[0] == self.ch_powers[2])
+        match12 = (self.pt_powers[1] == self.pt_powers[2]) and (self.ch_powers[1] == self.ch_powers[2])
+        assert not (match01 and match02), 'This EEC is for asymmetric computation'
+        self._compute_func = self._compute_eeec_ij_sym
+        nh = 2
+        if match01:
+            pass
+        elif match02:
+            self.pt_powers = [self.pt_powers[0], self.pt_powers[2], self.pt_powers[1]]
+            self.ch_powers = [self.ch_powers[0], self.ch_powers[2], self.ch_powers[1]]
+        elif match12:
+            self.pt_powers = [self.pt_powers[1], self.pt_powers[2], self.pt_powers[0]]
+            self.ch_powers = [self.ch_powers[1], self.ch_powers[2], self.ch_powers[0]]
+        else:
+            self._compute_func = self._compute_eeec_no_sym
+            nh = 3
+
+        self.hist = np.zeros(((nh,) + self.hist.shape))
+        self.errs2 = np.zeros(((nh,) + self.errs2.shape))
+
+    def _compute_eeec_ij_sym(self, pts, dists, charges, weight):
+        weights0 = pts**self.pt_powers[0] * charges**self.ch_powers[0]
+        weights1 = pts**self.pt_powers[1] * charges**self.ch_powers[1]
+        weights2 = pts**self.pt_powers[2] * charges**self.ch_powers[2]
+
+        mult = len(pts)
+        hist_vals, hist_weights = [[], []], [[], []]
+        for i in range(mult):
+            weight_i = weights0[i]
+            for j in range(mult):
+                d_ij = (dists[i,j], 0)
+                weight_ij = weight_i * weights1[j]
+                ij_match = i == j
+                for k in range(mult):
+                    d_ik = (dists[i,k], 1)
+                    d_jk = (dists[j,k], 1)
+                    weight_ijk = weight_ij * weights2[k]
+                    jk_match = j == k
+                    max_dist = max(d_ij, d_ik, d_jk, key=itemgetter(0))
+
+                    hist_vals[max_dist[1]].append(max_dist[0])
+                    hist_weights[max_dist[1]].append(weight_ijk)
+
+                    # all degenerate fill everything
+                    if ij_match and jk_match:
+                        hist_vals[1 - max_dist[1]].append(max_dist[0])
+                        hist_weights[1 - max_dist[1]].append(weight_ijk)
+
+        hist0, errs0 = calc_eec_hist_on_event(np.asarray(hist_vals[0]), self.bins[0], weight * np.asarray(hist_weights[0]))
+        hist1, errs1 = calc_eec_hist_on_event(np.asarray(hist_vals[1]), self.bins[0], weight * np.asarray(hist_weights[1]))
+
+        return [hist0, hist1], [errs0, errs1]
+
+    def _compute_eeec_no_sym(self, pts, dists, charges, weight):
+        weights0 = pts**self.pt_powers[0] * charges**self.ch_powers[0]
+        weights1 = pts**self.pt_powers[1] * charges**self.ch_powers[1]
+        weights2 = pts**self.pt_powers[2] * charges**self.ch_powers[2]
+
+        mult = len(pts)
+        hist_vals, hist_weights = [[], [], []], [[], [], []]
+        for i in range(mult):
+            weight_i = weights0[i]
+            for j in range(mult):
+                d_ij = (dists[i,j], 0)
+                weight_ij = weight_i * weights1[j]
+                ij_match = i == j
+                for k in range(mult):
+                    d_ik = (dists[i,k], 2)
+                    d_jk = (dists[j,k], 1)
+                    weight_ijk = weight_ij * weights2[k]
+                    ik_match = i == k
+                    jk_match = j == k
+                    max_dist = max(d_ij, d_ik, d_jk, key=itemgetter(0))
+
+                    # no degeneracy
+                    if not (ij_match or ik_match or jk_match):
+                        hist_vals[max_dist[1]].append(max_dist[0])
+                        hist_weights[max_dist[1]].append(weight_ijk)
+
+                    # all degenerate
+                    elif ij_match and jk_match:
+                        hist_vals[0].append(max_dist[0])
+                        hist_vals[1].append(max_dist[0])
+                        hist_vals[2].append(max_dist[0])
+                        hist_weights[0].append(weight_ijk)
+                        hist_weights[1].append(weight_ijk)
+                        hist_weights[2].append(weight_ijk)
+
+                    elif ij_match:
+                        hist_vals[1].append(max_dist[0])
+                        hist_vals[2].append(max_dist[0])
+                        hist_weights[1].append(weight_ijk)
+                        hist_weights[2].append(weight_ijk)
+
+                    elif jk_match:
+                        hist_vals[0].append(max_dist[0])
+                        hist_vals[2].append(max_dist[0])
+                        hist_weights[0].append(weight_ijk)
+                        hist_weights[2].append(weight_ijk)
+
+                    elif ik_match:
+                        hist_vals[1].append(max_dist[0])
+                        hist_vals[0].append(max_dist[0])
+                        hist_weights[1].append(weight_ijk)
+                        hist_weights[0].append(weight_ijk)
+
+                    else:
+                        assert False
+
+        hist0, errs0 = calc_eec_hist_on_event(np.asarray(hist_vals[0]), self.bins[0], weight * np.asarray(hist_weights[0]))
+        hist1, errs1 = calc_eec_hist_on_event(np.asarray(hist_vals[1]), self.bins[0], weight * np.asarray(hist_weights[1]))
+        hist2, errs2 = calc_eec_hist_on_event(np.asarray(hist_vals[2]), self.bins[0], weight * np.asarray(hist_weights[2]))
+
+        return [hist0, hist1, hist2], [errs0, errs1, errs2]
+
 @pytest.mark.multinomial
 @pytest.mark.parametrize('nparticles', [1, 2, 5, 10, 20])
 @pytest.mark.parametrize('N', [2, 3, 4])
@@ -296,8 +422,8 @@ def test_pycompare_longestside(N, axis, nbins, pt_powers, ch_powers, nparticles)
     super_slow_eec(local_events, weights)
     slow_eec(local_events, weights)
 
-    assert epsilon_percent(super_slow_eec.hist, slow_eec.hist, 10**-12)
-    assert epsilon_percent(super_slow_eec.errs, slow_eec.errs, 10**-6)
+    assert epsilon_percent(super_slow_eec.hist, slow_eec.hist, 1e-12)
+    assert epsilon_percent(super_slow_eec.errs, slow_eec.errs, 1e-6)
 
 @pytest.mark.longestside
 @pytest.mark.sym
@@ -324,8 +450,8 @@ def test_longestside_sym(N, axis, nbins, num_threads, pt_powers, ch_powers, npar
     slow_eec(local_events, weights)
 
     hist, errs = eec.get_hist_errs()
-    assert epsilon_percent(hist, slow_eec.hist, 10**-9.5)
-    assert epsilon_percent(errs, slow_eec.errs, 10**-5.5)
+    assert epsilon_percent(hist, slow_eec.hist, 1e-9.5)
+    assert epsilon_percent(errs, slow_eec.errs, 1e-5.5)
 
 @pytest.mark.longestside
 @pytest.mark.asym
@@ -347,21 +473,24 @@ def test_longestside_asym_N2_average_verts(axis, num_threads, pt_powers, ch_powe
     super_slow_eec(local_events, weights)
 
     hist, errs = eec.get_hist_errs()
-    assert epsilon_percent(hist, super_slow_eec.hist, 10**-10)
-    assert epsilon_percent(errs, super_slow_eec.errs, 10**-5.5)
+    assert epsilon_percent(hist, super_slow_eec.hist, 1e-10)
+    assert epsilon_percent(errs, super_slow_eec.errs, 1e-5.5)
 
 @pytest.mark.longestside
 @pytest.mark.asym
 @pytest.mark.parametrize('nparticles', [1, 2, 10])
+@pytest.mark.parametrize('average_verts', [True, False])
 @pytest.mark.parametrize('ch_powers', [(0,0,0), (1,1,1), (0,0,1), (0,1,0), (1,0,0)])
 @pytest.mark.parametrize('pt_powers', [(1,1,1), (1,1,2), (1,2,1), (2,1,1)])
 @pytest.mark.parametrize('num_threads', [1, -1])
 @pytest.mark.parametrize('axis', ['log', 'id'])
-def test_longestside_asym_N3_average_verts(axis, num_threads, pt_powers, ch_powers, nparticles):
+def test_longestside_asym_N3(axis, num_threads, pt_powers, ch_powers, average_verts, nparticles):
 
     eec = EECLongestSide(3, 15, axis=axis, axis_range=(1e-5, 1), pt_powers=pt_powers, ch_powers=ch_powers,
-                         print_every=0, num_threads=num_threads, average_verts=True)
-    super_slow_eec = SuperSlowEECLongestSide(3, (15,), ((1e-5, 1),), (axis,), True, pt_powers, ch_powers)
+                         print_every=0, num_threads=num_threads, average_verts=average_verts)
+    super_slow_eec = (SuperSlowEECLongestSide(3, (15,), ((1e-5, 1),), (axis,), True, pt_powers, ch_powers)
+                      if average_verts or (len(set(pt_powers)) == 1 and len(set(ch_powers)) == 1) else
+                      SuperSlowEECLongestSideAsymN3(3, (15,), ((1e-5, 1),), (axis,), True, pt_powers, ch_powers))
 
     nev = 100
     local_events = [event[:nparticles] for event in events[:nev]]
@@ -370,7 +499,14 @@ def test_longestside_asym_N3_average_verts(axis, num_threads, pt_powers, ch_powe
     eec(local_events, weights)
     super_slow_eec(local_events, weights)
 
-    hist, errs = eec.get_hist_errs()
-    assert epsilon_percent(hist, super_slow_eec.hist, 10**-10)
-    assert epsilon_percent(errs, super_slow_eec.errs, 10**-5.5)    
-
+    if average_verts or len(super_slow_eec.hist.shape) == 1:
+        hist, errs = eec.get_hist_errs()
+        assert epsilon_percent(hist, super_slow_eec.hist, 1e-10)
+        assert epsilon_percent(errs, super_slow_eec.errs, 1e-5.5)
+    else:
+        print('nhists', super_slow_eec.hist.shape[0], eec.nhists())
+        for hist_i in range(super_slow_eec.hist.shape[0]):
+            hist, errs = eec.get_hist_errs(hist_i)
+            print(hist_i, np.max(np.abs(hist - super_slow_eec.hist[hist_i])))
+            assert epsilon_either(hist, super_slow_eec.hist[hist_i], 1e-12, 1e-14), hist_i
+            assert epsilon_either(errs, super_slow_eec.errs[hist_i], 1e-6, 1e-7), hist_i
