@@ -14,24 +14,27 @@
 // You should have received a copy of the GNU General Public License
 // along with this program.  If not, see <https://www.gnu.org/licenses/>.
 
-//  ______ ______ _____ 
-// |  ____|  ____/ ____|
-// | |__  | |__ | |     
-// |  __| |  __|| |     
-// | |____| |___| |____ 
-// |______|______\_____|
-//  ____           _____ ______ 
-// |  _ \   /\    / ____|  ____|
-// | |_) | /  \  | (___ | |__   
-// |  _ < / /\ \  \___ \|  __|  
-// | |_) / ____ \ ____) | |____ 
-// |____/_/    \_\_____/|______|
+/*   ______ ______ _____ 
+ *  |  ____|  ____/ ____|
+ *  | |__  | |__ | |     
+ *  |  __| |  __|| |     
+ *  | |____| |___| |____ 
+ *  |______|______\_____|
+ *   ____           _____ ______ 
+ *  |  _ \   /\    / ____|  ____|
+ *  | |_) | /  \  | (___ | |__   
+ *  |  _ < / /\ \  \___ \|  __|  
+ *  | |_) / ____ \ ____) | |____ 
+ *  |____/_/    \_\_____/|______|
+ */
 
 #ifndef EEC_BASE_HH
 #define EEC_BASE_HH
 
 #include <cassert>
+#include <chrono>
 #include <cmath>
+#include <iomanip>
 #include <iostream>
 #include <sstream>
 #include <string>
@@ -53,9 +56,11 @@ private:
   std::vector<unsigned> mults_;
   std::vector<double> weights_;
 
+  unsigned nfeatures_;
+
 public:
 
-  EECEvents(size_t nev = 0) {
+  EECEvents(std::size_t nev = 0, unsigned nfeatures = 0) : nfeatures_(nfeatures) {
     events_.reserve(nev);
     mults_.reserve(nev);
     weights_.reserve(nev);
@@ -67,7 +72,14 @@ public:
   const std::vector<double> & weights() const { return weights_; }
 
   // add event 
-  void append(const double * event_ptr, unsigned mult, double weight) {
+  void append(const double * event_ptr, unsigned mult, unsigned nfeatures,  double weight) {
+    if (nfeatures_ > 0 && nfeatures != nfeatures_) {
+      std::ostringstream oss;
+      oss << "event has " << nfeatures << " features per particle, expected "
+          << nfeatures_ << " features per particle";
+      throw std::invalid_argument(oss.str());
+    }
+
     events_.push_back(event_ptr);
     mults_.push_back(mult);
     weights_.push_back(weight);
@@ -92,9 +104,12 @@ private:
 
   // number of particles to correlate, features per particle, unique weights to compute
   // 3 by default, charge optional (pt, y, phi, [charge])
-  unsigned N_, nsym_, nfeatures_;
+  unsigned N_, nsym_, nfeatures_, event_counter_;
   bool norm_, use_charges_, check_degen_, average_verts_;
-  int num_threads_, omp_chunksize_;
+  int num_threads_, print_every_, omp_chunksize_;
+  std::ostream * print_stream_;
+  std::ostringstream oss_;
+  std::chrono::steady_clock::time_point start_time_;
 
   // name of method used for core computation
   std::string compname_;
@@ -123,12 +138,14 @@ protected:
 public:
 
   //EECBase() : EECBase({}, {}, 0, false, 1, false, false) {}
-  EECBase(const std::vector<double> & pt_powers, const std::vector<unsigned> & ch_powers,
-          unsigned N, bool norm, int num_threads, bool check_degen, bool average_verts) : 
+  EECBase(unsigned N, bool norm,
+          const std::vector<double> & pt_powers, const std::vector<unsigned> & ch_powers,
+          int num_threads, int print_every, bool check_degen, bool average_verts) : 
     orig_pt_powers_(pt_powers), orig_ch_powers_(ch_powers),
-    N_(N), nsym_(N_),
+    N_(N), nsym_(N_), event_counter_(0),
     norm_(norm), use_charges_(false), check_degen_(check_degen), average_verts_(average_verts),
     num_threads_(determine_num_threads(num_threads)),
+    print_every_(print_every),
     weights_(num_threads_, std::vector<std::vector<double>>(N_)),
     dists_(num_threads_),
     event_weights_(num_threads_),
@@ -136,7 +153,12 @@ public:
   {
 
     // set default thread chunksize
-    set_omp_chunksize();
+    set_omp_chunksize(10);
+    set_print_stream(std::cout);
+
+    // setup stringstream for printing
+    oss_ = std::ostringstream(std::ios_base::ate);
+    oss_.setf(std::ios_base::fixed, std::ios_base::floatfield);
 
     if (orig_pt_powers_.size() == 1)
       orig_pt_powers_ = std::vector<double>(N_, orig_pt_powers_[0]);
@@ -250,7 +272,7 @@ public:
 
   virtual ~EECBase() {}
 
-  virtual std::string description() const {
+  virtual std::string description(bool = false) const {
     std::ostringstream oss;
     oss << compname_ << '\n'
         << "  N - " << N() << '\n'
@@ -278,13 +300,17 @@ public:
   unsigned N() const { return N_; }
   unsigned nsym() const { return nsym_; }
   unsigned nfeatures() const { return nfeatures_; }
+  unsigned event_counter() const { return event_counter_; }
   int num_threads() const { return num_threads_; }
+  int print_every() const { return print_every_; }
+  bool norm() const { return norm_; }
+  bool use_charges() const { return use_charges_; }
   bool average_verts() const { return average_verts_; }
 
   // externally set the number of EEC evaluations that will be spooled to each OpenMP thread at a time
-  void set_omp_chunksize(int chunksize = 100) {
-    omp_chunksize_ = std::abs(chunksize);
-  }
+  void set_omp_chunksize(int chunksize) { omp_chunksize_ = std::abs(chunksize); }
+  void set_print_every(int print_every) { print_every_ = print_every; }
+  void set_print_stream(std::ostream & os) { print_stream_ = &os; }
 
   // compute on a vector of events (themselves vectors of particles)
   void batch_compute(const std::vector<std::vector<double>> & events,
@@ -311,18 +337,35 @@ public:
                      const std::vector<unsigned> & mults,
                      const std::vector<double> & weights) {
   
+    // check number of events
     long long nevents(events.size());
     if (events.size() != mults.size())
       throw std::runtime_error("events and mults are different sizes");
     if (events.size() != weights.size())
       throw std::runtime_error("events and weights are different sizes");
 
-    #pragma omp parallel num_threads(num_threads()) default(shared)
-    {
-      #pragma omp for schedule(static, omp_chunksize_)
-      for (long long i = 0; i < nevents; i++) {
-        compute(events[i], mults[i], weights[i], omp_get_thread_num());
+    // handle print_every
+    int print_every(print_every_ == 0 ? -1 : print_every_);
+    if (print_every < 0) {
+      print_every = nevents/std::abs(print_every);
+      if (print_every == 0 || (print_every_ != 0 && nevents % std::abs(print_every_) != 0))
+        print_every++;
+    }
+
+    long long start(0), counter(0);
+    start_time_ = std::chrono::steady_clock::now();
+    while (counter < nevents) {
+      counter += print_every;
+      if (counter > nevents) counter = nevents;
+
+      #pragma omp parallel for num_threads(num_threads()) default(shared) schedule(dynamic, omp_chunksize_)
+      for (long long i = start; i < counter; i++) {
+        compute(events[i], mults[i], weights[i], get_thread_num());
       }
+
+      // update and do printing
+      start = counter;
+      print_update(counter, nevents);
     }
   }
 
@@ -404,6 +447,9 @@ public:
       // delegate EEC computation to subclass
       compute_eec(thread_i);
     }
+
+    #pragma omp atomic
+    event_counter_++;
   }
 
   // fastjet support
@@ -446,6 +492,7 @@ public:
 
     // delegate EEC computation to subclass
     compute_eec(0);
+    event_counter_++;
   }
   #endif // __FASTJET_PSEUDOJET_HH__
 
@@ -470,16 +517,16 @@ private:
       double pt_power(pt_powers_[i]);
       if (pt_power == 1)
         for (unsigned j = 0; j < mult; j++)
-            weights[j] = pts[j];
+          weights[j] = pts[j];
       else if (pt_power == 2)
         for (unsigned j = 0; j < mult; j++)
-            weights[j] = pts[j]*pts[j];
+          weights[j] = pts[j]*pts[j];
       else if (pt_power == 0.5)
         for (unsigned j = 0; j < mult; j++)
-            weights[j] = std::sqrt(pts[j]);
+          weights[j] = std::sqrt(pts[j]);
       else
         for (unsigned j = 0; j < mult; j++)
-            weights[j] = std::pow(pts[j], pt_power);
+          weights[j] = std::pow(pts[j], pt_power);
 
       // include effect of charge
       if (use_charges_) {
@@ -496,6 +543,31 @@ private:
             weights[j] *= std::pow(charges[j], ch_power);
       }
     }
+  }
+
+  void print_update(long long counter, long long nevents) {
+
+    auto diff(std::chrono::steady_clock::now() - start_time_);
+    double duration(std::chrono::duration_cast<std::chrono::duration<double>>(diff).count());
+
+    unsigned nevents_width(std::to_string(nevents).size());
+    oss_.str("  ");
+    oss_ << std::setw(nevents_width) << counter << " / "
+         << std::setw(nevents_width) << nevents << "  EMDs computed  - "
+         << std::setprecision(2) << std::setw(6) << double(counter)/nevents*100
+         << "% completed - "
+         << std::setprecision(3) << duration << 's';
+
+    // acquire Python GIL if in SWIG in order to check for signals and print message
+    #ifdef SWIG
+      SWIG_PYTHON_THREAD_BEGIN_BLOCK;
+      if (print_every_ != 0) *print_stream_ << oss_.str() << std::endl;
+      if (PyErr_CheckSignals() != 0)
+        throw std::runtime_error("KeyboardInterrupt received in PairwiseEMD::compute");
+      SWIG_PYTHON_THREAD_END_BLOCK;
+    #else
+      if (print_every_ != 0) *print_stream_ << oss_.str() << std::endl;
+    #endif
   }
 
 }; // EECBase

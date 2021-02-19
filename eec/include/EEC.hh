@@ -14,12 +14,13 @@
 // You should have received a copy of the GNU General Public License
 // along with this program.  If not, see <https://www.gnu.org/licenses/>.
 
-//  ______ ______ _____ 
-// |  ____|  ____/ ____|
-// | |__  | |__ | |     
-// |  __| |  __|| |     
-// | |____| |___| |____ 
-// |______|______\_____|
+/*  ______ ______ _____ 
+ * |  ____|  ____/ ____|
+ * | |__  | |__ | |     
+ * |  __| |  __|| |     
+ * | |____| |___| |____ 
+ * |______|______\_____|
+ */
 
 #ifndef EEC_HH
 #define EEC_HH
@@ -34,17 +35,17 @@ namespace eec {
 // EECLongestSide typedefs
 //-----------------------------------------------------------------------------
 
-typedef EECLongestSide<axis::id> EECLongestSideId;
-typedef EECLongestSide<axis::log> EECLongestSideLog;
+typedef EECLongestSide<hist::axis::id> EECLongestSideId;
+typedef EECLongestSide<hist::axis::log> EECLongestSideLog;
 
 //-----------------------------------------------------------------------------
 // EECTriangleOPE typedefs
 //-----------------------------------------------------------------------------
 
-typedef EECTriangleOPE<axis::id, axis::id, axis::id> EECTriangleOPEIdIdId;
-typedef EECTriangleOPE<axis::log, axis::id, axis::id> EECTriangleOPELogIdId;
-typedef EECTriangleOPE<axis::id, axis::log, axis::id> EECTriangleOPEIdLogId;
-typedef EECTriangleOPE<axis::log, axis::log, axis::id> EECTriangleOPELogLogId;
+typedef EECTriangleOPE<hist::axis::id, hist::axis::id, hist::axis::id> EECTriangleOPEIdIdId;
+typedef EECTriangleOPE<hist::axis::log, hist::axis::id, hist::axis::id> EECTriangleOPELogIdId;
+typedef EECTriangleOPE<hist::axis::id, hist::axis::log, hist::axis::id> EECTriangleOPEIdLogId;
+typedef EECTriangleOPE<hist::axis::log, hist::axis::log, hist::axis::id> EECTriangleOPELogLogId;
 
 } // namespace eec
 

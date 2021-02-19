@@ -14,23 +14,25 @@
 // You should have received a copy of the GNU General Public License
 // along with this program.  If not, see <https://www.gnu.org/licenses/>.
 
-//  ______ ______ _____ 
-// |  ____|  ____/ ____|
-// | |__  | |__ | |     
-// |  __| |  __|| |     
-// | |____| |___| |____ 
-// |______|______\_____|
-//  __  __ _    _ _   _______ _____ _   _  ____  __  __ _____          _      
-// |  \/  | |  | | | |__   __|_   _| \ | |/ __ \|  \/  |_   _|   /\   | |     
-// | \  / | |  | | |    | |    | | |  \| | |  | | \  / | | |    /  \  | |     
-// | |\/| | |  | | |    | |    | | | . ` | |  | | |\/| | | |   / /\ \ | |     
-// | |  | | |__| | |____| |   _| |_| |\  | |__| | |  | |_| |_ / ____ \| |____ 
-// |_|  |_|\____/|______|_|  |_____|_| \_|\____/|_|  |_|_____/_/    \_\______|
+/*   ______ ______ _____ 
+ *  |  ____|  ____/ ____|
+ *  | |__  | |__ | |     
+ *  |  __| |  __|| |     
+ *  | |____| |___| |____ 
+ *  |______|______\_____|
+ *   __  __ _    _ _   _______ _____ _   _  ____  __  __ _____          _      
+ *  |  \/  | |  | | | |__   __|_   _| \ | |/ __ \|  \/  |_   _|   /\   | |     
+ *  | \  / | |  | | |    | |    | | |  \| | |  | | \  / | | |    /  \  | |     
+ *  | |\/| | |  | | |    | |    | | | . ` | |  | | |\/| | | |   / /\ \ | |     
+ *  | |  | | |__| | |____| |   _| |_| |\  | |__| | |  | |_| |_ / ____ \| |____ 
+ *  |_|  |_|\____/|______|_|  |_____|_| \_|\____/|_|  |_|_____/_/    \_\______|
+ */
 
 #ifndef EEC_MULTINOMIAL_HH
 #define EEC_MULTINOMIAL_HH
 
 #include <array>
+#include <cassert>
 #include <cstddef>
 #include <vector>
 
@@ -39,7 +41,7 @@ namespace eec {
 const std::array<unsigned, 13> FACTORIALS{1,1,2,6,24,120,720,5040,40320,362880,3628800,39916800,479001600};
 
 // multinomial factor on sorted indices
-template<size_t N>
+template<std::size_t N>
 inline unsigned multinomial(const std::array<unsigned, N> & inds) noexcept {
 
   unsigned denom(1), count(1);
@@ -67,20 +69,25 @@ inline unsigned multinomial_vector(const std::vector<unsigned> & inds) noexcept 
   }
   denom *= FACTORIALS[count];
 
-  return FACTORIALS[inds.size() - 1]/denom;
+  return FACTORIALS[inds.size()]/denom;
 }
 
-template<unsigned N>
+template<unsigned N_>
 struct Multinomial {
 
-  Multinomial() : Nfactorial_(FACTORIALS[N]) {
-    static_assert(1 <= N && N < 13, "N must be positive and less than 13");
+  Multinomial() : Nfactorial_(FACTORIALS[N_]) {
+    static_assert(1 <= N_ && N_ < 13, "N must be positive and less than 13");
   }
+
+  // get access to N via a public function
+  unsigned N() const { return N_; }
 
   // set index at position 0 < i < N-1
   template<unsigned i>
   void set_index(unsigned ind) {
-    static_assert(i > 0 && i < N-1, "index i must be less than N-1 and greater than 0");
+  #ifndef SWIG
+    static_assert(i > 0 && i < N_-1, "index i must be less than N-1 and greater than 0");
+  #endif
     _set_index<i>(ind);
   }
 
@@ -92,25 +99,25 @@ struct Multinomial {
 
   // set index at position N-1
   void set_index_final(unsigned ind) {
-    _set_index<N-1>(ind);
+    _set_index<N_-1>(ind);
 
     // handle final degeneracy factor
-    if (counts_[N-1] > 1)
-      denoms_[N-1] *= FACTORIALS[counts_[N-1]];
+    if (counts_[N_-1] > 1)
+      denoms_[N_-1] *= FACTORIALS[counts_[N_-1]];
   }
 
   unsigned value() const {
 
     // if we are entirely degenerate (most cases) return N!
-    if (denoms_[N-1] == 1) return Nfactorial_;
+    if (denoms_[N_-1] == 1) return Nfactorial_;
 
     // return N!/(denom)
-    else return Nfactorial_/denoms_[N-1];
+    else return Nfactorial_/denoms_[N_-1];
   }
 
 private:
 
-  std::array<unsigned, N> inds_, counts_, denoms_;
+  std::array<unsigned, N_> inds_, counts_, denoms_;
   unsigned Nfactorial_;
 
   template<unsigned i>
@@ -124,6 +131,7 @@ private:
       counts_[i] = 1;
     }
   }
+
 }; // Multinomial
 
 // designed to work with an arbitrarily-sized vector
@@ -148,7 +156,6 @@ struct DynamicMultinomial {
       if (i == Nm1_ && counts_[Nm1_] > 1)  
         denoms_[Nm1_] *= FACTORIALS[counts_[Nm1_]];
     }
-    
   }
 
   unsigned value() const {
@@ -176,6 +183,7 @@ private:
       counts_[i] = 1;
     }
   }
+
 }; // DynamicMultinomial
 
 } // namespace eec

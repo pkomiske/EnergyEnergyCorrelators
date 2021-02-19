@@ -28,12 +28,9 @@
 
 // C++ standard library wrappers
 %include <exception.i>
+%include <std_array.i>
 %include <std_string.i>
 %include <std_vector.i>
-
-// vector templates
-%template(vectorDouble) std::vector<double>;
-%template(vectorUnsigned) std::vector<unsigned>;
 
 %{
 // include these to avoid needing to define them at compile time 
@@ -54,15 +51,9 @@
 // EEC library headers
 #include "EEC.hh"
 
-// macros for exception handling
-#define CATCH_STD_EXCEPTION catch (std::exception & e) { SWIG_exception(SWIG_SystemError, e.what()); }
-#define CATCH_STD_INVALID_ARGUMENT catch (std::invalid_argument & e) { SWIG_exception(SWIG_ValueError, e.what()); }
-#define CATCH_STD_RUNTIME_ERROR catch (std::runtime_error & e) { SWIG_exception(SWIG_RuntimeError, e.what()); }
-#define CATCH_STD_LOGIC_ERROR catch (std::logic_error & e) { SWIG_exception(SWIG_RuntimeError, e.what()); }
-#define CATCH_STD_OUT_OF_RANGE catch (std::out_of_range & e) { SWIG_exception(SWIG_IndexError, e.what()); }
-
-// using namespace
+// using namespaces
 using namespace eec;
+using namespace eec::hist;
 %}
 
 // include numpy typemaps
@@ -71,9 +62,28 @@ using namespace eec;
 import_array();
 %}
 
+%pythoncode %{
+__all__ = ['EECLongestSide', 'EECTriangleOPE',
+           'EECLongestSideId', 'EECLongestSideLog',
+           'EECTriangleOPEIdIdId', 'EECTriangleOPEIdLogId',
+           'EECTriangleOPELogIdId', 'EECTriangleOPELogLogId']
+%}
+
+// vector templates
+%template(vectorDouble) std::vector<double>;
+%template(vectorUnsigned) std::vector<unsigned>;
+
+// array templates
+%template(arrayUnsigned13) std::array<unsigned, 13>;
+
+// allow threads in PairwiseEMD computation
+%threadallow EECNAMESPACE::EECBase::_batch_compute;
+;
+
 // numpy typemaps
 //%apply (double* IN_ARRAY1, int DIM1) {(double* weights0, int n0), (double* weights1, int n1)}
 %apply (double* IN_ARRAY2, int DIM1, int DIM2) {(double* particles, int mult, int nfeatures)}
+%apply (double* INPLACE_ARRAY2, int DIM1, int DIM2) {(double* particles_noconvert, int mult, int nfeatures)}
 //%apply (double* INPLACE_ARRAY1, int DIM1) {(double* weights, int n0)}
 //%apply (double* INPLACE_ARRAY2, int DIM1, int DIM2) {(double* coords, int n1, int d)}
 %apply (double** ARGOUTVIEWM_ARRAY1, int* DIM1) {(double** arr_out0, int* n0),
@@ -122,41 +132,24 @@ void pyname(double** arr_out0, int* n0) {
 }
 %enddef
 
-%define RETURN_1DNUMPY_FROM_VECTOR_HIST3D(pyname, cppname)
-void pyname(double** arr_out0, int* n0, int i) {
-  MALLOC_1D_VALUE_ARRAY(arr_out0, n0, $self->nbins(i), nbytes)
-  memcpy(*arr_out0, $self->cppname(i).data(), nbytes);
-}
-%enddef
-
-// allow threads in PairwiseEMD computation
-%threadallow EMDNAMESPACE::PairwiseEMD::compute;
-
 // basic exception handling for all functions
 %exception {
   try { $action }
-  CATCH_STD_EXCEPTION
+  SWIG_CATCH_STDEXCEPT
 }
 
 namespace EECNAMESPACE {
 
 // ignore/rename EECHist functions
-%ignore get_bin_centers;
-%ignore get_bin_edges;
-%ignore combine_hists;
-%ignore HistBase::get_hist_errs;
-%ignore Hist1D::duplicate_hists;
-%ignore Hist3D::duplicate_hists;
-%rename(bin_centers_vec) Hist1D::bin_centers;
-%rename(bin_edges_vec) Hist1D::bin_edges;
-%rename(bin_centers_vec) Hist3D::bin_centers;
-%rename(bin_edges_vec) Hist3D::bin_edges;
-%rename(bin_centers) Hist1D::npy_bin_centers;
-%rename(bin_edges) Hist1D::npy_bin_edges;
-%rename(bin_centers) Hist3D::npy_bin_centers;
-%rename(bin_edges) Hist3D::npy_bin_edges;
-%rename(get_hist_errs) Hist1D::npy_get_hist_errs;
-%rename(get_hist_errs) Hist3D::npy_get_hist_errs;
+namespace hist {
+  %ignore EECHistBase::get_hist_errs;
+  %rename(bin_centers_vec) EECHistBase::bin_centers;
+  %rename(bin_edges_vec) EECHistBase::bin_edges;
+  %rename(bin_centers) EECHistBase::npy_bin_centers;
+  %rename(bin_edges) EECHistBase::npy_bin_edges;
+  %rename(get_hist_errs) EECHist1D::npy_get_hist_errs;
+  %rename(get_hist_errs) EECHist3D::npy_get_hist_errs;
+}
 
 // ignore/rename Multinomial functions
 %ignore multinomial;
@@ -164,7 +157,6 @@ namespace EECNAMESPACE {
 
 // ignore EEC functions
 %ignore EECEvents::append;
-//%ignore EECBase::EECBase();
 %ignore EECBase::batch_compute;
 %ignore EECBase::compute;
 %rename(compute) EECBase::npy_compute;
@@ -174,61 +166,77 @@ namespace EECNAMESPACE {
 // include EECHist and declare templates
 %include "EECHist.hh"
 
-// extend Hist1D code
-%extend EECNAMESPACE::Hist1D {
-  RETURN_1DNUMPY_FROM_VECTOR(npy_bin_centers, bin_centers, $self->nbins())
-  RETURN_1DNUMPY_FROM_VECTOR(npy_bin_edges, bin_edges, $self->nbins())
-
-  void npy_get_hist_errs(double** arr_out0, int* n0,
-                         double** arr_out1, int* n1,
-                         bool include_overflows = true, unsigned hist_i = 0) {
-    MALLOC_1D_VALUE_ARRAY(arr_out0, n0, $self->hist_size(include_overflows), nbytes0)
-    MALLOC_1D_VALUE_ARRAY(arr_out1, n1, $self->hist_size(include_overflows), nbytes1)
-    try {
-      $self->get_hist_errs(*arr_out0, *arr_out1, include_overflows, hist_i);
-    }
-    catch (std::exception & e) {
-      free(*arr_out0);
-      free(*arr_out1);
-      throw e;
-    }
-  }
-}
-
-// extend Hist3D code
-%extend EECNAMESPACE::Hist3D {
-  RETURN_1DNUMPY_FROM_VECTOR_HIST3D(npy_bin_centers, bin_centers)
-  RETURN_1DNUMPY_FROM_VECTOR_HIST3D(npy_bin_edges, bin_edges)
-
-  void npy_get_hist_errs(double** arr_out0, int* n0, int* n1, int* n2,
-                         double** arr_out1, int* m0, int* m1, int* m2,
-                         bool include_overflows = true, unsigned hist_i = 0) {
-    MALLOC_3D_VALUE_ARRAY(arr_out0, n0, n1, n2, $self->hist_size(include_overflows, 0),
-                                                $self->hist_size(include_overflows, 1),
-                                                $self->hist_size(include_overflows, 2), nbytes0)
-    MALLOC_3D_VALUE_ARRAY(arr_out1, m0, m1, m2, $self->hist_size(include_overflows, 0),
-                                                $self->hist_size(include_overflows, 1),
-                                                $self->hist_size(include_overflows, 2), nbytes1)
-    try {
-      $self->get_hist_errs(*arr_out0, *arr_out1, include_overflows, hist_i);
-    }
-    catch (std::exception & e) {
-      free(*arr_out0);
-      free(*arr_out1);
-      throw e;
-    }
-  }
-}
-
-// declare histogram templates
 namespace EECNAMESPACE {
-  %template(Hist1DId) Hist1D<axis::id>;
-  %template(Hist1DLog) Hist1D<axis::log>;
-  %template(Hist3DIdIdId) Hist3D<axis::id, axis::id, axis::id>;
-  %template(Hist3DLogIdId) Hist3D<axis::log, axis::id, axis::id>;
-  %template(Hist3DIdLogId) Hist3D<axis::id, axis::log, axis::id>;
-  %template(Hist3DLogLogId) Hist3D<axis::log, axis::log, axis::id>;
-}
+  namespace hist {
+
+    // extend EECHistBase
+    %extend EECHistBase {
+      void npy_bin_centers(double** arr_out0, int* n0, int i = 0) {
+        MALLOC_1D_VALUE_ARRAY(arr_out0, n0, $self->nbins(i), nbytes)
+        memcpy(*arr_out0, $self->bin_centers(i).data(), nbytes);
+      }
+      void npy_bin_edges(double** arr_out0, int* n0, int i = 0) {
+        MALLOC_1D_VALUE_ARRAY(arr_out0, n0, $self->nbins(i)+1, nbytes)
+        memcpy(*arr_out0, $self->bin_edges(i).data(), nbytes);
+      }
+    }
+
+    // extend EECHist1D code
+    %extend EECHist1D {
+      void npy_get_hist_errs(double** arr_out0, int* n0,
+                             double** arr_out1, int* n1,
+                             bool include_overflows = true, unsigned hist_i = 0) {
+        MALLOC_1D_VALUE_ARRAY(arr_out0, n0, $self->hist_size(include_overflows), nbytes0)
+        MALLOC_1D_VALUE_ARRAY(arr_out1, n1, $self->hist_size(include_overflows), nbytes1)
+        try {
+          $self->get_hist_errs(*arr_out0, *arr_out1, include_overflows, hist_i);
+        }
+        catch (std::exception & e) {
+          free(*arr_out0);
+          free(*arr_out1);
+          throw;
+        }
+      }
+    }
+
+    // extend EECHist3D code
+    %extend EECHist3D {
+      void npy_get_hist_errs(double** arr_out0, int* n0, int* n1, int* n2,
+                             double** arr_out1, int* m0, int* m1, int* m2,
+                             bool include_overflows = true, unsigned hist_i = 0) {
+        MALLOC_3D_VALUE_ARRAY(arr_out0, n0, n1, n2, $self->hist_size(include_overflows, 0),
+                                                    $self->hist_size(include_overflows, 1),
+                                                    $self->hist_size(include_overflows, 2), nbytes0)
+        MALLOC_3D_VALUE_ARRAY(arr_out1, m0, m1, m2, $self->hist_size(include_overflows, 0),
+                                                    $self->hist_size(include_overflows, 1),
+                                                    $self->hist_size(include_overflows, 2), nbytes1)
+        try {
+          $self->get_hist_errs(*arr_out0, *arr_out1, include_overflows, hist_i);
+        }
+        catch (std::exception & e) {
+          free(*arr_out0);
+          free(*arr_out1);
+          throw;
+        }
+      }
+    }
+
+    // declare histogram templates
+    %template(EECHistBase1DId) EECHistBase<EECHist1D<axis::id>>;
+    %template(EECHistBase1DLog) EECHistBase<EECHist1D<axis::log>>;
+    %template(EECHistBaseIdIdId) EECHistBase<EECHist3D<axis::id, axis::id, axis::id>>;
+    %template(EECHistBaseLogIdId) EECHistBase<EECHist3D<axis::log, axis::id, axis::id>>;
+    %template(EECHistBaseIdLogId) EECHistBase<EECHist3D<axis::id, axis::log, axis::id>>;
+    %template(EECHistBaseLogLogId) EECHistBase<EECHist3D<axis::log, axis::log, axis::id>>;
+    %template(EECHist1DId) EECHist1D<axis::id>;
+    %template(EECHist1DLog) EECHist1D<axis::log>;
+    %template(EECHist3DIdIdId) EECHist3D<axis::id, axis::id, axis::id>;
+    %template(EECHist3DLogIdId) EECHist3D<axis::log, axis::id, axis::id>;
+    %template(EECHist3DIdLogId) EECHist3D<axis::id, axis::log, axis::id>;
+    %template(EECHist3DLogLogId) EECHist3D<axis::log, axis::log, axis::id>;
+
+  } // namespace hist
+} // namespace EECNAMESPACE
 
 // include EEC code and declare templates
 %include "EECBase.hh"
@@ -236,51 +244,79 @@ namespace EECNAMESPACE {
 %include "EECLongestSide.hh"
 %include "EECTriangleOPE.hh"
 
-// extend functionality to include numpy support
-%extend EECNAMESPACE::EECEvents {
-  void add_event(double* particles, int mult, int nfeatures, double weight = 1.0) {
-    $self->append(particles, mult, weight);
-  }
-}
-
-%extend EECNAMESPACE::EECBase {
-  ADD_STR_FROM_DESCRIPTION
-
-  void npy_compute(double* particles, int mult, int nfeatures, double weight = 1.0, int thread_i = 0) {
-    if (nfeatures != (int) $self->nfeatures()) {
-      std::ostringstream oss;
-      oss << "Got array with " << nfeatures << " per particle, expected "
-          << $self->nfeatures() << " per particle";
-      throw std::runtime_error(oss.str());
-      return;
-    }
-    $self->compute(particles, mult, weight, thread_i);
-  }
-
-  // this is needed because we've hidden batch_compute
-  void operator()(const EECEvents & evs) {
-    $self->batch_compute(evs);
-  }
-
-  %pythoncode %{
-
-    def batch_compute(self, events, weights=None):
-
-        if weights is None:
-            weights = np.ones(len(events), order='C', dtype=np.double)
-        elif len(weights) != len(events):
-            raise ValueError('events and weights have different length')
-
-        eecevents = EECEvents(len(events))
-        for event,weight in zip(events, weights):
-            eecevents.add_event(event, weight)
-
-        self(eecevents)
-  %}
-}
-
-// instantiate EEC templates
 namespace EECNAMESPACE {
+
+  %extend Multinomial {
+
+    template<unsigned i>
+    void py_set_index(unsigned ind) {
+      if (i == 0 || i >= $self->N() - 1)
+        throw std::out_of_range("trying to set invalid index");
+      $self->set_index<i>(ind);
+    }
+  }
+
+  // extend functionality to include numpy support
+  %extend EECEvents {
+    void add_event(double* particles_noconvert, int mult, int nfeatures, double weight = 1.0) {
+      $self->append(particles_noconvert, mult, nfeatures, weight);
+    }
+  }
+
+  %extend EECBase {
+    ADD_STR_FROM_DESCRIPTION
+
+    void npy_compute(double* particles, int mult, int nfeatures, double weight = 1.0, int thread_i = 0) {
+      if (nfeatures != (int) $self->nfeatures()) {
+        std::ostringstream oss;
+        oss << "Got array with " << nfeatures << " features per particle, expected "
+            << $self->nfeatures() << " features per particle";
+        throw std::runtime_error(oss.str());
+        return;
+      }
+      $self->compute(particles, mult, weight, thread_i);
+    }
+
+    // this is needed because we've hidden batch_compute
+    void _batch_compute(const EECEvents & evs) {
+      $self->batch_compute(evs);
+    }
+
+    %pythoncode %{
+
+      def __call__(self, events, weights=None):
+          import numpy as np
+
+          if weights is None:
+              weights = np.ones(len(events), order='C', dtype=np.double)
+          elif len(weights) != len(events):
+              raise ValueError('events and weights have different length')
+
+          ncol = 4 if self.use_charges() else 3
+          eecevents = EECEvents(len(events), self.nfeatures())
+          events_arr = []
+          for event,weight in zip(events, weights):
+              event = np.asarray(np.atleast_2d(event)[:,:ncol], dtype=np.double, order='C')
+              eecevents.add_event(event, weight)
+              events_arr.append(event)
+
+          self._batch_compute(eecevents)
+    %}
+  }
+
+  %extend EECLongestSide {
+    ADD_STR_FROM_DESCRIPTION
+  }
+
+  %extend EECTriangleOPE {
+    ADD_STR_FROM_DESCRIPTION
+  }
+
+  // instantiate EEC templates
+  %template(set_index_1) Multinomial::py_set_index<1>;
+  %template(set_index_2) Multinomial::py_set_index<2>;
+  %template(set_index_3) Multinomial::py_set_index<3>;
+  %template(set_index_4) Multinomial::py_set_index<4>;
   %template(Multinomial2) Multinomial<2>;
   %template(Multinomial3) Multinomial<3>;
   %template(Multinomial4) Multinomial<4>;
@@ -293,4 +329,52 @@ namespace EECNAMESPACE {
   %template(EECTriangleOPELogIdId) EECTriangleOPE<axis::log, axis::id, axis::id>;
   %template(EECTriangleOPEIdLogId) EECTriangleOPE<axis::id, axis::log, axis::id>;
   %template(EECTriangleOPELogLogId) EECTriangleOPE<axis::log, axis::log, axis::id>;
-}
+
+} // namespace EECNAMESPACE
+
+%pythoncode %{
+
+def EECLongestSide(*args, axis='log', **kwargs):
+
+    axis_range = kwargs.pop('axis_range', None)
+    if axis_range is not None:
+        assert len(axis_range) == 2, '`axis_range` must be length 2'
+        kwargs['axis_min'] = axis_range[0]
+        kwargs['axis_max'] = axis_range[1]
+
+    if axis.lower() == 'log':
+        return EECLongestSideLog(*args, **kwargs)
+    elif axis.lower() == 'id':
+        return EECLongestSideId(*args, **kwargs)
+    else:
+        raise TypeError('axis `{}` not understood'.format(axis))
+
+def EECTriangleOPE(*args, axes=('log', 'log', 'id'), **kwargs):
+
+    axes = tuple(map(lambda x: x.lower(), axes))
+
+    nbins = kwargs.pop('nbins', None)
+    if nbins is not None:
+        assert len(nbins) == 3, '`nbins` must be length 3'
+        kwargs['nbins0'], kwargs['nbins1'], kwargs['nbins2'] = nbins
+
+    axis_ranges = kwargs.pop('axis_ranges', None)
+    if axis_ranges is not None:
+        assert len(axis_ranges) == 3, '`axis_ranges` must be length 3'
+        for i,axis_range in enumerate(axis_ranges):
+            assert len(axis_range) == 2, 'axis_range ' + str(axis_range) + ' not length 2'
+            kwargs['axis{}_min'.format(i)] = axis_range[0]
+            kwargs['axis{}_max'.format(i)] = axis_range[1]
+
+    if axes == ('log', 'log', 'id'):
+        return EECTriangleOPELogLogId(*args, **kwargs)
+    elif axes == ('id', 'log', 'id'):
+        return EECTriangleOPEIdLogId(*args, **kwargs)
+    elif axes == ('log', 'id', 'id'):
+        return EECTriangleOPELogIdId(*args, **kwargs)
+    elif axes == ('id', 'id', 'id'):
+        return EECTriangleOPEIdIdId(*args, **kwargs)
+    else:
+        raise TypeError('axes `{}` not understood'.format(axes))
+
+%}

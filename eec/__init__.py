@@ -27,7 +27,10 @@ along with this program.  If not, see <https://www.gnu.org/licenses/>.
 """
 from __future__ import absolute_import
 
+from . import eec
 from .eec import *
+
+__all__ = eec.__all__ + ['combine_bins', 'midbins']
 
 __version__ = '0.3.0'
 
@@ -38,9 +41,10 @@ def combine_bins(hist, nbins2combine, axes=None, overflows=True, keep_overflows=
     
     # process arguments
     nax = len(hist.shape)
-    nbins2combine = _to_iterable(nbins2combine)
-    axes = _to_iterable(list(range(nax)) if axes is None else axes)
-    keep_overflows = _to_iterable(keep_overflows)
+    to_iterable = lambda arg: arg if isinstance(arg, (tuple, list, np.ndarray)) else [arg]
+    nbins2combine = to_iterable(nbins2combine)
+    axes = to_iterable(list(range(nax)) if axes is None else axes)
+    keep_overflows = to_iterable(keep_overflows)
     
     # check arguments for consistency
     if len(nbins2combine) != len(axes):
@@ -103,23 +107,3 @@ def midbins(bins, axis='id'):
         return np.sqrt(bins[:-1]*bins[1:])
     else:
         return (bins[:-1] + bins[1:])/2
-
-def _init_eec(l):
-    global lock
-    lock = l
-
-def _compute_eec_on_events(arg):
-    start, events, weights, name, args, kwargs = arg
-    eec_obj = getattr(eeccore, name)(*args, **kwargs, lock=lock)
-
-    try:
-        eec_obj.compute(events, weights=weights)
-    except RuntimeError as e:
-        ind = e.args[1]
-        raise RuntimeError(str(e), 'event ' + str(start + ind))
-
-    return eec_obj.hists, eec_obj.hist_errs, eec_obj.bin_centers, eec_obj.bin_edges, str(eec_obj)
-
-def _to_iterable(arg):
-    import numpy as np
-    return arg if isinstance(arg, (tuple, list, np.ndarray)) else [arg]

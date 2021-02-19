@@ -14,18 +14,19 @@
 // You should have received a copy of the GNU General Public License
 // along with this program.  If not, see <https://www.gnu.org/licenses/>.
 
-//  ______ ______ _____ 
-// |  ____|  ____/ ____|
-// | |__  | |__ | |     
-// |  __| |  __|| |     
-// | |____| |___| |____ 
-// |______|______\_____|
-//  _______ _____  _____          _   _  _____ _      ______    ____  _____  ______ 
-// |__   __|  __ \|_   _|   /\   | \ | |/ ____| |    |  ____|  / __ \|  __ \|  ____|
-//    | |  | |__) | | |    /  \  |  \| | |  __| |    | |__    | |  | | |__) | |__   
-//    | |  |  _  /  | |   / /\ \ | . ` | | |_ | |    |  __|   | |  | |  ___/|  __|  
-//    | |  | | \ \ _| |_ / ____ \| |\  | |__| | |____| |____  | |__| | |    | |____ 
-//    |_|  |_|  \_\_____/_/    \_\_| \_|\_____|______|______|  \____/|_|    |______|
+/*   ______ ______ _____ 
+ *  |  ____|  ____/ ____|
+ *  | |__  | |__ | |     
+ *  |  __| |  __|| |     
+ *  | |____| |___| |____ 
+ *  |______|______\_____|
+ *   _______ _____  _____          _   _  _____ _      ______    ____  _____  ______ 
+ *  |__   __|  __ \|_   _|   /\   | \ | |/ ____| |    |  ____|  / __ \|  __ \|  ____|
+ *     | |  | |__) | | |    /  \  |  \| | |  __| |    | |__    | |  | | |__) | |__   
+ *     | |  |  _  /  | |   / /\ \ | . ` | | |_ | |    |  __|   | |  | |  ___/|  __|  
+ *     | |  | | \ \ _| |_ / ____ \| |\  | |__| | |____| |____  | |__| | |    | |____ 
+ *     |_|  |_|  \_\_____/_/    \_\_| \_|\_____|______|______|  \____/|_|    |______|
+ */
 
 #ifndef EEC_TRIANGLEOPE_HH
 #define EEC_TRIANGLEOPE_HH
@@ -65,7 +66,7 @@ inline void fill_hist(Hist & hist, double weight, double xS, double xM, double x
            phi(std::asin(std::sqrt(std::fabs(1 - diff*diff/(xS*xS + REG)))));
 
     // fill histogram
-    hist(bh::weight(weight), xL, xi, phi);
+    hist(hist::weight(weight), xL, xi, phi);
   }
 
 //-----------------------------------------------------------------------------
@@ -73,14 +74,14 @@ inline void fill_hist(Hist & hist, double weight, double xS, double xM, double x
 //-----------------------------------------------------------------------------
 
 template<class Transform0, class Transform1, class Transform2>
-class EECTriangleOPE : public EECBase, public Hist3D<Transform0, Transform1, Transform2> {
+class EECTriangleOPE : public EECBase, public hist::EECHist3D<Transform0, Transform1, Transform2> {
 
   // function pointer to the actual computation that will be run
   void (EECTriangleOPE::*compute_eec_ptr_)(int);
 
 public:
 
-  typedef typename Hist3D<Transform0, Transform1, Transform2>::Hist Hist;
+  typedef typename hist::EECHist3D<Transform0, Transform1, Transform2>::SimpleHist SimpleHist;
 
   EECTriangleOPE(unsigned nbins0, double axis0_min, double axis0_max,
                  unsigned nbins1, double axis1_min, double axis1_max,
@@ -89,10 +90,11 @@ public:
                  const std::vector<double> & pt_powers = {1},
                  const std::vector<unsigned> & ch_powers = {0},
                  int num_threads = -1,
+                 int print_every = -10,
                  bool check_degen = false,
                  bool average_verts = false) :
-    EECBase(pt_powers, ch_powers, 3, norm, num_threads, check_degen, average_verts),
-    Hist3D<Transform0, Transform1, Transform2>(nbins0, axis0_min, axis0_max,
+    EECBase(3, norm, pt_powers, ch_powers, num_threads, print_every, check_degen, average_verts),
+    hist::EECHist3D<Transform0, Transform1, Transform2>(nbins0, axis0_min, axis0_max,
                                                nbins1, axis1_min, axis1_max,
                                                nbins2, axis2_min, axis2_max,
                                                num_threads)
@@ -104,12 +106,12 @@ public:
 
       case 2:
         compute_eec_ptr_ = &EECTriangleOPE::eeec_ij_sym;
-        if (!this->average_verts()) this->duplicate_hists(3);
+        if (!this->average_verts()) this->duplicate_internal_hists(3);
         break;
 
       case 0:
         compute_eec_ptr_ = &EECTriangleOPE::eeec_no_sym;
-        if (!this->average_verts()) this->duplicate_hists(6);
+        if (!this->average_verts()) this->duplicate_internal_hists(6);
         break;
 
       default:
@@ -119,24 +121,24 @@ public:
 
   virtual ~EECTriangleOPE() {}
 
-  std::string description() const {
+  std::string description(bool include_hists = false) const {
     unsigned nh(this->nhists());
 
     std::ostringstream oss;
-    oss << "EECTriangleOPE::" << EECBase::description() << '\n'
+    oss << "EECTriangleOPE<" << this->axes_description() << ">::" << EECBase::description() << '\n'
         << "  there " << (nh == 1 ? "is " : "are ") << nh << " histogram";
 
     if (nh == 1) 
       oss << '\n';
 
     else if (nh == 3)
-      oss << "s, labeled according to the location of the side with identical vertices\n"
+      oss << "s, labeled according to the location of the (distinguished) side with identical vertices\n"
           << "    0 - distinguished side is the small side\n"
           << "    1 - distinguished side is the medium side\n"
           << "    2 - distinguished side is the large side\n";
 
     else if (nh == 6)
-      oss << "s, labeled according to the locations of sides ij and ik\n"
+      oss << "s, labeled according to the locations of sides ij and ik (vertices are i, j, k)\n"
           << "    0 - side ij is the small side, side ik is the medium side\n"
           << "    1 - side ij is the small side, side ik is the large side\n"
           << "    2 - side ij is the medium side, side ik is the small side\n"
@@ -147,19 +149,27 @@ public:
     else 
       throw std::runtime_error("Unexpected number of histograms encountered");
 
+    if (include_hists) {
+      oss << '\n';
+      this->hists_as_text(16, true, &oss);
+    }
+
     return oss.str();
   }
 
 private:
 
-  void compute_eec(int thread_i) { (this->*compute_eec_ptr_)(thread_i); }
+  void compute_eec(int thread_i) {
+    (this->*compute_eec_ptr_)(thread_i);
+    this->fill_hist_with_simple_hist(thread_i);
+  }
 
   void eeec_ijk_sym(int thread_i) {
     const std::vector<double> & ws0(this->weights(thread_i)[0]),
                               & dists(this->dists(thread_i));
     double event_weight(this->event_weight(thread_i));
     unsigned mult(this->mult(thread_i));
-    Hist & hist(this->hists(thread_i)[0]);
+    SimpleHist & simple_hist(this->simple_hists(thread_i)[0]);
 
     // loop over symmetric triplets of particles
     std::array<double, 3> dists_arr;
@@ -184,7 +194,7 @@ private:
           dists_arr[2] = dists[jxm + k];
 
           std::sort(dists_arr.begin(), dists_arr.end());
-          fill_hist(hist, weight_ij * ws0[k] * sym, dists_arr[0], dists_arr[1], dists_arr[2]);
+          fill_hist(simple_hist, weight_ij * ws0[k] * sym, dists_arr[0], dists_arr[1], dists_arr[2]);
         }
       }
     }
@@ -196,7 +206,7 @@ private:
                               & dists(this->dists(thread_i));
     double event_weight(this->event_weight(thread_i));
     unsigned mult(this->mult(thread_i));
-    std::vector<Hist> & hists(this->hists(thread_i));
+    std::vector<SimpleHist> & simple_hists(this->simple_hists(thread_i));
 
     // first index is special, second is symmetric
     std::array<double, 3> dists_arr;
@@ -226,24 +236,24 @@ private:
 
           // averaging over verts
           if (average_verts())
-            fill_hist(hists[0], weight_ijk, dists_inds[0].first, dists_inds[1].first, dists_inds[2].first);
+            fill_hist(simple_hists[0], weight_ijk, dists_inds[0].first, dists_inds[1].first, dists_inds[2].first);
 
           // fill specific histogram
           else if (!(ik_match || jk_match))
-            fill_hist(hists[dists_inds[0].second == 0 ? 0 : (dists_inds[1].second == 0 ? 1 : 2)],
+            fill_hist(simple_hists[dists_inds[0].second == 0 ? 0 : (dists_inds[1].second == 0 ? 1 : 2)],
                       weight_ijk, dists_inds[0].first, dists_inds[1].first, dists_inds[2].first);
 
           // fill medium and large histograms
           else if (ik_match || jk_match) {
-            fill_hist(hists[1], weight_ijk, 0, dists_inds[1].first, dists_inds[2].first);
-            fill_hist(hists[2], weight_ijk, 0, dists_inds[1].first, dists_inds[2].first);
+            fill_hist(simple_hists[1], weight_ijk, 0, dists_inds[1].first, dists_inds[2].first);
+            fill_hist(simple_hists[2], weight_ijk, 0, dists_inds[1].first, dists_inds[2].first);
           }
 
           // fill all histograms
           else if (ik_match && jk_match) {
-            fill_hist(hists[0], weight_ijk, 0, 0, 0);
-            fill_hist(hists[1], weight_ijk, 0, 0, 0);
-            fill_hist(hists[2], weight_ijk, 0, 0, 0);
+            fill_hist(simple_hists[0], weight_ijk, 0, 0, 0);
+            fill_hist(simple_hists[1], weight_ijk, 0, 0, 0);
+            fill_hist(simple_hists[2], weight_ijk, 0, 0, 0);
           }  
         }
       }
@@ -257,7 +267,7 @@ private:
                               & dists(this->dists(thread_i));
     double event_weight(this->event_weight(thread_i));
     unsigned mult(this->mult(thread_i));
-    std::vector<Hist> & hists(this->hists(thread_i));
+    std::vector<SimpleHist> & simple_hists(this->simple_hists(thread_i));
 
     // all indices are different
     std::array<double, 3> dists_arr;
@@ -286,7 +296,7 @@ private:
 
           // check for averaging the vertices
           if (average_verts())
-            fill_hist(hists[0], weight_ijk, dists_inds[0].first, dists_inds[1].first, dists_inds[2].first);
+            fill_hist(simple_hists[0], weight_ijk, dists_inds[0].first, dists_inds[1].first, dists_inds[2].first);
 
           // no degeneracy 
           else if (!(ij_match || ik_match || jk_match)) {
@@ -314,35 +324,35 @@ private:
               else hist_i = 5;
             }
 
-            fill_hist(hists[hist_i], weight_ijk, dists_inds[0].first, dists_inds[1].first, dists_inds[2].first);
+            fill_hist(simple_hists[hist_i], weight_ijk, dists_inds[0].first, dists_inds[1].first, dists_inds[2].first);
           }
 
           // everything is degenerate
           else if (ij_match && ik_match) {
-            fill_hist(hists[0], weight_ijk, 0, 0, 0);
-            fill_hist(hists[1], weight_ijk, 0, 0, 0);
-            fill_hist(hists[2], weight_ijk, 0, 0, 0);
-            fill_hist(hists[3], weight_ijk, 0, 0, 0);
-            fill_hist(hists[4], weight_ijk, 0, 0, 0);
-            fill_hist(hists[5], weight_ijk, 0, 0, 0);
+            fill_hist(simple_hists[0], weight_ijk, 0, 0, 0);
+            fill_hist(simple_hists[1], weight_ijk, 0, 0, 0);
+            fill_hist(simple_hists[2], weight_ijk, 0, 0, 0);
+            fill_hist(simple_hists[3], weight_ijk, 0, 0, 0);
+            fill_hist(simple_hists[4], weight_ijk, 0, 0, 0);
+            fill_hist(simple_hists[5], weight_ijk, 0, 0, 0);
           }
 
           // ij are degenerate, fill hists 0 and 1
           else if (ij_match) {
-            fill_hist(hists[0], weight_ijk, 0, dists_inds[1].first, dists_inds[2].first);
-            fill_hist(hists[1], weight_ijk, 0, dists_inds[1].first, dists_inds[2].first);
+            fill_hist(simple_hists[0], weight_ijk, 0, dists_inds[1].first, dists_inds[2].first);
+            fill_hist(simple_hists[1], weight_ijk, 0, dists_inds[1].first, dists_inds[2].first);
           }
 
           // ik are degenerate, fill hists 2 and 4
           else if (ik_match) {
-            fill_hist(hists[2], weight_ijk, 0, dists_inds[1].first, dists_inds[2].first);
-            fill_hist(hists[4], weight_ijk, 0, dists_inds[1].first, dists_inds[2].first);
+            fill_hist(simple_hists[2], weight_ijk, 0, dists_inds[1].first, dists_inds[2].first);
+            fill_hist(simple_hists[4], weight_ijk, 0, dists_inds[1].first, dists_inds[2].first);
           }
 
           // jk are degenerate, fill hists 3 and 5
           else if (jk_match) {
-            fill_hist(hists[3], weight_ijk, 0, dists_inds[1].first, dists_inds[2].first);
-            fill_hist(hists[5], weight_ijk, 0, dists_inds[1].first, dists_inds[2].first);
+            fill_hist(simple_hists[3], weight_ijk, 0, dists_inds[1].first, dists_inds[2].first);
+            fill_hist(simple_hists[5], weight_ijk, 0, dists_inds[1].first, dists_inds[2].first);
           }
 
           // should never get here

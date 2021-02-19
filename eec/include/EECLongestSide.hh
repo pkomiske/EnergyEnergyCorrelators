@@ -14,18 +14,19 @@
 // You should have received a copy of the GNU General Public License
 // along with this program.  If not, see <https://www.gnu.org/licenses/>.
 
-//  ______ ______ _____ 
-// |  ____|  ____/ ____|
-// | |__  | |__ | |     
-// |  __| |  __|| |     
-// | |____| |___| |____ 
-// |______|______\_____|
-//  _      ____  _   _  _____ ______  _____ _______    _____ _____ _____  ______ 
-// | |    / __ \| \ | |/ ____|  ____|/ ____|__   __|  / ____|_   _|  __ \|  ____|
-// | |   | |  | |  \| | |  __| |__  | (___    | |    | (___   | | | |  | | |__   
-// | |   | |  | | . ` | | |_ |  __|  \___ \   | |     \___ \  | | | |  | |  __|  
-// | |___| |__| | |\  | |__| | |____ ____) |  | |     ____) |_| |_| |__| | |____ 
-// |______\____/|_| \_|\_____|______|_____/   |_|    |_____/|_____|_____/|______|
+/*   ______ ______ _____ 
+ *  |  ____|  ____/ ____|
+ *  | |__  | |__ | |     
+ *  |  __| |  __|| |     
+ *  | |____| |___| |____ 
+ *  |______|______\_____|
+ *   _      ____  _   _  _____ ______  _____ _______    _____ _____ _____  ______ 
+ *  | |    / __ \| \ | |/ ____|  ____|/ ____|__   __|  / ____|_   _|  __ \|  ____|
+ *  | |   | |  | |  \| | |  __| |__  | (___    | |    | (___   | | | |  | | |__   
+ *  | |   | |  | | . ` | | |_ |  __|  \___ \   | |     \___ \  | | | |  | |  __|  
+ *  | |___| |__| | |\  | |__| | |____ ____) |  | |     ____) |_| |_| |__| | |____ 
+ *  |______\____/|_| \_|\_____|______|_____/   |_|    |_____/|_____|_____/|______|
+ */
 
 #ifndef EEC_LONGESTSIDE_HH
 #define EEC_LONGESTSIDE_HH
@@ -49,7 +50,7 @@ namespace eec {
 //-----------------------------------------------------------------------------
 
 template<class Transform>
-class EECLongestSide : public EECBase, public Hist1D<Transform> {
+class EECLongestSide : public EECBase, public hist::EECHist1D<Transform> {
 
   bool use_general_eNc_;
   unsigned N_choose_2_;
@@ -59,18 +60,20 @@ class EECLongestSide : public EECBase, public Hist1D<Transform> {
 
 public:
 
-  typedef typename Hist1D<Transform>::Hist Hist;
+  typedef typename hist::EECHist1D<Transform>::SimpleHist SimpleHist;
 
-  EECLongestSide(unsigned nbins, double axis_min, double axis_max,
-                 unsigned N, bool norm = true,
+  EECLongestSide(unsigned N,
+                 unsigned nbins, double axis_min, double axis_max,
+                 bool norm = true,
                  const std::vector<double> & pt_powers = {1},
                  const std::vector<unsigned> & ch_powers = {0},
                  int num_threads = -1,
+                 int print_every = -10,
                  bool check_degen = false,
                  bool average_verts = false,
                  bool use_general_eNc = false) :
-    EECBase(pt_powers, ch_powers, N, norm, num_threads, check_degen, average_verts),
-    Hist1D<Transform>(nbins, axis_min, axis_max, num_threads),
+    EECBase(N, norm, pt_powers, ch_powers, num_threads, print_every, check_degen, average_verts),
+    hist::EECHist1D<Transform>(nbins, axis_min, axis_max, num_threads),
     use_general_eNc_(use_general_eNc),
     N_choose_2_(this->N()*(this->N()-1)/2),
     compute_eec_ptr_(&EECLongestSide::eNc_sym)
@@ -95,12 +98,12 @@ public:
 
           case 2:
             compute_eec_ptr_ = &EECLongestSide::eeec_ij_sym;
-            if (!this->average_verts()) this->duplicate_hists(2);
+            if (!this->average_verts()) this->duplicate_internal_hists(2);
             break;
 
           case 0:
             compute_eec_ptr_ = &EECLongestSide::eeec_no_sym;
-            if (!this->average_verts()) this->duplicate_hists(3);
+            if (!this->average_verts()) this->duplicate_internal_hists(3);
             break;
 
           default:
@@ -134,11 +137,11 @@ public:
 
   virtual ~EECLongestSide() {}
 
-  std::string description() const {
+  std::string description(bool include_hists = false) const {
     unsigned nh(this->nhists());
 
     std::ostringstream oss;
-    oss << "EECLongestSide::" << EECBase::description() << '\n'
+    oss << "EECLongestSide<" << this->axes_description() << ">::" << EECBase::description() << '\n'
         << "  using eNc_sym - " << (use_general_eNc_ ? "true" : "false") << '\n'
         << "  there " << (nh == 1 ? "is " : "are ") << nh << " histogram";
 
@@ -152,26 +155,34 @@ public:
 
     else if (nh == 3)
       oss << "s, labeled according to the location of the largest side\n"
-          << "    0 - the largest side is ij\n"
-          << "    1 - the largest side is jk\n"
-          << "    2 - the largest side is ik\n";
+          << "    0 - the largest side is between vertices 0 and 1\n"
+          << "    1 - the largest side is between vertices 1 and 2\n"
+          << "    2 - the largest side is between vertices 0 and 2\n";
 
     else 
       throw std::runtime_error("Unexpected number of histograms encountered");
+
+    if (include_hists) {
+      oss << '\n';
+      this->hists_as_text(16, true, &oss);
+    }
 
     return oss.str();
   }
 
 private:
   
-  void compute_eec(int thread_i) { (this->*compute_eec_ptr_)(thread_i); }
+  void compute_eec(int thread_i) {
+    (this->*compute_eec_ptr_)(thread_i);
+    this->fill_hist_with_simple_hist(thread_i);
+  }
 
   void eec_ij_sym(int thread_i) {
     const std::vector<double> & ws0(this->weights(thread_i)[0]),
                               & dists(this->dists(thread_i));
     double event_weight(this->event_weight(thread_i));
     unsigned mult(this->mult(thread_i));
-    Hist & hist(this->hists(thread_i)[0]);
+    SimpleHist & simple_hist(this->simple_hists(thread_i)[0]);
 
     // loop over symmetric pairs of particles
     for (unsigned i = 0; i < mult; i++) {
@@ -180,12 +191,12 @@ private:
       unsigned ixm(i*mult);
 
       // i == j term
-      hist(bh::weight(weight_i * ws0[i]), 0);
+      simple_hist(hist::weight(weight_i * ws0[i]), 0);
 
       // off diagonal terms
       weight_i *= 2;
       for (unsigned j = 0; j < i; j++)
-        hist(bh::weight(weight_i * ws0[j]), dists[ixm + j]);
+        simple_hist(hist::weight(weight_i * ws0[j]), dists[ixm + j]);
     }
   }
 
@@ -195,7 +206,7 @@ private:
                               & dists(this->dists(thread_i));
     double event_weight(this->event_weight(thread_i));
     unsigned mult(this->mult(thread_i));
-    Hist & hist(this->hists(thread_i)[0]);
+    SimpleHist & simple_hist(this->simple_hists(thread_i)[0]);
 
     // loop over all pairs of particles
     for (unsigned i = 0; i < mult; i++) {
@@ -204,7 +215,7 @@ private:
       unsigned ixm(i*mult);
 
       for (unsigned j = 0; j < mult; j++)
-        hist(bh::weight(weight_i * ws1[j]), dists[ixm + j]);
+        simple_hist(hist::weight(weight_i * ws1[j]), dists[ixm + j]);
     }
   }
 
@@ -213,7 +224,7 @@ private:
                               & dists(this->dists(thread_i));
     double event_weight(this->event_weight(thread_i));
     unsigned mult(this->mult(thread_i));
-    Hist & hist(this->hists(thread_i)[0]);
+    SimpleHist & simple_hist(this->simple_hists(thread_i)[0]);
 
     // loop over triplets of particles
     for (unsigned i = 0; i < mult; i++) {
@@ -242,7 +253,7 @@ private:
           else if (dist_ik > dist_ij) max_dist = dist_ik;
 
           // fill histogram
-          hist(bh::weight(weight_ij * ws0[k] * sym), max_dist);
+          simple_hist(hist::weight(weight_ij * ws0[k] * sym), max_dist);
         }
       }
     }
@@ -254,7 +265,7 @@ private:
                               & dists(this->dists(thread_i));
     double event_weight(this->event_weight(thread_i));
     unsigned mult(this->mult(thread_i));
-    std::vector<Hist> & hists(this->hists(thread_i));
+    std::vector<SimpleHist> & simple_hists(this->simple_hists(thread_i));
 
     // loop over triplets of particles
     for (unsigned i = 0; i < mult; i++) {
@@ -286,15 +297,15 @@ private:
 
           // handle case of averaging over verts
           if (average_verts())
-            hists[0](bh::weight(weight_ijk), max_dist);
+            simple_hists[0](hist::weight(weight_ijk), max_dist);
 
           // no averaging here, fill the targeted hist
           else {
-            hists[hist_i](bh::weight(weight_ijk), max_dist);
+            simple_hists[hist_i](hist::weight(weight_ijk), max_dist);
 
             // fill other histogram if k == i or k == j
             if (k == i || k == j)
-              hists[hist_i == 0 ? 1 : 0](bh::weight(weight_ijk), max_dist);  
+              simple_hists[hist_i == 0 ? 1 : 0](hist::weight(weight_ijk), max_dist);  
           }
         }
       }
@@ -308,7 +319,7 @@ private:
                               & dists(this->dists(thread_i));
     double event_weight(this->event_weight(thread_i));
     unsigned mult(this->mult(thread_i));
-    std::vector<Hist> & hists(this->hists(thread_i));
+    std::vector<SimpleHist> & simple_hists(this->simple_hists(thread_i));
 
     // loop over unique triplets of particles
     for (unsigned i = 0; i < mult; i++) {
@@ -347,35 +358,35 @@ private:
 
           // always use hist_i = 0 if averaging over verts
           if (average_verts())
-            hists[0](bh::weight(weight_ijk), max_dist);
+            simple_hists[0](hist::weight(weight_ijk), max_dist);
 
           // no degeneracy at all
           else if (!(ij_match || ik_match || jk_match))
-            hists[hist_i](bh::weight(weight_ijk), max_dist);
+            simple_hists[hist_i](hist::weight(weight_ijk), max_dist);
 
           // everything is degenerate
           else if (ij_match && ik_match) {
-            hists[0](bh::weight(weight_ijk), max_dist);
-            hists[1](bh::weight(weight_ijk), max_dist);
-            hists[2](bh::weight(weight_ijk), max_dist);
+            simple_hists[0](hist::weight(weight_ijk), max_dist);
+            simple_hists[1](hist::weight(weight_ijk), max_dist);
+            simple_hists[2](hist::weight(weight_ijk), max_dist);
           }
 
           // ij overlap, largest sides are ik and jk
           else if (ij_match) {
-            hists[1](bh::weight(weight_ijk), max_dist);
-            hists[2](bh::weight(weight_ijk), max_dist);
+            simple_hists[1](hist::weight(weight_ijk), max_dist);
+            simple_hists[2](hist::weight(weight_ijk), max_dist);
           }
 
           // jk overlap, largest sides are ij, ik
           else if (jk_match) {
-            hists[0](bh::weight(weight_ijk), max_dist);
-            hists[2](bh::weight(weight_ijk), max_dist);
+            simple_hists[0](hist::weight(weight_ijk), max_dist);
+            simple_hists[2](hist::weight(weight_ijk), max_dist);
           }
 
           // ik overlap, largest sides are ij, jk
           else if (ik_match) {
-            hists[0](bh::weight(weight_ijk), max_dist);
-            hists[1](bh::weight(weight_ijk), max_dist);
+            simple_hists[0](hist::weight(weight_ijk), max_dist);
+            simple_hists[1](hist::weight(weight_ijk), max_dist);
           }
 
           // should never get here
@@ -390,7 +401,7 @@ private:
                               & dists(this->dists(thread_i));
     double event_weight(this->event_weight(thread_i));
     unsigned mult(this->mult(thread_i));
-    Hist & hist(this->hists(thread_i)[0]);
+    SimpleHist & simple_hist(this->simple_hists(thread_i)[0]);
 
     // loop over quadruplets of particles
     std::array<double, 6> dists_arr;
@@ -422,8 +433,8 @@ private:
             multinom.set_index_final(l);
 
             // fill histogram
-            hist(bh::weight(multinom.value() * weight_ijkl),
-                 *std::max_element(dists_arr.cbegin() + 2, dists_arr.cend()));
+            simple_hist(hist::weight(multinom.value() * weight_ijkl),
+                        *std::max_element(dists_arr.cbegin() + 2, dists_arr.cend()));
           }
         }
       }
@@ -435,7 +446,7 @@ private:
                               & dists(this->dists(thread_i));
     double event_weight(this->event_weight(thread_i));
     unsigned mult(this->mult(thread_i));
-    Hist & hist(this->hists(thread_i)[0]);
+    SimpleHist & simple_hist(this->simple_hists(thread_i)[0]);
 
     // loop over quintuplets of particles
     std::array<double, 10> dists_arr;
@@ -477,8 +488,8 @@ private:
               multinom.set_index_final(m);
 
               // fill histogram
-              hist(bh::weight(multinom.value() * weight_ijklm),
-                   *std::max_element(dists_arr.cbegin() + 5, dists_arr.cend()));
+              simple_hist(hist::weight(multinom.value() * weight_ijklm),
+                          *std::max_element(dists_arr.cbegin() + 5, dists_arr.cend()));
             }
           }
         }
@@ -491,7 +502,7 @@ private:
                               & dists(this->dists(thread_i));
     double event_weight(this->event_weight(thread_i));
     unsigned mult(this->mult(thread_i));
-    Hist & hist(this->hists(thread_i)[0]);
+    SimpleHist & simple_hist(this->simple_hists(thread_i)[0]);
 
     // loop over quintuplets of particles
     std::array<double, 15> dists_arr;
@@ -544,8 +555,8 @@ private:
                 multinom.set_index_final(n);
 
                 // fill histogram
-                hist(bh::weight(multinom.value() * weight_ijklmn),
-                     *std::max_element(dists_arr.cbegin() + 9, dists_arr.cend()));
+                simple_hist(hist::weight(multinom.value() * weight_ijklmn),
+                            *std::max_element(dists_arr.cbegin() + 9, dists_arr.cend()));
               }
             }
           }
@@ -559,7 +570,7 @@ private:
                               & dists(this->dists(thread_i));
     double event_weight(this->event_weight(thread_i));
     unsigned mult(this->mult(thread_i));
-    Hist & hist(this->hists(thread_i)[0]);
+    SimpleHist & simple_hist(this->simple_hists(thread_i)[0]);
 
     // nothing to do for empty events
     if (mult == 0) return;
@@ -590,7 +601,7 @@ private:
     while (true) {
 
       // fill hist
-      hist(bh::weight(multinom.value() * weight), max_dist);
+      simple_hist(hist::weight(multinom.value() * weight), max_dist);
 
       // start w at N and work down to 0
       unsigned w(N());

@@ -14,18 +14,19 @@
 // You should have received a copy of the GNU General Public License
 // along with this program.  If not, see <https://www.gnu.org/licenses/>.
 
-//  ______ ______ _____ 
-// |  ____|  ____/ ____|
-// | |__  | |__ | |     
-// |  __| |  __|| |     
-// | |____| |___| |____ 
-// |______|______\_____|
-//  _    _ _______ _____ _       _____ 
-// | |  | |__   __|_   _| |     / ____|
-// | |  | |  | |    | | | |    | (___  
-// | |  | |  | |    | | | |     \___ \
-// | |__| |  | |   _| |_| |____ ____) |
-//  \____/   |_|  |_____|______|_____/
+/*  ______ ______ _____ 
+ * |  ____|  ____/ ____|
+ * | |__  | |__ | |     
+ * |  __| |  __|| |     
+ * | |____| |___| |____ 
+ * |______|______\_____|
+ *  _    _ _______ _____ _       _____ 
+ * | |  | |__   __|_   _| |     / ____|
+ * | |  | |  | |    | | | |    | (___  
+ * | |  | |  | |    | | | |     \___ \ 
+ * | |__| |  | |   _| |_| |____ ____) |
+ *  \____/   |_|  |_____|______|_____/ 
+ */
 
 #ifndef EEC_UTILS_HH
 #define EEC_UTILS_HH
@@ -48,14 +49,22 @@ const double TWOPI = 6.28318530717958647693;
 //-----------------------------------------------------------------------------
 
 // determine the number of threads to use
-int determine_num_threads(int num_threads) {
-  #ifdef _OPENMP
-    if (num_threads == -1 || num_threads > omp_get_max_threads())
-      return omp_get_max_threads();
-    return num_threads;
-  #else
-    return 1;
-  #endif
+inline int determine_num_threads(int num_threads) {
+#ifdef _OPENMP
+  if (num_threads == -1 || num_threads > omp_get_max_threads())
+    return omp_get_max_threads();
+  return num_threads;
+#else
+  return 1;
+#endif
+}
+
+inline int get_thread_num() {
+#ifdef _OPENMP
+  return omp_get_thread_num();
+#else
+  return 0;
+#endif
 }
 
 #endif // EEC_UTILS_HH

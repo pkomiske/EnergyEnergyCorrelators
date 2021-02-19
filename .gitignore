@@ -10,3 +10,4 @@ build/
 **/.deps
 basic_example
 *.sublime-project
+**/.ipynb_checkpoints
