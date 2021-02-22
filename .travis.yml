@@ -12,6 +12,8 @@ stages:
 
 jobs:
   exclude:
+    -stage: test
+      - os: mac
   #  - stage: build
   #  - os: linux
   #  - os: windows
@@ -70,7 +72,6 @@ jobs:
       before_install: 
         - choco install python --version 3.8.3
         - ln -s /c/Python38/python.exe /c/Python38/python3.exe
-      install: python3 -m pip install numpy
       env:
         - PATH=/c/Python38:/c/Python38/Scripts:$PATH
 
