@@ -162,10 +162,10 @@ public:
       : value_(value) {}
 
   /// Increment simple_weighted_sum by one
-  simple_weighted_sum& operator++() noexcept {
+  /*simple_weighted_sum& operator++() noexcept {
     ++value_;
     return *this;
-  }
+  }*/
 
   /// Increment simple_weighted_sum by weight
   template <class T>
@@ -233,7 +233,7 @@ public:
     hists_(num_threads_),
     simple_hists_(num_threads_)
   {}
-  virtual ~EECHistBase() {}
+  virtual ~EECHistBase() = default;
 
   std::string axes_description() const { return ""; }
   int num_threads() const { return num_threads_; }
@@ -255,25 +255,40 @@ public:
   std::vector<double> bin_centers(unsigned i = 0) const { return get_bin_centers(hists()[0].axis(i)); }
   std::vector<double> bin_edges(unsigned i = 0) const { return get_bin_edges(hists()[0].axis(i)); }
 
-  void get_hist_errs(double * hist_vals, double * hist_errs,
+  void get_hist_vars(double * hist_vals, double * hist_vars,
                      unsigned hist_i = 0, bool include_overflows = true) const {
 
     if (hist_i >= this->nhists())
       throw std::out_of_range("Requested histogram out of range");
-
     auto hist(this->combined_hist(hist_i));
+
+    // calculate strides
+    int extra(include_overflows ? 2 : 0);
+    std::array<std::size_t, hist.rank()> strides;
+    strides.back() = 1;
+    for (int r = hist.rank() - 1; r > 0; r--)
+      strides[r-1] = strides[r] * (axis(r).size() + extra);
+    
+    extra = (include_overflows ? 1 : 0);
     for (auto && x : bh::indexed(hist, (include_overflows ? bh::coverage::all : bh::coverage::inner))) {
-      *(hist_vals++) = x->value();
-      *(hist_errs++) = std::sqrt(x->variance());
+
+      // get linearized C-style index
+      std::size_t ind(0);
+      int r(0);
+      for (int index : x.indices())
+        ind += strides[r++] * (index + extra);
+
+      hist_vals[ind] = x->value();
+      hist_vars[ind] = x->variance();
     }
   }
 
   // return histogram and errors as a pair of vectors
-  std::pair<std::vector<double>, std::vector<double>> get_hist_errs(bool include_overflows = true, unsigned hist_i = 0) {
+  std::pair<std::vector<double>, std::vector<double>> get_hist_vars(bool include_overflows = true, unsigned hist_i = 0) {
     std::size_t hist_size(this->hist_size(include_overflows));
-    auto hist_errs(std::make_pair(std::vector<double>(hist_size), std::vector<double>(hist_size)));
-    get_hist_errs(hist_errs.first.data(), hist_errs.second.data(), include_overflows, hist_i);
-    return hist_errs;
+    auto hist_vars(std::make_pair(std::vector<double>(hist_size), std::vector<double>(hist_size)));
+    get_hist_vars(hist_vars.first.data(), hist_vars.second.data(), include_overflows, hist_i);
+    return hist_vars;
   }
 
   std::string hists_as_text(int precision = 16, bool include_overflows = true, std::ostringstream * os = nullptr) const {
@@ -370,7 +385,7 @@ public:
   {
     this->duplicate_internal_hists(1);
   }
-  virtual ~EECHist1D() {}
+  virtual ~EECHist1D() = default;
 
   std::string axes_description() const { return name_transform<Tr>(); }
 
@@ -422,7 +437,7 @@ public:
   {
     this->duplicate_internal_hists(1);
   }
-  virtual ~EECHist3D() {}
+  virtual ~EECHist3D() = default;
 
   std::string axes_description() const {
     std::ostringstream os;

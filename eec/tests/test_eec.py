@@ -30,7 +30,7 @@ def calc_eec_hist_on_event(vals, bins, weights):
     
     # compute histogram with errors
     hist = np.histogram(vals, bins=bins, weights=weights)[0]
-    errs2 = hist**2
+    errs2 = hist*hist
         
     return hist, errs2
 
@@ -54,10 +54,8 @@ class SlowEECBase(object):
                 raise ValueError('bad axis type')
 
             if overflows:
-                if bs[0] != 0.:
-                    bs = np.concatenate(([0.], bs))
-                if bs[-1] != np.inf:
-                    bs = np.concatenate((bs, [np.inf]))
+                bs = np.concatenate(([0.], bs))
+                bs = np.concatenate((bs, [np.inf]))
 
             self.bins.append(bs)
 
@@ -353,6 +351,176 @@ class SuperSlowEECLongestSideAsymN3(SlowEECBase):
 
         return [hist0, hist1, hist2], [errs0, errs1, errs2]
 
+class SuperSlowEECTriangleOPE(SlowEECBase):
+    
+    def __init__(self, *args, **kwargs):
+        average_verts = kwargs.pop('average_verts', False)
+        super().__init__(*args, **kwargs)
+        assert self.N == 3
+
+        match01 = (self.pt_powers[0] == self.pt_powers[1]) and (self.ch_powers[0] == self.ch_powers[1])
+        match02 = (self.pt_powers[0] == self.pt_powers[2]) and (self.ch_powers[0] == self.ch_powers[2])
+        match12 = (self.pt_powers[1] == self.pt_powers[2]) and (self.ch_powers[1] == self.ch_powers[2])
+        if (match01 and match02) or average_verts:
+            self._compute_func = self._compute_eeec_ijk_sym
+            nh = 1
+        elif match01:
+            self._compute_func = self._compute_eeec_ij_sym
+            nh = 3
+        elif match02:
+            self.pt_powers = [self.pt_powers[0], self.pt_powers[2], self.pt_powers[1]]
+            self.ch_powers = [self.ch_powers[0], self.ch_powers[2], self.ch_powers[1]]
+            self._compute_func = self._compute_eeec_ij_sym
+            nh = 3
+        elif match12:
+            self.pt_powers = [self.pt_powers[1], self.pt_powers[2], self.pt_powers[0]]
+            self.ch_powers = [self.ch_powers[1], self.ch_powers[2], self.ch_powers[0]]
+            self._compute_func = self._compute_eeec_ij_sym
+            nh = 3
+        else:
+            self._compute_func = self._compute_eeec_no_sym
+            nh = 6
+
+        self.hist = np.zeros(((nh,) + self.hist.shape))
+        self.errs2 = np.zeros(((nh,) + self.errs2.shape))
+
+    def calc_eec_hist(self, dists, weights):
+        xi = dists[:,0]/(dists[:,1] + 1e-100)
+        diff = dists[:,2] - dists[:,1]
+        phi = np.arcsin(np.sqrt(np.abs(1 - diff*diff/(dists[:,0]*dists[:,0] + 1e-100))))
+
+        hist = np.histogramdd([dists[:,2], xi, phi], bins=self.bins, weights=weights)[0]
+        errs2 = hist*hist
+
+        return hist, errs2
+
+    def _compute_eeec_ijk_sym(self, pts, dists, charges, weight):
+        weights0 = pts**self.pt_powers[0] * charges**self.ch_powers[0]
+        weights1 = pts**self.pt_powers[1] * charges**self.ch_powers[1]
+        weights2 = pts**self.pt_powers[2] * charges**self.ch_powers[2]
+
+        mult = len(pts)
+        hist_vals, hist_weights = [], []
+        for i in range(mult):
+            weight_i = weights0[i]
+            for j in range(mult):
+                d_ij = dists[i,j]
+                weight_ij = weight_i * weights1[j]
+                for k in range(mult):
+                    hist_vals.append(sorted([d_ij, dists[i,k], dists[j,k]]))
+                    hist_weights.append(weight_ij * weights2[k])
+
+        return self.calc_eec_hist(np.asarray(hist_vals), weight * np.asarray(hist_weights))
+
+    def _compute_eeec_ij_sym(self, pts, dists, charges, weight):
+        weights0 = pts**self.pt_powers[0] * charges**self.ch_powers[0]
+        weights1 = pts**self.pt_powers[1] * charges**self.ch_powers[1]
+        weights2 = pts**self.pt_powers[2] * charges**self.ch_powers[2]
+
+        mult = len(pts)
+        hist_vals, hist_weights = [[], [], []], [[], [], []]
+        for i in range(mult):
+            weight_i = weights0[i]
+            for j in range(mult):
+                d_ij = (dists[i,j], 0)
+                weight_ij = weight_i * weights1[j]
+                ij_match = i == j
+                for k in range(mult):
+                    d_ik = (dists[i,k], 1)
+                    d_jk = (dists[j,k], 2)
+                    weight_ijk = weight_ij * weights2[k]
+                    jk_match = j == k
+                    ik_match = i == k
+                    sorted_dists = sorted([d_ij, d_ik, d_jk], key=itemgetter(0))
+                    dist_vals = [x[0] for x in sorted_dists]
+
+                    if not (ij_match or ik_match or jk_match):
+                        hist_is = [(0 if sorted_dists[0][1] == 0 else 
+                                  (1 if sorted_dists[1][1] == 0 else
+                                  (2 if sorted_dists[2][1] == 0 else 3)))]
+                    elif ij_match and jk_match:
+                        hist_is = range(3)
+                    elif ij_match:
+                        hist_is = [0]
+                    elif jk_match or ik_match:
+                        hist_is = [1, 2]
+                    else:   
+                        assert False
+
+                    for hist_i in hist_is:
+                        hist_vals[hist_i].append(dist_vals)
+                        hist_weights[hist_i].append(weight_ijk)
+
+        hist0, errs0 = self.calc_eec_hist(np.asarray(hist_vals[0]), weight * np.asarray(hist_weights[0]))
+        hist1, errs1 = self.calc_eec_hist(np.asarray(hist_vals[1]), weight * np.asarray(hist_weights[1]))
+        hist2, errs2 = self.calc_eec_hist(np.asarray(hist_vals[2]), weight * np.asarray(hist_weights[2]))
+
+        return [hist0, hist1, hist2], [errs0, errs1, errs2]
+
+    def _compute_eeec_no_sym(self, pts, dists, charges, weight):
+        weights0 = pts**self.pt_powers[0] * charges**self.ch_powers[0]
+        weights1 = pts**self.pt_powers[1] * charges**self.ch_powers[1]
+        weights2 = pts**self.pt_powers[2] * charges**self.ch_powers[2]
+
+        mult = len(pts)
+        hist_vals, hist_weights = [[], [], [], [], [], []], [[], [], [], [], [], []]
+        for i in range(mult):
+            weight_i = weights0[i]
+            for j in range(mult):
+                d_ij = (dists[i,j], 0)
+                weight_ij = weight_i * weights1[j]
+                ij_match = i == j
+                for k in range(mult):
+                    d_ik = (dists[i,k], 1)
+                    d_jk = (dists[j,k], 2)
+                    weight_ijk = weight_ij * weights2[k]
+                    jk_match = j == k
+                    ik_match = i == k
+                    sorted_dists = sorted([d_ij, d_ik, d_jk], key=itemgetter(0))
+                    dist_vals = [x[0] for x in sorted_dists]
+
+                    # no degeneracy
+                    if not (ij_match or ik_match or jk_match):
+                        if sorted_dists[0][1] == 0:
+                            if sorted_dists[1][1] == 1:
+                                hist_is = [0]
+                            else:
+                                hist_is = [1]
+                        elif sorted_dists[1][1] == 0:
+                            if sorted_dists[0][1] == 1:
+                                hist_is = [2]
+                            else:
+                                hist_is = [3]
+                        else:
+                            if sorted_dists[0][1] == 1:
+                                hist_is = [4]
+                            else:
+                                hist_is = [5]
+
+                    # all degenerate
+                    elif ij_match and jk_match:
+                        hist_is = range(6)
+                    elif ij_match:
+                        hist_is = [0, 1]
+                    elif jk_match:
+                        hist_is = [3, 5]
+                    elif ik_match:
+                        hist_is = [2, 4]
+                    else:
+                        assert False
+
+                    for hist_i in hist_is:
+                        hist_vals[hist_i].append(dist_vals)
+                        hist_weights[hist_i].append(weight_ijk)
+
+        hists, errs = [], []
+        for i in range(6):
+            h, e = self.calc_eec_hist(np.asarray(hist_vals[i]), weight * np.asarray(hist_weights[i]))
+            hists.append(h)
+            errs.append(e)
+
+        return hists, errs
+
 @pytest.mark.multinomial
 @pytest.mark.parametrize('nparticles', [1, 2, 5, 10, 20])
 @pytest.mark.parametrize('N', [2, 3, 4])
@@ -431,15 +599,16 @@ def test_pycompare_longestside(N, axis, nbins, pt_powers, ch_powers, nparticles)
 @pytest.mark.parametrize('ch_powers', [0, 1, 2])
 @pytest.mark.parametrize('pt_powers', [1, 2])
 @pytest.mark.parametrize('num_threads', [1, -1])
-@pytest.mark.parametrize('nbins', [1, 15])
+@pytest.mark.parametrize('use_general_eNc', [False, True])
 @pytest.mark.parametrize('axis', ['log', 'id'])
 @pytest.mark.parametrize('N', [2, 3, 4, 5, 6])
-def test_longestside_sym(N, axis, nbins, num_threads, pt_powers, ch_powers, nparticles):
+def test_longestside_sym(N, axis, use_general_eNc, num_threads, pt_powers, ch_powers, nparticles):
     if nparticles > 5 and N > 5:
         pytest.skip()
 
+    nbins = 15
     eec = EECLongestSide(N, nbins, axis=axis, axis_range=(1e-5, 1), pt_powers=(pt_powers,), ch_powers=(ch_powers,),
-                         print_every=0, num_threads=num_threads)
+                         print_every=0, num_threads=num_threads, use_general_eNc=use_general_eNc)
     slow_eec = SlowEECLongestSideSym(N, (nbins,), ((1e-5, 1),), (axis,), True, pt_powers, ch_powers)
     slow_eec.construct_inds_factors(nparticles, N)
 
@@ -450,8 +619,8 @@ def test_longestside_sym(N, axis, nbins, num_threads, pt_powers, ch_powers, npar
     slow_eec(local_events, weights)
 
     hist, errs = eec.get_hist_errs()
-    assert epsilon_percent(hist, slow_eec.hist, 1e-9.5)
-    assert epsilon_percent(errs, slow_eec.errs, 1e-5.5)
+    assert epsilon_either(hist, slow_eec.hist, 10**-12, 1e-14)
+    assert epsilon_either(errs, slow_eec.errs, 10**-6, 1e-7)
 
 @pytest.mark.longestside
 @pytest.mark.asym
@@ -474,7 +643,7 @@ def test_longestside_asym_N2_average_verts(axis, num_threads, pt_powers, ch_powe
 
     hist, errs = eec.get_hist_errs()
     assert epsilon_percent(hist, super_slow_eec.hist, 1e-10)
-    assert epsilon_percent(errs, super_slow_eec.errs, 1e-5.5)
+    assert epsilon_percent(errs, super_slow_eec.errs, 10**-5.5)
 
 @pytest.mark.longestside
 @pytest.mark.asym
@@ -502,11 +671,39 @@ def test_longestside_asym_N3(axis, num_threads, pt_powers, ch_powers, average_ve
     if average_verts or len(super_slow_eec.hist.shape) == 1:
         hist, errs = eec.get_hist_errs()
         assert epsilon_percent(hist, super_slow_eec.hist, 1e-10)
-        assert epsilon_percent(errs, super_slow_eec.errs, 1e-5.5)
+        assert epsilon_percent(errs, super_slow_eec.errs, 10**-5.5)
     else:
-        print('nhists', super_slow_eec.hist.shape[0], eec.nhists())
         for hist_i in range(super_slow_eec.hist.shape[0]):
             hist, errs = eec.get_hist_errs(hist_i)
-            print(hist_i, np.max(np.abs(hist - super_slow_eec.hist[hist_i])))
             assert epsilon_either(hist, super_slow_eec.hist[hist_i], 1e-12, 1e-14), hist_i
             assert epsilon_either(errs, super_slow_eec.errs[hist_i], 1e-6, 1e-7), hist_i
+
+@pytest.mark.triangleope
+@pytest.mark.parametrize('nparticles', [1, 4, 10])
+@pytest.mark.parametrize('average_verts', [True, False])
+@pytest.mark.parametrize('ch_powers', [(0,0,0), (1,1,1), (0,0,1), (0,1,0), (1,0,0)])
+@pytest.mark.parametrize('pt_powers', [(1,1,1), (1,1,2), (1,2,1), (2,1,1)])
+@pytest.mark.parametrize('num_threads', [1, -1])
+@pytest.mark.parametrize('axes', [('log', 'log', 'id'), ('id', 'id', 'id'), ('log', 'id', 'id'), ('id', 'log', 'id')])
+def test_triangleope(axes, num_threads, pt_powers, ch_powers, average_verts, nparticles):
+
+    bin_ranges = [(1e-5, 1), (1e-5, 1), (0, np.pi/2)]
+    eec = EECTriangleOPE(nbins=(15, 15, 15), axes=axes, axis_ranges=bin_ranges,
+                         pt_powers=pt_powers, ch_powers=ch_powers,
+                         print_every=0, num_threads=num_threads, average_verts=average_verts)
+    super_slow_eec = SuperSlowEECTriangleOPE(3, (15, 15, 15), bin_ranges, axes, True, pt_powers, ch_powers,
+                                             average_verts=average_verts)
+
+    nev = 100
+    local_events = [event[:nparticles] for event in events[:nev]]
+    weights = 2*np.random.rand(len(events))[:nev]
+
+    eec(local_events, weights)
+    super_slow_eec(local_events, weights)
+
+    for hist_i in range(super_slow_eec.hist.shape[0]):
+        hist, errs = eec.get_hist_errs(hist_i)
+        print(np.max(np.abs(hist - super_slow_eec.hist[hist_i])), hist_i, super_slow_eec.hist.shape[0])
+        assert epsilon_either(hist, super_slow_eec.hist[hist_i], 1e-10, 1e-14), hist_i
+        assert epsilon_either(errs, super_slow_eec.errs[hist_i], 1e-6, 1e-7), hist_i
+

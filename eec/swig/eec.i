@@ -81,11 +81,8 @@ __all__ = ['EECLongestSide', 'EECTriangleOPE',
 ;
 
 // numpy typemaps
-//%apply (double* IN_ARRAY1, int DIM1) {(double* weights0, int n0), (double* weights1, int n1)}
 %apply (double* IN_ARRAY2, int DIM1, int DIM2) {(double* particles, int mult, int nfeatures)}
 %apply (double* INPLACE_ARRAY2, int DIM1, int DIM2) {(double* particles_noconvert, int mult, int nfeatures)}
-//%apply (double* INPLACE_ARRAY1, int DIM1) {(double* weights, int n0)}
-//%apply (double* INPLACE_ARRAY2, int DIM1, int DIM2) {(double* coords, int n1, int d)}
 %apply (double** ARGOUTVIEWM_ARRAY1, int* DIM1) {(double** arr_out0, int* n0),
                                                  (double** arr_out1, int* n1)}
 %apply (double** ARGOUTVIEWM_ARRAY3, int* DIM1, int* DIM2, int* DIM3) {(double** arr_out0, int* n0, int* n1, int* n2),
@@ -142,13 +139,13 @@ namespace EECNAMESPACE {
 
 // ignore/rename EECHist functions
 namespace hist {
-  %ignore EECHistBase::get_hist_errs;
+  %ignore EECHistBase::get_hist_vars;
   %rename(bin_centers_vec) EECHistBase::bin_centers;
   %rename(bin_edges_vec) EECHistBase::bin_edges;
   %rename(bin_centers) EECHistBase::npy_bin_centers;
   %rename(bin_edges) EECHistBase::npy_bin_edges;
-  %rename(get_hist_errs) EECHist1D::npy_get_hist_errs;
-  %rename(get_hist_errs) EECHist3D::npy_get_hist_errs;
+  %rename(get_hist_vars) EECHist1D::npy_get_hist_vars;
+  %rename(get_hist_vars) EECHist3D::npy_get_hist_vars;
 }
 
 // ignore/rename Multinomial functions
@@ -156,6 +153,7 @@ namespace hist {
 %rename(multinomial) multinomial_vector;
 
 // ignore EEC functions
+%ignore argsort3;
 %ignore EECEvents::append;
 %ignore EECBase::batch_compute;
 %ignore EECBase::compute;
@@ -175,21 +173,28 @@ namespace EECNAMESPACE {
         MALLOC_1D_VALUE_ARRAY(arr_out0, n0, $self->nbins(i), nbytes)
         memcpy(*arr_out0, $self->bin_centers(i).data(), nbytes);
       }
+
       void npy_bin_edges(double** arr_out0, int* n0, int i = 0) {
         MALLOC_1D_VALUE_ARRAY(arr_out0, n0, $self->nbins(i)+1, nbytes)
         memcpy(*arr_out0, $self->bin_edges(i).data(), nbytes);
+      }
+
+      %pythoncode {
+        def get_hist_errs(self, hist_i=0, include_overflows=True):
+            hist, vars = self.get_hist_vars(hist_i, include_overflows)
+            return hist, _np.sqrt(vars)
       }
     }
 
     // extend EECHist1D code
     %extend EECHist1D {
-      void npy_get_hist_errs(double** arr_out0, int* n0,
+      void npy_get_hist_vars(double** arr_out0, int* n0,
                              double** arr_out1, int* n1,
                              unsigned hist_i = 0, bool include_overflows = true) {
         MALLOC_1D_VALUE_ARRAY(arr_out0, n0, $self->hist_size(include_overflows), nbytes0)
         MALLOC_1D_VALUE_ARRAY(arr_out1, n1, $self->hist_size(include_overflows), nbytes1)
         try {
-          $self->get_hist_errs(*arr_out0, *arr_out1, hist_i, include_overflows);
+          $self->get_hist_vars(*arr_out0, *arr_out1, hist_i, include_overflows);
         }
         catch (std::exception & e) {
           free(*arr_out0);
@@ -201,7 +206,7 @@ namespace EECNAMESPACE {
 
     // extend EECHist3D code
     %extend EECHist3D {
-      void npy_get_hist_errs(double** arr_out0, int* n0, int* n1, int* n2,
+      void npy_get_hist_vars(double** arr_out0, int* n0, int* n1, int* n2,
                              double** arr_out1, int* m0, int* m1, int* m2,
                              unsigned hist_i = 0, bool include_overflows = true) {
         MALLOC_3D_VALUE_ARRAY(arr_out0, n0, n1, n2, $self->hist_size(include_overflows, 0),
@@ -211,7 +216,7 @@ namespace EECNAMESPACE {
                                                     $self->hist_size(include_overflows, 1),
                                                     $self->hist_size(include_overflows, 2), nbytes1)
         try {
-          $self->get_hist_errs(*arr_out0, *arr_out1, hist_i, include_overflows);
+          $self->get_hist_vars(*arr_out0, *arr_out1, hist_i, include_overflows);
         }
         catch (std::exception & e) {
           free(*arr_out0);
@@ -285,10 +290,9 @@ namespace EECNAMESPACE {
     %pythoncode %{
 
       def __call__(self, events, weights=None):
-          import numpy as np
 
           if weights is None:
-              weights = np.ones(len(events), order='C', dtype=np.double)
+              weights = _np.ones(len(events), order='C', dtype=_np.double)
           elif len(weights) != len(events):
               raise ValueError('events and weights have different length')
 
@@ -296,7 +300,7 @@ namespace EECNAMESPACE {
           eecevents = EECEvents(len(events), self.nfeatures())
           events_arr = []
           for event,weight in zip(events, weights):
-              event = np.asarray(np.atleast_2d(event)[:,:ncol], dtype=np.double, order='C')
+              event = _np.asarray(_np.atleast_2d(event)[:,:ncol], dtype=_np.double, order='C')
               eecevents.add_event(event, weight)
               events_arr.append(event)
 
@@ -333,6 +337,8 @@ namespace EECNAMESPACE {
 } // namespace EECNAMESPACE
 
 %pythoncode %{
+
+import numpy as _np
 
 def EECLongestSide(*args, axis='log', **kwargs):
 

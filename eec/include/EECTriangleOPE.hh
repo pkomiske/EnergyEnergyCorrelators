@@ -44,18 +44,16 @@ namespace eec {
 // Helper functions
 //-----------------------------------------------------------------------------
 
-inline std::array<std::pair<double,int>, 3> argsort3(const std::array<double, 3> & dists_arr) {
+inline void argsort3(std::array<std::pair<double, int>, 3> & dists_inds) {
 
-  // create array of dists with indices
-  std::array<std::pair<double,int>, 3> dists_inds{std::make_pair(dists_arr[0], 0),
-                                                  std::make_pair(dists_arr[1], 1),
-                                                  std::make_pair(dists_arr[2], 2)};
+  // set integers
+  dists_inds[0].second = 0;
+  dists_inds[1].second = 1;
+  dists_inds[2].second = 2;
 
   // sort according to dists
   std::sort(dists_inds.begin(), dists_inds.end(), 
-            [](const std::pair<double,int> & a, const std::pair<double,int> & b){return a.first < b.first;});
-
-  return dists_inds;
+            [](const auto & a, const auto & b){ return a.first < b.first; });
 }
 
 template<class Hist>
@@ -63,7 +61,7 @@ inline void fill_hist(Hist & hist, double weight, double xS, double xM, double x
 
     // define coordinate mapping
     double xi(xS/(xM + REG)), diff(xL - xM), 
-           phi(std::asin(std::sqrt(std::fabs(1 - diff*diff/(xS*xS + REG)))));
+           phi(std::asin(std::sqrt(1 - diff*diff/(xS*xS + REG))));
 
     // fill histogram
     hist(hist::weight(weight), xL, xi, phi);
@@ -118,8 +116,6 @@ public:
         throw std::runtime_error("Invalid number of symmetries " + std::to_string(nsym()));
     }
   }
-
-  virtual ~EECTriangleOPE() {}
 
   std::string description(bool include_hists = false) const {
     unsigned nh(this->nhists());
@@ -206,7 +202,7 @@ private:
     std::vector<SimpleHist> & simple_hists(this->simple_hists(thread_i));
 
     // first index is special, second is symmetric
-    std::array<double, 3> dists_arr;
+    std::array<std::pair<double, int>, 3> dists_inds;
     for (unsigned i = 0; i < mult; i++) {
       double weight_i(event_weight * ws0[i]);
       if (weight_i == 0) continue;
@@ -220,12 +216,12 @@ private:
 
         for (unsigned k = 0; k < mult; k++) {
           double weight_ijk(weight_ij * ws1[k]);
-          dists_arr[0] = dist_ij;
-          dists_arr[1] = dists[ixm + k];
-          dists_arr[2] = dists[jxm + k];
+          dists_inds[0].first = dist_ij;
+          dists_inds[1].first = dists[ixm + k];
+          dists_inds[2].first = dists[jxm + k];
 
           // (arg)sort distances
-          std::array<std::pair<double,int>, 3> dists_inds(argsort3(dists_arr));
+          argsort3(dists_inds);
 
           // check for overlapping particles
           bool ik_match(i == k), jk_match(j == k);
@@ -239,18 +235,18 @@ private:
             fill_hist(simple_hists[dists_inds[0].second == 0 ? 0 : (dists_inds[1].second == 0 ? 1 : 2)],
                       weight_ijk, dists_inds[0].first, dists_inds[1].first, dists_inds[2].first);
 
-          // fill medium and large histograms
-          else if (ik_match || jk_match) {
-            fill_hist(simple_hists[1], weight_ijk, 0, dists_inds[1].first, dists_inds[2].first);
-            fill_hist(simple_hists[2], weight_ijk, 0, dists_inds[1].first, dists_inds[2].first);
-          }
-
           // fill all histograms
           else if (ik_match && jk_match) {
             fill_hist(simple_hists[0], weight_ijk, 0, 0, 0);
             fill_hist(simple_hists[1], weight_ijk, 0, 0, 0);
             fill_hist(simple_hists[2], weight_ijk, 0, 0, 0);
-          }  
+          }
+
+          // fill medium and large histograms
+          else if (ik_match || jk_match) {
+            fill_hist(simple_hists[1], weight_ijk, 0, dists_inds[1].first, dists_inds[2].first);
+            fill_hist(simple_hists[2], weight_ijk, 0, dists_inds[1].first, dists_inds[2].first);
+          }
         }
       }
     }
@@ -266,7 +262,7 @@ private:
     std::vector<SimpleHist> & simple_hists(this->simple_hists(thread_i));
 
     // all indices are different
-    std::array<double, 3> dists_arr;
+    std::array<std::pair<double, int>, 3> dists_inds;
     for (unsigned i = 0; i < mult; i++) {
       double weight_i(event_weight * ws0[i]);
       if (weight_i == 0) continue;
@@ -281,13 +277,13 @@ private:
 
         for (unsigned k = 0; k < mult; k++) {
           double weight_ijk(weight_ij * ws2[k]);
-          dists_arr[0] = dist_ij;
-          dists_arr[1] = dists[ixm + k];
-          dists_arr[2] = dists[jxm + k];
+          dists_inds[0].first = dist_ij;
+          dists_inds[1].first = dists[ixm + k];
+          dists_inds[2].first = dists[jxm + k];
           bool ik_match(i == k), jk_match(j == k);
 
           // (arg)sort distances
-          std::array<std::pair<double,int>, 3> dists_inds(argsort3(dists_arr));
+          argsort3(dists_inds);
 
           // check for averaging the vertices
           if (average_verts())

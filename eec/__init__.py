@@ -32,7 +32,7 @@ from .eec import *
 
 __all__ = eec.__all__ + ['combine_bins', 'midbins']
 
-__version__ = '0.3.0'
+__version__ = '0.3.0a0'
 
 def combine_bins(hist, nbins2combine, axes=None, overflows=True, keep_overflows=False,
                                       add_in_quadrature=False, bins=None):

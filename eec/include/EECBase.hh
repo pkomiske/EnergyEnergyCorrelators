@@ -137,7 +137,6 @@ protected:
 
 public:
 
-  //EECBase() : EECBase({}, {}, 0, false, 1, false, false) {}
   EECBase(unsigned N, bool norm,
           const std::vector<double> & pt_powers, const std::vector<unsigned> & ch_powers,
           int num_threads, int print_every, bool check_degen, bool average_verts) : 
@@ -269,8 +268,7 @@ public:
     pj_charge_ = nullptr;
     #endif   
   }
-
-  virtual ~EECBase() {}
+  virtual ~EECBase() = default;
 
   virtual std::string description(bool = false) const {
     std::ostringstream oss;

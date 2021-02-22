@@ -1,0 +1,143 @@
+language: python
+
+script:
+  - python3 setup.py test
+
+stages:
+  - test
+  - build
+
+jobs:
+  exclude:
+    - stage: build
+  #  - os: linux
+  #  - os: windows
+
+  include:
+
+  ##############################################################################
+  # TESTS
+  ##############################################################################
+
+    # test on linux
+    - name: Python3.5 - Linux
+      stage: test
+      dist: bionic
+      python: 3.5
+
+    # test on linux
+    - name: Python3.6 - Linux
+      stage: test
+      dist: bionic
+      python: 3.6
+
+    # test on linux
+    - name: Python3.7 - Linux
+      stage: test
+      dist: bionic
+      python: 3.7
+
+    # test on linux
+    - name: Python3.8 - Linux
+      stage: test
+      dist: bionic
+      python: 3.8
+
+    # test on linux
+    - name: Python3.9 - Linux
+      stage: test
+      dist: bionic
+      python: 3.9
+      install: python -m pip install cython
+
+    # test on Mac
+    - name: Test on Mac
+      stage: test
+      os: mac
+      osx_image: xcode11
+      language: shell
+      before_install: |
+        brew update > /dev/null
+        brew install libomp
+
+    # test on Windows
+    - name: Test on Windows
+      stage: test
+      os: windows
+      language: shell
+      before_install: 
+        - choco install python --version 3.8.3
+        - ln -s /c/Python38/python.exe /c/Python38/python3.exe
+      install: python3 -m pip install numpy
+      env:
+        - PATH=/c/Python38:/c/Python38/Scripts:$PATH
+
+  ##############################################################################
+  # BUILDS
+  ##############################################################################
+
+    # build on linux
+    - name: Build wheels on Linux
+      stage: build
+      dist: bionic
+      services: docker
+      install: python3 -m pip install cibuildwheel twine
+      script: |
+        python3 setup.py sdist --formats=gztar
+        python3 -m cibuildwheel --output-dir wheelhouse
+      after_success: |
+        if [ ! -z $PYPI_TEST ]; then
+          python3 -m twine upload -r testpypi --skip-existing dist/*.tar.gz
+          python3 -m twine upload -r testpypi --skip-existing wheelhouse/*.whl
+        fi
+      env:
+        - CIBW_BUILD="cp35-manylinux_x86_64 cp36-manylinux_x86_64 cp37-manylinux_x86_64 cp38-manylinux_x86_64 cp39-manylinux_x86_64"
+
+    # build on mac
+    - name: Build wheels on Mac
+      stage: build
+      os: osx
+      osx_image: xcode11
+      language: shell
+      before_install: |
+        brew update > /dev/null
+        brew install libomp
+      install: python3 -m pip install cibuildwheel
+      script: python3 -m cibuildwheel --output-dir wheelhouse
+      after_success: |
+        if [ ! -z $PYPI_TEST ]; then
+          python3 -m pip install twine
+          python3 -m twine upload -r testpypi --skip-existing wheelhouse/*.whl
+        fi
+      env:
+        - CIBW_BUILD="cp35-macosx_x86_64 cp36-macosx_x86_64 cp37-macosx_x86_64 cp38-macosx_x86_64 cp39-macosx_x86_64"
+
+    # build on windows
+    - name: Build wheels on Windows
+      stage: build
+      os: windows
+      language: shell
+      before_install:
+        - choco install python --version 3.8.3
+        - ln -s /c/Python38/python.exe /c/Python38/python3.exe
+      install: python3 -m pip install cibuildwheel
+      script: python3 -m cibuildwheel --output-dir wheelhouse
+      after_success: |
+        if [ ! -z $PYPI_TEST ]; then
+          python3 -m pip install twine
+          python3 -m twine upload -r testpypi --skip-existing wheelhouse/*.whl
+        fi
+      env:
+        - PATH=/c/Python38:/c/Python38/Scripts:$PATH CIBW_BUILD="cp35-win_amd64 cp36-win_amd64 cp37-win_amd64 cp38-win_amd64 cp39-win_amd64"
+
+env:
+  global:
+    - TWINE_USERNAME=__token__
+    - CIBW_BEFORE_BUILD="pip install numpy"
+    - CIBW_TEST_REQUIRES="pytest numpy"
+    - CIBW_TEST_COMMAND="pytest {package}"
+    - PYPI_TEST=true
+
+branches:
+  only:
+    - master
