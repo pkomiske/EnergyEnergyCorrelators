@@ -12,7 +12,7 @@ stages:
 
 jobs:
   exclude:
-    -stage: test
+    - stage: test
       - os: mac
   #  - stage: build
   #  - os: linux
