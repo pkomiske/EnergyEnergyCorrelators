@@ -3,6 +3,9 @@ language: python
 script:
   - python3 setup.py test
 
+install:
+  python3 -m pip install numpy scipy energyflow pytest
+
 stages:
   - test
   - build
@@ -48,7 +51,6 @@ jobs:
       stage: test
       dist: bionic
       python: 3.9
-      install: python -m pip install cython
 
     # test on Mac
     - name: Test on Mac
@@ -133,7 +135,8 @@ jobs:
 env:
   global:
     - TWINE_USERNAME=__token__
-    - CIBW_BEFORE_BUILD="pip install numpy"
+    - CIBW_BEFORE_BUILD="pip install numpy energyflow scipy pytest"
+    - CIBW_BUILD_VERBOSITY=1
     - CIBW_TEST_REQUIRES="pytest numpy"
     - CIBW_TEST_COMMAND="pytest {package}"
     - PYPI_TEST=true
