@@ -16,6 +16,7 @@ stages:
 
 jobs:
   exclude:
+    - test
 
   include:
 
