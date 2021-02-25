@@ -74,12 +74,45 @@ inline void fill_hist(Hist & hist, double weight, double xS, double xM, double x
 template<class Transform0, class Transform1, class Transform2>
 class EECTriangleOPE : public EECBase, public hist::EECHist3D<Transform0, Transform1, Transform2> {
 
+  typedef hist::EECHist3D<Transform0, Transform1, Transform2> EECTriangleOPEHist3D;
+  typedef typename EECTriangleOPEHist3D::SimpleHist SimpleHist;
+
   // function pointer to the actual computation that will be run
   void (EECTriangleOPE::*compute_eec_ptr_)(int);
 
-public:
+#ifdef EEC_SERIALIZATION
+  friend class boost::serialization::access;
+  template<class Archive>
+  void serialize(Archive & ar, const unsigned int /* file_version */) {
+    ar & boost::serialization::base_object<EECBase>(*this);
+    ar & boost::serialization::base_object<EECTriangleOPEHist3D>(*this);
 
-  typedef typename hist::EECHist3D<Transform0, Transform1, Transform2>::SimpleHist SimpleHist;
+    select_eec_function();
+  }
+#endif
+
+  void select_eec_function() {
+    switch (nsym()) {
+      case 3:
+        compute_eec_ptr_ = &EECTriangleOPE::eeec_ijk_sym;
+        break;
+
+      case 2:
+        compute_eec_ptr_ = &EECTriangleOPE::eeec_ij_sym;
+        if (!this->average_verts()) this->resize_internal_hists(3);
+        break;
+
+      case 0:
+        compute_eec_ptr_ = &EECTriangleOPE::eeec_no_sym;
+        if (!this->average_verts()) this->resize_internal_hists(6);
+        break;
+
+      default:
+        throw std::runtime_error("Invalid number of symmetries " + std::to_string(nsym()));
+    }
+  }
+
+public:
 
   EECTriangleOPE(unsigned nbins0, double axis0_min, double axis0_max,
                  unsigned nbins1, double axis1_min, double axis1_max,
@@ -92,36 +125,19 @@ public:
                  bool check_degen = false,
                  bool average_verts = false) :
     EECBase(3, norm, pt_powers, ch_powers, num_threads, print_every, check_degen, average_verts),
-    hist::EECHist3D<Transform0, Transform1, Transform2>(nbins0, axis0_min, axis0_max,
-                                               nbins1, axis1_min, axis1_max,
-                                               nbins2, axis2_min, axis2_max,
-                                               num_threads)
+    EECTriangleOPEHist3D(nbins0, axis0_min, axis0_max,
+                         nbins1, axis1_min, axis1_max,
+                         nbins2, axis2_min, axis2_max,
+                         num_threads)
   {
-    switch (nsym()) {
-      case 3:
-        compute_eec_ptr_ = &EECTriangleOPE::eeec_ijk_sym;
-        break;
-
-      case 2:
-        compute_eec_ptr_ = &EECTriangleOPE::eeec_ij_sym;
-        if (!this->average_verts()) this->duplicate_internal_hists(3);
-        break;
-
-      case 0:
-        compute_eec_ptr_ = &EECTriangleOPE::eeec_no_sym;
-        if (!this->average_verts()) this->duplicate_internal_hists(6);
-        break;
-
-      default:
-        throw std::runtime_error("Invalid number of symmetries " + std::to_string(nsym()));
-    }
+    select_eec_function();
   }
 
-  std::string description(bool include_hists = false) const {
+  std::string description(int hist_level = 1) const {
     unsigned nh(this->nhists());
 
     std::ostringstream oss;
-    oss << "EECTriangleOPE<" << this->axes_description() << ">::" << EECBase::description() << '\n'
+    oss << "EECTriangleOPE<" << this->axes_description() << ">::" << EECBase::description(hist_level) << '\n'
         << "  there " << (nh == 1 ? "is " : "are ") << nh << " histogram";
 
     if (nh == 1) 
@@ -145,9 +161,9 @@ public:
     else 
       throw std::runtime_error("Unexpected number of histograms encountered");
 
-    if (include_hists) {
+    if (hist_level > 0) {
       oss << '\n';
-      this->hists_as_text(16, true, &oss);
+      this->hists_as_text(hist_level, 16, true, &oss);
     }
 
     return oss.str();

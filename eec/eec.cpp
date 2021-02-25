@@ -2697,58 +2697,63 @@ SWIGINTERN PyObject *SWIG_PyStaticMethod_New(PyObject *SWIGUNUSEDPARM(self), PyO
 #define SWIGTYPE_p_Axis0 swig_types[1]
 #define SWIGTYPE_p_Axis1 swig_types[2]
 #define SWIGTYPE_p_Axis2 swig_types[3]
-#define SWIGTYPE_p_Hist swig_types[4]
-#define SWIGTYPE_p_SimpleHist swig_types[5]
-#define SWIGTYPE_p_Traits swig_types[6]
-#define SWIGTYPE_p_allocator_type swig_types[7]
-#define SWIGTYPE_p_bh__axis__transform__id swig_types[8]
-#define SWIGTYPE_p_bh__axis__transform__log swig_types[9]
-#define SWIGTYPE_p_bh__dense_storageT_accumulators__simple_weighted_sumT_t_t swig_types[10]
-#define SWIGTYPE_p_char swig_types[11]
-#define SWIGTYPE_p_difference_type swig_types[12]
-#define SWIGTYPE_p_eec__DynamicMultinomial swig_types[13]
-#define SWIGTYPE_p_eec__EECBase swig_types[14]
-#define SWIGTYPE_p_eec__EECEvents swig_types[15]
-#define SWIGTYPE_p_eec__EECLongestSideT_axis__id_t swig_types[16]
-#define SWIGTYPE_p_eec__EECLongestSideT_axis__log_t swig_types[17]
-#define SWIGTYPE_p_eec__EECTriangleOPET_axis__id_axis__id_axis__id_t swig_types[18]
-#define SWIGTYPE_p_eec__EECTriangleOPET_axis__id_axis__log_axis__id_t swig_types[19]
-#define SWIGTYPE_p_eec__EECTriangleOPET_axis__log_axis__id_axis__id_t swig_types[20]
-#define SWIGTYPE_p_eec__EECTriangleOPET_axis__log_axis__log_axis__id_t swig_types[21]
-#define SWIGTYPE_p_eec__MultinomialT_2_t swig_types[22]
-#define SWIGTYPE_p_eec__MultinomialT_3_t swig_types[23]
-#define SWIGTYPE_p_eec__MultinomialT_4_t swig_types[24]
-#define SWIGTYPE_p_eec__MultinomialT_5_t swig_types[25]
-#define SWIGTYPE_p_eec__MultinomialT_6_t swig_types[26]
-#define SWIGTYPE_p_eec__hist__EECHist1DT_bh__axis__transform__id_t swig_types[27]
-#define SWIGTYPE_p_eec__hist__EECHist1DT_bh__axis__transform__log_t swig_types[28]
-#define SWIGTYPE_p_eec__hist__EECHist3DT_bh__axis__transform__id_bh__axis__transform__id_bh__axis__transform__id_t swig_types[29]
-#define SWIGTYPE_p_eec__hist__EECHist3DT_bh__axis__transform__id_bh__axis__transform__log_bh__axis__transform__id_t swig_types[30]
-#define SWIGTYPE_p_eec__hist__EECHist3DT_bh__axis__transform__log_bh__axis__transform__id_bh__axis__transform__id_t swig_types[31]
-#define SWIGTYPE_p_eec__hist__EECHist3DT_bh__axis__transform__log_bh__axis__transform__log_bh__axis__transform__id_t swig_types[32]
-#define SWIGTYPE_p_eec__hist__EECHistBaseT_eec__hist__EECHist1DT_eec__hist__axis__id_t_t swig_types[33]
-#define SWIGTYPE_p_eec__hist__EECHistBaseT_eec__hist__EECHist1DT_eec__hist__axis__log_t_t swig_types[34]
-#define SWIGTYPE_p_eec__hist__EECHistBaseT_eec__hist__EECHist3DT_eec__hist__axis__id_eec__hist__axis__id_eec__hist__axis__id_t_t swig_types[35]
-#define SWIGTYPE_p_eec__hist__EECHistBaseT_eec__hist__EECHist3DT_eec__hist__axis__id_eec__hist__axis__log_eec__hist__axis__id_t_t swig_types[36]
-#define SWIGTYPE_p_eec__hist__EECHistBaseT_eec__hist__EECHist3DT_eec__hist__axis__log_eec__hist__axis__id_eec__hist__axis__id_t_t swig_types[37]
-#define SWIGTYPE_p_eec__hist__EECHistBaseT_eec__hist__EECHist3DT_eec__hist__axis__log_eec__hist__axis__log_eec__hist__axis__id_t_t swig_types[38]
-#define SWIGTYPE_p_int swig_types[39]
-#define SWIGTYPE_p_p_PyObject swig_types[40]
-#define SWIGTYPE_p_p_double swig_types[41]
-#define SWIGTYPE_p_size_type swig_types[42]
-#define SWIGTYPE_p_std__allocatorT_double_t swig_types[43]
-#define SWIGTYPE_p_std__allocatorT_unsigned_int_t swig_types[44]
-#define SWIGTYPE_p_std__arrayT_unsigned_int_13_t swig_types[45]
-#define SWIGTYPE_p_std__invalid_argument swig_types[46]
-#define SWIGTYPE_p_std__ostream swig_types[47]
-#define SWIGTYPE_p_std__ostringstream swig_types[48]
-#define SWIGTYPE_p_std__vectorT_double_const_p_std__allocatorT_double_const_p_t_t swig_types[49]
-#define SWIGTYPE_p_std__vectorT_double_std__allocatorT_double_t_t swig_types[50]
-#define SWIGTYPE_p_std__vectorT_unsigned_int_std__allocatorT_unsigned_int_t_t swig_types[51]
-#define SWIGTYPE_p_swig__SwigPyIterator swig_types[52]
-#define SWIGTYPE_p_value_type swig_types[53]
-static swig_type_info *swig_types[55];
-static swig_module_info swig_module = {swig_types, 54, 0, 0, 0, 0};
+#define SWIGTYPE_p_Base swig_types[4]
+#define SWIGTYPE_p_Hist swig_types[5]
+#define SWIGTYPE_p_Self swig_types[6]
+#define SWIGTYPE_p_SimpleHist swig_types[7]
+#define SWIGTYPE_p_Traits swig_types[8]
+#define SWIGTYPE_p_allocator_type swig_types[9]
+#define SWIGTYPE_p_boost__histogram__algorithm__reduce_command swig_types[10]
+#define SWIGTYPE_p_boost__histogram__axis__transform__id swig_types[11]
+#define SWIGTYPE_p_boost__histogram__axis__transform__log swig_types[12]
+#define SWIGTYPE_p_boost__histogram__dense_storageT_accumulators__simple_weighted_sumT_t_t swig_types[13]
+#define SWIGTYPE_p_char swig_types[14]
+#define SWIGTYPE_p_difference_type swig_types[15]
+#define SWIGTYPE_p_eec__DynamicMultinomial swig_types[16]
+#define SWIGTYPE_p_eec__EECBase swig_types[17]
+#define SWIGTYPE_p_eec__EECEvents swig_types[18]
+#define SWIGTYPE_p_eec__EECLongestSideT_axis__id_t swig_types[19]
+#define SWIGTYPE_p_eec__EECLongestSideT_axis__log_t swig_types[20]
+#define SWIGTYPE_p_eec__EECTriangleOPET_axis__id_axis__id_axis__id_t swig_types[21]
+#define SWIGTYPE_p_eec__EECTriangleOPET_axis__id_axis__log_axis__id_t swig_types[22]
+#define SWIGTYPE_p_eec__EECTriangleOPET_axis__log_axis__id_axis__id_t swig_types[23]
+#define SWIGTYPE_p_eec__EECTriangleOPET_axis__log_axis__log_axis__id_t swig_types[24]
+#define SWIGTYPE_p_eec__MultinomialT_2_t swig_types[25]
+#define SWIGTYPE_p_eec__MultinomialT_3_t swig_types[26]
+#define SWIGTYPE_p_eec__MultinomialT_4_t swig_types[27]
+#define SWIGTYPE_p_eec__MultinomialT_5_t swig_types[28]
+#define SWIGTYPE_p_eec__MultinomialT_6_t swig_types[29]
+#define SWIGTYPE_p_eec__hist__EECHist1DT_boost__histogram__axis__transform__id_t swig_types[30]
+#define SWIGTYPE_p_eec__hist__EECHist1DT_boost__histogram__axis__transform__log_t swig_types[31]
+#define SWIGTYPE_p_eec__hist__EECHist3DT_boost__histogram__axis__transform__id_boost__histogram__axis__transform__id_boost__histogram__axis__transform__id_t swig_types[32]
+#define SWIGTYPE_p_eec__hist__EECHist3DT_boost__histogram__axis__transform__id_boost__histogram__axis__transform__log_boost__histogram__axis__transform__id_t swig_types[33]
+#define SWIGTYPE_p_eec__hist__EECHist3DT_boost__histogram__axis__transform__log_boost__histogram__axis__transform__id_boost__histogram__axis__transform__id_t swig_types[34]
+#define SWIGTYPE_p_eec__hist__EECHist3DT_boost__histogram__axis__transform__log_boost__histogram__axis__transform__log_boost__histogram__axis__transform__id_t swig_types[35]
+#define SWIGTYPE_p_eec__hist__EECHistBaseT_eec__hist__EECHist1DT_eec__hist__axis__id_t_t swig_types[36]
+#define SWIGTYPE_p_eec__hist__EECHistBaseT_eec__hist__EECHist1DT_eec__hist__axis__log_t_t swig_types[37]
+#define SWIGTYPE_p_eec__hist__EECHistBaseT_eec__hist__EECHist3DT_eec__hist__axis__id_eec__hist__axis__id_eec__hist__axis__id_t_t swig_types[38]
+#define SWIGTYPE_p_eec__hist__EECHistBaseT_eec__hist__EECHist3DT_eec__hist__axis__id_eec__hist__axis__log_eec__hist__axis__id_t_t swig_types[39]
+#define SWIGTYPE_p_eec__hist__EECHistBaseT_eec__hist__EECHist3DT_eec__hist__axis__log_eec__hist__axis__id_eec__hist__axis__id_t_t swig_types[40]
+#define SWIGTYPE_p_eec__hist__EECHistBaseT_eec__hist__EECHist3DT_eec__hist__axis__log_eec__hist__axis__log_eec__hist__axis__id_t_t swig_types[41]
+#define SWIGTYPE_p_int swig_types[42]
+#define SWIGTYPE_p_p_PyObject swig_types[43]
+#define SWIGTYPE_p_p_double swig_types[44]
+#define SWIGTYPE_p_size_type swig_types[45]
+#define SWIGTYPE_p_std__allocatorT_boost__histogram__algorithm__reduce_command_t swig_types[46]
+#define SWIGTYPE_p_std__allocatorT_double_t swig_types[47]
+#define SWIGTYPE_p_std__allocatorT_unsigned_int_t swig_types[48]
+#define SWIGTYPE_p_std__arrayT_unsigned_int_13_t swig_types[49]
+#define SWIGTYPE_p_std__invalid_argument swig_types[50]
+#define SWIGTYPE_p_std__ostream swig_types[51]
+#define SWIGTYPE_p_std__ostringstream swig_types[52]
+#define SWIGTYPE_p_std__vectorT_boost__histogram__algorithm__reduce_command_std__allocatorT_boost__histogram__algorithm__reduce_command_t_t swig_types[53]
+#define SWIGTYPE_p_std__vectorT_double_const_p_std__allocatorT_double_const_p_t_t swig_types[54]
+#define SWIGTYPE_p_std__vectorT_double_std__allocatorT_double_t_t swig_types[55]
+#define SWIGTYPE_p_std__vectorT_unsigned_int_std__allocatorT_unsigned_int_t_t swig_types[56]
+#define SWIGTYPE_p_swig__SwigPyIterator swig_types[57]
+#define SWIGTYPE_p_value_type swig_types[58]
+static swig_type_info *swig_types[60];
+static swig_module_info swig_module = {swig_types, 59, 0, 0, 0, 0};
 #define SWIG_TypeQuery(name) SWIG_TypeQueryModule(&swig_module, &swig_module, name)
 #define SWIG_MangledTypeQuery(name) SWIG_MangledTypeQueryModule(&swig_module, &swig_module, name)
 
@@ -3364,19 +3369,35 @@ SWIG_AsVal_ptrdiff_t (PyObject * obj, ptrdiff_t *val)
 #ifndef SWIG
 #define SWIG
 #endif
-#ifndef SWIG_EEC
-#define SWIG_EEC
-#endif
 
 // needed by numpy.i, harmless otherwise
 #define SWIG_FILE_WITH_INIT
+
+// needed to ensure bytes are returned 
+#define SWIG_PYTHON_STRICT_BYTE_CHAR
 
 // standard library headers we need
 #include <cstdlib>
 #include <cstring>
 
+// serialization code based on boost serialization
+#ifdef EEC_SERIALIZATION
+#include <boost/archive/binary_iarchive.hpp>
+#include <boost/archive/binary_oarchive.hpp>
+#include <boost/serialization/array.hpp>
+#include <boost/serialization/map.hpp>
+#include <boost/serialization/string.hpp>
+#include <boost/serialization/vector.hpp>
+#ifdef EEC_COMPRESSION
+#include <boost/iostreams/filtering_stream.hpp>
+#include <boost/iostreams/filter/zlib.hpp>
+#endif
+#endif
+
 // EEC library headers
 #include "EEC.hh"
+
+typedef boost::histogram::detail::reduce_command reduce_command;
 
 // using namespaces
 using namespace eec;
@@ -5103,6 +5124,136 @@ SWIG_AsVal_int (PyObject * obj, int *val)
 }
 
 
+  namespace swig {
+    template <>  struct traits< boost::histogram::algorithm::reduce_command > {
+      typedef pointer_category category;
+      static const char* type_name() { return"boost::histogram::algorithm::reduce_command"; }
+    };
+  }
+
+
+      namespace swig {
+	template <>  struct traits<std::vector< boost::histogram::algorithm::reduce_command, std::allocator< boost::histogram::algorithm::reduce_command > > > {
+	  typedef pointer_category category;
+	  static const char* type_name() {
+	    return "std::vector<" "boost::histogram::algorithm::reduce_command" "," "std::allocator< boost::histogram::algorithm::reduce_command >" " >";
+	  }
+	};
+      }
+    
+SWIGINTERN swig::SwigPyIterator *std_vector_Sl_boost_histogram_algorithm_reduce_command_Sg__iterator(std::vector< boost::histogram::algorithm::reduce_command > *self,PyObject **PYTHON_SELF){
+      return swig::make_output_iterator(self->begin(), self->begin(), self->end(), *PYTHON_SELF);
+    }
+SWIGINTERN bool std_vector_Sl_boost_histogram_algorithm_reduce_command_Sg____nonzero__(std::vector< boost::histogram::algorithm::reduce_command > const *self){
+      return !(self->empty());
+    }
+SWIGINTERN bool std_vector_Sl_boost_histogram_algorithm_reduce_command_Sg____bool__(std::vector< boost::histogram::algorithm::reduce_command > const *self){
+      return !(self->empty());
+    }
+SWIGINTERN std::vector< boost::histogram::algorithm::reduce_command >::size_type std_vector_Sl_boost_histogram_algorithm_reduce_command_Sg____len__(std::vector< boost::histogram::algorithm::reduce_command > const *self){
+      return self->size();
+    }
+SWIGINTERN std::vector< boost::histogram::algorithm::reduce_command,std::allocator< boost::histogram::algorithm::reduce_command > > *std_vector_Sl_boost_histogram_algorithm_reduce_command_Sg____getslice__(std::vector< boost::histogram::algorithm::reduce_command > *self,std::vector< boost::histogram::algorithm::reduce_command >::difference_type i,std::vector< boost::histogram::algorithm::reduce_command >::difference_type j){
+      return swig::getslice(self, i, j, 1);
+    }
+SWIGINTERN void std_vector_Sl_boost_histogram_algorithm_reduce_command_Sg____setslice____SWIG_0(std::vector< boost::histogram::algorithm::reduce_command > *self,std::vector< boost::histogram::algorithm::reduce_command >::difference_type i,std::vector< boost::histogram::algorithm::reduce_command >::difference_type j){
+      swig::setslice(self, i, j, 1, std::vector< boost::histogram::algorithm::reduce_command,std::allocator< boost::histogram::algorithm::reduce_command > >());
+    }
+SWIGINTERN void std_vector_Sl_boost_histogram_algorithm_reduce_command_Sg____setslice____SWIG_1(std::vector< boost::histogram::algorithm::reduce_command > *self,std::vector< boost::histogram::algorithm::reduce_command >::difference_type i,std::vector< boost::histogram::algorithm::reduce_command >::difference_type j,std::vector< boost::histogram::algorithm::reduce_command,std::allocator< boost::histogram::algorithm::reduce_command > > const &v){
+      swig::setslice(self, i, j, 1, v);
+    }
+SWIGINTERN void std_vector_Sl_boost_histogram_algorithm_reduce_command_Sg____delslice__(std::vector< boost::histogram::algorithm::reduce_command > *self,std::vector< boost::histogram::algorithm::reduce_command >::difference_type i,std::vector< boost::histogram::algorithm::reduce_command >::difference_type j){
+      swig::delslice(self, i, j, 1);
+    }
+SWIGINTERN void std_vector_Sl_boost_histogram_algorithm_reduce_command_Sg____delitem____SWIG_0(std::vector< boost::histogram::algorithm::reduce_command > *self,std::vector< boost::histogram::algorithm::reduce_command >::difference_type i){
+      swig::erase(self, swig::getpos(self, i));
+    }
+SWIGINTERN std::vector< boost::histogram::algorithm::reduce_command,std::allocator< boost::histogram::algorithm::reduce_command > > *std_vector_Sl_boost_histogram_algorithm_reduce_command_Sg____getitem____SWIG_0(std::vector< boost::histogram::algorithm::reduce_command > *self,PySliceObject *slice){
+      Py_ssize_t i, j, step;
+      if( !PySlice_Check(slice) ) {
+        SWIG_Error(SWIG_TypeError, "Slice object expected.");
+        return NULL;
+      }
+      PySlice_GetIndices(SWIGPY_SLICE_ARG(slice), (Py_ssize_t)self->size(), &i, &j, &step);
+      std::vector< boost::histogram::algorithm::reduce_command,std::allocator< boost::histogram::algorithm::reduce_command > >::difference_type id = i;
+      std::vector< boost::histogram::algorithm::reduce_command,std::allocator< boost::histogram::algorithm::reduce_command > >::difference_type jd = j;
+      return swig::getslice(self, id, jd, step);
+    }
+SWIGINTERN void std_vector_Sl_boost_histogram_algorithm_reduce_command_Sg____setitem____SWIG_0(std::vector< boost::histogram::algorithm::reduce_command > *self,PySliceObject *slice,std::vector< boost::histogram::algorithm::reduce_command,std::allocator< boost::histogram::algorithm::reduce_command > > const &v){
+      Py_ssize_t i, j, step;
+      if( !PySlice_Check(slice) ) {
+        SWIG_Error(SWIG_TypeError, "Slice object expected.");
+        return;
+      }
+      PySlice_GetIndices(SWIGPY_SLICE_ARG(slice), (Py_ssize_t)self->size(), &i, &j, &step);
+      std::vector< boost::histogram::algorithm::reduce_command,std::allocator< boost::histogram::algorithm::reduce_command > >::difference_type id = i;
+      std::vector< boost::histogram::algorithm::reduce_command,std::allocator< boost::histogram::algorithm::reduce_command > >::difference_type jd = j;
+      swig::setslice(self, id, jd, step, v);
+    }
+SWIGINTERN void std_vector_Sl_boost_histogram_algorithm_reduce_command_Sg____setitem____SWIG_1(std::vector< boost::histogram::algorithm::reduce_command > *self,PySliceObject *slice){
+      Py_ssize_t i, j, step;
+      if( !PySlice_Check(slice) ) {
+        SWIG_Error(SWIG_TypeError, "Slice object expected.");
+        return;
+      }
+      PySlice_GetIndices(SWIGPY_SLICE_ARG(slice), (Py_ssize_t)self->size(), &i, &j, &step);
+      std::vector< boost::histogram::algorithm::reduce_command,std::allocator< boost::histogram::algorithm::reduce_command > >::difference_type id = i;
+      std::vector< boost::histogram::algorithm::reduce_command,std::allocator< boost::histogram::algorithm::reduce_command > >::difference_type jd = j;
+      swig::delslice(self, id, jd, step);
+    }
+SWIGINTERN void std_vector_Sl_boost_histogram_algorithm_reduce_command_Sg____delitem____SWIG_1(std::vector< boost::histogram::algorithm::reduce_command > *self,PySliceObject *slice){
+      Py_ssize_t i, j, step;
+      if( !PySlice_Check(slice) ) {
+        SWIG_Error(SWIG_TypeError, "Slice object expected.");
+        return;
+      }
+      PySlice_GetIndices(SWIGPY_SLICE_ARG(slice), (Py_ssize_t)self->size(), &i, &j, &step);
+      std::vector< boost::histogram::algorithm::reduce_command,std::allocator< boost::histogram::algorithm::reduce_command > >::difference_type id = i;
+      std::vector< boost::histogram::algorithm::reduce_command,std::allocator< boost::histogram::algorithm::reduce_command > >::difference_type jd = j;
+      swig::delslice(self, id, jd, step);
+    }
+SWIGINTERN std::vector< boost::histogram::algorithm::reduce_command >::value_type const &std_vector_Sl_boost_histogram_algorithm_reduce_command_Sg____getitem____SWIG_1(std::vector< boost::histogram::algorithm::reduce_command > const *self,std::vector< boost::histogram::algorithm::reduce_command >::difference_type i){
+      return *(swig::cgetpos(self, i));
+    }
+SWIGINTERN void std_vector_Sl_boost_histogram_algorithm_reduce_command_Sg____setitem____SWIG_2(std::vector< boost::histogram::algorithm::reduce_command > *self,std::vector< boost::histogram::algorithm::reduce_command >::difference_type i,std::vector< boost::histogram::algorithm::reduce_command >::value_type const &x){
+      *(swig::getpos(self,i)) = x;
+    }
+SWIGINTERN std::vector< boost::histogram::algorithm::reduce_command >::value_type std_vector_Sl_boost_histogram_algorithm_reduce_command_Sg__pop(std::vector< boost::histogram::algorithm::reduce_command > *self){
+      if (self->size() == 0)
+	throw std::out_of_range("pop from empty container");
+      std::vector< boost::histogram::algorithm::reduce_command,std::allocator< boost::histogram::algorithm::reduce_command > >::value_type x = self->back();
+      self->pop_back();
+      return x;
+    }
+SWIGINTERN void std_vector_Sl_boost_histogram_algorithm_reduce_command_Sg__append(std::vector< boost::histogram::algorithm::reduce_command > *self,std::vector< boost::histogram::algorithm::reduce_command >::value_type const &x){
+      self->push_back(x);
+    }
+SWIGINTERN std::vector< boost::histogram::algorithm::reduce_command >::iterator std_vector_Sl_boost_histogram_algorithm_reduce_command_Sg__erase__SWIG_0(std::vector< boost::histogram::algorithm::reduce_command > *self,std::vector< boost::histogram::algorithm::reduce_command >::iterator pos){ return self->erase(pos); }
+SWIGINTERN std::vector< boost::histogram::algorithm::reduce_command >::iterator std_vector_Sl_boost_histogram_algorithm_reduce_command_Sg__erase__SWIG_1(std::vector< boost::histogram::algorithm::reduce_command > *self,std::vector< boost::histogram::algorithm::reduce_command >::iterator first,std::vector< boost::histogram::algorithm::reduce_command >::iterator last){ return self->erase(first, last); }
+SWIGINTERN std::vector< boost::histogram::algorithm::reduce_command >::iterator std_vector_Sl_boost_histogram_algorithm_reduce_command_Sg__insert__SWIG_0(std::vector< boost::histogram::algorithm::reduce_command > *self,std::vector< boost::histogram::algorithm::reduce_command >::iterator pos,std::vector< boost::histogram::algorithm::reduce_command >::value_type const &x){ return self->insert(pos, x); }
+SWIGINTERN void std_vector_Sl_boost_histogram_algorithm_reduce_command_Sg__insert__SWIG_1(std::vector< boost::histogram::algorithm::reduce_command > *self,std::vector< boost::histogram::algorithm::reduce_command >::iterator pos,std::vector< boost::histogram::algorithm::reduce_command >::size_type n,std::vector< boost::histogram::algorithm::reduce_command >::value_type const &x){ self->insert(pos, n, x); }
+
+SWIGINTERNINLINE PyObject*
+  SWIG_From_int  (int value)
+{
+  return PyInt_FromLong((long) value);
+}
+
+
+SWIGINTERN int
+SWIG_AsVal_bool (PyObject *obj, bool *val)
+{
+  int r;
+  if (!PyBool_Check(obj))
+    return SWIG_ERROR;
+  r = PyObject_IsTrue(obj);
+  if (r == -1)
+    return SWIG_ERROR;
+  if (val) *val = r ? true : false;
+  return SWIG_OK;
+}
+
+
 SWIGINTERN swig_type_info*
 SWIG_pchar_descriptor(void)
 {
@@ -5145,27 +5296,6 @@ SWIGINTERNINLINE PyObject *
 SWIG_From_std_string  (const std::string& s)
 {
   return SWIG_FromCharPtrAndSize(s.data(), s.size());
-}
-
-
-SWIGINTERNINLINE PyObject*
-  SWIG_From_int  (int value)
-{
-  return PyInt_FromLong((long) value);
-}
-
-
-SWIGINTERN int
-SWIG_AsVal_bool (PyObject *obj, bool *val)
-{
-  int r;
-  if (!PyBool_Check(obj))
-    return SWIG_ERROR;
-  r = PyObject_IsTrue(obj);
-  if (r == -1)
-    return SWIG_ERROR;
-  if (val) *val = r ? true : false;
-  return SWIG_OK;
 }
 
 
@@ -5245,7 +5375,7 @@ SWIG_AsVal_bool (PyObject *obj, bool *val)
 
 
 SWIGINTERN void eec_hist_EECHistBase_Sl_eec_hist_EECHist1D_Sl_eec_hist_axis_id_Sg__Sg__npy_bin_centers(eec::hist::EECHistBase< eec::hist::EECHist1D< eec::hist::axis::id > > *self,double **arr_out0,int *n0,int i=0){
-        /*@SWIG:eec/swig/eec.i,102,MALLOC_1D_VALUE_ARRAY@*/
+        /*@SWIG:eec/swig/eec.i,172,MALLOC_1D_VALUE_ARRAY@*/
   *n0 = self->nbins(i);
   size_t nbytes = size_t(*n0)*sizeof(double);
   *arr_out0 = (double *) malloc(nbytes);
@@ -5257,7 +5387,7 @@ SWIGINTERN void eec_hist_EECHistBase_Sl_eec_hist_EECHist1D_Sl_eec_hist_axis_id_S
         memcpy(*arr_out0, self->bin_centers(i).data(), nbytes);
       }
 SWIGINTERN void eec_hist_EECHistBase_Sl_eec_hist_EECHist1D_Sl_eec_hist_axis_id_Sg__Sg__npy_bin_edges(eec::hist::EECHistBase< eec::hist::EECHist1D< eec::hist::axis::id > > *self,double **arr_out0,int *n0,int i=0){
-        /*@SWIG:eec/swig/eec.i,102,MALLOC_1D_VALUE_ARRAY@*/
+        /*@SWIG:eec/swig/eec.i,172,MALLOC_1D_VALUE_ARRAY@*/
   *n0 = self->nbins(i)+1;
   size_t nbytes = size_t(*n0)*sizeof(double);
   *arr_out0 = (double *) malloc(nbytes);
@@ -5269,7 +5399,7 @@ SWIGINTERN void eec_hist_EECHistBase_Sl_eec_hist_EECHist1D_Sl_eec_hist_axis_id_S
         memcpy(*arr_out0, self->bin_edges(i).data(), nbytes);
       }
 SWIGINTERN void eec_hist_EECHistBase_Sl_eec_hist_EECHist1D_Sl_eec_hist_axis_log_Sg__Sg__npy_bin_centers(eec::hist::EECHistBase< eec::hist::EECHist1D< eec::hist::axis::log > > *self,double **arr_out0,int *n0,int i=0){
-        /*@SWIG:eec/swig/eec.i,102,MALLOC_1D_VALUE_ARRAY@*/
+        /*@SWIG:eec/swig/eec.i,172,MALLOC_1D_VALUE_ARRAY@*/
   *n0 = self->nbins(i);
   size_t nbytes = size_t(*n0)*sizeof(double);
   *arr_out0 = (double *) malloc(nbytes);
@@ -5281,7 +5411,7 @@ SWIGINTERN void eec_hist_EECHistBase_Sl_eec_hist_EECHist1D_Sl_eec_hist_axis_log_
         memcpy(*arr_out0, self->bin_centers(i).data(), nbytes);
       }
 SWIGINTERN void eec_hist_EECHistBase_Sl_eec_hist_EECHist1D_Sl_eec_hist_axis_log_Sg__Sg__npy_bin_edges(eec::hist::EECHistBase< eec::hist::EECHist1D< eec::hist::axis::log > > *self,double **arr_out0,int *n0,int i=0){
-        /*@SWIG:eec/swig/eec.i,102,MALLOC_1D_VALUE_ARRAY@*/
+        /*@SWIG:eec/swig/eec.i,172,MALLOC_1D_VALUE_ARRAY@*/
   *n0 = self->nbins(i)+1;
   size_t nbytes = size_t(*n0)*sizeof(double);
   *arr_out0 = (double *) malloc(nbytes);
@@ -5293,7 +5423,7 @@ SWIGINTERN void eec_hist_EECHistBase_Sl_eec_hist_EECHist1D_Sl_eec_hist_axis_log_
         memcpy(*arr_out0, self->bin_edges(i).data(), nbytes);
       }
 SWIGINTERN void eec_hist_EECHistBase_Sl_eec_hist_EECHist3D_Sl_eec_hist_axis_id_Sc_eec_hist_axis_id_Sc_eec_hist_axis_id_Sg__Sg__npy_bin_centers(eec::hist::EECHistBase< eec::hist::EECHist3D< eec::hist::axis::id,eec::hist::axis::id,eec::hist::axis::id > > *self,double **arr_out0,int *n0,int i=0){
-        /*@SWIG:eec/swig/eec.i,102,MALLOC_1D_VALUE_ARRAY@*/
+        /*@SWIG:eec/swig/eec.i,172,MALLOC_1D_VALUE_ARRAY@*/
   *n0 = self->nbins(i);
   size_t nbytes = size_t(*n0)*sizeof(double);
   *arr_out0 = (double *) malloc(nbytes);
@@ -5305,7 +5435,7 @@ SWIGINTERN void eec_hist_EECHistBase_Sl_eec_hist_EECHist3D_Sl_eec_hist_axis_id_S
         memcpy(*arr_out0, self->bin_centers(i).data(), nbytes);
       }
 SWIGINTERN void eec_hist_EECHistBase_Sl_eec_hist_EECHist3D_Sl_eec_hist_axis_id_Sc_eec_hist_axis_id_Sc_eec_hist_axis_id_Sg__Sg__npy_bin_edges(eec::hist::EECHistBase< eec::hist::EECHist3D< eec::hist::axis::id,eec::hist::axis::id,eec::hist::axis::id > > *self,double **arr_out0,int *n0,int i=0){
-        /*@SWIG:eec/swig/eec.i,102,MALLOC_1D_VALUE_ARRAY@*/
+        /*@SWIG:eec/swig/eec.i,172,MALLOC_1D_VALUE_ARRAY@*/
   *n0 = self->nbins(i)+1;
   size_t nbytes = size_t(*n0)*sizeof(double);
   *arr_out0 = (double *) malloc(nbytes);
@@ -5317,7 +5447,7 @@ SWIGINTERN void eec_hist_EECHistBase_Sl_eec_hist_EECHist3D_Sl_eec_hist_axis_id_S
         memcpy(*arr_out0, self->bin_edges(i).data(), nbytes);
       }
 SWIGINTERN void eec_hist_EECHistBase_Sl_eec_hist_EECHist3D_Sl_eec_hist_axis_log_Sc_eec_hist_axis_id_Sc_eec_hist_axis_id_Sg__Sg__npy_bin_centers(eec::hist::EECHistBase< eec::hist::EECHist3D< eec::hist::axis::log,eec::hist::axis::id,eec::hist::axis::id > > *self,double **arr_out0,int *n0,int i=0){
-        /*@SWIG:eec/swig/eec.i,102,MALLOC_1D_VALUE_ARRAY@*/
+        /*@SWIG:eec/swig/eec.i,172,MALLOC_1D_VALUE_ARRAY@*/
   *n0 = self->nbins(i);
   size_t nbytes = size_t(*n0)*sizeof(double);
   *arr_out0 = (double *) malloc(nbytes);
@@ -5329,7 +5459,7 @@ SWIGINTERN void eec_hist_EECHistBase_Sl_eec_hist_EECHist3D_Sl_eec_hist_axis_log_
         memcpy(*arr_out0, self->bin_centers(i).data(), nbytes);
       }
 SWIGINTERN void eec_hist_EECHistBase_Sl_eec_hist_EECHist3D_Sl_eec_hist_axis_log_Sc_eec_hist_axis_id_Sc_eec_hist_axis_id_Sg__Sg__npy_bin_edges(eec::hist::EECHistBase< eec::hist::EECHist3D< eec::hist::axis::log,eec::hist::axis::id,eec::hist::axis::id > > *self,double **arr_out0,int *n0,int i=0){
-        /*@SWIG:eec/swig/eec.i,102,MALLOC_1D_VALUE_ARRAY@*/
+        /*@SWIG:eec/swig/eec.i,172,MALLOC_1D_VALUE_ARRAY@*/
   *n0 = self->nbins(i)+1;
   size_t nbytes = size_t(*n0)*sizeof(double);
   *arr_out0 = (double *) malloc(nbytes);
@@ -5341,7 +5471,7 @@ SWIGINTERN void eec_hist_EECHistBase_Sl_eec_hist_EECHist3D_Sl_eec_hist_axis_log_
         memcpy(*arr_out0, self->bin_edges(i).data(), nbytes);
       }
 SWIGINTERN void eec_hist_EECHistBase_Sl_eec_hist_EECHist3D_Sl_eec_hist_axis_id_Sc_eec_hist_axis_log_Sc_eec_hist_axis_id_Sg__Sg__npy_bin_centers(eec::hist::EECHistBase< eec::hist::EECHist3D< eec::hist::axis::id,eec::hist::axis::log,eec::hist::axis::id > > *self,double **arr_out0,int *n0,int i=0){
-        /*@SWIG:eec/swig/eec.i,102,MALLOC_1D_VALUE_ARRAY@*/
+        /*@SWIG:eec/swig/eec.i,172,MALLOC_1D_VALUE_ARRAY@*/
   *n0 = self->nbins(i);
   size_t nbytes = size_t(*n0)*sizeof(double);
   *arr_out0 = (double *) malloc(nbytes);
@@ -5353,7 +5483,7 @@ SWIGINTERN void eec_hist_EECHistBase_Sl_eec_hist_EECHist3D_Sl_eec_hist_axis_id_S
         memcpy(*arr_out0, self->bin_centers(i).data(), nbytes);
       }
 SWIGINTERN void eec_hist_EECHistBase_Sl_eec_hist_EECHist3D_Sl_eec_hist_axis_id_Sc_eec_hist_axis_log_Sc_eec_hist_axis_id_Sg__Sg__npy_bin_edges(eec::hist::EECHistBase< eec::hist::EECHist3D< eec::hist::axis::id,eec::hist::axis::log,eec::hist::axis::id > > *self,double **arr_out0,int *n0,int i=0){
-        /*@SWIG:eec/swig/eec.i,102,MALLOC_1D_VALUE_ARRAY@*/
+        /*@SWIG:eec/swig/eec.i,172,MALLOC_1D_VALUE_ARRAY@*/
   *n0 = self->nbins(i)+1;
   size_t nbytes = size_t(*n0)*sizeof(double);
   *arr_out0 = (double *) malloc(nbytes);
@@ -5365,7 +5495,7 @@ SWIGINTERN void eec_hist_EECHistBase_Sl_eec_hist_EECHist3D_Sl_eec_hist_axis_id_S
         memcpy(*arr_out0, self->bin_edges(i).data(), nbytes);
       }
 SWIGINTERN void eec_hist_EECHistBase_Sl_eec_hist_EECHist3D_Sl_eec_hist_axis_log_Sc_eec_hist_axis_log_Sc_eec_hist_axis_id_Sg__Sg__npy_bin_centers(eec::hist::EECHistBase< eec::hist::EECHist3D< eec::hist::axis::log,eec::hist::axis::log,eec::hist::axis::id > > *self,double **arr_out0,int *n0,int i=0){
-        /*@SWIG:eec/swig/eec.i,102,MALLOC_1D_VALUE_ARRAY@*/
+        /*@SWIG:eec/swig/eec.i,172,MALLOC_1D_VALUE_ARRAY@*/
   *n0 = self->nbins(i);
   size_t nbytes = size_t(*n0)*sizeof(double);
   *arr_out0 = (double *) malloc(nbytes);
@@ -5377,7 +5507,7 @@ SWIGINTERN void eec_hist_EECHistBase_Sl_eec_hist_EECHist3D_Sl_eec_hist_axis_log_
         memcpy(*arr_out0, self->bin_centers(i).data(), nbytes);
       }
 SWIGINTERN void eec_hist_EECHistBase_Sl_eec_hist_EECHist3D_Sl_eec_hist_axis_log_Sc_eec_hist_axis_log_Sc_eec_hist_axis_id_Sg__Sg__npy_bin_edges(eec::hist::EECHistBase< eec::hist::EECHist3D< eec::hist::axis::log,eec::hist::axis::log,eec::hist::axis::id > > *self,double **arr_out0,int *n0,int i=0){
-        /*@SWIG:eec/swig/eec.i,102,MALLOC_1D_VALUE_ARRAY@*/
+        /*@SWIG:eec/swig/eec.i,172,MALLOC_1D_VALUE_ARRAY@*/
   *n0 = self->nbins(i)+1;
   size_t nbytes = size_t(*n0)*sizeof(double);
   *arr_out0 = (double *) malloc(nbytes);
@@ -5389,7 +5519,7 @@ SWIGINTERN void eec_hist_EECHistBase_Sl_eec_hist_EECHist3D_Sl_eec_hist_axis_log_
         memcpy(*arr_out0, self->bin_edges(i).data(), nbytes);
       }
 SWIGINTERN void eec_hist_EECHist1D_Sl_eec_hist_axis_id_Sg__npy_get_hist_vars(eec::hist::EECHist1D< eec::hist::axis::id > *self,double **arr_out0,int *n0,double **arr_out1,int *n1,unsigned int hist_i=0,bool include_overflows=true){
-        /*@SWIG:eec/swig/eec.i,102,MALLOC_1D_VALUE_ARRAY@*/
+        /*@SWIG:eec/swig/eec.i,172,MALLOC_1D_VALUE_ARRAY@*/
   *n0 = self->hist_size(include_overflows);
   size_t nbytes0 = size_t(*n0)*sizeof(double);
   *arr_out0 = (double *) malloc(nbytes0);
@@ -5398,7 +5528,7 @@ SWIGINTERN void eec_hist_EECHist1D_Sl_eec_hist_axis_id_Sg__npy_get_hist_vars(eec
     return;
   }
 /*@SWIG@*/
-        /*@SWIG:eec/swig/eec.i,102,MALLOC_1D_VALUE_ARRAY@*/
+        /*@SWIG:eec/swig/eec.i,172,MALLOC_1D_VALUE_ARRAY@*/
   *n1 = self->hist_size(include_overflows);
   size_t nbytes1 = size_t(*n1)*sizeof(double);
   *arr_out1 = (double *) malloc(nbytes1);
@@ -5417,7 +5547,7 @@ SWIGINTERN void eec_hist_EECHist1D_Sl_eec_hist_axis_id_Sg__npy_get_hist_vars(eec
         }
       }
 SWIGINTERN void eec_hist_EECHist1D_Sl_eec_hist_axis_log_Sg__npy_get_hist_vars(eec::hist::EECHist1D< eec::hist::axis::log > *self,double **arr_out0,int *n0,double **arr_out1,int *n1,unsigned int hist_i=0,bool include_overflows=true){
-        /*@SWIG:eec/swig/eec.i,102,MALLOC_1D_VALUE_ARRAY@*/
+        /*@SWIG:eec/swig/eec.i,172,MALLOC_1D_VALUE_ARRAY@*/
   *n0 = self->hist_size(include_overflows);
   size_t nbytes0 = size_t(*n0)*sizeof(double);
   *arr_out0 = (double *) malloc(nbytes0);
@@ -5426,7 +5556,7 @@ SWIGINTERN void eec_hist_EECHist1D_Sl_eec_hist_axis_log_Sg__npy_get_hist_vars(ee
     return;
   }
 /*@SWIG@*/
-        /*@SWIG:eec/swig/eec.i,102,MALLOC_1D_VALUE_ARRAY@*/
+        /*@SWIG:eec/swig/eec.i,172,MALLOC_1D_VALUE_ARRAY@*/
   *n1 = self->hist_size(include_overflows);
   size_t nbytes1 = size_t(*n1)*sizeof(double);
   *arr_out1 = (double *) malloc(nbytes1);
@@ -5445,7 +5575,7 @@ SWIGINTERN void eec_hist_EECHist1D_Sl_eec_hist_axis_log_Sg__npy_get_hist_vars(ee
         }
       }
 SWIGINTERN void eec_hist_EECHist3D_Sl_eec_hist_axis_id_Sc_eec_hist_axis_id_Sc_eec_hist_axis_id_Sg__npy_get_hist_vars(eec::hist::EECHist3D< eec::hist::axis::id,eec::hist::axis::id,eec::hist::axis::id > *self,double **arr_out0,int *n0,int *n1,int *n2,double **arr_out1,int *m0,int *m1,int *m2,unsigned int hist_i=0,bool include_overflows=true){
-        /*@SWIG:eec/swig/eec.i,113,MALLOC_3D_VALUE_ARRAY@*/
+        /*@SWIG:eec/swig/eec.i,183,MALLOC_3D_VALUE_ARRAY@*/
   *n0 = self->hist_size(include_overflows, 0);
   *n1 = self->hist_size(include_overflows, 1);
   *n2 = self->hist_size(include_overflows, 2);
@@ -5458,7 +5588,7 @@ SWIGINTERN void eec_hist_EECHist3D_Sl_eec_hist_axis_id_Sc_eec_hist_axis_id_Sc_ee
 /*@SWIG@*/
 
 
-        /*@SWIG:eec/swig/eec.i,113,MALLOC_3D_VALUE_ARRAY@*/
+        /*@SWIG:eec/swig/eec.i,183,MALLOC_3D_VALUE_ARRAY@*/
   *m0 = self->hist_size(include_overflows, 0);
   *m1 = self->hist_size(include_overflows, 1);
   *m2 = self->hist_size(include_overflows, 2);
@@ -5481,7 +5611,7 @@ SWIGINTERN void eec_hist_EECHist3D_Sl_eec_hist_axis_id_Sc_eec_hist_axis_id_Sc_ee
         }
       }
 SWIGINTERN void eec_hist_EECHist3D_Sl_eec_hist_axis_log_Sc_eec_hist_axis_id_Sc_eec_hist_axis_id_Sg__npy_get_hist_vars(eec::hist::EECHist3D< eec::hist::axis::log,eec::hist::axis::id,eec::hist::axis::id > *self,double **arr_out0,int *n0,int *n1,int *n2,double **arr_out1,int *m0,int *m1,int *m2,unsigned int hist_i=0,bool include_overflows=true){
-        /*@SWIG:eec/swig/eec.i,113,MALLOC_3D_VALUE_ARRAY@*/
+        /*@SWIG:eec/swig/eec.i,183,MALLOC_3D_VALUE_ARRAY@*/
   *n0 = self->hist_size(include_overflows, 0);
   *n1 = self->hist_size(include_overflows, 1);
   *n2 = self->hist_size(include_overflows, 2);
@@ -5494,7 +5624,7 @@ SWIGINTERN void eec_hist_EECHist3D_Sl_eec_hist_axis_log_Sc_eec_hist_axis_id_Sc_e
 /*@SWIG@*/
 
 
-        /*@SWIG:eec/swig/eec.i,113,MALLOC_3D_VALUE_ARRAY@*/
+        /*@SWIG:eec/swig/eec.i,183,MALLOC_3D_VALUE_ARRAY@*/
   *m0 = self->hist_size(include_overflows, 0);
   *m1 = self->hist_size(include_overflows, 1);
   *m2 = self->hist_size(include_overflows, 2);
@@ -5517,7 +5647,7 @@ SWIGINTERN void eec_hist_EECHist3D_Sl_eec_hist_axis_log_Sc_eec_hist_axis_id_Sc_e
         }
       }
 SWIGINTERN void eec_hist_EECHist3D_Sl_eec_hist_axis_id_Sc_eec_hist_axis_log_Sc_eec_hist_axis_id_Sg__npy_get_hist_vars(eec::hist::EECHist3D< eec::hist::axis::id,eec::hist::axis::log,eec::hist::axis::id > *self,double **arr_out0,int *n0,int *n1,int *n2,double **arr_out1,int *m0,int *m1,int *m2,unsigned int hist_i=0,bool include_overflows=true){
-        /*@SWIG:eec/swig/eec.i,113,MALLOC_3D_VALUE_ARRAY@*/
+        /*@SWIG:eec/swig/eec.i,183,MALLOC_3D_VALUE_ARRAY@*/
   *n0 = self->hist_size(include_overflows, 0);
   *n1 = self->hist_size(include_overflows, 1);
   *n2 = self->hist_size(include_overflows, 2);
@@ -5530,7 +5660,7 @@ SWIGINTERN void eec_hist_EECHist3D_Sl_eec_hist_axis_id_Sc_eec_hist_axis_log_Sc_e
 /*@SWIG@*/
 
 
-        /*@SWIG:eec/swig/eec.i,113,MALLOC_3D_VALUE_ARRAY@*/
+        /*@SWIG:eec/swig/eec.i,183,MALLOC_3D_VALUE_ARRAY@*/
   *m0 = self->hist_size(include_overflows, 0);
   *m1 = self->hist_size(include_overflows, 1);
   *m2 = self->hist_size(include_overflows, 2);
@@ -5553,7 +5683,7 @@ SWIGINTERN void eec_hist_EECHist3D_Sl_eec_hist_axis_id_Sc_eec_hist_axis_log_Sc_e
         }
       }
 SWIGINTERN void eec_hist_EECHist3D_Sl_eec_hist_axis_log_Sc_eec_hist_axis_log_Sc_eec_hist_axis_id_Sg__npy_get_hist_vars(eec::hist::EECHist3D< eec::hist::axis::log,eec::hist::axis::log,eec::hist::axis::id > *self,double **arr_out0,int *n0,int *n1,int *n2,double **arr_out1,int *m0,int *m1,int *m2,unsigned int hist_i=0,bool include_overflows=true){
-        /*@SWIG:eec/swig/eec.i,113,MALLOC_3D_VALUE_ARRAY@*/
+        /*@SWIG:eec/swig/eec.i,183,MALLOC_3D_VALUE_ARRAY@*/
   *n0 = self->hist_size(include_overflows, 0);
   *n1 = self->hist_size(include_overflows, 1);
   *n2 = self->hist_size(include_overflows, 2);
@@ -5566,7 +5696,7 @@ SWIGINTERN void eec_hist_EECHist3D_Sl_eec_hist_axis_log_Sc_eec_hist_axis_log_Sc_
 /*@SWIG@*/
 
 
-        /*@SWIG:eec/swig/eec.i,113,MALLOC_3D_VALUE_ARRAY@*/
+        /*@SWIG:eec/swig/eec.i,183,MALLOC_3D_VALUE_ARRAY@*/
   *m0 = self->hist_size(include_overflows, 0);
   *m1 = self->hist_size(include_overflows, 1);
   *m2 = self->hist_size(include_overflows, 2);
@@ -5990,12 +6120,6 @@ SWIGINTERN void eec_hist_EECHist3D_Sl_eec_hist_axis_log_Sc_eec_hist_axis_log_Sc_
 SWIGINTERN void eec_EECEvents_add_event(eec::EECEvents *self,double *particles_noconvert,int mult,int nfeatures,double weight=1.0){
       self->append(particles_noconvert, mult, nfeatures, weight);
     }
-SWIGINTERN std::string eec_EECBase___str__(eec::EECBase const *self){
-  return self->description();
-}
-SWIGINTERN std::string eec_EECBase___repr__(eec::EECBase const *self){
-  return self->description();
-}
 SWIGINTERN void eec_EECBase_npy_compute(eec::EECBase *self,double *particles,int mult,int nfeatures,double weight=1.0,int thread_i=0){
       if (nfeatures != (int) self->nfeatures()) {
         std::ostringstream oss;
@@ -6109,42 +6233,326 @@ SWIGINTERN void eec_Multinomial_Sl_6_Sg__py_set_index_Sl_4_Sg_(eec::Multinomial<
         throw std::out_of_range("trying to set invalid index");
       self->set_index<4>(ind);
     }
-SWIGINTERN std::string eec_EECLongestSide_Sl_axis_id_Sg____str__(eec::EECLongestSide< axis::id > const *self){
-  return self->description();
+SWIGINTERN std::string eec_EECLongestSide_Sl_axis_id_Sg____getstate_internal__(eec::EECLongestSide< axis::id > *self){
+      std::ostringstream oss;
+    #ifdef EEC_COMPRESSION
+      {
+        boost::iostreams::filtering_ostream fos;
+        fos.push(boost::iostreams::zlib_compressor(boost::iostreams::zlib::best_compression));
+        fos.push(oss);
+        boost::archive::binary_oarchive ar(fos);
+        ar << *(self);
+      }
+    #else
+      boost::archive::binary_oarchive ar(oss);
+      ar << *(self);
+    #endif
+
+      return oss.str();
+    }
+
+SWIGINTERN int
+SWIG_AsCharPtrAndSize(PyObject *obj, char** cptr, size_t* psize, int *alloc)
+{
+#if PY_VERSION_HEX>=0x03000000
+#if defined(SWIG_PYTHON_STRICT_BYTE_CHAR)
+  if (PyBytes_Check(obj))
+#else
+  if (PyUnicode_Check(obj))
+#endif
+#else  
+  if (PyString_Check(obj))
+#endif
+  {
+    char *cstr; Py_ssize_t len;
+    int ret = SWIG_OK;
+#if PY_VERSION_HEX>=0x03000000
+#if !defined(SWIG_PYTHON_STRICT_BYTE_CHAR)
+    if (!alloc && cptr) {
+        /* We can't allow converting without allocation, since the internal
+           representation of string in Python 3 is UCS-2/UCS-4 but we require
+           a UTF-8 representation.
+           TODO(bhy) More detailed explanation */
+        return SWIG_RuntimeError;
+    }
+    obj = PyUnicode_AsUTF8String(obj);
+    if (!obj)
+      return SWIG_TypeError;
+    if (alloc)
+      *alloc = SWIG_NEWOBJ;
+#endif
+    if (PyBytes_AsStringAndSize(obj, &cstr, &len) == -1)
+      return SWIG_TypeError;
+#else
+    if (PyString_AsStringAndSize(obj, &cstr, &len) == -1)
+      return SWIG_TypeError;
+#endif
+    if (cptr) {
+      if (alloc) {
+	if (*alloc == SWIG_NEWOBJ) {
+	  *cptr = reinterpret_cast< char* >(memcpy(new char[len + 1], cstr, sizeof(char)*(len + 1)));
+	  *alloc = SWIG_NEWOBJ;
+	} else {
+	  *cptr = cstr;
+	  *alloc = SWIG_OLDOBJ;
+	}
+      } else {
+#if PY_VERSION_HEX>=0x03000000
+#if defined(SWIG_PYTHON_STRICT_BYTE_CHAR)
+	*cptr = PyBytes_AsString(obj);
+#else
+	assert(0); /* Should never reach here with Unicode strings in Python 3 */
+#endif
+#else
+	*cptr = SWIG_Python_str_AsChar(obj);
+        if (!*cptr)
+          ret = SWIG_TypeError;
+#endif
+      }
+    }
+    if (psize) *psize = len + 1;
+#if PY_VERSION_HEX>=0x03000000 && !defined(SWIG_PYTHON_STRICT_BYTE_CHAR)
+    Py_XDECREF(obj);
+#endif
+    return ret;
+  } else {
+#if defined(SWIG_PYTHON_2_UNICODE)
+#if defined(SWIG_PYTHON_STRICT_BYTE_CHAR)
+#error "Cannot use both SWIG_PYTHON_2_UNICODE and SWIG_PYTHON_STRICT_BYTE_CHAR at once"
+#endif
+#if PY_VERSION_HEX<0x03000000
+    if (PyUnicode_Check(obj)) {
+      char *cstr; Py_ssize_t len;
+      if (!alloc && cptr) {
+        return SWIG_RuntimeError;
+      }
+      obj = PyUnicode_AsUTF8String(obj);
+      if (!obj)
+        return SWIG_TypeError;
+      if (PyString_AsStringAndSize(obj, &cstr, &len) != -1) {
+        if (cptr) {
+          if (alloc) *alloc = SWIG_NEWOBJ;
+          *cptr = reinterpret_cast< char* >(memcpy(new char[len + 1], cstr, sizeof(char)*(len + 1)));
+        }
+        if (psize) *psize = len + 1;
+
+        Py_XDECREF(obj);
+        return SWIG_OK;
+      } else {
+        Py_XDECREF(obj);
+      }
+    }
+#endif
+#endif
+
+    swig_type_info* pchar_descriptor = SWIG_pchar_descriptor();
+    if (pchar_descriptor) {
+      void* vptr = 0;
+      if (SWIG_ConvertPtr(obj, &vptr, pchar_descriptor, 0) == SWIG_OK) {
+	if (cptr) *cptr = (char *) vptr;
+	if (psize) *psize = vptr ? (strlen((char *)vptr) + 1) : 0;
+	if (alloc) *alloc = SWIG_OLDOBJ;
+	return SWIG_OK;
+      }
+    }
+  }
+  return SWIG_TypeError;
 }
-SWIGINTERN std::string eec_EECLongestSide_Sl_axis_id_Sg____repr__(eec::EECLongestSide< axis::id > const *self){
-  return self->description();
+
+
+SWIGINTERN int
+SWIG_AsPtr_std_string (PyObject * obj, std::string **val) 
+{
+  char* buf = 0 ; size_t size = 0; int alloc = SWIG_OLDOBJ;
+  if (SWIG_IsOK((SWIG_AsCharPtrAndSize(obj, &buf, &size, &alloc)))) {
+    if (buf) {
+      if (val) *val = new std::string(buf, size - 1);
+      if (alloc == SWIG_NEWOBJ) delete[] buf;
+      return SWIG_NEWOBJ;
+    } else {
+      if (val) *val = 0;
+      return SWIG_OLDOBJ;
+    }
+  } else {
+    static int init = 0;
+    static swig_type_info* descriptor = 0;
+    if (!init) {
+      descriptor = SWIG_TypeQuery("std::string" " *");
+      init = 1;
+    }
+    if (descriptor) {
+      std::string *vptr;
+      int res = SWIG_ConvertPtr(obj, (void**)&vptr, descriptor, 0);
+      if (SWIG_IsOK(res) && val) *val = vptr;
+      return res;
+    }
+  }
+  return SWIG_ERROR;
 }
-SWIGINTERN std::string eec_EECLongestSide_Sl_axis_log_Sg____str__(eec::EECLongestSide< axis::log > const *self){
-  return self->description();
-}
-SWIGINTERN std::string eec_EECLongestSide_Sl_axis_log_Sg____repr__(eec::EECLongestSide< axis::log > const *self){
-  return self->description();
-}
-SWIGINTERN std::string eec_EECTriangleOPE_Sl_axis_id_Sc_axis_id_Sc_axis_id_Sg____str__(eec::EECTriangleOPE< axis::id,axis::id,axis::id > const *self){
-  return self->description();
-}
-SWIGINTERN std::string eec_EECTriangleOPE_Sl_axis_id_Sc_axis_id_Sc_axis_id_Sg____repr__(eec::EECTriangleOPE< axis::id,axis::id,axis::id > const *self){
-  return self->description();
-}
-SWIGINTERN std::string eec_EECTriangleOPE_Sl_axis_log_Sc_axis_id_Sc_axis_id_Sg____str__(eec::EECTriangleOPE< axis::log,axis::id,axis::id > const *self){
-  return self->description();
-}
-SWIGINTERN std::string eec_EECTriangleOPE_Sl_axis_log_Sc_axis_id_Sc_axis_id_Sg____repr__(eec::EECTriangleOPE< axis::log,axis::id,axis::id > const *self){
-  return self->description();
-}
-SWIGINTERN std::string eec_EECTriangleOPE_Sl_axis_id_Sc_axis_log_Sc_axis_id_Sg____str__(eec::EECTriangleOPE< axis::id,axis::log,axis::id > const *self){
-  return self->description();
-}
-SWIGINTERN std::string eec_EECTriangleOPE_Sl_axis_id_Sc_axis_log_Sc_axis_id_Sg____repr__(eec::EECTriangleOPE< axis::id,axis::log,axis::id > const *self){
-  return self->description();
-}
-SWIGINTERN std::string eec_EECTriangleOPE_Sl_axis_log_Sc_axis_log_Sc_axis_id_Sg____str__(eec::EECTriangleOPE< axis::log,axis::log,axis::id > const *self){
-  return self->description();
-}
-SWIGINTERN std::string eec_EECTriangleOPE_Sl_axis_log_Sc_axis_log_Sc_axis_id_Sg____repr__(eec::EECTriangleOPE< axis::log,axis::log,axis::id > const *self){
-  return self->description();
-}
+
+SWIGINTERN void eec_EECLongestSide_Sl_axis_id_Sg____setstate_internal__(eec::EECLongestSide< axis::id > *self,std::string const &state){
+      std::istringstream iss(state);
+    #ifdef EEC_COMPRESSION
+      boost::iostreams::filtering_istream fis;
+      fis.push(boost::iostreams::zlib_decompressor());
+      fis.push(iss);
+      boost::archive::binary_iarchive ar(fis);
+    #else
+      boost::archive::binary_iarchive ar(iss);
+    #endif
+
+      ar >> *(self);
+    }
+SWIGINTERN std::string eec_EECLongestSide_Sl_axis_log_Sg____getstate_internal__(eec::EECLongestSide< axis::log > *self){
+      std::ostringstream oss;
+    #ifdef EEC_COMPRESSION
+      {
+        boost::iostreams::filtering_ostream fos;
+        fos.push(boost::iostreams::zlib_compressor(boost::iostreams::zlib::best_compression));
+        fos.push(oss);
+        boost::archive::binary_oarchive ar(fos);
+        ar << *(self);
+      }
+    #else
+      boost::archive::binary_oarchive ar(oss);
+      ar << *(self);
+    #endif
+
+      return oss.str();
+    }
+SWIGINTERN void eec_EECLongestSide_Sl_axis_log_Sg____setstate_internal__(eec::EECLongestSide< axis::log > *self,std::string const &state){
+      std::istringstream iss(state);
+    #ifdef EEC_COMPRESSION
+      boost::iostreams::filtering_istream fis;
+      fis.push(boost::iostreams::zlib_decompressor());
+      fis.push(iss);
+      boost::archive::binary_iarchive ar(fis);
+    #else
+      boost::archive::binary_iarchive ar(iss);
+    #endif
+
+      ar >> *(self);
+    }
+SWIGINTERN std::string eec_EECTriangleOPE_Sl_axis_id_Sc_axis_id_Sc_axis_id_Sg____getstate_internal__(eec::EECTriangleOPE< axis::id,axis::id,axis::id > *self){
+      std::ostringstream oss;
+    #ifdef EEC_COMPRESSION
+      {
+        boost::iostreams::filtering_ostream fos;
+        fos.push(boost::iostreams::zlib_compressor(boost::iostreams::zlib::best_compression));
+        fos.push(oss);
+        boost::archive::binary_oarchive ar(fos);
+        ar << *(self);
+      }
+    #else
+      boost::archive::binary_oarchive ar(oss);
+      ar << *(self);
+    #endif
+
+      return oss.str();
+    }
+SWIGINTERN void eec_EECTriangleOPE_Sl_axis_id_Sc_axis_id_Sc_axis_id_Sg____setstate_internal__(eec::EECTriangleOPE< axis::id,axis::id,axis::id > *self,std::string const &state){
+      std::istringstream iss(state);
+    #ifdef EEC_COMPRESSION
+      boost::iostreams::filtering_istream fis;
+      fis.push(boost::iostreams::zlib_decompressor());
+      fis.push(iss);
+      boost::archive::binary_iarchive ar(fis);
+    #else
+      boost::archive::binary_iarchive ar(iss);
+    #endif
+
+      ar >> *(self);
+    }
+SWIGINTERN std::string eec_EECTriangleOPE_Sl_axis_log_Sc_axis_id_Sc_axis_id_Sg____getstate_internal__(eec::EECTriangleOPE< axis::log,axis::id,axis::id > *self){
+      std::ostringstream oss;
+    #ifdef EEC_COMPRESSION
+      {
+        boost::iostreams::filtering_ostream fos;
+        fos.push(boost::iostreams::zlib_compressor(boost::iostreams::zlib::best_compression));
+        fos.push(oss);
+        boost::archive::binary_oarchive ar(fos);
+        ar << *(self);
+      }
+    #else
+      boost::archive::binary_oarchive ar(oss);
+      ar << *(self);
+    #endif
+
+      return oss.str();
+    }
+SWIGINTERN void eec_EECTriangleOPE_Sl_axis_log_Sc_axis_id_Sc_axis_id_Sg____setstate_internal__(eec::EECTriangleOPE< axis::log,axis::id,axis::id > *self,std::string const &state){
+      std::istringstream iss(state);
+    #ifdef EEC_COMPRESSION
+      boost::iostreams::filtering_istream fis;
+      fis.push(boost::iostreams::zlib_decompressor());
+      fis.push(iss);
+      boost::archive::binary_iarchive ar(fis);
+    #else
+      boost::archive::binary_iarchive ar(iss);
+    #endif
+
+      ar >> *(self);
+    }
+SWIGINTERN std::string eec_EECTriangleOPE_Sl_axis_id_Sc_axis_log_Sc_axis_id_Sg____getstate_internal__(eec::EECTriangleOPE< axis::id,axis::log,axis::id > *self){
+      std::ostringstream oss;
+    #ifdef EEC_COMPRESSION
+      {
+        boost::iostreams::filtering_ostream fos;
+        fos.push(boost::iostreams::zlib_compressor(boost::iostreams::zlib::best_compression));
+        fos.push(oss);
+        boost::archive::binary_oarchive ar(fos);
+        ar << *(self);
+      }
+    #else
+      boost::archive::binary_oarchive ar(oss);
+      ar << *(self);
+    #endif
+
+      return oss.str();
+    }
+SWIGINTERN void eec_EECTriangleOPE_Sl_axis_id_Sc_axis_log_Sc_axis_id_Sg____setstate_internal__(eec::EECTriangleOPE< axis::id,axis::log,axis::id > *self,std::string const &state){
+      std::istringstream iss(state);
+    #ifdef EEC_COMPRESSION
+      boost::iostreams::filtering_istream fis;
+      fis.push(boost::iostreams::zlib_decompressor());
+      fis.push(iss);
+      boost::archive::binary_iarchive ar(fis);
+    #else
+      boost::archive::binary_iarchive ar(iss);
+    #endif
+
+      ar >> *(self);
+    }
+SWIGINTERN std::string eec_EECTriangleOPE_Sl_axis_log_Sc_axis_log_Sc_axis_id_Sg____getstate_internal__(eec::EECTriangleOPE< axis::log,axis::log,axis::id > *self){
+      std::ostringstream oss;
+    #ifdef EEC_COMPRESSION
+      {
+        boost::iostreams::filtering_ostream fos;
+        fos.push(boost::iostreams::zlib_compressor(boost::iostreams::zlib::best_compression));
+        fos.push(oss);
+        boost::archive::binary_oarchive ar(fos);
+        ar << *(self);
+      }
+    #else
+      boost::archive::binary_oarchive ar(oss);
+      ar << *(self);
+    #endif
+
+      return oss.str();
+    }
+SWIGINTERN void eec_EECTriangleOPE_Sl_axis_log_Sc_axis_log_Sc_axis_id_Sg____setstate_internal__(eec::EECTriangleOPE< axis::log,axis::log,axis::id > *self,std::string const &state){
+      std::istringstream iss(state);
+    #ifdef EEC_COMPRESSION
+      boost::iostreams::filtering_istream fis;
+      fis.push(boost::iostreams::zlib_decompressor());
+      fis.push(iss);
+      boost::archive::binary_iarchive ar(fis);
+    #else
+      boost::archive::binary_iarchive ar(iss);
+    #endif
+
+      ar >> *(self);
+    }
 #ifdef __cplusplus
 extern "C" {
 #endif
@@ -11764,6 +12172,3719 @@ SWIGINTERN PyObject *arrayUnsigned13_swiginit(PyObject *SWIGUNUSEDPARM(self), Py
   return SWIG_Python_InitShadowInstance(args);
 }
 
+SWIGINTERN PyObject *_wrap_new_reduce_command(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
+  PyObject *resultobj = 0;
+  boost::histogram::algorithm::reduce_command *result = 0 ;
+  
+  if (!SWIG_Python_UnpackTuple(args, "new_reduce_command", 0, 0, 0)) SWIG_fail;
+  {
+    try {
+      result = (boost::histogram::algorithm::reduce_command *)new boost::histogram::algorithm::reduce_command(); 
+    }
+    /*@SWIG:/usr/local/Cellar/swig/4.0.2/share/swig/4.0.2/typemaps/exception.swg,58,SWIG_CATCH_STDEXCEPT@*/  /* catching std::exception  */
+    catch (std::invalid_argument& e) {
+      SWIG_exception_fail(SWIG_ValueError, e.what() );
+    } catch (std::domain_error& e) {
+      SWIG_exception_fail(SWIG_ValueError, e.what() );
+    } catch (std::overflow_error& e) {
+      SWIG_exception_fail(SWIG_OverflowError, e.what() );
+    } catch (std::out_of_range& e) {
+      SWIG_exception_fail(SWIG_IndexError, e.what() );
+    } catch (std::length_error& e) {
+      SWIG_exception_fail(SWIG_IndexError, e.what() );
+    } catch (std::runtime_error& e) {
+      SWIG_exception_fail(SWIG_RuntimeError, e.what() );
+    } catch (std::exception& e) {
+      SWIG_exception_fail(SWIG_SystemError, e.what() );
+    }
+    /*@SWIG@*/
+  }
+  resultobj = SWIG_NewPointerObj(SWIG_as_voidptr(result), SWIGTYPE_p_boost__histogram__algorithm__reduce_command, SWIG_POINTER_NEW |  0 );
+  return resultobj;
+fail:
+  return NULL;
+}
+
+
+SWIGINTERN PyObject *_wrap_delete_reduce_command(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
+  PyObject *resultobj = 0;
+  boost::histogram::algorithm::reduce_command *arg1 = (boost::histogram::algorithm::reduce_command *) 0 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  PyObject *swig_obj[1] ;
+  
+  if (!args) SWIG_fail;
+  swig_obj[0] = args;
+  res1 = SWIG_ConvertPtr(swig_obj[0], &argp1,SWIGTYPE_p_boost__histogram__algorithm__reduce_command, SWIG_POINTER_DISOWN |  0 );
+  if (!SWIG_IsOK(res1)) {
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "delete_reduce_command" "', argument " "1"" of type '" "boost::histogram::algorithm::reduce_command *""'"); 
+  }
+  arg1 = reinterpret_cast< boost::histogram::algorithm::reduce_command * >(argp1);
+  {
+    try {
+      delete arg1; 
+    }
+    /*@SWIG:/usr/local/Cellar/swig/4.0.2/share/swig/4.0.2/typemaps/exception.swg,58,SWIG_CATCH_STDEXCEPT@*/  /* catching std::exception  */
+    catch (std::invalid_argument& e) {
+      SWIG_exception_fail(SWIG_ValueError, e.what() );
+    } catch (std::domain_error& e) {
+      SWIG_exception_fail(SWIG_ValueError, e.what() );
+    } catch (std::overflow_error& e) {
+      SWIG_exception_fail(SWIG_OverflowError, e.what() );
+    } catch (std::out_of_range& e) {
+      SWIG_exception_fail(SWIG_IndexError, e.what() );
+    } catch (std::length_error& e) {
+      SWIG_exception_fail(SWIG_IndexError, e.what() );
+    } catch (std::runtime_error& e) {
+      SWIG_exception_fail(SWIG_RuntimeError, e.what() );
+    } catch (std::exception& e) {
+      SWIG_exception_fail(SWIG_SystemError, e.what() );
+    }
+    /*@SWIG@*/
+  }
+  resultobj = SWIG_Py_Void();
+  return resultobj;
+fail:
+  return NULL;
+}
+
+
+SWIGINTERN PyObject *reduce_command_swigregister(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
+  PyObject *obj;
+  if (!SWIG_Python_UnpackTuple(args, "swigregister", 1, 1, &obj)) return NULL;
+  SWIG_TypeNewClientData(SWIGTYPE_p_boost__histogram__algorithm__reduce_command, SWIG_NewClientData(obj));
+  return SWIG_Py_Void();
+}
+
+SWIGINTERN PyObject *reduce_command_swiginit(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
+  return SWIG_Python_InitShadowInstance(args);
+}
+
+SWIGINTERN PyObject *_wrap_rebin__SWIG_0(PyObject *SWIGUNUSEDPARM(self), Py_ssize_t nobjs, PyObject **swig_obj) {
+  PyObject *resultobj = 0;
+  unsigned int arg1 ;
+  unsigned int arg2 ;
+  unsigned int val1 ;
+  int ecode1 = 0 ;
+  unsigned int val2 ;
+  int ecode2 = 0 ;
+  boost::histogram::algorithm::reduce_command result;
+  
+  if ((nobjs < 2) || (nobjs > 2)) SWIG_fail;
+  ecode1 = SWIG_AsVal_unsigned_SS_int(swig_obj[0], &val1);
+  if (!SWIG_IsOK(ecode1)) {
+    SWIG_exception_fail(SWIG_ArgError(ecode1), "in method '" "rebin" "', argument " "1"" of type '" "unsigned int""'");
+  } 
+  arg1 = static_cast< unsigned int >(val1);
+  ecode2 = SWIG_AsVal_unsigned_SS_int(swig_obj[1], &val2);
+  if (!SWIG_IsOK(ecode2)) {
+    SWIG_exception_fail(SWIG_ArgError(ecode2), "in method '" "rebin" "', argument " "2"" of type '" "unsigned int""'");
+  } 
+  arg2 = static_cast< unsigned int >(val2);
+  {
+    try {
+      result = boost::histogram::algorithm::rebin(arg1,arg2); 
+    }
+    /*@SWIG:/usr/local/Cellar/swig/4.0.2/share/swig/4.0.2/typemaps/exception.swg,58,SWIG_CATCH_STDEXCEPT@*/  /* catching std::exception  */
+    catch (std::invalid_argument& e) {
+      SWIG_exception_fail(SWIG_ValueError, e.what() );
+    } catch (std::domain_error& e) {
+      SWIG_exception_fail(SWIG_ValueError, e.what() );
+    } catch (std::overflow_error& e) {
+      SWIG_exception_fail(SWIG_OverflowError, e.what() );
+    } catch (std::out_of_range& e) {
+      SWIG_exception_fail(SWIG_IndexError, e.what() );
+    } catch (std::length_error& e) {
+      SWIG_exception_fail(SWIG_IndexError, e.what() );
+    } catch (std::runtime_error& e) {
+      SWIG_exception_fail(SWIG_RuntimeError, e.what() );
+    } catch (std::exception& e) {
+      SWIG_exception_fail(SWIG_SystemError, e.what() );
+    }
+    /*@SWIG@*/
+  }
+  resultobj = SWIG_NewPointerObj((new boost::histogram::algorithm::reduce_command(static_cast< const boost::histogram::algorithm::reduce_command& >(result))), SWIGTYPE_p_boost__histogram__algorithm__reduce_command, SWIG_POINTER_OWN |  0 );
+  return resultobj;
+fail:
+  return NULL;
+}
+
+
+SWIGINTERN PyObject *_wrap_rebin__SWIG_1(PyObject *SWIGUNUSEDPARM(self), Py_ssize_t nobjs, PyObject **swig_obj) {
+  PyObject *resultobj = 0;
+  unsigned int arg1 ;
+  unsigned int val1 ;
+  int ecode1 = 0 ;
+  boost::histogram::algorithm::reduce_command result;
+  
+  if ((nobjs < 1) || (nobjs > 1)) SWIG_fail;
+  ecode1 = SWIG_AsVal_unsigned_SS_int(swig_obj[0], &val1);
+  if (!SWIG_IsOK(ecode1)) {
+    SWIG_exception_fail(SWIG_ArgError(ecode1), "in method '" "rebin" "', argument " "1"" of type '" "unsigned int""'");
+  } 
+  arg1 = static_cast< unsigned int >(val1);
+  {
+    try {
+      result = boost::histogram::algorithm::rebin(arg1); 
+    }
+    /*@SWIG:/usr/local/Cellar/swig/4.0.2/share/swig/4.0.2/typemaps/exception.swg,58,SWIG_CATCH_STDEXCEPT@*/  /* catching std::exception  */
+    catch (std::invalid_argument& e) {
+      SWIG_exception_fail(SWIG_ValueError, e.what() );
+    } catch (std::domain_error& e) {
+      SWIG_exception_fail(SWIG_ValueError, e.what() );
+    } catch (std::overflow_error& e) {
+      SWIG_exception_fail(SWIG_OverflowError, e.what() );
+    } catch (std::out_of_range& e) {
+      SWIG_exception_fail(SWIG_IndexError, e.what() );
+    } catch (std::length_error& e) {
+      SWIG_exception_fail(SWIG_IndexError, e.what() );
+    } catch (std::runtime_error& e) {
+      SWIG_exception_fail(SWIG_RuntimeError, e.what() );
+    } catch (std::exception& e) {
+      SWIG_exception_fail(SWIG_SystemError, e.what() );
+    }
+    /*@SWIG@*/
+  }
+  resultobj = SWIG_NewPointerObj((new boost::histogram::algorithm::reduce_command(static_cast< const boost::histogram::algorithm::reduce_command& >(result))), SWIGTYPE_p_boost__histogram__algorithm__reduce_command, SWIG_POINTER_OWN |  0 );
+  return resultobj;
+fail:
+  return NULL;
+}
+
+
+SWIGINTERN PyObject *_wrap_rebin(PyObject *self, PyObject *args) {
+  Py_ssize_t argc;
+  PyObject *argv[3] = {
+    0
+  };
+  
+  if (!(argc = SWIG_Python_UnpackTuple(args, "rebin", 0, 2, argv))) SWIG_fail;
+  --argc;
+  if (argc == 1) {
+    int _v;
+    {
+      int res = SWIG_AsVal_unsigned_SS_int(argv[0], NULL);
+      _v = SWIG_CheckState(res);
+    }
+    if (_v) {
+      return _wrap_rebin__SWIG_1(self, argc, argv);
+    }
+  }
+  if (argc == 2) {
+    int _v;
+    {
+      int res = SWIG_AsVal_unsigned_SS_int(argv[0], NULL);
+      _v = SWIG_CheckState(res);
+    }
+    if (_v) {
+      {
+        int res = SWIG_AsVal_unsigned_SS_int(argv[1], NULL);
+        _v = SWIG_CheckState(res);
+      }
+      if (_v) {
+        return _wrap_rebin__SWIG_0(self, argc, argv);
+      }
+    }
+  }
+  
+fail:
+  SWIG_Python_RaiseOrModifyTypeError("Wrong number or type of arguments for overloaded function 'rebin'.\n"
+    "  Possible C/C++ prototypes are:\n"
+    "    boost::histogram::algorithm::rebin(unsigned int,unsigned int)\n"
+    "    boost::histogram::algorithm::rebin(unsigned int)\n");
+  return 0;
+}
+
+
+SWIGINTERN PyObject *_wrap_shrink__SWIG_0(PyObject *SWIGUNUSEDPARM(self), Py_ssize_t nobjs, PyObject **swig_obj) {
+  PyObject *resultobj = 0;
+  unsigned int arg1 ;
+  double arg2 ;
+  double arg3 ;
+  unsigned int val1 ;
+  int ecode1 = 0 ;
+  double val2 ;
+  int ecode2 = 0 ;
+  double val3 ;
+  int ecode3 = 0 ;
+  boost::histogram::algorithm::reduce_command result;
+  
+  if ((nobjs < 3) || (nobjs > 3)) SWIG_fail;
+  ecode1 = SWIG_AsVal_unsigned_SS_int(swig_obj[0], &val1);
+  if (!SWIG_IsOK(ecode1)) {
+    SWIG_exception_fail(SWIG_ArgError(ecode1), "in method '" "shrink" "', argument " "1"" of type '" "unsigned int""'");
+  } 
+  arg1 = static_cast< unsigned int >(val1);
+  ecode2 = SWIG_AsVal_double(swig_obj[1], &val2);
+  if (!SWIG_IsOK(ecode2)) {
+    SWIG_exception_fail(SWIG_ArgError(ecode2), "in method '" "shrink" "', argument " "2"" of type '" "double""'");
+  } 
+  arg2 = static_cast< double >(val2);
+  ecode3 = SWIG_AsVal_double(swig_obj[2], &val3);
+  if (!SWIG_IsOK(ecode3)) {
+    SWIG_exception_fail(SWIG_ArgError(ecode3), "in method '" "shrink" "', argument " "3"" of type '" "double""'");
+  } 
+  arg3 = static_cast< double >(val3);
+  {
+    try {
+      result = boost::histogram::algorithm::shrink(arg1,arg2,arg3); 
+    }
+    /*@SWIG:/usr/local/Cellar/swig/4.0.2/share/swig/4.0.2/typemaps/exception.swg,58,SWIG_CATCH_STDEXCEPT@*/  /* catching std::exception  */
+    catch (std::invalid_argument& e) {
+      SWIG_exception_fail(SWIG_ValueError, e.what() );
+    } catch (std::domain_error& e) {
+      SWIG_exception_fail(SWIG_ValueError, e.what() );
+    } catch (std::overflow_error& e) {
+      SWIG_exception_fail(SWIG_OverflowError, e.what() );
+    } catch (std::out_of_range& e) {
+      SWIG_exception_fail(SWIG_IndexError, e.what() );
+    } catch (std::length_error& e) {
+      SWIG_exception_fail(SWIG_IndexError, e.what() );
+    } catch (std::runtime_error& e) {
+      SWIG_exception_fail(SWIG_RuntimeError, e.what() );
+    } catch (std::exception& e) {
+      SWIG_exception_fail(SWIG_SystemError, e.what() );
+    }
+    /*@SWIG@*/
+  }
+  resultobj = SWIG_NewPointerObj((new boost::histogram::algorithm::reduce_command(static_cast< const boost::histogram::algorithm::reduce_command& >(result))), SWIGTYPE_p_boost__histogram__algorithm__reduce_command, SWIG_POINTER_OWN |  0 );
+  return resultobj;
+fail:
+  return NULL;
+}
+
+
+SWIGINTERN PyObject *_wrap_shrink__SWIG_1(PyObject *SWIGUNUSEDPARM(self), Py_ssize_t nobjs, PyObject **swig_obj) {
+  PyObject *resultobj = 0;
+  double arg1 ;
+  double arg2 ;
+  double val1 ;
+  int ecode1 = 0 ;
+  double val2 ;
+  int ecode2 = 0 ;
+  boost::histogram::algorithm::reduce_command result;
+  
+  if ((nobjs < 2) || (nobjs > 2)) SWIG_fail;
+  ecode1 = SWIG_AsVal_double(swig_obj[0], &val1);
+  if (!SWIG_IsOK(ecode1)) {
+    SWIG_exception_fail(SWIG_ArgError(ecode1), "in method '" "shrink" "', argument " "1"" of type '" "double""'");
+  } 
+  arg1 = static_cast< double >(val1);
+  ecode2 = SWIG_AsVal_double(swig_obj[1], &val2);
+  if (!SWIG_IsOK(ecode2)) {
+    SWIG_exception_fail(SWIG_ArgError(ecode2), "in method '" "shrink" "', argument " "2"" of type '" "double""'");
+  } 
+  arg2 = static_cast< double >(val2);
+  {
+    try {
+      result = boost::histogram::algorithm::shrink(arg1,arg2); 
+    }
+    /*@SWIG:/usr/local/Cellar/swig/4.0.2/share/swig/4.0.2/typemaps/exception.swg,58,SWIG_CATCH_STDEXCEPT@*/  /* catching std::exception  */
+    catch (std::invalid_argument& e) {
+      SWIG_exception_fail(SWIG_ValueError, e.what() );
+    } catch (std::domain_error& e) {
+      SWIG_exception_fail(SWIG_ValueError, e.what() );
+    } catch (std::overflow_error& e) {
+      SWIG_exception_fail(SWIG_OverflowError, e.what() );
+    } catch (std::out_of_range& e) {
+      SWIG_exception_fail(SWIG_IndexError, e.what() );
+    } catch (std::length_error& e) {
+      SWIG_exception_fail(SWIG_IndexError, e.what() );
+    } catch (std::runtime_error& e) {
+      SWIG_exception_fail(SWIG_RuntimeError, e.what() );
+    } catch (std::exception& e) {
+      SWIG_exception_fail(SWIG_SystemError, e.what() );
+    }
+    /*@SWIG@*/
+  }
+  resultobj = SWIG_NewPointerObj((new boost::histogram::algorithm::reduce_command(static_cast< const boost::histogram::algorithm::reduce_command& >(result))), SWIGTYPE_p_boost__histogram__algorithm__reduce_command, SWIG_POINTER_OWN |  0 );
+  return resultobj;
+fail:
+  return NULL;
+}
+
+
+SWIGINTERN PyObject *_wrap_shrink(PyObject *self, PyObject *args) {
+  Py_ssize_t argc;
+  PyObject *argv[4] = {
+    0
+  };
+  
+  if (!(argc = SWIG_Python_UnpackTuple(args, "shrink", 0, 3, argv))) SWIG_fail;
+  --argc;
+  if (argc == 2) {
+    int _v;
+    {
+      int res = SWIG_AsVal_double(argv[0], NULL);
+      _v = SWIG_CheckState(res);
+    }
+    if (_v) {
+      {
+        int res = SWIG_AsVal_double(argv[1], NULL);
+        _v = SWIG_CheckState(res);
+      }
+      if (_v) {
+        return _wrap_shrink__SWIG_1(self, argc, argv);
+      }
+    }
+  }
+  if (argc == 3) {
+    int _v;
+    {
+      int res = SWIG_AsVal_unsigned_SS_int(argv[0], NULL);
+      _v = SWIG_CheckState(res);
+    }
+    if (_v) {
+      {
+        int res = SWIG_AsVal_double(argv[1], NULL);
+        _v = SWIG_CheckState(res);
+      }
+      if (_v) {
+        {
+          int res = SWIG_AsVal_double(argv[2], NULL);
+          _v = SWIG_CheckState(res);
+        }
+        if (_v) {
+          return _wrap_shrink__SWIG_0(self, argc, argv);
+        }
+      }
+    }
+  }
+  
+fail:
+  SWIG_Python_RaiseOrModifyTypeError("Wrong number or type of arguments for overloaded function 'shrink'.\n"
+    "  Possible C/C++ prototypes are:\n"
+    "    boost::histogram::algorithm::shrink(unsigned int,double,double)\n"
+    "    boost::histogram::algorithm::shrink(double,double)\n");
+  return 0;
+}
+
+
+SWIGINTERN PyObject *_wrap_slice__SWIG_0(PyObject *SWIGUNUSEDPARM(self), Py_ssize_t nobjs, PyObject **swig_obj) {
+  PyObject *resultobj = 0;
+  unsigned int arg1 ;
+  int arg2 ;
+  int arg3 ;
+  unsigned int val1 ;
+  int ecode1 = 0 ;
+  int val2 ;
+  int ecode2 = 0 ;
+  int val3 ;
+  int ecode3 = 0 ;
+  boost::histogram::algorithm::reduce_command result;
+  
+  if ((nobjs < 3) || (nobjs > 3)) SWIG_fail;
+  ecode1 = SWIG_AsVal_unsigned_SS_int(swig_obj[0], &val1);
+  if (!SWIG_IsOK(ecode1)) {
+    SWIG_exception_fail(SWIG_ArgError(ecode1), "in method '" "slice" "', argument " "1"" of type '" "unsigned int""'");
+  } 
+  arg1 = static_cast< unsigned int >(val1);
+  ecode2 = SWIG_AsVal_int(swig_obj[1], &val2);
+  if (!SWIG_IsOK(ecode2)) {
+    SWIG_exception_fail(SWIG_ArgError(ecode2), "in method '" "slice" "', argument " "2"" of type '" "int""'");
+  } 
+  arg2 = static_cast< int >(val2);
+  ecode3 = SWIG_AsVal_int(swig_obj[2], &val3);
+  if (!SWIG_IsOK(ecode3)) {
+    SWIG_exception_fail(SWIG_ArgError(ecode3), "in method '" "slice" "', argument " "3"" of type '" "int""'");
+  } 
+  arg3 = static_cast< int >(val3);
+  {
+    try {
+      result = boost::histogram::algorithm::slice(arg1,arg2,arg3); 
+    }
+    /*@SWIG:/usr/local/Cellar/swig/4.0.2/share/swig/4.0.2/typemaps/exception.swg,58,SWIG_CATCH_STDEXCEPT@*/  /* catching std::exception  */
+    catch (std::invalid_argument& e) {
+      SWIG_exception_fail(SWIG_ValueError, e.what() );
+    } catch (std::domain_error& e) {
+      SWIG_exception_fail(SWIG_ValueError, e.what() );
+    } catch (std::overflow_error& e) {
+      SWIG_exception_fail(SWIG_OverflowError, e.what() );
+    } catch (std::out_of_range& e) {
+      SWIG_exception_fail(SWIG_IndexError, e.what() );
+    } catch (std::length_error& e) {
+      SWIG_exception_fail(SWIG_IndexError, e.what() );
+    } catch (std::runtime_error& e) {
+      SWIG_exception_fail(SWIG_RuntimeError, e.what() );
+    } catch (std::exception& e) {
+      SWIG_exception_fail(SWIG_SystemError, e.what() );
+    }
+    /*@SWIG@*/
+  }
+  resultobj = SWIG_NewPointerObj((new boost::histogram::algorithm::reduce_command(static_cast< const boost::histogram::algorithm::reduce_command& >(result))), SWIGTYPE_p_boost__histogram__algorithm__reduce_command, SWIG_POINTER_OWN |  0 );
+  return resultobj;
+fail:
+  return NULL;
+}
+
+
+SWIGINTERN PyObject *_wrap_slice__SWIG_1(PyObject *SWIGUNUSEDPARM(self), Py_ssize_t nobjs, PyObject **swig_obj) {
+  PyObject *resultobj = 0;
+  int arg1 ;
+  int arg2 ;
+  int val1 ;
+  int ecode1 = 0 ;
+  int val2 ;
+  int ecode2 = 0 ;
+  boost::histogram::algorithm::reduce_command result;
+  
+  if ((nobjs < 2) || (nobjs > 2)) SWIG_fail;
+  ecode1 = SWIG_AsVal_int(swig_obj[0], &val1);
+  if (!SWIG_IsOK(ecode1)) {
+    SWIG_exception_fail(SWIG_ArgError(ecode1), "in method '" "slice" "', argument " "1"" of type '" "int""'");
+  } 
+  arg1 = static_cast< int >(val1);
+  ecode2 = SWIG_AsVal_int(swig_obj[1], &val2);
+  if (!SWIG_IsOK(ecode2)) {
+    SWIG_exception_fail(SWIG_ArgError(ecode2), "in method '" "slice" "', argument " "2"" of type '" "int""'");
+  } 
+  arg2 = static_cast< int >(val2);
+  {
+    try {
+      result = boost::histogram::algorithm::slice(arg1,arg2); 
+    }
+    /*@SWIG:/usr/local/Cellar/swig/4.0.2/share/swig/4.0.2/typemaps/exception.swg,58,SWIG_CATCH_STDEXCEPT@*/  /* catching std::exception  */
+    catch (std::invalid_argument& e) {
+      SWIG_exception_fail(SWIG_ValueError, e.what() );
+    } catch (std::domain_error& e) {
+      SWIG_exception_fail(SWIG_ValueError, e.what() );
+    } catch (std::overflow_error& e) {
+      SWIG_exception_fail(SWIG_OverflowError, e.what() );
+    } catch (std::out_of_range& e) {
+      SWIG_exception_fail(SWIG_IndexError, e.what() );
+    } catch (std::length_error& e) {
+      SWIG_exception_fail(SWIG_IndexError, e.what() );
+    } catch (std::runtime_error& e) {
+      SWIG_exception_fail(SWIG_RuntimeError, e.what() );
+    } catch (std::exception& e) {
+      SWIG_exception_fail(SWIG_SystemError, e.what() );
+    }
+    /*@SWIG@*/
+  }
+  resultobj = SWIG_NewPointerObj((new boost::histogram::algorithm::reduce_command(static_cast< const boost::histogram::algorithm::reduce_command& >(result))), SWIGTYPE_p_boost__histogram__algorithm__reduce_command, SWIG_POINTER_OWN |  0 );
+  return resultobj;
+fail:
+  return NULL;
+}
+
+
+SWIGINTERN PyObject *_wrap_slice(PyObject *self, PyObject *args) {
+  Py_ssize_t argc;
+  PyObject *argv[4] = {
+    0
+  };
+  
+  if (!(argc = SWIG_Python_UnpackTuple(args, "slice", 0, 3, argv))) SWIG_fail;
+  --argc;
+  if (argc == 2) {
+    int _v;
+    {
+      int res = SWIG_AsVal_int(argv[0], NULL);
+      _v = SWIG_CheckState(res);
+    }
+    if (_v) {
+      {
+        int res = SWIG_AsVal_int(argv[1], NULL);
+        _v = SWIG_CheckState(res);
+      }
+      if (_v) {
+        return _wrap_slice__SWIG_1(self, argc, argv);
+      }
+    }
+  }
+  if (argc == 3) {
+    int _v;
+    {
+      int res = SWIG_AsVal_unsigned_SS_int(argv[0], NULL);
+      _v = SWIG_CheckState(res);
+    }
+    if (_v) {
+      {
+        int res = SWIG_AsVal_int(argv[1], NULL);
+        _v = SWIG_CheckState(res);
+      }
+      if (_v) {
+        {
+          int res = SWIG_AsVal_int(argv[2], NULL);
+          _v = SWIG_CheckState(res);
+        }
+        if (_v) {
+          return _wrap_slice__SWIG_0(self, argc, argv);
+        }
+      }
+    }
+  }
+  
+fail:
+  SWIG_Python_RaiseOrModifyTypeError("Wrong number or type of arguments for overloaded function 'slice'.\n"
+    "  Possible C/C++ prototypes are:\n"
+    "    boost::histogram::algorithm::slice(unsigned int,int,int)\n"
+    "    boost::histogram::algorithm::slice(int,int)\n");
+  return 0;
+}
+
+
+SWIGINTERN PyObject *_wrap_shrink_and_rebin__SWIG_0(PyObject *SWIGUNUSEDPARM(self), Py_ssize_t nobjs, PyObject **swig_obj) {
+  PyObject *resultobj = 0;
+  unsigned int arg1 ;
+  double arg2 ;
+  double arg3 ;
+  unsigned int arg4 ;
+  unsigned int val1 ;
+  int ecode1 = 0 ;
+  double val2 ;
+  int ecode2 = 0 ;
+  double val3 ;
+  int ecode3 = 0 ;
+  unsigned int val4 ;
+  int ecode4 = 0 ;
+  boost::histogram::algorithm::reduce_command result;
+  
+  if ((nobjs < 4) || (nobjs > 4)) SWIG_fail;
+  ecode1 = SWIG_AsVal_unsigned_SS_int(swig_obj[0], &val1);
+  if (!SWIG_IsOK(ecode1)) {
+    SWIG_exception_fail(SWIG_ArgError(ecode1), "in method '" "shrink_and_rebin" "', argument " "1"" of type '" "unsigned int""'");
+  } 
+  arg1 = static_cast< unsigned int >(val1);
+  ecode2 = SWIG_AsVal_double(swig_obj[1], &val2);
+  if (!SWIG_IsOK(ecode2)) {
+    SWIG_exception_fail(SWIG_ArgError(ecode2), "in method '" "shrink_and_rebin" "', argument " "2"" of type '" "double""'");
+  } 
+  arg2 = static_cast< double >(val2);
+  ecode3 = SWIG_AsVal_double(swig_obj[2], &val3);
+  if (!SWIG_IsOK(ecode3)) {
+    SWIG_exception_fail(SWIG_ArgError(ecode3), "in method '" "shrink_and_rebin" "', argument " "3"" of type '" "double""'");
+  } 
+  arg3 = static_cast< double >(val3);
+  ecode4 = SWIG_AsVal_unsigned_SS_int(swig_obj[3], &val4);
+  if (!SWIG_IsOK(ecode4)) {
+    SWIG_exception_fail(SWIG_ArgError(ecode4), "in method '" "shrink_and_rebin" "', argument " "4"" of type '" "unsigned int""'");
+  } 
+  arg4 = static_cast< unsigned int >(val4);
+  {
+    try {
+      result = boost::histogram::algorithm::shrink_and_rebin(arg1,arg2,arg3,arg4); 
+    }
+    /*@SWIG:/usr/local/Cellar/swig/4.0.2/share/swig/4.0.2/typemaps/exception.swg,58,SWIG_CATCH_STDEXCEPT@*/  /* catching std::exception  */
+    catch (std::invalid_argument& e) {
+      SWIG_exception_fail(SWIG_ValueError, e.what() );
+    } catch (std::domain_error& e) {
+      SWIG_exception_fail(SWIG_ValueError, e.what() );
+    } catch (std::overflow_error& e) {
+      SWIG_exception_fail(SWIG_OverflowError, e.what() );
+    } catch (std::out_of_range& e) {
+      SWIG_exception_fail(SWIG_IndexError, e.what() );
+    } catch (std::length_error& e) {
+      SWIG_exception_fail(SWIG_IndexError, e.what() );
+    } catch (std::runtime_error& e) {
+      SWIG_exception_fail(SWIG_RuntimeError, e.what() );
+    } catch (std::exception& e) {
+      SWIG_exception_fail(SWIG_SystemError, e.what() );
+    }
+    /*@SWIG@*/
+  }
+  resultobj = SWIG_NewPointerObj((new boost::histogram::algorithm::reduce_command(static_cast< const boost::histogram::algorithm::reduce_command& >(result))), SWIGTYPE_p_boost__histogram__algorithm__reduce_command, SWIG_POINTER_OWN |  0 );
+  return resultobj;
+fail:
+  return NULL;
+}
+
+
+SWIGINTERN PyObject *_wrap_shrink_and_rebin__SWIG_1(PyObject *SWIGUNUSEDPARM(self), Py_ssize_t nobjs, PyObject **swig_obj) {
+  PyObject *resultobj = 0;
+  double arg1 ;
+  double arg2 ;
+  unsigned int arg3 ;
+  double val1 ;
+  int ecode1 = 0 ;
+  double val2 ;
+  int ecode2 = 0 ;
+  unsigned int val3 ;
+  int ecode3 = 0 ;
+  boost::histogram::algorithm::reduce_command result;
+  
+  if ((nobjs < 3) || (nobjs > 3)) SWIG_fail;
+  ecode1 = SWIG_AsVal_double(swig_obj[0], &val1);
+  if (!SWIG_IsOK(ecode1)) {
+    SWIG_exception_fail(SWIG_ArgError(ecode1), "in method '" "shrink_and_rebin" "', argument " "1"" of type '" "double""'");
+  } 
+  arg1 = static_cast< double >(val1);
+  ecode2 = SWIG_AsVal_double(swig_obj[1], &val2);
+  if (!SWIG_IsOK(ecode2)) {
+    SWIG_exception_fail(SWIG_ArgError(ecode2), "in method '" "shrink_and_rebin" "', argument " "2"" of type '" "double""'");
+  } 
+  arg2 = static_cast< double >(val2);
+  ecode3 = SWIG_AsVal_unsigned_SS_int(swig_obj[2], &val3);
+  if (!SWIG_IsOK(ecode3)) {
+    SWIG_exception_fail(SWIG_ArgError(ecode3), "in method '" "shrink_and_rebin" "', argument " "3"" of type '" "unsigned int""'");
+  } 
+  arg3 = static_cast< unsigned int >(val3);
+  {
+    try {
+      result = boost::histogram::algorithm::shrink_and_rebin(arg1,arg2,arg3); 
+    }
+    /*@SWIG:/usr/local/Cellar/swig/4.0.2/share/swig/4.0.2/typemaps/exception.swg,58,SWIG_CATCH_STDEXCEPT@*/  /* catching std::exception  */
+    catch (std::invalid_argument& e) {
+      SWIG_exception_fail(SWIG_ValueError, e.what() );
+    } catch (std::domain_error& e) {
+      SWIG_exception_fail(SWIG_ValueError, e.what() );
+    } catch (std::overflow_error& e) {
+      SWIG_exception_fail(SWIG_OverflowError, e.what() );
+    } catch (std::out_of_range& e) {
+      SWIG_exception_fail(SWIG_IndexError, e.what() );
+    } catch (std::length_error& e) {
+      SWIG_exception_fail(SWIG_IndexError, e.what() );
+    } catch (std::runtime_error& e) {
+      SWIG_exception_fail(SWIG_RuntimeError, e.what() );
+    } catch (std::exception& e) {
+      SWIG_exception_fail(SWIG_SystemError, e.what() );
+    }
+    /*@SWIG@*/
+  }
+  resultobj = SWIG_NewPointerObj((new boost::histogram::algorithm::reduce_command(static_cast< const boost::histogram::algorithm::reduce_command& >(result))), SWIGTYPE_p_boost__histogram__algorithm__reduce_command, SWIG_POINTER_OWN |  0 );
+  return resultobj;
+fail:
+  return NULL;
+}
+
+
+SWIGINTERN PyObject *_wrap_shrink_and_rebin(PyObject *self, PyObject *args) {
+  Py_ssize_t argc;
+  PyObject *argv[5] = {
+    0
+  };
+  
+  if (!(argc = SWIG_Python_UnpackTuple(args, "shrink_and_rebin", 0, 4, argv))) SWIG_fail;
+  --argc;
+  if (argc == 3) {
+    int _v;
+    {
+      int res = SWIG_AsVal_double(argv[0], NULL);
+      _v = SWIG_CheckState(res);
+    }
+    if (_v) {
+      {
+        int res = SWIG_AsVal_double(argv[1], NULL);
+        _v = SWIG_CheckState(res);
+      }
+      if (_v) {
+        {
+          int res = SWIG_AsVal_unsigned_SS_int(argv[2], NULL);
+          _v = SWIG_CheckState(res);
+        }
+        if (_v) {
+          return _wrap_shrink_and_rebin__SWIG_1(self, argc, argv);
+        }
+      }
+    }
+  }
+  if (argc == 4) {
+    int _v;
+    {
+      int res = SWIG_AsVal_unsigned_SS_int(argv[0], NULL);
+      _v = SWIG_CheckState(res);
+    }
+    if (_v) {
+      {
+        int res = SWIG_AsVal_double(argv[1], NULL);
+        _v = SWIG_CheckState(res);
+      }
+      if (_v) {
+        {
+          int res = SWIG_AsVal_double(argv[2], NULL);
+          _v = SWIG_CheckState(res);
+        }
+        if (_v) {
+          {
+            int res = SWIG_AsVal_unsigned_SS_int(argv[3], NULL);
+            _v = SWIG_CheckState(res);
+          }
+          if (_v) {
+            return _wrap_shrink_and_rebin__SWIG_0(self, argc, argv);
+          }
+        }
+      }
+    }
+  }
+  
+fail:
+  SWIG_Python_RaiseOrModifyTypeError("Wrong number or type of arguments for overloaded function 'shrink_and_rebin'.\n"
+    "  Possible C/C++ prototypes are:\n"
+    "    boost::histogram::algorithm::shrink_and_rebin(unsigned int,double,double,unsigned int)\n"
+    "    boost::histogram::algorithm::shrink_and_rebin(double,double,unsigned int)\n");
+  return 0;
+}
+
+
+SWIGINTERN PyObject *_wrap_slice_and_rebin__SWIG_0(PyObject *SWIGUNUSEDPARM(self), Py_ssize_t nobjs, PyObject **swig_obj) {
+  PyObject *resultobj = 0;
+  unsigned int arg1 ;
+  int arg2 ;
+  int arg3 ;
+  unsigned int arg4 ;
+  unsigned int val1 ;
+  int ecode1 = 0 ;
+  int val2 ;
+  int ecode2 = 0 ;
+  int val3 ;
+  int ecode3 = 0 ;
+  unsigned int val4 ;
+  int ecode4 = 0 ;
+  boost::histogram::algorithm::reduce_command result;
+  
+  if ((nobjs < 4) || (nobjs > 4)) SWIG_fail;
+  ecode1 = SWIG_AsVal_unsigned_SS_int(swig_obj[0], &val1);
+  if (!SWIG_IsOK(ecode1)) {
+    SWIG_exception_fail(SWIG_ArgError(ecode1), "in method '" "slice_and_rebin" "', argument " "1"" of type '" "unsigned int""'");
+  } 
+  arg1 = static_cast< unsigned int >(val1);
+  ecode2 = SWIG_AsVal_int(swig_obj[1], &val2);
+  if (!SWIG_IsOK(ecode2)) {
+    SWIG_exception_fail(SWIG_ArgError(ecode2), "in method '" "slice_and_rebin" "', argument " "2"" of type '" "int""'");
+  } 
+  arg2 = static_cast< int >(val2);
+  ecode3 = SWIG_AsVal_int(swig_obj[2], &val3);
+  if (!SWIG_IsOK(ecode3)) {
+    SWIG_exception_fail(SWIG_ArgError(ecode3), "in method '" "slice_and_rebin" "', argument " "3"" of type '" "int""'");
+  } 
+  arg3 = static_cast< int >(val3);
+  ecode4 = SWIG_AsVal_unsigned_SS_int(swig_obj[3], &val4);
+  if (!SWIG_IsOK(ecode4)) {
+    SWIG_exception_fail(SWIG_ArgError(ecode4), "in method '" "slice_and_rebin" "', argument " "4"" of type '" "unsigned int""'");
+  } 
+  arg4 = static_cast< unsigned int >(val4);
+  {
+    try {
+      result = boost::histogram::algorithm::slice_and_rebin(arg1,arg2,arg3,arg4); 
+    }
+    /*@SWIG:/usr/local/Cellar/swig/4.0.2/share/swig/4.0.2/typemaps/exception.swg,58,SWIG_CATCH_STDEXCEPT@*/  /* catching std::exception  */
+    catch (std::invalid_argument& e) {
+      SWIG_exception_fail(SWIG_ValueError, e.what() );
+    } catch (std::domain_error& e) {
+      SWIG_exception_fail(SWIG_ValueError, e.what() );
+    } catch (std::overflow_error& e) {
+      SWIG_exception_fail(SWIG_OverflowError, e.what() );
+    } catch (std::out_of_range& e) {
+      SWIG_exception_fail(SWIG_IndexError, e.what() );
+    } catch (std::length_error& e) {
+      SWIG_exception_fail(SWIG_IndexError, e.what() );
+    } catch (std::runtime_error& e) {
+      SWIG_exception_fail(SWIG_RuntimeError, e.what() );
+    } catch (std::exception& e) {
+      SWIG_exception_fail(SWIG_SystemError, e.what() );
+    }
+    /*@SWIG@*/
+  }
+  resultobj = SWIG_NewPointerObj((new boost::histogram::algorithm::reduce_command(static_cast< const boost::histogram::algorithm::reduce_command& >(result))), SWIGTYPE_p_boost__histogram__algorithm__reduce_command, SWIG_POINTER_OWN |  0 );
+  return resultobj;
+fail:
+  return NULL;
+}
+
+
+SWIGINTERN PyObject *_wrap_slice_and_rebin__SWIG_1(PyObject *SWIGUNUSEDPARM(self), Py_ssize_t nobjs, PyObject **swig_obj) {
+  PyObject *resultobj = 0;
+  int arg1 ;
+  int arg2 ;
+  unsigned int arg3 ;
+  int val1 ;
+  int ecode1 = 0 ;
+  int val2 ;
+  int ecode2 = 0 ;
+  unsigned int val3 ;
+  int ecode3 = 0 ;
+  boost::histogram::algorithm::reduce_command result;
+  
+  if ((nobjs < 3) || (nobjs > 3)) SWIG_fail;
+  ecode1 = SWIG_AsVal_int(swig_obj[0], &val1);
+  if (!SWIG_IsOK(ecode1)) {
+    SWIG_exception_fail(SWIG_ArgError(ecode1), "in method '" "slice_and_rebin" "', argument " "1"" of type '" "int""'");
+  } 
+  arg1 = static_cast< int >(val1);
+  ecode2 = SWIG_AsVal_int(swig_obj[1], &val2);
+  if (!SWIG_IsOK(ecode2)) {
+    SWIG_exception_fail(SWIG_ArgError(ecode2), "in method '" "slice_and_rebin" "', argument " "2"" of type '" "int""'");
+  } 
+  arg2 = static_cast< int >(val2);
+  ecode3 = SWIG_AsVal_unsigned_SS_int(swig_obj[2], &val3);
+  if (!SWIG_IsOK(ecode3)) {
+    SWIG_exception_fail(SWIG_ArgError(ecode3), "in method '" "slice_and_rebin" "', argument " "3"" of type '" "unsigned int""'");
+  } 
+  arg3 = static_cast< unsigned int >(val3);
+  {
+    try {
+      result = boost::histogram::algorithm::slice_and_rebin(arg1,arg2,arg3); 
+    }
+    /*@SWIG:/usr/local/Cellar/swig/4.0.2/share/swig/4.0.2/typemaps/exception.swg,58,SWIG_CATCH_STDEXCEPT@*/  /* catching std::exception  */
+    catch (std::invalid_argument& e) {
+      SWIG_exception_fail(SWIG_ValueError, e.what() );
+    } catch (std::domain_error& e) {
+      SWIG_exception_fail(SWIG_ValueError, e.what() );
+    } catch (std::overflow_error& e) {
+      SWIG_exception_fail(SWIG_OverflowError, e.what() );
+    } catch (std::out_of_range& e) {
+      SWIG_exception_fail(SWIG_IndexError, e.what() );
+    } catch (std::length_error& e) {
+      SWIG_exception_fail(SWIG_IndexError, e.what() );
+    } catch (std::runtime_error& e) {
+      SWIG_exception_fail(SWIG_RuntimeError, e.what() );
+    } catch (std::exception& e) {
+      SWIG_exception_fail(SWIG_SystemError, e.what() );
+    }
+    /*@SWIG@*/
+  }
+  resultobj = SWIG_NewPointerObj((new boost::histogram::algorithm::reduce_command(static_cast< const boost::histogram::algorithm::reduce_command& >(result))), SWIGTYPE_p_boost__histogram__algorithm__reduce_command, SWIG_POINTER_OWN |  0 );
+  return resultobj;
+fail:
+  return NULL;
+}
+
+
+SWIGINTERN PyObject *_wrap_slice_and_rebin(PyObject *self, PyObject *args) {
+  Py_ssize_t argc;
+  PyObject *argv[5] = {
+    0
+  };
+  
+  if (!(argc = SWIG_Python_UnpackTuple(args, "slice_and_rebin", 0, 4, argv))) SWIG_fail;
+  --argc;
+  if (argc == 3) {
+    int _v;
+    {
+      int res = SWIG_AsVal_int(argv[0], NULL);
+      _v = SWIG_CheckState(res);
+    }
+    if (_v) {
+      {
+        int res = SWIG_AsVal_int(argv[1], NULL);
+        _v = SWIG_CheckState(res);
+      }
+      if (_v) {
+        {
+          int res = SWIG_AsVal_unsigned_SS_int(argv[2], NULL);
+          _v = SWIG_CheckState(res);
+        }
+        if (_v) {
+          return _wrap_slice_and_rebin__SWIG_1(self, argc, argv);
+        }
+      }
+    }
+  }
+  if (argc == 4) {
+    int _v;
+    {
+      int res = SWIG_AsVal_unsigned_SS_int(argv[0], NULL);
+      _v = SWIG_CheckState(res);
+    }
+    if (_v) {
+      {
+        int res = SWIG_AsVal_int(argv[1], NULL);
+        _v = SWIG_CheckState(res);
+      }
+      if (_v) {
+        {
+          int res = SWIG_AsVal_int(argv[2], NULL);
+          _v = SWIG_CheckState(res);
+        }
+        if (_v) {
+          {
+            int res = SWIG_AsVal_unsigned_SS_int(argv[3], NULL);
+            _v = SWIG_CheckState(res);
+          }
+          if (_v) {
+            return _wrap_slice_and_rebin__SWIG_0(self, argc, argv);
+          }
+        }
+      }
+    }
+  }
+  
+fail:
+  SWIG_Python_RaiseOrModifyTypeError("Wrong number or type of arguments for overloaded function 'slice_and_rebin'.\n"
+    "  Possible C/C++ prototypes are:\n"
+    "    boost::histogram::algorithm::slice_and_rebin(unsigned int,int,int,unsigned int)\n"
+    "    boost::histogram::algorithm::slice_and_rebin(int,int,unsigned int)\n");
+  return 0;
+}
+
+
+SWIGINTERN PyObject *_wrap_vectorReduceCommand_iterator(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
+  PyObject *resultobj = 0;
+  std::vector< boost::histogram::algorithm::reduce_command > *arg1 = (std::vector< boost::histogram::algorithm::reduce_command > *) 0 ;
+  PyObject **arg2 = (PyObject **) 0 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  PyObject *swig_obj[1] ;
+  swig::SwigPyIterator *result = 0 ;
+  
+  arg2 = &swig_obj[0];
+  if (!args) SWIG_fail;
+  swig_obj[0] = args;
+  res1 = SWIG_ConvertPtr(swig_obj[0], &argp1,SWIGTYPE_p_std__vectorT_boost__histogram__algorithm__reduce_command_std__allocatorT_boost__histogram__algorithm__reduce_command_t_t, 0 |  0 );
+  if (!SWIG_IsOK(res1)) {
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "vectorReduceCommand_iterator" "', argument " "1"" of type '" "std::vector< boost::histogram::algorithm::reduce_command > *""'"); 
+  }
+  arg1 = reinterpret_cast< std::vector< boost::histogram::algorithm::reduce_command > * >(argp1);
+  {
+    try {
+      result = (swig::SwigPyIterator *)std_vector_Sl_boost_histogram_algorithm_reduce_command_Sg__iterator(arg1,arg2); 
+    }
+    /*@SWIG:/usr/local/Cellar/swig/4.0.2/share/swig/4.0.2/typemaps/exception.swg,58,SWIG_CATCH_STDEXCEPT@*/  /* catching std::exception  */
+    catch (std::invalid_argument& e) {
+      SWIG_exception_fail(SWIG_ValueError, e.what() );
+    } catch (std::domain_error& e) {
+      SWIG_exception_fail(SWIG_ValueError, e.what() );
+    } catch (std::overflow_error& e) {
+      SWIG_exception_fail(SWIG_OverflowError, e.what() );
+    } catch (std::out_of_range& e) {
+      SWIG_exception_fail(SWIG_IndexError, e.what() );
+    } catch (std::length_error& e) {
+      SWIG_exception_fail(SWIG_IndexError, e.what() );
+    } catch (std::runtime_error& e) {
+      SWIG_exception_fail(SWIG_RuntimeError, e.what() );
+    } catch (std::exception& e) {
+      SWIG_exception_fail(SWIG_SystemError, e.what() );
+    }
+    /*@SWIG@*/
+  }
+  resultobj = SWIG_NewPointerObj(SWIG_as_voidptr(result), SWIGTYPE_p_swig__SwigPyIterator, SWIG_POINTER_OWN |  0 );
+  return resultobj;
+fail:
+  return NULL;
+}
+
+
+SWIGINTERN PyObject *_wrap_vectorReduceCommand___nonzero__(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
+  PyObject *resultobj = 0;
+  std::vector< boost::histogram::algorithm::reduce_command > *arg1 = (std::vector< boost::histogram::algorithm::reduce_command > *) 0 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  PyObject *swig_obj[1] ;
+  bool result;
+  
+  if (!args) SWIG_fail;
+  swig_obj[0] = args;
+  res1 = SWIG_ConvertPtr(swig_obj[0], &argp1,SWIGTYPE_p_std__vectorT_boost__histogram__algorithm__reduce_command_std__allocatorT_boost__histogram__algorithm__reduce_command_t_t, 0 |  0 );
+  if (!SWIG_IsOK(res1)) {
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "vectorReduceCommand___nonzero__" "', argument " "1"" of type '" "std::vector< boost::histogram::algorithm::reduce_command > const *""'"); 
+  }
+  arg1 = reinterpret_cast< std::vector< boost::histogram::algorithm::reduce_command > * >(argp1);
+  {
+    try {
+      result = (bool)std_vector_Sl_boost_histogram_algorithm_reduce_command_Sg____nonzero__((std::vector< boost::histogram::algorithm::reduce_command > const *)arg1); 
+    }
+    /*@SWIG:/usr/local/Cellar/swig/4.0.2/share/swig/4.0.2/typemaps/exception.swg,58,SWIG_CATCH_STDEXCEPT@*/  /* catching std::exception  */
+    catch (std::invalid_argument& e) {
+      SWIG_exception_fail(SWIG_ValueError, e.what() );
+    } catch (std::domain_error& e) {
+      SWIG_exception_fail(SWIG_ValueError, e.what() );
+    } catch (std::overflow_error& e) {
+      SWIG_exception_fail(SWIG_OverflowError, e.what() );
+    } catch (std::out_of_range& e) {
+      SWIG_exception_fail(SWIG_IndexError, e.what() );
+    } catch (std::length_error& e) {
+      SWIG_exception_fail(SWIG_IndexError, e.what() );
+    } catch (std::runtime_error& e) {
+      SWIG_exception_fail(SWIG_RuntimeError, e.what() );
+    } catch (std::exception& e) {
+      SWIG_exception_fail(SWIG_SystemError, e.what() );
+    }
+    /*@SWIG@*/
+  }
+  resultobj = SWIG_From_bool(static_cast< bool >(result));
+  return resultobj;
+fail:
+  return NULL;
+}
+
+
+SWIGINTERN PyObject *_wrap_vectorReduceCommand___bool__(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
+  PyObject *resultobj = 0;
+  std::vector< boost::histogram::algorithm::reduce_command > *arg1 = (std::vector< boost::histogram::algorithm::reduce_command > *) 0 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  PyObject *swig_obj[1] ;
+  bool result;
+  
+  if (!args) SWIG_fail;
+  swig_obj[0] = args;
+  res1 = SWIG_ConvertPtr(swig_obj[0], &argp1,SWIGTYPE_p_std__vectorT_boost__histogram__algorithm__reduce_command_std__allocatorT_boost__histogram__algorithm__reduce_command_t_t, 0 |  0 );
+  if (!SWIG_IsOK(res1)) {
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "vectorReduceCommand___bool__" "', argument " "1"" of type '" "std::vector< boost::histogram::algorithm::reduce_command > const *""'"); 
+  }
+  arg1 = reinterpret_cast< std::vector< boost::histogram::algorithm::reduce_command > * >(argp1);
+  {
+    try {
+      result = (bool)std_vector_Sl_boost_histogram_algorithm_reduce_command_Sg____bool__((std::vector< boost::histogram::algorithm::reduce_command > const *)arg1); 
+    }
+    /*@SWIG:/usr/local/Cellar/swig/4.0.2/share/swig/4.0.2/typemaps/exception.swg,58,SWIG_CATCH_STDEXCEPT@*/  /* catching std::exception  */
+    catch (std::invalid_argument& e) {
+      SWIG_exception_fail(SWIG_ValueError, e.what() );
+    } catch (std::domain_error& e) {
+      SWIG_exception_fail(SWIG_ValueError, e.what() );
+    } catch (std::overflow_error& e) {
+      SWIG_exception_fail(SWIG_OverflowError, e.what() );
+    } catch (std::out_of_range& e) {
+      SWIG_exception_fail(SWIG_IndexError, e.what() );
+    } catch (std::length_error& e) {
+      SWIG_exception_fail(SWIG_IndexError, e.what() );
+    } catch (std::runtime_error& e) {
+      SWIG_exception_fail(SWIG_RuntimeError, e.what() );
+    } catch (std::exception& e) {
+      SWIG_exception_fail(SWIG_SystemError, e.what() );
+    }
+    /*@SWIG@*/
+  }
+  resultobj = SWIG_From_bool(static_cast< bool >(result));
+  return resultobj;
+fail:
+  return NULL;
+}
+
+
+SWIGINTERN PyObject *_wrap_vectorReduceCommand___len__(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
+  PyObject *resultobj = 0;
+  std::vector< boost::histogram::algorithm::reduce_command > *arg1 = (std::vector< boost::histogram::algorithm::reduce_command > *) 0 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  PyObject *swig_obj[1] ;
+  std::vector< boost::histogram::algorithm::reduce_command >::size_type result;
+  
+  if (!args) SWIG_fail;
+  swig_obj[0] = args;
+  res1 = SWIG_ConvertPtr(swig_obj[0], &argp1,SWIGTYPE_p_std__vectorT_boost__histogram__algorithm__reduce_command_std__allocatorT_boost__histogram__algorithm__reduce_command_t_t, 0 |  0 );
+  if (!SWIG_IsOK(res1)) {
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "vectorReduceCommand___len__" "', argument " "1"" of type '" "std::vector< boost::histogram::algorithm::reduce_command > const *""'"); 
+  }
+  arg1 = reinterpret_cast< std::vector< boost::histogram::algorithm::reduce_command > * >(argp1);
+  {
+    try {
+      result = std_vector_Sl_boost_histogram_algorithm_reduce_command_Sg____len__((std::vector< boost::histogram::algorithm::reduce_command > const *)arg1); 
+    }
+    /*@SWIG:/usr/local/Cellar/swig/4.0.2/share/swig/4.0.2/typemaps/exception.swg,58,SWIG_CATCH_STDEXCEPT@*/  /* catching std::exception  */
+    catch (std::invalid_argument& e) {
+      SWIG_exception_fail(SWIG_ValueError, e.what() );
+    } catch (std::domain_error& e) {
+      SWIG_exception_fail(SWIG_ValueError, e.what() );
+    } catch (std::overflow_error& e) {
+      SWIG_exception_fail(SWIG_OverflowError, e.what() );
+    } catch (std::out_of_range& e) {
+      SWIG_exception_fail(SWIG_IndexError, e.what() );
+    } catch (std::length_error& e) {
+      SWIG_exception_fail(SWIG_IndexError, e.what() );
+    } catch (std::runtime_error& e) {
+      SWIG_exception_fail(SWIG_RuntimeError, e.what() );
+    } catch (std::exception& e) {
+      SWIG_exception_fail(SWIG_SystemError, e.what() );
+    }
+    /*@SWIG@*/
+  }
+  resultobj = SWIG_From_size_t(static_cast< size_t >(result));
+  return resultobj;
+fail:
+  return NULL;
+}
+
+
+SWIGINTERN PyObject *_wrap_vectorReduceCommand___getslice__(PyObject *SWIGUNUSEDPARM(self), PyObject *args, PyObject *kwargs) {
+  PyObject *resultobj = 0;
+  std::vector< boost::histogram::algorithm::reduce_command > *arg1 = (std::vector< boost::histogram::algorithm::reduce_command > *) 0 ;
+  std::vector< boost::histogram::algorithm::reduce_command >::difference_type arg2 ;
+  std::vector< boost::histogram::algorithm::reduce_command >::difference_type arg3 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  ptrdiff_t val2 ;
+  int ecode2 = 0 ;
+  ptrdiff_t val3 ;
+  int ecode3 = 0 ;
+  PyObject * obj0 = 0 ;
+  PyObject * obj1 = 0 ;
+  PyObject * obj2 = 0 ;
+  char * kwnames[] = {
+    (char *)"self",  (char *)"i",  (char *)"j",  NULL 
+  };
+  std::vector< boost::histogram::algorithm::reduce_command,std::allocator< boost::histogram::algorithm::reduce_command > > *result = 0 ;
+  
+  if (!PyArg_ParseTupleAndKeywords(args, kwargs, "OOO:vectorReduceCommand___getslice__", kwnames, &obj0, &obj1, &obj2)) SWIG_fail;
+  res1 = SWIG_ConvertPtr(obj0, &argp1,SWIGTYPE_p_std__vectorT_boost__histogram__algorithm__reduce_command_std__allocatorT_boost__histogram__algorithm__reduce_command_t_t, 0 |  0 );
+  if (!SWIG_IsOK(res1)) {
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "vectorReduceCommand___getslice__" "', argument " "1"" of type '" "std::vector< boost::histogram::algorithm::reduce_command > *""'"); 
+  }
+  arg1 = reinterpret_cast< std::vector< boost::histogram::algorithm::reduce_command > * >(argp1);
+  ecode2 = SWIG_AsVal_ptrdiff_t(obj1, &val2);
+  if (!SWIG_IsOK(ecode2)) {
+    SWIG_exception_fail(SWIG_ArgError(ecode2), "in method '" "vectorReduceCommand___getslice__" "', argument " "2"" of type '" "std::vector< boost::histogram::algorithm::reduce_command >::difference_type""'");
+  } 
+  arg2 = static_cast< std::vector< boost::histogram::algorithm::reduce_command >::difference_type >(val2);
+  ecode3 = SWIG_AsVal_ptrdiff_t(obj2, &val3);
+  if (!SWIG_IsOK(ecode3)) {
+    SWIG_exception_fail(SWIG_ArgError(ecode3), "in method '" "vectorReduceCommand___getslice__" "', argument " "3"" of type '" "std::vector< boost::histogram::algorithm::reduce_command >::difference_type""'");
+  } 
+  arg3 = static_cast< std::vector< boost::histogram::algorithm::reduce_command >::difference_type >(val3);
+  {
+    try {
+      try {
+        result = (std::vector< boost::histogram::algorithm::reduce_command,std::allocator< boost::histogram::algorithm::reduce_command > > *)std_vector_Sl_boost_histogram_algorithm_reduce_command_Sg____getslice__(arg1,arg2,arg3);
+      } catch(std::out_of_range &_e) {
+        SWIG_exception_fail(SWIG_IndexError, (&_e)->what());
+      } catch(std::invalid_argument &_e) {
+        SWIG_exception_fail(SWIG_ValueError, (&_e)->what());
+      } 
+    }
+    /*@SWIG:/usr/local/Cellar/swig/4.0.2/share/swig/4.0.2/typemaps/exception.swg,58,SWIG_CATCH_STDEXCEPT@*/  /* catching std::exception  */
+    catch (std::invalid_argument& e) {
+      SWIG_exception_fail(SWIG_ValueError, e.what() );
+    } catch (std::domain_error& e) {
+      SWIG_exception_fail(SWIG_ValueError, e.what() );
+    } catch (std::overflow_error& e) {
+      SWIG_exception_fail(SWIG_OverflowError, e.what() );
+    } catch (std::out_of_range& e) {
+      SWIG_exception_fail(SWIG_IndexError, e.what() );
+    } catch (std::length_error& e) {
+      SWIG_exception_fail(SWIG_IndexError, e.what() );
+    } catch (std::runtime_error& e) {
+      SWIG_exception_fail(SWIG_RuntimeError, e.what() );
+    } catch (std::exception& e) {
+      SWIG_exception_fail(SWIG_SystemError, e.what() );
+    }
+    /*@SWIG@*/
+  }
+  resultobj = SWIG_NewPointerObj(SWIG_as_voidptr(result), SWIGTYPE_p_std__vectorT_boost__histogram__algorithm__reduce_command_std__allocatorT_boost__histogram__algorithm__reduce_command_t_t, SWIG_POINTER_OWN |  0 );
+  return resultobj;
+fail:
+  return NULL;
+}
+
+
+SWIGINTERN PyObject *_wrap_vectorReduceCommand___setslice____SWIG_0(PyObject *SWIGUNUSEDPARM(self), Py_ssize_t nobjs, PyObject **swig_obj) {
+  PyObject *resultobj = 0;
+  std::vector< boost::histogram::algorithm::reduce_command > *arg1 = (std::vector< boost::histogram::algorithm::reduce_command > *) 0 ;
+  std::vector< boost::histogram::algorithm::reduce_command >::difference_type arg2 ;
+  std::vector< boost::histogram::algorithm::reduce_command >::difference_type arg3 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  ptrdiff_t val2 ;
+  int ecode2 = 0 ;
+  ptrdiff_t val3 ;
+  int ecode3 = 0 ;
+  
+  if ((nobjs < 3) || (nobjs > 3)) SWIG_fail;
+  res1 = SWIG_ConvertPtr(swig_obj[0], &argp1,SWIGTYPE_p_std__vectorT_boost__histogram__algorithm__reduce_command_std__allocatorT_boost__histogram__algorithm__reduce_command_t_t, 0 |  0 );
+  if (!SWIG_IsOK(res1)) {
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "vectorReduceCommand___setslice__" "', argument " "1"" of type '" "std::vector< boost::histogram::algorithm::reduce_command > *""'"); 
+  }
+  arg1 = reinterpret_cast< std::vector< boost::histogram::algorithm::reduce_command > * >(argp1);
+  ecode2 = SWIG_AsVal_ptrdiff_t(swig_obj[1], &val2);
+  if (!SWIG_IsOK(ecode2)) {
+    SWIG_exception_fail(SWIG_ArgError(ecode2), "in method '" "vectorReduceCommand___setslice__" "', argument " "2"" of type '" "std::vector< boost::histogram::algorithm::reduce_command >::difference_type""'");
+  } 
+  arg2 = static_cast< std::vector< boost::histogram::algorithm::reduce_command >::difference_type >(val2);
+  ecode3 = SWIG_AsVal_ptrdiff_t(swig_obj[2], &val3);
+  if (!SWIG_IsOK(ecode3)) {
+    SWIG_exception_fail(SWIG_ArgError(ecode3), "in method '" "vectorReduceCommand___setslice__" "', argument " "3"" of type '" "std::vector< boost::histogram::algorithm::reduce_command >::difference_type""'");
+  } 
+  arg3 = static_cast< std::vector< boost::histogram::algorithm::reduce_command >::difference_type >(val3);
+  {
+    try {
+      try {
+        std_vector_Sl_boost_histogram_algorithm_reduce_command_Sg____setslice____SWIG_0(arg1,arg2,arg3);
+      } catch(std::out_of_range &_e) {
+        SWIG_exception_fail(SWIG_IndexError, (&_e)->what());
+      } catch(std::invalid_argument &_e) {
+        SWIG_exception_fail(SWIG_ValueError, (&_e)->what());
+      } 
+    }
+    /*@SWIG:/usr/local/Cellar/swig/4.0.2/share/swig/4.0.2/typemaps/exception.swg,58,SWIG_CATCH_STDEXCEPT@*/  /* catching std::exception  */
+    catch (std::invalid_argument& e) {
+      SWIG_exception_fail(SWIG_ValueError, e.what() );
+    } catch (std::domain_error& e) {
+      SWIG_exception_fail(SWIG_ValueError, e.what() );
+    } catch (std::overflow_error& e) {
+      SWIG_exception_fail(SWIG_OverflowError, e.what() );
+    } catch (std::out_of_range& e) {
+      SWIG_exception_fail(SWIG_IndexError, e.what() );
+    } catch (std::length_error& e) {
+      SWIG_exception_fail(SWIG_IndexError, e.what() );
+    } catch (std::runtime_error& e) {
+      SWIG_exception_fail(SWIG_RuntimeError, e.what() );
+    } catch (std::exception& e) {
+      SWIG_exception_fail(SWIG_SystemError, e.what() );
+    }
+    /*@SWIG@*/
+  }
+  resultobj = SWIG_Py_Void();
+  return resultobj;
+fail:
+  return NULL;
+}
+
+
+SWIGINTERN PyObject *_wrap_vectorReduceCommand___setslice____SWIG_1(PyObject *SWIGUNUSEDPARM(self), Py_ssize_t nobjs, PyObject **swig_obj) {
+  PyObject *resultobj = 0;
+  std::vector< boost::histogram::algorithm::reduce_command > *arg1 = (std::vector< boost::histogram::algorithm::reduce_command > *) 0 ;
+  std::vector< boost::histogram::algorithm::reduce_command >::difference_type arg2 ;
+  std::vector< boost::histogram::algorithm::reduce_command >::difference_type arg3 ;
+  std::vector< boost::histogram::algorithm::reduce_command,std::allocator< boost::histogram::algorithm::reduce_command > > *arg4 = 0 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  ptrdiff_t val2 ;
+  int ecode2 = 0 ;
+  ptrdiff_t val3 ;
+  int ecode3 = 0 ;
+  int res4 = SWIG_OLDOBJ ;
+  
+  if ((nobjs < 4) || (nobjs > 4)) SWIG_fail;
+  res1 = SWIG_ConvertPtr(swig_obj[0], &argp1,SWIGTYPE_p_std__vectorT_boost__histogram__algorithm__reduce_command_std__allocatorT_boost__histogram__algorithm__reduce_command_t_t, 0 |  0 );
+  if (!SWIG_IsOK(res1)) {
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "vectorReduceCommand___setslice__" "', argument " "1"" of type '" "std::vector< boost::histogram::algorithm::reduce_command > *""'"); 
+  }
+  arg1 = reinterpret_cast< std::vector< boost::histogram::algorithm::reduce_command > * >(argp1);
+  ecode2 = SWIG_AsVal_ptrdiff_t(swig_obj[1], &val2);
+  if (!SWIG_IsOK(ecode2)) {
+    SWIG_exception_fail(SWIG_ArgError(ecode2), "in method '" "vectorReduceCommand___setslice__" "', argument " "2"" of type '" "std::vector< boost::histogram::algorithm::reduce_command >::difference_type""'");
+  } 
+  arg2 = static_cast< std::vector< boost::histogram::algorithm::reduce_command >::difference_type >(val2);
+  ecode3 = SWIG_AsVal_ptrdiff_t(swig_obj[2], &val3);
+  if (!SWIG_IsOK(ecode3)) {
+    SWIG_exception_fail(SWIG_ArgError(ecode3), "in method '" "vectorReduceCommand___setslice__" "', argument " "3"" of type '" "std::vector< boost::histogram::algorithm::reduce_command >::difference_type""'");
+  } 
+  arg3 = static_cast< std::vector< boost::histogram::algorithm::reduce_command >::difference_type >(val3);
+  {
+    std::vector< boost::histogram::algorithm::reduce_command,std::allocator< boost::histogram::algorithm::reduce_command > > *ptr = (std::vector< boost::histogram::algorithm::reduce_command,std::allocator< boost::histogram::algorithm::reduce_command > > *)0;
+    res4 = swig::asptr(swig_obj[3], &ptr);
+    if (!SWIG_IsOK(res4)) {
+      SWIG_exception_fail(SWIG_ArgError(res4), "in method '" "vectorReduceCommand___setslice__" "', argument " "4"" of type '" "std::vector< boost::histogram::algorithm::reduce_command,std::allocator< boost::histogram::algorithm::reduce_command > > const &""'"); 
+    }
+    if (!ptr) {
+      SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in method '" "vectorReduceCommand___setslice__" "', argument " "4"" of type '" "std::vector< boost::histogram::algorithm::reduce_command,std::allocator< boost::histogram::algorithm::reduce_command > > const &""'"); 
+    }
+    arg4 = ptr;
+  }
+  {
+    try {
+      try {
+        std_vector_Sl_boost_histogram_algorithm_reduce_command_Sg____setslice____SWIG_1(arg1,arg2,arg3,(std::vector< boost::histogram::algorithm::reduce_command,std::allocator< boost::histogram::algorithm::reduce_command > > const &)*arg4);
+      } catch(std::out_of_range &_e) {
+        SWIG_exception_fail(SWIG_IndexError, (&_e)->what());
+      } catch(std::invalid_argument &_e) {
+        SWIG_exception_fail(SWIG_ValueError, (&_e)->what());
+      } 
+    }
+    /*@SWIG:/usr/local/Cellar/swig/4.0.2/share/swig/4.0.2/typemaps/exception.swg,58,SWIG_CATCH_STDEXCEPT@*/  /* catching std::exception  */
+    catch (std::invalid_argument& e) {
+      SWIG_exception_fail(SWIG_ValueError, e.what() );
+    } catch (std::domain_error& e) {
+      SWIG_exception_fail(SWIG_ValueError, e.what() );
+    } catch (std::overflow_error& e) {
+      SWIG_exception_fail(SWIG_OverflowError, e.what() );
+    } catch (std::out_of_range& e) {
+      SWIG_exception_fail(SWIG_IndexError, e.what() );
+    } catch (std::length_error& e) {
+      SWIG_exception_fail(SWIG_IndexError, e.what() );
+    } catch (std::runtime_error& e) {
+      SWIG_exception_fail(SWIG_RuntimeError, e.what() );
+    } catch (std::exception& e) {
+      SWIG_exception_fail(SWIG_SystemError, e.what() );
+    }
+    /*@SWIG@*/
+  }
+  resultobj = SWIG_Py_Void();
+  if (SWIG_IsNewObj(res4)) delete arg4;
+  return resultobj;
+fail:
+  if (SWIG_IsNewObj(res4)) delete arg4;
+  return NULL;
+}
+
+
+SWIGINTERN PyObject *_wrap_vectorReduceCommand___setslice__(PyObject *self, PyObject *args) {
+  Py_ssize_t argc;
+  PyObject *argv[5] = {
+    0
+  };
+  
+  if (!(argc = SWIG_Python_UnpackTuple(args, "vectorReduceCommand___setslice__", 0, 4, argv))) SWIG_fail;
+  --argc;
+  if (argc == 3) {
+    int _v;
+    int res = swig::asptr(argv[0], (std::vector< boost::histogram::algorithm::reduce_command,std::allocator< boost::histogram::algorithm::reduce_command > >**)(0));
+    _v = SWIG_CheckState(res);
+    if (_v) {
+      {
+        int res = SWIG_AsVal_ptrdiff_t(argv[1], NULL);
+        _v = SWIG_CheckState(res);
+      }
+      if (_v) {
+        {
+          int res = SWIG_AsVal_ptrdiff_t(argv[2], NULL);
+          _v = SWIG_CheckState(res);
+        }
+        if (_v) {
+          return _wrap_vectorReduceCommand___setslice____SWIG_0(self, argc, argv);
+        }
+      }
+    }
+  }
+  if (argc == 4) {
+    int _v;
+    int res = swig::asptr(argv[0], (std::vector< boost::histogram::algorithm::reduce_command,std::allocator< boost::histogram::algorithm::reduce_command > >**)(0));
+    _v = SWIG_CheckState(res);
+    if (_v) {
+      {
+        int res = SWIG_AsVal_ptrdiff_t(argv[1], NULL);
+        _v = SWIG_CheckState(res);
+      }
+      if (_v) {
+        {
+          int res = SWIG_AsVal_ptrdiff_t(argv[2], NULL);
+          _v = SWIG_CheckState(res);
+        }
+        if (_v) {
+          int res = swig::asptr(argv[3], (std::vector< boost::histogram::algorithm::reduce_command,std::allocator< boost::histogram::algorithm::reduce_command > >**)(0));
+          _v = SWIG_CheckState(res);
+          if (_v) {
+            return _wrap_vectorReduceCommand___setslice____SWIG_1(self, argc, argv);
+          }
+        }
+      }
+    }
+  }
+  
+fail:
+  SWIG_Python_RaiseOrModifyTypeError("Wrong number or type of arguments for overloaded function 'vectorReduceCommand___setslice__'.\n"
+    "  Possible C/C++ prototypes are:\n"
+    "    std::vector< boost::histogram::algorithm::reduce_command >::__setslice__(std::vector< boost::histogram::algorithm::reduce_command >::difference_type,std::vector< boost::histogram::algorithm::reduce_command >::difference_type)\n"
+    "    std::vector< boost::histogram::algorithm::reduce_command >::__setslice__(std::vector< boost::histogram::algorithm::reduce_command >::difference_type,std::vector< boost::histogram::algorithm::reduce_command >::difference_type,std::vector< boost::histogram::algorithm::reduce_command,std::allocator< boost::histogram::algorithm::reduce_command > > const &)\n");
+  return 0;
+}
+
+
+SWIGINTERN PyObject *_wrap_vectorReduceCommand___delslice__(PyObject *SWIGUNUSEDPARM(self), PyObject *args, PyObject *kwargs) {
+  PyObject *resultobj = 0;
+  std::vector< boost::histogram::algorithm::reduce_command > *arg1 = (std::vector< boost::histogram::algorithm::reduce_command > *) 0 ;
+  std::vector< boost::histogram::algorithm::reduce_command >::difference_type arg2 ;
+  std::vector< boost::histogram::algorithm::reduce_command >::difference_type arg3 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  ptrdiff_t val2 ;
+  int ecode2 = 0 ;
+  ptrdiff_t val3 ;
+  int ecode3 = 0 ;
+  PyObject * obj0 = 0 ;
+  PyObject * obj1 = 0 ;
+  PyObject * obj2 = 0 ;
+  char * kwnames[] = {
+    (char *)"self",  (char *)"i",  (char *)"j",  NULL 
+  };
+  
+  if (!PyArg_ParseTupleAndKeywords(args, kwargs, "OOO:vectorReduceCommand___delslice__", kwnames, &obj0, &obj1, &obj2)) SWIG_fail;
+  res1 = SWIG_ConvertPtr(obj0, &argp1,SWIGTYPE_p_std__vectorT_boost__histogram__algorithm__reduce_command_std__allocatorT_boost__histogram__algorithm__reduce_command_t_t, 0 |  0 );
+  if (!SWIG_IsOK(res1)) {
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "vectorReduceCommand___delslice__" "', argument " "1"" of type '" "std::vector< boost::histogram::algorithm::reduce_command > *""'"); 
+  }
+  arg1 = reinterpret_cast< std::vector< boost::histogram::algorithm::reduce_command > * >(argp1);
+  ecode2 = SWIG_AsVal_ptrdiff_t(obj1, &val2);
+  if (!SWIG_IsOK(ecode2)) {
+    SWIG_exception_fail(SWIG_ArgError(ecode2), "in method '" "vectorReduceCommand___delslice__" "', argument " "2"" of type '" "std::vector< boost::histogram::algorithm::reduce_command >::difference_type""'");
+  } 
+  arg2 = static_cast< std::vector< boost::histogram::algorithm::reduce_command >::difference_type >(val2);
+  ecode3 = SWIG_AsVal_ptrdiff_t(obj2, &val3);
+  if (!SWIG_IsOK(ecode3)) {
+    SWIG_exception_fail(SWIG_ArgError(ecode3), "in method '" "vectorReduceCommand___delslice__" "', argument " "3"" of type '" "std::vector< boost::histogram::algorithm::reduce_command >::difference_type""'");
+  } 
+  arg3 = static_cast< std::vector< boost::histogram::algorithm::reduce_command >::difference_type >(val3);
+  {
+    try {
+      try {
+        std_vector_Sl_boost_histogram_algorithm_reduce_command_Sg____delslice__(arg1,arg2,arg3);
+      } catch(std::out_of_range &_e) {
+        SWIG_exception_fail(SWIG_IndexError, (&_e)->what());
+      } catch(std::invalid_argument &_e) {
+        SWIG_exception_fail(SWIG_ValueError, (&_e)->what());
+      } 
+    }
+    /*@SWIG:/usr/local/Cellar/swig/4.0.2/share/swig/4.0.2/typemaps/exception.swg,58,SWIG_CATCH_STDEXCEPT@*/  /* catching std::exception  */
+    catch (std::invalid_argument& e) {
+      SWIG_exception_fail(SWIG_ValueError, e.what() );
+    } catch (std::domain_error& e) {
+      SWIG_exception_fail(SWIG_ValueError, e.what() );
+    } catch (std::overflow_error& e) {
+      SWIG_exception_fail(SWIG_OverflowError, e.what() );
+    } catch (std::out_of_range& e) {
+      SWIG_exception_fail(SWIG_IndexError, e.what() );
+    } catch (std::length_error& e) {
+      SWIG_exception_fail(SWIG_IndexError, e.what() );
+    } catch (std::runtime_error& e) {
+      SWIG_exception_fail(SWIG_RuntimeError, e.what() );
+    } catch (std::exception& e) {
+      SWIG_exception_fail(SWIG_SystemError, e.what() );
+    }
+    /*@SWIG@*/
+  }
+  resultobj = SWIG_Py_Void();
+  return resultobj;
+fail:
+  return NULL;
+}
+
+
+SWIGINTERN PyObject *_wrap_vectorReduceCommand___delitem____SWIG_0(PyObject *SWIGUNUSEDPARM(self), Py_ssize_t nobjs, PyObject **swig_obj) {
+  PyObject *resultobj = 0;
+  std::vector< boost::histogram::algorithm::reduce_command > *arg1 = (std::vector< boost::histogram::algorithm::reduce_command > *) 0 ;
+  std::vector< boost::histogram::algorithm::reduce_command >::difference_type arg2 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  ptrdiff_t val2 ;
+  int ecode2 = 0 ;
+  
+  if ((nobjs < 2) || (nobjs > 2)) SWIG_fail;
+  res1 = SWIG_ConvertPtr(swig_obj[0], &argp1,SWIGTYPE_p_std__vectorT_boost__histogram__algorithm__reduce_command_std__allocatorT_boost__histogram__algorithm__reduce_command_t_t, 0 |  0 );
+  if (!SWIG_IsOK(res1)) {
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "vectorReduceCommand___delitem__" "', argument " "1"" of type '" "std::vector< boost::histogram::algorithm::reduce_command > *""'"); 
+  }
+  arg1 = reinterpret_cast< std::vector< boost::histogram::algorithm::reduce_command > * >(argp1);
+  ecode2 = SWIG_AsVal_ptrdiff_t(swig_obj[1], &val2);
+  if (!SWIG_IsOK(ecode2)) {
+    SWIG_exception_fail(SWIG_ArgError(ecode2), "in method '" "vectorReduceCommand___delitem__" "', argument " "2"" of type '" "std::vector< boost::histogram::algorithm::reduce_command >::difference_type""'");
+  } 
+  arg2 = static_cast< std::vector< boost::histogram::algorithm::reduce_command >::difference_type >(val2);
+  {
+    try {
+      try {
+        std_vector_Sl_boost_histogram_algorithm_reduce_command_Sg____delitem____SWIG_0(arg1,arg2);
+      } catch(std::out_of_range &_e) {
+        SWIG_exception_fail(SWIG_IndexError, (&_e)->what());
+      } catch(std::invalid_argument &_e) {
+        SWIG_exception_fail(SWIG_ValueError, (&_e)->what());
+      } 
+    }
+    /*@SWIG:/usr/local/Cellar/swig/4.0.2/share/swig/4.0.2/typemaps/exception.swg,58,SWIG_CATCH_STDEXCEPT@*/  /* catching std::exception  */
+    catch (std::invalid_argument& e) {
+      SWIG_exception_fail(SWIG_ValueError, e.what() );
+    } catch (std::domain_error& e) {
+      SWIG_exception_fail(SWIG_ValueError, e.what() );
+    } catch (std::overflow_error& e) {
+      SWIG_exception_fail(SWIG_OverflowError, e.what() );
+    } catch (std::out_of_range& e) {
+      SWIG_exception_fail(SWIG_IndexError, e.what() );
+    } catch (std::length_error& e) {
+      SWIG_exception_fail(SWIG_IndexError, e.what() );
+    } catch (std::runtime_error& e) {
+      SWIG_exception_fail(SWIG_RuntimeError, e.what() );
+    } catch (std::exception& e) {
+      SWIG_exception_fail(SWIG_SystemError, e.what() );
+    }
+    /*@SWIG@*/
+  }
+  resultobj = SWIG_Py_Void();
+  return resultobj;
+fail:
+  return NULL;
+}
+
+
+SWIGINTERN PyObject *_wrap_vectorReduceCommand___getitem____SWIG_0(PyObject *SWIGUNUSEDPARM(self), Py_ssize_t nobjs, PyObject **swig_obj) {
+  PyObject *resultobj = 0;
+  std::vector< boost::histogram::algorithm::reduce_command > *arg1 = (std::vector< boost::histogram::algorithm::reduce_command > *) 0 ;
+  PySliceObject *arg2 = (PySliceObject *) 0 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  std::vector< boost::histogram::algorithm::reduce_command,std::allocator< boost::histogram::algorithm::reduce_command > > *result = 0 ;
+  
+  if ((nobjs < 2) || (nobjs > 2)) SWIG_fail;
+  res1 = SWIG_ConvertPtr(swig_obj[0], &argp1,SWIGTYPE_p_std__vectorT_boost__histogram__algorithm__reduce_command_std__allocatorT_boost__histogram__algorithm__reduce_command_t_t, 0 |  0 );
+  if (!SWIG_IsOK(res1)) {
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "vectorReduceCommand___getitem__" "', argument " "1"" of type '" "std::vector< boost::histogram::algorithm::reduce_command > *""'"); 
+  }
+  arg1 = reinterpret_cast< std::vector< boost::histogram::algorithm::reduce_command > * >(argp1);
+  {
+    if (!PySlice_Check(swig_obj[1])) {
+      SWIG_exception_fail(SWIG_ArgError(SWIG_TypeError), "in method '" "vectorReduceCommand___getitem__" "', argument " "2"" of type '" "PySliceObject *""'");
+    }
+    arg2 = (PySliceObject *) swig_obj[1];
+  }
+  {
+    try {
+      try {
+        result = (std::vector< boost::histogram::algorithm::reduce_command,std::allocator< boost::histogram::algorithm::reduce_command > > *)std_vector_Sl_boost_histogram_algorithm_reduce_command_Sg____getitem____SWIG_0(arg1,arg2);
+      } catch(std::out_of_range &_e) {
+        SWIG_exception_fail(SWIG_IndexError, (&_e)->what());
+      } catch(std::invalid_argument &_e) {
+        SWIG_exception_fail(SWIG_ValueError, (&_e)->what());
+      } 
+    }
+    /*@SWIG:/usr/local/Cellar/swig/4.0.2/share/swig/4.0.2/typemaps/exception.swg,58,SWIG_CATCH_STDEXCEPT@*/  /* catching std::exception  */
+    catch (std::invalid_argument& e) {
+      SWIG_exception_fail(SWIG_ValueError, e.what() );
+    } catch (std::domain_error& e) {
+      SWIG_exception_fail(SWIG_ValueError, e.what() );
+    } catch (std::overflow_error& e) {
+      SWIG_exception_fail(SWIG_OverflowError, e.what() );
+    } catch (std::out_of_range& e) {
+      SWIG_exception_fail(SWIG_IndexError, e.what() );
+    } catch (std::length_error& e) {
+      SWIG_exception_fail(SWIG_IndexError, e.what() );
+    } catch (std::runtime_error& e) {
+      SWIG_exception_fail(SWIG_RuntimeError, e.what() );
+    } catch (std::exception& e) {
+      SWIG_exception_fail(SWIG_SystemError, e.what() );
+    }
+    /*@SWIG@*/
+  }
+  resultobj = SWIG_NewPointerObj(SWIG_as_voidptr(result), SWIGTYPE_p_std__vectorT_boost__histogram__algorithm__reduce_command_std__allocatorT_boost__histogram__algorithm__reduce_command_t_t, SWIG_POINTER_OWN |  0 );
+  return resultobj;
+fail:
+  return NULL;
+}
+
+
+SWIGINTERN PyObject *_wrap_vectorReduceCommand___setitem____SWIG_0(PyObject *SWIGUNUSEDPARM(self), Py_ssize_t nobjs, PyObject **swig_obj) {
+  PyObject *resultobj = 0;
+  std::vector< boost::histogram::algorithm::reduce_command > *arg1 = (std::vector< boost::histogram::algorithm::reduce_command > *) 0 ;
+  PySliceObject *arg2 = (PySliceObject *) 0 ;
+  std::vector< boost::histogram::algorithm::reduce_command,std::allocator< boost::histogram::algorithm::reduce_command > > *arg3 = 0 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  int res3 = SWIG_OLDOBJ ;
+  
+  if ((nobjs < 3) || (nobjs > 3)) SWIG_fail;
+  res1 = SWIG_ConvertPtr(swig_obj[0], &argp1,SWIGTYPE_p_std__vectorT_boost__histogram__algorithm__reduce_command_std__allocatorT_boost__histogram__algorithm__reduce_command_t_t, 0 |  0 );
+  if (!SWIG_IsOK(res1)) {
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "vectorReduceCommand___setitem__" "', argument " "1"" of type '" "std::vector< boost::histogram::algorithm::reduce_command > *""'"); 
+  }
+  arg1 = reinterpret_cast< std::vector< boost::histogram::algorithm::reduce_command > * >(argp1);
+  {
+    if (!PySlice_Check(swig_obj[1])) {
+      SWIG_exception_fail(SWIG_ArgError(SWIG_TypeError), "in method '" "vectorReduceCommand___setitem__" "', argument " "2"" of type '" "PySliceObject *""'");
+    }
+    arg2 = (PySliceObject *) swig_obj[1];
+  }
+  {
+    std::vector< boost::histogram::algorithm::reduce_command,std::allocator< boost::histogram::algorithm::reduce_command > > *ptr = (std::vector< boost::histogram::algorithm::reduce_command,std::allocator< boost::histogram::algorithm::reduce_command > > *)0;
+    res3 = swig::asptr(swig_obj[2], &ptr);
+    if (!SWIG_IsOK(res3)) {
+      SWIG_exception_fail(SWIG_ArgError(res3), "in method '" "vectorReduceCommand___setitem__" "', argument " "3"" of type '" "std::vector< boost::histogram::algorithm::reduce_command,std::allocator< boost::histogram::algorithm::reduce_command > > const &""'"); 
+    }
+    if (!ptr) {
+      SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in method '" "vectorReduceCommand___setitem__" "', argument " "3"" of type '" "std::vector< boost::histogram::algorithm::reduce_command,std::allocator< boost::histogram::algorithm::reduce_command > > const &""'"); 
+    }
+    arg3 = ptr;
+  }
+  {
+    try {
+      try {
+        std_vector_Sl_boost_histogram_algorithm_reduce_command_Sg____setitem____SWIG_0(arg1,arg2,(std::vector< boost::histogram::algorithm::reduce_command,std::allocator< boost::histogram::algorithm::reduce_command > > const &)*arg3);
+      } catch(std::out_of_range &_e) {
+        SWIG_exception_fail(SWIG_IndexError, (&_e)->what());
+      } catch(std::invalid_argument &_e) {
+        SWIG_exception_fail(SWIG_ValueError, (&_e)->what());
+      } 
+    }
+    /*@SWIG:/usr/local/Cellar/swig/4.0.2/share/swig/4.0.2/typemaps/exception.swg,58,SWIG_CATCH_STDEXCEPT@*/  /* catching std::exception  */
+    catch (std::invalid_argument& e) {
+      SWIG_exception_fail(SWIG_ValueError, e.what() );
+    } catch (std::domain_error& e) {
+      SWIG_exception_fail(SWIG_ValueError, e.what() );
+    } catch (std::overflow_error& e) {
+      SWIG_exception_fail(SWIG_OverflowError, e.what() );
+    } catch (std::out_of_range& e) {
+      SWIG_exception_fail(SWIG_IndexError, e.what() );
+    } catch (std::length_error& e) {
+      SWIG_exception_fail(SWIG_IndexError, e.what() );
+    } catch (std::runtime_error& e) {
+      SWIG_exception_fail(SWIG_RuntimeError, e.what() );
+    } catch (std::exception& e) {
+      SWIG_exception_fail(SWIG_SystemError, e.what() );
+    }
+    /*@SWIG@*/
+  }
+  resultobj = SWIG_Py_Void();
+  if (SWIG_IsNewObj(res3)) delete arg3;
+  return resultobj;
+fail:
+  if (SWIG_IsNewObj(res3)) delete arg3;
+  return NULL;
+}
+
+
+SWIGINTERN PyObject *_wrap_vectorReduceCommand___setitem____SWIG_1(PyObject *SWIGUNUSEDPARM(self), Py_ssize_t nobjs, PyObject **swig_obj) {
+  PyObject *resultobj = 0;
+  std::vector< boost::histogram::algorithm::reduce_command > *arg1 = (std::vector< boost::histogram::algorithm::reduce_command > *) 0 ;
+  PySliceObject *arg2 = (PySliceObject *) 0 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  
+  if ((nobjs < 2) || (nobjs > 2)) SWIG_fail;
+  res1 = SWIG_ConvertPtr(swig_obj[0], &argp1,SWIGTYPE_p_std__vectorT_boost__histogram__algorithm__reduce_command_std__allocatorT_boost__histogram__algorithm__reduce_command_t_t, 0 |  0 );
+  if (!SWIG_IsOK(res1)) {
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "vectorReduceCommand___setitem__" "', argument " "1"" of type '" "std::vector< boost::histogram::algorithm::reduce_command > *""'"); 
+  }
+  arg1 = reinterpret_cast< std::vector< boost::histogram::algorithm::reduce_command > * >(argp1);
+  {
+    if (!PySlice_Check(swig_obj[1])) {
+      SWIG_exception_fail(SWIG_ArgError(SWIG_TypeError), "in method '" "vectorReduceCommand___setitem__" "', argument " "2"" of type '" "PySliceObject *""'");
+    }
+    arg2 = (PySliceObject *) swig_obj[1];
+  }
+  {
+    try {
+      try {
+        std_vector_Sl_boost_histogram_algorithm_reduce_command_Sg____setitem____SWIG_1(arg1,arg2);
+      } catch(std::out_of_range &_e) {
+        SWIG_exception_fail(SWIG_IndexError, (&_e)->what());
+      } catch(std::invalid_argument &_e) {
+        SWIG_exception_fail(SWIG_ValueError, (&_e)->what());
+      } 
+    }
+    /*@SWIG:/usr/local/Cellar/swig/4.0.2/share/swig/4.0.2/typemaps/exception.swg,58,SWIG_CATCH_STDEXCEPT@*/  /* catching std::exception  */
+    catch (std::invalid_argument& e) {
+      SWIG_exception_fail(SWIG_ValueError, e.what() );
+    } catch (std::domain_error& e) {
+      SWIG_exception_fail(SWIG_ValueError, e.what() );
+    } catch (std::overflow_error& e) {
+      SWIG_exception_fail(SWIG_OverflowError, e.what() );
+    } catch (std::out_of_range& e) {
+      SWIG_exception_fail(SWIG_IndexError, e.what() );
+    } catch (std::length_error& e) {
+      SWIG_exception_fail(SWIG_IndexError, e.what() );
+    } catch (std::runtime_error& e) {
+      SWIG_exception_fail(SWIG_RuntimeError, e.what() );
+    } catch (std::exception& e) {
+      SWIG_exception_fail(SWIG_SystemError, e.what() );
+    }
+    /*@SWIG@*/
+  }
+  resultobj = SWIG_Py_Void();
+  return resultobj;
+fail:
+  return NULL;
+}
+
+
+SWIGINTERN PyObject *_wrap_vectorReduceCommand___delitem____SWIG_1(PyObject *SWIGUNUSEDPARM(self), Py_ssize_t nobjs, PyObject **swig_obj) {
+  PyObject *resultobj = 0;
+  std::vector< boost::histogram::algorithm::reduce_command > *arg1 = (std::vector< boost::histogram::algorithm::reduce_command > *) 0 ;
+  PySliceObject *arg2 = (PySliceObject *) 0 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  
+  if ((nobjs < 2) || (nobjs > 2)) SWIG_fail;
+  res1 = SWIG_ConvertPtr(swig_obj[0], &argp1,SWIGTYPE_p_std__vectorT_boost__histogram__algorithm__reduce_command_std__allocatorT_boost__histogram__algorithm__reduce_command_t_t, 0 |  0 );
+  if (!SWIG_IsOK(res1)) {
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "vectorReduceCommand___delitem__" "', argument " "1"" of type '" "std::vector< boost::histogram::algorithm::reduce_command > *""'"); 
+  }
+  arg1 = reinterpret_cast< std::vector< boost::histogram::algorithm::reduce_command > * >(argp1);
+  {
+    if (!PySlice_Check(swig_obj[1])) {
+      SWIG_exception_fail(SWIG_ArgError(SWIG_TypeError), "in method '" "vectorReduceCommand___delitem__" "', argument " "2"" of type '" "PySliceObject *""'");
+    }
+    arg2 = (PySliceObject *) swig_obj[1];
+  }
+  {
+    try {
+      try {
+        std_vector_Sl_boost_histogram_algorithm_reduce_command_Sg____delitem____SWIG_1(arg1,arg2);
+      } catch(std::out_of_range &_e) {
+        SWIG_exception_fail(SWIG_IndexError, (&_e)->what());
+      } catch(std::invalid_argument &_e) {
+        SWIG_exception_fail(SWIG_ValueError, (&_e)->what());
+      } 
+    }
+    /*@SWIG:/usr/local/Cellar/swig/4.0.2/share/swig/4.0.2/typemaps/exception.swg,58,SWIG_CATCH_STDEXCEPT@*/  /* catching std::exception  */
+    catch (std::invalid_argument& e) {
+      SWIG_exception_fail(SWIG_ValueError, e.what() );
+    } catch (std::domain_error& e) {
+      SWIG_exception_fail(SWIG_ValueError, e.what() );
+    } catch (std::overflow_error& e) {
+      SWIG_exception_fail(SWIG_OverflowError, e.what() );
+    } catch (std::out_of_range& e) {
+      SWIG_exception_fail(SWIG_IndexError, e.what() );
+    } catch (std::length_error& e) {
+      SWIG_exception_fail(SWIG_IndexError, e.what() );
+    } catch (std::runtime_error& e) {
+      SWIG_exception_fail(SWIG_RuntimeError, e.what() );
+    } catch (std::exception& e) {
+      SWIG_exception_fail(SWIG_SystemError, e.what() );
+    }
+    /*@SWIG@*/
+  }
+  resultobj = SWIG_Py_Void();
+  return resultobj;
+fail:
+  return NULL;
+}
+
+
+SWIGINTERN PyObject *_wrap_vectorReduceCommand___delitem__(PyObject *self, PyObject *args) {
+  Py_ssize_t argc;
+  PyObject *argv[3] = {
+    0
+  };
+  
+  if (!(argc = SWIG_Python_UnpackTuple(args, "vectorReduceCommand___delitem__", 0, 2, argv))) SWIG_fail;
+  --argc;
+  if (argc == 2) {
+    int _v;
+    int res = swig::asptr(argv[0], (std::vector< boost::histogram::algorithm::reduce_command,std::allocator< boost::histogram::algorithm::reduce_command > >**)(0));
+    _v = SWIG_CheckState(res);
+    if (_v) {
+      {
+        _v = PySlice_Check(argv[1]);
+      }
+      if (_v) {
+        return _wrap_vectorReduceCommand___delitem____SWIG_1(self, argc, argv);
+      }
+    }
+  }
+  if (argc == 2) {
+    int _v;
+    int res = swig::asptr(argv[0], (std::vector< boost::histogram::algorithm::reduce_command,std::allocator< boost::histogram::algorithm::reduce_command > >**)(0));
+    _v = SWIG_CheckState(res);
+    if (_v) {
+      {
+        int res = SWIG_AsVal_ptrdiff_t(argv[1], NULL);
+        _v = SWIG_CheckState(res);
+      }
+      if (_v) {
+        return _wrap_vectorReduceCommand___delitem____SWIG_0(self, argc, argv);
+      }
+    }
+  }
+  
+fail:
+  SWIG_Python_RaiseOrModifyTypeError("Wrong number or type of arguments for overloaded function 'vectorReduceCommand___delitem__'.\n"
+    "  Possible C/C++ prototypes are:\n"
+    "    std::vector< boost::histogram::algorithm::reduce_command >::__delitem__(std::vector< boost::histogram::algorithm::reduce_command >::difference_type)\n"
+    "    std::vector< boost::histogram::algorithm::reduce_command >::__delitem__(PySliceObject *)\n");
+  return 0;
+}
+
+
+SWIGINTERN PyObject *_wrap_vectorReduceCommand___getitem____SWIG_1(PyObject *SWIGUNUSEDPARM(self), Py_ssize_t nobjs, PyObject **swig_obj) {
+  PyObject *resultobj = 0;
+  std::vector< boost::histogram::algorithm::reduce_command > *arg1 = (std::vector< boost::histogram::algorithm::reduce_command > *) 0 ;
+  std::vector< boost::histogram::algorithm::reduce_command >::difference_type arg2 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  ptrdiff_t val2 ;
+  int ecode2 = 0 ;
+  std::vector< boost::histogram::algorithm::reduce_command >::value_type *result = 0 ;
+  
+  if ((nobjs < 2) || (nobjs > 2)) SWIG_fail;
+  res1 = SWIG_ConvertPtr(swig_obj[0], &argp1,SWIGTYPE_p_std__vectorT_boost__histogram__algorithm__reduce_command_std__allocatorT_boost__histogram__algorithm__reduce_command_t_t, 0 |  0 );
+  if (!SWIG_IsOK(res1)) {
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "vectorReduceCommand___getitem__" "', argument " "1"" of type '" "std::vector< boost::histogram::algorithm::reduce_command > const *""'"); 
+  }
+  arg1 = reinterpret_cast< std::vector< boost::histogram::algorithm::reduce_command > * >(argp1);
+  ecode2 = SWIG_AsVal_ptrdiff_t(swig_obj[1], &val2);
+  if (!SWIG_IsOK(ecode2)) {
+    SWIG_exception_fail(SWIG_ArgError(ecode2), "in method '" "vectorReduceCommand___getitem__" "', argument " "2"" of type '" "std::vector< boost::histogram::algorithm::reduce_command >::difference_type""'");
+  } 
+  arg2 = static_cast< std::vector< boost::histogram::algorithm::reduce_command >::difference_type >(val2);
+  {
+    try {
+      try {
+        result = (std::vector< boost::histogram::algorithm::reduce_command >::value_type *) &std_vector_Sl_boost_histogram_algorithm_reduce_command_Sg____getitem____SWIG_1((std::vector< boost::histogram::algorithm::reduce_command > const *)arg1,arg2);
+      } catch(std::out_of_range &_e) {
+        SWIG_exception_fail(SWIG_IndexError, (&_e)->what());
+      } 
+    }
+    /*@SWIG:/usr/local/Cellar/swig/4.0.2/share/swig/4.0.2/typemaps/exception.swg,58,SWIG_CATCH_STDEXCEPT@*/  /* catching std::exception  */
+    catch (std::invalid_argument& e) {
+      SWIG_exception_fail(SWIG_ValueError, e.what() );
+    } catch (std::domain_error& e) {
+      SWIG_exception_fail(SWIG_ValueError, e.what() );
+    } catch (std::overflow_error& e) {
+      SWIG_exception_fail(SWIG_OverflowError, e.what() );
+    } catch (std::out_of_range& e) {
+      SWIG_exception_fail(SWIG_IndexError, e.what() );
+    } catch (std::length_error& e) {
+      SWIG_exception_fail(SWIG_IndexError, e.what() );
+    } catch (std::runtime_error& e) {
+      SWIG_exception_fail(SWIG_RuntimeError, e.what() );
+    } catch (std::exception& e) {
+      SWIG_exception_fail(SWIG_SystemError, e.what() );
+    }
+    /*@SWIG@*/
+  }
+  resultobj = SWIG_NewPointerObj(SWIG_as_voidptr(result), SWIGTYPE_p_boost__histogram__algorithm__reduce_command, 0 |  0 );
+  (void)swig::container_owner<swig::traits<std::vector< boost::histogram::algorithm::reduce_command >::value_type>::category>::back_reference(resultobj, swig_obj[0]);
+  return resultobj;
+fail:
+  return NULL;
+}
+
+
+SWIGINTERN PyObject *_wrap_vectorReduceCommand___getitem__(PyObject *self, PyObject *args) {
+  Py_ssize_t argc;
+  PyObject *argv[3] = {
+    0
+  };
+  
+  if (!(argc = SWIG_Python_UnpackTuple(args, "vectorReduceCommand___getitem__", 0, 2, argv))) SWIG_fail;
+  --argc;
+  if (argc == 2) {
+    int _v;
+    int res = swig::asptr(argv[0], (std::vector< boost::histogram::algorithm::reduce_command,std::allocator< boost::histogram::algorithm::reduce_command > >**)(0));
+    _v = SWIG_CheckState(res);
+    if (_v) {
+      {
+        _v = PySlice_Check(argv[1]);
+      }
+      if (_v) {
+        return _wrap_vectorReduceCommand___getitem____SWIG_0(self, argc, argv);
+      }
+    }
+  }
+  if (argc == 2) {
+    int _v;
+    int res = swig::asptr(argv[0], (std::vector< boost::histogram::algorithm::reduce_command,std::allocator< boost::histogram::algorithm::reduce_command > >**)(0));
+    _v = SWIG_CheckState(res);
+    if (_v) {
+      {
+        int res = SWIG_AsVal_ptrdiff_t(argv[1], NULL);
+        _v = SWIG_CheckState(res);
+      }
+      if (_v) {
+        return _wrap_vectorReduceCommand___getitem____SWIG_1(self, argc, argv);
+      }
+    }
+  }
+  
+fail:
+  SWIG_Python_RaiseOrModifyTypeError("Wrong number or type of arguments for overloaded function 'vectorReduceCommand___getitem__'.\n"
+    "  Possible C/C++ prototypes are:\n"
+    "    std::vector< boost::histogram::algorithm::reduce_command >::__getitem__(PySliceObject *)\n"
+    "    std::vector< boost::histogram::algorithm::reduce_command >::__getitem__(std::vector< boost::histogram::algorithm::reduce_command >::difference_type) const\n");
+  return 0;
+}
+
+
+SWIGINTERN PyObject *_wrap_vectorReduceCommand___setitem____SWIG_2(PyObject *SWIGUNUSEDPARM(self), Py_ssize_t nobjs, PyObject **swig_obj) {
+  PyObject *resultobj = 0;
+  std::vector< boost::histogram::algorithm::reduce_command > *arg1 = (std::vector< boost::histogram::algorithm::reduce_command > *) 0 ;
+  std::vector< boost::histogram::algorithm::reduce_command >::difference_type arg2 ;
+  std::vector< boost::histogram::algorithm::reduce_command >::value_type *arg3 = 0 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  ptrdiff_t val2 ;
+  int ecode2 = 0 ;
+  void *argp3 = 0 ;
+  int res3 = 0 ;
+  
+  if ((nobjs < 3) || (nobjs > 3)) SWIG_fail;
+  res1 = SWIG_ConvertPtr(swig_obj[0], &argp1,SWIGTYPE_p_std__vectorT_boost__histogram__algorithm__reduce_command_std__allocatorT_boost__histogram__algorithm__reduce_command_t_t, 0 |  0 );
+  if (!SWIG_IsOK(res1)) {
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "vectorReduceCommand___setitem__" "', argument " "1"" of type '" "std::vector< boost::histogram::algorithm::reduce_command > *""'"); 
+  }
+  arg1 = reinterpret_cast< std::vector< boost::histogram::algorithm::reduce_command > * >(argp1);
+  ecode2 = SWIG_AsVal_ptrdiff_t(swig_obj[1], &val2);
+  if (!SWIG_IsOK(ecode2)) {
+    SWIG_exception_fail(SWIG_ArgError(ecode2), "in method '" "vectorReduceCommand___setitem__" "', argument " "2"" of type '" "std::vector< boost::histogram::algorithm::reduce_command >::difference_type""'");
+  } 
+  arg2 = static_cast< std::vector< boost::histogram::algorithm::reduce_command >::difference_type >(val2);
+  res3 = SWIG_ConvertPtr(swig_obj[2], &argp3, SWIGTYPE_p_boost__histogram__algorithm__reduce_command,  0  | 0);
+  if (!SWIG_IsOK(res3)) {
+    SWIG_exception_fail(SWIG_ArgError(res3), "in method '" "vectorReduceCommand___setitem__" "', argument " "3"" of type '" "std::vector< boost::histogram::algorithm::reduce_command >::value_type const &""'"); 
+  }
+  if (!argp3) {
+    SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in method '" "vectorReduceCommand___setitem__" "', argument " "3"" of type '" "std::vector< boost::histogram::algorithm::reduce_command >::value_type const &""'"); 
+  }
+  arg3 = reinterpret_cast< std::vector< boost::histogram::algorithm::reduce_command >::value_type * >(argp3);
+  {
+    try {
+      try {
+        std_vector_Sl_boost_histogram_algorithm_reduce_command_Sg____setitem____SWIG_2(arg1,arg2,(boost::histogram::algorithm::reduce_command const &)*arg3);
+      } catch(std::out_of_range &_e) {
+        SWIG_exception_fail(SWIG_IndexError, (&_e)->what());
+      } 
+    }
+    /*@SWIG:/usr/local/Cellar/swig/4.0.2/share/swig/4.0.2/typemaps/exception.swg,58,SWIG_CATCH_STDEXCEPT@*/  /* catching std::exception  */
+    catch (std::invalid_argument& e) {
+      SWIG_exception_fail(SWIG_ValueError, e.what() );
+    } catch (std::domain_error& e) {
+      SWIG_exception_fail(SWIG_ValueError, e.what() );
+    } catch (std::overflow_error& e) {
+      SWIG_exception_fail(SWIG_OverflowError, e.what() );
+    } catch (std::out_of_range& e) {
+      SWIG_exception_fail(SWIG_IndexError, e.what() );
+    } catch (std::length_error& e) {
+      SWIG_exception_fail(SWIG_IndexError, e.what() );
+    } catch (std::runtime_error& e) {
+      SWIG_exception_fail(SWIG_RuntimeError, e.what() );
+    } catch (std::exception& e) {
+      SWIG_exception_fail(SWIG_SystemError, e.what() );
+    }
+    /*@SWIG@*/
+  }
+  resultobj = SWIG_Py_Void();
+  return resultobj;
+fail:
+  return NULL;
+}
+
+
+SWIGINTERN PyObject *_wrap_vectorReduceCommand___setitem__(PyObject *self, PyObject *args) {
+  Py_ssize_t argc;
+  PyObject *argv[4] = {
+    0
+  };
+  
+  if (!(argc = SWIG_Python_UnpackTuple(args, "vectorReduceCommand___setitem__", 0, 3, argv))) SWIG_fail;
+  --argc;
+  if (argc == 2) {
+    int _v;
+    int res = swig::asptr(argv[0], (std::vector< boost::histogram::algorithm::reduce_command,std::allocator< boost::histogram::algorithm::reduce_command > >**)(0));
+    _v = SWIG_CheckState(res);
+    if (_v) {
+      {
+        _v = PySlice_Check(argv[1]);
+      }
+      if (_v) {
+        return _wrap_vectorReduceCommand___setitem____SWIG_1(self, argc, argv);
+      }
+    }
+  }
+  if (argc == 3) {
+    int _v;
+    int res = swig::asptr(argv[0], (std::vector< boost::histogram::algorithm::reduce_command,std::allocator< boost::histogram::algorithm::reduce_command > >**)(0));
+    _v = SWIG_CheckState(res);
+    if (_v) {
+      {
+        _v = PySlice_Check(argv[1]);
+      }
+      if (_v) {
+        int res = swig::asptr(argv[2], (std::vector< boost::histogram::algorithm::reduce_command,std::allocator< boost::histogram::algorithm::reduce_command > >**)(0));
+        _v = SWIG_CheckState(res);
+        if (_v) {
+          return _wrap_vectorReduceCommand___setitem____SWIG_0(self, argc, argv);
+        }
+      }
+    }
+  }
+  if (argc == 3) {
+    int _v;
+    int res = swig::asptr(argv[0], (std::vector< boost::histogram::algorithm::reduce_command,std::allocator< boost::histogram::algorithm::reduce_command > >**)(0));
+    _v = SWIG_CheckState(res);
+    if (_v) {
+      {
+        int res = SWIG_AsVal_ptrdiff_t(argv[1], NULL);
+        _v = SWIG_CheckState(res);
+      }
+      if (_v) {
+        int res = SWIG_ConvertPtr(argv[2], 0, SWIGTYPE_p_boost__histogram__algorithm__reduce_command, SWIG_POINTER_NO_NULL | 0);
+        _v = SWIG_CheckState(res);
+        if (_v) {
+          return _wrap_vectorReduceCommand___setitem____SWIG_2(self, argc, argv);
+        }
+      }
+    }
+  }
+  
+fail:
+  SWIG_Python_RaiseOrModifyTypeError("Wrong number or type of arguments for overloaded function 'vectorReduceCommand___setitem__'.\n"
+    "  Possible C/C++ prototypes are:\n"
+    "    std::vector< boost::histogram::algorithm::reduce_command >::__setitem__(PySliceObject *,std::vector< boost::histogram::algorithm::reduce_command,std::allocator< boost::histogram::algorithm::reduce_command > > const &)\n"
+    "    std::vector< boost::histogram::algorithm::reduce_command >::__setitem__(PySliceObject *)\n"
+    "    std::vector< boost::histogram::algorithm::reduce_command >::__setitem__(std::vector< boost::histogram::algorithm::reduce_command >::difference_type,std::vector< boost::histogram::algorithm::reduce_command >::value_type const &)\n");
+  return 0;
+}
+
+
+SWIGINTERN PyObject *_wrap_vectorReduceCommand_pop(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
+  PyObject *resultobj = 0;
+  std::vector< boost::histogram::algorithm::reduce_command > *arg1 = (std::vector< boost::histogram::algorithm::reduce_command > *) 0 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  PyObject *swig_obj[1] ;
+  std::vector< boost::histogram::algorithm::reduce_command >::value_type result;
+  
+  if (!args) SWIG_fail;
+  swig_obj[0] = args;
+  res1 = SWIG_ConvertPtr(swig_obj[0], &argp1,SWIGTYPE_p_std__vectorT_boost__histogram__algorithm__reduce_command_std__allocatorT_boost__histogram__algorithm__reduce_command_t_t, 0 |  0 );
+  if (!SWIG_IsOK(res1)) {
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "vectorReduceCommand_pop" "', argument " "1"" of type '" "std::vector< boost::histogram::algorithm::reduce_command > *""'"); 
+  }
+  arg1 = reinterpret_cast< std::vector< boost::histogram::algorithm::reduce_command > * >(argp1);
+  {
+    try {
+      try {
+        result = std_vector_Sl_boost_histogram_algorithm_reduce_command_Sg__pop(arg1);
+      } catch(std::out_of_range &_e) {
+        SWIG_exception_fail(SWIG_IndexError, (&_e)->what());
+      } 
+    }
+    /*@SWIG:/usr/local/Cellar/swig/4.0.2/share/swig/4.0.2/typemaps/exception.swg,58,SWIG_CATCH_STDEXCEPT@*/  /* catching std::exception  */
+    catch (std::invalid_argument& e) {
+      SWIG_exception_fail(SWIG_ValueError, e.what() );
+    } catch (std::domain_error& e) {
+      SWIG_exception_fail(SWIG_ValueError, e.what() );
+    } catch (std::overflow_error& e) {
+      SWIG_exception_fail(SWIG_OverflowError, e.what() );
+    } catch (std::out_of_range& e) {
+      SWIG_exception_fail(SWIG_IndexError, e.what() );
+    } catch (std::length_error& e) {
+      SWIG_exception_fail(SWIG_IndexError, e.what() );
+    } catch (std::runtime_error& e) {
+      SWIG_exception_fail(SWIG_RuntimeError, e.what() );
+    } catch (std::exception& e) {
+      SWIG_exception_fail(SWIG_SystemError, e.what() );
+    }
+    /*@SWIG@*/
+  }
+  resultobj = SWIG_NewPointerObj((new std::vector< boost::histogram::algorithm::reduce_command >::value_type(static_cast< const std::vector< boost::histogram::algorithm::reduce_command >::value_type& >(result))), SWIGTYPE_p_boost__histogram__algorithm__reduce_command, SWIG_POINTER_OWN |  0 );
+  return resultobj;
+fail:
+  return NULL;
+}
+
+
+SWIGINTERN PyObject *_wrap_vectorReduceCommand_append(PyObject *SWIGUNUSEDPARM(self), PyObject *args, PyObject *kwargs) {
+  PyObject *resultobj = 0;
+  std::vector< boost::histogram::algorithm::reduce_command > *arg1 = (std::vector< boost::histogram::algorithm::reduce_command > *) 0 ;
+  std::vector< boost::histogram::algorithm::reduce_command >::value_type *arg2 = 0 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  void *argp2 = 0 ;
+  int res2 = 0 ;
+  PyObject * obj0 = 0 ;
+  PyObject * obj1 = 0 ;
+  char * kwnames[] = {
+    (char *)"self",  (char *)"x",  NULL 
+  };
+  
+  if (!PyArg_ParseTupleAndKeywords(args, kwargs, "OO:vectorReduceCommand_append", kwnames, &obj0, &obj1)) SWIG_fail;
+  res1 = SWIG_ConvertPtr(obj0, &argp1,SWIGTYPE_p_std__vectorT_boost__histogram__algorithm__reduce_command_std__allocatorT_boost__histogram__algorithm__reduce_command_t_t, 0 |  0 );
+  if (!SWIG_IsOK(res1)) {
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "vectorReduceCommand_append" "', argument " "1"" of type '" "std::vector< boost::histogram::algorithm::reduce_command > *""'"); 
+  }
+  arg1 = reinterpret_cast< std::vector< boost::histogram::algorithm::reduce_command > * >(argp1);
+  res2 = SWIG_ConvertPtr(obj1, &argp2, SWIGTYPE_p_boost__histogram__algorithm__reduce_command,  0  | 0);
+  if (!SWIG_IsOK(res2)) {
+    SWIG_exception_fail(SWIG_ArgError(res2), "in method '" "vectorReduceCommand_append" "', argument " "2"" of type '" "std::vector< boost::histogram::algorithm::reduce_command >::value_type const &""'"); 
+  }
+  if (!argp2) {
+    SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in method '" "vectorReduceCommand_append" "', argument " "2"" of type '" "std::vector< boost::histogram::algorithm::reduce_command >::value_type const &""'"); 
+  }
+  arg2 = reinterpret_cast< std::vector< boost::histogram::algorithm::reduce_command >::value_type * >(argp2);
+  {
+    try {
+      std_vector_Sl_boost_histogram_algorithm_reduce_command_Sg__append(arg1,(boost::histogram::algorithm::reduce_command const &)*arg2); 
+    }
+    /*@SWIG:/usr/local/Cellar/swig/4.0.2/share/swig/4.0.2/typemaps/exception.swg,58,SWIG_CATCH_STDEXCEPT@*/  /* catching std::exception  */
+    catch (std::invalid_argument& e) {
+      SWIG_exception_fail(SWIG_ValueError, e.what() );
+    } catch (std::domain_error& e) {
+      SWIG_exception_fail(SWIG_ValueError, e.what() );
+    } catch (std::overflow_error& e) {
+      SWIG_exception_fail(SWIG_OverflowError, e.what() );
+    } catch (std::out_of_range& e) {
+      SWIG_exception_fail(SWIG_IndexError, e.what() );
+    } catch (std::length_error& e) {
+      SWIG_exception_fail(SWIG_IndexError, e.what() );
+    } catch (std::runtime_error& e) {
+      SWIG_exception_fail(SWIG_RuntimeError, e.what() );
+    } catch (std::exception& e) {
+      SWIG_exception_fail(SWIG_SystemError, e.what() );
+    }
+    /*@SWIG@*/
+  }
+  resultobj = SWIG_Py_Void();
+  return resultobj;
+fail:
+  return NULL;
+}
+
+
+SWIGINTERN PyObject *_wrap_new_vectorReduceCommand__SWIG_0(PyObject *SWIGUNUSEDPARM(self), Py_ssize_t nobjs, PyObject **SWIGUNUSEDPARM(swig_obj)) {
+  PyObject *resultobj = 0;
+  std::vector< boost::histogram::algorithm::reduce_command > *result = 0 ;
+  
+  if ((nobjs < 0) || (nobjs > 0)) SWIG_fail;
+  {
+    try {
+      result = (std::vector< boost::histogram::algorithm::reduce_command > *)new std::vector< boost::histogram::algorithm::reduce_command >(); 
+    }
+    /*@SWIG:/usr/local/Cellar/swig/4.0.2/share/swig/4.0.2/typemaps/exception.swg,58,SWIG_CATCH_STDEXCEPT@*/  /* catching std::exception  */
+    catch (std::invalid_argument& e) {
+      SWIG_exception_fail(SWIG_ValueError, e.what() );
+    } catch (std::domain_error& e) {
+      SWIG_exception_fail(SWIG_ValueError, e.what() );
+    } catch (std::overflow_error& e) {
+      SWIG_exception_fail(SWIG_OverflowError, e.what() );
+    } catch (std::out_of_range& e) {
+      SWIG_exception_fail(SWIG_IndexError, e.what() );
+    } catch (std::length_error& e) {
+      SWIG_exception_fail(SWIG_IndexError, e.what() );
+    } catch (std::runtime_error& e) {
+      SWIG_exception_fail(SWIG_RuntimeError, e.what() );
+    } catch (std::exception& e) {
+      SWIG_exception_fail(SWIG_SystemError, e.what() );
+    }
+    /*@SWIG@*/
+  }
+  resultobj = SWIG_NewPointerObj(SWIG_as_voidptr(result), SWIGTYPE_p_std__vectorT_boost__histogram__algorithm__reduce_command_std__allocatorT_boost__histogram__algorithm__reduce_command_t_t, SWIG_POINTER_NEW |  0 );
+  return resultobj;
+fail:
+  return NULL;
+}
+
+
+SWIGINTERN PyObject *_wrap_new_vectorReduceCommand__SWIG_1(PyObject *SWIGUNUSEDPARM(self), Py_ssize_t nobjs, PyObject **swig_obj) {
+  PyObject *resultobj = 0;
+  std::vector< boost::histogram::algorithm::reduce_command > *arg1 = 0 ;
+  int res1 = SWIG_OLDOBJ ;
+  std::vector< boost::histogram::algorithm::reduce_command > *result = 0 ;
+  
+  if ((nobjs < 1) || (nobjs > 1)) SWIG_fail;
+  {
+    std::vector< boost::histogram::algorithm::reduce_command,std::allocator< boost::histogram::algorithm::reduce_command > > *ptr = (std::vector< boost::histogram::algorithm::reduce_command,std::allocator< boost::histogram::algorithm::reduce_command > > *)0;
+    res1 = swig::asptr(swig_obj[0], &ptr);
+    if (!SWIG_IsOK(res1)) {
+      SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "new_vectorReduceCommand" "', argument " "1"" of type '" "std::vector< boost::histogram::algorithm::reduce_command > const &""'"); 
+    }
+    if (!ptr) {
+      SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in method '" "new_vectorReduceCommand" "', argument " "1"" of type '" "std::vector< boost::histogram::algorithm::reduce_command > const &""'"); 
+    }
+    arg1 = ptr;
+  }
+  {
+    try {
+      result = (std::vector< boost::histogram::algorithm::reduce_command > *)new std::vector< boost::histogram::algorithm::reduce_command >((std::vector< boost::histogram::algorithm::reduce_command > const &)*arg1); 
+    }
+    /*@SWIG:/usr/local/Cellar/swig/4.0.2/share/swig/4.0.2/typemaps/exception.swg,58,SWIG_CATCH_STDEXCEPT@*/  /* catching std::exception  */
+    catch (std::invalid_argument& e) {
+      SWIG_exception_fail(SWIG_ValueError, e.what() );
+    } catch (std::domain_error& e) {
+      SWIG_exception_fail(SWIG_ValueError, e.what() );
+    } catch (std::overflow_error& e) {
+      SWIG_exception_fail(SWIG_OverflowError, e.what() );
+    } catch (std::out_of_range& e) {
+      SWIG_exception_fail(SWIG_IndexError, e.what() );
+    } catch (std::length_error& e) {
+      SWIG_exception_fail(SWIG_IndexError, e.what() );
+    } catch (std::runtime_error& e) {
+      SWIG_exception_fail(SWIG_RuntimeError, e.what() );
+    } catch (std::exception& e) {
+      SWIG_exception_fail(SWIG_SystemError, e.what() );
+    }
+    /*@SWIG@*/
+  }
+  resultobj = SWIG_NewPointerObj(SWIG_as_voidptr(result), SWIGTYPE_p_std__vectorT_boost__histogram__algorithm__reduce_command_std__allocatorT_boost__histogram__algorithm__reduce_command_t_t, SWIG_POINTER_NEW |  0 );
+  if (SWIG_IsNewObj(res1)) delete arg1;
+  return resultobj;
+fail:
+  if (SWIG_IsNewObj(res1)) delete arg1;
+  return NULL;
+}
+
+
+SWIGINTERN PyObject *_wrap_vectorReduceCommand_empty(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
+  PyObject *resultobj = 0;
+  std::vector< boost::histogram::algorithm::reduce_command > *arg1 = (std::vector< boost::histogram::algorithm::reduce_command > *) 0 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  PyObject *swig_obj[1] ;
+  bool result;
+  
+  if (!args) SWIG_fail;
+  swig_obj[0] = args;
+  res1 = SWIG_ConvertPtr(swig_obj[0], &argp1,SWIGTYPE_p_std__vectorT_boost__histogram__algorithm__reduce_command_std__allocatorT_boost__histogram__algorithm__reduce_command_t_t, 0 |  0 );
+  if (!SWIG_IsOK(res1)) {
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "vectorReduceCommand_empty" "', argument " "1"" of type '" "std::vector< boost::histogram::algorithm::reduce_command > const *""'"); 
+  }
+  arg1 = reinterpret_cast< std::vector< boost::histogram::algorithm::reduce_command > * >(argp1);
+  {
+    try {
+      result = (bool)((std::vector< boost::histogram::algorithm::reduce_command > const *)arg1)->empty(); 
+    }
+    /*@SWIG:/usr/local/Cellar/swig/4.0.2/share/swig/4.0.2/typemaps/exception.swg,58,SWIG_CATCH_STDEXCEPT@*/  /* catching std::exception  */
+    catch (std::invalid_argument& e) {
+      SWIG_exception_fail(SWIG_ValueError, e.what() );
+    } catch (std::domain_error& e) {
+      SWIG_exception_fail(SWIG_ValueError, e.what() );
+    } catch (std::overflow_error& e) {
+      SWIG_exception_fail(SWIG_OverflowError, e.what() );
+    } catch (std::out_of_range& e) {
+      SWIG_exception_fail(SWIG_IndexError, e.what() );
+    } catch (std::length_error& e) {
+      SWIG_exception_fail(SWIG_IndexError, e.what() );
+    } catch (std::runtime_error& e) {
+      SWIG_exception_fail(SWIG_RuntimeError, e.what() );
+    } catch (std::exception& e) {
+      SWIG_exception_fail(SWIG_SystemError, e.what() );
+    }
+    /*@SWIG@*/
+  }
+  resultobj = SWIG_From_bool(static_cast< bool >(result));
+  return resultobj;
+fail:
+  return NULL;
+}
+
+
+SWIGINTERN PyObject *_wrap_vectorReduceCommand_size(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
+  PyObject *resultobj = 0;
+  std::vector< boost::histogram::algorithm::reduce_command > *arg1 = (std::vector< boost::histogram::algorithm::reduce_command > *) 0 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  PyObject *swig_obj[1] ;
+  std::vector< boost::histogram::algorithm::reduce_command >::size_type result;
+  
+  if (!args) SWIG_fail;
+  swig_obj[0] = args;
+  res1 = SWIG_ConvertPtr(swig_obj[0], &argp1,SWIGTYPE_p_std__vectorT_boost__histogram__algorithm__reduce_command_std__allocatorT_boost__histogram__algorithm__reduce_command_t_t, 0 |  0 );
+  if (!SWIG_IsOK(res1)) {
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "vectorReduceCommand_size" "', argument " "1"" of type '" "std::vector< boost::histogram::algorithm::reduce_command > const *""'"); 
+  }
+  arg1 = reinterpret_cast< std::vector< boost::histogram::algorithm::reduce_command > * >(argp1);
+  {
+    try {
+      result = ((std::vector< boost::histogram::algorithm::reduce_command > const *)arg1)->size(); 
+    }
+    /*@SWIG:/usr/local/Cellar/swig/4.0.2/share/swig/4.0.2/typemaps/exception.swg,58,SWIG_CATCH_STDEXCEPT@*/  /* catching std::exception  */
+    catch (std::invalid_argument& e) {
+      SWIG_exception_fail(SWIG_ValueError, e.what() );
+    } catch (std::domain_error& e) {
+      SWIG_exception_fail(SWIG_ValueError, e.what() );
+    } catch (std::overflow_error& e) {
+      SWIG_exception_fail(SWIG_OverflowError, e.what() );
+    } catch (std::out_of_range& e) {
+      SWIG_exception_fail(SWIG_IndexError, e.what() );
+    } catch (std::length_error& e) {
+      SWIG_exception_fail(SWIG_IndexError, e.what() );
+    } catch (std::runtime_error& e) {
+      SWIG_exception_fail(SWIG_RuntimeError, e.what() );
+    } catch (std::exception& e) {
+      SWIG_exception_fail(SWIG_SystemError, e.what() );
+    }
+    /*@SWIG@*/
+  }
+  resultobj = SWIG_From_size_t(static_cast< size_t >(result));
+  return resultobj;
+fail:
+  return NULL;
+}
+
+
+SWIGINTERN PyObject *_wrap_vectorReduceCommand_swap(PyObject *SWIGUNUSEDPARM(self), PyObject *args, PyObject *kwargs) {
+  PyObject *resultobj = 0;
+  std::vector< boost::histogram::algorithm::reduce_command > *arg1 = (std::vector< boost::histogram::algorithm::reduce_command > *) 0 ;
+  std::vector< boost::histogram::algorithm::reduce_command > *arg2 = 0 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  void *argp2 = 0 ;
+  int res2 = 0 ;
+  PyObject * obj0 = 0 ;
+  PyObject * obj1 = 0 ;
+  char * kwnames[] = {
+    (char *)"self",  (char *)"v",  NULL 
+  };
+  
+  if (!PyArg_ParseTupleAndKeywords(args, kwargs, "OO:vectorReduceCommand_swap", kwnames, &obj0, &obj1)) SWIG_fail;
+  res1 = SWIG_ConvertPtr(obj0, &argp1,SWIGTYPE_p_std__vectorT_boost__histogram__algorithm__reduce_command_std__allocatorT_boost__histogram__algorithm__reduce_command_t_t, 0 |  0 );
+  if (!SWIG_IsOK(res1)) {
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "vectorReduceCommand_swap" "', argument " "1"" of type '" "std::vector< boost::histogram::algorithm::reduce_command > *""'"); 
+  }
+  arg1 = reinterpret_cast< std::vector< boost::histogram::algorithm::reduce_command > * >(argp1);
+  res2 = SWIG_ConvertPtr(obj1, &argp2, SWIGTYPE_p_std__vectorT_boost__histogram__algorithm__reduce_command_std__allocatorT_boost__histogram__algorithm__reduce_command_t_t,  0 );
+  if (!SWIG_IsOK(res2)) {
+    SWIG_exception_fail(SWIG_ArgError(res2), "in method '" "vectorReduceCommand_swap" "', argument " "2"" of type '" "std::vector< boost::histogram::algorithm::reduce_command > &""'"); 
+  }
+  if (!argp2) {
+    SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in method '" "vectorReduceCommand_swap" "', argument " "2"" of type '" "std::vector< boost::histogram::algorithm::reduce_command > &""'"); 
+  }
+  arg2 = reinterpret_cast< std::vector< boost::histogram::algorithm::reduce_command > * >(argp2);
+  {
+    try {
+      (arg1)->swap(*arg2); 
+    }
+    /*@SWIG:/usr/local/Cellar/swig/4.0.2/share/swig/4.0.2/typemaps/exception.swg,58,SWIG_CATCH_STDEXCEPT@*/  /* catching std::exception  */
+    catch (std::invalid_argument& e) {
+      SWIG_exception_fail(SWIG_ValueError, e.what() );
+    } catch (std::domain_error& e) {
+      SWIG_exception_fail(SWIG_ValueError, e.what() );
+    } catch (std::overflow_error& e) {
+      SWIG_exception_fail(SWIG_OverflowError, e.what() );
+    } catch (std::out_of_range& e) {
+      SWIG_exception_fail(SWIG_IndexError, e.what() );
+    } catch (std::length_error& e) {
+      SWIG_exception_fail(SWIG_IndexError, e.what() );
+    } catch (std::runtime_error& e) {
+      SWIG_exception_fail(SWIG_RuntimeError, e.what() );
+    } catch (std::exception& e) {
+      SWIG_exception_fail(SWIG_SystemError, e.what() );
+    }
+    /*@SWIG@*/
+  }
+  resultobj = SWIG_Py_Void();
+  return resultobj;
+fail:
+  return NULL;
+}
+
+
+SWIGINTERN PyObject *_wrap_vectorReduceCommand_begin(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
+  PyObject *resultobj = 0;
+  std::vector< boost::histogram::algorithm::reduce_command > *arg1 = (std::vector< boost::histogram::algorithm::reduce_command > *) 0 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  PyObject *swig_obj[1] ;
+  std::vector< boost::histogram::algorithm::reduce_command >::iterator result;
+  
+  if (!args) SWIG_fail;
+  swig_obj[0] = args;
+  res1 = SWIG_ConvertPtr(swig_obj[0], &argp1,SWIGTYPE_p_std__vectorT_boost__histogram__algorithm__reduce_command_std__allocatorT_boost__histogram__algorithm__reduce_command_t_t, 0 |  0 );
+  if (!SWIG_IsOK(res1)) {
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "vectorReduceCommand_begin" "', argument " "1"" of type '" "std::vector< boost::histogram::algorithm::reduce_command > *""'"); 
+  }
+  arg1 = reinterpret_cast< std::vector< boost::histogram::algorithm::reduce_command > * >(argp1);
+  {
+    try {
+      result = (arg1)->begin(); 
+    }
+    /*@SWIG:/usr/local/Cellar/swig/4.0.2/share/swig/4.0.2/typemaps/exception.swg,58,SWIG_CATCH_STDEXCEPT@*/  /* catching std::exception  */
+    catch (std::invalid_argument& e) {
+      SWIG_exception_fail(SWIG_ValueError, e.what() );
+    } catch (std::domain_error& e) {
+      SWIG_exception_fail(SWIG_ValueError, e.what() );
+    } catch (std::overflow_error& e) {
+      SWIG_exception_fail(SWIG_OverflowError, e.what() );
+    } catch (std::out_of_range& e) {
+      SWIG_exception_fail(SWIG_IndexError, e.what() );
+    } catch (std::length_error& e) {
+      SWIG_exception_fail(SWIG_IndexError, e.what() );
+    } catch (std::runtime_error& e) {
+      SWIG_exception_fail(SWIG_RuntimeError, e.what() );
+    } catch (std::exception& e) {
+      SWIG_exception_fail(SWIG_SystemError, e.what() );
+    }
+    /*@SWIG@*/
+  }
+  resultobj = SWIG_NewPointerObj(swig::make_output_iterator(static_cast< const std::vector< boost::histogram::algorithm::reduce_command >::iterator & >(result)),
+    swig::SwigPyIterator::descriptor(),SWIG_POINTER_OWN);
+  return resultobj;
+fail:
+  return NULL;
+}
+
+
+SWIGINTERN PyObject *_wrap_vectorReduceCommand_end(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
+  PyObject *resultobj = 0;
+  std::vector< boost::histogram::algorithm::reduce_command > *arg1 = (std::vector< boost::histogram::algorithm::reduce_command > *) 0 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  PyObject *swig_obj[1] ;
+  std::vector< boost::histogram::algorithm::reduce_command >::iterator result;
+  
+  if (!args) SWIG_fail;
+  swig_obj[0] = args;
+  res1 = SWIG_ConvertPtr(swig_obj[0], &argp1,SWIGTYPE_p_std__vectorT_boost__histogram__algorithm__reduce_command_std__allocatorT_boost__histogram__algorithm__reduce_command_t_t, 0 |  0 );
+  if (!SWIG_IsOK(res1)) {
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "vectorReduceCommand_end" "', argument " "1"" of type '" "std::vector< boost::histogram::algorithm::reduce_command > *""'"); 
+  }
+  arg1 = reinterpret_cast< std::vector< boost::histogram::algorithm::reduce_command > * >(argp1);
+  {
+    try {
+      result = (arg1)->end(); 
+    }
+    /*@SWIG:/usr/local/Cellar/swig/4.0.2/share/swig/4.0.2/typemaps/exception.swg,58,SWIG_CATCH_STDEXCEPT@*/  /* catching std::exception  */
+    catch (std::invalid_argument& e) {
+      SWIG_exception_fail(SWIG_ValueError, e.what() );
+    } catch (std::domain_error& e) {
+      SWIG_exception_fail(SWIG_ValueError, e.what() );
+    } catch (std::overflow_error& e) {
+      SWIG_exception_fail(SWIG_OverflowError, e.what() );
+    } catch (std::out_of_range& e) {
+      SWIG_exception_fail(SWIG_IndexError, e.what() );
+    } catch (std::length_error& e) {
+      SWIG_exception_fail(SWIG_IndexError, e.what() );
+    } catch (std::runtime_error& e) {
+      SWIG_exception_fail(SWIG_RuntimeError, e.what() );
+    } catch (std::exception& e) {
+      SWIG_exception_fail(SWIG_SystemError, e.what() );
+    }
+    /*@SWIG@*/
+  }
+  resultobj = SWIG_NewPointerObj(swig::make_output_iterator(static_cast< const std::vector< boost::histogram::algorithm::reduce_command >::iterator & >(result)),
+    swig::SwigPyIterator::descriptor(),SWIG_POINTER_OWN);
+  return resultobj;
+fail:
+  return NULL;
+}
+
+
+SWIGINTERN PyObject *_wrap_vectorReduceCommand_rbegin(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
+  PyObject *resultobj = 0;
+  std::vector< boost::histogram::algorithm::reduce_command > *arg1 = (std::vector< boost::histogram::algorithm::reduce_command > *) 0 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  PyObject *swig_obj[1] ;
+  std::vector< boost::histogram::algorithm::reduce_command >::reverse_iterator result;
+  
+  if (!args) SWIG_fail;
+  swig_obj[0] = args;
+  res1 = SWIG_ConvertPtr(swig_obj[0], &argp1,SWIGTYPE_p_std__vectorT_boost__histogram__algorithm__reduce_command_std__allocatorT_boost__histogram__algorithm__reduce_command_t_t, 0 |  0 );
+  if (!SWIG_IsOK(res1)) {
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "vectorReduceCommand_rbegin" "', argument " "1"" of type '" "std::vector< boost::histogram::algorithm::reduce_command > *""'"); 
+  }
+  arg1 = reinterpret_cast< std::vector< boost::histogram::algorithm::reduce_command > * >(argp1);
+  {
+    try {
+      result = (arg1)->rbegin(); 
+    }
+    /*@SWIG:/usr/local/Cellar/swig/4.0.2/share/swig/4.0.2/typemaps/exception.swg,58,SWIG_CATCH_STDEXCEPT@*/  /* catching std::exception  */
+    catch (std::invalid_argument& e) {
+      SWIG_exception_fail(SWIG_ValueError, e.what() );
+    } catch (std::domain_error& e) {
+      SWIG_exception_fail(SWIG_ValueError, e.what() );
+    } catch (std::overflow_error& e) {
+      SWIG_exception_fail(SWIG_OverflowError, e.what() );
+    } catch (std::out_of_range& e) {
+      SWIG_exception_fail(SWIG_IndexError, e.what() );
+    } catch (std::length_error& e) {
+      SWIG_exception_fail(SWIG_IndexError, e.what() );
+    } catch (std::runtime_error& e) {
+      SWIG_exception_fail(SWIG_RuntimeError, e.what() );
+    } catch (std::exception& e) {
+      SWIG_exception_fail(SWIG_SystemError, e.what() );
+    }
+    /*@SWIG@*/
+  }
+  resultobj = SWIG_NewPointerObj(swig::make_output_iterator(static_cast< const std::vector< boost::histogram::algorithm::reduce_command >::reverse_iterator & >(result)),
+    swig::SwigPyIterator::descriptor(),SWIG_POINTER_OWN);
+  return resultobj;
+fail:
+  return NULL;
+}
+
+
+SWIGINTERN PyObject *_wrap_vectorReduceCommand_rend(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
+  PyObject *resultobj = 0;
+  std::vector< boost::histogram::algorithm::reduce_command > *arg1 = (std::vector< boost::histogram::algorithm::reduce_command > *) 0 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  PyObject *swig_obj[1] ;
+  std::vector< boost::histogram::algorithm::reduce_command >::reverse_iterator result;
+  
+  if (!args) SWIG_fail;
+  swig_obj[0] = args;
+  res1 = SWIG_ConvertPtr(swig_obj[0], &argp1,SWIGTYPE_p_std__vectorT_boost__histogram__algorithm__reduce_command_std__allocatorT_boost__histogram__algorithm__reduce_command_t_t, 0 |  0 );
+  if (!SWIG_IsOK(res1)) {
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "vectorReduceCommand_rend" "', argument " "1"" of type '" "std::vector< boost::histogram::algorithm::reduce_command > *""'"); 
+  }
+  arg1 = reinterpret_cast< std::vector< boost::histogram::algorithm::reduce_command > * >(argp1);
+  {
+    try {
+      result = (arg1)->rend(); 
+    }
+    /*@SWIG:/usr/local/Cellar/swig/4.0.2/share/swig/4.0.2/typemaps/exception.swg,58,SWIG_CATCH_STDEXCEPT@*/  /* catching std::exception  */
+    catch (std::invalid_argument& e) {
+      SWIG_exception_fail(SWIG_ValueError, e.what() );
+    } catch (std::domain_error& e) {
+      SWIG_exception_fail(SWIG_ValueError, e.what() );
+    } catch (std::overflow_error& e) {
+      SWIG_exception_fail(SWIG_OverflowError, e.what() );
+    } catch (std::out_of_range& e) {
+      SWIG_exception_fail(SWIG_IndexError, e.what() );
+    } catch (std::length_error& e) {
+      SWIG_exception_fail(SWIG_IndexError, e.what() );
+    } catch (std::runtime_error& e) {
+      SWIG_exception_fail(SWIG_RuntimeError, e.what() );
+    } catch (std::exception& e) {
+      SWIG_exception_fail(SWIG_SystemError, e.what() );
+    }
+    /*@SWIG@*/
+  }
+  resultobj = SWIG_NewPointerObj(swig::make_output_iterator(static_cast< const std::vector< boost::histogram::algorithm::reduce_command >::reverse_iterator & >(result)),
+    swig::SwigPyIterator::descriptor(),SWIG_POINTER_OWN);
+  return resultobj;
+fail:
+  return NULL;
+}
+
+
+SWIGINTERN PyObject *_wrap_vectorReduceCommand_clear(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
+  PyObject *resultobj = 0;
+  std::vector< boost::histogram::algorithm::reduce_command > *arg1 = (std::vector< boost::histogram::algorithm::reduce_command > *) 0 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  PyObject *swig_obj[1] ;
+  
+  if (!args) SWIG_fail;
+  swig_obj[0] = args;
+  res1 = SWIG_ConvertPtr(swig_obj[0], &argp1,SWIGTYPE_p_std__vectorT_boost__histogram__algorithm__reduce_command_std__allocatorT_boost__histogram__algorithm__reduce_command_t_t, 0 |  0 );
+  if (!SWIG_IsOK(res1)) {
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "vectorReduceCommand_clear" "', argument " "1"" of type '" "std::vector< boost::histogram::algorithm::reduce_command > *""'"); 
+  }
+  arg1 = reinterpret_cast< std::vector< boost::histogram::algorithm::reduce_command > * >(argp1);
+  {
+    try {
+      (arg1)->clear(); 
+    }
+    /*@SWIG:/usr/local/Cellar/swig/4.0.2/share/swig/4.0.2/typemaps/exception.swg,58,SWIG_CATCH_STDEXCEPT@*/  /* catching std::exception  */
+    catch (std::invalid_argument& e) {
+      SWIG_exception_fail(SWIG_ValueError, e.what() );
+    } catch (std::domain_error& e) {
+      SWIG_exception_fail(SWIG_ValueError, e.what() );
+    } catch (std::overflow_error& e) {
+      SWIG_exception_fail(SWIG_OverflowError, e.what() );
+    } catch (std::out_of_range& e) {
+      SWIG_exception_fail(SWIG_IndexError, e.what() );
+    } catch (std::length_error& e) {
+      SWIG_exception_fail(SWIG_IndexError, e.what() );
+    } catch (std::runtime_error& e) {
+      SWIG_exception_fail(SWIG_RuntimeError, e.what() );
+    } catch (std::exception& e) {
+      SWIG_exception_fail(SWIG_SystemError, e.what() );
+    }
+    /*@SWIG@*/
+  }
+  resultobj = SWIG_Py_Void();
+  return resultobj;
+fail:
+  return NULL;
+}
+
+
+SWIGINTERN PyObject *_wrap_vectorReduceCommand_get_allocator(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
+  PyObject *resultobj = 0;
+  std::vector< boost::histogram::algorithm::reduce_command > *arg1 = (std::vector< boost::histogram::algorithm::reduce_command > *) 0 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  PyObject *swig_obj[1] ;
+  SwigValueWrapper< std::allocator< boost::histogram::algorithm::reduce_command > > result;
+  
+  if (!args) SWIG_fail;
+  swig_obj[0] = args;
+  res1 = SWIG_ConvertPtr(swig_obj[0], &argp1,SWIGTYPE_p_std__vectorT_boost__histogram__algorithm__reduce_command_std__allocatorT_boost__histogram__algorithm__reduce_command_t_t, 0 |  0 );
+  if (!SWIG_IsOK(res1)) {
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "vectorReduceCommand_get_allocator" "', argument " "1"" of type '" "std::vector< boost::histogram::algorithm::reduce_command > const *""'"); 
+  }
+  arg1 = reinterpret_cast< std::vector< boost::histogram::algorithm::reduce_command > * >(argp1);
+  {
+    try {
+      result = ((std::vector< boost::histogram::algorithm::reduce_command > const *)arg1)->get_allocator(); 
+    }
+    /*@SWIG:/usr/local/Cellar/swig/4.0.2/share/swig/4.0.2/typemaps/exception.swg,58,SWIG_CATCH_STDEXCEPT@*/  /* catching std::exception  */
+    catch (std::invalid_argument& e) {
+      SWIG_exception_fail(SWIG_ValueError, e.what() );
+    } catch (std::domain_error& e) {
+      SWIG_exception_fail(SWIG_ValueError, e.what() );
+    } catch (std::overflow_error& e) {
+      SWIG_exception_fail(SWIG_OverflowError, e.what() );
+    } catch (std::out_of_range& e) {
+      SWIG_exception_fail(SWIG_IndexError, e.what() );
+    } catch (std::length_error& e) {
+      SWIG_exception_fail(SWIG_IndexError, e.what() );
+    } catch (std::runtime_error& e) {
+      SWIG_exception_fail(SWIG_RuntimeError, e.what() );
+    } catch (std::exception& e) {
+      SWIG_exception_fail(SWIG_SystemError, e.what() );
+    }
+    /*@SWIG@*/
+  }
+  resultobj = SWIG_NewPointerObj((new std::vector< boost::histogram::algorithm::reduce_command >::allocator_type(static_cast< const std::vector< boost::histogram::algorithm::reduce_command >::allocator_type& >(result))), SWIGTYPE_p_std__allocatorT_boost__histogram__algorithm__reduce_command_t, SWIG_POINTER_OWN |  0 );
+  return resultobj;
+fail:
+  return NULL;
+}
+
+
+SWIGINTERN PyObject *_wrap_new_vectorReduceCommand__SWIG_2(PyObject *SWIGUNUSEDPARM(self), Py_ssize_t nobjs, PyObject **swig_obj) {
+  PyObject *resultobj = 0;
+  std::vector< boost::histogram::algorithm::reduce_command >::size_type arg1 ;
+  size_t val1 ;
+  int ecode1 = 0 ;
+  std::vector< boost::histogram::algorithm::reduce_command > *result = 0 ;
+  
+  if ((nobjs < 1) || (nobjs > 1)) SWIG_fail;
+  ecode1 = SWIG_AsVal_size_t(swig_obj[0], &val1);
+  if (!SWIG_IsOK(ecode1)) {
+    SWIG_exception_fail(SWIG_ArgError(ecode1), "in method '" "new_vectorReduceCommand" "', argument " "1"" of type '" "std::vector< boost::histogram::algorithm::reduce_command >::size_type""'");
+  } 
+  arg1 = static_cast< std::vector< boost::histogram::algorithm::reduce_command >::size_type >(val1);
+  {
+    try {
+      result = (std::vector< boost::histogram::algorithm::reduce_command > *)new std::vector< boost::histogram::algorithm::reduce_command >(arg1); 
+    }
+    /*@SWIG:/usr/local/Cellar/swig/4.0.2/share/swig/4.0.2/typemaps/exception.swg,58,SWIG_CATCH_STDEXCEPT@*/  /* catching std::exception  */
+    catch (std::invalid_argument& e) {
+      SWIG_exception_fail(SWIG_ValueError, e.what() );
+    } catch (std::domain_error& e) {
+      SWIG_exception_fail(SWIG_ValueError, e.what() );
+    } catch (std::overflow_error& e) {
+      SWIG_exception_fail(SWIG_OverflowError, e.what() );
+    } catch (std::out_of_range& e) {
+      SWIG_exception_fail(SWIG_IndexError, e.what() );
+    } catch (std::length_error& e) {
+      SWIG_exception_fail(SWIG_IndexError, e.what() );
+    } catch (std::runtime_error& e) {
+      SWIG_exception_fail(SWIG_RuntimeError, e.what() );
+    } catch (std::exception& e) {
+      SWIG_exception_fail(SWIG_SystemError, e.what() );
+    }
+    /*@SWIG@*/
+  }
+  resultobj = SWIG_NewPointerObj(SWIG_as_voidptr(result), SWIGTYPE_p_std__vectorT_boost__histogram__algorithm__reduce_command_std__allocatorT_boost__histogram__algorithm__reduce_command_t_t, SWIG_POINTER_NEW |  0 );
+  return resultobj;
+fail:
+  return NULL;
+}
+
+
+SWIGINTERN PyObject *_wrap_vectorReduceCommand_pop_back(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
+  PyObject *resultobj = 0;
+  std::vector< boost::histogram::algorithm::reduce_command > *arg1 = (std::vector< boost::histogram::algorithm::reduce_command > *) 0 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  PyObject *swig_obj[1] ;
+  
+  if (!args) SWIG_fail;
+  swig_obj[0] = args;
+  res1 = SWIG_ConvertPtr(swig_obj[0], &argp1,SWIGTYPE_p_std__vectorT_boost__histogram__algorithm__reduce_command_std__allocatorT_boost__histogram__algorithm__reduce_command_t_t, 0 |  0 );
+  if (!SWIG_IsOK(res1)) {
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "vectorReduceCommand_pop_back" "', argument " "1"" of type '" "std::vector< boost::histogram::algorithm::reduce_command > *""'"); 
+  }
+  arg1 = reinterpret_cast< std::vector< boost::histogram::algorithm::reduce_command > * >(argp1);
+  {
+    try {
+      (arg1)->pop_back(); 
+    }
+    /*@SWIG:/usr/local/Cellar/swig/4.0.2/share/swig/4.0.2/typemaps/exception.swg,58,SWIG_CATCH_STDEXCEPT@*/  /* catching std::exception  */
+    catch (std::invalid_argument& e) {
+      SWIG_exception_fail(SWIG_ValueError, e.what() );
+    } catch (std::domain_error& e) {
+      SWIG_exception_fail(SWIG_ValueError, e.what() );
+    } catch (std::overflow_error& e) {
+      SWIG_exception_fail(SWIG_OverflowError, e.what() );
+    } catch (std::out_of_range& e) {
+      SWIG_exception_fail(SWIG_IndexError, e.what() );
+    } catch (std::length_error& e) {
+      SWIG_exception_fail(SWIG_IndexError, e.what() );
+    } catch (std::runtime_error& e) {
+      SWIG_exception_fail(SWIG_RuntimeError, e.what() );
+    } catch (std::exception& e) {
+      SWIG_exception_fail(SWIG_SystemError, e.what() );
+    }
+    /*@SWIG@*/
+  }
+  resultobj = SWIG_Py_Void();
+  return resultobj;
+fail:
+  return NULL;
+}
+
+
+SWIGINTERN PyObject *_wrap_vectorReduceCommand_resize__SWIG_0(PyObject *SWIGUNUSEDPARM(self), Py_ssize_t nobjs, PyObject **swig_obj) {
+  PyObject *resultobj = 0;
+  std::vector< boost::histogram::algorithm::reduce_command > *arg1 = (std::vector< boost::histogram::algorithm::reduce_command > *) 0 ;
+  std::vector< boost::histogram::algorithm::reduce_command >::size_type arg2 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  size_t val2 ;
+  int ecode2 = 0 ;
+  
+  if ((nobjs < 2) || (nobjs > 2)) SWIG_fail;
+  res1 = SWIG_ConvertPtr(swig_obj[0], &argp1,SWIGTYPE_p_std__vectorT_boost__histogram__algorithm__reduce_command_std__allocatorT_boost__histogram__algorithm__reduce_command_t_t, 0 |  0 );
+  if (!SWIG_IsOK(res1)) {
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "vectorReduceCommand_resize" "', argument " "1"" of type '" "std::vector< boost::histogram::algorithm::reduce_command > *""'"); 
+  }
+  arg1 = reinterpret_cast< std::vector< boost::histogram::algorithm::reduce_command > * >(argp1);
+  ecode2 = SWIG_AsVal_size_t(swig_obj[1], &val2);
+  if (!SWIG_IsOK(ecode2)) {
+    SWIG_exception_fail(SWIG_ArgError(ecode2), "in method '" "vectorReduceCommand_resize" "', argument " "2"" of type '" "std::vector< boost::histogram::algorithm::reduce_command >::size_type""'");
+  } 
+  arg2 = static_cast< std::vector< boost::histogram::algorithm::reduce_command >::size_type >(val2);
+  {
+    try {
+      (arg1)->resize(arg2); 
+    }
+    /*@SWIG:/usr/local/Cellar/swig/4.0.2/share/swig/4.0.2/typemaps/exception.swg,58,SWIG_CATCH_STDEXCEPT@*/  /* catching std::exception  */
+    catch (std::invalid_argument& e) {
+      SWIG_exception_fail(SWIG_ValueError, e.what() );
+    } catch (std::domain_error& e) {
+      SWIG_exception_fail(SWIG_ValueError, e.what() );
+    } catch (std::overflow_error& e) {
+      SWIG_exception_fail(SWIG_OverflowError, e.what() );
+    } catch (std::out_of_range& e) {
+      SWIG_exception_fail(SWIG_IndexError, e.what() );
+    } catch (std::length_error& e) {
+      SWIG_exception_fail(SWIG_IndexError, e.what() );
+    } catch (std::runtime_error& e) {
+      SWIG_exception_fail(SWIG_RuntimeError, e.what() );
+    } catch (std::exception& e) {
+      SWIG_exception_fail(SWIG_SystemError, e.what() );
+    }
+    /*@SWIG@*/
+  }
+  resultobj = SWIG_Py_Void();
+  return resultobj;
+fail:
+  return NULL;
+}
+
+
+SWIGINTERN PyObject *_wrap_vectorReduceCommand_erase__SWIG_0(PyObject *SWIGUNUSEDPARM(self), Py_ssize_t nobjs, PyObject **swig_obj) {
+  PyObject *resultobj = 0;
+  std::vector< boost::histogram::algorithm::reduce_command > *arg1 = (std::vector< boost::histogram::algorithm::reduce_command > *) 0 ;
+  std::vector< boost::histogram::algorithm::reduce_command >::iterator arg2 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  swig::SwigPyIterator *iter2 = 0 ;
+  int res2 ;
+  std::vector< boost::histogram::algorithm::reduce_command >::iterator result;
+  
+  if ((nobjs < 2) || (nobjs > 2)) SWIG_fail;
+  res1 = SWIG_ConvertPtr(swig_obj[0], &argp1,SWIGTYPE_p_std__vectorT_boost__histogram__algorithm__reduce_command_std__allocatorT_boost__histogram__algorithm__reduce_command_t_t, 0 |  0 );
+  if (!SWIG_IsOK(res1)) {
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "vectorReduceCommand_erase" "', argument " "1"" of type '" "std::vector< boost::histogram::algorithm::reduce_command > *""'"); 
+  }
+  arg1 = reinterpret_cast< std::vector< boost::histogram::algorithm::reduce_command > * >(argp1);
+  res2 = SWIG_ConvertPtr(swig_obj[1], SWIG_as_voidptrptr(&iter2), swig::SwigPyIterator::descriptor(), 0);
+  if (!SWIG_IsOK(res2) || !iter2) {
+    SWIG_exception_fail(SWIG_ArgError(SWIG_TypeError), "in method '" "vectorReduceCommand_erase" "', argument " "2"" of type '" "std::vector< boost::histogram::algorithm::reduce_command >::iterator""'");
+  } else {
+    swig::SwigPyIterator_T<std::vector< boost::histogram::algorithm::reduce_command >::iterator > *iter_t = dynamic_cast<swig::SwigPyIterator_T<std::vector< boost::histogram::algorithm::reduce_command >::iterator > *>(iter2);
+    if (iter_t) {
+      arg2 = iter_t->get_current();
+    } else {
+      SWIG_exception_fail(SWIG_ArgError(SWIG_TypeError), "in method '" "vectorReduceCommand_erase" "', argument " "2"" of type '" "std::vector< boost::histogram::algorithm::reduce_command >::iterator""'");
+    }
+  }
+  {
+    try {
+      result = std_vector_Sl_boost_histogram_algorithm_reduce_command_Sg__erase__SWIG_0(arg1,arg2); 
+    }
+    /*@SWIG:/usr/local/Cellar/swig/4.0.2/share/swig/4.0.2/typemaps/exception.swg,58,SWIG_CATCH_STDEXCEPT@*/  /* catching std::exception  */
+    catch (std::invalid_argument& e) {
+      SWIG_exception_fail(SWIG_ValueError, e.what() );
+    } catch (std::domain_error& e) {
+      SWIG_exception_fail(SWIG_ValueError, e.what() );
+    } catch (std::overflow_error& e) {
+      SWIG_exception_fail(SWIG_OverflowError, e.what() );
+    } catch (std::out_of_range& e) {
+      SWIG_exception_fail(SWIG_IndexError, e.what() );
+    } catch (std::length_error& e) {
+      SWIG_exception_fail(SWIG_IndexError, e.what() );
+    } catch (std::runtime_error& e) {
+      SWIG_exception_fail(SWIG_RuntimeError, e.what() );
+    } catch (std::exception& e) {
+      SWIG_exception_fail(SWIG_SystemError, e.what() );
+    }
+    /*@SWIG@*/
+  }
+  resultobj = SWIG_NewPointerObj(swig::make_output_iterator(static_cast< const std::vector< boost::histogram::algorithm::reduce_command >::iterator & >(result)),
+    swig::SwigPyIterator::descriptor(),SWIG_POINTER_OWN);
+  return resultobj;
+fail:
+  return NULL;
+}
+
+
+SWIGINTERN PyObject *_wrap_vectorReduceCommand_erase__SWIG_1(PyObject *SWIGUNUSEDPARM(self), Py_ssize_t nobjs, PyObject **swig_obj) {
+  PyObject *resultobj = 0;
+  std::vector< boost::histogram::algorithm::reduce_command > *arg1 = (std::vector< boost::histogram::algorithm::reduce_command > *) 0 ;
+  std::vector< boost::histogram::algorithm::reduce_command >::iterator arg2 ;
+  std::vector< boost::histogram::algorithm::reduce_command >::iterator arg3 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  swig::SwigPyIterator *iter2 = 0 ;
+  int res2 ;
+  swig::SwigPyIterator *iter3 = 0 ;
+  int res3 ;
+  std::vector< boost::histogram::algorithm::reduce_command >::iterator result;
+  
+  if ((nobjs < 3) || (nobjs > 3)) SWIG_fail;
+  res1 = SWIG_ConvertPtr(swig_obj[0], &argp1,SWIGTYPE_p_std__vectorT_boost__histogram__algorithm__reduce_command_std__allocatorT_boost__histogram__algorithm__reduce_command_t_t, 0 |  0 );
+  if (!SWIG_IsOK(res1)) {
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "vectorReduceCommand_erase" "', argument " "1"" of type '" "std::vector< boost::histogram::algorithm::reduce_command > *""'"); 
+  }
+  arg1 = reinterpret_cast< std::vector< boost::histogram::algorithm::reduce_command > * >(argp1);
+  res2 = SWIG_ConvertPtr(swig_obj[1], SWIG_as_voidptrptr(&iter2), swig::SwigPyIterator::descriptor(), 0);
+  if (!SWIG_IsOK(res2) || !iter2) {
+    SWIG_exception_fail(SWIG_ArgError(SWIG_TypeError), "in method '" "vectorReduceCommand_erase" "', argument " "2"" of type '" "std::vector< boost::histogram::algorithm::reduce_command >::iterator""'");
+  } else {
+    swig::SwigPyIterator_T<std::vector< boost::histogram::algorithm::reduce_command >::iterator > *iter_t = dynamic_cast<swig::SwigPyIterator_T<std::vector< boost::histogram::algorithm::reduce_command >::iterator > *>(iter2);
+    if (iter_t) {
+      arg2 = iter_t->get_current();
+    } else {
+      SWIG_exception_fail(SWIG_ArgError(SWIG_TypeError), "in method '" "vectorReduceCommand_erase" "', argument " "2"" of type '" "std::vector< boost::histogram::algorithm::reduce_command >::iterator""'");
+    }
+  }
+  res3 = SWIG_ConvertPtr(swig_obj[2], SWIG_as_voidptrptr(&iter3), swig::SwigPyIterator::descriptor(), 0);
+  if (!SWIG_IsOK(res3) || !iter3) {
+    SWIG_exception_fail(SWIG_ArgError(SWIG_TypeError), "in method '" "vectorReduceCommand_erase" "', argument " "3"" of type '" "std::vector< boost::histogram::algorithm::reduce_command >::iterator""'");
+  } else {
+    swig::SwigPyIterator_T<std::vector< boost::histogram::algorithm::reduce_command >::iterator > *iter_t = dynamic_cast<swig::SwigPyIterator_T<std::vector< boost::histogram::algorithm::reduce_command >::iterator > *>(iter3);
+    if (iter_t) {
+      arg3 = iter_t->get_current();
+    } else {
+      SWIG_exception_fail(SWIG_ArgError(SWIG_TypeError), "in method '" "vectorReduceCommand_erase" "', argument " "3"" of type '" "std::vector< boost::histogram::algorithm::reduce_command >::iterator""'");
+    }
+  }
+  {
+    try {
+      result = std_vector_Sl_boost_histogram_algorithm_reduce_command_Sg__erase__SWIG_1(arg1,arg2,arg3); 
+    }
+    /*@SWIG:/usr/local/Cellar/swig/4.0.2/share/swig/4.0.2/typemaps/exception.swg,58,SWIG_CATCH_STDEXCEPT@*/  /* catching std::exception  */
+    catch (std::invalid_argument& e) {
+      SWIG_exception_fail(SWIG_ValueError, e.what() );
+    } catch (std::domain_error& e) {
+      SWIG_exception_fail(SWIG_ValueError, e.what() );
+    } catch (std::overflow_error& e) {
+      SWIG_exception_fail(SWIG_OverflowError, e.what() );
+    } catch (std::out_of_range& e) {
+      SWIG_exception_fail(SWIG_IndexError, e.what() );
+    } catch (std::length_error& e) {
+      SWIG_exception_fail(SWIG_IndexError, e.what() );
+    } catch (std::runtime_error& e) {
+      SWIG_exception_fail(SWIG_RuntimeError, e.what() );
+    } catch (std::exception& e) {
+      SWIG_exception_fail(SWIG_SystemError, e.what() );
+    }
+    /*@SWIG@*/
+  }
+  resultobj = SWIG_NewPointerObj(swig::make_output_iterator(static_cast< const std::vector< boost::histogram::algorithm::reduce_command >::iterator & >(result)),
+    swig::SwigPyIterator::descriptor(),SWIG_POINTER_OWN);
+  return resultobj;
+fail:
+  return NULL;
+}
+
+
+SWIGINTERN PyObject *_wrap_vectorReduceCommand_erase(PyObject *self, PyObject *args) {
+  Py_ssize_t argc;
+  PyObject *argv[4] = {
+    0
+  };
+  
+  if (!(argc = SWIG_Python_UnpackTuple(args, "vectorReduceCommand_erase", 0, 3, argv))) SWIG_fail;
+  --argc;
+  if (argc == 2) {
+    int _v;
+    int res = swig::asptr(argv[0], (std::vector< boost::histogram::algorithm::reduce_command,std::allocator< boost::histogram::algorithm::reduce_command > >**)(0));
+    _v = SWIG_CheckState(res);
+    if (_v) {
+      swig::SwigPyIterator *iter = 0;
+      int res = SWIG_ConvertPtr(argv[1], SWIG_as_voidptrptr(&iter), swig::SwigPyIterator::descriptor(), 0);
+      _v = (SWIG_IsOK(res) && iter && (dynamic_cast<swig::SwigPyIterator_T<std::vector< boost::histogram::algorithm::reduce_command >::iterator > *>(iter) != 0));
+      if (_v) {
+        return _wrap_vectorReduceCommand_erase__SWIG_0(self, argc, argv);
+      }
+    }
+  }
+  if (argc == 3) {
+    int _v;
+    int res = swig::asptr(argv[0], (std::vector< boost::histogram::algorithm::reduce_command,std::allocator< boost::histogram::algorithm::reduce_command > >**)(0));
+    _v = SWIG_CheckState(res);
+    if (_v) {
+      swig::SwigPyIterator *iter = 0;
+      int res = SWIG_ConvertPtr(argv[1], SWIG_as_voidptrptr(&iter), swig::SwigPyIterator::descriptor(), 0);
+      _v = (SWIG_IsOK(res) && iter && (dynamic_cast<swig::SwigPyIterator_T<std::vector< boost::histogram::algorithm::reduce_command >::iterator > *>(iter) != 0));
+      if (_v) {
+        swig::SwigPyIterator *iter = 0;
+        int res = SWIG_ConvertPtr(argv[2], SWIG_as_voidptrptr(&iter), swig::SwigPyIterator::descriptor(), 0);
+        _v = (SWIG_IsOK(res) && iter && (dynamic_cast<swig::SwigPyIterator_T<std::vector< boost::histogram::algorithm::reduce_command >::iterator > *>(iter) != 0));
+        if (_v) {
+          return _wrap_vectorReduceCommand_erase__SWIG_1(self, argc, argv);
+        }
+      }
+    }
+  }
+  
+fail:
+  SWIG_Python_RaiseOrModifyTypeError("Wrong number or type of arguments for overloaded function 'vectorReduceCommand_erase'.\n"
+    "  Possible C/C++ prototypes are:\n"
+    "    std::vector< boost::histogram::algorithm::reduce_command >::erase(std::vector< boost::histogram::algorithm::reduce_command >::iterator)\n"
+    "    std::vector< boost::histogram::algorithm::reduce_command >::erase(std::vector< boost::histogram::algorithm::reduce_command >::iterator,std::vector< boost::histogram::algorithm::reduce_command >::iterator)\n");
+  return 0;
+}
+
+
+SWIGINTERN PyObject *_wrap_new_vectorReduceCommand__SWIG_3(PyObject *SWIGUNUSEDPARM(self), Py_ssize_t nobjs, PyObject **swig_obj) {
+  PyObject *resultobj = 0;
+  std::vector< boost::histogram::algorithm::reduce_command >::size_type arg1 ;
+  std::vector< boost::histogram::algorithm::reduce_command >::value_type *arg2 = 0 ;
+  size_t val1 ;
+  int ecode1 = 0 ;
+  void *argp2 = 0 ;
+  int res2 = 0 ;
+  std::vector< boost::histogram::algorithm::reduce_command > *result = 0 ;
+  
+  if ((nobjs < 2) || (nobjs > 2)) SWIG_fail;
+  ecode1 = SWIG_AsVal_size_t(swig_obj[0], &val1);
+  if (!SWIG_IsOK(ecode1)) {
+    SWIG_exception_fail(SWIG_ArgError(ecode1), "in method '" "new_vectorReduceCommand" "', argument " "1"" of type '" "std::vector< boost::histogram::algorithm::reduce_command >::size_type""'");
+  } 
+  arg1 = static_cast< std::vector< boost::histogram::algorithm::reduce_command >::size_type >(val1);
+  res2 = SWIG_ConvertPtr(swig_obj[1], &argp2, SWIGTYPE_p_boost__histogram__algorithm__reduce_command,  0  | 0);
+  if (!SWIG_IsOK(res2)) {
+    SWIG_exception_fail(SWIG_ArgError(res2), "in method '" "new_vectorReduceCommand" "', argument " "2"" of type '" "std::vector< boost::histogram::algorithm::reduce_command >::value_type const &""'"); 
+  }
+  if (!argp2) {
+    SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in method '" "new_vectorReduceCommand" "', argument " "2"" of type '" "std::vector< boost::histogram::algorithm::reduce_command >::value_type const &""'"); 
+  }
+  arg2 = reinterpret_cast< std::vector< boost::histogram::algorithm::reduce_command >::value_type * >(argp2);
+  {
+    try {
+      result = (std::vector< boost::histogram::algorithm::reduce_command > *)new std::vector< boost::histogram::algorithm::reduce_command >(arg1,(std::vector< boost::histogram::algorithm::reduce_command >::value_type const &)*arg2); 
+    }
+    /*@SWIG:/usr/local/Cellar/swig/4.0.2/share/swig/4.0.2/typemaps/exception.swg,58,SWIG_CATCH_STDEXCEPT@*/  /* catching std::exception  */
+    catch (std::invalid_argument& e) {
+      SWIG_exception_fail(SWIG_ValueError, e.what() );
+    } catch (std::domain_error& e) {
+      SWIG_exception_fail(SWIG_ValueError, e.what() );
+    } catch (std::overflow_error& e) {
+      SWIG_exception_fail(SWIG_OverflowError, e.what() );
+    } catch (std::out_of_range& e) {
+      SWIG_exception_fail(SWIG_IndexError, e.what() );
+    } catch (std::length_error& e) {
+      SWIG_exception_fail(SWIG_IndexError, e.what() );
+    } catch (std::runtime_error& e) {
+      SWIG_exception_fail(SWIG_RuntimeError, e.what() );
+    } catch (std::exception& e) {
+      SWIG_exception_fail(SWIG_SystemError, e.what() );
+    }
+    /*@SWIG@*/
+  }
+  resultobj = SWIG_NewPointerObj(SWIG_as_voidptr(result), SWIGTYPE_p_std__vectorT_boost__histogram__algorithm__reduce_command_std__allocatorT_boost__histogram__algorithm__reduce_command_t_t, SWIG_POINTER_NEW |  0 );
+  return resultobj;
+fail:
+  return NULL;
+}
+
+
+SWIGINTERN PyObject *_wrap_new_vectorReduceCommand(PyObject *self, PyObject *args) {
+  Py_ssize_t argc;
+  PyObject *argv[3] = {
+    0
+  };
+  
+  if (!(argc = SWIG_Python_UnpackTuple(args, "new_vectorReduceCommand", 0, 2, argv))) SWIG_fail;
+  --argc;
+  if (argc == 0) {
+    return _wrap_new_vectorReduceCommand__SWIG_0(self, argc, argv);
+  }
+  if (argc == 1) {
+    int _v;
+    {
+      int res = SWIG_AsVal_size_t(argv[0], NULL);
+      _v = SWIG_CheckState(res);
+    }
+    if (_v) {
+      return _wrap_new_vectorReduceCommand__SWIG_2(self, argc, argv);
+    }
+  }
+  if (argc == 1) {
+    int _v;
+    int res = swig::asptr(argv[0], (std::vector< boost::histogram::algorithm::reduce_command,std::allocator< boost::histogram::algorithm::reduce_command > >**)(0));
+    _v = SWIG_CheckState(res);
+    if (_v) {
+      return _wrap_new_vectorReduceCommand__SWIG_1(self, argc, argv);
+    }
+  }
+  if (argc == 2) {
+    int _v;
+    {
+      int res = SWIG_AsVal_size_t(argv[0], NULL);
+      _v = SWIG_CheckState(res);
+    }
+    if (_v) {
+      int res = SWIG_ConvertPtr(argv[1], 0, SWIGTYPE_p_boost__histogram__algorithm__reduce_command, SWIG_POINTER_NO_NULL | 0);
+      _v = SWIG_CheckState(res);
+      if (_v) {
+        return _wrap_new_vectorReduceCommand__SWIG_3(self, argc, argv);
+      }
+    }
+  }
+  
+fail:
+  SWIG_Python_RaiseOrModifyTypeError("Wrong number or type of arguments for overloaded function 'new_vectorReduceCommand'.\n"
+    "  Possible C/C++ prototypes are:\n"
+    "    std::vector< boost::histogram::algorithm::reduce_command >::vector()\n"
+    "    std::vector< boost::histogram::algorithm::reduce_command >::vector(std::vector< boost::histogram::algorithm::reduce_command > const &)\n"
+    "    std::vector< boost::histogram::algorithm::reduce_command >::vector(std::vector< boost::histogram::algorithm::reduce_command >::size_type)\n"
+    "    std::vector< boost::histogram::algorithm::reduce_command >::vector(std::vector< boost::histogram::algorithm::reduce_command >::size_type,std::vector< boost::histogram::algorithm::reduce_command >::value_type const &)\n");
+  return 0;
+}
+
+
+SWIGINTERN PyObject *_wrap_vectorReduceCommand_push_back(PyObject *SWIGUNUSEDPARM(self), PyObject *args, PyObject *kwargs) {
+  PyObject *resultobj = 0;
+  std::vector< boost::histogram::algorithm::reduce_command > *arg1 = (std::vector< boost::histogram::algorithm::reduce_command > *) 0 ;
+  std::vector< boost::histogram::algorithm::reduce_command >::value_type *arg2 = 0 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  void *argp2 = 0 ;
+  int res2 = 0 ;
+  PyObject * obj0 = 0 ;
+  PyObject * obj1 = 0 ;
+  char * kwnames[] = {
+    (char *)"self",  (char *)"x",  NULL 
+  };
+  
+  if (!PyArg_ParseTupleAndKeywords(args, kwargs, "OO:vectorReduceCommand_push_back", kwnames, &obj0, &obj1)) SWIG_fail;
+  res1 = SWIG_ConvertPtr(obj0, &argp1,SWIGTYPE_p_std__vectorT_boost__histogram__algorithm__reduce_command_std__allocatorT_boost__histogram__algorithm__reduce_command_t_t, 0 |  0 );
+  if (!SWIG_IsOK(res1)) {
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "vectorReduceCommand_push_back" "', argument " "1"" of type '" "std::vector< boost::histogram::algorithm::reduce_command > *""'"); 
+  }
+  arg1 = reinterpret_cast< std::vector< boost::histogram::algorithm::reduce_command > * >(argp1);
+  res2 = SWIG_ConvertPtr(obj1, &argp2, SWIGTYPE_p_boost__histogram__algorithm__reduce_command,  0  | 0);
+  if (!SWIG_IsOK(res2)) {
+    SWIG_exception_fail(SWIG_ArgError(res2), "in method '" "vectorReduceCommand_push_back" "', argument " "2"" of type '" "std::vector< boost::histogram::algorithm::reduce_command >::value_type const &""'"); 
+  }
+  if (!argp2) {
+    SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in method '" "vectorReduceCommand_push_back" "', argument " "2"" of type '" "std::vector< boost::histogram::algorithm::reduce_command >::value_type const &""'"); 
+  }
+  arg2 = reinterpret_cast< std::vector< boost::histogram::algorithm::reduce_command >::value_type * >(argp2);
+  {
+    try {
+      (arg1)->push_back((std::vector< boost::histogram::algorithm::reduce_command >::value_type const &)*arg2); 
+    }
+    /*@SWIG:/usr/local/Cellar/swig/4.0.2/share/swig/4.0.2/typemaps/exception.swg,58,SWIG_CATCH_STDEXCEPT@*/  /* catching std::exception  */
+    catch (std::invalid_argument& e) {
+      SWIG_exception_fail(SWIG_ValueError, e.what() );
+    } catch (std::domain_error& e) {
+      SWIG_exception_fail(SWIG_ValueError, e.what() );
+    } catch (std::overflow_error& e) {
+      SWIG_exception_fail(SWIG_OverflowError, e.what() );
+    } catch (std::out_of_range& e) {
+      SWIG_exception_fail(SWIG_IndexError, e.what() );
+    } catch (std::length_error& e) {
+      SWIG_exception_fail(SWIG_IndexError, e.what() );
+    } catch (std::runtime_error& e) {
+      SWIG_exception_fail(SWIG_RuntimeError, e.what() );
+    } catch (std::exception& e) {
+      SWIG_exception_fail(SWIG_SystemError, e.what() );
+    }
+    /*@SWIG@*/
+  }
+  resultobj = SWIG_Py_Void();
+  return resultobj;
+fail:
+  return NULL;
+}
+
+
+SWIGINTERN PyObject *_wrap_vectorReduceCommand_front(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
+  PyObject *resultobj = 0;
+  std::vector< boost::histogram::algorithm::reduce_command > *arg1 = (std::vector< boost::histogram::algorithm::reduce_command > *) 0 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  PyObject *swig_obj[1] ;
+  std::vector< boost::histogram::algorithm::reduce_command >::value_type *result = 0 ;
+  
+  if (!args) SWIG_fail;
+  swig_obj[0] = args;
+  res1 = SWIG_ConvertPtr(swig_obj[0], &argp1,SWIGTYPE_p_std__vectorT_boost__histogram__algorithm__reduce_command_std__allocatorT_boost__histogram__algorithm__reduce_command_t_t, 0 |  0 );
+  if (!SWIG_IsOK(res1)) {
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "vectorReduceCommand_front" "', argument " "1"" of type '" "std::vector< boost::histogram::algorithm::reduce_command > const *""'"); 
+  }
+  arg1 = reinterpret_cast< std::vector< boost::histogram::algorithm::reduce_command > * >(argp1);
+  {
+    try {
+      result = (std::vector< boost::histogram::algorithm::reduce_command >::value_type *) &((std::vector< boost::histogram::algorithm::reduce_command > const *)arg1)->front(); 
+    }
+    /*@SWIG:/usr/local/Cellar/swig/4.0.2/share/swig/4.0.2/typemaps/exception.swg,58,SWIG_CATCH_STDEXCEPT@*/  /* catching std::exception  */
+    catch (std::invalid_argument& e) {
+      SWIG_exception_fail(SWIG_ValueError, e.what() );
+    } catch (std::domain_error& e) {
+      SWIG_exception_fail(SWIG_ValueError, e.what() );
+    } catch (std::overflow_error& e) {
+      SWIG_exception_fail(SWIG_OverflowError, e.what() );
+    } catch (std::out_of_range& e) {
+      SWIG_exception_fail(SWIG_IndexError, e.what() );
+    } catch (std::length_error& e) {
+      SWIG_exception_fail(SWIG_IndexError, e.what() );
+    } catch (std::runtime_error& e) {
+      SWIG_exception_fail(SWIG_RuntimeError, e.what() );
+    } catch (std::exception& e) {
+      SWIG_exception_fail(SWIG_SystemError, e.what() );
+    }
+    /*@SWIG@*/
+  }
+  resultobj = SWIG_NewPointerObj(SWIG_as_voidptr(result), SWIGTYPE_p_boost__histogram__algorithm__reduce_command, 0 |  0 );
+  (void)swig::container_owner<swig::traits<std::vector< boost::histogram::algorithm::reduce_command >::value_type>::category>::back_reference(resultobj, swig_obj[0]);
+  return resultobj;
+fail:
+  return NULL;
+}
+
+
+SWIGINTERN PyObject *_wrap_vectorReduceCommand_back(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
+  PyObject *resultobj = 0;
+  std::vector< boost::histogram::algorithm::reduce_command > *arg1 = (std::vector< boost::histogram::algorithm::reduce_command > *) 0 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  PyObject *swig_obj[1] ;
+  std::vector< boost::histogram::algorithm::reduce_command >::value_type *result = 0 ;
+  
+  if (!args) SWIG_fail;
+  swig_obj[0] = args;
+  res1 = SWIG_ConvertPtr(swig_obj[0], &argp1,SWIGTYPE_p_std__vectorT_boost__histogram__algorithm__reduce_command_std__allocatorT_boost__histogram__algorithm__reduce_command_t_t, 0 |  0 );
+  if (!SWIG_IsOK(res1)) {
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "vectorReduceCommand_back" "', argument " "1"" of type '" "std::vector< boost::histogram::algorithm::reduce_command > const *""'"); 
+  }
+  arg1 = reinterpret_cast< std::vector< boost::histogram::algorithm::reduce_command > * >(argp1);
+  {
+    try {
+      result = (std::vector< boost::histogram::algorithm::reduce_command >::value_type *) &((std::vector< boost::histogram::algorithm::reduce_command > const *)arg1)->back(); 
+    }
+    /*@SWIG:/usr/local/Cellar/swig/4.0.2/share/swig/4.0.2/typemaps/exception.swg,58,SWIG_CATCH_STDEXCEPT@*/  /* catching std::exception  */
+    catch (std::invalid_argument& e) {
+      SWIG_exception_fail(SWIG_ValueError, e.what() );
+    } catch (std::domain_error& e) {
+      SWIG_exception_fail(SWIG_ValueError, e.what() );
+    } catch (std::overflow_error& e) {
+      SWIG_exception_fail(SWIG_OverflowError, e.what() );
+    } catch (std::out_of_range& e) {
+      SWIG_exception_fail(SWIG_IndexError, e.what() );
+    } catch (std::length_error& e) {
+      SWIG_exception_fail(SWIG_IndexError, e.what() );
+    } catch (std::runtime_error& e) {
+      SWIG_exception_fail(SWIG_RuntimeError, e.what() );
+    } catch (std::exception& e) {
+      SWIG_exception_fail(SWIG_SystemError, e.what() );
+    }
+    /*@SWIG@*/
+  }
+  resultobj = SWIG_NewPointerObj(SWIG_as_voidptr(result), SWIGTYPE_p_boost__histogram__algorithm__reduce_command, 0 |  0 );
+  (void)swig::container_owner<swig::traits<std::vector< boost::histogram::algorithm::reduce_command >::value_type>::category>::back_reference(resultobj, swig_obj[0]);
+  return resultobj;
+fail:
+  return NULL;
+}
+
+
+SWIGINTERN PyObject *_wrap_vectorReduceCommand_assign(PyObject *SWIGUNUSEDPARM(self), PyObject *args, PyObject *kwargs) {
+  PyObject *resultobj = 0;
+  std::vector< boost::histogram::algorithm::reduce_command > *arg1 = (std::vector< boost::histogram::algorithm::reduce_command > *) 0 ;
+  std::vector< boost::histogram::algorithm::reduce_command >::size_type arg2 ;
+  std::vector< boost::histogram::algorithm::reduce_command >::value_type *arg3 = 0 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  size_t val2 ;
+  int ecode2 = 0 ;
+  void *argp3 = 0 ;
+  int res3 = 0 ;
+  PyObject * obj0 = 0 ;
+  PyObject * obj1 = 0 ;
+  PyObject * obj2 = 0 ;
+  char * kwnames[] = {
+    (char *)"self",  (char *)"n",  (char *)"x",  NULL 
+  };
+  
+  if (!PyArg_ParseTupleAndKeywords(args, kwargs, "OOO:vectorReduceCommand_assign", kwnames, &obj0, &obj1, &obj2)) SWIG_fail;
+  res1 = SWIG_ConvertPtr(obj0, &argp1,SWIGTYPE_p_std__vectorT_boost__histogram__algorithm__reduce_command_std__allocatorT_boost__histogram__algorithm__reduce_command_t_t, 0 |  0 );
+  if (!SWIG_IsOK(res1)) {
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "vectorReduceCommand_assign" "', argument " "1"" of type '" "std::vector< boost::histogram::algorithm::reduce_command > *""'"); 
+  }
+  arg1 = reinterpret_cast< std::vector< boost::histogram::algorithm::reduce_command > * >(argp1);
+  ecode2 = SWIG_AsVal_size_t(obj1, &val2);
+  if (!SWIG_IsOK(ecode2)) {
+    SWIG_exception_fail(SWIG_ArgError(ecode2), "in method '" "vectorReduceCommand_assign" "', argument " "2"" of type '" "std::vector< boost::histogram::algorithm::reduce_command >::size_type""'");
+  } 
+  arg2 = static_cast< std::vector< boost::histogram::algorithm::reduce_command >::size_type >(val2);
+  res3 = SWIG_ConvertPtr(obj2, &argp3, SWIGTYPE_p_boost__histogram__algorithm__reduce_command,  0  | 0);
+  if (!SWIG_IsOK(res3)) {
+    SWIG_exception_fail(SWIG_ArgError(res3), "in method '" "vectorReduceCommand_assign" "', argument " "3"" of type '" "std::vector< boost::histogram::algorithm::reduce_command >::value_type const &""'"); 
+  }
+  if (!argp3) {
+    SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in method '" "vectorReduceCommand_assign" "', argument " "3"" of type '" "std::vector< boost::histogram::algorithm::reduce_command >::value_type const &""'"); 
+  }
+  arg3 = reinterpret_cast< std::vector< boost::histogram::algorithm::reduce_command >::value_type * >(argp3);
+  {
+    try {
+      (arg1)->assign(arg2,(std::vector< boost::histogram::algorithm::reduce_command >::value_type const &)*arg3); 
+    }
+    /*@SWIG:/usr/local/Cellar/swig/4.0.2/share/swig/4.0.2/typemaps/exception.swg,58,SWIG_CATCH_STDEXCEPT@*/  /* catching std::exception  */
+    catch (std::invalid_argument& e) {
+      SWIG_exception_fail(SWIG_ValueError, e.what() );
+    } catch (std::domain_error& e) {
+      SWIG_exception_fail(SWIG_ValueError, e.what() );
+    } catch (std::overflow_error& e) {
+      SWIG_exception_fail(SWIG_OverflowError, e.what() );
+    } catch (std::out_of_range& e) {
+      SWIG_exception_fail(SWIG_IndexError, e.what() );
+    } catch (std::length_error& e) {
+      SWIG_exception_fail(SWIG_IndexError, e.what() );
+    } catch (std::runtime_error& e) {
+      SWIG_exception_fail(SWIG_RuntimeError, e.what() );
+    } catch (std::exception& e) {
+      SWIG_exception_fail(SWIG_SystemError, e.what() );
+    }
+    /*@SWIG@*/
+  }
+  resultobj = SWIG_Py_Void();
+  return resultobj;
+fail:
+  return NULL;
+}
+
+
+SWIGINTERN PyObject *_wrap_vectorReduceCommand_resize__SWIG_1(PyObject *SWIGUNUSEDPARM(self), Py_ssize_t nobjs, PyObject **swig_obj) {
+  PyObject *resultobj = 0;
+  std::vector< boost::histogram::algorithm::reduce_command > *arg1 = (std::vector< boost::histogram::algorithm::reduce_command > *) 0 ;
+  std::vector< boost::histogram::algorithm::reduce_command >::size_type arg2 ;
+  std::vector< boost::histogram::algorithm::reduce_command >::value_type *arg3 = 0 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  size_t val2 ;
+  int ecode2 = 0 ;
+  void *argp3 = 0 ;
+  int res3 = 0 ;
+  
+  if ((nobjs < 3) || (nobjs > 3)) SWIG_fail;
+  res1 = SWIG_ConvertPtr(swig_obj[0], &argp1,SWIGTYPE_p_std__vectorT_boost__histogram__algorithm__reduce_command_std__allocatorT_boost__histogram__algorithm__reduce_command_t_t, 0 |  0 );
+  if (!SWIG_IsOK(res1)) {
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "vectorReduceCommand_resize" "', argument " "1"" of type '" "std::vector< boost::histogram::algorithm::reduce_command > *""'"); 
+  }
+  arg1 = reinterpret_cast< std::vector< boost::histogram::algorithm::reduce_command > * >(argp1);
+  ecode2 = SWIG_AsVal_size_t(swig_obj[1], &val2);
+  if (!SWIG_IsOK(ecode2)) {
+    SWIG_exception_fail(SWIG_ArgError(ecode2), "in method '" "vectorReduceCommand_resize" "', argument " "2"" of type '" "std::vector< boost::histogram::algorithm::reduce_command >::size_type""'");
+  } 
+  arg2 = static_cast< std::vector< boost::histogram::algorithm::reduce_command >::size_type >(val2);
+  res3 = SWIG_ConvertPtr(swig_obj[2], &argp3, SWIGTYPE_p_boost__histogram__algorithm__reduce_command,  0  | 0);
+  if (!SWIG_IsOK(res3)) {
+    SWIG_exception_fail(SWIG_ArgError(res3), "in method '" "vectorReduceCommand_resize" "', argument " "3"" of type '" "std::vector< boost::histogram::algorithm::reduce_command >::value_type const &""'"); 
+  }
+  if (!argp3) {
+    SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in method '" "vectorReduceCommand_resize" "', argument " "3"" of type '" "std::vector< boost::histogram::algorithm::reduce_command >::value_type const &""'"); 
+  }
+  arg3 = reinterpret_cast< std::vector< boost::histogram::algorithm::reduce_command >::value_type * >(argp3);
+  {
+    try {
+      (arg1)->resize(arg2,(std::vector< boost::histogram::algorithm::reduce_command >::value_type const &)*arg3); 
+    }
+    /*@SWIG:/usr/local/Cellar/swig/4.0.2/share/swig/4.0.2/typemaps/exception.swg,58,SWIG_CATCH_STDEXCEPT@*/  /* catching std::exception  */
+    catch (std::invalid_argument& e) {
+      SWIG_exception_fail(SWIG_ValueError, e.what() );
+    } catch (std::domain_error& e) {
+      SWIG_exception_fail(SWIG_ValueError, e.what() );
+    } catch (std::overflow_error& e) {
+      SWIG_exception_fail(SWIG_OverflowError, e.what() );
+    } catch (std::out_of_range& e) {
+      SWIG_exception_fail(SWIG_IndexError, e.what() );
+    } catch (std::length_error& e) {
+      SWIG_exception_fail(SWIG_IndexError, e.what() );
+    } catch (std::runtime_error& e) {
+      SWIG_exception_fail(SWIG_RuntimeError, e.what() );
+    } catch (std::exception& e) {
+      SWIG_exception_fail(SWIG_SystemError, e.what() );
+    }
+    /*@SWIG@*/
+  }
+  resultobj = SWIG_Py_Void();
+  return resultobj;
+fail:
+  return NULL;
+}
+
+
+SWIGINTERN PyObject *_wrap_vectorReduceCommand_resize(PyObject *self, PyObject *args) {
+  Py_ssize_t argc;
+  PyObject *argv[4] = {
+    0
+  };
+  
+  if (!(argc = SWIG_Python_UnpackTuple(args, "vectorReduceCommand_resize", 0, 3, argv))) SWIG_fail;
+  --argc;
+  if (argc == 2) {
+    int _v;
+    int res = swig::asptr(argv[0], (std::vector< boost::histogram::algorithm::reduce_command,std::allocator< boost::histogram::algorithm::reduce_command > >**)(0));
+    _v = SWIG_CheckState(res);
+    if (_v) {
+      {
+        int res = SWIG_AsVal_size_t(argv[1], NULL);
+        _v = SWIG_CheckState(res);
+      }
+      if (_v) {
+        return _wrap_vectorReduceCommand_resize__SWIG_0(self, argc, argv);
+      }
+    }
+  }
+  if (argc == 3) {
+    int _v;
+    int res = swig::asptr(argv[0], (std::vector< boost::histogram::algorithm::reduce_command,std::allocator< boost::histogram::algorithm::reduce_command > >**)(0));
+    _v = SWIG_CheckState(res);
+    if (_v) {
+      {
+        int res = SWIG_AsVal_size_t(argv[1], NULL);
+        _v = SWIG_CheckState(res);
+      }
+      if (_v) {
+        int res = SWIG_ConvertPtr(argv[2], 0, SWIGTYPE_p_boost__histogram__algorithm__reduce_command, SWIG_POINTER_NO_NULL | 0);
+        _v = SWIG_CheckState(res);
+        if (_v) {
+          return _wrap_vectorReduceCommand_resize__SWIG_1(self, argc, argv);
+        }
+      }
+    }
+  }
+  
+fail:
+  SWIG_Python_RaiseOrModifyTypeError("Wrong number or type of arguments for overloaded function 'vectorReduceCommand_resize'.\n"
+    "  Possible C/C++ prototypes are:\n"
+    "    std::vector< boost::histogram::algorithm::reduce_command >::resize(std::vector< boost::histogram::algorithm::reduce_command >::size_type)\n"
+    "    std::vector< boost::histogram::algorithm::reduce_command >::resize(std::vector< boost::histogram::algorithm::reduce_command >::size_type,std::vector< boost::histogram::algorithm::reduce_command >::value_type const &)\n");
+  return 0;
+}
+
+
+SWIGINTERN PyObject *_wrap_vectorReduceCommand_insert__SWIG_0(PyObject *SWIGUNUSEDPARM(self), Py_ssize_t nobjs, PyObject **swig_obj) {
+  PyObject *resultobj = 0;
+  std::vector< boost::histogram::algorithm::reduce_command > *arg1 = (std::vector< boost::histogram::algorithm::reduce_command > *) 0 ;
+  std::vector< boost::histogram::algorithm::reduce_command >::iterator arg2 ;
+  std::vector< boost::histogram::algorithm::reduce_command >::value_type *arg3 = 0 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  swig::SwigPyIterator *iter2 = 0 ;
+  int res2 ;
+  void *argp3 = 0 ;
+  int res3 = 0 ;
+  std::vector< boost::histogram::algorithm::reduce_command >::iterator result;
+  
+  if ((nobjs < 3) || (nobjs > 3)) SWIG_fail;
+  res1 = SWIG_ConvertPtr(swig_obj[0], &argp1,SWIGTYPE_p_std__vectorT_boost__histogram__algorithm__reduce_command_std__allocatorT_boost__histogram__algorithm__reduce_command_t_t, 0 |  0 );
+  if (!SWIG_IsOK(res1)) {
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "vectorReduceCommand_insert" "', argument " "1"" of type '" "std::vector< boost::histogram::algorithm::reduce_command > *""'"); 
+  }
+  arg1 = reinterpret_cast< std::vector< boost::histogram::algorithm::reduce_command > * >(argp1);
+  res2 = SWIG_ConvertPtr(swig_obj[1], SWIG_as_voidptrptr(&iter2), swig::SwigPyIterator::descriptor(), 0);
+  if (!SWIG_IsOK(res2) || !iter2) {
+    SWIG_exception_fail(SWIG_ArgError(SWIG_TypeError), "in method '" "vectorReduceCommand_insert" "', argument " "2"" of type '" "std::vector< boost::histogram::algorithm::reduce_command >::iterator""'");
+  } else {
+    swig::SwigPyIterator_T<std::vector< boost::histogram::algorithm::reduce_command >::iterator > *iter_t = dynamic_cast<swig::SwigPyIterator_T<std::vector< boost::histogram::algorithm::reduce_command >::iterator > *>(iter2);
+    if (iter_t) {
+      arg2 = iter_t->get_current();
+    } else {
+      SWIG_exception_fail(SWIG_ArgError(SWIG_TypeError), "in method '" "vectorReduceCommand_insert" "', argument " "2"" of type '" "std::vector< boost::histogram::algorithm::reduce_command >::iterator""'");
+    }
+  }
+  res3 = SWIG_ConvertPtr(swig_obj[2], &argp3, SWIGTYPE_p_boost__histogram__algorithm__reduce_command,  0  | 0);
+  if (!SWIG_IsOK(res3)) {
+    SWIG_exception_fail(SWIG_ArgError(res3), "in method '" "vectorReduceCommand_insert" "', argument " "3"" of type '" "std::vector< boost::histogram::algorithm::reduce_command >::value_type const &""'"); 
+  }
+  if (!argp3) {
+    SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in method '" "vectorReduceCommand_insert" "', argument " "3"" of type '" "std::vector< boost::histogram::algorithm::reduce_command >::value_type const &""'"); 
+  }
+  arg3 = reinterpret_cast< std::vector< boost::histogram::algorithm::reduce_command >::value_type * >(argp3);
+  {
+    try {
+      result = std_vector_Sl_boost_histogram_algorithm_reduce_command_Sg__insert__SWIG_0(arg1,arg2,(boost::histogram::algorithm::reduce_command const &)*arg3); 
+    }
+    /*@SWIG:/usr/local/Cellar/swig/4.0.2/share/swig/4.0.2/typemaps/exception.swg,58,SWIG_CATCH_STDEXCEPT@*/  /* catching std::exception  */
+    catch (std::invalid_argument& e) {
+      SWIG_exception_fail(SWIG_ValueError, e.what() );
+    } catch (std::domain_error& e) {
+      SWIG_exception_fail(SWIG_ValueError, e.what() );
+    } catch (std::overflow_error& e) {
+      SWIG_exception_fail(SWIG_OverflowError, e.what() );
+    } catch (std::out_of_range& e) {
+      SWIG_exception_fail(SWIG_IndexError, e.what() );
+    } catch (std::length_error& e) {
+      SWIG_exception_fail(SWIG_IndexError, e.what() );
+    } catch (std::runtime_error& e) {
+      SWIG_exception_fail(SWIG_RuntimeError, e.what() );
+    } catch (std::exception& e) {
+      SWIG_exception_fail(SWIG_SystemError, e.what() );
+    }
+    /*@SWIG@*/
+  }
+  resultobj = SWIG_NewPointerObj(swig::make_output_iterator(static_cast< const std::vector< boost::histogram::algorithm::reduce_command >::iterator & >(result)),
+    swig::SwigPyIterator::descriptor(),SWIG_POINTER_OWN);
+  return resultobj;
+fail:
+  return NULL;
+}
+
+
+SWIGINTERN PyObject *_wrap_vectorReduceCommand_insert__SWIG_1(PyObject *SWIGUNUSEDPARM(self), Py_ssize_t nobjs, PyObject **swig_obj) {
+  PyObject *resultobj = 0;
+  std::vector< boost::histogram::algorithm::reduce_command > *arg1 = (std::vector< boost::histogram::algorithm::reduce_command > *) 0 ;
+  std::vector< boost::histogram::algorithm::reduce_command >::iterator arg2 ;
+  std::vector< boost::histogram::algorithm::reduce_command >::size_type arg3 ;
+  std::vector< boost::histogram::algorithm::reduce_command >::value_type *arg4 = 0 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  swig::SwigPyIterator *iter2 = 0 ;
+  int res2 ;
+  size_t val3 ;
+  int ecode3 = 0 ;
+  void *argp4 = 0 ;
+  int res4 = 0 ;
+  
+  if ((nobjs < 4) || (nobjs > 4)) SWIG_fail;
+  res1 = SWIG_ConvertPtr(swig_obj[0], &argp1,SWIGTYPE_p_std__vectorT_boost__histogram__algorithm__reduce_command_std__allocatorT_boost__histogram__algorithm__reduce_command_t_t, 0 |  0 );
+  if (!SWIG_IsOK(res1)) {
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "vectorReduceCommand_insert" "', argument " "1"" of type '" "std::vector< boost::histogram::algorithm::reduce_command > *""'"); 
+  }
+  arg1 = reinterpret_cast< std::vector< boost::histogram::algorithm::reduce_command > * >(argp1);
+  res2 = SWIG_ConvertPtr(swig_obj[1], SWIG_as_voidptrptr(&iter2), swig::SwigPyIterator::descriptor(), 0);
+  if (!SWIG_IsOK(res2) || !iter2) {
+    SWIG_exception_fail(SWIG_ArgError(SWIG_TypeError), "in method '" "vectorReduceCommand_insert" "', argument " "2"" of type '" "std::vector< boost::histogram::algorithm::reduce_command >::iterator""'");
+  } else {
+    swig::SwigPyIterator_T<std::vector< boost::histogram::algorithm::reduce_command >::iterator > *iter_t = dynamic_cast<swig::SwigPyIterator_T<std::vector< boost::histogram::algorithm::reduce_command >::iterator > *>(iter2);
+    if (iter_t) {
+      arg2 = iter_t->get_current();
+    } else {
+      SWIG_exception_fail(SWIG_ArgError(SWIG_TypeError), "in method '" "vectorReduceCommand_insert" "', argument " "2"" of type '" "std::vector< boost::histogram::algorithm::reduce_command >::iterator""'");
+    }
+  }
+  ecode3 = SWIG_AsVal_size_t(swig_obj[2], &val3);
+  if (!SWIG_IsOK(ecode3)) {
+    SWIG_exception_fail(SWIG_ArgError(ecode3), "in method '" "vectorReduceCommand_insert" "', argument " "3"" of type '" "std::vector< boost::histogram::algorithm::reduce_command >::size_type""'");
+  } 
+  arg3 = static_cast< std::vector< boost::histogram::algorithm::reduce_command >::size_type >(val3);
+  res4 = SWIG_ConvertPtr(swig_obj[3], &argp4, SWIGTYPE_p_boost__histogram__algorithm__reduce_command,  0  | 0);
+  if (!SWIG_IsOK(res4)) {
+    SWIG_exception_fail(SWIG_ArgError(res4), "in method '" "vectorReduceCommand_insert" "', argument " "4"" of type '" "std::vector< boost::histogram::algorithm::reduce_command >::value_type const &""'"); 
+  }
+  if (!argp4) {
+    SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in method '" "vectorReduceCommand_insert" "', argument " "4"" of type '" "std::vector< boost::histogram::algorithm::reduce_command >::value_type const &""'"); 
+  }
+  arg4 = reinterpret_cast< std::vector< boost::histogram::algorithm::reduce_command >::value_type * >(argp4);
+  {
+    try {
+      std_vector_Sl_boost_histogram_algorithm_reduce_command_Sg__insert__SWIG_1(arg1,arg2,arg3,(boost::histogram::algorithm::reduce_command const &)*arg4); 
+    }
+    /*@SWIG:/usr/local/Cellar/swig/4.0.2/share/swig/4.0.2/typemaps/exception.swg,58,SWIG_CATCH_STDEXCEPT@*/  /* catching std::exception  */
+    catch (std::invalid_argument& e) {
+      SWIG_exception_fail(SWIG_ValueError, e.what() );
+    } catch (std::domain_error& e) {
+      SWIG_exception_fail(SWIG_ValueError, e.what() );
+    } catch (std::overflow_error& e) {
+      SWIG_exception_fail(SWIG_OverflowError, e.what() );
+    } catch (std::out_of_range& e) {
+      SWIG_exception_fail(SWIG_IndexError, e.what() );
+    } catch (std::length_error& e) {
+      SWIG_exception_fail(SWIG_IndexError, e.what() );
+    } catch (std::runtime_error& e) {
+      SWIG_exception_fail(SWIG_RuntimeError, e.what() );
+    } catch (std::exception& e) {
+      SWIG_exception_fail(SWIG_SystemError, e.what() );
+    }
+    /*@SWIG@*/
+  }
+  resultobj = SWIG_Py_Void();
+  return resultobj;
+fail:
+  return NULL;
+}
+
+
+SWIGINTERN PyObject *_wrap_vectorReduceCommand_insert(PyObject *self, PyObject *args) {
+  Py_ssize_t argc;
+  PyObject *argv[5] = {
+    0
+  };
+  
+  if (!(argc = SWIG_Python_UnpackTuple(args, "vectorReduceCommand_insert", 0, 4, argv))) SWIG_fail;
+  --argc;
+  if (argc == 3) {
+    int _v;
+    int res = swig::asptr(argv[0], (std::vector< boost::histogram::algorithm::reduce_command,std::allocator< boost::histogram::algorithm::reduce_command > >**)(0));
+    _v = SWIG_CheckState(res);
+    if (_v) {
+      swig::SwigPyIterator *iter = 0;
+      int res = SWIG_ConvertPtr(argv[1], SWIG_as_voidptrptr(&iter), swig::SwigPyIterator::descriptor(), 0);
+      _v = (SWIG_IsOK(res) && iter && (dynamic_cast<swig::SwigPyIterator_T<std::vector< boost::histogram::algorithm::reduce_command >::iterator > *>(iter) != 0));
+      if (_v) {
+        int res = SWIG_ConvertPtr(argv[2], 0, SWIGTYPE_p_boost__histogram__algorithm__reduce_command, SWIG_POINTER_NO_NULL | 0);
+        _v = SWIG_CheckState(res);
+        if (_v) {
+          return _wrap_vectorReduceCommand_insert__SWIG_0(self, argc, argv);
+        }
+      }
+    }
+  }
+  if (argc == 4) {
+    int _v;
+    int res = swig::asptr(argv[0], (std::vector< boost::histogram::algorithm::reduce_command,std::allocator< boost::histogram::algorithm::reduce_command > >**)(0));
+    _v = SWIG_CheckState(res);
+    if (_v) {
+      swig::SwigPyIterator *iter = 0;
+      int res = SWIG_ConvertPtr(argv[1], SWIG_as_voidptrptr(&iter), swig::SwigPyIterator::descriptor(), 0);
+      _v = (SWIG_IsOK(res) && iter && (dynamic_cast<swig::SwigPyIterator_T<std::vector< boost::histogram::algorithm::reduce_command >::iterator > *>(iter) != 0));
+      if (_v) {
+        {
+          int res = SWIG_AsVal_size_t(argv[2], NULL);
+          _v = SWIG_CheckState(res);
+        }
+        if (_v) {
+          int res = SWIG_ConvertPtr(argv[3], 0, SWIGTYPE_p_boost__histogram__algorithm__reduce_command, SWIG_POINTER_NO_NULL | 0);
+          _v = SWIG_CheckState(res);
+          if (_v) {
+            return _wrap_vectorReduceCommand_insert__SWIG_1(self, argc, argv);
+          }
+        }
+      }
+    }
+  }
+  
+fail:
+  SWIG_Python_RaiseOrModifyTypeError("Wrong number or type of arguments for overloaded function 'vectorReduceCommand_insert'.\n"
+    "  Possible C/C++ prototypes are:\n"
+    "    std::vector< boost::histogram::algorithm::reduce_command >::insert(std::vector< boost::histogram::algorithm::reduce_command >::iterator,std::vector< boost::histogram::algorithm::reduce_command >::value_type const &)\n"
+    "    std::vector< boost::histogram::algorithm::reduce_command >::insert(std::vector< boost::histogram::algorithm::reduce_command >::iterator,std::vector< boost::histogram::algorithm::reduce_command >::size_type,std::vector< boost::histogram::algorithm::reduce_command >::value_type const &)\n");
+  return 0;
+}
+
+
+SWIGINTERN PyObject *_wrap_vectorReduceCommand_reserve(PyObject *SWIGUNUSEDPARM(self), PyObject *args, PyObject *kwargs) {
+  PyObject *resultobj = 0;
+  std::vector< boost::histogram::algorithm::reduce_command > *arg1 = (std::vector< boost::histogram::algorithm::reduce_command > *) 0 ;
+  std::vector< boost::histogram::algorithm::reduce_command >::size_type arg2 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  size_t val2 ;
+  int ecode2 = 0 ;
+  PyObject * obj0 = 0 ;
+  PyObject * obj1 = 0 ;
+  char * kwnames[] = {
+    (char *)"self",  (char *)"n",  NULL 
+  };
+  
+  if (!PyArg_ParseTupleAndKeywords(args, kwargs, "OO:vectorReduceCommand_reserve", kwnames, &obj0, &obj1)) SWIG_fail;
+  res1 = SWIG_ConvertPtr(obj0, &argp1,SWIGTYPE_p_std__vectorT_boost__histogram__algorithm__reduce_command_std__allocatorT_boost__histogram__algorithm__reduce_command_t_t, 0 |  0 );
+  if (!SWIG_IsOK(res1)) {
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "vectorReduceCommand_reserve" "', argument " "1"" of type '" "std::vector< boost::histogram::algorithm::reduce_command > *""'"); 
+  }
+  arg1 = reinterpret_cast< std::vector< boost::histogram::algorithm::reduce_command > * >(argp1);
+  ecode2 = SWIG_AsVal_size_t(obj1, &val2);
+  if (!SWIG_IsOK(ecode2)) {
+    SWIG_exception_fail(SWIG_ArgError(ecode2), "in method '" "vectorReduceCommand_reserve" "', argument " "2"" of type '" "std::vector< boost::histogram::algorithm::reduce_command >::size_type""'");
+  } 
+  arg2 = static_cast< std::vector< boost::histogram::algorithm::reduce_command >::size_type >(val2);
+  {
+    try {
+      (arg1)->reserve(arg2); 
+    }
+    /*@SWIG:/usr/local/Cellar/swig/4.0.2/share/swig/4.0.2/typemaps/exception.swg,58,SWIG_CATCH_STDEXCEPT@*/  /* catching std::exception  */
+    catch (std::invalid_argument& e) {
+      SWIG_exception_fail(SWIG_ValueError, e.what() );
+    } catch (std::domain_error& e) {
+      SWIG_exception_fail(SWIG_ValueError, e.what() );
+    } catch (std::overflow_error& e) {
+      SWIG_exception_fail(SWIG_OverflowError, e.what() );
+    } catch (std::out_of_range& e) {
+      SWIG_exception_fail(SWIG_IndexError, e.what() );
+    } catch (std::length_error& e) {
+      SWIG_exception_fail(SWIG_IndexError, e.what() );
+    } catch (std::runtime_error& e) {
+      SWIG_exception_fail(SWIG_RuntimeError, e.what() );
+    } catch (std::exception& e) {
+      SWIG_exception_fail(SWIG_SystemError, e.what() );
+    }
+    /*@SWIG@*/
+  }
+  resultobj = SWIG_Py_Void();
+  return resultobj;
+fail:
+  return NULL;
+}
+
+
+SWIGINTERN PyObject *_wrap_vectorReduceCommand_capacity(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
+  PyObject *resultobj = 0;
+  std::vector< boost::histogram::algorithm::reduce_command > *arg1 = (std::vector< boost::histogram::algorithm::reduce_command > *) 0 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  PyObject *swig_obj[1] ;
+  std::vector< boost::histogram::algorithm::reduce_command >::size_type result;
+  
+  if (!args) SWIG_fail;
+  swig_obj[0] = args;
+  res1 = SWIG_ConvertPtr(swig_obj[0], &argp1,SWIGTYPE_p_std__vectorT_boost__histogram__algorithm__reduce_command_std__allocatorT_boost__histogram__algorithm__reduce_command_t_t, 0 |  0 );
+  if (!SWIG_IsOK(res1)) {
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "vectorReduceCommand_capacity" "', argument " "1"" of type '" "std::vector< boost::histogram::algorithm::reduce_command > const *""'"); 
+  }
+  arg1 = reinterpret_cast< std::vector< boost::histogram::algorithm::reduce_command > * >(argp1);
+  {
+    try {
+      result = ((std::vector< boost::histogram::algorithm::reduce_command > const *)arg1)->capacity(); 
+    }
+    /*@SWIG:/usr/local/Cellar/swig/4.0.2/share/swig/4.0.2/typemaps/exception.swg,58,SWIG_CATCH_STDEXCEPT@*/  /* catching std::exception  */
+    catch (std::invalid_argument& e) {
+      SWIG_exception_fail(SWIG_ValueError, e.what() );
+    } catch (std::domain_error& e) {
+      SWIG_exception_fail(SWIG_ValueError, e.what() );
+    } catch (std::overflow_error& e) {
+      SWIG_exception_fail(SWIG_OverflowError, e.what() );
+    } catch (std::out_of_range& e) {
+      SWIG_exception_fail(SWIG_IndexError, e.what() );
+    } catch (std::length_error& e) {
+      SWIG_exception_fail(SWIG_IndexError, e.what() );
+    } catch (std::runtime_error& e) {
+      SWIG_exception_fail(SWIG_RuntimeError, e.what() );
+    } catch (std::exception& e) {
+      SWIG_exception_fail(SWIG_SystemError, e.what() );
+    }
+    /*@SWIG@*/
+  }
+  resultobj = SWIG_From_size_t(static_cast< size_t >(result));
+  return resultobj;
+fail:
+  return NULL;
+}
+
+
+SWIGINTERN PyObject *_wrap_delete_vectorReduceCommand(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
+  PyObject *resultobj = 0;
+  std::vector< boost::histogram::algorithm::reduce_command > *arg1 = (std::vector< boost::histogram::algorithm::reduce_command > *) 0 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  PyObject *swig_obj[1] ;
+  
+  if (!args) SWIG_fail;
+  swig_obj[0] = args;
+  res1 = SWIG_ConvertPtr(swig_obj[0], &argp1,SWIGTYPE_p_std__vectorT_boost__histogram__algorithm__reduce_command_std__allocatorT_boost__histogram__algorithm__reduce_command_t_t, SWIG_POINTER_DISOWN |  0 );
+  if (!SWIG_IsOK(res1)) {
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "delete_vectorReduceCommand" "', argument " "1"" of type '" "std::vector< boost::histogram::algorithm::reduce_command > *""'"); 
+  }
+  arg1 = reinterpret_cast< std::vector< boost::histogram::algorithm::reduce_command > * >(argp1);
+  {
+    try {
+      delete arg1; 
+    }
+    /*@SWIG:/usr/local/Cellar/swig/4.0.2/share/swig/4.0.2/typemaps/exception.swg,58,SWIG_CATCH_STDEXCEPT@*/  /* catching std::exception  */
+    catch (std::invalid_argument& e) {
+      SWIG_exception_fail(SWIG_ValueError, e.what() );
+    } catch (std::domain_error& e) {
+      SWIG_exception_fail(SWIG_ValueError, e.what() );
+    } catch (std::overflow_error& e) {
+      SWIG_exception_fail(SWIG_OverflowError, e.what() );
+    } catch (std::out_of_range& e) {
+      SWIG_exception_fail(SWIG_IndexError, e.what() );
+    } catch (std::length_error& e) {
+      SWIG_exception_fail(SWIG_IndexError, e.what() );
+    } catch (std::runtime_error& e) {
+      SWIG_exception_fail(SWIG_RuntimeError, e.what() );
+    } catch (std::exception& e) {
+      SWIG_exception_fail(SWIG_SystemError, e.what() );
+    }
+    /*@SWIG@*/
+  }
+  resultobj = SWIG_Py_Void();
+  return resultobj;
+fail:
+  return NULL;
+}
+
+
+SWIGINTERN PyObject *vectorReduceCommand_swigregister(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
+  PyObject *obj;
+  if (!SWIG_Python_UnpackTuple(args, "swigregister", 1, 1, &obj)) return NULL;
+  SWIG_TypeNewClientData(SWIGTYPE_p_std__vectorT_boost__histogram__algorithm__reduce_command_std__allocatorT_boost__histogram__algorithm__reduce_command_t_t, SWIG_NewClientData(obj));
+  return SWIG_Py_Void();
+}
+
+SWIGINTERN PyObject *vectorReduceCommand_swiginit(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
+  return SWIG_Python_InitShadowInstance(args);
+}
+
 SWIGINTERN PyObject *_wrap_new_EECHistBase1DId(PyObject *SWIGUNUSEDPARM(self), PyObject *args, PyObject *kwargs) {
   PyObject *resultobj = 0;
   int arg1 ;
@@ -11847,50 +15968,6 @@ SWIGINTERN PyObject *_wrap_delete_EECHistBase1DId(PyObject *SWIGUNUSEDPARM(self)
     /*@SWIG@*/
   }
   resultobj = SWIG_Py_Void();
-  return resultobj;
-fail:
-  return NULL;
-}
-
-
-SWIGINTERN PyObject *_wrap_EECHistBase1DId_axes_description(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
-  PyObject *resultobj = 0;
-  eec::hist::EECHistBase< eec::hist::EECHist1D< eec::hist::axis::id > > *arg1 = (eec::hist::EECHistBase< eec::hist::EECHist1D< eec::hist::axis::id > > *) 0 ;
-  void *argp1 = 0 ;
-  int res1 = 0 ;
-  PyObject *swig_obj[1] ;
-  std::string result;
-  
-  if (!args) SWIG_fail;
-  swig_obj[0] = args;
-  res1 = SWIG_ConvertPtr(swig_obj[0], &argp1,SWIGTYPE_p_eec__hist__EECHistBaseT_eec__hist__EECHist1DT_eec__hist__axis__id_t_t, 0 |  0 );
-  if (!SWIG_IsOK(res1)) {
-    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "EECHistBase1DId_axes_description" "', argument " "1"" of type '" "eec::hist::EECHistBase< eec::hist::EECHist1D< eec::hist::axis::id > > const *""'"); 
-  }
-  arg1 = reinterpret_cast< eec::hist::EECHistBase< eec::hist::EECHist1D< eec::hist::axis::id > > * >(argp1);
-  {
-    try {
-      result = ((eec::hist::EECHistBase< eec::hist::EECHist1D< eec::hist::axis::id > > const *)arg1)->axes_description(); 
-    }
-    /*@SWIG:/usr/local/Cellar/swig/4.0.2/share/swig/4.0.2/typemaps/exception.swg,58,SWIG_CATCH_STDEXCEPT@*/  /* catching std::exception  */
-    catch (std::invalid_argument& e) {
-      SWIG_exception_fail(SWIG_ValueError, e.what() );
-    } catch (std::domain_error& e) {
-      SWIG_exception_fail(SWIG_ValueError, e.what() );
-    } catch (std::overflow_error& e) {
-      SWIG_exception_fail(SWIG_OverflowError, e.what() );
-    } catch (std::out_of_range& e) {
-      SWIG_exception_fail(SWIG_IndexError, e.what() );
-    } catch (std::length_error& e) {
-      SWIG_exception_fail(SWIG_IndexError, e.what() );
-    } catch (std::runtime_error& e) {
-      SWIG_exception_fail(SWIG_RuntimeError, e.what() );
-    } catch (std::exception& e) {
-      SWIG_exception_fail(SWIG_SystemError, e.what() );
-    }
-    /*@SWIG@*/
-  }
-  resultobj = SWIG_From_std_string(static_cast< std::string >(result));
   return resultobj;
 fail:
   return NULL;
@@ -12110,6 +16187,182 @@ fail:
 }
 
 
+SWIGINTERN PyObject *_wrap_EECHistBase1DId_reduce(PyObject *SWIGUNUSEDPARM(self), PyObject *args, PyObject *kwargs) {
+  PyObject *resultobj = 0;
+  eec::hist::EECHistBase< eec::hist::EECHist1D< eec::hist::axis::id > > *arg1 = (eec::hist::EECHistBase< eec::hist::EECHist1D< eec::hist::axis::id > > *) 0 ;
+  std::vector< boost::histogram::algorithm::reduce_command,std::allocator< boost::histogram::algorithm::reduce_command > > *arg2 = 0 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  int res2 = SWIG_OLDOBJ ;
+  PyObject * obj0 = 0 ;
+  PyObject * obj1 = 0 ;
+  char * kwnames[] = {
+    (char *)"self",  (char *)"rcs",  NULL 
+  };
+  
+  if (!PyArg_ParseTupleAndKeywords(args, kwargs, "OO:EECHistBase1DId_reduce", kwnames, &obj0, &obj1)) SWIG_fail;
+  res1 = SWIG_ConvertPtr(obj0, &argp1,SWIGTYPE_p_eec__hist__EECHistBaseT_eec__hist__EECHist1DT_eec__hist__axis__id_t_t, 0 |  0 );
+  if (!SWIG_IsOK(res1)) {
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "EECHistBase1DId_reduce" "', argument " "1"" of type '" "eec::hist::EECHistBase< eec::hist::EECHist1D< eec::hist::axis::id > > *""'"); 
+  }
+  arg1 = reinterpret_cast< eec::hist::EECHistBase< eec::hist::EECHist1D< eec::hist::axis::id > > * >(argp1);
+  {
+    std::vector< boost::histogram::algorithm::reduce_command,std::allocator< boost::histogram::algorithm::reduce_command > > *ptr = (std::vector< boost::histogram::algorithm::reduce_command,std::allocator< boost::histogram::algorithm::reduce_command > > *)0;
+    res2 = swig::asptr(obj1, &ptr);
+    if (!SWIG_IsOK(res2)) {
+      SWIG_exception_fail(SWIG_ArgError(res2), "in method '" "EECHistBase1DId_reduce" "', argument " "2"" of type '" "std::vector< boost::histogram::algorithm::reduce_command,std::allocator< boost::histogram::algorithm::reduce_command > > const &""'"); 
+    }
+    if (!ptr) {
+      SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in method '" "EECHistBase1DId_reduce" "', argument " "2"" of type '" "std::vector< boost::histogram::algorithm::reduce_command,std::allocator< boost::histogram::algorithm::reduce_command > > const &""'"); 
+    }
+    arg2 = ptr;
+  }
+  {
+    try {
+      (arg1)->reduce((std::vector< boost::histogram::algorithm::reduce_command,std::allocator< boost::histogram::algorithm::reduce_command > > const &)*arg2); 
+    }
+    /*@SWIG:/usr/local/Cellar/swig/4.0.2/share/swig/4.0.2/typemaps/exception.swg,58,SWIG_CATCH_STDEXCEPT@*/  /* catching std::exception  */
+    catch (std::invalid_argument& e) {
+      SWIG_exception_fail(SWIG_ValueError, e.what() );
+    } catch (std::domain_error& e) {
+      SWIG_exception_fail(SWIG_ValueError, e.what() );
+    } catch (std::overflow_error& e) {
+      SWIG_exception_fail(SWIG_OverflowError, e.what() );
+    } catch (std::out_of_range& e) {
+      SWIG_exception_fail(SWIG_IndexError, e.what() );
+    } catch (std::length_error& e) {
+      SWIG_exception_fail(SWIG_IndexError, e.what() );
+    } catch (std::runtime_error& e) {
+      SWIG_exception_fail(SWIG_RuntimeError, e.what() );
+    } catch (std::exception& e) {
+      SWIG_exception_fail(SWIG_SystemError, e.what() );
+    }
+    /*@SWIG@*/
+  }
+  resultobj = SWIG_Py_Void();
+  if (SWIG_IsNewObj(res2)) delete arg2;
+  return resultobj;
+fail:
+  if (SWIG_IsNewObj(res2)) delete arg2;
+  return NULL;
+}
+
+
+SWIGINTERN PyObject *_wrap_EECHistBase1DId_sum(PyObject *SWIGUNUSEDPARM(self), PyObject *args, PyObject *kwargs) {
+  PyObject *resultobj = 0;
+  eec::hist::EECHistBase< eec::hist::EECHist1D< eec::hist::axis::id > > *arg1 = (eec::hist::EECHistBase< eec::hist::EECHist1D< eec::hist::axis::id > > *) 0 ;
+  unsigned int arg2 = (unsigned int) 0 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  unsigned int val2 ;
+  int ecode2 = 0 ;
+  PyObject * obj0 = 0 ;
+  PyObject * obj1 = 0 ;
+  char * kwnames[] = {
+    (char *)"self",  (char *)"hist_i",  NULL 
+  };
+  double result;
+  
+  if (!PyArg_ParseTupleAndKeywords(args, kwargs, "O|O:EECHistBase1DId_sum", kwnames, &obj0, &obj1)) SWIG_fail;
+  res1 = SWIG_ConvertPtr(obj0, &argp1,SWIGTYPE_p_eec__hist__EECHistBaseT_eec__hist__EECHist1DT_eec__hist__axis__id_t_t, 0 |  0 );
+  if (!SWIG_IsOK(res1)) {
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "EECHistBase1DId_sum" "', argument " "1"" of type '" "eec::hist::EECHistBase< eec::hist::EECHist1D< eec::hist::axis::id > > const *""'"); 
+  }
+  arg1 = reinterpret_cast< eec::hist::EECHistBase< eec::hist::EECHist1D< eec::hist::axis::id > > * >(argp1);
+  if (obj1) {
+    ecode2 = SWIG_AsVal_unsigned_SS_int(obj1, &val2);
+    if (!SWIG_IsOK(ecode2)) {
+      SWIG_exception_fail(SWIG_ArgError(ecode2), "in method '" "EECHistBase1DId_sum" "', argument " "2"" of type '" "unsigned int""'");
+    } 
+    arg2 = static_cast< unsigned int >(val2);
+  }
+  {
+    try {
+      result = (double)((eec::hist::EECHistBase< eec::hist::EECHist1D< eec::hist::axis::id > > const *)arg1)->sum(arg2); 
+    }
+    /*@SWIG:/usr/local/Cellar/swig/4.0.2/share/swig/4.0.2/typemaps/exception.swg,58,SWIG_CATCH_STDEXCEPT@*/  /* catching std::exception  */
+    catch (std::invalid_argument& e) {
+      SWIG_exception_fail(SWIG_ValueError, e.what() );
+    } catch (std::domain_error& e) {
+      SWIG_exception_fail(SWIG_ValueError, e.what() );
+    } catch (std::overflow_error& e) {
+      SWIG_exception_fail(SWIG_OverflowError, e.what() );
+    } catch (std::out_of_range& e) {
+      SWIG_exception_fail(SWIG_IndexError, e.what() );
+    } catch (std::length_error& e) {
+      SWIG_exception_fail(SWIG_IndexError, e.what() );
+    } catch (std::runtime_error& e) {
+      SWIG_exception_fail(SWIG_RuntimeError, e.what() );
+    } catch (std::exception& e) {
+      SWIG_exception_fail(SWIG_SystemError, e.what() );
+    }
+    /*@SWIG@*/
+  }
+  resultobj = SWIG_From_double(static_cast< double >(result));
+  return resultobj;
+fail:
+  return NULL;
+}
+
+
+SWIGINTERN PyObject *_wrap_EECHistBase1DId___iadd__(PyObject *SWIGUNUSEDPARM(self), PyObject *args, PyObject *kwargs) {
+  PyObject *resultobj = 0;
+  eec::hist::EECHistBase< eec::hist::EECHist1D< eec::hist::axis::id > > *arg1 = (eec::hist::EECHistBase< eec::hist::EECHist1D< eec::hist::axis::id > > *) 0 ;
+  eec::hist::EECHistBase< eec::hist::EECHist1D< boost::histogram::axis::transform::id > > *arg2 = 0 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  void *argp2 = 0 ;
+  int res2 = 0 ;
+  PyObject * obj0 = 0 ;
+  PyObject * obj1 = 0 ;
+  char * kwnames[] = {
+    (char *)"self",  (char *)"rhs",  NULL 
+  };
+  eec::hist::EECHistBase< eec::hist::EECHist1D< eec::hist::axis::id > > *result = 0 ;
+  
+  if (!PyArg_ParseTupleAndKeywords(args, kwargs, "OO:EECHistBase1DId___iadd__", kwnames, &obj0, &obj1)) SWIG_fail;
+  res1 = SWIG_ConvertPtr(obj0, &argp1,SWIGTYPE_p_eec__hist__EECHistBaseT_eec__hist__EECHist1DT_eec__hist__axis__id_t_t, SWIG_POINTER_DISOWN |  0 );
+  if (!SWIG_IsOK(res1)) {
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "EECHistBase1DId___iadd__" "', argument " "1"" of type '" "eec::hist::EECHistBase< eec::hist::EECHist1D< eec::hist::axis::id > > *""'"); 
+  }
+  arg1 = reinterpret_cast< eec::hist::EECHistBase< eec::hist::EECHist1D< eec::hist::axis::id > > * >(argp1);
+  res2 = SWIG_ConvertPtr(obj1, &argp2, SWIGTYPE_p_eec__hist__EECHistBaseT_eec__hist__EECHist1DT_eec__hist__axis__id_t_t,  0  | 0);
+  if (!SWIG_IsOK(res2)) {
+    SWIG_exception_fail(SWIG_ArgError(res2), "in method '" "EECHistBase1DId___iadd__" "', argument " "2"" of type '" "eec::hist::EECHistBase< eec::hist::EECHist1D< boost::histogram::axis::transform::id > > const &""'"); 
+  }
+  if (!argp2) {
+    SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in method '" "EECHistBase1DId___iadd__" "', argument " "2"" of type '" "eec::hist::EECHistBase< eec::hist::EECHist1D< boost::histogram::axis::transform::id > > const &""'"); 
+  }
+  arg2 = reinterpret_cast< eec::hist::EECHistBase< eec::hist::EECHist1D< boost::histogram::axis::transform::id > > * >(argp2);
+  {
+    try {
+      result = (eec::hist::EECHistBase< eec::hist::EECHist1D< eec::hist::axis::id > > *) &(arg1)->operator +=((eec::hist::EECHistBase< eec::hist::EECHist1D< boost::histogram::axis::transform::id > > const &)*arg2); 
+    }
+    /*@SWIG:/usr/local/Cellar/swig/4.0.2/share/swig/4.0.2/typemaps/exception.swg,58,SWIG_CATCH_STDEXCEPT@*/  /* catching std::exception  */
+    catch (std::invalid_argument& e) {
+      SWIG_exception_fail(SWIG_ValueError, e.what() );
+    } catch (std::domain_error& e) {
+      SWIG_exception_fail(SWIG_ValueError, e.what() );
+    } catch (std::overflow_error& e) {
+      SWIG_exception_fail(SWIG_OverflowError, e.what() );
+    } catch (std::out_of_range& e) {
+      SWIG_exception_fail(SWIG_IndexError, e.what() );
+    } catch (std::length_error& e) {
+      SWIG_exception_fail(SWIG_IndexError, e.what() );
+    } catch (std::runtime_error& e) {
+      SWIG_exception_fail(SWIG_RuntimeError, e.what() );
+    } catch (std::exception& e) {
+      SWIG_exception_fail(SWIG_SystemError, e.what() );
+    }
+    /*@SWIG@*/
+  }
+  resultobj = SWIG_NewPointerObj(SWIG_as_voidptr(result), SWIGTYPE_p_eec__hist__EECHistBaseT_eec__hist__EECHist1DT_eec__hist__axis__id_t_t, SWIG_POINTER_OWN |  0 );
+  return resultobj;
+fail:
+  return NULL;
+}
+
+
 SWIGINTERN PyObject *_wrap_EECHistBase1DId_bin_centers_vec(PyObject *SWIGUNUSEDPARM(self), PyObject *args, PyObject *kwargs) {
   PyObject *resultobj = 0;
   eec::hist::EECHistBase< eec::hist::EECHist1D< eec::hist::axis::id > > *arg1 = (eec::hist::EECHistBase< eec::hist::EECHist1D< eec::hist::axis::id > > *) 0 ;
@@ -12227,27 +16480,31 @@ fail:
 SWIGINTERN PyObject *_wrap_EECHistBase1DId_hists_as_text(PyObject *SWIGUNUSEDPARM(self), PyObject *args, PyObject *kwargs) {
   PyObject *resultobj = 0;
   eec::hist::EECHistBase< eec::hist::EECHist1D< eec::hist::axis::id > > *arg1 = (eec::hist::EECHistBase< eec::hist::EECHist1D< eec::hist::axis::id > > *) 0 ;
-  int arg2 = (int) 16 ;
-  bool arg3 = (bool) true ;
-  std::ostringstream *arg4 = (std::ostringstream *) nullptr ;
+  int arg2 = (int) 3 ;
+  int arg3 = (int) 16 ;
+  bool arg4 = (bool) true ;
+  std::ostringstream *arg5 = (std::ostringstream *) nullptr ;
   void *argp1 = 0 ;
   int res1 = 0 ;
   int val2 ;
   int ecode2 = 0 ;
-  bool val3 ;
+  int val3 ;
   int ecode3 = 0 ;
-  void *argp4 = 0 ;
-  int res4 = 0 ;
+  bool val4 ;
+  int ecode4 = 0 ;
+  void *argp5 = 0 ;
+  int res5 = 0 ;
   PyObject * obj0 = 0 ;
   PyObject * obj1 = 0 ;
   PyObject * obj2 = 0 ;
   PyObject * obj3 = 0 ;
+  PyObject * obj4 = 0 ;
   char * kwnames[] = {
-    (char *)"self",  (char *)"precision",  (char *)"include_overflows",  (char *)"os",  NULL 
+    (char *)"self",  (char *)"hist_level",  (char *)"precision",  (char *)"include_overflows",  (char *)"os",  NULL 
   };
   std::string result;
   
-  if (!PyArg_ParseTupleAndKeywords(args, kwargs, "O|OOO:EECHistBase1DId_hists_as_text", kwnames, &obj0, &obj1, &obj2, &obj3)) SWIG_fail;
+  if (!PyArg_ParseTupleAndKeywords(args, kwargs, "O|OOOO:EECHistBase1DId_hists_as_text", kwnames, &obj0, &obj1, &obj2, &obj3, &obj4)) SWIG_fail;
   res1 = SWIG_ConvertPtr(obj0, &argp1,SWIGTYPE_p_eec__hist__EECHistBaseT_eec__hist__EECHist1DT_eec__hist__axis__id_t_t, 0 |  0 );
   if (!SWIG_IsOK(res1)) {
     SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "EECHistBase1DId_hists_as_text" "', argument " "1"" of type '" "eec::hist::EECHistBase< eec::hist::EECHist1D< eec::hist::axis::id > > const *""'"); 
@@ -12261,22 +16518,29 @@ SWIGINTERN PyObject *_wrap_EECHistBase1DId_hists_as_text(PyObject *SWIGUNUSEDPAR
     arg2 = static_cast< int >(val2);
   }
   if (obj2) {
-    ecode3 = SWIG_AsVal_bool(obj2, &val3);
+    ecode3 = SWIG_AsVal_int(obj2, &val3);
     if (!SWIG_IsOK(ecode3)) {
-      SWIG_exception_fail(SWIG_ArgError(ecode3), "in method '" "EECHistBase1DId_hists_as_text" "', argument " "3"" of type '" "bool""'");
+      SWIG_exception_fail(SWIG_ArgError(ecode3), "in method '" "EECHistBase1DId_hists_as_text" "', argument " "3"" of type '" "int""'");
     } 
-    arg3 = static_cast< bool >(val3);
+    arg3 = static_cast< int >(val3);
   }
   if (obj3) {
-    res4 = SWIG_ConvertPtr(obj3, &argp4,SWIGTYPE_p_std__ostringstream, 0 |  0 );
-    if (!SWIG_IsOK(res4)) {
-      SWIG_exception_fail(SWIG_ArgError(res4), "in method '" "EECHistBase1DId_hists_as_text" "', argument " "4"" of type '" "std::ostringstream *""'"); 
+    ecode4 = SWIG_AsVal_bool(obj3, &val4);
+    if (!SWIG_IsOK(ecode4)) {
+      SWIG_exception_fail(SWIG_ArgError(ecode4), "in method '" "EECHistBase1DId_hists_as_text" "', argument " "4"" of type '" "bool""'");
+    } 
+    arg4 = static_cast< bool >(val4);
+  }
+  if (obj4) {
+    res5 = SWIG_ConvertPtr(obj4, &argp5,SWIGTYPE_p_std__ostringstream, 0 |  0 );
+    if (!SWIG_IsOK(res5)) {
+      SWIG_exception_fail(SWIG_ArgError(res5), "in method '" "EECHistBase1DId_hists_as_text" "', argument " "5"" of type '" "std::ostringstream *""'"); 
     }
-    arg4 = reinterpret_cast< std::ostringstream * >(argp4);
+    arg5 = reinterpret_cast< std::ostringstream * >(argp5);
   }
   {
     try {
-      result = ((eec::hist::EECHistBase< eec::hist::EECHist1D< eec::hist::axis::id > > const *)arg1)->hists_as_text(arg2,arg3,arg4); 
+      result = ((eec::hist::EECHistBase< eec::hist::EECHist1D< eec::hist::axis::id > > const *)arg1)->hists_as_text(arg2,arg3,arg4,arg5); 
     }
     /*@SWIG:/usr/local/Cellar/swig/4.0.2/share/swig/4.0.2/typemaps/exception.swg,58,SWIG_CATCH_STDEXCEPT@*/  /* catching std::exception  */
     catch (std::invalid_argument& e) {
@@ -12577,50 +16841,6 @@ fail:
 }
 
 
-SWIGINTERN PyObject *_wrap_EECHistBase1DLog_axes_description(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
-  PyObject *resultobj = 0;
-  eec::hist::EECHistBase< eec::hist::EECHist1D< eec::hist::axis::log > > *arg1 = (eec::hist::EECHistBase< eec::hist::EECHist1D< eec::hist::axis::log > > *) 0 ;
-  void *argp1 = 0 ;
-  int res1 = 0 ;
-  PyObject *swig_obj[1] ;
-  std::string result;
-  
-  if (!args) SWIG_fail;
-  swig_obj[0] = args;
-  res1 = SWIG_ConvertPtr(swig_obj[0], &argp1,SWIGTYPE_p_eec__hist__EECHistBaseT_eec__hist__EECHist1DT_eec__hist__axis__log_t_t, 0 |  0 );
-  if (!SWIG_IsOK(res1)) {
-    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "EECHistBase1DLog_axes_description" "', argument " "1"" of type '" "eec::hist::EECHistBase< eec::hist::EECHist1D< eec::hist::axis::log > > const *""'"); 
-  }
-  arg1 = reinterpret_cast< eec::hist::EECHistBase< eec::hist::EECHist1D< eec::hist::axis::log > > * >(argp1);
-  {
-    try {
-      result = ((eec::hist::EECHistBase< eec::hist::EECHist1D< eec::hist::axis::log > > const *)arg1)->axes_description(); 
-    }
-    /*@SWIG:/usr/local/Cellar/swig/4.0.2/share/swig/4.0.2/typemaps/exception.swg,58,SWIG_CATCH_STDEXCEPT@*/  /* catching std::exception  */
-    catch (std::invalid_argument& e) {
-      SWIG_exception_fail(SWIG_ValueError, e.what() );
-    } catch (std::domain_error& e) {
-      SWIG_exception_fail(SWIG_ValueError, e.what() );
-    } catch (std::overflow_error& e) {
-      SWIG_exception_fail(SWIG_OverflowError, e.what() );
-    } catch (std::out_of_range& e) {
-      SWIG_exception_fail(SWIG_IndexError, e.what() );
-    } catch (std::length_error& e) {
-      SWIG_exception_fail(SWIG_IndexError, e.what() );
-    } catch (std::runtime_error& e) {
-      SWIG_exception_fail(SWIG_RuntimeError, e.what() );
-    } catch (std::exception& e) {
-      SWIG_exception_fail(SWIG_SystemError, e.what() );
-    }
-    /*@SWIG@*/
-  }
-  resultobj = SWIG_From_std_string(static_cast< std::string >(result));
-  return resultobj;
-fail:
-  return NULL;
-}
-
-
 SWIGINTERN PyObject *_wrap_EECHistBase1DLog_num_threads(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
   PyObject *resultobj = 0;
   eec::hist::EECHistBase< eec::hist::EECHist1D< eec::hist::axis::log > > *arg1 = (eec::hist::EECHistBase< eec::hist::EECHist1D< eec::hist::axis::log > > *) 0 ;
@@ -12834,6 +17054,182 @@ fail:
 }
 
 
+SWIGINTERN PyObject *_wrap_EECHistBase1DLog_reduce(PyObject *SWIGUNUSEDPARM(self), PyObject *args, PyObject *kwargs) {
+  PyObject *resultobj = 0;
+  eec::hist::EECHistBase< eec::hist::EECHist1D< eec::hist::axis::log > > *arg1 = (eec::hist::EECHistBase< eec::hist::EECHist1D< eec::hist::axis::log > > *) 0 ;
+  std::vector< boost::histogram::algorithm::reduce_command,std::allocator< boost::histogram::algorithm::reduce_command > > *arg2 = 0 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  int res2 = SWIG_OLDOBJ ;
+  PyObject * obj0 = 0 ;
+  PyObject * obj1 = 0 ;
+  char * kwnames[] = {
+    (char *)"self",  (char *)"rcs",  NULL 
+  };
+  
+  if (!PyArg_ParseTupleAndKeywords(args, kwargs, "OO:EECHistBase1DLog_reduce", kwnames, &obj0, &obj1)) SWIG_fail;
+  res1 = SWIG_ConvertPtr(obj0, &argp1,SWIGTYPE_p_eec__hist__EECHistBaseT_eec__hist__EECHist1DT_eec__hist__axis__log_t_t, 0 |  0 );
+  if (!SWIG_IsOK(res1)) {
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "EECHistBase1DLog_reduce" "', argument " "1"" of type '" "eec::hist::EECHistBase< eec::hist::EECHist1D< eec::hist::axis::log > > *""'"); 
+  }
+  arg1 = reinterpret_cast< eec::hist::EECHistBase< eec::hist::EECHist1D< eec::hist::axis::log > > * >(argp1);
+  {
+    std::vector< boost::histogram::algorithm::reduce_command,std::allocator< boost::histogram::algorithm::reduce_command > > *ptr = (std::vector< boost::histogram::algorithm::reduce_command,std::allocator< boost::histogram::algorithm::reduce_command > > *)0;
+    res2 = swig::asptr(obj1, &ptr);
+    if (!SWIG_IsOK(res2)) {
+      SWIG_exception_fail(SWIG_ArgError(res2), "in method '" "EECHistBase1DLog_reduce" "', argument " "2"" of type '" "std::vector< boost::histogram::algorithm::reduce_command,std::allocator< boost::histogram::algorithm::reduce_command > > const &""'"); 
+    }
+    if (!ptr) {
+      SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in method '" "EECHistBase1DLog_reduce" "', argument " "2"" of type '" "std::vector< boost::histogram::algorithm::reduce_command,std::allocator< boost::histogram::algorithm::reduce_command > > const &""'"); 
+    }
+    arg2 = ptr;
+  }
+  {
+    try {
+      (arg1)->reduce((std::vector< boost::histogram::algorithm::reduce_command,std::allocator< boost::histogram::algorithm::reduce_command > > const &)*arg2); 
+    }
+    /*@SWIG:/usr/local/Cellar/swig/4.0.2/share/swig/4.0.2/typemaps/exception.swg,58,SWIG_CATCH_STDEXCEPT@*/  /* catching std::exception  */
+    catch (std::invalid_argument& e) {
+      SWIG_exception_fail(SWIG_ValueError, e.what() );
+    } catch (std::domain_error& e) {
+      SWIG_exception_fail(SWIG_ValueError, e.what() );
+    } catch (std::overflow_error& e) {
+      SWIG_exception_fail(SWIG_OverflowError, e.what() );
+    } catch (std::out_of_range& e) {
+      SWIG_exception_fail(SWIG_IndexError, e.what() );
+    } catch (std::length_error& e) {
+      SWIG_exception_fail(SWIG_IndexError, e.what() );
+    } catch (std::runtime_error& e) {
+      SWIG_exception_fail(SWIG_RuntimeError, e.what() );
+    } catch (std::exception& e) {
+      SWIG_exception_fail(SWIG_SystemError, e.what() );
+    }
+    /*@SWIG@*/
+  }
+  resultobj = SWIG_Py_Void();
+  if (SWIG_IsNewObj(res2)) delete arg2;
+  return resultobj;
+fail:
+  if (SWIG_IsNewObj(res2)) delete arg2;
+  return NULL;
+}
+
+
+SWIGINTERN PyObject *_wrap_EECHistBase1DLog_sum(PyObject *SWIGUNUSEDPARM(self), PyObject *args, PyObject *kwargs) {
+  PyObject *resultobj = 0;
+  eec::hist::EECHistBase< eec::hist::EECHist1D< eec::hist::axis::log > > *arg1 = (eec::hist::EECHistBase< eec::hist::EECHist1D< eec::hist::axis::log > > *) 0 ;
+  unsigned int arg2 = (unsigned int) 0 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  unsigned int val2 ;
+  int ecode2 = 0 ;
+  PyObject * obj0 = 0 ;
+  PyObject * obj1 = 0 ;
+  char * kwnames[] = {
+    (char *)"self",  (char *)"hist_i",  NULL 
+  };
+  double result;
+  
+  if (!PyArg_ParseTupleAndKeywords(args, kwargs, "O|O:EECHistBase1DLog_sum", kwnames, &obj0, &obj1)) SWIG_fail;
+  res1 = SWIG_ConvertPtr(obj0, &argp1,SWIGTYPE_p_eec__hist__EECHistBaseT_eec__hist__EECHist1DT_eec__hist__axis__log_t_t, 0 |  0 );
+  if (!SWIG_IsOK(res1)) {
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "EECHistBase1DLog_sum" "', argument " "1"" of type '" "eec::hist::EECHistBase< eec::hist::EECHist1D< eec::hist::axis::log > > const *""'"); 
+  }
+  arg1 = reinterpret_cast< eec::hist::EECHistBase< eec::hist::EECHist1D< eec::hist::axis::log > > * >(argp1);
+  if (obj1) {
+    ecode2 = SWIG_AsVal_unsigned_SS_int(obj1, &val2);
+    if (!SWIG_IsOK(ecode2)) {
+      SWIG_exception_fail(SWIG_ArgError(ecode2), "in method '" "EECHistBase1DLog_sum" "', argument " "2"" of type '" "unsigned int""'");
+    } 
+    arg2 = static_cast< unsigned int >(val2);
+  }
+  {
+    try {
+      result = (double)((eec::hist::EECHistBase< eec::hist::EECHist1D< eec::hist::axis::log > > const *)arg1)->sum(arg2); 
+    }
+    /*@SWIG:/usr/local/Cellar/swig/4.0.2/share/swig/4.0.2/typemaps/exception.swg,58,SWIG_CATCH_STDEXCEPT@*/  /* catching std::exception  */
+    catch (std::invalid_argument& e) {
+      SWIG_exception_fail(SWIG_ValueError, e.what() );
+    } catch (std::domain_error& e) {
+      SWIG_exception_fail(SWIG_ValueError, e.what() );
+    } catch (std::overflow_error& e) {
+      SWIG_exception_fail(SWIG_OverflowError, e.what() );
+    } catch (std::out_of_range& e) {
+      SWIG_exception_fail(SWIG_IndexError, e.what() );
+    } catch (std::length_error& e) {
+      SWIG_exception_fail(SWIG_IndexError, e.what() );
+    } catch (std::runtime_error& e) {
+      SWIG_exception_fail(SWIG_RuntimeError, e.what() );
+    } catch (std::exception& e) {
+      SWIG_exception_fail(SWIG_SystemError, e.what() );
+    }
+    /*@SWIG@*/
+  }
+  resultobj = SWIG_From_double(static_cast< double >(result));
+  return resultobj;
+fail:
+  return NULL;
+}
+
+
+SWIGINTERN PyObject *_wrap_EECHistBase1DLog___iadd__(PyObject *SWIGUNUSEDPARM(self), PyObject *args, PyObject *kwargs) {
+  PyObject *resultobj = 0;
+  eec::hist::EECHistBase< eec::hist::EECHist1D< eec::hist::axis::log > > *arg1 = (eec::hist::EECHistBase< eec::hist::EECHist1D< eec::hist::axis::log > > *) 0 ;
+  eec::hist::EECHistBase< eec::hist::EECHist1D< boost::histogram::axis::transform::log > > *arg2 = 0 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  void *argp2 = 0 ;
+  int res2 = 0 ;
+  PyObject * obj0 = 0 ;
+  PyObject * obj1 = 0 ;
+  char * kwnames[] = {
+    (char *)"self",  (char *)"rhs",  NULL 
+  };
+  eec::hist::EECHistBase< eec::hist::EECHist1D< eec::hist::axis::log > > *result = 0 ;
+  
+  if (!PyArg_ParseTupleAndKeywords(args, kwargs, "OO:EECHistBase1DLog___iadd__", kwnames, &obj0, &obj1)) SWIG_fail;
+  res1 = SWIG_ConvertPtr(obj0, &argp1,SWIGTYPE_p_eec__hist__EECHistBaseT_eec__hist__EECHist1DT_eec__hist__axis__log_t_t, SWIG_POINTER_DISOWN |  0 );
+  if (!SWIG_IsOK(res1)) {
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "EECHistBase1DLog___iadd__" "', argument " "1"" of type '" "eec::hist::EECHistBase< eec::hist::EECHist1D< eec::hist::axis::log > > *""'"); 
+  }
+  arg1 = reinterpret_cast< eec::hist::EECHistBase< eec::hist::EECHist1D< eec::hist::axis::log > > * >(argp1);
+  res2 = SWIG_ConvertPtr(obj1, &argp2, SWIGTYPE_p_eec__hist__EECHistBaseT_eec__hist__EECHist1DT_eec__hist__axis__log_t_t,  0  | 0);
+  if (!SWIG_IsOK(res2)) {
+    SWIG_exception_fail(SWIG_ArgError(res2), "in method '" "EECHistBase1DLog___iadd__" "', argument " "2"" of type '" "eec::hist::EECHistBase< eec::hist::EECHist1D< boost::histogram::axis::transform::log > > const &""'"); 
+  }
+  if (!argp2) {
+    SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in method '" "EECHistBase1DLog___iadd__" "', argument " "2"" of type '" "eec::hist::EECHistBase< eec::hist::EECHist1D< boost::histogram::axis::transform::log > > const &""'"); 
+  }
+  arg2 = reinterpret_cast< eec::hist::EECHistBase< eec::hist::EECHist1D< boost::histogram::axis::transform::log > > * >(argp2);
+  {
+    try {
+      result = (eec::hist::EECHistBase< eec::hist::EECHist1D< eec::hist::axis::log > > *) &(arg1)->operator +=((eec::hist::EECHistBase< eec::hist::EECHist1D< boost::histogram::axis::transform::log > > const &)*arg2); 
+    }
+    /*@SWIG:/usr/local/Cellar/swig/4.0.2/share/swig/4.0.2/typemaps/exception.swg,58,SWIG_CATCH_STDEXCEPT@*/  /* catching std::exception  */
+    catch (std::invalid_argument& e) {
+      SWIG_exception_fail(SWIG_ValueError, e.what() );
+    } catch (std::domain_error& e) {
+      SWIG_exception_fail(SWIG_ValueError, e.what() );
+    } catch (std::overflow_error& e) {
+      SWIG_exception_fail(SWIG_OverflowError, e.what() );
+    } catch (std::out_of_range& e) {
+      SWIG_exception_fail(SWIG_IndexError, e.what() );
+    } catch (std::length_error& e) {
+      SWIG_exception_fail(SWIG_IndexError, e.what() );
+    } catch (std::runtime_error& e) {
+      SWIG_exception_fail(SWIG_RuntimeError, e.what() );
+    } catch (std::exception& e) {
+      SWIG_exception_fail(SWIG_SystemError, e.what() );
+    }
+    /*@SWIG@*/
+  }
+  resultobj = SWIG_NewPointerObj(SWIG_as_voidptr(result), SWIGTYPE_p_eec__hist__EECHistBaseT_eec__hist__EECHist1DT_eec__hist__axis__log_t_t, SWIG_POINTER_OWN |  0 );
+  return resultobj;
+fail:
+  return NULL;
+}
+
+
 SWIGINTERN PyObject *_wrap_EECHistBase1DLog_bin_centers_vec(PyObject *SWIGUNUSEDPARM(self), PyObject *args, PyObject *kwargs) {
   PyObject *resultobj = 0;
   eec::hist::EECHistBase< eec::hist::EECHist1D< eec::hist::axis::log > > *arg1 = (eec::hist::EECHistBase< eec::hist::EECHist1D< eec::hist::axis::log > > *) 0 ;
@@ -12951,27 +17347,31 @@ fail:
 SWIGINTERN PyObject *_wrap_EECHistBase1DLog_hists_as_text(PyObject *SWIGUNUSEDPARM(self), PyObject *args, PyObject *kwargs) {
   PyObject *resultobj = 0;
   eec::hist::EECHistBase< eec::hist::EECHist1D< eec::hist::axis::log > > *arg1 = (eec::hist::EECHistBase< eec::hist::EECHist1D< eec::hist::axis::log > > *) 0 ;
-  int arg2 = (int) 16 ;
-  bool arg3 = (bool) true ;
-  std::ostringstream *arg4 = (std::ostringstream *) nullptr ;
+  int arg2 = (int) 3 ;
+  int arg3 = (int) 16 ;
+  bool arg4 = (bool) true ;
+  std::ostringstream *arg5 = (std::ostringstream *) nullptr ;
   void *argp1 = 0 ;
   int res1 = 0 ;
   int val2 ;
   int ecode2 = 0 ;
-  bool val3 ;
+  int val3 ;
   int ecode3 = 0 ;
-  void *argp4 = 0 ;
-  int res4 = 0 ;
+  bool val4 ;
+  int ecode4 = 0 ;
+  void *argp5 = 0 ;
+  int res5 = 0 ;
   PyObject * obj0 = 0 ;
   PyObject * obj1 = 0 ;
   PyObject * obj2 = 0 ;
   PyObject * obj3 = 0 ;
+  PyObject * obj4 = 0 ;
   char * kwnames[] = {
-    (char *)"self",  (char *)"precision",  (char *)"include_overflows",  (char *)"os",  NULL 
+    (char *)"self",  (char *)"hist_level",  (char *)"precision",  (char *)"include_overflows",  (char *)"os",  NULL 
   };
   std::string result;
   
-  if (!PyArg_ParseTupleAndKeywords(args, kwargs, "O|OOO:EECHistBase1DLog_hists_as_text", kwnames, &obj0, &obj1, &obj2, &obj3)) SWIG_fail;
+  if (!PyArg_ParseTupleAndKeywords(args, kwargs, "O|OOOO:EECHistBase1DLog_hists_as_text", kwnames, &obj0, &obj1, &obj2, &obj3, &obj4)) SWIG_fail;
   res1 = SWIG_ConvertPtr(obj0, &argp1,SWIGTYPE_p_eec__hist__EECHistBaseT_eec__hist__EECHist1DT_eec__hist__axis__log_t_t, 0 |  0 );
   if (!SWIG_IsOK(res1)) {
     SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "EECHistBase1DLog_hists_as_text" "', argument " "1"" of type '" "eec::hist::EECHistBase< eec::hist::EECHist1D< eec::hist::axis::log > > const *""'"); 
@@ -12985,22 +17385,29 @@ SWIGINTERN PyObject *_wrap_EECHistBase1DLog_hists_as_text(PyObject *SWIGUNUSEDPA
     arg2 = static_cast< int >(val2);
   }
   if (obj2) {
-    ecode3 = SWIG_AsVal_bool(obj2, &val3);
+    ecode3 = SWIG_AsVal_int(obj2, &val3);
     if (!SWIG_IsOK(ecode3)) {
-      SWIG_exception_fail(SWIG_ArgError(ecode3), "in method '" "EECHistBase1DLog_hists_as_text" "', argument " "3"" of type '" "bool""'");
+      SWIG_exception_fail(SWIG_ArgError(ecode3), "in method '" "EECHistBase1DLog_hists_as_text" "', argument " "3"" of type '" "int""'");
     } 
-    arg3 = static_cast< bool >(val3);
+    arg3 = static_cast< int >(val3);
   }
   if (obj3) {
-    res4 = SWIG_ConvertPtr(obj3, &argp4,SWIGTYPE_p_std__ostringstream, 0 |  0 );
-    if (!SWIG_IsOK(res4)) {
-      SWIG_exception_fail(SWIG_ArgError(res4), "in method '" "EECHistBase1DLog_hists_as_text" "', argument " "4"" of type '" "std::ostringstream *""'"); 
+    ecode4 = SWIG_AsVal_bool(obj3, &val4);
+    if (!SWIG_IsOK(ecode4)) {
+      SWIG_exception_fail(SWIG_ArgError(ecode4), "in method '" "EECHistBase1DLog_hists_as_text" "', argument " "4"" of type '" "bool""'");
+    } 
+    arg4 = static_cast< bool >(val4);
+  }
+  if (obj4) {
+    res5 = SWIG_ConvertPtr(obj4, &argp5,SWIGTYPE_p_std__ostringstream, 0 |  0 );
+    if (!SWIG_IsOK(res5)) {
+      SWIG_exception_fail(SWIG_ArgError(res5), "in method '" "EECHistBase1DLog_hists_as_text" "', argument " "5"" of type '" "std::ostringstream *""'"); 
     }
-    arg4 = reinterpret_cast< std::ostringstream * >(argp4);
+    arg5 = reinterpret_cast< std::ostringstream * >(argp5);
   }
   {
     try {
-      result = ((eec::hist::EECHistBase< eec::hist::EECHist1D< eec::hist::axis::log > > const *)arg1)->hists_as_text(arg2,arg3,arg4); 
+      result = ((eec::hist::EECHistBase< eec::hist::EECHist1D< eec::hist::axis::log > > const *)arg1)->hists_as_text(arg2,arg3,arg4,arg5); 
     }
     /*@SWIG:/usr/local/Cellar/swig/4.0.2/share/swig/4.0.2/typemaps/exception.swg,58,SWIG_CATCH_STDEXCEPT@*/  /* catching std::exception  */
     catch (std::invalid_argument& e) {
@@ -13301,50 +17708,6 @@ fail:
 }
 
 
-SWIGINTERN PyObject *_wrap_EECHistBaseIdIdId_axes_description(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
-  PyObject *resultobj = 0;
-  eec::hist::EECHistBase< eec::hist::EECHist3D< eec::hist::axis::id,eec::hist::axis::id,eec::hist::axis::id > > *arg1 = (eec::hist::EECHistBase< eec::hist::EECHist3D< eec::hist::axis::id,eec::hist::axis::id,eec::hist::axis::id > > *) 0 ;
-  void *argp1 = 0 ;
-  int res1 = 0 ;
-  PyObject *swig_obj[1] ;
-  std::string result;
-  
-  if (!args) SWIG_fail;
-  swig_obj[0] = args;
-  res1 = SWIG_ConvertPtr(swig_obj[0], &argp1,SWIGTYPE_p_eec__hist__EECHistBaseT_eec__hist__EECHist3DT_eec__hist__axis__id_eec__hist__axis__id_eec__hist__axis__id_t_t, 0 |  0 );
-  if (!SWIG_IsOK(res1)) {
-    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "EECHistBaseIdIdId_axes_description" "', argument " "1"" of type '" "eec::hist::EECHistBase< eec::hist::EECHist3D< eec::hist::axis::id,eec::hist::axis::id,eec::hist::axis::id > > const *""'"); 
-  }
-  arg1 = reinterpret_cast< eec::hist::EECHistBase< eec::hist::EECHist3D< eec::hist::axis::id,eec::hist::axis::id,eec::hist::axis::id > > * >(argp1);
-  {
-    try {
-      result = ((eec::hist::EECHistBase< eec::hist::EECHist3D< eec::hist::axis::id,eec::hist::axis::id,eec::hist::axis::id > > const *)arg1)->axes_description(); 
-    }
-    /*@SWIG:/usr/local/Cellar/swig/4.0.2/share/swig/4.0.2/typemaps/exception.swg,58,SWIG_CATCH_STDEXCEPT@*/  /* catching std::exception  */
-    catch (std::invalid_argument& e) {
-      SWIG_exception_fail(SWIG_ValueError, e.what() );
-    } catch (std::domain_error& e) {
-      SWIG_exception_fail(SWIG_ValueError, e.what() );
-    } catch (std::overflow_error& e) {
-      SWIG_exception_fail(SWIG_OverflowError, e.what() );
-    } catch (std::out_of_range& e) {
-      SWIG_exception_fail(SWIG_IndexError, e.what() );
-    } catch (std::length_error& e) {
-      SWIG_exception_fail(SWIG_IndexError, e.what() );
-    } catch (std::runtime_error& e) {
-      SWIG_exception_fail(SWIG_RuntimeError, e.what() );
-    } catch (std::exception& e) {
-      SWIG_exception_fail(SWIG_SystemError, e.what() );
-    }
-    /*@SWIG@*/
-  }
-  resultobj = SWIG_From_std_string(static_cast< std::string >(result));
-  return resultobj;
-fail:
-  return NULL;
-}
-
-
 SWIGINTERN PyObject *_wrap_EECHistBaseIdIdId_num_threads(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
   PyObject *resultobj = 0;
   eec::hist::EECHistBase< eec::hist::EECHist3D< eec::hist::axis::id,eec::hist::axis::id,eec::hist::axis::id > > *arg1 = (eec::hist::EECHistBase< eec::hist::EECHist3D< eec::hist::axis::id,eec::hist::axis::id,eec::hist::axis::id > > *) 0 ;
@@ -13558,6 +17921,182 @@ fail:
 }
 
 
+SWIGINTERN PyObject *_wrap_EECHistBaseIdIdId_reduce(PyObject *SWIGUNUSEDPARM(self), PyObject *args, PyObject *kwargs) {
+  PyObject *resultobj = 0;
+  eec::hist::EECHistBase< eec::hist::EECHist3D< eec::hist::axis::id,eec::hist::axis::id,eec::hist::axis::id > > *arg1 = (eec::hist::EECHistBase< eec::hist::EECHist3D< eec::hist::axis::id,eec::hist::axis::id,eec::hist::axis::id > > *) 0 ;
+  std::vector< boost::histogram::algorithm::reduce_command,std::allocator< boost::histogram::algorithm::reduce_command > > *arg2 = 0 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  int res2 = SWIG_OLDOBJ ;
+  PyObject * obj0 = 0 ;
+  PyObject * obj1 = 0 ;
+  char * kwnames[] = {
+    (char *)"self",  (char *)"rcs",  NULL 
+  };
+  
+  if (!PyArg_ParseTupleAndKeywords(args, kwargs, "OO:EECHistBaseIdIdId_reduce", kwnames, &obj0, &obj1)) SWIG_fail;
+  res1 = SWIG_ConvertPtr(obj0, &argp1,SWIGTYPE_p_eec__hist__EECHistBaseT_eec__hist__EECHist3DT_eec__hist__axis__id_eec__hist__axis__id_eec__hist__axis__id_t_t, 0 |  0 );
+  if (!SWIG_IsOK(res1)) {
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "EECHistBaseIdIdId_reduce" "', argument " "1"" of type '" "eec::hist::EECHistBase< eec::hist::EECHist3D< eec::hist::axis::id,eec::hist::axis::id,eec::hist::axis::id > > *""'"); 
+  }
+  arg1 = reinterpret_cast< eec::hist::EECHistBase< eec::hist::EECHist3D< eec::hist::axis::id,eec::hist::axis::id,eec::hist::axis::id > > * >(argp1);
+  {
+    std::vector< boost::histogram::algorithm::reduce_command,std::allocator< boost::histogram::algorithm::reduce_command > > *ptr = (std::vector< boost::histogram::algorithm::reduce_command,std::allocator< boost::histogram::algorithm::reduce_command > > *)0;
+    res2 = swig::asptr(obj1, &ptr);
+    if (!SWIG_IsOK(res2)) {
+      SWIG_exception_fail(SWIG_ArgError(res2), "in method '" "EECHistBaseIdIdId_reduce" "', argument " "2"" of type '" "std::vector< boost::histogram::algorithm::reduce_command,std::allocator< boost::histogram::algorithm::reduce_command > > const &""'"); 
+    }
+    if (!ptr) {
+      SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in method '" "EECHistBaseIdIdId_reduce" "', argument " "2"" of type '" "std::vector< boost::histogram::algorithm::reduce_command,std::allocator< boost::histogram::algorithm::reduce_command > > const &""'"); 
+    }
+    arg2 = ptr;
+  }
+  {
+    try {
+      (arg1)->reduce((std::vector< boost::histogram::algorithm::reduce_command,std::allocator< boost::histogram::algorithm::reduce_command > > const &)*arg2); 
+    }
+    /*@SWIG:/usr/local/Cellar/swig/4.0.2/share/swig/4.0.2/typemaps/exception.swg,58,SWIG_CATCH_STDEXCEPT@*/  /* catching std::exception  */
+    catch (std::invalid_argument& e) {
+      SWIG_exception_fail(SWIG_ValueError, e.what() );
+    } catch (std::domain_error& e) {
+      SWIG_exception_fail(SWIG_ValueError, e.what() );
+    } catch (std::overflow_error& e) {
+      SWIG_exception_fail(SWIG_OverflowError, e.what() );
+    } catch (std::out_of_range& e) {
+      SWIG_exception_fail(SWIG_IndexError, e.what() );
+    } catch (std::length_error& e) {
+      SWIG_exception_fail(SWIG_IndexError, e.what() );
+    } catch (std::runtime_error& e) {
+      SWIG_exception_fail(SWIG_RuntimeError, e.what() );
+    } catch (std::exception& e) {
+      SWIG_exception_fail(SWIG_SystemError, e.what() );
+    }
+    /*@SWIG@*/
+  }
+  resultobj = SWIG_Py_Void();
+  if (SWIG_IsNewObj(res2)) delete arg2;
+  return resultobj;
+fail:
+  if (SWIG_IsNewObj(res2)) delete arg2;
+  return NULL;
+}
+
+
+SWIGINTERN PyObject *_wrap_EECHistBaseIdIdId_sum(PyObject *SWIGUNUSEDPARM(self), PyObject *args, PyObject *kwargs) {
+  PyObject *resultobj = 0;
+  eec::hist::EECHistBase< eec::hist::EECHist3D< eec::hist::axis::id,eec::hist::axis::id,eec::hist::axis::id > > *arg1 = (eec::hist::EECHistBase< eec::hist::EECHist3D< eec::hist::axis::id,eec::hist::axis::id,eec::hist::axis::id > > *) 0 ;
+  unsigned int arg2 = (unsigned int) 0 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  unsigned int val2 ;
+  int ecode2 = 0 ;
+  PyObject * obj0 = 0 ;
+  PyObject * obj1 = 0 ;
+  char * kwnames[] = {
+    (char *)"self",  (char *)"hist_i",  NULL 
+  };
+  double result;
+  
+  if (!PyArg_ParseTupleAndKeywords(args, kwargs, "O|O:EECHistBaseIdIdId_sum", kwnames, &obj0, &obj1)) SWIG_fail;
+  res1 = SWIG_ConvertPtr(obj0, &argp1,SWIGTYPE_p_eec__hist__EECHistBaseT_eec__hist__EECHist3DT_eec__hist__axis__id_eec__hist__axis__id_eec__hist__axis__id_t_t, 0 |  0 );
+  if (!SWIG_IsOK(res1)) {
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "EECHistBaseIdIdId_sum" "', argument " "1"" of type '" "eec::hist::EECHistBase< eec::hist::EECHist3D< eec::hist::axis::id,eec::hist::axis::id,eec::hist::axis::id > > const *""'"); 
+  }
+  arg1 = reinterpret_cast< eec::hist::EECHistBase< eec::hist::EECHist3D< eec::hist::axis::id,eec::hist::axis::id,eec::hist::axis::id > > * >(argp1);
+  if (obj1) {
+    ecode2 = SWIG_AsVal_unsigned_SS_int(obj1, &val2);
+    if (!SWIG_IsOK(ecode2)) {
+      SWIG_exception_fail(SWIG_ArgError(ecode2), "in method '" "EECHistBaseIdIdId_sum" "', argument " "2"" of type '" "unsigned int""'");
+    } 
+    arg2 = static_cast< unsigned int >(val2);
+  }
+  {
+    try {
+      result = (double)((eec::hist::EECHistBase< eec::hist::EECHist3D< eec::hist::axis::id,eec::hist::axis::id,eec::hist::axis::id > > const *)arg1)->sum(arg2); 
+    }
+    /*@SWIG:/usr/local/Cellar/swig/4.0.2/share/swig/4.0.2/typemaps/exception.swg,58,SWIG_CATCH_STDEXCEPT@*/  /* catching std::exception  */
+    catch (std::invalid_argument& e) {
+      SWIG_exception_fail(SWIG_ValueError, e.what() );
+    } catch (std::domain_error& e) {
+      SWIG_exception_fail(SWIG_ValueError, e.what() );
+    } catch (std::overflow_error& e) {
+      SWIG_exception_fail(SWIG_OverflowError, e.what() );
+    } catch (std::out_of_range& e) {
+      SWIG_exception_fail(SWIG_IndexError, e.what() );
+    } catch (std::length_error& e) {
+      SWIG_exception_fail(SWIG_IndexError, e.what() );
+    } catch (std::runtime_error& e) {
+      SWIG_exception_fail(SWIG_RuntimeError, e.what() );
+    } catch (std::exception& e) {
+      SWIG_exception_fail(SWIG_SystemError, e.what() );
+    }
+    /*@SWIG@*/
+  }
+  resultobj = SWIG_From_double(static_cast< double >(result));
+  return resultobj;
+fail:
+  return NULL;
+}
+
+
+SWIGINTERN PyObject *_wrap_EECHistBaseIdIdId___iadd__(PyObject *SWIGUNUSEDPARM(self), PyObject *args, PyObject *kwargs) {
+  PyObject *resultobj = 0;
+  eec::hist::EECHistBase< eec::hist::EECHist3D< eec::hist::axis::id,eec::hist::axis::id,eec::hist::axis::id > > *arg1 = (eec::hist::EECHistBase< eec::hist::EECHist3D< eec::hist::axis::id,eec::hist::axis::id,eec::hist::axis::id > > *) 0 ;
+  eec::hist::EECHistBase< eec::hist::EECHist3D< boost::histogram::axis::transform::id,boost::histogram::axis::transform::id,boost::histogram::axis::transform::id > > *arg2 = 0 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  void *argp2 = 0 ;
+  int res2 = 0 ;
+  PyObject * obj0 = 0 ;
+  PyObject * obj1 = 0 ;
+  char * kwnames[] = {
+    (char *)"self",  (char *)"rhs",  NULL 
+  };
+  eec::hist::EECHistBase< eec::hist::EECHist3D< eec::hist::axis::id,eec::hist::axis::id,eec::hist::axis::id > > *result = 0 ;
+  
+  if (!PyArg_ParseTupleAndKeywords(args, kwargs, "OO:EECHistBaseIdIdId___iadd__", kwnames, &obj0, &obj1)) SWIG_fail;
+  res1 = SWIG_ConvertPtr(obj0, &argp1,SWIGTYPE_p_eec__hist__EECHistBaseT_eec__hist__EECHist3DT_eec__hist__axis__id_eec__hist__axis__id_eec__hist__axis__id_t_t, SWIG_POINTER_DISOWN |  0 );
+  if (!SWIG_IsOK(res1)) {
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "EECHistBaseIdIdId___iadd__" "', argument " "1"" of type '" "eec::hist::EECHistBase< eec::hist::EECHist3D< eec::hist::axis::id,eec::hist::axis::id,eec::hist::axis::id > > *""'"); 
+  }
+  arg1 = reinterpret_cast< eec::hist::EECHistBase< eec::hist::EECHist3D< eec::hist::axis::id,eec::hist::axis::id,eec::hist::axis::id > > * >(argp1);
+  res2 = SWIG_ConvertPtr(obj1, &argp2, SWIGTYPE_p_eec__hist__EECHistBaseT_eec__hist__EECHist3DT_eec__hist__axis__id_eec__hist__axis__id_eec__hist__axis__id_t_t,  0  | 0);
+  if (!SWIG_IsOK(res2)) {
+    SWIG_exception_fail(SWIG_ArgError(res2), "in method '" "EECHistBaseIdIdId___iadd__" "', argument " "2"" of type '" "eec::hist::EECHistBase< eec::hist::EECHist3D< boost::histogram::axis::transform::id,boost::histogram::axis::transform::id,boost::histogram::axis::transform::id > > const &""'"); 
+  }
+  if (!argp2) {
+    SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in method '" "EECHistBaseIdIdId___iadd__" "', argument " "2"" of type '" "eec::hist::EECHistBase< eec::hist::EECHist3D< boost::histogram::axis::transform::id,boost::histogram::axis::transform::id,boost::histogram::axis::transform::id > > const &""'"); 
+  }
+  arg2 = reinterpret_cast< eec::hist::EECHistBase< eec::hist::EECHist3D< boost::histogram::axis::transform::id,boost::histogram::axis::transform::id,boost::histogram::axis::transform::id > > * >(argp2);
+  {
+    try {
+      result = (eec::hist::EECHistBase< eec::hist::EECHist3D< eec::hist::axis::id,eec::hist::axis::id,eec::hist::axis::id > > *) &(arg1)->operator +=((eec::hist::EECHistBase< eec::hist::EECHist3D< boost::histogram::axis::transform::id,boost::histogram::axis::transform::id,boost::histogram::axis::transform::id > > const &)*arg2); 
+    }
+    /*@SWIG:/usr/local/Cellar/swig/4.0.2/share/swig/4.0.2/typemaps/exception.swg,58,SWIG_CATCH_STDEXCEPT@*/  /* catching std::exception  */
+    catch (std::invalid_argument& e) {
+      SWIG_exception_fail(SWIG_ValueError, e.what() );
+    } catch (std::domain_error& e) {
+      SWIG_exception_fail(SWIG_ValueError, e.what() );
+    } catch (std::overflow_error& e) {
+      SWIG_exception_fail(SWIG_OverflowError, e.what() );
+    } catch (std::out_of_range& e) {
+      SWIG_exception_fail(SWIG_IndexError, e.what() );
+    } catch (std::length_error& e) {
+      SWIG_exception_fail(SWIG_IndexError, e.what() );
+    } catch (std::runtime_error& e) {
+      SWIG_exception_fail(SWIG_RuntimeError, e.what() );
+    } catch (std::exception& e) {
+      SWIG_exception_fail(SWIG_SystemError, e.what() );
+    }
+    /*@SWIG@*/
+  }
+  resultobj = SWIG_NewPointerObj(SWIG_as_voidptr(result), SWIGTYPE_p_eec__hist__EECHistBaseT_eec__hist__EECHist3DT_eec__hist__axis__id_eec__hist__axis__id_eec__hist__axis__id_t_t, SWIG_POINTER_OWN |  0 );
+  return resultobj;
+fail:
+  return NULL;
+}
+
+
 SWIGINTERN PyObject *_wrap_EECHistBaseIdIdId_bin_centers_vec(PyObject *SWIGUNUSEDPARM(self), PyObject *args, PyObject *kwargs) {
   PyObject *resultobj = 0;
   eec::hist::EECHistBase< eec::hist::EECHist3D< eec::hist::axis::id,eec::hist::axis::id,eec::hist::axis::id > > *arg1 = (eec::hist::EECHistBase< eec::hist::EECHist3D< eec::hist::axis::id,eec::hist::axis::id,eec::hist::axis::id > > *) 0 ;
@@ -13675,27 +18214,31 @@ fail:
 SWIGINTERN PyObject *_wrap_EECHistBaseIdIdId_hists_as_text(PyObject *SWIGUNUSEDPARM(self), PyObject *args, PyObject *kwargs) {
   PyObject *resultobj = 0;
   eec::hist::EECHistBase< eec::hist::EECHist3D< eec::hist::axis::id,eec::hist::axis::id,eec::hist::axis::id > > *arg1 = (eec::hist::EECHistBase< eec::hist::EECHist3D< eec::hist::axis::id,eec::hist::axis::id,eec::hist::axis::id > > *) 0 ;
-  int arg2 = (int) 16 ;
-  bool arg3 = (bool) true ;
-  std::ostringstream *arg4 = (std::ostringstream *) nullptr ;
+  int arg2 = (int) 3 ;
+  int arg3 = (int) 16 ;
+  bool arg4 = (bool) true ;
+  std::ostringstream *arg5 = (std::ostringstream *) nullptr ;
   void *argp1 = 0 ;
   int res1 = 0 ;
   int val2 ;
   int ecode2 = 0 ;
-  bool val3 ;
+  int val3 ;
   int ecode3 = 0 ;
-  void *argp4 = 0 ;
-  int res4 = 0 ;
+  bool val4 ;
+  int ecode4 = 0 ;
+  void *argp5 = 0 ;
+  int res5 = 0 ;
   PyObject * obj0 = 0 ;
   PyObject * obj1 = 0 ;
   PyObject * obj2 = 0 ;
   PyObject * obj3 = 0 ;
+  PyObject * obj4 = 0 ;
   char * kwnames[] = {
-    (char *)"self",  (char *)"precision",  (char *)"include_overflows",  (char *)"os",  NULL 
+    (char *)"self",  (char *)"hist_level",  (char *)"precision",  (char *)"include_overflows",  (char *)"os",  NULL 
   };
   std::string result;
   
-  if (!PyArg_ParseTupleAndKeywords(args, kwargs, "O|OOO:EECHistBaseIdIdId_hists_as_text", kwnames, &obj0, &obj1, &obj2, &obj3)) SWIG_fail;
+  if (!PyArg_ParseTupleAndKeywords(args, kwargs, "O|OOOO:EECHistBaseIdIdId_hists_as_text", kwnames, &obj0, &obj1, &obj2, &obj3, &obj4)) SWIG_fail;
   res1 = SWIG_ConvertPtr(obj0, &argp1,SWIGTYPE_p_eec__hist__EECHistBaseT_eec__hist__EECHist3DT_eec__hist__axis__id_eec__hist__axis__id_eec__hist__axis__id_t_t, 0 |  0 );
   if (!SWIG_IsOK(res1)) {
     SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "EECHistBaseIdIdId_hists_as_text" "', argument " "1"" of type '" "eec::hist::EECHistBase< eec::hist::EECHist3D< eec::hist::axis::id,eec::hist::axis::id,eec::hist::axis::id > > const *""'"); 
@@ -13709,22 +18252,29 @@ SWIGINTERN PyObject *_wrap_EECHistBaseIdIdId_hists_as_text(PyObject *SWIGUNUSEDP
     arg2 = static_cast< int >(val2);
   }
   if (obj2) {
-    ecode3 = SWIG_AsVal_bool(obj2, &val3);
+    ecode3 = SWIG_AsVal_int(obj2, &val3);
     if (!SWIG_IsOK(ecode3)) {
-      SWIG_exception_fail(SWIG_ArgError(ecode3), "in method '" "EECHistBaseIdIdId_hists_as_text" "', argument " "3"" of type '" "bool""'");
+      SWIG_exception_fail(SWIG_ArgError(ecode3), "in method '" "EECHistBaseIdIdId_hists_as_text" "', argument " "3"" of type '" "int""'");
     } 
-    arg3 = static_cast< bool >(val3);
+    arg3 = static_cast< int >(val3);
   }
   if (obj3) {
-    res4 = SWIG_ConvertPtr(obj3, &argp4,SWIGTYPE_p_std__ostringstream, 0 |  0 );
-    if (!SWIG_IsOK(res4)) {
-      SWIG_exception_fail(SWIG_ArgError(res4), "in method '" "EECHistBaseIdIdId_hists_as_text" "', argument " "4"" of type '" "std::ostringstream *""'"); 
+    ecode4 = SWIG_AsVal_bool(obj3, &val4);
+    if (!SWIG_IsOK(ecode4)) {
+      SWIG_exception_fail(SWIG_ArgError(ecode4), "in method '" "EECHistBaseIdIdId_hists_as_text" "', argument " "4"" of type '" "bool""'");
+    } 
+    arg4 = static_cast< bool >(val4);
+  }
+  if (obj4) {
+    res5 = SWIG_ConvertPtr(obj4, &argp5,SWIGTYPE_p_std__ostringstream, 0 |  0 );
+    if (!SWIG_IsOK(res5)) {
+      SWIG_exception_fail(SWIG_ArgError(res5), "in method '" "EECHistBaseIdIdId_hists_as_text" "', argument " "5"" of type '" "std::ostringstream *""'"); 
     }
-    arg4 = reinterpret_cast< std::ostringstream * >(argp4);
+    arg5 = reinterpret_cast< std::ostringstream * >(argp5);
   }
   {
     try {
-      result = ((eec::hist::EECHistBase< eec::hist::EECHist3D< eec::hist::axis::id,eec::hist::axis::id,eec::hist::axis::id > > const *)arg1)->hists_as_text(arg2,arg3,arg4); 
+      result = ((eec::hist::EECHistBase< eec::hist::EECHist3D< eec::hist::axis::id,eec::hist::axis::id,eec::hist::axis::id > > const *)arg1)->hists_as_text(arg2,arg3,arg4,arg5); 
     }
     /*@SWIG:/usr/local/Cellar/swig/4.0.2/share/swig/4.0.2/typemaps/exception.swg,58,SWIG_CATCH_STDEXCEPT@*/  /* catching std::exception  */
     catch (std::invalid_argument& e) {
@@ -14025,50 +18575,6 @@ fail:
 }
 
 
-SWIGINTERN PyObject *_wrap_EECHistBaseLogIdId_axes_description(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
-  PyObject *resultobj = 0;
-  eec::hist::EECHistBase< eec::hist::EECHist3D< eec::hist::axis::log,eec::hist::axis::id,eec::hist::axis::id > > *arg1 = (eec::hist::EECHistBase< eec::hist::EECHist3D< eec::hist::axis::log,eec::hist::axis::id,eec::hist::axis::id > > *) 0 ;
-  void *argp1 = 0 ;
-  int res1 = 0 ;
-  PyObject *swig_obj[1] ;
-  std::string result;
-  
-  if (!args) SWIG_fail;
-  swig_obj[0] = args;
-  res1 = SWIG_ConvertPtr(swig_obj[0], &argp1,SWIGTYPE_p_eec__hist__EECHistBaseT_eec__hist__EECHist3DT_eec__hist__axis__log_eec__hist__axis__id_eec__hist__axis__id_t_t, 0 |  0 );
-  if (!SWIG_IsOK(res1)) {
-    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "EECHistBaseLogIdId_axes_description" "', argument " "1"" of type '" "eec::hist::EECHistBase< eec::hist::EECHist3D< eec::hist::axis::log,eec::hist::axis::id,eec::hist::axis::id > > const *""'"); 
-  }
-  arg1 = reinterpret_cast< eec::hist::EECHistBase< eec::hist::EECHist3D< eec::hist::axis::log,eec::hist::axis::id,eec::hist::axis::id > > * >(argp1);
-  {
-    try {
-      result = ((eec::hist::EECHistBase< eec::hist::EECHist3D< eec::hist::axis::log,eec::hist::axis::id,eec::hist::axis::id > > const *)arg1)->axes_description(); 
-    }
-    /*@SWIG:/usr/local/Cellar/swig/4.0.2/share/swig/4.0.2/typemaps/exception.swg,58,SWIG_CATCH_STDEXCEPT@*/  /* catching std::exception  */
-    catch (std::invalid_argument& e) {
-      SWIG_exception_fail(SWIG_ValueError, e.what() );
-    } catch (std::domain_error& e) {
-      SWIG_exception_fail(SWIG_ValueError, e.what() );
-    } catch (std::overflow_error& e) {
-      SWIG_exception_fail(SWIG_OverflowError, e.what() );
-    } catch (std::out_of_range& e) {
-      SWIG_exception_fail(SWIG_IndexError, e.what() );
-    } catch (std::length_error& e) {
-      SWIG_exception_fail(SWIG_IndexError, e.what() );
-    } catch (std::runtime_error& e) {
-      SWIG_exception_fail(SWIG_RuntimeError, e.what() );
-    } catch (std::exception& e) {
-      SWIG_exception_fail(SWIG_SystemError, e.what() );
-    }
-    /*@SWIG@*/
-  }
-  resultobj = SWIG_From_std_string(static_cast< std::string >(result));
-  return resultobj;
-fail:
-  return NULL;
-}
-
-
 SWIGINTERN PyObject *_wrap_EECHistBaseLogIdId_num_threads(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
   PyObject *resultobj = 0;
   eec::hist::EECHistBase< eec::hist::EECHist3D< eec::hist::axis::log,eec::hist::axis::id,eec::hist::axis::id > > *arg1 = (eec::hist::EECHistBase< eec::hist::EECHist3D< eec::hist::axis::log,eec::hist::axis::id,eec::hist::axis::id > > *) 0 ;
@@ -14282,6 +18788,182 @@ fail:
 }
 
 
+SWIGINTERN PyObject *_wrap_EECHistBaseLogIdId_reduce(PyObject *SWIGUNUSEDPARM(self), PyObject *args, PyObject *kwargs) {
+  PyObject *resultobj = 0;
+  eec::hist::EECHistBase< eec::hist::EECHist3D< eec::hist::axis::log,eec::hist::axis::id,eec::hist::axis::id > > *arg1 = (eec::hist::EECHistBase< eec::hist::EECHist3D< eec::hist::axis::log,eec::hist::axis::id,eec::hist::axis::id > > *) 0 ;
+  std::vector< boost::histogram::algorithm::reduce_command,std::allocator< boost::histogram::algorithm::reduce_command > > *arg2 = 0 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  int res2 = SWIG_OLDOBJ ;
+  PyObject * obj0 = 0 ;
+  PyObject * obj1 = 0 ;
+  char * kwnames[] = {
+    (char *)"self",  (char *)"rcs",  NULL 
+  };
+  
+  if (!PyArg_ParseTupleAndKeywords(args, kwargs, "OO:EECHistBaseLogIdId_reduce", kwnames, &obj0, &obj1)) SWIG_fail;
+  res1 = SWIG_ConvertPtr(obj0, &argp1,SWIGTYPE_p_eec__hist__EECHistBaseT_eec__hist__EECHist3DT_eec__hist__axis__log_eec__hist__axis__id_eec__hist__axis__id_t_t, 0 |  0 );
+  if (!SWIG_IsOK(res1)) {
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "EECHistBaseLogIdId_reduce" "', argument " "1"" of type '" "eec::hist::EECHistBase< eec::hist::EECHist3D< eec::hist::axis::log,eec::hist::axis::id,eec::hist::axis::id > > *""'"); 
+  }
+  arg1 = reinterpret_cast< eec::hist::EECHistBase< eec::hist::EECHist3D< eec::hist::axis::log,eec::hist::axis::id,eec::hist::axis::id > > * >(argp1);
+  {
+    std::vector< boost::histogram::algorithm::reduce_command,std::allocator< boost::histogram::algorithm::reduce_command > > *ptr = (std::vector< boost::histogram::algorithm::reduce_command,std::allocator< boost::histogram::algorithm::reduce_command > > *)0;
+    res2 = swig::asptr(obj1, &ptr);
+    if (!SWIG_IsOK(res2)) {
+      SWIG_exception_fail(SWIG_ArgError(res2), "in method '" "EECHistBaseLogIdId_reduce" "', argument " "2"" of type '" "std::vector< boost::histogram::algorithm::reduce_command,std::allocator< boost::histogram::algorithm::reduce_command > > const &""'"); 
+    }
+    if (!ptr) {
+      SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in method '" "EECHistBaseLogIdId_reduce" "', argument " "2"" of type '" "std::vector< boost::histogram::algorithm::reduce_command,std::allocator< boost::histogram::algorithm::reduce_command > > const &""'"); 
+    }
+    arg2 = ptr;
+  }
+  {
+    try {
+      (arg1)->reduce((std::vector< boost::histogram::algorithm::reduce_command,std::allocator< boost::histogram::algorithm::reduce_command > > const &)*arg2); 
+    }
+    /*@SWIG:/usr/local/Cellar/swig/4.0.2/share/swig/4.0.2/typemaps/exception.swg,58,SWIG_CATCH_STDEXCEPT@*/  /* catching std::exception  */
+    catch (std::invalid_argument& e) {
+      SWIG_exception_fail(SWIG_ValueError, e.what() );
+    } catch (std::domain_error& e) {
+      SWIG_exception_fail(SWIG_ValueError, e.what() );
+    } catch (std::overflow_error& e) {
+      SWIG_exception_fail(SWIG_OverflowError, e.what() );
+    } catch (std::out_of_range& e) {
+      SWIG_exception_fail(SWIG_IndexError, e.what() );
+    } catch (std::length_error& e) {
+      SWIG_exception_fail(SWIG_IndexError, e.what() );
+    } catch (std::runtime_error& e) {
+      SWIG_exception_fail(SWIG_RuntimeError, e.what() );
+    } catch (std::exception& e) {
+      SWIG_exception_fail(SWIG_SystemError, e.what() );
+    }
+    /*@SWIG@*/
+  }
+  resultobj = SWIG_Py_Void();
+  if (SWIG_IsNewObj(res2)) delete arg2;
+  return resultobj;
+fail:
+  if (SWIG_IsNewObj(res2)) delete arg2;
+  return NULL;
+}
+
+
+SWIGINTERN PyObject *_wrap_EECHistBaseLogIdId_sum(PyObject *SWIGUNUSEDPARM(self), PyObject *args, PyObject *kwargs) {
+  PyObject *resultobj = 0;
+  eec::hist::EECHistBase< eec::hist::EECHist3D< eec::hist::axis::log,eec::hist::axis::id,eec::hist::axis::id > > *arg1 = (eec::hist::EECHistBase< eec::hist::EECHist3D< eec::hist::axis::log,eec::hist::axis::id,eec::hist::axis::id > > *) 0 ;
+  unsigned int arg2 = (unsigned int) 0 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  unsigned int val2 ;
+  int ecode2 = 0 ;
+  PyObject * obj0 = 0 ;
+  PyObject * obj1 = 0 ;
+  char * kwnames[] = {
+    (char *)"self",  (char *)"hist_i",  NULL 
+  };
+  double result;
+  
+  if (!PyArg_ParseTupleAndKeywords(args, kwargs, "O|O:EECHistBaseLogIdId_sum", kwnames, &obj0, &obj1)) SWIG_fail;
+  res1 = SWIG_ConvertPtr(obj0, &argp1,SWIGTYPE_p_eec__hist__EECHistBaseT_eec__hist__EECHist3DT_eec__hist__axis__log_eec__hist__axis__id_eec__hist__axis__id_t_t, 0 |  0 );
+  if (!SWIG_IsOK(res1)) {
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "EECHistBaseLogIdId_sum" "', argument " "1"" of type '" "eec::hist::EECHistBase< eec::hist::EECHist3D< eec::hist::axis::log,eec::hist::axis::id,eec::hist::axis::id > > const *""'"); 
+  }
+  arg1 = reinterpret_cast< eec::hist::EECHistBase< eec::hist::EECHist3D< eec::hist::axis::log,eec::hist::axis::id,eec::hist::axis::id > > * >(argp1);
+  if (obj1) {
+    ecode2 = SWIG_AsVal_unsigned_SS_int(obj1, &val2);
+    if (!SWIG_IsOK(ecode2)) {
+      SWIG_exception_fail(SWIG_ArgError(ecode2), "in method '" "EECHistBaseLogIdId_sum" "', argument " "2"" of type '" "unsigned int""'");
+    } 
+    arg2 = static_cast< unsigned int >(val2);
+  }
+  {
+    try {
+      result = (double)((eec::hist::EECHistBase< eec::hist::EECHist3D< eec::hist::axis::log,eec::hist::axis::id,eec::hist::axis::id > > const *)arg1)->sum(arg2); 
+    }
+    /*@SWIG:/usr/local/Cellar/swig/4.0.2/share/swig/4.0.2/typemaps/exception.swg,58,SWIG_CATCH_STDEXCEPT@*/  /* catching std::exception  */
+    catch (std::invalid_argument& e) {
+      SWIG_exception_fail(SWIG_ValueError, e.what() );
+    } catch (std::domain_error& e) {
+      SWIG_exception_fail(SWIG_ValueError, e.what() );
+    } catch (std::overflow_error& e) {
+      SWIG_exception_fail(SWIG_OverflowError, e.what() );
+    } catch (std::out_of_range& e) {
+      SWIG_exception_fail(SWIG_IndexError, e.what() );
+    } catch (std::length_error& e) {
+      SWIG_exception_fail(SWIG_IndexError, e.what() );
+    } catch (std::runtime_error& e) {
+      SWIG_exception_fail(SWIG_RuntimeError, e.what() );
+    } catch (std::exception& e) {
+      SWIG_exception_fail(SWIG_SystemError, e.what() );
+    }
+    /*@SWIG@*/
+  }
+  resultobj = SWIG_From_double(static_cast< double >(result));
+  return resultobj;
+fail:
+  return NULL;
+}
+
+
+SWIGINTERN PyObject *_wrap_EECHistBaseLogIdId___iadd__(PyObject *SWIGUNUSEDPARM(self), PyObject *args, PyObject *kwargs) {
+  PyObject *resultobj = 0;
+  eec::hist::EECHistBase< eec::hist::EECHist3D< eec::hist::axis::log,eec::hist::axis::id,eec::hist::axis::id > > *arg1 = (eec::hist::EECHistBase< eec::hist::EECHist3D< eec::hist::axis::log,eec::hist::axis::id,eec::hist::axis::id > > *) 0 ;
+  eec::hist::EECHistBase< eec::hist::EECHist3D< boost::histogram::axis::transform::log,boost::histogram::axis::transform::id,boost::histogram::axis::transform::id > > *arg2 = 0 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  void *argp2 = 0 ;
+  int res2 = 0 ;
+  PyObject * obj0 = 0 ;
+  PyObject * obj1 = 0 ;
+  char * kwnames[] = {
+    (char *)"self",  (char *)"rhs",  NULL 
+  };
+  eec::hist::EECHistBase< eec::hist::EECHist3D< eec::hist::axis::log,eec::hist::axis::id,eec::hist::axis::id > > *result = 0 ;
+  
+  if (!PyArg_ParseTupleAndKeywords(args, kwargs, "OO:EECHistBaseLogIdId___iadd__", kwnames, &obj0, &obj1)) SWIG_fail;
+  res1 = SWIG_ConvertPtr(obj0, &argp1,SWIGTYPE_p_eec__hist__EECHistBaseT_eec__hist__EECHist3DT_eec__hist__axis__log_eec__hist__axis__id_eec__hist__axis__id_t_t, SWIG_POINTER_DISOWN |  0 );
+  if (!SWIG_IsOK(res1)) {
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "EECHistBaseLogIdId___iadd__" "', argument " "1"" of type '" "eec::hist::EECHistBase< eec::hist::EECHist3D< eec::hist::axis::log,eec::hist::axis::id,eec::hist::axis::id > > *""'"); 
+  }
+  arg1 = reinterpret_cast< eec::hist::EECHistBase< eec::hist::EECHist3D< eec::hist::axis::log,eec::hist::axis::id,eec::hist::axis::id > > * >(argp1);
+  res2 = SWIG_ConvertPtr(obj1, &argp2, SWIGTYPE_p_eec__hist__EECHistBaseT_eec__hist__EECHist3DT_eec__hist__axis__log_eec__hist__axis__id_eec__hist__axis__id_t_t,  0  | 0);
+  if (!SWIG_IsOK(res2)) {
+    SWIG_exception_fail(SWIG_ArgError(res2), "in method '" "EECHistBaseLogIdId___iadd__" "', argument " "2"" of type '" "eec::hist::EECHistBase< eec::hist::EECHist3D< boost::histogram::axis::transform::log,boost::histogram::axis::transform::id,boost::histogram::axis::transform::id > > const &""'"); 
+  }
+  if (!argp2) {
+    SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in method '" "EECHistBaseLogIdId___iadd__" "', argument " "2"" of type '" "eec::hist::EECHistBase< eec::hist::EECHist3D< boost::histogram::axis::transform::log,boost::histogram::axis::transform::id,boost::histogram::axis::transform::id > > const &""'"); 
+  }
+  arg2 = reinterpret_cast< eec::hist::EECHistBase< eec::hist::EECHist3D< boost::histogram::axis::transform::log,boost::histogram::axis::transform::id,boost::histogram::axis::transform::id > > * >(argp2);
+  {
+    try {
+      result = (eec::hist::EECHistBase< eec::hist::EECHist3D< eec::hist::axis::log,eec::hist::axis::id,eec::hist::axis::id > > *) &(arg1)->operator +=((eec::hist::EECHistBase< eec::hist::EECHist3D< boost::histogram::axis::transform::log,boost::histogram::axis::transform::id,boost::histogram::axis::transform::id > > const &)*arg2); 
+    }
+    /*@SWIG:/usr/local/Cellar/swig/4.0.2/share/swig/4.0.2/typemaps/exception.swg,58,SWIG_CATCH_STDEXCEPT@*/  /* catching std::exception  */
+    catch (std::invalid_argument& e) {
+      SWIG_exception_fail(SWIG_ValueError, e.what() );
+    } catch (std::domain_error& e) {
+      SWIG_exception_fail(SWIG_ValueError, e.what() );
+    } catch (std::overflow_error& e) {
+      SWIG_exception_fail(SWIG_OverflowError, e.what() );
+    } catch (std::out_of_range& e) {
+      SWIG_exception_fail(SWIG_IndexError, e.what() );
+    } catch (std::length_error& e) {
+      SWIG_exception_fail(SWIG_IndexError, e.what() );
+    } catch (std::runtime_error& e) {
+      SWIG_exception_fail(SWIG_RuntimeError, e.what() );
+    } catch (std::exception& e) {
+      SWIG_exception_fail(SWIG_SystemError, e.what() );
+    }
+    /*@SWIG@*/
+  }
+  resultobj = SWIG_NewPointerObj(SWIG_as_voidptr(result), SWIGTYPE_p_eec__hist__EECHistBaseT_eec__hist__EECHist3DT_eec__hist__axis__log_eec__hist__axis__id_eec__hist__axis__id_t_t, SWIG_POINTER_OWN |  0 );
+  return resultobj;
+fail:
+  return NULL;
+}
+
+
 SWIGINTERN PyObject *_wrap_EECHistBaseLogIdId_bin_centers_vec(PyObject *SWIGUNUSEDPARM(self), PyObject *args, PyObject *kwargs) {
   PyObject *resultobj = 0;
   eec::hist::EECHistBase< eec::hist::EECHist3D< eec::hist::axis::log,eec::hist::axis::id,eec::hist::axis::id > > *arg1 = (eec::hist::EECHistBase< eec::hist::EECHist3D< eec::hist::axis::log,eec::hist::axis::id,eec::hist::axis::id > > *) 0 ;
@@ -14399,27 +19081,31 @@ fail:
 SWIGINTERN PyObject *_wrap_EECHistBaseLogIdId_hists_as_text(PyObject *SWIGUNUSEDPARM(self), PyObject *args, PyObject *kwargs) {
   PyObject *resultobj = 0;
   eec::hist::EECHistBase< eec::hist::EECHist3D< eec::hist::axis::log,eec::hist::axis::id,eec::hist::axis::id > > *arg1 = (eec::hist::EECHistBase< eec::hist::EECHist3D< eec::hist::axis::log,eec::hist::axis::id,eec::hist::axis::id > > *) 0 ;
-  int arg2 = (int) 16 ;
-  bool arg3 = (bool) true ;
-  std::ostringstream *arg4 = (std::ostringstream *) nullptr ;
+  int arg2 = (int) 3 ;
+  int arg3 = (int) 16 ;
+  bool arg4 = (bool) true ;
+  std::ostringstream *arg5 = (std::ostringstream *) nullptr ;
   void *argp1 = 0 ;
   int res1 = 0 ;
   int val2 ;
   int ecode2 = 0 ;
-  bool val3 ;
+  int val3 ;
   int ecode3 = 0 ;
-  void *argp4 = 0 ;
-  int res4 = 0 ;
+  bool val4 ;
+  int ecode4 = 0 ;
+  void *argp5 = 0 ;
+  int res5 = 0 ;
   PyObject * obj0 = 0 ;
   PyObject * obj1 = 0 ;
   PyObject * obj2 = 0 ;
   PyObject * obj3 = 0 ;
+  PyObject * obj4 = 0 ;
   char * kwnames[] = {
-    (char *)"self",  (char *)"precision",  (char *)"include_overflows",  (char *)"os",  NULL 
+    (char *)"self",  (char *)"hist_level",  (char *)"precision",  (char *)"include_overflows",  (char *)"os",  NULL 
   };
   std::string result;
   
-  if (!PyArg_ParseTupleAndKeywords(args, kwargs, "O|OOO:EECHistBaseLogIdId_hists_as_text", kwnames, &obj0, &obj1, &obj2, &obj3)) SWIG_fail;
+  if (!PyArg_ParseTupleAndKeywords(args, kwargs, "O|OOOO:EECHistBaseLogIdId_hists_as_text", kwnames, &obj0, &obj1, &obj2, &obj3, &obj4)) SWIG_fail;
   res1 = SWIG_ConvertPtr(obj0, &argp1,SWIGTYPE_p_eec__hist__EECHistBaseT_eec__hist__EECHist3DT_eec__hist__axis__log_eec__hist__axis__id_eec__hist__axis__id_t_t, 0 |  0 );
   if (!SWIG_IsOK(res1)) {
     SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "EECHistBaseLogIdId_hists_as_text" "', argument " "1"" of type '" "eec::hist::EECHistBase< eec::hist::EECHist3D< eec::hist::axis::log,eec::hist::axis::id,eec::hist::axis::id > > const *""'"); 
@@ -14433,22 +19119,29 @@ SWIGINTERN PyObject *_wrap_EECHistBaseLogIdId_hists_as_text(PyObject *SWIGUNUSED
     arg2 = static_cast< int >(val2);
   }
   if (obj2) {
-    ecode3 = SWIG_AsVal_bool(obj2, &val3);
+    ecode3 = SWIG_AsVal_int(obj2, &val3);
     if (!SWIG_IsOK(ecode3)) {
-      SWIG_exception_fail(SWIG_ArgError(ecode3), "in method '" "EECHistBaseLogIdId_hists_as_text" "', argument " "3"" of type '" "bool""'");
+      SWIG_exception_fail(SWIG_ArgError(ecode3), "in method '" "EECHistBaseLogIdId_hists_as_text" "', argument " "3"" of type '" "int""'");
     } 
-    arg3 = static_cast< bool >(val3);
+    arg3 = static_cast< int >(val3);
   }
   if (obj3) {
-    res4 = SWIG_ConvertPtr(obj3, &argp4,SWIGTYPE_p_std__ostringstream, 0 |  0 );
-    if (!SWIG_IsOK(res4)) {
-      SWIG_exception_fail(SWIG_ArgError(res4), "in method '" "EECHistBaseLogIdId_hists_as_text" "', argument " "4"" of type '" "std::ostringstream *""'"); 
+    ecode4 = SWIG_AsVal_bool(obj3, &val4);
+    if (!SWIG_IsOK(ecode4)) {
+      SWIG_exception_fail(SWIG_ArgError(ecode4), "in method '" "EECHistBaseLogIdId_hists_as_text" "', argument " "4"" of type '" "bool""'");
+    } 
+    arg4 = static_cast< bool >(val4);
+  }
+  if (obj4) {
+    res5 = SWIG_ConvertPtr(obj4, &argp5,SWIGTYPE_p_std__ostringstream, 0 |  0 );
+    if (!SWIG_IsOK(res5)) {
+      SWIG_exception_fail(SWIG_ArgError(res5), "in method '" "EECHistBaseLogIdId_hists_as_text" "', argument " "5"" of type '" "std::ostringstream *""'"); 
     }
-    arg4 = reinterpret_cast< std::ostringstream * >(argp4);
+    arg5 = reinterpret_cast< std::ostringstream * >(argp5);
   }
   {
     try {
-      result = ((eec::hist::EECHistBase< eec::hist::EECHist3D< eec::hist::axis::log,eec::hist::axis::id,eec::hist::axis::id > > const *)arg1)->hists_as_text(arg2,arg3,arg4); 
+      result = ((eec::hist::EECHistBase< eec::hist::EECHist3D< eec::hist::axis::log,eec::hist::axis::id,eec::hist::axis::id > > const *)arg1)->hists_as_text(arg2,arg3,arg4,arg5); 
     }
     /*@SWIG:/usr/local/Cellar/swig/4.0.2/share/swig/4.0.2/typemaps/exception.swg,58,SWIG_CATCH_STDEXCEPT@*/  /* catching std::exception  */
     catch (std::invalid_argument& e) {
@@ -14749,50 +19442,6 @@ fail:
 }
 
 
-SWIGINTERN PyObject *_wrap_EECHistBaseIdLogId_axes_description(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
-  PyObject *resultobj = 0;
-  eec::hist::EECHistBase< eec::hist::EECHist3D< eec::hist::axis::id,eec::hist::axis::log,eec::hist::axis::id > > *arg1 = (eec::hist::EECHistBase< eec::hist::EECHist3D< eec::hist::axis::id,eec::hist::axis::log,eec::hist::axis::id > > *) 0 ;
-  void *argp1 = 0 ;
-  int res1 = 0 ;
-  PyObject *swig_obj[1] ;
-  std::string result;
-  
-  if (!args) SWIG_fail;
-  swig_obj[0] = args;
-  res1 = SWIG_ConvertPtr(swig_obj[0], &argp1,SWIGTYPE_p_eec__hist__EECHistBaseT_eec__hist__EECHist3DT_eec__hist__axis__id_eec__hist__axis__log_eec__hist__axis__id_t_t, 0 |  0 );
-  if (!SWIG_IsOK(res1)) {
-    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "EECHistBaseIdLogId_axes_description" "', argument " "1"" of type '" "eec::hist::EECHistBase< eec::hist::EECHist3D< eec::hist::axis::id,eec::hist::axis::log,eec::hist::axis::id > > const *""'"); 
-  }
-  arg1 = reinterpret_cast< eec::hist::EECHistBase< eec::hist::EECHist3D< eec::hist::axis::id,eec::hist::axis::log,eec::hist::axis::id > > * >(argp1);
-  {
-    try {
-      result = ((eec::hist::EECHistBase< eec::hist::EECHist3D< eec::hist::axis::id,eec::hist::axis::log,eec::hist::axis::id > > const *)arg1)->axes_description(); 
-    }
-    /*@SWIG:/usr/local/Cellar/swig/4.0.2/share/swig/4.0.2/typemaps/exception.swg,58,SWIG_CATCH_STDEXCEPT@*/  /* catching std::exception  */
-    catch (std::invalid_argument& e) {
-      SWIG_exception_fail(SWIG_ValueError, e.what() );
-    } catch (std::domain_error& e) {
-      SWIG_exception_fail(SWIG_ValueError, e.what() );
-    } catch (std::overflow_error& e) {
-      SWIG_exception_fail(SWIG_OverflowError, e.what() );
-    } catch (std::out_of_range& e) {
-      SWIG_exception_fail(SWIG_IndexError, e.what() );
-    } catch (std::length_error& e) {
-      SWIG_exception_fail(SWIG_IndexError, e.what() );
-    } catch (std::runtime_error& e) {
-      SWIG_exception_fail(SWIG_RuntimeError, e.what() );
-    } catch (std::exception& e) {
-      SWIG_exception_fail(SWIG_SystemError, e.what() );
-    }
-    /*@SWIG@*/
-  }
-  resultobj = SWIG_From_std_string(static_cast< std::string >(result));
-  return resultobj;
-fail:
-  return NULL;
-}
-
-
 SWIGINTERN PyObject *_wrap_EECHistBaseIdLogId_num_threads(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
   PyObject *resultobj = 0;
   eec::hist::EECHistBase< eec::hist::EECHist3D< eec::hist::axis::id,eec::hist::axis::log,eec::hist::axis::id > > *arg1 = (eec::hist::EECHistBase< eec::hist::EECHist3D< eec::hist::axis::id,eec::hist::axis::log,eec::hist::axis::id > > *) 0 ;
@@ -15006,6 +19655,182 @@ fail:
 }
 
 
+SWIGINTERN PyObject *_wrap_EECHistBaseIdLogId_reduce(PyObject *SWIGUNUSEDPARM(self), PyObject *args, PyObject *kwargs) {
+  PyObject *resultobj = 0;
+  eec::hist::EECHistBase< eec::hist::EECHist3D< eec::hist::axis::id,eec::hist::axis::log,eec::hist::axis::id > > *arg1 = (eec::hist::EECHistBase< eec::hist::EECHist3D< eec::hist::axis::id,eec::hist::axis::log,eec::hist::axis::id > > *) 0 ;
+  std::vector< boost::histogram::algorithm::reduce_command,std::allocator< boost::histogram::algorithm::reduce_command > > *arg2 = 0 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  int res2 = SWIG_OLDOBJ ;
+  PyObject * obj0 = 0 ;
+  PyObject * obj1 = 0 ;
+  char * kwnames[] = {
+    (char *)"self",  (char *)"rcs",  NULL 
+  };
+  
+  if (!PyArg_ParseTupleAndKeywords(args, kwargs, "OO:EECHistBaseIdLogId_reduce", kwnames, &obj0, &obj1)) SWIG_fail;
+  res1 = SWIG_ConvertPtr(obj0, &argp1,SWIGTYPE_p_eec__hist__EECHistBaseT_eec__hist__EECHist3DT_eec__hist__axis__id_eec__hist__axis__log_eec__hist__axis__id_t_t, 0 |  0 );
+  if (!SWIG_IsOK(res1)) {
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "EECHistBaseIdLogId_reduce" "', argument " "1"" of type '" "eec::hist::EECHistBase< eec::hist::EECHist3D< eec::hist::axis::id,eec::hist::axis::log,eec::hist::axis::id > > *""'"); 
+  }
+  arg1 = reinterpret_cast< eec::hist::EECHistBase< eec::hist::EECHist3D< eec::hist::axis::id,eec::hist::axis::log,eec::hist::axis::id > > * >(argp1);
+  {
+    std::vector< boost::histogram::algorithm::reduce_command,std::allocator< boost::histogram::algorithm::reduce_command > > *ptr = (std::vector< boost::histogram::algorithm::reduce_command,std::allocator< boost::histogram::algorithm::reduce_command > > *)0;
+    res2 = swig::asptr(obj1, &ptr);
+    if (!SWIG_IsOK(res2)) {
+      SWIG_exception_fail(SWIG_ArgError(res2), "in method '" "EECHistBaseIdLogId_reduce" "', argument " "2"" of type '" "std::vector< boost::histogram::algorithm::reduce_command,std::allocator< boost::histogram::algorithm::reduce_command > > const &""'"); 
+    }
+    if (!ptr) {
+      SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in method '" "EECHistBaseIdLogId_reduce" "', argument " "2"" of type '" "std::vector< boost::histogram::algorithm::reduce_command,std::allocator< boost::histogram::algorithm::reduce_command > > const &""'"); 
+    }
+    arg2 = ptr;
+  }
+  {
+    try {
+      (arg1)->reduce((std::vector< boost::histogram::algorithm::reduce_command,std::allocator< boost::histogram::algorithm::reduce_command > > const &)*arg2); 
+    }
+    /*@SWIG:/usr/local/Cellar/swig/4.0.2/share/swig/4.0.2/typemaps/exception.swg,58,SWIG_CATCH_STDEXCEPT@*/  /* catching std::exception  */
+    catch (std::invalid_argument& e) {
+      SWIG_exception_fail(SWIG_ValueError, e.what() );
+    } catch (std::domain_error& e) {
+      SWIG_exception_fail(SWIG_ValueError, e.what() );
+    } catch (std::overflow_error& e) {
+      SWIG_exception_fail(SWIG_OverflowError, e.what() );
+    } catch (std::out_of_range& e) {
+      SWIG_exception_fail(SWIG_IndexError, e.what() );
+    } catch (std::length_error& e) {
+      SWIG_exception_fail(SWIG_IndexError, e.what() );
+    } catch (std::runtime_error& e) {
+      SWIG_exception_fail(SWIG_RuntimeError, e.what() );
+    } catch (std::exception& e) {
+      SWIG_exception_fail(SWIG_SystemError, e.what() );
+    }
+    /*@SWIG@*/
+  }
+  resultobj = SWIG_Py_Void();
+  if (SWIG_IsNewObj(res2)) delete arg2;
+  return resultobj;
+fail:
+  if (SWIG_IsNewObj(res2)) delete arg2;
+  return NULL;
+}
+
+
+SWIGINTERN PyObject *_wrap_EECHistBaseIdLogId_sum(PyObject *SWIGUNUSEDPARM(self), PyObject *args, PyObject *kwargs) {
+  PyObject *resultobj = 0;
+  eec::hist::EECHistBase< eec::hist::EECHist3D< eec::hist::axis::id,eec::hist::axis::log,eec::hist::axis::id > > *arg1 = (eec::hist::EECHistBase< eec::hist::EECHist3D< eec::hist::axis::id,eec::hist::axis::log,eec::hist::axis::id > > *) 0 ;
+  unsigned int arg2 = (unsigned int) 0 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  unsigned int val2 ;
+  int ecode2 = 0 ;
+  PyObject * obj0 = 0 ;
+  PyObject * obj1 = 0 ;
+  char * kwnames[] = {
+    (char *)"self",  (char *)"hist_i",  NULL 
+  };
+  double result;
+  
+  if (!PyArg_ParseTupleAndKeywords(args, kwargs, "O|O:EECHistBaseIdLogId_sum", kwnames, &obj0, &obj1)) SWIG_fail;
+  res1 = SWIG_ConvertPtr(obj0, &argp1,SWIGTYPE_p_eec__hist__EECHistBaseT_eec__hist__EECHist3DT_eec__hist__axis__id_eec__hist__axis__log_eec__hist__axis__id_t_t, 0 |  0 );
+  if (!SWIG_IsOK(res1)) {
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "EECHistBaseIdLogId_sum" "', argument " "1"" of type '" "eec::hist::EECHistBase< eec::hist::EECHist3D< eec::hist::axis::id,eec::hist::axis::log,eec::hist::axis::id > > const *""'"); 
+  }
+  arg1 = reinterpret_cast< eec::hist::EECHistBase< eec::hist::EECHist3D< eec::hist::axis::id,eec::hist::axis::log,eec::hist::axis::id > > * >(argp1);
+  if (obj1) {
+    ecode2 = SWIG_AsVal_unsigned_SS_int(obj1, &val2);
+    if (!SWIG_IsOK(ecode2)) {
+      SWIG_exception_fail(SWIG_ArgError(ecode2), "in method '" "EECHistBaseIdLogId_sum" "', argument " "2"" of type '" "unsigned int""'");
+    } 
+    arg2 = static_cast< unsigned int >(val2);
+  }
+  {
+    try {
+      result = (double)((eec::hist::EECHistBase< eec::hist::EECHist3D< eec::hist::axis::id,eec::hist::axis::log,eec::hist::axis::id > > const *)arg1)->sum(arg2); 
+    }
+    /*@SWIG:/usr/local/Cellar/swig/4.0.2/share/swig/4.0.2/typemaps/exception.swg,58,SWIG_CATCH_STDEXCEPT@*/  /* catching std::exception  */
+    catch (std::invalid_argument& e) {
+      SWIG_exception_fail(SWIG_ValueError, e.what() );
+    } catch (std::domain_error& e) {
+      SWIG_exception_fail(SWIG_ValueError, e.what() );
+    } catch (std::overflow_error& e) {
+      SWIG_exception_fail(SWIG_OverflowError, e.what() );
+    } catch (std::out_of_range& e) {
+      SWIG_exception_fail(SWIG_IndexError, e.what() );
+    } catch (std::length_error& e) {
+      SWIG_exception_fail(SWIG_IndexError, e.what() );
+    } catch (std::runtime_error& e) {
+      SWIG_exception_fail(SWIG_RuntimeError, e.what() );
+    } catch (std::exception& e) {
+      SWIG_exception_fail(SWIG_SystemError, e.what() );
+    }
+    /*@SWIG@*/
+  }
+  resultobj = SWIG_From_double(static_cast< double >(result));
+  return resultobj;
+fail:
+  return NULL;
+}
+
+
+SWIGINTERN PyObject *_wrap_EECHistBaseIdLogId___iadd__(PyObject *SWIGUNUSEDPARM(self), PyObject *args, PyObject *kwargs) {
+  PyObject *resultobj = 0;
+  eec::hist::EECHistBase< eec::hist::EECHist3D< eec::hist::axis::id,eec::hist::axis::log,eec::hist::axis::id > > *arg1 = (eec::hist::EECHistBase< eec::hist::EECHist3D< eec::hist::axis::id,eec::hist::axis::log,eec::hist::axis::id > > *) 0 ;
+  eec::hist::EECHistBase< eec::hist::EECHist3D< boost::histogram::axis::transform::id,boost::histogram::axis::transform::log,boost::histogram::axis::transform::id > > *arg2 = 0 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  void *argp2 = 0 ;
+  int res2 = 0 ;
+  PyObject * obj0 = 0 ;
+  PyObject * obj1 = 0 ;
+  char * kwnames[] = {
+    (char *)"self",  (char *)"rhs",  NULL 
+  };
+  eec::hist::EECHistBase< eec::hist::EECHist3D< eec::hist::axis::id,eec::hist::axis::log,eec::hist::axis::id > > *result = 0 ;
+  
+  if (!PyArg_ParseTupleAndKeywords(args, kwargs, "OO:EECHistBaseIdLogId___iadd__", kwnames, &obj0, &obj1)) SWIG_fail;
+  res1 = SWIG_ConvertPtr(obj0, &argp1,SWIGTYPE_p_eec__hist__EECHistBaseT_eec__hist__EECHist3DT_eec__hist__axis__id_eec__hist__axis__log_eec__hist__axis__id_t_t, SWIG_POINTER_DISOWN |  0 );
+  if (!SWIG_IsOK(res1)) {
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "EECHistBaseIdLogId___iadd__" "', argument " "1"" of type '" "eec::hist::EECHistBase< eec::hist::EECHist3D< eec::hist::axis::id,eec::hist::axis::log,eec::hist::axis::id > > *""'"); 
+  }
+  arg1 = reinterpret_cast< eec::hist::EECHistBase< eec::hist::EECHist3D< eec::hist::axis::id,eec::hist::axis::log,eec::hist::axis::id > > * >(argp1);
+  res2 = SWIG_ConvertPtr(obj1, &argp2, SWIGTYPE_p_eec__hist__EECHistBaseT_eec__hist__EECHist3DT_eec__hist__axis__id_eec__hist__axis__log_eec__hist__axis__id_t_t,  0  | 0);
+  if (!SWIG_IsOK(res2)) {
+    SWIG_exception_fail(SWIG_ArgError(res2), "in method '" "EECHistBaseIdLogId___iadd__" "', argument " "2"" of type '" "eec::hist::EECHistBase< eec::hist::EECHist3D< boost::histogram::axis::transform::id,boost::histogram::axis::transform::log,boost::histogram::axis::transform::id > > const &""'"); 
+  }
+  if (!argp2) {
+    SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in method '" "EECHistBaseIdLogId___iadd__" "', argument " "2"" of type '" "eec::hist::EECHistBase< eec::hist::EECHist3D< boost::histogram::axis::transform::id,boost::histogram::axis::transform::log,boost::histogram::axis::transform::id > > const &""'"); 
+  }
+  arg2 = reinterpret_cast< eec::hist::EECHistBase< eec::hist::EECHist3D< boost::histogram::axis::transform::id,boost::histogram::axis::transform::log,boost::histogram::axis::transform::id > > * >(argp2);
+  {
+    try {
+      result = (eec::hist::EECHistBase< eec::hist::EECHist3D< eec::hist::axis::id,eec::hist::axis::log,eec::hist::axis::id > > *) &(arg1)->operator +=((eec::hist::EECHistBase< eec::hist::EECHist3D< boost::histogram::axis::transform::id,boost::histogram::axis::transform::log,boost::histogram::axis::transform::id > > const &)*arg2); 
+    }
+    /*@SWIG:/usr/local/Cellar/swig/4.0.2/share/swig/4.0.2/typemaps/exception.swg,58,SWIG_CATCH_STDEXCEPT@*/  /* catching std::exception  */
+    catch (std::invalid_argument& e) {
+      SWIG_exception_fail(SWIG_ValueError, e.what() );
+    } catch (std::domain_error& e) {
+      SWIG_exception_fail(SWIG_ValueError, e.what() );
+    } catch (std::overflow_error& e) {
+      SWIG_exception_fail(SWIG_OverflowError, e.what() );
+    } catch (std::out_of_range& e) {
+      SWIG_exception_fail(SWIG_IndexError, e.what() );
+    } catch (std::length_error& e) {
+      SWIG_exception_fail(SWIG_IndexError, e.what() );
+    } catch (std::runtime_error& e) {
+      SWIG_exception_fail(SWIG_RuntimeError, e.what() );
+    } catch (std::exception& e) {
+      SWIG_exception_fail(SWIG_SystemError, e.what() );
+    }
+    /*@SWIG@*/
+  }
+  resultobj = SWIG_NewPointerObj(SWIG_as_voidptr(result), SWIGTYPE_p_eec__hist__EECHistBaseT_eec__hist__EECHist3DT_eec__hist__axis__id_eec__hist__axis__log_eec__hist__axis__id_t_t, SWIG_POINTER_OWN |  0 );
+  return resultobj;
+fail:
+  return NULL;
+}
+
+
 SWIGINTERN PyObject *_wrap_EECHistBaseIdLogId_bin_centers_vec(PyObject *SWIGUNUSEDPARM(self), PyObject *args, PyObject *kwargs) {
   PyObject *resultobj = 0;
   eec::hist::EECHistBase< eec::hist::EECHist3D< eec::hist::axis::id,eec::hist::axis::log,eec::hist::axis::id > > *arg1 = (eec::hist::EECHistBase< eec::hist::EECHist3D< eec::hist::axis::id,eec::hist::axis::log,eec::hist::axis::id > > *) 0 ;
@@ -15123,27 +19948,31 @@ fail:
 SWIGINTERN PyObject *_wrap_EECHistBaseIdLogId_hists_as_text(PyObject *SWIGUNUSEDPARM(self), PyObject *args, PyObject *kwargs) {
   PyObject *resultobj = 0;
   eec::hist::EECHistBase< eec::hist::EECHist3D< eec::hist::axis::id,eec::hist::axis::log,eec::hist::axis::id > > *arg1 = (eec::hist::EECHistBase< eec::hist::EECHist3D< eec::hist::axis::id,eec::hist::axis::log,eec::hist::axis::id > > *) 0 ;
-  int arg2 = (int) 16 ;
-  bool arg3 = (bool) true ;
-  std::ostringstream *arg4 = (std::ostringstream *) nullptr ;
+  int arg2 = (int) 3 ;
+  int arg3 = (int) 16 ;
+  bool arg4 = (bool) true ;
+  std::ostringstream *arg5 = (std::ostringstream *) nullptr ;
   void *argp1 = 0 ;
   int res1 = 0 ;
   int val2 ;
   int ecode2 = 0 ;
-  bool val3 ;
+  int val3 ;
   int ecode3 = 0 ;
-  void *argp4 = 0 ;
-  int res4 = 0 ;
+  bool val4 ;
+  int ecode4 = 0 ;
+  void *argp5 = 0 ;
+  int res5 = 0 ;
   PyObject * obj0 = 0 ;
   PyObject * obj1 = 0 ;
   PyObject * obj2 = 0 ;
   PyObject * obj3 = 0 ;
+  PyObject * obj4 = 0 ;
   char * kwnames[] = {
-    (char *)"self",  (char *)"precision",  (char *)"include_overflows",  (char *)"os",  NULL 
+    (char *)"self",  (char *)"hist_level",  (char *)"precision",  (char *)"include_overflows",  (char *)"os",  NULL 
   };
   std::string result;
   
-  if (!PyArg_ParseTupleAndKeywords(args, kwargs, "O|OOO:EECHistBaseIdLogId_hists_as_text", kwnames, &obj0, &obj1, &obj2, &obj3)) SWIG_fail;
+  if (!PyArg_ParseTupleAndKeywords(args, kwargs, "O|OOOO:EECHistBaseIdLogId_hists_as_text", kwnames, &obj0, &obj1, &obj2, &obj3, &obj4)) SWIG_fail;
   res1 = SWIG_ConvertPtr(obj0, &argp1,SWIGTYPE_p_eec__hist__EECHistBaseT_eec__hist__EECHist3DT_eec__hist__axis__id_eec__hist__axis__log_eec__hist__axis__id_t_t, 0 |  0 );
   if (!SWIG_IsOK(res1)) {
     SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "EECHistBaseIdLogId_hists_as_text" "', argument " "1"" of type '" "eec::hist::EECHistBase< eec::hist::EECHist3D< eec::hist::axis::id,eec::hist::axis::log,eec::hist::axis::id > > const *""'"); 
@@ -15157,22 +19986,29 @@ SWIGINTERN PyObject *_wrap_EECHistBaseIdLogId_hists_as_text(PyObject *SWIGUNUSED
     arg2 = static_cast< int >(val2);
   }
   if (obj2) {
-    ecode3 = SWIG_AsVal_bool(obj2, &val3);
+    ecode3 = SWIG_AsVal_int(obj2, &val3);
     if (!SWIG_IsOK(ecode3)) {
-      SWIG_exception_fail(SWIG_ArgError(ecode3), "in method '" "EECHistBaseIdLogId_hists_as_text" "', argument " "3"" of type '" "bool""'");
+      SWIG_exception_fail(SWIG_ArgError(ecode3), "in method '" "EECHistBaseIdLogId_hists_as_text" "', argument " "3"" of type '" "int""'");
     } 
-    arg3 = static_cast< bool >(val3);
+    arg3 = static_cast< int >(val3);
   }
   if (obj3) {
-    res4 = SWIG_ConvertPtr(obj3, &argp4,SWIGTYPE_p_std__ostringstream, 0 |  0 );
-    if (!SWIG_IsOK(res4)) {
-      SWIG_exception_fail(SWIG_ArgError(res4), "in method '" "EECHistBaseIdLogId_hists_as_text" "', argument " "4"" of type '" "std::ostringstream *""'"); 
+    ecode4 = SWIG_AsVal_bool(obj3, &val4);
+    if (!SWIG_IsOK(ecode4)) {
+      SWIG_exception_fail(SWIG_ArgError(ecode4), "in method '" "EECHistBaseIdLogId_hists_as_text" "', argument " "4"" of type '" "bool""'");
+    } 
+    arg4 = static_cast< bool >(val4);
+  }
+  if (obj4) {
+    res5 = SWIG_ConvertPtr(obj4, &argp5,SWIGTYPE_p_std__ostringstream, 0 |  0 );
+    if (!SWIG_IsOK(res5)) {
+      SWIG_exception_fail(SWIG_ArgError(res5), "in method '" "EECHistBaseIdLogId_hists_as_text" "', argument " "5"" of type '" "std::ostringstream *""'"); 
     }
-    arg4 = reinterpret_cast< std::ostringstream * >(argp4);
+    arg5 = reinterpret_cast< std::ostringstream * >(argp5);
   }
   {
     try {
-      result = ((eec::hist::EECHistBase< eec::hist::EECHist3D< eec::hist::axis::id,eec::hist::axis::log,eec::hist::axis::id > > const *)arg1)->hists_as_text(arg2,arg3,arg4); 
+      result = ((eec::hist::EECHistBase< eec::hist::EECHist3D< eec::hist::axis::id,eec::hist::axis::log,eec::hist::axis::id > > const *)arg1)->hists_as_text(arg2,arg3,arg4,arg5); 
     }
     /*@SWIG:/usr/local/Cellar/swig/4.0.2/share/swig/4.0.2/typemaps/exception.swg,58,SWIG_CATCH_STDEXCEPT@*/  /* catching std::exception  */
     catch (std::invalid_argument& e) {
@@ -15473,50 +20309,6 @@ fail:
 }
 
 
-SWIGINTERN PyObject *_wrap_EECHistBaseLogLogId_axes_description(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
-  PyObject *resultobj = 0;
-  eec::hist::EECHistBase< eec::hist::EECHist3D< eec::hist::axis::log,eec::hist::axis::log,eec::hist::axis::id > > *arg1 = (eec::hist::EECHistBase< eec::hist::EECHist3D< eec::hist::axis::log,eec::hist::axis::log,eec::hist::axis::id > > *) 0 ;
-  void *argp1 = 0 ;
-  int res1 = 0 ;
-  PyObject *swig_obj[1] ;
-  std::string result;
-  
-  if (!args) SWIG_fail;
-  swig_obj[0] = args;
-  res1 = SWIG_ConvertPtr(swig_obj[0], &argp1,SWIGTYPE_p_eec__hist__EECHistBaseT_eec__hist__EECHist3DT_eec__hist__axis__log_eec__hist__axis__log_eec__hist__axis__id_t_t, 0 |  0 );
-  if (!SWIG_IsOK(res1)) {
-    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "EECHistBaseLogLogId_axes_description" "', argument " "1"" of type '" "eec::hist::EECHistBase< eec::hist::EECHist3D< eec::hist::axis::log,eec::hist::axis::log,eec::hist::axis::id > > const *""'"); 
-  }
-  arg1 = reinterpret_cast< eec::hist::EECHistBase< eec::hist::EECHist3D< eec::hist::axis::log,eec::hist::axis::log,eec::hist::axis::id > > * >(argp1);
-  {
-    try {
-      result = ((eec::hist::EECHistBase< eec::hist::EECHist3D< eec::hist::axis::log,eec::hist::axis::log,eec::hist::axis::id > > const *)arg1)->axes_description(); 
-    }
-    /*@SWIG:/usr/local/Cellar/swig/4.0.2/share/swig/4.0.2/typemaps/exception.swg,58,SWIG_CATCH_STDEXCEPT@*/  /* catching std::exception  */
-    catch (std::invalid_argument& e) {
-      SWIG_exception_fail(SWIG_ValueError, e.what() );
-    } catch (std::domain_error& e) {
-      SWIG_exception_fail(SWIG_ValueError, e.what() );
-    } catch (std::overflow_error& e) {
-      SWIG_exception_fail(SWIG_OverflowError, e.what() );
-    } catch (std::out_of_range& e) {
-      SWIG_exception_fail(SWIG_IndexError, e.what() );
-    } catch (std::length_error& e) {
-      SWIG_exception_fail(SWIG_IndexError, e.what() );
-    } catch (std::runtime_error& e) {
-      SWIG_exception_fail(SWIG_RuntimeError, e.what() );
-    } catch (std::exception& e) {
-      SWIG_exception_fail(SWIG_SystemError, e.what() );
-    }
-    /*@SWIG@*/
-  }
-  resultobj = SWIG_From_std_string(static_cast< std::string >(result));
-  return resultobj;
-fail:
-  return NULL;
-}
-
-
 SWIGINTERN PyObject *_wrap_EECHistBaseLogLogId_num_threads(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
   PyObject *resultobj = 0;
   eec::hist::EECHistBase< eec::hist::EECHist3D< eec::hist::axis::log,eec::hist::axis::log,eec::hist::axis::id > > *arg1 = (eec::hist::EECHistBase< eec::hist::EECHist3D< eec::hist::axis::log,eec::hist::axis::log,eec::hist::axis::id > > *) 0 ;
@@ -15730,6 +20522,182 @@ fail:
 }
 
 
+SWIGINTERN PyObject *_wrap_EECHistBaseLogLogId_reduce(PyObject *SWIGUNUSEDPARM(self), PyObject *args, PyObject *kwargs) {
+  PyObject *resultobj = 0;
+  eec::hist::EECHistBase< eec::hist::EECHist3D< eec::hist::axis::log,eec::hist::axis::log,eec::hist::axis::id > > *arg1 = (eec::hist::EECHistBase< eec::hist::EECHist3D< eec::hist::axis::log,eec::hist::axis::log,eec::hist::axis::id > > *) 0 ;
+  std::vector< boost::histogram::algorithm::reduce_command,std::allocator< boost::histogram::algorithm::reduce_command > > *arg2 = 0 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  int res2 = SWIG_OLDOBJ ;
+  PyObject * obj0 = 0 ;
+  PyObject * obj1 = 0 ;
+  char * kwnames[] = {
+    (char *)"self",  (char *)"rcs",  NULL 
+  };
+  
+  if (!PyArg_ParseTupleAndKeywords(args, kwargs, "OO:EECHistBaseLogLogId_reduce", kwnames, &obj0, &obj1)) SWIG_fail;
+  res1 = SWIG_ConvertPtr(obj0, &argp1,SWIGTYPE_p_eec__hist__EECHistBaseT_eec__hist__EECHist3DT_eec__hist__axis__log_eec__hist__axis__log_eec__hist__axis__id_t_t, 0 |  0 );
+  if (!SWIG_IsOK(res1)) {
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "EECHistBaseLogLogId_reduce" "', argument " "1"" of type '" "eec::hist::EECHistBase< eec::hist::EECHist3D< eec::hist::axis::log,eec::hist::axis::log,eec::hist::axis::id > > *""'"); 
+  }
+  arg1 = reinterpret_cast< eec::hist::EECHistBase< eec::hist::EECHist3D< eec::hist::axis::log,eec::hist::axis::log,eec::hist::axis::id > > * >(argp1);
+  {
+    std::vector< boost::histogram::algorithm::reduce_command,std::allocator< boost::histogram::algorithm::reduce_command > > *ptr = (std::vector< boost::histogram::algorithm::reduce_command,std::allocator< boost::histogram::algorithm::reduce_command > > *)0;
+    res2 = swig::asptr(obj1, &ptr);
+    if (!SWIG_IsOK(res2)) {
+      SWIG_exception_fail(SWIG_ArgError(res2), "in method '" "EECHistBaseLogLogId_reduce" "', argument " "2"" of type '" "std::vector< boost::histogram::algorithm::reduce_command,std::allocator< boost::histogram::algorithm::reduce_command > > const &""'"); 
+    }
+    if (!ptr) {
+      SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in method '" "EECHistBaseLogLogId_reduce" "', argument " "2"" of type '" "std::vector< boost::histogram::algorithm::reduce_command,std::allocator< boost::histogram::algorithm::reduce_command > > const &""'"); 
+    }
+    arg2 = ptr;
+  }
+  {
+    try {
+      (arg1)->reduce((std::vector< boost::histogram::algorithm::reduce_command,std::allocator< boost::histogram::algorithm::reduce_command > > const &)*arg2); 
+    }
+    /*@SWIG:/usr/local/Cellar/swig/4.0.2/share/swig/4.0.2/typemaps/exception.swg,58,SWIG_CATCH_STDEXCEPT@*/  /* catching std::exception  */
+    catch (std::invalid_argument& e) {
+      SWIG_exception_fail(SWIG_ValueError, e.what() );
+    } catch (std::domain_error& e) {
+      SWIG_exception_fail(SWIG_ValueError, e.what() );
+    } catch (std::overflow_error& e) {
+      SWIG_exception_fail(SWIG_OverflowError, e.what() );
+    } catch (std::out_of_range& e) {
+      SWIG_exception_fail(SWIG_IndexError, e.what() );
+    } catch (std::length_error& e) {
+      SWIG_exception_fail(SWIG_IndexError, e.what() );
+    } catch (std::runtime_error& e) {
+      SWIG_exception_fail(SWIG_RuntimeError, e.what() );
+    } catch (std::exception& e) {
+      SWIG_exception_fail(SWIG_SystemError, e.what() );
+    }
+    /*@SWIG@*/
+  }
+  resultobj = SWIG_Py_Void();
+  if (SWIG_IsNewObj(res2)) delete arg2;
+  return resultobj;
+fail:
+  if (SWIG_IsNewObj(res2)) delete arg2;
+  return NULL;
+}
+
+
+SWIGINTERN PyObject *_wrap_EECHistBaseLogLogId_sum(PyObject *SWIGUNUSEDPARM(self), PyObject *args, PyObject *kwargs) {
+  PyObject *resultobj = 0;
+  eec::hist::EECHistBase< eec::hist::EECHist3D< eec::hist::axis::log,eec::hist::axis::log,eec::hist::axis::id > > *arg1 = (eec::hist::EECHistBase< eec::hist::EECHist3D< eec::hist::axis::log,eec::hist::axis::log,eec::hist::axis::id > > *) 0 ;
+  unsigned int arg2 = (unsigned int) 0 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  unsigned int val2 ;
+  int ecode2 = 0 ;
+  PyObject * obj0 = 0 ;
+  PyObject * obj1 = 0 ;
+  char * kwnames[] = {
+    (char *)"self",  (char *)"hist_i",  NULL 
+  };
+  double result;
+  
+  if (!PyArg_ParseTupleAndKeywords(args, kwargs, "O|O:EECHistBaseLogLogId_sum", kwnames, &obj0, &obj1)) SWIG_fail;
+  res1 = SWIG_ConvertPtr(obj0, &argp1,SWIGTYPE_p_eec__hist__EECHistBaseT_eec__hist__EECHist3DT_eec__hist__axis__log_eec__hist__axis__log_eec__hist__axis__id_t_t, 0 |  0 );
+  if (!SWIG_IsOK(res1)) {
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "EECHistBaseLogLogId_sum" "', argument " "1"" of type '" "eec::hist::EECHistBase< eec::hist::EECHist3D< eec::hist::axis::log,eec::hist::axis::log,eec::hist::axis::id > > const *""'"); 
+  }
+  arg1 = reinterpret_cast< eec::hist::EECHistBase< eec::hist::EECHist3D< eec::hist::axis::log,eec::hist::axis::log,eec::hist::axis::id > > * >(argp1);
+  if (obj1) {
+    ecode2 = SWIG_AsVal_unsigned_SS_int(obj1, &val2);
+    if (!SWIG_IsOK(ecode2)) {
+      SWIG_exception_fail(SWIG_ArgError(ecode2), "in method '" "EECHistBaseLogLogId_sum" "', argument " "2"" of type '" "unsigned int""'");
+    } 
+    arg2 = static_cast< unsigned int >(val2);
+  }
+  {
+    try {
+      result = (double)((eec::hist::EECHistBase< eec::hist::EECHist3D< eec::hist::axis::log,eec::hist::axis::log,eec::hist::axis::id > > const *)arg1)->sum(arg2); 
+    }
+    /*@SWIG:/usr/local/Cellar/swig/4.0.2/share/swig/4.0.2/typemaps/exception.swg,58,SWIG_CATCH_STDEXCEPT@*/  /* catching std::exception  */
+    catch (std::invalid_argument& e) {
+      SWIG_exception_fail(SWIG_ValueError, e.what() );
+    } catch (std::domain_error& e) {
+      SWIG_exception_fail(SWIG_ValueError, e.what() );
+    } catch (std::overflow_error& e) {
+      SWIG_exception_fail(SWIG_OverflowError, e.what() );
+    } catch (std::out_of_range& e) {
+      SWIG_exception_fail(SWIG_IndexError, e.what() );
+    } catch (std::length_error& e) {
+      SWIG_exception_fail(SWIG_IndexError, e.what() );
+    } catch (std::runtime_error& e) {
+      SWIG_exception_fail(SWIG_RuntimeError, e.what() );
+    } catch (std::exception& e) {
+      SWIG_exception_fail(SWIG_SystemError, e.what() );
+    }
+    /*@SWIG@*/
+  }
+  resultobj = SWIG_From_double(static_cast< double >(result));
+  return resultobj;
+fail:
+  return NULL;
+}
+
+
+SWIGINTERN PyObject *_wrap_EECHistBaseLogLogId___iadd__(PyObject *SWIGUNUSEDPARM(self), PyObject *args, PyObject *kwargs) {
+  PyObject *resultobj = 0;
+  eec::hist::EECHistBase< eec::hist::EECHist3D< eec::hist::axis::log,eec::hist::axis::log,eec::hist::axis::id > > *arg1 = (eec::hist::EECHistBase< eec::hist::EECHist3D< eec::hist::axis::log,eec::hist::axis::log,eec::hist::axis::id > > *) 0 ;
+  eec::hist::EECHistBase< eec::hist::EECHist3D< boost::histogram::axis::transform::log,boost::histogram::axis::transform::log,boost::histogram::axis::transform::id > > *arg2 = 0 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  void *argp2 = 0 ;
+  int res2 = 0 ;
+  PyObject * obj0 = 0 ;
+  PyObject * obj1 = 0 ;
+  char * kwnames[] = {
+    (char *)"self",  (char *)"rhs",  NULL 
+  };
+  eec::hist::EECHistBase< eec::hist::EECHist3D< eec::hist::axis::log,eec::hist::axis::log,eec::hist::axis::id > > *result = 0 ;
+  
+  if (!PyArg_ParseTupleAndKeywords(args, kwargs, "OO:EECHistBaseLogLogId___iadd__", kwnames, &obj0, &obj1)) SWIG_fail;
+  res1 = SWIG_ConvertPtr(obj0, &argp1,SWIGTYPE_p_eec__hist__EECHistBaseT_eec__hist__EECHist3DT_eec__hist__axis__log_eec__hist__axis__log_eec__hist__axis__id_t_t, SWIG_POINTER_DISOWN |  0 );
+  if (!SWIG_IsOK(res1)) {
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "EECHistBaseLogLogId___iadd__" "', argument " "1"" of type '" "eec::hist::EECHistBase< eec::hist::EECHist3D< eec::hist::axis::log,eec::hist::axis::log,eec::hist::axis::id > > *""'"); 
+  }
+  arg1 = reinterpret_cast< eec::hist::EECHistBase< eec::hist::EECHist3D< eec::hist::axis::log,eec::hist::axis::log,eec::hist::axis::id > > * >(argp1);
+  res2 = SWIG_ConvertPtr(obj1, &argp2, SWIGTYPE_p_eec__hist__EECHistBaseT_eec__hist__EECHist3DT_eec__hist__axis__log_eec__hist__axis__log_eec__hist__axis__id_t_t,  0  | 0);
+  if (!SWIG_IsOK(res2)) {
+    SWIG_exception_fail(SWIG_ArgError(res2), "in method '" "EECHistBaseLogLogId___iadd__" "', argument " "2"" of type '" "eec::hist::EECHistBase< eec::hist::EECHist3D< boost::histogram::axis::transform::log,boost::histogram::axis::transform::log,boost::histogram::axis::transform::id > > const &""'"); 
+  }
+  if (!argp2) {
+    SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in method '" "EECHistBaseLogLogId___iadd__" "', argument " "2"" of type '" "eec::hist::EECHistBase< eec::hist::EECHist3D< boost::histogram::axis::transform::log,boost::histogram::axis::transform::log,boost::histogram::axis::transform::id > > const &""'"); 
+  }
+  arg2 = reinterpret_cast< eec::hist::EECHistBase< eec::hist::EECHist3D< boost::histogram::axis::transform::log,boost::histogram::axis::transform::log,boost::histogram::axis::transform::id > > * >(argp2);
+  {
+    try {
+      result = (eec::hist::EECHistBase< eec::hist::EECHist3D< eec::hist::axis::log,eec::hist::axis::log,eec::hist::axis::id > > *) &(arg1)->operator +=((eec::hist::EECHistBase< eec::hist::EECHist3D< boost::histogram::axis::transform::log,boost::histogram::axis::transform::log,boost::histogram::axis::transform::id > > const &)*arg2); 
+    }
+    /*@SWIG:/usr/local/Cellar/swig/4.0.2/share/swig/4.0.2/typemaps/exception.swg,58,SWIG_CATCH_STDEXCEPT@*/  /* catching std::exception  */
+    catch (std::invalid_argument& e) {
+      SWIG_exception_fail(SWIG_ValueError, e.what() );
+    } catch (std::domain_error& e) {
+      SWIG_exception_fail(SWIG_ValueError, e.what() );
+    } catch (std::overflow_error& e) {
+      SWIG_exception_fail(SWIG_OverflowError, e.what() );
+    } catch (std::out_of_range& e) {
+      SWIG_exception_fail(SWIG_IndexError, e.what() );
+    } catch (std::length_error& e) {
+      SWIG_exception_fail(SWIG_IndexError, e.what() );
+    } catch (std::runtime_error& e) {
+      SWIG_exception_fail(SWIG_RuntimeError, e.what() );
+    } catch (std::exception& e) {
+      SWIG_exception_fail(SWIG_SystemError, e.what() );
+    }
+    /*@SWIG@*/
+  }
+  resultobj = SWIG_NewPointerObj(SWIG_as_voidptr(result), SWIGTYPE_p_eec__hist__EECHistBaseT_eec__hist__EECHist3DT_eec__hist__axis__log_eec__hist__axis__log_eec__hist__axis__id_t_t, SWIG_POINTER_OWN |  0 );
+  return resultobj;
+fail:
+  return NULL;
+}
+
+
 SWIGINTERN PyObject *_wrap_EECHistBaseLogLogId_bin_centers_vec(PyObject *SWIGUNUSEDPARM(self), PyObject *args, PyObject *kwargs) {
   PyObject *resultobj = 0;
   eec::hist::EECHistBase< eec::hist::EECHist3D< eec::hist::axis::log,eec::hist::axis::log,eec::hist::axis::id > > *arg1 = (eec::hist::EECHistBase< eec::hist::EECHist3D< eec::hist::axis::log,eec::hist::axis::log,eec::hist::axis::id > > *) 0 ;
@@ -15847,27 +20815,31 @@ fail:
 SWIGINTERN PyObject *_wrap_EECHistBaseLogLogId_hists_as_text(PyObject *SWIGUNUSEDPARM(self), PyObject *args, PyObject *kwargs) {
   PyObject *resultobj = 0;
   eec::hist::EECHistBase< eec::hist::EECHist3D< eec::hist::axis::log,eec::hist::axis::log,eec::hist::axis::id > > *arg1 = (eec::hist::EECHistBase< eec::hist::EECHist3D< eec::hist::axis::log,eec::hist::axis::log,eec::hist::axis::id > > *) 0 ;
-  int arg2 = (int) 16 ;
-  bool arg3 = (bool) true ;
-  std::ostringstream *arg4 = (std::ostringstream *) nullptr ;
+  int arg2 = (int) 3 ;
+  int arg3 = (int) 16 ;
+  bool arg4 = (bool) true ;
+  std::ostringstream *arg5 = (std::ostringstream *) nullptr ;
   void *argp1 = 0 ;
   int res1 = 0 ;
   int val2 ;
   int ecode2 = 0 ;
-  bool val3 ;
+  int val3 ;
   int ecode3 = 0 ;
-  void *argp4 = 0 ;
-  int res4 = 0 ;
+  bool val4 ;
+  int ecode4 = 0 ;
+  void *argp5 = 0 ;
+  int res5 = 0 ;
   PyObject * obj0 = 0 ;
   PyObject * obj1 = 0 ;
   PyObject * obj2 = 0 ;
   PyObject * obj3 = 0 ;
+  PyObject * obj4 = 0 ;
   char * kwnames[] = {
-    (char *)"self",  (char *)"precision",  (char *)"include_overflows",  (char *)"os",  NULL 
+    (char *)"self",  (char *)"hist_level",  (char *)"precision",  (char *)"include_overflows",  (char *)"os",  NULL 
   };
   std::string result;
   
-  if (!PyArg_ParseTupleAndKeywords(args, kwargs, "O|OOO:EECHistBaseLogLogId_hists_as_text", kwnames, &obj0, &obj1, &obj2, &obj3)) SWIG_fail;
+  if (!PyArg_ParseTupleAndKeywords(args, kwargs, "O|OOOO:EECHistBaseLogLogId_hists_as_text", kwnames, &obj0, &obj1, &obj2, &obj3, &obj4)) SWIG_fail;
   res1 = SWIG_ConvertPtr(obj0, &argp1,SWIGTYPE_p_eec__hist__EECHistBaseT_eec__hist__EECHist3DT_eec__hist__axis__log_eec__hist__axis__log_eec__hist__axis__id_t_t, 0 |  0 );
   if (!SWIG_IsOK(res1)) {
     SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "EECHistBaseLogLogId_hists_as_text" "', argument " "1"" of type '" "eec::hist::EECHistBase< eec::hist::EECHist3D< eec::hist::axis::log,eec::hist::axis::log,eec::hist::axis::id > > const *""'"); 
@@ -15881,22 +20853,29 @@ SWIGINTERN PyObject *_wrap_EECHistBaseLogLogId_hists_as_text(PyObject *SWIGUNUSE
     arg2 = static_cast< int >(val2);
   }
   if (obj2) {
-    ecode3 = SWIG_AsVal_bool(obj2, &val3);
+    ecode3 = SWIG_AsVal_int(obj2, &val3);
     if (!SWIG_IsOK(ecode3)) {
-      SWIG_exception_fail(SWIG_ArgError(ecode3), "in method '" "EECHistBaseLogLogId_hists_as_text" "', argument " "3"" of type '" "bool""'");
+      SWIG_exception_fail(SWIG_ArgError(ecode3), "in method '" "EECHistBaseLogLogId_hists_as_text" "', argument " "3"" of type '" "int""'");
     } 
-    arg3 = static_cast< bool >(val3);
+    arg3 = static_cast< int >(val3);
   }
   if (obj3) {
-    res4 = SWIG_ConvertPtr(obj3, &argp4,SWIGTYPE_p_std__ostringstream, 0 |  0 );
-    if (!SWIG_IsOK(res4)) {
-      SWIG_exception_fail(SWIG_ArgError(res4), "in method '" "EECHistBaseLogLogId_hists_as_text" "', argument " "4"" of type '" "std::ostringstream *""'"); 
+    ecode4 = SWIG_AsVal_bool(obj3, &val4);
+    if (!SWIG_IsOK(ecode4)) {
+      SWIG_exception_fail(SWIG_ArgError(ecode4), "in method '" "EECHistBaseLogLogId_hists_as_text" "', argument " "4"" of type '" "bool""'");
+    } 
+    arg4 = static_cast< bool >(val4);
+  }
+  if (obj4) {
+    res5 = SWIG_ConvertPtr(obj4, &argp5,SWIGTYPE_p_std__ostringstream, 0 |  0 );
+    if (!SWIG_IsOK(res5)) {
+      SWIG_exception_fail(SWIG_ArgError(res5), "in method '" "EECHistBaseLogLogId_hists_as_text" "', argument " "5"" of type '" "std::ostringstream *""'"); 
     }
-    arg4 = reinterpret_cast< std::ostringstream * >(argp4);
+    arg5 = reinterpret_cast< std::ostringstream * >(argp5);
   }
   {
     try {
-      result = ((eec::hist::EECHistBase< eec::hist::EECHist3D< eec::hist::axis::log,eec::hist::axis::log,eec::hist::axis::id > > const *)arg1)->hists_as_text(arg2,arg3,arg4); 
+      result = ((eec::hist::EECHistBase< eec::hist::EECHist3D< eec::hist::axis::log,eec::hist::axis::log,eec::hist::axis::id > > const *)arg1)->hists_as_text(arg2,arg3,arg4,arg5); 
     }
     /*@SWIG:/usr/local/Cellar/swig/4.0.2/share/swig/4.0.2/typemaps/exception.swg,58,SWIG_CATCH_STDEXCEPT@*/  /* catching std::exception  */
     catch (std::invalid_argument& e) {
@@ -16176,7 +21155,7 @@ SWIGINTERN PyObject *_wrap_new_EECHist1DId(PyObject *SWIGUNUSEDPARM(self), PyObj
     }
     /*@SWIG@*/
   }
-  resultobj = SWIG_NewPointerObj(SWIG_as_voidptr(result), SWIGTYPE_p_eec__hist__EECHist1DT_bh__axis__transform__id_t, SWIG_POINTER_NEW |  0 );
+  resultobj = SWIG_NewPointerObj(SWIG_as_voidptr(result), SWIGTYPE_p_eec__hist__EECHist1DT_boost__histogram__axis__transform__id_t, SWIG_POINTER_NEW |  0 );
   return resultobj;
 fail:
   return NULL;
@@ -16192,7 +21171,7 @@ SWIGINTERN PyObject *_wrap_delete_EECHist1DId(PyObject *SWIGUNUSEDPARM(self), Py
   
   if (!args) SWIG_fail;
   swig_obj[0] = args;
-  res1 = SWIG_ConvertPtr(swig_obj[0], &argp1,SWIGTYPE_p_eec__hist__EECHist1DT_bh__axis__transform__id_t, SWIG_POINTER_DISOWN |  0 );
+  res1 = SWIG_ConvertPtr(swig_obj[0], &argp1,SWIGTYPE_p_eec__hist__EECHist1DT_boost__histogram__axis__transform__id_t, SWIG_POINTER_DISOWN |  0 );
   if (!SWIG_IsOK(res1)) {
     SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "delete_EECHist1DId" "', argument " "1"" of type '" "eec::hist::EECHist1D< eec::hist::axis::id > *""'"); 
   }
@@ -16226,24 +21205,37 @@ fail:
 }
 
 
-SWIGINTERN PyObject *_wrap_EECHist1DId_axes_description(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
+SWIGINTERN PyObject *_wrap_EECHist1DId_reduce(PyObject *SWIGUNUSEDPARM(self), PyObject *args, PyObject *kwargs) {
   PyObject *resultobj = 0;
   eec::hist::EECHist1D< eec::hist::axis::id > *arg1 = (eec::hist::EECHist1D< eec::hist::axis::id > *) 0 ;
+  boost::histogram::algorithm::reduce_command *arg2 = 0 ;
   void *argp1 = 0 ;
   int res1 = 0 ;
-  PyObject *swig_obj[1] ;
-  std::string result;
+  void *argp2 = 0 ;
+  int res2 = 0 ;
+  PyObject * obj0 = 0 ;
+  PyObject * obj1 = 0 ;
+  char * kwnames[] = {
+    (char *)"self",  (char *)"rc",  NULL 
+  };
   
-  if (!args) SWIG_fail;
-  swig_obj[0] = args;
-  res1 = SWIG_ConvertPtr(swig_obj[0], &argp1,SWIGTYPE_p_eec__hist__EECHist1DT_bh__axis__transform__id_t, 0 |  0 );
+  if (!PyArg_ParseTupleAndKeywords(args, kwargs, "OO:EECHist1DId_reduce", kwnames, &obj0, &obj1)) SWIG_fail;
+  res1 = SWIG_ConvertPtr(obj0, &argp1,SWIGTYPE_p_eec__hist__EECHist1DT_boost__histogram__axis__transform__id_t, 0 |  0 );
   if (!SWIG_IsOK(res1)) {
-    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "EECHist1DId_axes_description" "', argument " "1"" of type '" "eec::hist::EECHist1D< eec::hist::axis::id > const *""'"); 
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "EECHist1DId_reduce" "', argument " "1"" of type '" "eec::hist::EECHist1D< eec::hist::axis::id > *""'"); 
   }
   arg1 = reinterpret_cast< eec::hist::EECHist1D< eec::hist::axis::id > * >(argp1);
+  res2 = SWIG_ConvertPtr(obj1, &argp2, SWIGTYPE_p_boost__histogram__algorithm__reduce_command,  0  | 0);
+  if (!SWIG_IsOK(res2)) {
+    SWIG_exception_fail(SWIG_ArgError(res2), "in method '" "EECHist1DId_reduce" "', argument " "2"" of type '" "boost::histogram::algorithm::reduce_command const &""'"); 
+  }
+  if (!argp2) {
+    SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in method '" "EECHist1DId_reduce" "', argument " "2"" of type '" "boost::histogram::algorithm::reduce_command const &""'"); 
+  }
+  arg2 = reinterpret_cast< boost::histogram::algorithm::reduce_command * >(argp2);
   {
     try {
-      result = ((eec::hist::EECHist1D< eec::hist::axis::id > const *)arg1)->axes_description(); 
+      (arg1)->reduce((boost::histogram::algorithm::reduce_command const &)*arg2); 
     }
     /*@SWIG:/usr/local/Cellar/swig/4.0.2/share/swig/4.0.2/typemaps/exception.swg,58,SWIG_CATCH_STDEXCEPT@*/  /* catching std::exception  */
     catch (std::invalid_argument& e) {
@@ -16263,7 +21255,7 @@ SWIGINTERN PyObject *_wrap_EECHist1DId_axes_description(PyObject *SWIGUNUSEDPARM
     }
     /*@SWIG@*/
   }
-  resultobj = SWIG_From_std_string(static_cast< std::string >(result));
+  resultobj = SWIG_Py_Void();
   return resultobj;
 fail:
   return NULL;
@@ -16305,7 +21297,7 @@ SWIGINTERN PyObject *_wrap_EECHist1DId_get_hist_vars(PyObject *SWIGUNUSEDPARM(se
     arg5 = &dim_temp4;
   }
   if (!PyArg_ParseTupleAndKeywords(args, kwargs, "O|OO:EECHist1DId_get_hist_vars", kwnames, &obj0, &obj1, &obj2)) SWIG_fail;
-  res1 = SWIG_ConvertPtr(obj0, &argp1,SWIGTYPE_p_eec__hist__EECHist1DT_bh__axis__transform__id_t, 0 |  0 );
+  res1 = SWIG_ConvertPtr(obj0, &argp1,SWIGTYPE_p_eec__hist__EECHist1DT_boost__histogram__axis__transform__id_t, 0 |  0 );
   if (!SWIG_IsOK(res1)) {
     SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "EECHist1DId_get_hist_vars" "', argument " "1"" of type '" "eec::hist::EECHist1D< eec::hist::axis::id > *""'"); 
   }
@@ -16402,7 +21394,7 @@ fail:
 SWIGINTERN PyObject *EECHist1DId_swigregister(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
   PyObject *obj;
   if (!SWIG_Python_UnpackTuple(args, "swigregister", 1, 1, &obj)) return NULL;
-  SWIG_TypeNewClientData(SWIGTYPE_p_eec__hist__EECHist1DT_bh__axis__transform__id_t, SWIG_NewClientData(obj));
+  SWIG_TypeNewClientData(SWIGTYPE_p_eec__hist__EECHist1DT_boost__histogram__axis__transform__id_t, SWIG_NewClientData(obj));
   return SWIG_Py_Void();
 }
 
@@ -16478,7 +21470,7 @@ SWIGINTERN PyObject *_wrap_new_EECHist1DLog(PyObject *SWIGUNUSEDPARM(self), PyOb
     }
     /*@SWIG@*/
   }
-  resultobj = SWIG_NewPointerObj(SWIG_as_voidptr(result), SWIGTYPE_p_eec__hist__EECHist1DT_bh__axis__transform__log_t, SWIG_POINTER_NEW |  0 );
+  resultobj = SWIG_NewPointerObj(SWIG_as_voidptr(result), SWIGTYPE_p_eec__hist__EECHist1DT_boost__histogram__axis__transform__log_t, SWIG_POINTER_NEW |  0 );
   return resultobj;
 fail:
   return NULL;
@@ -16494,7 +21486,7 @@ SWIGINTERN PyObject *_wrap_delete_EECHist1DLog(PyObject *SWIGUNUSEDPARM(self), P
   
   if (!args) SWIG_fail;
   swig_obj[0] = args;
-  res1 = SWIG_ConvertPtr(swig_obj[0], &argp1,SWIGTYPE_p_eec__hist__EECHist1DT_bh__axis__transform__log_t, SWIG_POINTER_DISOWN |  0 );
+  res1 = SWIG_ConvertPtr(swig_obj[0], &argp1,SWIGTYPE_p_eec__hist__EECHist1DT_boost__histogram__axis__transform__log_t, SWIG_POINTER_DISOWN |  0 );
   if (!SWIG_IsOK(res1)) {
     SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "delete_EECHist1DLog" "', argument " "1"" of type '" "eec::hist::EECHist1D< eec::hist::axis::log > *""'"); 
   }
@@ -16528,24 +21520,37 @@ fail:
 }
 
 
-SWIGINTERN PyObject *_wrap_EECHist1DLog_axes_description(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
+SWIGINTERN PyObject *_wrap_EECHist1DLog_reduce(PyObject *SWIGUNUSEDPARM(self), PyObject *args, PyObject *kwargs) {
   PyObject *resultobj = 0;
   eec::hist::EECHist1D< eec::hist::axis::log > *arg1 = (eec::hist::EECHist1D< eec::hist::axis::log > *) 0 ;
+  boost::histogram::algorithm::reduce_command *arg2 = 0 ;
   void *argp1 = 0 ;
   int res1 = 0 ;
-  PyObject *swig_obj[1] ;
-  std::string result;
+  void *argp2 = 0 ;
+  int res2 = 0 ;
+  PyObject * obj0 = 0 ;
+  PyObject * obj1 = 0 ;
+  char * kwnames[] = {
+    (char *)"self",  (char *)"rc",  NULL 
+  };
   
-  if (!args) SWIG_fail;
-  swig_obj[0] = args;
-  res1 = SWIG_ConvertPtr(swig_obj[0], &argp1,SWIGTYPE_p_eec__hist__EECHist1DT_bh__axis__transform__log_t, 0 |  0 );
+  if (!PyArg_ParseTupleAndKeywords(args, kwargs, "OO:EECHist1DLog_reduce", kwnames, &obj0, &obj1)) SWIG_fail;
+  res1 = SWIG_ConvertPtr(obj0, &argp1,SWIGTYPE_p_eec__hist__EECHist1DT_boost__histogram__axis__transform__log_t, 0 |  0 );
   if (!SWIG_IsOK(res1)) {
-    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "EECHist1DLog_axes_description" "', argument " "1"" of type '" "eec::hist::EECHist1D< eec::hist::axis::log > const *""'"); 
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "EECHist1DLog_reduce" "', argument " "1"" of type '" "eec::hist::EECHist1D< eec::hist::axis::log > *""'"); 
   }
   arg1 = reinterpret_cast< eec::hist::EECHist1D< eec::hist::axis::log > * >(argp1);
+  res2 = SWIG_ConvertPtr(obj1, &argp2, SWIGTYPE_p_boost__histogram__algorithm__reduce_command,  0  | 0);
+  if (!SWIG_IsOK(res2)) {
+    SWIG_exception_fail(SWIG_ArgError(res2), "in method '" "EECHist1DLog_reduce" "', argument " "2"" of type '" "boost::histogram::algorithm::reduce_command const &""'"); 
+  }
+  if (!argp2) {
+    SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in method '" "EECHist1DLog_reduce" "', argument " "2"" of type '" "boost::histogram::algorithm::reduce_command const &""'"); 
+  }
+  arg2 = reinterpret_cast< boost::histogram::algorithm::reduce_command * >(argp2);
   {
     try {
-      result = ((eec::hist::EECHist1D< eec::hist::axis::log > const *)arg1)->axes_description(); 
+      (arg1)->reduce((boost::histogram::algorithm::reduce_command const &)*arg2); 
     }
     /*@SWIG:/usr/local/Cellar/swig/4.0.2/share/swig/4.0.2/typemaps/exception.swg,58,SWIG_CATCH_STDEXCEPT@*/  /* catching std::exception  */
     catch (std::invalid_argument& e) {
@@ -16565,7 +21570,7 @@ SWIGINTERN PyObject *_wrap_EECHist1DLog_axes_description(PyObject *SWIGUNUSEDPAR
     }
     /*@SWIG@*/
   }
-  resultobj = SWIG_From_std_string(static_cast< std::string >(result));
+  resultobj = SWIG_Py_Void();
   return resultobj;
 fail:
   return NULL;
@@ -16607,7 +21612,7 @@ SWIGINTERN PyObject *_wrap_EECHist1DLog_get_hist_vars(PyObject *SWIGUNUSEDPARM(s
     arg5 = &dim_temp4;
   }
   if (!PyArg_ParseTupleAndKeywords(args, kwargs, "O|OO:EECHist1DLog_get_hist_vars", kwnames, &obj0, &obj1, &obj2)) SWIG_fail;
-  res1 = SWIG_ConvertPtr(obj0, &argp1,SWIGTYPE_p_eec__hist__EECHist1DT_bh__axis__transform__log_t, 0 |  0 );
+  res1 = SWIG_ConvertPtr(obj0, &argp1,SWIGTYPE_p_eec__hist__EECHist1DT_boost__histogram__axis__transform__log_t, 0 |  0 );
   if (!SWIG_IsOK(res1)) {
     SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "EECHist1DLog_get_hist_vars" "', argument " "1"" of type '" "eec::hist::EECHist1D< eec::hist::axis::log > *""'"); 
   }
@@ -16704,7 +21709,7 @@ fail:
 SWIGINTERN PyObject *EECHist1DLog_swigregister(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
   PyObject *obj;
   if (!SWIG_Python_UnpackTuple(args, "swigregister", 1, 1, &obj)) return NULL;
-  SWIG_TypeNewClientData(SWIGTYPE_p_eec__hist__EECHist1DT_bh__axis__transform__log_t, SWIG_NewClientData(obj));
+  SWIG_TypeNewClientData(SWIGTYPE_p_eec__hist__EECHist1DT_boost__histogram__axis__transform__log_t, SWIG_NewClientData(obj));
   return SWIG_Py_Void();
 }
 
@@ -16834,7 +21839,7 @@ SWIGINTERN PyObject *_wrap_new_EECHist3DIdIdId(PyObject *SWIGUNUSEDPARM(self), P
     }
     /*@SWIG@*/
   }
-  resultobj = SWIG_NewPointerObj(SWIG_as_voidptr(result), SWIGTYPE_p_eec__hist__EECHist3DT_bh__axis__transform__id_bh__axis__transform__id_bh__axis__transform__id_t, SWIG_POINTER_NEW |  0 );
+  resultobj = SWIG_NewPointerObj(SWIG_as_voidptr(result), SWIGTYPE_p_eec__hist__EECHist3DT_boost__histogram__axis__transform__id_boost__histogram__axis__transform__id_boost__histogram__axis__transform__id_t, SWIG_POINTER_NEW |  0 );
   return resultobj;
 fail:
   return NULL;
@@ -16850,7 +21855,7 @@ SWIGINTERN PyObject *_wrap_delete_EECHist3DIdIdId(PyObject *SWIGUNUSEDPARM(self)
   
   if (!args) SWIG_fail;
   swig_obj[0] = args;
-  res1 = SWIG_ConvertPtr(swig_obj[0], &argp1,SWIGTYPE_p_eec__hist__EECHist3DT_bh__axis__transform__id_bh__axis__transform__id_bh__axis__transform__id_t, SWIG_POINTER_DISOWN |  0 );
+  res1 = SWIG_ConvertPtr(swig_obj[0], &argp1,SWIGTYPE_p_eec__hist__EECHist3DT_boost__histogram__axis__transform__id_boost__histogram__axis__transform__id_boost__histogram__axis__transform__id_t, SWIG_POINTER_DISOWN |  0 );
   if (!SWIG_IsOK(res1)) {
     SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "delete_EECHist3DIdIdId" "', argument " "1"" of type '" "eec::hist::EECHist3D< eec::hist::axis::id,eec::hist::axis::id,eec::hist::axis::id > *""'"); 
   }
@@ -16878,50 +21883,6 @@ SWIGINTERN PyObject *_wrap_delete_EECHist3DIdIdId(PyObject *SWIGUNUSEDPARM(self)
     /*@SWIG@*/
   }
   resultobj = SWIG_Py_Void();
-  return resultobj;
-fail:
-  return NULL;
-}
-
-
-SWIGINTERN PyObject *_wrap_EECHist3DIdIdId_axes_description(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
-  PyObject *resultobj = 0;
-  eec::hist::EECHist3D< eec::hist::axis::id,eec::hist::axis::id,eec::hist::axis::id > *arg1 = (eec::hist::EECHist3D< eec::hist::axis::id,eec::hist::axis::id,eec::hist::axis::id > *) 0 ;
-  void *argp1 = 0 ;
-  int res1 = 0 ;
-  PyObject *swig_obj[1] ;
-  std::string result;
-  
-  if (!args) SWIG_fail;
-  swig_obj[0] = args;
-  res1 = SWIG_ConvertPtr(swig_obj[0], &argp1,SWIGTYPE_p_eec__hist__EECHist3DT_bh__axis__transform__id_bh__axis__transform__id_bh__axis__transform__id_t, 0 |  0 );
-  if (!SWIG_IsOK(res1)) {
-    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "EECHist3DIdIdId_axes_description" "', argument " "1"" of type '" "eec::hist::EECHist3D< eec::hist::axis::id,eec::hist::axis::id,eec::hist::axis::id > const *""'"); 
-  }
-  arg1 = reinterpret_cast< eec::hist::EECHist3D< eec::hist::axis::id,eec::hist::axis::id,eec::hist::axis::id > * >(argp1);
-  {
-    try {
-      result = ((eec::hist::EECHist3D< eec::hist::axis::id,eec::hist::axis::id,eec::hist::axis::id > const *)arg1)->axes_description(); 
-    }
-    /*@SWIG:/usr/local/Cellar/swig/4.0.2/share/swig/4.0.2/typemaps/exception.swg,58,SWIG_CATCH_STDEXCEPT@*/  /* catching std::exception  */
-    catch (std::invalid_argument& e) {
-      SWIG_exception_fail(SWIG_ValueError, e.what() );
-    } catch (std::domain_error& e) {
-      SWIG_exception_fail(SWIG_ValueError, e.what() );
-    } catch (std::overflow_error& e) {
-      SWIG_exception_fail(SWIG_OverflowError, e.what() );
-    } catch (std::out_of_range& e) {
-      SWIG_exception_fail(SWIG_IndexError, e.what() );
-    } catch (std::length_error& e) {
-      SWIG_exception_fail(SWIG_IndexError, e.what() );
-    } catch (std::runtime_error& e) {
-      SWIG_exception_fail(SWIG_RuntimeError, e.what() );
-    } catch (std::exception& e) {
-      SWIG_exception_fail(SWIG_SystemError, e.what() );
-    }
-    /*@SWIG@*/
-  }
-  resultobj = SWIG_From_std_string(static_cast< std::string >(result));
   return resultobj;
 fail:
   return NULL;
@@ -16975,7 +21936,7 @@ SWIGINTERN PyObject *_wrap_EECHist3DIdIdId_get_hist_vars(PyObject *SWIGUNUSEDPAR
     arg9 = &dim3_temp6;
   }
   if (!PyArg_ParseTupleAndKeywords(args, kwargs, "O|OO:EECHist3DIdIdId_get_hist_vars", kwnames, &obj0, &obj1, &obj2)) SWIG_fail;
-  res1 = SWIG_ConvertPtr(obj0, &argp1,SWIGTYPE_p_eec__hist__EECHist3DT_bh__axis__transform__id_bh__axis__transform__id_bh__axis__transform__id_t, 0 |  0 );
+  res1 = SWIG_ConvertPtr(obj0, &argp1,SWIGTYPE_p_eec__hist__EECHist3DT_boost__histogram__axis__transform__id_boost__histogram__axis__transform__id_boost__histogram__axis__transform__id_t, 0 |  0 );
   if (!SWIG_IsOK(res1)) {
     SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "EECHist3DIdIdId_get_hist_vars" "', argument " "1"" of type '" "eec::hist::EECHist3D< eec::hist::axis::id,eec::hist::axis::id,eec::hist::axis::id > *""'"); 
   }
@@ -17072,7 +22033,7 @@ fail:
 SWIGINTERN PyObject *EECHist3DIdIdId_swigregister(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
   PyObject *obj;
   if (!SWIG_Python_UnpackTuple(args, "swigregister", 1, 1, &obj)) return NULL;
-  SWIG_TypeNewClientData(SWIGTYPE_p_eec__hist__EECHist3DT_bh__axis__transform__id_bh__axis__transform__id_bh__axis__transform__id_t, SWIG_NewClientData(obj));
+  SWIG_TypeNewClientData(SWIGTYPE_p_eec__hist__EECHist3DT_boost__histogram__axis__transform__id_boost__histogram__axis__transform__id_boost__histogram__axis__transform__id_t, SWIG_NewClientData(obj));
   return SWIG_Py_Void();
 }
 
@@ -17202,7 +22163,7 @@ SWIGINTERN PyObject *_wrap_new_EECHist3DLogIdId(PyObject *SWIGUNUSEDPARM(self), 
     }
     /*@SWIG@*/
   }
-  resultobj = SWIG_NewPointerObj(SWIG_as_voidptr(result), SWIGTYPE_p_eec__hist__EECHist3DT_bh__axis__transform__log_bh__axis__transform__id_bh__axis__transform__id_t, SWIG_POINTER_NEW |  0 );
+  resultobj = SWIG_NewPointerObj(SWIG_as_voidptr(result), SWIGTYPE_p_eec__hist__EECHist3DT_boost__histogram__axis__transform__log_boost__histogram__axis__transform__id_boost__histogram__axis__transform__id_t, SWIG_POINTER_NEW |  0 );
   return resultobj;
 fail:
   return NULL;
@@ -17218,7 +22179,7 @@ SWIGINTERN PyObject *_wrap_delete_EECHist3DLogIdId(PyObject *SWIGUNUSEDPARM(self
   
   if (!args) SWIG_fail;
   swig_obj[0] = args;
-  res1 = SWIG_ConvertPtr(swig_obj[0], &argp1,SWIGTYPE_p_eec__hist__EECHist3DT_bh__axis__transform__log_bh__axis__transform__id_bh__axis__transform__id_t, SWIG_POINTER_DISOWN |  0 );
+  res1 = SWIG_ConvertPtr(swig_obj[0], &argp1,SWIGTYPE_p_eec__hist__EECHist3DT_boost__histogram__axis__transform__log_boost__histogram__axis__transform__id_boost__histogram__axis__transform__id_t, SWIG_POINTER_DISOWN |  0 );
   if (!SWIG_IsOK(res1)) {
     SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "delete_EECHist3DLogIdId" "', argument " "1"" of type '" "eec::hist::EECHist3D< eec::hist::axis::log,eec::hist::axis::id,eec::hist::axis::id > *""'"); 
   }
@@ -17246,50 +22207,6 @@ SWIGINTERN PyObject *_wrap_delete_EECHist3DLogIdId(PyObject *SWIGUNUSEDPARM(self
     /*@SWIG@*/
   }
   resultobj = SWIG_Py_Void();
-  return resultobj;
-fail:
-  return NULL;
-}
-
-
-SWIGINTERN PyObject *_wrap_EECHist3DLogIdId_axes_description(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
-  PyObject *resultobj = 0;
-  eec::hist::EECHist3D< eec::hist::axis::log,eec::hist::axis::id,eec::hist::axis::id > *arg1 = (eec::hist::EECHist3D< eec::hist::axis::log,eec::hist::axis::id,eec::hist::axis::id > *) 0 ;
-  void *argp1 = 0 ;
-  int res1 = 0 ;
-  PyObject *swig_obj[1] ;
-  std::string result;
-  
-  if (!args) SWIG_fail;
-  swig_obj[0] = args;
-  res1 = SWIG_ConvertPtr(swig_obj[0], &argp1,SWIGTYPE_p_eec__hist__EECHist3DT_bh__axis__transform__log_bh__axis__transform__id_bh__axis__transform__id_t, 0 |  0 );
-  if (!SWIG_IsOK(res1)) {
-    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "EECHist3DLogIdId_axes_description" "', argument " "1"" of type '" "eec::hist::EECHist3D< eec::hist::axis::log,eec::hist::axis::id,eec::hist::axis::id > const *""'"); 
-  }
-  arg1 = reinterpret_cast< eec::hist::EECHist3D< eec::hist::axis::log,eec::hist::axis::id,eec::hist::axis::id > * >(argp1);
-  {
-    try {
-      result = ((eec::hist::EECHist3D< eec::hist::axis::log,eec::hist::axis::id,eec::hist::axis::id > const *)arg1)->axes_description(); 
-    }
-    /*@SWIG:/usr/local/Cellar/swig/4.0.2/share/swig/4.0.2/typemaps/exception.swg,58,SWIG_CATCH_STDEXCEPT@*/  /* catching std::exception  */
-    catch (std::invalid_argument& e) {
-      SWIG_exception_fail(SWIG_ValueError, e.what() );
-    } catch (std::domain_error& e) {
-      SWIG_exception_fail(SWIG_ValueError, e.what() );
-    } catch (std::overflow_error& e) {
-      SWIG_exception_fail(SWIG_OverflowError, e.what() );
-    } catch (std::out_of_range& e) {
-      SWIG_exception_fail(SWIG_IndexError, e.what() );
-    } catch (std::length_error& e) {
-      SWIG_exception_fail(SWIG_IndexError, e.what() );
-    } catch (std::runtime_error& e) {
-      SWIG_exception_fail(SWIG_RuntimeError, e.what() );
-    } catch (std::exception& e) {
-      SWIG_exception_fail(SWIG_SystemError, e.what() );
-    }
-    /*@SWIG@*/
-  }
-  resultobj = SWIG_From_std_string(static_cast< std::string >(result));
   return resultobj;
 fail:
   return NULL;
@@ -17343,7 +22260,7 @@ SWIGINTERN PyObject *_wrap_EECHist3DLogIdId_get_hist_vars(PyObject *SWIGUNUSEDPA
     arg9 = &dim3_temp6;
   }
   if (!PyArg_ParseTupleAndKeywords(args, kwargs, "O|OO:EECHist3DLogIdId_get_hist_vars", kwnames, &obj0, &obj1, &obj2)) SWIG_fail;
-  res1 = SWIG_ConvertPtr(obj0, &argp1,SWIGTYPE_p_eec__hist__EECHist3DT_bh__axis__transform__log_bh__axis__transform__id_bh__axis__transform__id_t, 0 |  0 );
+  res1 = SWIG_ConvertPtr(obj0, &argp1,SWIGTYPE_p_eec__hist__EECHist3DT_boost__histogram__axis__transform__log_boost__histogram__axis__transform__id_boost__histogram__axis__transform__id_t, 0 |  0 );
   if (!SWIG_IsOK(res1)) {
     SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "EECHist3DLogIdId_get_hist_vars" "', argument " "1"" of type '" "eec::hist::EECHist3D< eec::hist::axis::log,eec::hist::axis::id,eec::hist::axis::id > *""'"); 
   }
@@ -17440,7 +22357,7 @@ fail:
 SWIGINTERN PyObject *EECHist3DLogIdId_swigregister(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
   PyObject *obj;
   if (!SWIG_Python_UnpackTuple(args, "swigregister", 1, 1, &obj)) return NULL;
-  SWIG_TypeNewClientData(SWIGTYPE_p_eec__hist__EECHist3DT_bh__axis__transform__log_bh__axis__transform__id_bh__axis__transform__id_t, SWIG_NewClientData(obj));
+  SWIG_TypeNewClientData(SWIGTYPE_p_eec__hist__EECHist3DT_boost__histogram__axis__transform__log_boost__histogram__axis__transform__id_boost__histogram__axis__transform__id_t, SWIG_NewClientData(obj));
   return SWIG_Py_Void();
 }
 
@@ -17570,7 +22487,7 @@ SWIGINTERN PyObject *_wrap_new_EECHist3DIdLogId(PyObject *SWIGUNUSEDPARM(self), 
     }
     /*@SWIG@*/
   }
-  resultobj = SWIG_NewPointerObj(SWIG_as_voidptr(result), SWIGTYPE_p_eec__hist__EECHist3DT_bh__axis__transform__id_bh__axis__transform__log_bh__axis__transform__id_t, SWIG_POINTER_NEW |  0 );
+  resultobj = SWIG_NewPointerObj(SWIG_as_voidptr(result), SWIGTYPE_p_eec__hist__EECHist3DT_boost__histogram__axis__transform__id_boost__histogram__axis__transform__log_boost__histogram__axis__transform__id_t, SWIG_POINTER_NEW |  0 );
   return resultobj;
 fail:
   return NULL;
@@ -17586,7 +22503,7 @@ SWIGINTERN PyObject *_wrap_delete_EECHist3DIdLogId(PyObject *SWIGUNUSEDPARM(self
   
   if (!args) SWIG_fail;
   swig_obj[0] = args;
-  res1 = SWIG_ConvertPtr(swig_obj[0], &argp1,SWIGTYPE_p_eec__hist__EECHist3DT_bh__axis__transform__id_bh__axis__transform__log_bh__axis__transform__id_t, SWIG_POINTER_DISOWN |  0 );
+  res1 = SWIG_ConvertPtr(swig_obj[0], &argp1,SWIGTYPE_p_eec__hist__EECHist3DT_boost__histogram__axis__transform__id_boost__histogram__axis__transform__log_boost__histogram__axis__transform__id_t, SWIG_POINTER_DISOWN |  0 );
   if (!SWIG_IsOK(res1)) {
     SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "delete_EECHist3DIdLogId" "', argument " "1"" of type '" "eec::hist::EECHist3D< eec::hist::axis::id,eec::hist::axis::log,eec::hist::axis::id > *""'"); 
   }
@@ -17614,50 +22531,6 @@ SWIGINTERN PyObject *_wrap_delete_EECHist3DIdLogId(PyObject *SWIGUNUSEDPARM(self
     /*@SWIG@*/
   }
   resultobj = SWIG_Py_Void();
-  return resultobj;
-fail:
-  return NULL;
-}
-
-
-SWIGINTERN PyObject *_wrap_EECHist3DIdLogId_axes_description(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
-  PyObject *resultobj = 0;
-  eec::hist::EECHist3D< eec::hist::axis::id,eec::hist::axis::log,eec::hist::axis::id > *arg1 = (eec::hist::EECHist3D< eec::hist::axis::id,eec::hist::axis::log,eec::hist::axis::id > *) 0 ;
-  void *argp1 = 0 ;
-  int res1 = 0 ;
-  PyObject *swig_obj[1] ;
-  std::string result;
-  
-  if (!args) SWIG_fail;
-  swig_obj[0] = args;
-  res1 = SWIG_ConvertPtr(swig_obj[0], &argp1,SWIGTYPE_p_eec__hist__EECHist3DT_bh__axis__transform__id_bh__axis__transform__log_bh__axis__transform__id_t, 0 |  0 );
-  if (!SWIG_IsOK(res1)) {
-    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "EECHist3DIdLogId_axes_description" "', argument " "1"" of type '" "eec::hist::EECHist3D< eec::hist::axis::id,eec::hist::axis::log,eec::hist::axis::id > const *""'"); 
-  }
-  arg1 = reinterpret_cast< eec::hist::EECHist3D< eec::hist::axis::id,eec::hist::axis::log,eec::hist::axis::id > * >(argp1);
-  {
-    try {
-      result = ((eec::hist::EECHist3D< eec::hist::axis::id,eec::hist::axis::log,eec::hist::axis::id > const *)arg1)->axes_description(); 
-    }
-    /*@SWIG:/usr/local/Cellar/swig/4.0.2/share/swig/4.0.2/typemaps/exception.swg,58,SWIG_CATCH_STDEXCEPT@*/  /* catching std::exception  */
-    catch (std::invalid_argument& e) {
-      SWIG_exception_fail(SWIG_ValueError, e.what() );
-    } catch (std::domain_error& e) {
-      SWIG_exception_fail(SWIG_ValueError, e.what() );
-    } catch (std::overflow_error& e) {
-      SWIG_exception_fail(SWIG_OverflowError, e.what() );
-    } catch (std::out_of_range& e) {
-      SWIG_exception_fail(SWIG_IndexError, e.what() );
-    } catch (std::length_error& e) {
-      SWIG_exception_fail(SWIG_IndexError, e.what() );
-    } catch (std::runtime_error& e) {
-      SWIG_exception_fail(SWIG_RuntimeError, e.what() );
-    } catch (std::exception& e) {
-      SWIG_exception_fail(SWIG_SystemError, e.what() );
-    }
-    /*@SWIG@*/
-  }
-  resultobj = SWIG_From_std_string(static_cast< std::string >(result));
   return resultobj;
 fail:
   return NULL;
@@ -17711,7 +22584,7 @@ SWIGINTERN PyObject *_wrap_EECHist3DIdLogId_get_hist_vars(PyObject *SWIGUNUSEDPA
     arg9 = &dim3_temp6;
   }
   if (!PyArg_ParseTupleAndKeywords(args, kwargs, "O|OO:EECHist3DIdLogId_get_hist_vars", kwnames, &obj0, &obj1, &obj2)) SWIG_fail;
-  res1 = SWIG_ConvertPtr(obj0, &argp1,SWIGTYPE_p_eec__hist__EECHist3DT_bh__axis__transform__id_bh__axis__transform__log_bh__axis__transform__id_t, 0 |  0 );
+  res1 = SWIG_ConvertPtr(obj0, &argp1,SWIGTYPE_p_eec__hist__EECHist3DT_boost__histogram__axis__transform__id_boost__histogram__axis__transform__log_boost__histogram__axis__transform__id_t, 0 |  0 );
   if (!SWIG_IsOK(res1)) {
     SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "EECHist3DIdLogId_get_hist_vars" "', argument " "1"" of type '" "eec::hist::EECHist3D< eec::hist::axis::id,eec::hist::axis::log,eec::hist::axis::id > *""'"); 
   }
@@ -17808,7 +22681,7 @@ fail:
 SWIGINTERN PyObject *EECHist3DIdLogId_swigregister(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
   PyObject *obj;
   if (!SWIG_Python_UnpackTuple(args, "swigregister", 1, 1, &obj)) return NULL;
-  SWIG_TypeNewClientData(SWIGTYPE_p_eec__hist__EECHist3DT_bh__axis__transform__id_bh__axis__transform__log_bh__axis__transform__id_t, SWIG_NewClientData(obj));
+  SWIG_TypeNewClientData(SWIGTYPE_p_eec__hist__EECHist3DT_boost__histogram__axis__transform__id_boost__histogram__axis__transform__log_boost__histogram__axis__transform__id_t, SWIG_NewClientData(obj));
   return SWIG_Py_Void();
 }
 
@@ -17938,7 +22811,7 @@ SWIGINTERN PyObject *_wrap_new_EECHist3DLogLogId(PyObject *SWIGUNUSEDPARM(self),
     }
     /*@SWIG@*/
   }
-  resultobj = SWIG_NewPointerObj(SWIG_as_voidptr(result), SWIGTYPE_p_eec__hist__EECHist3DT_bh__axis__transform__log_bh__axis__transform__log_bh__axis__transform__id_t, SWIG_POINTER_NEW |  0 );
+  resultobj = SWIG_NewPointerObj(SWIG_as_voidptr(result), SWIGTYPE_p_eec__hist__EECHist3DT_boost__histogram__axis__transform__log_boost__histogram__axis__transform__log_boost__histogram__axis__transform__id_t, SWIG_POINTER_NEW |  0 );
   return resultobj;
 fail:
   return NULL;
@@ -17954,7 +22827,7 @@ SWIGINTERN PyObject *_wrap_delete_EECHist3DLogLogId(PyObject *SWIGUNUSEDPARM(sel
   
   if (!args) SWIG_fail;
   swig_obj[0] = args;
-  res1 = SWIG_ConvertPtr(swig_obj[0], &argp1,SWIGTYPE_p_eec__hist__EECHist3DT_bh__axis__transform__log_bh__axis__transform__log_bh__axis__transform__id_t, SWIG_POINTER_DISOWN |  0 );
+  res1 = SWIG_ConvertPtr(swig_obj[0], &argp1,SWIGTYPE_p_eec__hist__EECHist3DT_boost__histogram__axis__transform__log_boost__histogram__axis__transform__log_boost__histogram__axis__transform__id_t, SWIG_POINTER_DISOWN |  0 );
   if (!SWIG_IsOK(res1)) {
     SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "delete_EECHist3DLogLogId" "', argument " "1"" of type '" "eec::hist::EECHist3D< eec::hist::axis::log,eec::hist::axis::log,eec::hist::axis::id > *""'"); 
   }
@@ -17982,50 +22855,6 @@ SWIGINTERN PyObject *_wrap_delete_EECHist3DLogLogId(PyObject *SWIGUNUSEDPARM(sel
     /*@SWIG@*/
   }
   resultobj = SWIG_Py_Void();
-  return resultobj;
-fail:
-  return NULL;
-}
-
-
-SWIGINTERN PyObject *_wrap_EECHist3DLogLogId_axes_description(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
-  PyObject *resultobj = 0;
-  eec::hist::EECHist3D< eec::hist::axis::log,eec::hist::axis::log,eec::hist::axis::id > *arg1 = (eec::hist::EECHist3D< eec::hist::axis::log,eec::hist::axis::log,eec::hist::axis::id > *) 0 ;
-  void *argp1 = 0 ;
-  int res1 = 0 ;
-  PyObject *swig_obj[1] ;
-  std::string result;
-  
-  if (!args) SWIG_fail;
-  swig_obj[0] = args;
-  res1 = SWIG_ConvertPtr(swig_obj[0], &argp1,SWIGTYPE_p_eec__hist__EECHist3DT_bh__axis__transform__log_bh__axis__transform__log_bh__axis__transform__id_t, 0 |  0 );
-  if (!SWIG_IsOK(res1)) {
-    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "EECHist3DLogLogId_axes_description" "', argument " "1"" of type '" "eec::hist::EECHist3D< eec::hist::axis::log,eec::hist::axis::log,eec::hist::axis::id > const *""'"); 
-  }
-  arg1 = reinterpret_cast< eec::hist::EECHist3D< eec::hist::axis::log,eec::hist::axis::log,eec::hist::axis::id > * >(argp1);
-  {
-    try {
-      result = ((eec::hist::EECHist3D< eec::hist::axis::log,eec::hist::axis::log,eec::hist::axis::id > const *)arg1)->axes_description(); 
-    }
-    /*@SWIG:/usr/local/Cellar/swig/4.0.2/share/swig/4.0.2/typemaps/exception.swg,58,SWIG_CATCH_STDEXCEPT@*/  /* catching std::exception  */
-    catch (std::invalid_argument& e) {
-      SWIG_exception_fail(SWIG_ValueError, e.what() );
-    } catch (std::domain_error& e) {
-      SWIG_exception_fail(SWIG_ValueError, e.what() );
-    } catch (std::overflow_error& e) {
-      SWIG_exception_fail(SWIG_OverflowError, e.what() );
-    } catch (std::out_of_range& e) {
-      SWIG_exception_fail(SWIG_IndexError, e.what() );
-    } catch (std::length_error& e) {
-      SWIG_exception_fail(SWIG_IndexError, e.what() );
-    } catch (std::runtime_error& e) {
-      SWIG_exception_fail(SWIG_RuntimeError, e.what() );
-    } catch (std::exception& e) {
-      SWIG_exception_fail(SWIG_SystemError, e.what() );
-    }
-    /*@SWIG@*/
-  }
-  resultobj = SWIG_From_std_string(static_cast< std::string >(result));
   return resultobj;
 fail:
   return NULL;
@@ -18079,7 +22908,7 @@ SWIGINTERN PyObject *_wrap_EECHist3DLogLogId_get_hist_vars(PyObject *SWIGUNUSEDP
     arg9 = &dim3_temp6;
   }
   if (!PyArg_ParseTupleAndKeywords(args, kwargs, "O|OO:EECHist3DLogLogId_get_hist_vars", kwnames, &obj0, &obj1, &obj2)) SWIG_fail;
-  res1 = SWIG_ConvertPtr(obj0, &argp1,SWIGTYPE_p_eec__hist__EECHist3DT_bh__axis__transform__log_bh__axis__transform__log_bh__axis__transform__id_t, 0 |  0 );
+  res1 = SWIG_ConvertPtr(obj0, &argp1,SWIGTYPE_p_eec__hist__EECHist3DT_boost__histogram__axis__transform__log_boost__histogram__axis__transform__log_boost__histogram__axis__transform__id_t, 0 |  0 );
   if (!SWIG_IsOK(res1)) {
     SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "EECHist3DLogLogId_get_hist_vars" "', argument " "1"" of type '" "eec::hist::EECHist3D< eec::hist::axis::log,eec::hist::axis::log,eec::hist::axis::id > *""'"); 
   }
@@ -18176,7 +23005,7 @@ fail:
 SWIGINTERN PyObject *EECHist3DLogLogId_swigregister(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
   PyObject *obj;
   if (!SWIG_Python_UnpackTuple(args, "swigregister", 1, 1, &obj)) return NULL;
-  SWIG_TypeNewClientData(SWIGTYPE_p_eec__hist__EECHist3DT_bh__axis__transform__log_bh__axis__transform__log_bh__axis__transform__id_t, SWIG_NewClientData(obj));
+  SWIG_TypeNewClientData(SWIGTYPE_p_eec__hist__EECHist3DT_boost__histogram__axis__transform__log_boost__histogram__axis__transform__log_boost__histogram__axis__transform__id_t, SWIG_NewClientData(obj));
   return SWIG_Py_Void();
 }
 
@@ -18544,10 +23373,10 @@ fail:
 SWIGINTERN PyObject *_wrap_EECBase_description(PyObject *SWIGUNUSEDPARM(self), PyObject *args, PyObject *kwargs) {
   PyObject *resultobj = 0;
   eec::EECBase *arg1 = (eec::EECBase *) 0 ;
-  bool arg2 = (bool) false ;
+  int arg2 = (int) 1 ;
   void *argp1 = 0 ;
   int res1 = 0 ;
-  bool val2 ;
+  int val2 ;
   int ecode2 = 0 ;
   PyObject * obj0 = 0 ;
   PyObject * obj1 = 0 ;
@@ -18563,11 +23392,11 @@ SWIGINTERN PyObject *_wrap_EECBase_description(PyObject *SWIGUNUSEDPARM(self), P
   }
   arg1 = reinterpret_cast< eec::EECBase * >(argp1);
   if (obj1) {
-    ecode2 = SWIG_AsVal_bool(obj1, &val2);
+    ecode2 = SWIG_AsVal_int(obj1, &val2);
     if (!SWIG_IsOK(ecode2)) {
-      SWIG_exception_fail(SWIG_ArgError(ecode2), "in method '" "EECBase_description" "', argument " "2"" of type '" "bool""'");
+      SWIG_exception_fail(SWIG_ArgError(ecode2), "in method '" "EECBase_description" "', argument " "2"" of type '" "int""'");
     } 
-    arg2 = static_cast< bool >(val2);
+    arg2 = static_cast< int >(val2);
   }
   {
     try {
@@ -19153,94 +23982,6 @@ SWIGINTERN PyObject *_wrap_EECBase_set_print_stream(PyObject *SWIGUNUSEDPARM(sel
     /*@SWIG@*/
   }
   resultobj = SWIG_Py_Void();
-  return resultobj;
-fail:
-  return NULL;
-}
-
-
-SWIGINTERN PyObject *_wrap_EECBase___str__(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
-  PyObject *resultobj = 0;
-  eec::EECBase *arg1 = (eec::EECBase *) 0 ;
-  void *argp1 = 0 ;
-  int res1 = 0 ;
-  PyObject *swig_obj[1] ;
-  std::string result;
-  
-  if (!args) SWIG_fail;
-  swig_obj[0] = args;
-  res1 = SWIG_ConvertPtr(swig_obj[0], &argp1,SWIGTYPE_p_eec__EECBase, 0 |  0 );
-  if (!SWIG_IsOK(res1)) {
-    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "EECBase___str__" "', argument " "1"" of type '" "eec::EECBase const *""'"); 
-  }
-  arg1 = reinterpret_cast< eec::EECBase * >(argp1);
-  {
-    try {
-      result = eec_EECBase___str__((eec::EECBase const *)arg1); 
-    }
-    /*@SWIG:/usr/local/Cellar/swig/4.0.2/share/swig/4.0.2/typemaps/exception.swg,58,SWIG_CATCH_STDEXCEPT@*/  /* catching std::exception  */
-    catch (std::invalid_argument& e) {
-      SWIG_exception_fail(SWIG_ValueError, e.what() );
-    } catch (std::domain_error& e) {
-      SWIG_exception_fail(SWIG_ValueError, e.what() );
-    } catch (std::overflow_error& e) {
-      SWIG_exception_fail(SWIG_OverflowError, e.what() );
-    } catch (std::out_of_range& e) {
-      SWIG_exception_fail(SWIG_IndexError, e.what() );
-    } catch (std::length_error& e) {
-      SWIG_exception_fail(SWIG_IndexError, e.what() );
-    } catch (std::runtime_error& e) {
-      SWIG_exception_fail(SWIG_RuntimeError, e.what() );
-    } catch (std::exception& e) {
-      SWIG_exception_fail(SWIG_SystemError, e.what() );
-    }
-    /*@SWIG@*/
-  }
-  resultobj = SWIG_From_std_string(static_cast< std::string >(result));
-  return resultobj;
-fail:
-  return NULL;
-}
-
-
-SWIGINTERN PyObject *_wrap_EECBase___repr__(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
-  PyObject *resultobj = 0;
-  eec::EECBase *arg1 = (eec::EECBase *) 0 ;
-  void *argp1 = 0 ;
-  int res1 = 0 ;
-  PyObject *swig_obj[1] ;
-  std::string result;
-  
-  if (!args) SWIG_fail;
-  swig_obj[0] = args;
-  res1 = SWIG_ConvertPtr(swig_obj[0], &argp1,SWIGTYPE_p_eec__EECBase, 0 |  0 );
-  if (!SWIG_IsOK(res1)) {
-    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "EECBase___repr__" "', argument " "1"" of type '" "eec::EECBase const *""'"); 
-  }
-  arg1 = reinterpret_cast< eec::EECBase * >(argp1);
-  {
-    try {
-      result = eec_EECBase___repr__((eec::EECBase const *)arg1); 
-    }
-    /*@SWIG:/usr/local/Cellar/swig/4.0.2/share/swig/4.0.2/typemaps/exception.swg,58,SWIG_CATCH_STDEXCEPT@*/  /* catching std::exception  */
-    catch (std::invalid_argument& e) {
-      SWIG_exception_fail(SWIG_ValueError, e.what() );
-    } catch (std::domain_error& e) {
-      SWIG_exception_fail(SWIG_ValueError, e.what() );
-    } catch (std::overflow_error& e) {
-      SWIG_exception_fail(SWIG_OverflowError, e.what() );
-    } catch (std::out_of_range& e) {
-      SWIG_exception_fail(SWIG_IndexError, e.what() );
-    } catch (std::length_error& e) {
-      SWIG_exception_fail(SWIG_IndexError, e.what() );
-    } catch (std::runtime_error& e) {
-      SWIG_exception_fail(SWIG_RuntimeError, e.what() );
-    } catch (std::exception& e) {
-      SWIG_exception_fail(SWIG_SystemError, e.what() );
-    }
-    /*@SWIG@*/
-  }
-  resultobj = SWIG_From_std_string(static_cast< std::string >(result));
   return resultobj;
 fail:
   return NULL;
@@ -22413,15 +27154,15 @@ fail:
 SWIGINTERN PyObject *_wrap_EECLongestSideId_description(PyObject *SWIGUNUSEDPARM(self), PyObject *args, PyObject *kwargs) {
   PyObject *resultobj = 0;
   eec::EECLongestSide< axis::id > *arg1 = (eec::EECLongestSide< axis::id > *) 0 ;
-  bool arg2 = (bool) false ;
+  int arg2 = (int) 1 ;
   void *argp1 = 0 ;
   int res1 = 0 ;
-  bool val2 ;
+  int val2 ;
   int ecode2 = 0 ;
   PyObject * obj0 = 0 ;
   PyObject * obj1 = 0 ;
   char * kwnames[] = {
-    (char *)"self",  (char *)"include_hists",  NULL 
+    (char *)"self",  (char *)"hist_level",  NULL 
   };
   std::string result;
   
@@ -22432,11 +27173,11 @@ SWIGINTERN PyObject *_wrap_EECLongestSideId_description(PyObject *SWIGUNUSEDPARM
   }
   arg1 = reinterpret_cast< eec::EECLongestSide< axis::id > * >(argp1);
   if (obj1) {
-    ecode2 = SWIG_AsVal_bool(obj1, &val2);
+    ecode2 = SWIG_AsVal_int(obj1, &val2);
     if (!SWIG_IsOK(ecode2)) {
-      SWIG_exception_fail(SWIG_ArgError(ecode2), "in method '" "EECLongestSideId_description" "', argument " "2"" of type '" "bool""'");
+      SWIG_exception_fail(SWIG_ArgError(ecode2), "in method '" "EECLongestSideId_description" "', argument " "2"" of type '" "int""'");
     } 
-    arg2 = static_cast< bool >(val2);
+    arg2 = static_cast< int >(val2);
   }
   {
     try {
@@ -22467,7 +27208,7 @@ fail:
 }
 
 
-SWIGINTERN PyObject *_wrap_EECLongestSideId___str__(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
+SWIGINTERN PyObject *_wrap_EECLongestSideId___getstate_internal__(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
   PyObject *resultobj = 0;
   eec::EECLongestSide< axis::id > *arg1 = (eec::EECLongestSide< axis::id > *) 0 ;
   void *argp1 = 0 ;
@@ -22479,12 +27220,12 @@ SWIGINTERN PyObject *_wrap_EECLongestSideId___str__(PyObject *SWIGUNUSEDPARM(sel
   swig_obj[0] = args;
   res1 = SWIG_ConvertPtr(swig_obj[0], &argp1,SWIGTYPE_p_eec__EECLongestSideT_axis__id_t, 0 |  0 );
   if (!SWIG_IsOK(res1)) {
-    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "EECLongestSideId___str__" "', argument " "1"" of type '" "eec::EECLongestSide< axis::id > const *""'"); 
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "EECLongestSideId___getstate_internal__" "', argument " "1"" of type '" "eec::EECLongestSide< axis::id > *""'"); 
   }
   arg1 = reinterpret_cast< eec::EECLongestSide< axis::id > * >(argp1);
   {
     try {
-      result = eec_EECLongestSide_Sl_axis_id_Sg____str__((eec::EECLongestSide< axis::id > const *)arg1); 
+      result = eec_EECLongestSide_Sl_axis_id_Sg____getstate_internal__(arg1); 
     }
     /*@SWIG:/usr/local/Cellar/swig/4.0.2/share/swig/4.0.2/typemaps/exception.swg,58,SWIG_CATCH_STDEXCEPT@*/  /* catching std::exception  */
     catch (std::invalid_argument& e) {
@@ -22511,24 +27252,39 @@ fail:
 }
 
 
-SWIGINTERN PyObject *_wrap_EECLongestSideId___repr__(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
+SWIGINTERN PyObject *_wrap_EECLongestSideId___setstate_internal__(PyObject *SWIGUNUSEDPARM(self), PyObject *args, PyObject *kwargs) {
   PyObject *resultobj = 0;
   eec::EECLongestSide< axis::id > *arg1 = (eec::EECLongestSide< axis::id > *) 0 ;
+  std::string *arg2 = 0 ;
   void *argp1 = 0 ;
   int res1 = 0 ;
-  PyObject *swig_obj[1] ;
-  std::string result;
+  int res2 = SWIG_OLDOBJ ;
+  PyObject * obj0 = 0 ;
+  PyObject * obj1 = 0 ;
+  char * kwnames[] = {
+    (char *)"self",  (char *)"state",  NULL 
+  };
   
-  if (!args) SWIG_fail;
-  swig_obj[0] = args;
-  res1 = SWIG_ConvertPtr(swig_obj[0], &argp1,SWIGTYPE_p_eec__EECLongestSideT_axis__id_t, 0 |  0 );
+  if (!PyArg_ParseTupleAndKeywords(args, kwargs, "OO:EECLongestSideId___setstate_internal__", kwnames, &obj0, &obj1)) SWIG_fail;
+  res1 = SWIG_ConvertPtr(obj0, &argp1,SWIGTYPE_p_eec__EECLongestSideT_axis__id_t, 0 |  0 );
   if (!SWIG_IsOK(res1)) {
-    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "EECLongestSideId___repr__" "', argument " "1"" of type '" "eec::EECLongestSide< axis::id > const *""'"); 
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "EECLongestSideId___setstate_internal__" "', argument " "1"" of type '" "eec::EECLongestSide< axis::id > *""'"); 
   }
   arg1 = reinterpret_cast< eec::EECLongestSide< axis::id > * >(argp1);
   {
+    std::string *ptr = (std::string *)0;
+    res2 = SWIG_AsPtr_std_string(obj1, &ptr);
+    if (!SWIG_IsOK(res2)) {
+      SWIG_exception_fail(SWIG_ArgError(res2), "in method '" "EECLongestSideId___setstate_internal__" "', argument " "2"" of type '" "std::string const &""'"); 
+    }
+    if (!ptr) {
+      SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in method '" "EECLongestSideId___setstate_internal__" "', argument " "2"" of type '" "std::string const &""'"); 
+    }
+    arg2 = ptr;
+  }
+  {
     try {
-      result = eec_EECLongestSide_Sl_axis_id_Sg____repr__((eec::EECLongestSide< axis::id > const *)arg1); 
+      eec_EECLongestSide_Sl_axis_id_Sg____setstate_internal__(arg1,(std::string const &)*arg2); 
     }
     /*@SWIG:/usr/local/Cellar/swig/4.0.2/share/swig/4.0.2/typemaps/exception.swg,58,SWIG_CATCH_STDEXCEPT@*/  /* catching std::exception  */
     catch (std::invalid_argument& e) {
@@ -22548,9 +27304,11 @@ SWIGINTERN PyObject *_wrap_EECLongestSideId___repr__(PyObject *SWIGUNUSEDPARM(se
     }
     /*@SWIG@*/
   }
-  resultobj = SWIG_From_std_string(static_cast< std::string >(result));
+  resultobj = SWIG_Py_Void();
+  if (SWIG_IsNewObj(res2)) delete arg2;
   return resultobj;
 fail:
+  if (SWIG_IsNewObj(res2)) delete arg2;
   return NULL;
 }
 
@@ -22793,15 +27551,15 @@ fail:
 SWIGINTERN PyObject *_wrap_EECLongestSideLog_description(PyObject *SWIGUNUSEDPARM(self), PyObject *args, PyObject *kwargs) {
   PyObject *resultobj = 0;
   eec::EECLongestSide< axis::log > *arg1 = (eec::EECLongestSide< axis::log > *) 0 ;
-  bool arg2 = (bool) false ;
+  int arg2 = (int) 1 ;
   void *argp1 = 0 ;
   int res1 = 0 ;
-  bool val2 ;
+  int val2 ;
   int ecode2 = 0 ;
   PyObject * obj0 = 0 ;
   PyObject * obj1 = 0 ;
   char * kwnames[] = {
-    (char *)"self",  (char *)"include_hists",  NULL 
+    (char *)"self",  (char *)"hist_level",  NULL 
   };
   std::string result;
   
@@ -22812,11 +27570,11 @@ SWIGINTERN PyObject *_wrap_EECLongestSideLog_description(PyObject *SWIGUNUSEDPAR
   }
   arg1 = reinterpret_cast< eec::EECLongestSide< axis::log > * >(argp1);
   if (obj1) {
-    ecode2 = SWIG_AsVal_bool(obj1, &val2);
+    ecode2 = SWIG_AsVal_int(obj1, &val2);
     if (!SWIG_IsOK(ecode2)) {
-      SWIG_exception_fail(SWIG_ArgError(ecode2), "in method '" "EECLongestSideLog_description" "', argument " "2"" of type '" "bool""'");
+      SWIG_exception_fail(SWIG_ArgError(ecode2), "in method '" "EECLongestSideLog_description" "', argument " "2"" of type '" "int""'");
     } 
-    arg2 = static_cast< bool >(val2);
+    arg2 = static_cast< int >(val2);
   }
   {
     try {
@@ -22847,7 +27605,7 @@ fail:
 }
 
 
-SWIGINTERN PyObject *_wrap_EECLongestSideLog___str__(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
+SWIGINTERN PyObject *_wrap_EECLongestSideLog___getstate_internal__(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
   PyObject *resultobj = 0;
   eec::EECLongestSide< axis::log > *arg1 = (eec::EECLongestSide< axis::log > *) 0 ;
   void *argp1 = 0 ;
@@ -22859,12 +27617,12 @@ SWIGINTERN PyObject *_wrap_EECLongestSideLog___str__(PyObject *SWIGUNUSEDPARM(se
   swig_obj[0] = args;
   res1 = SWIG_ConvertPtr(swig_obj[0], &argp1,SWIGTYPE_p_eec__EECLongestSideT_axis__log_t, 0 |  0 );
   if (!SWIG_IsOK(res1)) {
-    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "EECLongestSideLog___str__" "', argument " "1"" of type '" "eec::EECLongestSide< axis::log > const *""'"); 
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "EECLongestSideLog___getstate_internal__" "', argument " "1"" of type '" "eec::EECLongestSide< axis::log > *""'"); 
   }
   arg1 = reinterpret_cast< eec::EECLongestSide< axis::log > * >(argp1);
   {
     try {
-      result = eec_EECLongestSide_Sl_axis_log_Sg____str__((eec::EECLongestSide< axis::log > const *)arg1); 
+      result = eec_EECLongestSide_Sl_axis_log_Sg____getstate_internal__(arg1); 
     }
     /*@SWIG:/usr/local/Cellar/swig/4.0.2/share/swig/4.0.2/typemaps/exception.swg,58,SWIG_CATCH_STDEXCEPT@*/  /* catching std::exception  */
     catch (std::invalid_argument& e) {
@@ -22891,24 +27649,39 @@ fail:
 }
 
 
-SWIGINTERN PyObject *_wrap_EECLongestSideLog___repr__(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
+SWIGINTERN PyObject *_wrap_EECLongestSideLog___setstate_internal__(PyObject *SWIGUNUSEDPARM(self), PyObject *args, PyObject *kwargs) {
   PyObject *resultobj = 0;
   eec::EECLongestSide< axis::log > *arg1 = (eec::EECLongestSide< axis::log > *) 0 ;
+  std::string *arg2 = 0 ;
   void *argp1 = 0 ;
   int res1 = 0 ;
-  PyObject *swig_obj[1] ;
-  std::string result;
+  int res2 = SWIG_OLDOBJ ;
+  PyObject * obj0 = 0 ;
+  PyObject * obj1 = 0 ;
+  char * kwnames[] = {
+    (char *)"self",  (char *)"state",  NULL 
+  };
   
-  if (!args) SWIG_fail;
-  swig_obj[0] = args;
-  res1 = SWIG_ConvertPtr(swig_obj[0], &argp1,SWIGTYPE_p_eec__EECLongestSideT_axis__log_t, 0 |  0 );
+  if (!PyArg_ParseTupleAndKeywords(args, kwargs, "OO:EECLongestSideLog___setstate_internal__", kwnames, &obj0, &obj1)) SWIG_fail;
+  res1 = SWIG_ConvertPtr(obj0, &argp1,SWIGTYPE_p_eec__EECLongestSideT_axis__log_t, 0 |  0 );
   if (!SWIG_IsOK(res1)) {
-    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "EECLongestSideLog___repr__" "', argument " "1"" of type '" "eec::EECLongestSide< axis::log > const *""'"); 
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "EECLongestSideLog___setstate_internal__" "', argument " "1"" of type '" "eec::EECLongestSide< axis::log > *""'"); 
   }
   arg1 = reinterpret_cast< eec::EECLongestSide< axis::log > * >(argp1);
   {
+    std::string *ptr = (std::string *)0;
+    res2 = SWIG_AsPtr_std_string(obj1, &ptr);
+    if (!SWIG_IsOK(res2)) {
+      SWIG_exception_fail(SWIG_ArgError(res2), "in method '" "EECLongestSideLog___setstate_internal__" "', argument " "2"" of type '" "std::string const &""'"); 
+    }
+    if (!ptr) {
+      SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in method '" "EECLongestSideLog___setstate_internal__" "', argument " "2"" of type '" "std::string const &""'"); 
+    }
+    arg2 = ptr;
+  }
+  {
     try {
-      result = eec_EECLongestSide_Sl_axis_log_Sg____repr__((eec::EECLongestSide< axis::log > const *)arg1); 
+      eec_EECLongestSide_Sl_axis_log_Sg____setstate_internal__(arg1,(std::string const &)*arg2); 
     }
     /*@SWIG:/usr/local/Cellar/swig/4.0.2/share/swig/4.0.2/typemaps/exception.swg,58,SWIG_CATCH_STDEXCEPT@*/  /* catching std::exception  */
     catch (std::invalid_argument& e) {
@@ -22928,9 +27701,11 @@ SWIGINTERN PyObject *_wrap_EECLongestSideLog___repr__(PyObject *SWIGUNUSEDPARM(s
     }
     /*@SWIG@*/
   }
-  resultobj = SWIG_From_std_string(static_cast< std::string >(result));
+  resultobj = SWIG_Py_Void();
+  if (SWIG_IsNewObj(res2)) delete arg2;
   return resultobj;
 fail:
+  if (SWIG_IsNewObj(res2)) delete arg2;
   return NULL;
 }
 
@@ -23164,15 +27939,15 @@ fail:
 SWIGINTERN PyObject *_wrap_EECTriangleOPEIdIdId_description(PyObject *SWIGUNUSEDPARM(self), PyObject *args, PyObject *kwargs) {
   PyObject *resultobj = 0;
   eec::EECTriangleOPE< axis::id,axis::id,axis::id > *arg1 = (eec::EECTriangleOPE< axis::id,axis::id,axis::id > *) 0 ;
-  bool arg2 = (bool) false ;
+  int arg2 = (int) 1 ;
   void *argp1 = 0 ;
   int res1 = 0 ;
-  bool val2 ;
+  int val2 ;
   int ecode2 = 0 ;
   PyObject * obj0 = 0 ;
   PyObject * obj1 = 0 ;
   char * kwnames[] = {
-    (char *)"self",  (char *)"include_hists",  NULL 
+    (char *)"self",  (char *)"hist_level",  NULL 
   };
   std::string result;
   
@@ -23183,11 +27958,11 @@ SWIGINTERN PyObject *_wrap_EECTriangleOPEIdIdId_description(PyObject *SWIGUNUSED
   }
   arg1 = reinterpret_cast< eec::EECTriangleOPE< axis::id,axis::id,axis::id > * >(argp1);
   if (obj1) {
-    ecode2 = SWIG_AsVal_bool(obj1, &val2);
+    ecode2 = SWIG_AsVal_int(obj1, &val2);
     if (!SWIG_IsOK(ecode2)) {
-      SWIG_exception_fail(SWIG_ArgError(ecode2), "in method '" "EECTriangleOPEIdIdId_description" "', argument " "2"" of type '" "bool""'");
+      SWIG_exception_fail(SWIG_ArgError(ecode2), "in method '" "EECTriangleOPEIdIdId_description" "', argument " "2"" of type '" "int""'");
     } 
-    arg2 = static_cast< bool >(val2);
+    arg2 = static_cast< int >(val2);
   }
   {
     try {
@@ -23218,7 +27993,7 @@ fail:
 }
 
 
-SWIGINTERN PyObject *_wrap_EECTriangleOPEIdIdId___str__(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
+SWIGINTERN PyObject *_wrap_EECTriangleOPEIdIdId___getstate_internal__(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
   PyObject *resultobj = 0;
   eec::EECTriangleOPE< axis::id,axis::id,axis::id > *arg1 = (eec::EECTriangleOPE< axis::id,axis::id,axis::id > *) 0 ;
   void *argp1 = 0 ;
@@ -23230,12 +28005,12 @@ SWIGINTERN PyObject *_wrap_EECTriangleOPEIdIdId___str__(PyObject *SWIGUNUSEDPARM
   swig_obj[0] = args;
   res1 = SWIG_ConvertPtr(swig_obj[0], &argp1,SWIGTYPE_p_eec__EECTriangleOPET_axis__id_axis__id_axis__id_t, 0 |  0 );
   if (!SWIG_IsOK(res1)) {
-    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "EECTriangleOPEIdIdId___str__" "', argument " "1"" of type '" "eec::EECTriangleOPE< axis::id,axis::id,axis::id > const *""'"); 
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "EECTriangleOPEIdIdId___getstate_internal__" "', argument " "1"" of type '" "eec::EECTriangleOPE< axis::id,axis::id,axis::id > *""'"); 
   }
   arg1 = reinterpret_cast< eec::EECTriangleOPE< axis::id,axis::id,axis::id > * >(argp1);
   {
     try {
-      result = eec_EECTriangleOPE_Sl_axis_id_Sc_axis_id_Sc_axis_id_Sg____str__((eec::EECTriangleOPE< axis::id,axis::id,axis::id > const *)arg1); 
+      result = eec_EECTriangleOPE_Sl_axis_id_Sc_axis_id_Sc_axis_id_Sg____getstate_internal__(arg1); 
     }
     /*@SWIG:/usr/local/Cellar/swig/4.0.2/share/swig/4.0.2/typemaps/exception.swg,58,SWIG_CATCH_STDEXCEPT@*/  /* catching std::exception  */
     catch (std::invalid_argument& e) {
@@ -23262,24 +28037,39 @@ fail:
 }
 
 
-SWIGINTERN PyObject *_wrap_EECTriangleOPEIdIdId___repr__(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
+SWIGINTERN PyObject *_wrap_EECTriangleOPEIdIdId___setstate_internal__(PyObject *SWIGUNUSEDPARM(self), PyObject *args, PyObject *kwargs) {
   PyObject *resultobj = 0;
   eec::EECTriangleOPE< axis::id,axis::id,axis::id > *arg1 = (eec::EECTriangleOPE< axis::id,axis::id,axis::id > *) 0 ;
+  std::string *arg2 = 0 ;
   void *argp1 = 0 ;
   int res1 = 0 ;
-  PyObject *swig_obj[1] ;
-  std::string result;
+  int res2 = SWIG_OLDOBJ ;
+  PyObject * obj0 = 0 ;
+  PyObject * obj1 = 0 ;
+  char * kwnames[] = {
+    (char *)"self",  (char *)"state",  NULL 
+  };
   
-  if (!args) SWIG_fail;
-  swig_obj[0] = args;
-  res1 = SWIG_ConvertPtr(swig_obj[0], &argp1,SWIGTYPE_p_eec__EECTriangleOPET_axis__id_axis__id_axis__id_t, 0 |  0 );
+  if (!PyArg_ParseTupleAndKeywords(args, kwargs, "OO:EECTriangleOPEIdIdId___setstate_internal__", kwnames, &obj0, &obj1)) SWIG_fail;
+  res1 = SWIG_ConvertPtr(obj0, &argp1,SWIGTYPE_p_eec__EECTriangleOPET_axis__id_axis__id_axis__id_t, 0 |  0 );
   if (!SWIG_IsOK(res1)) {
-    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "EECTriangleOPEIdIdId___repr__" "', argument " "1"" of type '" "eec::EECTriangleOPE< axis::id,axis::id,axis::id > const *""'"); 
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "EECTriangleOPEIdIdId___setstate_internal__" "', argument " "1"" of type '" "eec::EECTriangleOPE< axis::id,axis::id,axis::id > *""'"); 
   }
   arg1 = reinterpret_cast< eec::EECTriangleOPE< axis::id,axis::id,axis::id > * >(argp1);
   {
+    std::string *ptr = (std::string *)0;
+    res2 = SWIG_AsPtr_std_string(obj1, &ptr);
+    if (!SWIG_IsOK(res2)) {
+      SWIG_exception_fail(SWIG_ArgError(res2), "in method '" "EECTriangleOPEIdIdId___setstate_internal__" "', argument " "2"" of type '" "std::string const &""'"); 
+    }
+    if (!ptr) {
+      SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in method '" "EECTriangleOPEIdIdId___setstate_internal__" "', argument " "2"" of type '" "std::string const &""'"); 
+    }
+    arg2 = ptr;
+  }
+  {
     try {
-      result = eec_EECTriangleOPE_Sl_axis_id_Sc_axis_id_Sc_axis_id_Sg____repr__((eec::EECTriangleOPE< axis::id,axis::id,axis::id > const *)arg1); 
+      eec_EECTriangleOPE_Sl_axis_id_Sc_axis_id_Sc_axis_id_Sg____setstate_internal__(arg1,(std::string const &)*arg2); 
     }
     /*@SWIG:/usr/local/Cellar/swig/4.0.2/share/swig/4.0.2/typemaps/exception.swg,58,SWIG_CATCH_STDEXCEPT@*/  /* catching std::exception  */
     catch (std::invalid_argument& e) {
@@ -23299,9 +28089,11 @@ SWIGINTERN PyObject *_wrap_EECTriangleOPEIdIdId___repr__(PyObject *SWIGUNUSEDPAR
     }
     /*@SWIG@*/
   }
-  resultobj = SWIG_From_std_string(static_cast< std::string >(result));
+  resultobj = SWIG_Py_Void();
+  if (SWIG_IsNewObj(res2)) delete arg2;
   return resultobj;
 fail:
+  if (SWIG_IsNewObj(res2)) delete arg2;
   return NULL;
 }
 
@@ -23578,15 +28370,15 @@ fail:
 SWIGINTERN PyObject *_wrap_EECTriangleOPELogIdId_description(PyObject *SWIGUNUSEDPARM(self), PyObject *args, PyObject *kwargs) {
   PyObject *resultobj = 0;
   eec::EECTriangleOPE< axis::log,axis::id,axis::id > *arg1 = (eec::EECTriangleOPE< axis::log,axis::id,axis::id > *) 0 ;
-  bool arg2 = (bool) false ;
+  int arg2 = (int) 1 ;
   void *argp1 = 0 ;
   int res1 = 0 ;
-  bool val2 ;
+  int val2 ;
   int ecode2 = 0 ;
   PyObject * obj0 = 0 ;
   PyObject * obj1 = 0 ;
   char * kwnames[] = {
-    (char *)"self",  (char *)"include_hists",  NULL 
+    (char *)"self",  (char *)"hist_level",  NULL 
   };
   std::string result;
   
@@ -23597,11 +28389,11 @@ SWIGINTERN PyObject *_wrap_EECTriangleOPELogIdId_description(PyObject *SWIGUNUSE
   }
   arg1 = reinterpret_cast< eec::EECTriangleOPE< axis::log,axis::id,axis::id > * >(argp1);
   if (obj1) {
-    ecode2 = SWIG_AsVal_bool(obj1, &val2);
+    ecode2 = SWIG_AsVal_int(obj1, &val2);
     if (!SWIG_IsOK(ecode2)) {
-      SWIG_exception_fail(SWIG_ArgError(ecode2), "in method '" "EECTriangleOPELogIdId_description" "', argument " "2"" of type '" "bool""'");
+      SWIG_exception_fail(SWIG_ArgError(ecode2), "in method '" "EECTriangleOPELogIdId_description" "', argument " "2"" of type '" "int""'");
     } 
-    arg2 = static_cast< bool >(val2);
+    arg2 = static_cast< int >(val2);
   }
   {
     try {
@@ -23632,7 +28424,7 @@ fail:
 }
 
 
-SWIGINTERN PyObject *_wrap_EECTriangleOPELogIdId___str__(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
+SWIGINTERN PyObject *_wrap_EECTriangleOPELogIdId___getstate_internal__(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
   PyObject *resultobj = 0;
   eec::EECTriangleOPE< axis::log,axis::id,axis::id > *arg1 = (eec::EECTriangleOPE< axis::log,axis::id,axis::id > *) 0 ;
   void *argp1 = 0 ;
@@ -23644,12 +28436,12 @@ SWIGINTERN PyObject *_wrap_EECTriangleOPELogIdId___str__(PyObject *SWIGUNUSEDPAR
   swig_obj[0] = args;
   res1 = SWIG_ConvertPtr(swig_obj[0], &argp1,SWIGTYPE_p_eec__EECTriangleOPET_axis__log_axis__id_axis__id_t, 0 |  0 );
   if (!SWIG_IsOK(res1)) {
-    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "EECTriangleOPELogIdId___str__" "', argument " "1"" of type '" "eec::EECTriangleOPE< axis::log,axis::id,axis::id > const *""'"); 
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "EECTriangleOPELogIdId___getstate_internal__" "', argument " "1"" of type '" "eec::EECTriangleOPE< axis::log,axis::id,axis::id > *""'"); 
   }
   arg1 = reinterpret_cast< eec::EECTriangleOPE< axis::log,axis::id,axis::id > * >(argp1);
   {
     try {
-      result = eec_EECTriangleOPE_Sl_axis_log_Sc_axis_id_Sc_axis_id_Sg____str__((eec::EECTriangleOPE< axis::log,axis::id,axis::id > const *)arg1); 
+      result = eec_EECTriangleOPE_Sl_axis_log_Sc_axis_id_Sc_axis_id_Sg____getstate_internal__(arg1); 
     }
     /*@SWIG:/usr/local/Cellar/swig/4.0.2/share/swig/4.0.2/typemaps/exception.swg,58,SWIG_CATCH_STDEXCEPT@*/  /* catching std::exception  */
     catch (std::invalid_argument& e) {
@@ -23676,24 +28468,39 @@ fail:
 }
 
 
-SWIGINTERN PyObject *_wrap_EECTriangleOPELogIdId___repr__(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
+SWIGINTERN PyObject *_wrap_EECTriangleOPELogIdId___setstate_internal__(PyObject *SWIGUNUSEDPARM(self), PyObject *args, PyObject *kwargs) {
   PyObject *resultobj = 0;
   eec::EECTriangleOPE< axis::log,axis::id,axis::id > *arg1 = (eec::EECTriangleOPE< axis::log,axis::id,axis::id > *) 0 ;
+  std::string *arg2 = 0 ;
   void *argp1 = 0 ;
   int res1 = 0 ;
-  PyObject *swig_obj[1] ;
-  std::string result;
+  int res2 = SWIG_OLDOBJ ;
+  PyObject * obj0 = 0 ;
+  PyObject * obj1 = 0 ;
+  char * kwnames[] = {
+    (char *)"self",  (char *)"state",  NULL 
+  };
   
-  if (!args) SWIG_fail;
-  swig_obj[0] = args;
-  res1 = SWIG_ConvertPtr(swig_obj[0], &argp1,SWIGTYPE_p_eec__EECTriangleOPET_axis__log_axis__id_axis__id_t, 0 |  0 );
+  if (!PyArg_ParseTupleAndKeywords(args, kwargs, "OO:EECTriangleOPELogIdId___setstate_internal__", kwnames, &obj0, &obj1)) SWIG_fail;
+  res1 = SWIG_ConvertPtr(obj0, &argp1,SWIGTYPE_p_eec__EECTriangleOPET_axis__log_axis__id_axis__id_t, 0 |  0 );
   if (!SWIG_IsOK(res1)) {
-    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "EECTriangleOPELogIdId___repr__" "', argument " "1"" of type '" "eec::EECTriangleOPE< axis::log,axis::id,axis::id > const *""'"); 
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "EECTriangleOPELogIdId___setstate_internal__" "', argument " "1"" of type '" "eec::EECTriangleOPE< axis::log,axis::id,axis::id > *""'"); 
   }
   arg1 = reinterpret_cast< eec::EECTriangleOPE< axis::log,axis::id,axis::id > * >(argp1);
   {
+    std::string *ptr = (std::string *)0;
+    res2 = SWIG_AsPtr_std_string(obj1, &ptr);
+    if (!SWIG_IsOK(res2)) {
+      SWIG_exception_fail(SWIG_ArgError(res2), "in method '" "EECTriangleOPELogIdId___setstate_internal__" "', argument " "2"" of type '" "std::string const &""'"); 
+    }
+    if (!ptr) {
+      SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in method '" "EECTriangleOPELogIdId___setstate_internal__" "', argument " "2"" of type '" "std::string const &""'"); 
+    }
+    arg2 = ptr;
+  }
+  {
     try {
-      result = eec_EECTriangleOPE_Sl_axis_log_Sc_axis_id_Sc_axis_id_Sg____repr__((eec::EECTriangleOPE< axis::log,axis::id,axis::id > const *)arg1); 
+      eec_EECTriangleOPE_Sl_axis_log_Sc_axis_id_Sc_axis_id_Sg____setstate_internal__(arg1,(std::string const &)*arg2); 
     }
     /*@SWIG:/usr/local/Cellar/swig/4.0.2/share/swig/4.0.2/typemaps/exception.swg,58,SWIG_CATCH_STDEXCEPT@*/  /* catching std::exception  */
     catch (std::invalid_argument& e) {
@@ -23713,9 +28520,11 @@ SWIGINTERN PyObject *_wrap_EECTriangleOPELogIdId___repr__(PyObject *SWIGUNUSEDPA
     }
     /*@SWIG@*/
   }
-  resultobj = SWIG_From_std_string(static_cast< std::string >(result));
+  resultobj = SWIG_Py_Void();
+  if (SWIG_IsNewObj(res2)) delete arg2;
   return resultobj;
 fail:
+  if (SWIG_IsNewObj(res2)) delete arg2;
   return NULL;
 }
 
@@ -23992,15 +28801,15 @@ fail:
 SWIGINTERN PyObject *_wrap_EECTriangleOPEIdLogId_description(PyObject *SWIGUNUSEDPARM(self), PyObject *args, PyObject *kwargs) {
   PyObject *resultobj = 0;
   eec::EECTriangleOPE< axis::id,axis::log,axis::id > *arg1 = (eec::EECTriangleOPE< axis::id,axis::log,axis::id > *) 0 ;
-  bool arg2 = (bool) false ;
+  int arg2 = (int) 1 ;
   void *argp1 = 0 ;
   int res1 = 0 ;
-  bool val2 ;
+  int val2 ;
   int ecode2 = 0 ;
   PyObject * obj0 = 0 ;
   PyObject * obj1 = 0 ;
   char * kwnames[] = {
-    (char *)"self",  (char *)"include_hists",  NULL 
+    (char *)"self",  (char *)"hist_level",  NULL 
   };
   std::string result;
   
@@ -24011,11 +28820,11 @@ SWIGINTERN PyObject *_wrap_EECTriangleOPEIdLogId_description(PyObject *SWIGUNUSE
   }
   arg1 = reinterpret_cast< eec::EECTriangleOPE< axis::id,axis::log,axis::id > * >(argp1);
   if (obj1) {
-    ecode2 = SWIG_AsVal_bool(obj1, &val2);
+    ecode2 = SWIG_AsVal_int(obj1, &val2);
     if (!SWIG_IsOK(ecode2)) {
-      SWIG_exception_fail(SWIG_ArgError(ecode2), "in method '" "EECTriangleOPEIdLogId_description" "', argument " "2"" of type '" "bool""'");
+      SWIG_exception_fail(SWIG_ArgError(ecode2), "in method '" "EECTriangleOPEIdLogId_description" "', argument " "2"" of type '" "int""'");
     } 
-    arg2 = static_cast< bool >(val2);
+    arg2 = static_cast< int >(val2);
   }
   {
     try {
@@ -24046,7 +28855,7 @@ fail:
 }
 
 
-SWIGINTERN PyObject *_wrap_EECTriangleOPEIdLogId___str__(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
+SWIGINTERN PyObject *_wrap_EECTriangleOPEIdLogId___getstate_internal__(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
   PyObject *resultobj = 0;
   eec::EECTriangleOPE< axis::id,axis::log,axis::id > *arg1 = (eec::EECTriangleOPE< axis::id,axis::log,axis::id > *) 0 ;
   void *argp1 = 0 ;
@@ -24058,12 +28867,12 @@ SWIGINTERN PyObject *_wrap_EECTriangleOPEIdLogId___str__(PyObject *SWIGUNUSEDPAR
   swig_obj[0] = args;
   res1 = SWIG_ConvertPtr(swig_obj[0], &argp1,SWIGTYPE_p_eec__EECTriangleOPET_axis__id_axis__log_axis__id_t, 0 |  0 );
   if (!SWIG_IsOK(res1)) {
-    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "EECTriangleOPEIdLogId___str__" "', argument " "1"" of type '" "eec::EECTriangleOPE< axis::id,axis::log,axis::id > const *""'"); 
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "EECTriangleOPEIdLogId___getstate_internal__" "', argument " "1"" of type '" "eec::EECTriangleOPE< axis::id,axis::log,axis::id > *""'"); 
   }
   arg1 = reinterpret_cast< eec::EECTriangleOPE< axis::id,axis::log,axis::id > * >(argp1);
   {
     try {
-      result = eec_EECTriangleOPE_Sl_axis_id_Sc_axis_log_Sc_axis_id_Sg____str__((eec::EECTriangleOPE< axis::id,axis::log,axis::id > const *)arg1); 
+      result = eec_EECTriangleOPE_Sl_axis_id_Sc_axis_log_Sc_axis_id_Sg____getstate_internal__(arg1); 
     }
     /*@SWIG:/usr/local/Cellar/swig/4.0.2/share/swig/4.0.2/typemaps/exception.swg,58,SWIG_CATCH_STDEXCEPT@*/  /* catching std::exception  */
     catch (std::invalid_argument& e) {
@@ -24090,24 +28899,39 @@ fail:
 }
 
 
-SWIGINTERN PyObject *_wrap_EECTriangleOPEIdLogId___repr__(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
+SWIGINTERN PyObject *_wrap_EECTriangleOPEIdLogId___setstate_internal__(PyObject *SWIGUNUSEDPARM(self), PyObject *args, PyObject *kwargs) {
   PyObject *resultobj = 0;
   eec::EECTriangleOPE< axis::id,axis::log,axis::id > *arg1 = (eec::EECTriangleOPE< axis::id,axis::log,axis::id > *) 0 ;
+  std::string *arg2 = 0 ;
   void *argp1 = 0 ;
   int res1 = 0 ;
-  PyObject *swig_obj[1] ;
-  std::string result;
+  int res2 = SWIG_OLDOBJ ;
+  PyObject * obj0 = 0 ;
+  PyObject * obj1 = 0 ;
+  char * kwnames[] = {
+    (char *)"self",  (char *)"state",  NULL 
+  };
   
-  if (!args) SWIG_fail;
-  swig_obj[0] = args;
-  res1 = SWIG_ConvertPtr(swig_obj[0], &argp1,SWIGTYPE_p_eec__EECTriangleOPET_axis__id_axis__log_axis__id_t, 0 |  0 );
+  if (!PyArg_ParseTupleAndKeywords(args, kwargs, "OO:EECTriangleOPEIdLogId___setstate_internal__", kwnames, &obj0, &obj1)) SWIG_fail;
+  res1 = SWIG_ConvertPtr(obj0, &argp1,SWIGTYPE_p_eec__EECTriangleOPET_axis__id_axis__log_axis__id_t, 0 |  0 );
   if (!SWIG_IsOK(res1)) {
-    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "EECTriangleOPEIdLogId___repr__" "', argument " "1"" of type '" "eec::EECTriangleOPE< axis::id,axis::log,axis::id > const *""'"); 
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "EECTriangleOPEIdLogId___setstate_internal__" "', argument " "1"" of type '" "eec::EECTriangleOPE< axis::id,axis::log,axis::id > *""'"); 
   }
   arg1 = reinterpret_cast< eec::EECTriangleOPE< axis::id,axis::log,axis::id > * >(argp1);
   {
+    std::string *ptr = (std::string *)0;
+    res2 = SWIG_AsPtr_std_string(obj1, &ptr);
+    if (!SWIG_IsOK(res2)) {
+      SWIG_exception_fail(SWIG_ArgError(res2), "in method '" "EECTriangleOPEIdLogId___setstate_internal__" "', argument " "2"" of type '" "std::string const &""'"); 
+    }
+    if (!ptr) {
+      SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in method '" "EECTriangleOPEIdLogId___setstate_internal__" "', argument " "2"" of type '" "std::string const &""'"); 
+    }
+    arg2 = ptr;
+  }
+  {
     try {
-      result = eec_EECTriangleOPE_Sl_axis_id_Sc_axis_log_Sc_axis_id_Sg____repr__((eec::EECTriangleOPE< axis::id,axis::log,axis::id > const *)arg1); 
+      eec_EECTriangleOPE_Sl_axis_id_Sc_axis_log_Sc_axis_id_Sg____setstate_internal__(arg1,(std::string const &)*arg2); 
     }
     /*@SWIG:/usr/local/Cellar/swig/4.0.2/share/swig/4.0.2/typemaps/exception.swg,58,SWIG_CATCH_STDEXCEPT@*/  /* catching std::exception  */
     catch (std::invalid_argument& e) {
@@ -24127,9 +28951,11 @@ SWIGINTERN PyObject *_wrap_EECTriangleOPEIdLogId___repr__(PyObject *SWIGUNUSEDPA
     }
     /*@SWIG@*/
   }
-  resultobj = SWIG_From_std_string(static_cast< std::string >(result));
+  resultobj = SWIG_Py_Void();
+  if (SWIG_IsNewObj(res2)) delete arg2;
   return resultobj;
 fail:
+  if (SWIG_IsNewObj(res2)) delete arg2;
   return NULL;
 }
 
@@ -24406,15 +29232,15 @@ fail:
 SWIGINTERN PyObject *_wrap_EECTriangleOPELogLogId_description(PyObject *SWIGUNUSEDPARM(self), PyObject *args, PyObject *kwargs) {
   PyObject *resultobj = 0;
   eec::EECTriangleOPE< axis::log,axis::log,axis::id > *arg1 = (eec::EECTriangleOPE< axis::log,axis::log,axis::id > *) 0 ;
-  bool arg2 = (bool) false ;
+  int arg2 = (int) 1 ;
   void *argp1 = 0 ;
   int res1 = 0 ;
-  bool val2 ;
+  int val2 ;
   int ecode2 = 0 ;
   PyObject * obj0 = 0 ;
   PyObject * obj1 = 0 ;
   char * kwnames[] = {
-    (char *)"self",  (char *)"include_hists",  NULL 
+    (char *)"self",  (char *)"hist_level",  NULL 
   };
   std::string result;
   
@@ -24425,11 +29251,11 @@ SWIGINTERN PyObject *_wrap_EECTriangleOPELogLogId_description(PyObject *SWIGUNUS
   }
   arg1 = reinterpret_cast< eec::EECTriangleOPE< axis::log,axis::log,axis::id > * >(argp1);
   if (obj1) {
-    ecode2 = SWIG_AsVal_bool(obj1, &val2);
+    ecode2 = SWIG_AsVal_int(obj1, &val2);
     if (!SWIG_IsOK(ecode2)) {
-      SWIG_exception_fail(SWIG_ArgError(ecode2), "in method '" "EECTriangleOPELogLogId_description" "', argument " "2"" of type '" "bool""'");
+      SWIG_exception_fail(SWIG_ArgError(ecode2), "in method '" "EECTriangleOPELogLogId_description" "', argument " "2"" of type '" "int""'");
     } 
-    arg2 = static_cast< bool >(val2);
+    arg2 = static_cast< int >(val2);
   }
   {
     try {
@@ -24460,7 +29286,7 @@ fail:
 }
 
 
-SWIGINTERN PyObject *_wrap_EECTriangleOPELogLogId___str__(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
+SWIGINTERN PyObject *_wrap_EECTriangleOPELogLogId___getstate_internal__(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
   PyObject *resultobj = 0;
   eec::EECTriangleOPE< axis::log,axis::log,axis::id > *arg1 = (eec::EECTriangleOPE< axis::log,axis::log,axis::id > *) 0 ;
   void *argp1 = 0 ;
@@ -24472,12 +29298,12 @@ SWIGINTERN PyObject *_wrap_EECTriangleOPELogLogId___str__(PyObject *SWIGUNUSEDPA
   swig_obj[0] = args;
   res1 = SWIG_ConvertPtr(swig_obj[0], &argp1,SWIGTYPE_p_eec__EECTriangleOPET_axis__log_axis__log_axis__id_t, 0 |  0 );
   if (!SWIG_IsOK(res1)) {
-    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "EECTriangleOPELogLogId___str__" "', argument " "1"" of type '" "eec::EECTriangleOPE< axis::log,axis::log,axis::id > const *""'"); 
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "EECTriangleOPELogLogId___getstate_internal__" "', argument " "1"" of type '" "eec::EECTriangleOPE< axis::log,axis::log,axis::id > *""'"); 
   }
   arg1 = reinterpret_cast< eec::EECTriangleOPE< axis::log,axis::log,axis::id > * >(argp1);
   {
     try {
-      result = eec_EECTriangleOPE_Sl_axis_log_Sc_axis_log_Sc_axis_id_Sg____str__((eec::EECTriangleOPE< axis::log,axis::log,axis::id > const *)arg1); 
+      result = eec_EECTriangleOPE_Sl_axis_log_Sc_axis_log_Sc_axis_id_Sg____getstate_internal__(arg1); 
     }
     /*@SWIG:/usr/local/Cellar/swig/4.0.2/share/swig/4.0.2/typemaps/exception.swg,58,SWIG_CATCH_STDEXCEPT@*/  /* catching std::exception  */
     catch (std::invalid_argument& e) {
@@ -24504,24 +29330,39 @@ fail:
 }
 
 
-SWIGINTERN PyObject *_wrap_EECTriangleOPELogLogId___repr__(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
+SWIGINTERN PyObject *_wrap_EECTriangleOPELogLogId___setstate_internal__(PyObject *SWIGUNUSEDPARM(self), PyObject *args, PyObject *kwargs) {
   PyObject *resultobj = 0;
   eec::EECTriangleOPE< axis::log,axis::log,axis::id > *arg1 = (eec::EECTriangleOPE< axis::log,axis::log,axis::id > *) 0 ;
+  std::string *arg2 = 0 ;
   void *argp1 = 0 ;
   int res1 = 0 ;
-  PyObject *swig_obj[1] ;
-  std::string result;
+  int res2 = SWIG_OLDOBJ ;
+  PyObject * obj0 = 0 ;
+  PyObject * obj1 = 0 ;
+  char * kwnames[] = {
+    (char *)"self",  (char *)"state",  NULL 
+  };
   
-  if (!args) SWIG_fail;
-  swig_obj[0] = args;
-  res1 = SWIG_ConvertPtr(swig_obj[0], &argp1,SWIGTYPE_p_eec__EECTriangleOPET_axis__log_axis__log_axis__id_t, 0 |  0 );
+  if (!PyArg_ParseTupleAndKeywords(args, kwargs, "OO:EECTriangleOPELogLogId___setstate_internal__", kwnames, &obj0, &obj1)) SWIG_fail;
+  res1 = SWIG_ConvertPtr(obj0, &argp1,SWIGTYPE_p_eec__EECTriangleOPET_axis__log_axis__log_axis__id_t, 0 |  0 );
   if (!SWIG_IsOK(res1)) {
-    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "EECTriangleOPELogLogId___repr__" "', argument " "1"" of type '" "eec::EECTriangleOPE< axis::log,axis::log,axis::id > const *""'"); 
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "EECTriangleOPELogLogId___setstate_internal__" "', argument " "1"" of type '" "eec::EECTriangleOPE< axis::log,axis::log,axis::id > *""'"); 
   }
   arg1 = reinterpret_cast< eec::EECTriangleOPE< axis::log,axis::log,axis::id > * >(argp1);
   {
+    std::string *ptr = (std::string *)0;
+    res2 = SWIG_AsPtr_std_string(obj1, &ptr);
+    if (!SWIG_IsOK(res2)) {
+      SWIG_exception_fail(SWIG_ArgError(res2), "in method '" "EECTriangleOPELogLogId___setstate_internal__" "', argument " "2"" of type '" "std::string const &""'"); 
+    }
+    if (!ptr) {
+      SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in method '" "EECTriangleOPELogLogId___setstate_internal__" "', argument " "2"" of type '" "std::string const &""'"); 
+    }
+    arg2 = ptr;
+  }
+  {
     try {
-      result = eec_EECTriangleOPE_Sl_axis_log_Sc_axis_log_Sc_axis_id_Sg____repr__((eec::EECTriangleOPE< axis::log,axis::log,axis::id > const *)arg1); 
+      eec_EECTriangleOPE_Sl_axis_log_Sc_axis_log_Sc_axis_id_Sg____setstate_internal__(arg1,(std::string const &)*arg2); 
     }
     /*@SWIG:/usr/local/Cellar/swig/4.0.2/share/swig/4.0.2/typemaps/exception.swg,58,SWIG_CATCH_STDEXCEPT@*/  /* catching std::exception  */
     catch (std::invalid_argument& e) {
@@ -24541,9 +29382,11 @@ SWIGINTERN PyObject *_wrap_EECTriangleOPELogLogId___repr__(PyObject *SWIGUNUSEDP
     }
     /*@SWIG@*/
   }
-  resultobj = SWIG_From_std_string(static_cast< std::string >(result));
+  resultobj = SWIG_Py_Void();
+  if (SWIG_IsNewObj(res2)) delete arg2;
   return resultobj;
 fail:
+  if (SWIG_IsNewObj(res2)) delete arg2;
   return NULL;
 }
 
@@ -24790,123 +29633,217 @@ static PyMethodDef SwigMethods[] = {
 	 { "delete_arrayUnsigned13", _wrap_delete_arrayUnsigned13, METH_O, "delete_arrayUnsigned13(arrayUnsigned13 self)"},
 	 { "arrayUnsigned13_swigregister", arrayUnsigned13_swigregister, METH_O, NULL},
 	 { "arrayUnsigned13_swiginit", arrayUnsigned13_swiginit, METH_VARARGS, NULL},
+	 { "new_reduce_command", _wrap_new_reduce_command, METH_NOARGS, "new_reduce_command() -> reduce_command"},
+	 { "delete_reduce_command", _wrap_delete_reduce_command, METH_O, "delete_reduce_command(reduce_command self)"},
+	 { "reduce_command_swigregister", reduce_command_swigregister, METH_O, NULL},
+	 { "reduce_command_swiginit", reduce_command_swiginit, METH_VARARGS, NULL},
+	 { "rebin", _wrap_rebin, METH_VARARGS, "\n"
+		"rebin(unsigned int iaxis, unsigned int merge) -> reduce_command\n"
+		"rebin(unsigned int merge) -> reduce_command\n"
+		""},
+	 { "shrink", _wrap_shrink, METH_VARARGS, "\n"
+		"shrink(unsigned int iaxis, double lower, double upper) -> reduce_command\n"
+		"shrink(double lower, double upper) -> reduce_command\n"
+		""},
+	 { "slice", _wrap_slice, METH_VARARGS, "\n"
+		"slice(unsigned int iaxis, int begin, int end) -> reduce_command\n"
+		"slice(int begin, int end) -> reduce_command\n"
+		""},
+	 { "shrink_and_rebin", _wrap_shrink_and_rebin, METH_VARARGS, "\n"
+		"shrink_and_rebin(unsigned int iaxis, double lower, double upper, unsigned int merge) -> reduce_command\n"
+		"shrink_and_rebin(double lower, double upper, unsigned int merge) -> reduce_command\n"
+		""},
+	 { "slice_and_rebin", _wrap_slice_and_rebin, METH_VARARGS, "\n"
+		"slice_and_rebin(unsigned int iaxis, int begin, int end, unsigned int merge) -> reduce_command\n"
+		"slice_and_rebin(int begin, int end, unsigned int merge) -> reduce_command\n"
+		""},
+	 { "vectorReduceCommand_iterator", _wrap_vectorReduceCommand_iterator, METH_O, "vectorReduceCommand_iterator(vectorReduceCommand self) -> SwigPyIterator"},
+	 { "vectorReduceCommand___nonzero__", _wrap_vectorReduceCommand___nonzero__, METH_O, "vectorReduceCommand___nonzero__(vectorReduceCommand self) -> bool"},
+	 { "vectorReduceCommand___bool__", _wrap_vectorReduceCommand___bool__, METH_O, "vectorReduceCommand___bool__(vectorReduceCommand self) -> bool"},
+	 { "vectorReduceCommand___len__", _wrap_vectorReduceCommand___len__, METH_O, "vectorReduceCommand___len__(vectorReduceCommand self) -> std::vector< boost::histogram::algorithm::reduce_command >::size_type"},
+	 { "vectorReduceCommand___getslice__", (PyCFunction)(void(*)(void))_wrap_vectorReduceCommand___getslice__, METH_VARARGS|METH_KEYWORDS, "vectorReduceCommand___getslice__(vectorReduceCommand self, std::vector< boost::histogram::algorithm::reduce_command >::difference_type i, std::vector< boost::histogram::algorithm::reduce_command >::difference_type j) -> vectorReduceCommand"},
+	 { "vectorReduceCommand___setslice__", _wrap_vectorReduceCommand___setslice__, METH_VARARGS, "\n"
+		"vectorReduceCommand___setslice__(vectorReduceCommand self, std::vector< boost::histogram::algorithm::reduce_command >::difference_type i, std::vector< boost::histogram::algorithm::reduce_command >::difference_type j)\n"
+		"vectorReduceCommand___setslice__(vectorReduceCommand self, std::vector< boost::histogram::algorithm::reduce_command >::difference_type i, std::vector< boost::histogram::algorithm::reduce_command >::difference_type j, vectorReduceCommand v)\n"
+		""},
+	 { "vectorReduceCommand___delslice__", (PyCFunction)(void(*)(void))_wrap_vectorReduceCommand___delslice__, METH_VARARGS|METH_KEYWORDS, "vectorReduceCommand___delslice__(vectorReduceCommand self, std::vector< boost::histogram::algorithm::reduce_command >::difference_type i, std::vector< boost::histogram::algorithm::reduce_command >::difference_type j)"},
+	 { "vectorReduceCommand___delitem__", _wrap_vectorReduceCommand___delitem__, METH_VARARGS, "\n"
+		"vectorReduceCommand___delitem__(vectorReduceCommand self, std::vector< boost::histogram::algorithm::reduce_command >::difference_type i)\n"
+		"vectorReduceCommand___delitem__(vectorReduceCommand self, PySliceObject * slice)\n"
+		""},
+	 { "vectorReduceCommand___getitem__", _wrap_vectorReduceCommand___getitem__, METH_VARARGS, "\n"
+		"vectorReduceCommand___getitem__(vectorReduceCommand self, PySliceObject * slice) -> vectorReduceCommand\n"
+		"vectorReduceCommand___getitem__(vectorReduceCommand self, std::vector< boost::histogram::algorithm::reduce_command >::difference_type i) -> reduce_command\n"
+		""},
+	 { "vectorReduceCommand___setitem__", _wrap_vectorReduceCommand___setitem__, METH_VARARGS, "\n"
+		"vectorReduceCommand___setitem__(vectorReduceCommand self, PySliceObject * slice, vectorReduceCommand v)\n"
+		"vectorReduceCommand___setitem__(vectorReduceCommand self, PySliceObject * slice)\n"
+		"vectorReduceCommand___setitem__(vectorReduceCommand self, std::vector< boost::histogram::algorithm::reduce_command >::difference_type i, reduce_command x)\n"
+		""},
+	 { "vectorReduceCommand_pop", _wrap_vectorReduceCommand_pop, METH_O, "vectorReduceCommand_pop(vectorReduceCommand self) -> reduce_command"},
+	 { "vectorReduceCommand_append", (PyCFunction)(void(*)(void))_wrap_vectorReduceCommand_append, METH_VARARGS|METH_KEYWORDS, "vectorReduceCommand_append(vectorReduceCommand self, reduce_command x)"},
+	 { "vectorReduceCommand_empty", _wrap_vectorReduceCommand_empty, METH_O, "vectorReduceCommand_empty(vectorReduceCommand self) -> bool"},
+	 { "vectorReduceCommand_size", _wrap_vectorReduceCommand_size, METH_O, "vectorReduceCommand_size(vectorReduceCommand self) -> std::vector< boost::histogram::algorithm::reduce_command >::size_type"},
+	 { "vectorReduceCommand_swap", (PyCFunction)(void(*)(void))_wrap_vectorReduceCommand_swap, METH_VARARGS|METH_KEYWORDS, "vectorReduceCommand_swap(vectorReduceCommand self, vectorReduceCommand v)"},
+	 { "vectorReduceCommand_begin", _wrap_vectorReduceCommand_begin, METH_O, "vectorReduceCommand_begin(vectorReduceCommand self) -> std::vector< boost::histogram::algorithm::reduce_command >::iterator"},
+	 { "vectorReduceCommand_end", _wrap_vectorReduceCommand_end, METH_O, "vectorReduceCommand_end(vectorReduceCommand self) -> std::vector< boost::histogram::algorithm::reduce_command >::iterator"},
+	 { "vectorReduceCommand_rbegin", _wrap_vectorReduceCommand_rbegin, METH_O, "vectorReduceCommand_rbegin(vectorReduceCommand self) -> std::vector< boost::histogram::algorithm::reduce_command >::reverse_iterator"},
+	 { "vectorReduceCommand_rend", _wrap_vectorReduceCommand_rend, METH_O, "vectorReduceCommand_rend(vectorReduceCommand self) -> std::vector< boost::histogram::algorithm::reduce_command >::reverse_iterator"},
+	 { "vectorReduceCommand_clear", _wrap_vectorReduceCommand_clear, METH_O, "vectorReduceCommand_clear(vectorReduceCommand self)"},
+	 { "vectorReduceCommand_get_allocator", _wrap_vectorReduceCommand_get_allocator, METH_O, "vectorReduceCommand_get_allocator(vectorReduceCommand self) -> std::vector< boost::histogram::algorithm::reduce_command >::allocator_type"},
+	 { "vectorReduceCommand_pop_back", _wrap_vectorReduceCommand_pop_back, METH_O, "vectorReduceCommand_pop_back(vectorReduceCommand self)"},
+	 { "vectorReduceCommand_erase", _wrap_vectorReduceCommand_erase, METH_VARARGS, "\n"
+		"vectorReduceCommand_erase(vectorReduceCommand self, std::vector< boost::histogram::algorithm::reduce_command >::iterator pos) -> std::vector< boost::histogram::algorithm::reduce_command >::iterator\n"
+		"vectorReduceCommand_erase(vectorReduceCommand self, std::vector< boost::histogram::algorithm::reduce_command >::iterator first, std::vector< boost::histogram::algorithm::reduce_command >::iterator last) -> std::vector< boost::histogram::algorithm::reduce_command >::iterator\n"
+		""},
+	 { "new_vectorReduceCommand", _wrap_new_vectorReduceCommand, METH_VARARGS, "\n"
+		"vectorReduceCommand()\n"
+		"vectorReduceCommand(vectorReduceCommand other)\n"
+		"vectorReduceCommand(std::vector< boost::histogram::algorithm::reduce_command >::size_type size)\n"
+		"new_vectorReduceCommand(std::vector< boost::histogram::algorithm::reduce_command >::size_type size, reduce_command value) -> vectorReduceCommand\n"
+		""},
+	 { "vectorReduceCommand_push_back", (PyCFunction)(void(*)(void))_wrap_vectorReduceCommand_push_back, METH_VARARGS|METH_KEYWORDS, "vectorReduceCommand_push_back(vectorReduceCommand self, reduce_command x)"},
+	 { "vectorReduceCommand_front", _wrap_vectorReduceCommand_front, METH_O, "vectorReduceCommand_front(vectorReduceCommand self) -> reduce_command"},
+	 { "vectorReduceCommand_back", _wrap_vectorReduceCommand_back, METH_O, "vectorReduceCommand_back(vectorReduceCommand self) -> reduce_command"},
+	 { "vectorReduceCommand_assign", (PyCFunction)(void(*)(void))_wrap_vectorReduceCommand_assign, METH_VARARGS|METH_KEYWORDS, "vectorReduceCommand_assign(vectorReduceCommand self, std::vector< boost::histogram::algorithm::reduce_command >::size_type n, reduce_command x)"},
+	 { "vectorReduceCommand_resize", _wrap_vectorReduceCommand_resize, METH_VARARGS, "\n"
+		"vectorReduceCommand_resize(vectorReduceCommand self, std::vector< boost::histogram::algorithm::reduce_command >::size_type new_size)\n"
+		"vectorReduceCommand_resize(vectorReduceCommand self, std::vector< boost::histogram::algorithm::reduce_command >::size_type new_size, reduce_command x)\n"
+		""},
+	 { "vectorReduceCommand_insert", _wrap_vectorReduceCommand_insert, METH_VARARGS, "\n"
+		"vectorReduceCommand_insert(vectorReduceCommand self, std::vector< boost::histogram::algorithm::reduce_command >::iterator pos, reduce_command x) -> std::vector< boost::histogram::algorithm::reduce_command >::iterator\n"
+		"vectorReduceCommand_insert(vectorReduceCommand self, std::vector< boost::histogram::algorithm::reduce_command >::iterator pos, std::vector< boost::histogram::algorithm::reduce_command >::size_type n, reduce_command x)\n"
+		""},
+	 { "vectorReduceCommand_reserve", (PyCFunction)(void(*)(void))_wrap_vectorReduceCommand_reserve, METH_VARARGS|METH_KEYWORDS, "vectorReduceCommand_reserve(vectorReduceCommand self, std::vector< boost::histogram::algorithm::reduce_command >::size_type n)"},
+	 { "vectorReduceCommand_capacity", _wrap_vectorReduceCommand_capacity, METH_O, "vectorReduceCommand_capacity(vectorReduceCommand self) -> std::vector< boost::histogram::algorithm::reduce_command >::size_type"},
+	 { "delete_vectorReduceCommand", _wrap_delete_vectorReduceCommand, METH_O, "delete_vectorReduceCommand(vectorReduceCommand self)"},
+	 { "vectorReduceCommand_swigregister", vectorReduceCommand_swigregister, METH_O, NULL},
+	 { "vectorReduceCommand_swiginit", vectorReduceCommand_swiginit, METH_VARARGS, NULL},
 	 { "new_EECHistBase1DId", (PyCFunction)(void(*)(void))_wrap_new_EECHistBase1DId, METH_VARARGS|METH_KEYWORDS, "new_EECHistBase1DId(int num_threads) -> EECHistBase1DId"},
 	 { "delete_EECHistBase1DId", _wrap_delete_EECHistBase1DId, METH_O, "delete_EECHistBase1DId(EECHistBase1DId self)"},
-	 { "EECHistBase1DId_axes_description", _wrap_EECHistBase1DId_axes_description, METH_O, "EECHistBase1DId_axes_description(EECHistBase1DId self) -> std::string"},
 	 { "EECHistBase1DId_num_threads", _wrap_EECHistBase1DId_num_threads, METH_O, "EECHistBase1DId_num_threads(EECHistBase1DId self) -> int"},
 	 { "EECHistBase1DId_nhists", _wrap_EECHistBase1DId_nhists, METH_O, "EECHistBase1DId_nhists(EECHistBase1DId self) -> std::size_t"},
 	 { "EECHistBase1DId_nbins", (PyCFunction)(void(*)(void))_wrap_EECHistBase1DId_nbins, METH_VARARGS|METH_KEYWORDS, "EECHistBase1DId_nbins(EECHistBase1DId self, unsigned int i=0) -> std::size_t"},
 	 { "EECHistBase1DId_hist_size", (PyCFunction)(void(*)(void))_wrap_EECHistBase1DId_hist_size, METH_VARARGS|METH_KEYWORDS, "EECHistBase1DId_hist_size(EECHistBase1DId self, bool include_overflows=True, int i=-1) -> std::size_t"},
+	 { "EECHistBase1DId_reduce", (PyCFunction)(void(*)(void))_wrap_EECHistBase1DId_reduce, METH_VARARGS|METH_KEYWORDS, "EECHistBase1DId_reduce(EECHistBase1DId self, vectorReduceCommand rcs)"},
+	 { "EECHistBase1DId_sum", (PyCFunction)(void(*)(void))_wrap_EECHistBase1DId_sum, METH_VARARGS|METH_KEYWORDS, "EECHistBase1DId_sum(EECHistBase1DId self, unsigned int hist_i=0) -> double"},
+	 { "EECHistBase1DId___iadd__", (PyCFunction)(void(*)(void))_wrap_EECHistBase1DId___iadd__, METH_VARARGS|METH_KEYWORDS, "EECHistBase1DId___iadd__(EECHistBase1DId self, EECHistBase1DId rhs) -> EECHistBase1DId"},
 	 { "EECHistBase1DId_bin_centers_vec", (PyCFunction)(void(*)(void))_wrap_EECHistBase1DId_bin_centers_vec, METH_VARARGS|METH_KEYWORDS, "EECHistBase1DId_bin_centers_vec(EECHistBase1DId self, unsigned int i=0) -> vectorDouble"},
 	 { "EECHistBase1DId_bin_edges_vec", (PyCFunction)(void(*)(void))_wrap_EECHistBase1DId_bin_edges_vec, METH_VARARGS|METH_KEYWORDS, "EECHistBase1DId_bin_edges_vec(EECHistBase1DId self, unsigned int i=0) -> vectorDouble"},
-	 { "EECHistBase1DId_hists_as_text", (PyCFunction)(void(*)(void))_wrap_EECHistBase1DId_hists_as_text, METH_VARARGS|METH_KEYWORDS, "EECHistBase1DId_hists_as_text(EECHistBase1DId self, int precision=16, bool include_overflows=True, std::ostringstream * os=None) -> std::string"},
+	 { "EECHistBase1DId_hists_as_text", (PyCFunction)(void(*)(void))_wrap_EECHistBase1DId_hists_as_text, METH_VARARGS|METH_KEYWORDS, "EECHistBase1DId_hists_as_text(EECHistBase1DId self, int hist_level=3, int precision=16, bool include_overflows=True, std::ostringstream * os=None) -> std::string"},
 	 { "EECHistBase1DId_bin_centers", (PyCFunction)(void(*)(void))_wrap_EECHistBase1DId_bin_centers, METH_VARARGS|METH_KEYWORDS, "EECHistBase1DId_bin_centers(EECHistBase1DId self, int i=0)"},
 	 { "EECHistBase1DId_bin_edges", (PyCFunction)(void(*)(void))_wrap_EECHistBase1DId_bin_edges, METH_VARARGS|METH_KEYWORDS, "EECHistBase1DId_bin_edges(EECHistBase1DId self, int i=0)"},
 	 { "EECHistBase1DId_swigregister", EECHistBase1DId_swigregister, METH_O, NULL},
 	 { "EECHistBase1DId_swiginit", EECHistBase1DId_swiginit, METH_VARARGS, NULL},
 	 { "new_EECHistBase1DLog", (PyCFunction)(void(*)(void))_wrap_new_EECHistBase1DLog, METH_VARARGS|METH_KEYWORDS, "new_EECHistBase1DLog(int num_threads) -> EECHistBase1DLog"},
 	 { "delete_EECHistBase1DLog", _wrap_delete_EECHistBase1DLog, METH_O, "delete_EECHistBase1DLog(EECHistBase1DLog self)"},
-	 { "EECHistBase1DLog_axes_description", _wrap_EECHistBase1DLog_axes_description, METH_O, "EECHistBase1DLog_axes_description(EECHistBase1DLog self) -> std::string"},
 	 { "EECHistBase1DLog_num_threads", _wrap_EECHistBase1DLog_num_threads, METH_O, "EECHistBase1DLog_num_threads(EECHistBase1DLog self) -> int"},
 	 { "EECHistBase1DLog_nhists", _wrap_EECHistBase1DLog_nhists, METH_O, "EECHistBase1DLog_nhists(EECHistBase1DLog self) -> std::size_t"},
 	 { "EECHistBase1DLog_nbins", (PyCFunction)(void(*)(void))_wrap_EECHistBase1DLog_nbins, METH_VARARGS|METH_KEYWORDS, "EECHistBase1DLog_nbins(EECHistBase1DLog self, unsigned int i=0) -> std::size_t"},
 	 { "EECHistBase1DLog_hist_size", (PyCFunction)(void(*)(void))_wrap_EECHistBase1DLog_hist_size, METH_VARARGS|METH_KEYWORDS, "EECHistBase1DLog_hist_size(EECHistBase1DLog self, bool include_overflows=True, int i=-1) -> std::size_t"},
+	 { "EECHistBase1DLog_reduce", (PyCFunction)(void(*)(void))_wrap_EECHistBase1DLog_reduce, METH_VARARGS|METH_KEYWORDS, "EECHistBase1DLog_reduce(EECHistBase1DLog self, vectorReduceCommand rcs)"},
+	 { "EECHistBase1DLog_sum", (PyCFunction)(void(*)(void))_wrap_EECHistBase1DLog_sum, METH_VARARGS|METH_KEYWORDS, "EECHistBase1DLog_sum(EECHistBase1DLog self, unsigned int hist_i=0) -> double"},
+	 { "EECHistBase1DLog___iadd__", (PyCFunction)(void(*)(void))_wrap_EECHistBase1DLog___iadd__, METH_VARARGS|METH_KEYWORDS, "EECHistBase1DLog___iadd__(EECHistBase1DLog self, EECHistBase1DLog rhs) -> EECHistBase1DLog"},
 	 { "EECHistBase1DLog_bin_centers_vec", (PyCFunction)(void(*)(void))_wrap_EECHistBase1DLog_bin_centers_vec, METH_VARARGS|METH_KEYWORDS, "EECHistBase1DLog_bin_centers_vec(EECHistBase1DLog self, unsigned int i=0) -> vectorDouble"},
 	 { "EECHistBase1DLog_bin_edges_vec", (PyCFunction)(void(*)(void))_wrap_EECHistBase1DLog_bin_edges_vec, METH_VARARGS|METH_KEYWORDS, "EECHistBase1DLog_bin_edges_vec(EECHistBase1DLog self, unsigned int i=0) -> vectorDouble"},
-	 { "EECHistBase1DLog_hists_as_text", (PyCFunction)(void(*)(void))_wrap_EECHistBase1DLog_hists_as_text, METH_VARARGS|METH_KEYWORDS, "EECHistBase1DLog_hists_as_text(EECHistBase1DLog self, int precision=16, bool include_overflows=True, std::ostringstream * os=None) -> std::string"},
+	 { "EECHistBase1DLog_hists_as_text", (PyCFunction)(void(*)(void))_wrap_EECHistBase1DLog_hists_as_text, METH_VARARGS|METH_KEYWORDS, "EECHistBase1DLog_hists_as_text(EECHistBase1DLog self, int hist_level=3, int precision=16, bool include_overflows=True, std::ostringstream * os=None) -> std::string"},
 	 { "EECHistBase1DLog_bin_centers", (PyCFunction)(void(*)(void))_wrap_EECHistBase1DLog_bin_centers, METH_VARARGS|METH_KEYWORDS, "EECHistBase1DLog_bin_centers(EECHistBase1DLog self, int i=0)"},
 	 { "EECHistBase1DLog_bin_edges", (PyCFunction)(void(*)(void))_wrap_EECHistBase1DLog_bin_edges, METH_VARARGS|METH_KEYWORDS, "EECHistBase1DLog_bin_edges(EECHistBase1DLog self, int i=0)"},
 	 { "EECHistBase1DLog_swigregister", EECHistBase1DLog_swigregister, METH_O, NULL},
 	 { "EECHistBase1DLog_swiginit", EECHistBase1DLog_swiginit, METH_VARARGS, NULL},
 	 { "new_EECHistBaseIdIdId", (PyCFunction)(void(*)(void))_wrap_new_EECHistBaseIdIdId, METH_VARARGS|METH_KEYWORDS, "new_EECHistBaseIdIdId(int num_threads) -> EECHistBaseIdIdId"},
 	 { "delete_EECHistBaseIdIdId", _wrap_delete_EECHistBaseIdIdId, METH_O, "delete_EECHistBaseIdIdId(EECHistBaseIdIdId self)"},
-	 { "EECHistBaseIdIdId_axes_description", _wrap_EECHistBaseIdIdId_axes_description, METH_O, "EECHistBaseIdIdId_axes_description(EECHistBaseIdIdId self) -> std::string"},
 	 { "EECHistBaseIdIdId_num_threads", _wrap_EECHistBaseIdIdId_num_threads, METH_O, "EECHistBaseIdIdId_num_threads(EECHistBaseIdIdId self) -> int"},
 	 { "EECHistBaseIdIdId_nhists", _wrap_EECHistBaseIdIdId_nhists, METH_O, "EECHistBaseIdIdId_nhists(EECHistBaseIdIdId self) -> std::size_t"},
 	 { "EECHistBaseIdIdId_nbins", (PyCFunction)(void(*)(void))_wrap_EECHistBaseIdIdId_nbins, METH_VARARGS|METH_KEYWORDS, "EECHistBaseIdIdId_nbins(EECHistBaseIdIdId self, unsigned int i=0) -> std::size_t"},
 	 { "EECHistBaseIdIdId_hist_size", (PyCFunction)(void(*)(void))_wrap_EECHistBaseIdIdId_hist_size, METH_VARARGS|METH_KEYWORDS, "EECHistBaseIdIdId_hist_size(EECHistBaseIdIdId self, bool include_overflows=True, int i=-1) -> std::size_t"},
+	 { "EECHistBaseIdIdId_reduce", (PyCFunction)(void(*)(void))_wrap_EECHistBaseIdIdId_reduce, METH_VARARGS|METH_KEYWORDS, "EECHistBaseIdIdId_reduce(EECHistBaseIdIdId self, vectorReduceCommand rcs)"},
+	 { "EECHistBaseIdIdId_sum", (PyCFunction)(void(*)(void))_wrap_EECHistBaseIdIdId_sum, METH_VARARGS|METH_KEYWORDS, "EECHistBaseIdIdId_sum(EECHistBaseIdIdId self, unsigned int hist_i=0) -> double"},
+	 { "EECHistBaseIdIdId___iadd__", (PyCFunction)(void(*)(void))_wrap_EECHistBaseIdIdId___iadd__, METH_VARARGS|METH_KEYWORDS, "EECHistBaseIdIdId___iadd__(EECHistBaseIdIdId self, EECHistBaseIdIdId rhs) -> EECHistBaseIdIdId"},
 	 { "EECHistBaseIdIdId_bin_centers_vec", (PyCFunction)(void(*)(void))_wrap_EECHistBaseIdIdId_bin_centers_vec, METH_VARARGS|METH_KEYWORDS, "EECHistBaseIdIdId_bin_centers_vec(EECHistBaseIdIdId self, unsigned int i=0) -> vectorDouble"},
 	 { "EECHistBaseIdIdId_bin_edges_vec", (PyCFunction)(void(*)(void))_wrap_EECHistBaseIdIdId_bin_edges_vec, METH_VARARGS|METH_KEYWORDS, "EECHistBaseIdIdId_bin_edges_vec(EECHistBaseIdIdId self, unsigned int i=0) -> vectorDouble"},
-	 { "EECHistBaseIdIdId_hists_as_text", (PyCFunction)(void(*)(void))_wrap_EECHistBaseIdIdId_hists_as_text, METH_VARARGS|METH_KEYWORDS, "EECHistBaseIdIdId_hists_as_text(EECHistBaseIdIdId self, int precision=16, bool include_overflows=True, std::ostringstream * os=None) -> std::string"},
+	 { "EECHistBaseIdIdId_hists_as_text", (PyCFunction)(void(*)(void))_wrap_EECHistBaseIdIdId_hists_as_text, METH_VARARGS|METH_KEYWORDS, "EECHistBaseIdIdId_hists_as_text(EECHistBaseIdIdId self, int hist_level=3, int precision=16, bool include_overflows=True, std::ostringstream * os=None) -> std::string"},
 	 { "EECHistBaseIdIdId_bin_centers", (PyCFunction)(void(*)(void))_wrap_EECHistBaseIdIdId_bin_centers, METH_VARARGS|METH_KEYWORDS, "EECHistBaseIdIdId_bin_centers(EECHistBaseIdIdId self, int i=0)"},
 	 { "EECHistBaseIdIdId_bin_edges", (PyCFunction)(void(*)(void))_wrap_EECHistBaseIdIdId_bin_edges, METH_VARARGS|METH_KEYWORDS, "EECHistBaseIdIdId_bin_edges(EECHistBaseIdIdId self, int i=0)"},
 	 { "EECHistBaseIdIdId_swigregister", EECHistBaseIdIdId_swigregister, METH_O, NULL},
 	 { "EECHistBaseIdIdId_swiginit", EECHistBaseIdIdId_swiginit, METH_VARARGS, NULL},
 	 { "new_EECHistBaseLogIdId", (PyCFunction)(void(*)(void))_wrap_new_EECHistBaseLogIdId, METH_VARARGS|METH_KEYWORDS, "new_EECHistBaseLogIdId(int num_threads) -> EECHistBaseLogIdId"},
 	 { "delete_EECHistBaseLogIdId", _wrap_delete_EECHistBaseLogIdId, METH_O, "delete_EECHistBaseLogIdId(EECHistBaseLogIdId self)"},
-	 { "EECHistBaseLogIdId_axes_description", _wrap_EECHistBaseLogIdId_axes_description, METH_O, "EECHistBaseLogIdId_axes_description(EECHistBaseLogIdId self) -> std::string"},
 	 { "EECHistBaseLogIdId_num_threads", _wrap_EECHistBaseLogIdId_num_threads, METH_O, "EECHistBaseLogIdId_num_threads(EECHistBaseLogIdId self) -> int"},
 	 { "EECHistBaseLogIdId_nhists", _wrap_EECHistBaseLogIdId_nhists, METH_O, "EECHistBaseLogIdId_nhists(EECHistBaseLogIdId self) -> std::size_t"},
 	 { "EECHistBaseLogIdId_nbins", (PyCFunction)(void(*)(void))_wrap_EECHistBaseLogIdId_nbins, METH_VARARGS|METH_KEYWORDS, "EECHistBaseLogIdId_nbins(EECHistBaseLogIdId self, unsigned int i=0) -> std::size_t"},
 	 { "EECHistBaseLogIdId_hist_size", (PyCFunction)(void(*)(void))_wrap_EECHistBaseLogIdId_hist_size, METH_VARARGS|METH_KEYWORDS, "EECHistBaseLogIdId_hist_size(EECHistBaseLogIdId self, bool include_overflows=True, int i=-1) -> std::size_t"},
+	 { "EECHistBaseLogIdId_reduce", (PyCFunction)(void(*)(void))_wrap_EECHistBaseLogIdId_reduce, METH_VARARGS|METH_KEYWORDS, "EECHistBaseLogIdId_reduce(EECHistBaseLogIdId self, vectorReduceCommand rcs)"},
+	 { "EECHistBaseLogIdId_sum", (PyCFunction)(void(*)(void))_wrap_EECHistBaseLogIdId_sum, METH_VARARGS|METH_KEYWORDS, "EECHistBaseLogIdId_sum(EECHistBaseLogIdId self, unsigned int hist_i=0) -> double"},
+	 { "EECHistBaseLogIdId___iadd__", (PyCFunction)(void(*)(void))_wrap_EECHistBaseLogIdId___iadd__, METH_VARARGS|METH_KEYWORDS, "EECHistBaseLogIdId___iadd__(EECHistBaseLogIdId self, EECHistBaseLogIdId rhs) -> EECHistBaseLogIdId"},
 	 { "EECHistBaseLogIdId_bin_centers_vec", (PyCFunction)(void(*)(void))_wrap_EECHistBaseLogIdId_bin_centers_vec, METH_VARARGS|METH_KEYWORDS, "EECHistBaseLogIdId_bin_centers_vec(EECHistBaseLogIdId self, unsigned int i=0) -> vectorDouble"},
 	 { "EECHistBaseLogIdId_bin_edges_vec", (PyCFunction)(void(*)(void))_wrap_EECHistBaseLogIdId_bin_edges_vec, METH_VARARGS|METH_KEYWORDS, "EECHistBaseLogIdId_bin_edges_vec(EECHistBaseLogIdId self, unsigned int i=0) -> vectorDouble"},
-	 { "EECHistBaseLogIdId_hists_as_text", (PyCFunction)(void(*)(void))_wrap_EECHistBaseLogIdId_hists_as_text, METH_VARARGS|METH_KEYWORDS, "EECHistBaseLogIdId_hists_as_text(EECHistBaseLogIdId self, int precision=16, bool include_overflows=True, std::ostringstream * os=None) -> std::string"},
+	 { "EECHistBaseLogIdId_hists_as_text", (PyCFunction)(void(*)(void))_wrap_EECHistBaseLogIdId_hists_as_text, METH_VARARGS|METH_KEYWORDS, "EECHistBaseLogIdId_hists_as_text(EECHistBaseLogIdId self, int hist_level=3, int precision=16, bool include_overflows=True, std::ostringstream * os=None) -> std::string"},
 	 { "EECHistBaseLogIdId_bin_centers", (PyCFunction)(void(*)(void))_wrap_EECHistBaseLogIdId_bin_centers, METH_VARARGS|METH_KEYWORDS, "EECHistBaseLogIdId_bin_centers(EECHistBaseLogIdId self, int i=0)"},
 	 { "EECHistBaseLogIdId_bin_edges", (PyCFunction)(void(*)(void))_wrap_EECHistBaseLogIdId_bin_edges, METH_VARARGS|METH_KEYWORDS, "EECHistBaseLogIdId_bin_edges(EECHistBaseLogIdId self, int i=0)"},
 	 { "EECHistBaseLogIdId_swigregister", EECHistBaseLogIdId_swigregister, METH_O, NULL},
 	 { "EECHistBaseLogIdId_swiginit", EECHistBaseLogIdId_swiginit, METH_VARARGS, NULL},
 	 { "new_EECHistBaseIdLogId", (PyCFunction)(void(*)(void))_wrap_new_EECHistBaseIdLogId, METH_VARARGS|METH_KEYWORDS, "new_EECHistBaseIdLogId(int num_threads) -> EECHistBaseIdLogId"},
 	 { "delete_EECHistBaseIdLogId", _wrap_delete_EECHistBaseIdLogId, METH_O, "delete_EECHistBaseIdLogId(EECHistBaseIdLogId self)"},
-	 { "EECHistBaseIdLogId_axes_description", _wrap_EECHistBaseIdLogId_axes_description, METH_O, "EECHistBaseIdLogId_axes_description(EECHistBaseIdLogId self) -> std::string"},
 	 { "EECHistBaseIdLogId_num_threads", _wrap_EECHistBaseIdLogId_num_threads, METH_O, "EECHistBaseIdLogId_num_threads(EECHistBaseIdLogId self) -> int"},
 	 { "EECHistBaseIdLogId_nhists", _wrap_EECHistBaseIdLogId_nhists, METH_O, "EECHistBaseIdLogId_nhists(EECHistBaseIdLogId self) -> std::size_t"},
 	 { "EECHistBaseIdLogId_nbins", (PyCFunction)(void(*)(void))_wrap_EECHistBaseIdLogId_nbins, METH_VARARGS|METH_KEYWORDS, "EECHistBaseIdLogId_nbins(EECHistBaseIdLogId self, unsigned int i=0) -> std::size_t"},
 	 { "EECHistBaseIdLogId_hist_size", (PyCFunction)(void(*)(void))_wrap_EECHistBaseIdLogId_hist_size, METH_VARARGS|METH_KEYWORDS, "EECHistBaseIdLogId_hist_size(EECHistBaseIdLogId self, bool include_overflows=True, int i=-1) -> std::size_t"},
+	 { "EECHistBaseIdLogId_reduce", (PyCFunction)(void(*)(void))_wrap_EECHistBaseIdLogId_reduce, METH_VARARGS|METH_KEYWORDS, "EECHistBaseIdLogId_reduce(EECHistBaseIdLogId self, vectorReduceCommand rcs)"},
+	 { "EECHistBaseIdLogId_sum", (PyCFunction)(void(*)(void))_wrap_EECHistBaseIdLogId_sum, METH_VARARGS|METH_KEYWORDS, "EECHistBaseIdLogId_sum(EECHistBaseIdLogId self, unsigned int hist_i=0) -> double"},
+	 { "EECHistBaseIdLogId___iadd__", (PyCFunction)(void(*)(void))_wrap_EECHistBaseIdLogId___iadd__, METH_VARARGS|METH_KEYWORDS, "EECHistBaseIdLogId___iadd__(EECHistBaseIdLogId self, EECHistBaseIdLogId rhs) -> EECHistBaseIdLogId"},
 	 { "EECHistBaseIdLogId_bin_centers_vec", (PyCFunction)(void(*)(void))_wrap_EECHistBaseIdLogId_bin_centers_vec, METH_VARARGS|METH_KEYWORDS, "EECHistBaseIdLogId_bin_centers_vec(EECHistBaseIdLogId self, unsigned int i=0) -> vectorDouble"},
 	 { "EECHistBaseIdLogId_bin_edges_vec", (PyCFunction)(void(*)(void))_wrap_EECHistBaseIdLogId_bin_edges_vec, METH_VARARGS|METH_KEYWORDS, "EECHistBaseIdLogId_bin_edges_vec(EECHistBaseIdLogId self, unsigned int i=0) -> vectorDouble"},
-	 { "EECHistBaseIdLogId_hists_as_text", (PyCFunction)(void(*)(void))_wrap_EECHistBaseIdLogId_hists_as_text, METH_VARARGS|METH_KEYWORDS, "EECHistBaseIdLogId_hists_as_text(EECHistBaseIdLogId self, int precision=16, bool include_overflows=True, std::ostringstream * os=None) -> std::string"},
+	 { "EECHistBaseIdLogId_hists_as_text", (PyCFunction)(void(*)(void))_wrap_EECHistBaseIdLogId_hists_as_text, METH_VARARGS|METH_KEYWORDS, "EECHistBaseIdLogId_hists_as_text(EECHistBaseIdLogId self, int hist_level=3, int precision=16, bool include_overflows=True, std::ostringstream * os=None) -> std::string"},
 	 { "EECHistBaseIdLogId_bin_centers", (PyCFunction)(void(*)(void))_wrap_EECHistBaseIdLogId_bin_centers, METH_VARARGS|METH_KEYWORDS, "EECHistBaseIdLogId_bin_centers(EECHistBaseIdLogId self, int i=0)"},
 	 { "EECHistBaseIdLogId_bin_edges", (PyCFunction)(void(*)(void))_wrap_EECHistBaseIdLogId_bin_edges, METH_VARARGS|METH_KEYWORDS, "EECHistBaseIdLogId_bin_edges(EECHistBaseIdLogId self, int i=0)"},
 	 { "EECHistBaseIdLogId_swigregister", EECHistBaseIdLogId_swigregister, METH_O, NULL},
 	 { "EECHistBaseIdLogId_swiginit", EECHistBaseIdLogId_swiginit, METH_VARARGS, NULL},
 	 { "new_EECHistBaseLogLogId", (PyCFunction)(void(*)(void))_wrap_new_EECHistBaseLogLogId, METH_VARARGS|METH_KEYWORDS, "new_EECHistBaseLogLogId(int num_threads) -> EECHistBaseLogLogId"},
 	 { "delete_EECHistBaseLogLogId", _wrap_delete_EECHistBaseLogLogId, METH_O, "delete_EECHistBaseLogLogId(EECHistBaseLogLogId self)"},
-	 { "EECHistBaseLogLogId_axes_description", _wrap_EECHistBaseLogLogId_axes_description, METH_O, "EECHistBaseLogLogId_axes_description(EECHistBaseLogLogId self) -> std::string"},
 	 { "EECHistBaseLogLogId_num_threads", _wrap_EECHistBaseLogLogId_num_threads, METH_O, "EECHistBaseLogLogId_num_threads(EECHistBaseLogLogId self) -> int"},
 	 { "EECHistBaseLogLogId_nhists", _wrap_EECHistBaseLogLogId_nhists, METH_O, "EECHistBaseLogLogId_nhists(EECHistBaseLogLogId self) -> std::size_t"},
 	 { "EECHistBaseLogLogId_nbins", (PyCFunction)(void(*)(void))_wrap_EECHistBaseLogLogId_nbins, METH_VARARGS|METH_KEYWORDS, "EECHistBaseLogLogId_nbins(EECHistBaseLogLogId self, unsigned int i=0) -> std::size_t"},
 	 { "EECHistBaseLogLogId_hist_size", (PyCFunction)(void(*)(void))_wrap_EECHistBaseLogLogId_hist_size, METH_VARARGS|METH_KEYWORDS, "EECHistBaseLogLogId_hist_size(EECHistBaseLogLogId self, bool include_overflows=True, int i=-1) -> std::size_t"},
+	 { "EECHistBaseLogLogId_reduce", (PyCFunction)(void(*)(void))_wrap_EECHistBaseLogLogId_reduce, METH_VARARGS|METH_KEYWORDS, "EECHistBaseLogLogId_reduce(EECHistBaseLogLogId self, vectorReduceCommand rcs)"},
+	 { "EECHistBaseLogLogId_sum", (PyCFunction)(void(*)(void))_wrap_EECHistBaseLogLogId_sum, METH_VARARGS|METH_KEYWORDS, "EECHistBaseLogLogId_sum(EECHistBaseLogLogId self, unsigned int hist_i=0) -> double"},
+	 { "EECHistBaseLogLogId___iadd__", (PyCFunction)(void(*)(void))_wrap_EECHistBaseLogLogId___iadd__, METH_VARARGS|METH_KEYWORDS, "EECHistBaseLogLogId___iadd__(EECHistBaseLogLogId self, EECHistBaseLogLogId rhs) -> EECHistBaseLogLogId"},
 	 { "EECHistBaseLogLogId_bin_centers_vec", (PyCFunction)(void(*)(void))_wrap_EECHistBaseLogLogId_bin_centers_vec, METH_VARARGS|METH_KEYWORDS, "EECHistBaseLogLogId_bin_centers_vec(EECHistBaseLogLogId self, unsigned int i=0) -> vectorDouble"},
 	 { "EECHistBaseLogLogId_bin_edges_vec", (PyCFunction)(void(*)(void))_wrap_EECHistBaseLogLogId_bin_edges_vec, METH_VARARGS|METH_KEYWORDS, "EECHistBaseLogLogId_bin_edges_vec(EECHistBaseLogLogId self, unsigned int i=0) -> vectorDouble"},
-	 { "EECHistBaseLogLogId_hists_as_text", (PyCFunction)(void(*)(void))_wrap_EECHistBaseLogLogId_hists_as_text, METH_VARARGS|METH_KEYWORDS, "EECHistBaseLogLogId_hists_as_text(EECHistBaseLogLogId self, int precision=16, bool include_overflows=True, std::ostringstream * os=None) -> std::string"},
+	 { "EECHistBaseLogLogId_hists_as_text", (PyCFunction)(void(*)(void))_wrap_EECHistBaseLogLogId_hists_as_text, METH_VARARGS|METH_KEYWORDS, "EECHistBaseLogLogId_hists_as_text(EECHistBaseLogLogId self, int hist_level=3, int precision=16, bool include_overflows=True, std::ostringstream * os=None) -> std::string"},
 	 { "EECHistBaseLogLogId_bin_centers", (PyCFunction)(void(*)(void))_wrap_EECHistBaseLogLogId_bin_centers, METH_VARARGS|METH_KEYWORDS, "EECHistBaseLogLogId_bin_centers(EECHistBaseLogLogId self, int i=0)"},
 	 { "EECHistBaseLogLogId_bin_edges", (PyCFunction)(void(*)(void))_wrap_EECHistBaseLogLogId_bin_edges, METH_VARARGS|METH_KEYWORDS, "EECHistBaseLogLogId_bin_edges(EECHistBaseLogLogId self, int i=0)"},
 	 { "EECHistBaseLogLogId_swigregister", EECHistBaseLogLogId_swigregister, METH_O, NULL},
 	 { "EECHistBaseLogLogId_swiginit", EECHistBaseLogLogId_swiginit, METH_VARARGS, NULL},
 	 { "new_EECHist1DId", (PyCFunction)(void(*)(void))_wrap_new_EECHist1DId, METH_VARARGS|METH_KEYWORDS, "new_EECHist1DId(unsigned int nbins, double axis_min, double axis_max, int num_threads=1) -> EECHist1DId"},
 	 { "delete_EECHist1DId", _wrap_delete_EECHist1DId, METH_O, "delete_EECHist1DId(EECHist1DId self)"},
-	 { "EECHist1DId_axes_description", _wrap_EECHist1DId_axes_description, METH_O, "EECHist1DId_axes_description(EECHist1DId self) -> std::string"},
+	 { "EECHist1DId_reduce", (PyCFunction)(void(*)(void))_wrap_EECHist1DId_reduce, METH_VARARGS|METH_KEYWORDS, "EECHist1DId_reduce(EECHist1DId self, reduce_command rc)"},
 	 { "EECHist1DId_get_hist_vars", (PyCFunction)(void(*)(void))_wrap_EECHist1DId_get_hist_vars, METH_VARARGS|METH_KEYWORDS, "EECHist1DId_get_hist_vars(EECHist1DId self, unsigned int hist_i=0, bool include_overflows=True)"},
 	 { "EECHist1DId_swigregister", EECHist1DId_swigregister, METH_O, NULL},
 	 { "EECHist1DId_swiginit", EECHist1DId_swiginit, METH_VARARGS, NULL},
 	 { "new_EECHist1DLog", (PyCFunction)(void(*)(void))_wrap_new_EECHist1DLog, METH_VARARGS|METH_KEYWORDS, "new_EECHist1DLog(unsigned int nbins, double axis_min, double axis_max, int num_threads=1) -> EECHist1DLog"},
 	 { "delete_EECHist1DLog", _wrap_delete_EECHist1DLog, METH_O, "delete_EECHist1DLog(EECHist1DLog self)"},
-	 { "EECHist1DLog_axes_description", _wrap_EECHist1DLog_axes_description, METH_O, "EECHist1DLog_axes_description(EECHist1DLog self) -> std::string"},
+	 { "EECHist1DLog_reduce", (PyCFunction)(void(*)(void))_wrap_EECHist1DLog_reduce, METH_VARARGS|METH_KEYWORDS, "EECHist1DLog_reduce(EECHist1DLog self, reduce_command rc)"},
 	 { "EECHist1DLog_get_hist_vars", (PyCFunction)(void(*)(void))_wrap_EECHist1DLog_get_hist_vars, METH_VARARGS|METH_KEYWORDS, "EECHist1DLog_get_hist_vars(EECHist1DLog self, unsigned int hist_i=0, bool include_overflows=True)"},
 	 { "EECHist1DLog_swigregister", EECHist1DLog_swigregister, METH_O, NULL},
 	 { "EECHist1DLog_swiginit", EECHist1DLog_swiginit, METH_VARARGS, NULL},
 	 { "new_EECHist3DIdIdId", (PyCFunction)(void(*)(void))_wrap_new_EECHist3DIdIdId, METH_VARARGS|METH_KEYWORDS, "new_EECHist3DIdIdId(unsigned int nbins0, double axis0_min, double axis0_max, unsigned int nbins1, double axis1_min, double axis1_max, unsigned int nbins2, double axis2_min, double axis2_max, int num_threads=1) -> EECHist3DIdIdId"},
 	 { "delete_EECHist3DIdIdId", _wrap_delete_EECHist3DIdIdId, METH_O, "delete_EECHist3DIdIdId(EECHist3DIdIdId self)"},
-	 { "EECHist3DIdIdId_axes_description", _wrap_EECHist3DIdIdId_axes_description, METH_O, "EECHist3DIdIdId_axes_description(EECHist3DIdIdId self) -> std::string"},
 	 { "EECHist3DIdIdId_get_hist_vars", (PyCFunction)(void(*)(void))_wrap_EECHist3DIdIdId_get_hist_vars, METH_VARARGS|METH_KEYWORDS, "EECHist3DIdIdId_get_hist_vars(EECHist3DIdIdId self, unsigned int hist_i=0, bool include_overflows=True)"},
 	 { "EECHist3DIdIdId_swigregister", EECHist3DIdIdId_swigregister, METH_O, NULL},
 	 { "EECHist3DIdIdId_swiginit", EECHist3DIdIdId_swiginit, METH_VARARGS, NULL},
 	 { "new_EECHist3DLogIdId", (PyCFunction)(void(*)(void))_wrap_new_EECHist3DLogIdId, METH_VARARGS|METH_KEYWORDS, "new_EECHist3DLogIdId(unsigned int nbins0, double axis0_min, double axis0_max, unsigned int nbins1, double axis1_min, double axis1_max, unsigned int nbins2, double axis2_min, double axis2_max, int num_threads=1) -> EECHist3DLogIdId"},
 	 { "delete_EECHist3DLogIdId", _wrap_delete_EECHist3DLogIdId, METH_O, "delete_EECHist3DLogIdId(EECHist3DLogIdId self)"},
-	 { "EECHist3DLogIdId_axes_description", _wrap_EECHist3DLogIdId_axes_description, METH_O, "EECHist3DLogIdId_axes_description(EECHist3DLogIdId self) -> std::string"},
 	 { "EECHist3DLogIdId_get_hist_vars", (PyCFunction)(void(*)(void))_wrap_EECHist3DLogIdId_get_hist_vars, METH_VARARGS|METH_KEYWORDS, "EECHist3DLogIdId_get_hist_vars(EECHist3DLogIdId self, unsigned int hist_i=0, bool include_overflows=True)"},
 	 { "EECHist3DLogIdId_swigregister", EECHist3DLogIdId_swigregister, METH_O, NULL},
 	 { "EECHist3DLogIdId_swiginit", EECHist3DLogIdId_swiginit, METH_VARARGS, NULL},
 	 { "new_EECHist3DIdLogId", (PyCFunction)(void(*)(void))_wrap_new_EECHist3DIdLogId, METH_VARARGS|METH_KEYWORDS, "new_EECHist3DIdLogId(unsigned int nbins0, double axis0_min, double axis0_max, unsigned int nbins1, double axis1_min, double axis1_max, unsigned int nbins2, double axis2_min, double axis2_max, int num_threads=1) -> EECHist3DIdLogId"},
 	 { "delete_EECHist3DIdLogId", _wrap_delete_EECHist3DIdLogId, METH_O, "delete_EECHist3DIdLogId(EECHist3DIdLogId self)"},
-	 { "EECHist3DIdLogId_axes_description", _wrap_EECHist3DIdLogId_axes_description, METH_O, "EECHist3DIdLogId_axes_description(EECHist3DIdLogId self) -> std::string"},
 	 { "EECHist3DIdLogId_get_hist_vars", (PyCFunction)(void(*)(void))_wrap_EECHist3DIdLogId_get_hist_vars, METH_VARARGS|METH_KEYWORDS, "EECHist3DIdLogId_get_hist_vars(EECHist3DIdLogId self, unsigned int hist_i=0, bool include_overflows=True)"},
 	 { "EECHist3DIdLogId_swigregister", EECHist3DIdLogId_swigregister, METH_O, NULL},
 	 { "EECHist3DIdLogId_swiginit", EECHist3DIdLogId_swiginit, METH_VARARGS, NULL},
 	 { "new_EECHist3DLogLogId", (PyCFunction)(void(*)(void))_wrap_new_EECHist3DLogLogId, METH_VARARGS|METH_KEYWORDS, "new_EECHist3DLogLogId(unsigned int nbins0, double axis0_min, double axis0_max, unsigned int nbins1, double axis1_min, double axis1_max, unsigned int nbins2, double axis2_min, double axis2_max, int num_threads=1) -> EECHist3DLogLogId"},
 	 { "delete_EECHist3DLogLogId", _wrap_delete_EECHist3DLogLogId, METH_O, "delete_EECHist3DLogLogId(EECHist3DLogLogId self)"},
-	 { "EECHist3DLogLogId_axes_description", _wrap_EECHist3DLogLogId_axes_description, METH_O, "EECHist3DLogLogId_axes_description(EECHist3DLogLogId self) -> std::string"},
 	 { "EECHist3DLogLogId_get_hist_vars", (PyCFunction)(void(*)(void))_wrap_EECHist3DLogLogId_get_hist_vars, METH_VARARGS|METH_KEYWORDS, "EECHist3DLogLogId_get_hist_vars(EECHist3DLogLogId self, unsigned int hist_i=0, bool include_overflows=True)"},
 	 { "EECHist3DLogLogId_swigregister", EECHist3DLogLogId_swigregister, METH_O, NULL},
 	 { "EECHist3DLogLogId_swiginit", EECHist3DLogLogId_swiginit, METH_VARARGS, NULL},
@@ -24919,7 +29856,7 @@ static PyMethodDef SwigMethods[] = {
 	 { "EECEvents_swigregister", EECEvents_swigregister, METH_O, NULL},
 	 { "EECEvents_swiginit", EECEvents_swiginit, METH_VARARGS, NULL},
 	 { "delete_EECBase", _wrap_delete_EECBase, METH_O, "delete_EECBase(EECBase self)"},
-	 { "EECBase_description", (PyCFunction)(void(*)(void))_wrap_EECBase_description, METH_VARARGS|METH_KEYWORDS, "EECBase_description(EECBase self, bool arg2=False) -> std::string"},
+	 { "EECBase_description", (PyCFunction)(void(*)(void))_wrap_EECBase_description, METH_VARARGS|METH_KEYWORDS, "EECBase_description(EECBase self, int arg2=1) -> std::string"},
 	 { "EECBase_N", _wrap_EECBase_N, METH_O, "EECBase_N(EECBase self) -> unsigned int"},
 	 { "EECBase_nsym", _wrap_EECBase_nsym, METH_O, "EECBase_nsym(EECBase self) -> unsigned int"},
 	 { "EECBase_nfeatures", _wrap_EECBase_nfeatures, METH_O, "EECBase_nfeatures(EECBase self) -> unsigned int"},
@@ -24932,8 +29869,6 @@ static PyMethodDef SwigMethods[] = {
 	 { "EECBase_set_omp_chunksize", (PyCFunction)(void(*)(void))_wrap_EECBase_set_omp_chunksize, METH_VARARGS|METH_KEYWORDS, "EECBase_set_omp_chunksize(EECBase self, int chunksize)"},
 	 { "EECBase_set_print_every", (PyCFunction)(void(*)(void))_wrap_EECBase_set_print_every, METH_VARARGS|METH_KEYWORDS, "EECBase_set_print_every(EECBase self, int print_every)"},
 	 { "EECBase_set_print_stream", (PyCFunction)(void(*)(void))_wrap_EECBase_set_print_stream, METH_VARARGS|METH_KEYWORDS, "EECBase_set_print_stream(EECBase self, std::ostream & os)"},
-	 { "EECBase___str__", _wrap_EECBase___str__, METH_O, "EECBase___str__(EECBase self) -> std::string"},
-	 { "EECBase___repr__", _wrap_EECBase___repr__, METH_O, "EECBase___repr__(EECBase self) -> std::string"},
 	 { "EECBase_compute", (PyCFunction)(void(*)(void))_wrap_EECBase_compute, METH_VARARGS|METH_KEYWORDS, "EECBase_compute(EECBase self, double * particles, double weight=1.0, int thread_i=0)"},
 	 { "EECBase__batch_compute", (PyCFunction)(void(*)(void))_wrap_EECBase__batch_compute, METH_VARARGS|METH_KEYWORDS, "EECBase__batch_compute(EECBase self, EECEvents evs)"},
 	 { "EECBase_swigregister", EECBase_swigregister, METH_O, NULL},
@@ -25006,43 +29941,43 @@ static PyMethodDef SwigMethods[] = {
 	 { "Multinomial6_swiginit", Multinomial6_swiginit, METH_VARARGS, NULL},
 	 { "new_EECLongestSideId", (PyCFunction)(void(*)(void))_wrap_new_EECLongestSideId, METH_VARARGS|METH_KEYWORDS, "new_EECLongestSideId(unsigned int N, unsigned int nbins, double axis_min, double axis_max, bool norm=True, vectorDouble pt_powers={1}, vectorUnsigned ch_powers={0}, int num_threads=-1, int print_every=-10, bool check_degen=False, bool average_verts=False, bool use_general_eNc=False) -> EECLongestSideId"},
 	 { "delete_EECLongestSideId", _wrap_delete_EECLongestSideId, METH_O, "delete_EECLongestSideId(EECLongestSideId self)"},
-	 { "EECLongestSideId_description", (PyCFunction)(void(*)(void))_wrap_EECLongestSideId_description, METH_VARARGS|METH_KEYWORDS, "EECLongestSideId_description(EECLongestSideId self, bool include_hists=False) -> std::string"},
-	 { "EECLongestSideId___str__", _wrap_EECLongestSideId___str__, METH_O, "EECLongestSideId___str__(EECLongestSideId self) -> std::string"},
-	 { "EECLongestSideId___repr__", _wrap_EECLongestSideId___repr__, METH_O, "EECLongestSideId___repr__(EECLongestSideId self) -> std::string"},
+	 { "EECLongestSideId_description", (PyCFunction)(void(*)(void))_wrap_EECLongestSideId_description, METH_VARARGS|METH_KEYWORDS, "EECLongestSideId_description(EECLongestSideId self, int hist_level=1) -> std::string"},
+	 { "EECLongestSideId___getstate_internal__", _wrap_EECLongestSideId___getstate_internal__, METH_O, "EECLongestSideId___getstate_internal__(EECLongestSideId self) -> std::string"},
+	 { "EECLongestSideId___setstate_internal__", (PyCFunction)(void(*)(void))_wrap_EECLongestSideId___setstate_internal__, METH_VARARGS|METH_KEYWORDS, "EECLongestSideId___setstate_internal__(EECLongestSideId self, std::string const & state)"},
 	 { "EECLongestSideId_swigregister", EECLongestSideId_swigregister, METH_O, NULL},
 	 { "EECLongestSideId_swiginit", EECLongestSideId_swiginit, METH_VARARGS, NULL},
 	 { "new_EECLongestSideLog", (PyCFunction)(void(*)(void))_wrap_new_EECLongestSideLog, METH_VARARGS|METH_KEYWORDS, "new_EECLongestSideLog(unsigned int N, unsigned int nbins, double axis_min, double axis_max, bool norm=True, vectorDouble pt_powers={1}, vectorUnsigned ch_powers={0}, int num_threads=-1, int print_every=-10, bool check_degen=False, bool average_verts=False, bool use_general_eNc=False) -> EECLongestSideLog"},
 	 { "delete_EECLongestSideLog", _wrap_delete_EECLongestSideLog, METH_O, "delete_EECLongestSideLog(EECLongestSideLog self)"},
-	 { "EECLongestSideLog_description", (PyCFunction)(void(*)(void))_wrap_EECLongestSideLog_description, METH_VARARGS|METH_KEYWORDS, "EECLongestSideLog_description(EECLongestSideLog self, bool include_hists=False) -> std::string"},
-	 { "EECLongestSideLog___str__", _wrap_EECLongestSideLog___str__, METH_O, "EECLongestSideLog___str__(EECLongestSideLog self) -> std::string"},
-	 { "EECLongestSideLog___repr__", _wrap_EECLongestSideLog___repr__, METH_O, "EECLongestSideLog___repr__(EECLongestSideLog self) -> std::string"},
+	 { "EECLongestSideLog_description", (PyCFunction)(void(*)(void))_wrap_EECLongestSideLog_description, METH_VARARGS|METH_KEYWORDS, "EECLongestSideLog_description(EECLongestSideLog self, int hist_level=1) -> std::string"},
+	 { "EECLongestSideLog___getstate_internal__", _wrap_EECLongestSideLog___getstate_internal__, METH_O, "EECLongestSideLog___getstate_internal__(EECLongestSideLog self) -> std::string"},
+	 { "EECLongestSideLog___setstate_internal__", (PyCFunction)(void(*)(void))_wrap_EECLongestSideLog___setstate_internal__, METH_VARARGS|METH_KEYWORDS, "EECLongestSideLog___setstate_internal__(EECLongestSideLog self, std::string const & state)"},
 	 { "EECLongestSideLog_swigregister", EECLongestSideLog_swigregister, METH_O, NULL},
 	 { "EECLongestSideLog_swiginit", EECLongestSideLog_swiginit, METH_VARARGS, NULL},
 	 { "new_EECTriangleOPEIdIdId", (PyCFunction)(void(*)(void))_wrap_new_EECTriangleOPEIdIdId, METH_VARARGS|METH_KEYWORDS, "new_EECTriangleOPEIdIdId(unsigned int nbins0, double axis0_min, double axis0_max, unsigned int nbins1, double axis1_min, double axis1_max, unsigned int nbins2, double axis2_min, double axis2_max, bool norm=True, vectorDouble pt_powers={1}, vectorUnsigned ch_powers={0}, int num_threads=-1, int print_every=-10, bool check_degen=False, bool average_verts=False) -> EECTriangleOPEIdIdId"},
-	 { "EECTriangleOPEIdIdId_description", (PyCFunction)(void(*)(void))_wrap_EECTriangleOPEIdIdId_description, METH_VARARGS|METH_KEYWORDS, "EECTriangleOPEIdIdId_description(EECTriangleOPEIdIdId self, bool include_hists=False) -> std::string"},
-	 { "EECTriangleOPEIdIdId___str__", _wrap_EECTriangleOPEIdIdId___str__, METH_O, "EECTriangleOPEIdIdId___str__(EECTriangleOPEIdIdId self) -> std::string"},
-	 { "EECTriangleOPEIdIdId___repr__", _wrap_EECTriangleOPEIdIdId___repr__, METH_O, "EECTriangleOPEIdIdId___repr__(EECTriangleOPEIdIdId self) -> std::string"},
+	 { "EECTriangleOPEIdIdId_description", (PyCFunction)(void(*)(void))_wrap_EECTriangleOPEIdIdId_description, METH_VARARGS|METH_KEYWORDS, "EECTriangleOPEIdIdId_description(EECTriangleOPEIdIdId self, int hist_level=1) -> std::string"},
+	 { "EECTriangleOPEIdIdId___getstate_internal__", _wrap_EECTriangleOPEIdIdId___getstate_internal__, METH_O, "EECTriangleOPEIdIdId___getstate_internal__(EECTriangleOPEIdIdId self) -> std::string"},
+	 { "EECTriangleOPEIdIdId___setstate_internal__", (PyCFunction)(void(*)(void))_wrap_EECTriangleOPEIdIdId___setstate_internal__, METH_VARARGS|METH_KEYWORDS, "EECTriangleOPEIdIdId___setstate_internal__(EECTriangleOPEIdIdId self, std::string const & state)"},
 	 { "delete_EECTriangleOPEIdIdId", _wrap_delete_EECTriangleOPEIdIdId, METH_O, "delete_EECTriangleOPEIdIdId(EECTriangleOPEIdIdId self)"},
 	 { "EECTriangleOPEIdIdId_swigregister", EECTriangleOPEIdIdId_swigregister, METH_O, NULL},
 	 { "EECTriangleOPEIdIdId_swiginit", EECTriangleOPEIdIdId_swiginit, METH_VARARGS, NULL},
 	 { "new_EECTriangleOPELogIdId", (PyCFunction)(void(*)(void))_wrap_new_EECTriangleOPELogIdId, METH_VARARGS|METH_KEYWORDS, "new_EECTriangleOPELogIdId(unsigned int nbins0, double axis0_min, double axis0_max, unsigned int nbins1, double axis1_min, double axis1_max, unsigned int nbins2, double axis2_min, double axis2_max, bool norm=True, vectorDouble pt_powers={1}, vectorUnsigned ch_powers={0}, int num_threads=-1, int print_every=-10, bool check_degen=False, bool average_verts=False) -> EECTriangleOPELogIdId"},
-	 { "EECTriangleOPELogIdId_description", (PyCFunction)(void(*)(void))_wrap_EECTriangleOPELogIdId_description, METH_VARARGS|METH_KEYWORDS, "EECTriangleOPELogIdId_description(EECTriangleOPELogIdId self, bool include_hists=False) -> std::string"},
-	 { "EECTriangleOPELogIdId___str__", _wrap_EECTriangleOPELogIdId___str__, METH_O, "EECTriangleOPELogIdId___str__(EECTriangleOPELogIdId self) -> std::string"},
-	 { "EECTriangleOPELogIdId___repr__", _wrap_EECTriangleOPELogIdId___repr__, METH_O, "EECTriangleOPELogIdId___repr__(EECTriangleOPELogIdId self) -> std::string"},
+	 { "EECTriangleOPELogIdId_description", (PyCFunction)(void(*)(void))_wrap_EECTriangleOPELogIdId_description, METH_VARARGS|METH_KEYWORDS, "EECTriangleOPELogIdId_description(EECTriangleOPELogIdId self, int hist_level=1) -> std::string"},
+	 { "EECTriangleOPELogIdId___getstate_internal__", _wrap_EECTriangleOPELogIdId___getstate_internal__, METH_O, "EECTriangleOPELogIdId___getstate_internal__(EECTriangleOPELogIdId self) -> std::string"},
+	 { "EECTriangleOPELogIdId___setstate_internal__", (PyCFunction)(void(*)(void))_wrap_EECTriangleOPELogIdId___setstate_internal__, METH_VARARGS|METH_KEYWORDS, "EECTriangleOPELogIdId___setstate_internal__(EECTriangleOPELogIdId self, std::string const & state)"},
 	 { "delete_EECTriangleOPELogIdId", _wrap_delete_EECTriangleOPELogIdId, METH_O, "delete_EECTriangleOPELogIdId(EECTriangleOPELogIdId self)"},
 	 { "EECTriangleOPELogIdId_swigregister", EECTriangleOPELogIdId_swigregister, METH_O, NULL},
 	 { "EECTriangleOPELogIdId_swiginit", EECTriangleOPELogIdId_swiginit, METH_VARARGS, NULL},
 	 { "new_EECTriangleOPEIdLogId", (PyCFunction)(void(*)(void))_wrap_new_EECTriangleOPEIdLogId, METH_VARARGS|METH_KEYWORDS, "new_EECTriangleOPEIdLogId(unsigned int nbins0, double axis0_min, double axis0_max, unsigned int nbins1, double axis1_min, double axis1_max, unsigned int nbins2, double axis2_min, double axis2_max, bool norm=True, vectorDouble pt_powers={1}, vectorUnsigned ch_powers={0}, int num_threads=-1, int print_every=-10, bool check_degen=False, bool average_verts=False) -> EECTriangleOPEIdLogId"},
-	 { "EECTriangleOPEIdLogId_description", (PyCFunction)(void(*)(void))_wrap_EECTriangleOPEIdLogId_description, METH_VARARGS|METH_KEYWORDS, "EECTriangleOPEIdLogId_description(EECTriangleOPEIdLogId self, bool include_hists=False) -> std::string"},
-	 { "EECTriangleOPEIdLogId___str__", _wrap_EECTriangleOPEIdLogId___str__, METH_O, "EECTriangleOPEIdLogId___str__(EECTriangleOPEIdLogId self) -> std::string"},
-	 { "EECTriangleOPEIdLogId___repr__", _wrap_EECTriangleOPEIdLogId___repr__, METH_O, "EECTriangleOPEIdLogId___repr__(EECTriangleOPEIdLogId self) -> std::string"},
+	 { "EECTriangleOPEIdLogId_description", (PyCFunction)(void(*)(void))_wrap_EECTriangleOPEIdLogId_description, METH_VARARGS|METH_KEYWORDS, "EECTriangleOPEIdLogId_description(EECTriangleOPEIdLogId self, int hist_level=1) -> std::string"},
+	 { "EECTriangleOPEIdLogId___getstate_internal__", _wrap_EECTriangleOPEIdLogId___getstate_internal__, METH_O, "EECTriangleOPEIdLogId___getstate_internal__(EECTriangleOPEIdLogId self) -> std::string"},
+	 { "EECTriangleOPEIdLogId___setstate_internal__", (PyCFunction)(void(*)(void))_wrap_EECTriangleOPEIdLogId___setstate_internal__, METH_VARARGS|METH_KEYWORDS, "EECTriangleOPEIdLogId___setstate_internal__(EECTriangleOPEIdLogId self, std::string const & state)"},
 	 { "delete_EECTriangleOPEIdLogId", _wrap_delete_EECTriangleOPEIdLogId, METH_O, "delete_EECTriangleOPEIdLogId(EECTriangleOPEIdLogId self)"},
 	 { "EECTriangleOPEIdLogId_swigregister", EECTriangleOPEIdLogId_swigregister, METH_O, NULL},
 	 { "EECTriangleOPEIdLogId_swiginit", EECTriangleOPEIdLogId_swiginit, METH_VARARGS, NULL},
 	 { "new_EECTriangleOPELogLogId", (PyCFunction)(void(*)(void))_wrap_new_EECTriangleOPELogLogId, METH_VARARGS|METH_KEYWORDS, "new_EECTriangleOPELogLogId(unsigned int nbins0, double axis0_min, double axis0_max, unsigned int nbins1, double axis1_min, double axis1_max, unsigned int nbins2, double axis2_min, double axis2_max, bool norm=True, vectorDouble pt_powers={1}, vectorUnsigned ch_powers={0}, int num_threads=-1, int print_every=-10, bool check_degen=False, bool average_verts=False) -> EECTriangleOPELogLogId"},
-	 { "EECTriangleOPELogLogId_description", (PyCFunction)(void(*)(void))_wrap_EECTriangleOPELogLogId_description, METH_VARARGS|METH_KEYWORDS, "EECTriangleOPELogLogId_description(EECTriangleOPELogLogId self, bool include_hists=False) -> std::string"},
-	 { "EECTriangleOPELogLogId___str__", _wrap_EECTriangleOPELogLogId___str__, METH_O, "EECTriangleOPELogLogId___str__(EECTriangleOPELogLogId self) -> std::string"},
-	 { "EECTriangleOPELogLogId___repr__", _wrap_EECTriangleOPELogLogId___repr__, METH_O, "EECTriangleOPELogLogId___repr__(EECTriangleOPELogLogId self) -> std::string"},
+	 { "EECTriangleOPELogLogId_description", (PyCFunction)(void(*)(void))_wrap_EECTriangleOPELogLogId_description, METH_VARARGS|METH_KEYWORDS, "EECTriangleOPELogLogId_description(EECTriangleOPELogLogId self, int hist_level=1) -> std::string"},
+	 { "EECTriangleOPELogLogId___getstate_internal__", _wrap_EECTriangleOPELogLogId___getstate_internal__, METH_O, "EECTriangleOPELogLogId___getstate_internal__(EECTriangleOPELogLogId self) -> std::string"},
+	 { "EECTriangleOPELogLogId___setstate_internal__", (PyCFunction)(void(*)(void))_wrap_EECTriangleOPELogLogId___setstate_internal__, METH_VARARGS|METH_KEYWORDS, "EECTriangleOPELogLogId___setstate_internal__(EECTriangleOPELogLogId self, std::string const & state)"},
 	 { "delete_EECTriangleOPELogLogId", _wrap_delete_EECTriangleOPELogLogId, METH_O, "delete_EECTriangleOPELogLogId(EECTriangleOPELogLogId self)"},
 	 { "EECTriangleOPELogLogId_swigregister", EECTriangleOPELogLogId_swigregister, METH_O, NULL},
 	 { "EECTriangleOPELogLogId_swiginit", EECTriangleOPELogLogId_swiginit, METH_VARARGS, NULL},
@@ -25237,123 +30172,217 @@ static PyMethodDef SwigMethods_proxydocs[] = {
 	 { "delete_arrayUnsigned13", _wrap_delete_arrayUnsigned13, METH_O, "delete_arrayUnsigned13(arrayUnsigned13 self)"},
 	 { "arrayUnsigned13_swigregister", arrayUnsigned13_swigregister, METH_O, NULL},
 	 { "arrayUnsigned13_swiginit", arrayUnsigned13_swiginit, METH_VARARGS, NULL},
+	 { "new_reduce_command", _wrap_new_reduce_command, METH_NOARGS, "new_reduce_command() -> reduce_command"},
+	 { "delete_reduce_command", _wrap_delete_reduce_command, METH_O, "delete_reduce_command(reduce_command self)"},
+	 { "reduce_command_swigregister", reduce_command_swigregister, METH_O, NULL},
+	 { "reduce_command_swiginit", reduce_command_swiginit, METH_VARARGS, NULL},
+	 { "rebin", _wrap_rebin, METH_VARARGS, "\n"
+		"rebin(unsigned int iaxis, unsigned int merge) -> reduce_command\n"
+		"rebin(unsigned int merge) -> reduce_command\n"
+		""},
+	 { "shrink", _wrap_shrink, METH_VARARGS, "\n"
+		"shrink(unsigned int iaxis, double lower, double upper) -> reduce_command\n"
+		"shrink(double lower, double upper) -> reduce_command\n"
+		""},
+	 { "slice", _wrap_slice, METH_VARARGS, "\n"
+		"slice(unsigned int iaxis, int begin, int end) -> reduce_command\n"
+		"slice(int begin, int end) -> reduce_command\n"
+		""},
+	 { "shrink_and_rebin", _wrap_shrink_and_rebin, METH_VARARGS, "\n"
+		"shrink_and_rebin(unsigned int iaxis, double lower, double upper, unsigned int merge) -> reduce_command\n"
+		"shrink_and_rebin(double lower, double upper, unsigned int merge) -> reduce_command\n"
+		""},
+	 { "slice_and_rebin", _wrap_slice_and_rebin, METH_VARARGS, "\n"
+		"slice_and_rebin(unsigned int iaxis, int begin, int end, unsigned int merge) -> reduce_command\n"
+		"slice_and_rebin(int begin, int end, unsigned int merge) -> reduce_command\n"
+		""},
+	 { "vectorReduceCommand_iterator", _wrap_vectorReduceCommand_iterator, METH_O, "iterator(vectorReduceCommand self) -> SwigPyIterator"},
+	 { "vectorReduceCommand___nonzero__", _wrap_vectorReduceCommand___nonzero__, METH_O, "__nonzero__(vectorReduceCommand self) -> bool"},
+	 { "vectorReduceCommand___bool__", _wrap_vectorReduceCommand___bool__, METH_O, "__bool__(vectorReduceCommand self) -> bool"},
+	 { "vectorReduceCommand___len__", _wrap_vectorReduceCommand___len__, METH_O, "__len__(vectorReduceCommand self) -> std::vector< boost::histogram::algorithm::reduce_command >::size_type"},
+	 { "vectorReduceCommand___getslice__", (PyCFunction)(void(*)(void))_wrap_vectorReduceCommand___getslice__, METH_VARARGS|METH_KEYWORDS, "__getslice__(vectorReduceCommand self, std::vector< boost::histogram::algorithm::reduce_command >::difference_type i, std::vector< boost::histogram::algorithm::reduce_command >::difference_type j) -> vectorReduceCommand"},
+	 { "vectorReduceCommand___setslice__", _wrap_vectorReduceCommand___setslice__, METH_VARARGS, "\n"
+		"__setslice__(vectorReduceCommand self, std::vector< boost::histogram::algorithm::reduce_command >::difference_type i, std::vector< boost::histogram::algorithm::reduce_command >::difference_type j)\n"
+		"__setslice__(vectorReduceCommand self, std::vector< boost::histogram::algorithm::reduce_command >::difference_type i, std::vector< boost::histogram::algorithm::reduce_command >::difference_type j, vectorReduceCommand v)\n"
+		""},
+	 { "vectorReduceCommand___delslice__", (PyCFunction)(void(*)(void))_wrap_vectorReduceCommand___delslice__, METH_VARARGS|METH_KEYWORDS, "__delslice__(vectorReduceCommand self, std::vector< boost::histogram::algorithm::reduce_command >::difference_type i, std::vector< boost::histogram::algorithm::reduce_command >::difference_type j)"},
+	 { "vectorReduceCommand___delitem__", _wrap_vectorReduceCommand___delitem__, METH_VARARGS, "\n"
+		"__delitem__(vectorReduceCommand self, std::vector< boost::histogram::algorithm::reduce_command >::difference_type i)\n"
+		"__delitem__(vectorReduceCommand self, PySliceObject * slice)\n"
+		""},
+	 { "vectorReduceCommand___getitem__", _wrap_vectorReduceCommand___getitem__, METH_VARARGS, "\n"
+		"__getitem__(vectorReduceCommand self, PySliceObject * slice) -> vectorReduceCommand\n"
+		"__getitem__(vectorReduceCommand self, std::vector< boost::histogram::algorithm::reduce_command >::difference_type i) -> reduce_command\n"
+		""},
+	 { "vectorReduceCommand___setitem__", _wrap_vectorReduceCommand___setitem__, METH_VARARGS, "\n"
+		"__setitem__(vectorReduceCommand self, PySliceObject * slice, vectorReduceCommand v)\n"
+		"__setitem__(vectorReduceCommand self, PySliceObject * slice)\n"
+		"__setitem__(vectorReduceCommand self, std::vector< boost::histogram::algorithm::reduce_command >::difference_type i, reduce_command x)\n"
+		""},
+	 { "vectorReduceCommand_pop", _wrap_vectorReduceCommand_pop, METH_O, "pop(vectorReduceCommand self) -> reduce_command"},
+	 { "vectorReduceCommand_append", (PyCFunction)(void(*)(void))_wrap_vectorReduceCommand_append, METH_VARARGS|METH_KEYWORDS, "append(vectorReduceCommand self, reduce_command x)"},
+	 { "vectorReduceCommand_empty", _wrap_vectorReduceCommand_empty, METH_O, "empty(vectorReduceCommand self) -> bool"},
+	 { "vectorReduceCommand_size", _wrap_vectorReduceCommand_size, METH_O, "size(vectorReduceCommand self) -> std::vector< boost::histogram::algorithm::reduce_command >::size_type"},
+	 { "vectorReduceCommand_swap", (PyCFunction)(void(*)(void))_wrap_vectorReduceCommand_swap, METH_VARARGS|METH_KEYWORDS, "swap(vectorReduceCommand self, vectorReduceCommand v)"},
+	 { "vectorReduceCommand_begin", _wrap_vectorReduceCommand_begin, METH_O, "begin(vectorReduceCommand self) -> std::vector< boost::histogram::algorithm::reduce_command >::iterator"},
+	 { "vectorReduceCommand_end", _wrap_vectorReduceCommand_end, METH_O, "end(vectorReduceCommand self) -> std::vector< boost::histogram::algorithm::reduce_command >::iterator"},
+	 { "vectorReduceCommand_rbegin", _wrap_vectorReduceCommand_rbegin, METH_O, "rbegin(vectorReduceCommand self) -> std::vector< boost::histogram::algorithm::reduce_command >::reverse_iterator"},
+	 { "vectorReduceCommand_rend", _wrap_vectorReduceCommand_rend, METH_O, "rend(vectorReduceCommand self) -> std::vector< boost::histogram::algorithm::reduce_command >::reverse_iterator"},
+	 { "vectorReduceCommand_clear", _wrap_vectorReduceCommand_clear, METH_O, "clear(vectorReduceCommand self)"},
+	 { "vectorReduceCommand_get_allocator", _wrap_vectorReduceCommand_get_allocator, METH_O, "get_allocator(vectorReduceCommand self) -> std::vector< boost::histogram::algorithm::reduce_command >::allocator_type"},
+	 { "vectorReduceCommand_pop_back", _wrap_vectorReduceCommand_pop_back, METH_O, "pop_back(vectorReduceCommand self)"},
+	 { "vectorReduceCommand_erase", _wrap_vectorReduceCommand_erase, METH_VARARGS, "\n"
+		"erase(vectorReduceCommand self, std::vector< boost::histogram::algorithm::reduce_command >::iterator pos) -> std::vector< boost::histogram::algorithm::reduce_command >::iterator\n"
+		"erase(vectorReduceCommand self, std::vector< boost::histogram::algorithm::reduce_command >::iterator first, std::vector< boost::histogram::algorithm::reduce_command >::iterator last) -> std::vector< boost::histogram::algorithm::reduce_command >::iterator\n"
+		""},
+	 { "new_vectorReduceCommand", _wrap_new_vectorReduceCommand, METH_VARARGS, "\n"
+		"vectorReduceCommand()\n"
+		"vectorReduceCommand(vectorReduceCommand other)\n"
+		"vectorReduceCommand(std::vector< boost::histogram::algorithm::reduce_command >::size_type size)\n"
+		"new_vectorReduceCommand(std::vector< boost::histogram::algorithm::reduce_command >::size_type size, reduce_command value) -> vectorReduceCommand\n"
+		""},
+	 { "vectorReduceCommand_push_back", (PyCFunction)(void(*)(void))_wrap_vectorReduceCommand_push_back, METH_VARARGS|METH_KEYWORDS, "push_back(vectorReduceCommand self, reduce_command x)"},
+	 { "vectorReduceCommand_front", _wrap_vectorReduceCommand_front, METH_O, "front(vectorReduceCommand self) -> reduce_command"},
+	 { "vectorReduceCommand_back", _wrap_vectorReduceCommand_back, METH_O, "back(vectorReduceCommand self) -> reduce_command"},
+	 { "vectorReduceCommand_assign", (PyCFunction)(void(*)(void))_wrap_vectorReduceCommand_assign, METH_VARARGS|METH_KEYWORDS, "assign(vectorReduceCommand self, std::vector< boost::histogram::algorithm::reduce_command >::size_type n, reduce_command x)"},
+	 { "vectorReduceCommand_resize", _wrap_vectorReduceCommand_resize, METH_VARARGS, "\n"
+		"resize(vectorReduceCommand self, std::vector< boost::histogram::algorithm::reduce_command >::size_type new_size)\n"
+		"resize(vectorReduceCommand self, std::vector< boost::histogram::algorithm::reduce_command >::size_type new_size, reduce_command x)\n"
+		""},
+	 { "vectorReduceCommand_insert", _wrap_vectorReduceCommand_insert, METH_VARARGS, "\n"
+		"insert(vectorReduceCommand self, std::vector< boost::histogram::algorithm::reduce_command >::iterator pos, reduce_command x) -> std::vector< boost::histogram::algorithm::reduce_command >::iterator\n"
+		"insert(vectorReduceCommand self, std::vector< boost::histogram::algorithm::reduce_command >::iterator pos, std::vector< boost::histogram::algorithm::reduce_command >::size_type n, reduce_command x)\n"
+		""},
+	 { "vectorReduceCommand_reserve", (PyCFunction)(void(*)(void))_wrap_vectorReduceCommand_reserve, METH_VARARGS|METH_KEYWORDS, "reserve(vectorReduceCommand self, std::vector< boost::histogram::algorithm::reduce_command >::size_type n)"},
+	 { "vectorReduceCommand_capacity", _wrap_vectorReduceCommand_capacity, METH_O, "capacity(vectorReduceCommand self) -> std::vector< boost::histogram::algorithm::reduce_command >::size_type"},
+	 { "delete_vectorReduceCommand", _wrap_delete_vectorReduceCommand, METH_O, "delete_vectorReduceCommand(vectorReduceCommand self)"},
+	 { "vectorReduceCommand_swigregister", vectorReduceCommand_swigregister, METH_O, NULL},
+	 { "vectorReduceCommand_swiginit", vectorReduceCommand_swiginit, METH_VARARGS, NULL},
 	 { "new_EECHistBase1DId", (PyCFunction)(void(*)(void))_wrap_new_EECHistBase1DId, METH_VARARGS|METH_KEYWORDS, "new_EECHistBase1DId(int num_threads) -> EECHistBase1DId"},
 	 { "delete_EECHistBase1DId", _wrap_delete_EECHistBase1DId, METH_O, "delete_EECHistBase1DId(EECHistBase1DId self)"},
-	 { "EECHistBase1DId_axes_description", _wrap_EECHistBase1DId_axes_description, METH_O, "axes_description(EECHistBase1DId self) -> std::string"},
 	 { "EECHistBase1DId_num_threads", _wrap_EECHistBase1DId_num_threads, METH_O, "num_threads(EECHistBase1DId self) -> int"},
 	 { "EECHistBase1DId_nhists", _wrap_EECHistBase1DId_nhists, METH_O, "nhists(EECHistBase1DId self) -> std::size_t"},
 	 { "EECHistBase1DId_nbins", (PyCFunction)(void(*)(void))_wrap_EECHistBase1DId_nbins, METH_VARARGS|METH_KEYWORDS, "nbins(EECHistBase1DId self, unsigned int i=0) -> std::size_t"},
 	 { "EECHistBase1DId_hist_size", (PyCFunction)(void(*)(void))_wrap_EECHistBase1DId_hist_size, METH_VARARGS|METH_KEYWORDS, "hist_size(EECHistBase1DId self, bool include_overflows=True, int i=-1) -> std::size_t"},
+	 { "EECHistBase1DId_reduce", (PyCFunction)(void(*)(void))_wrap_EECHistBase1DId_reduce, METH_VARARGS|METH_KEYWORDS, "reduce(EECHistBase1DId self, vectorReduceCommand rcs)"},
+	 { "EECHistBase1DId_sum", (PyCFunction)(void(*)(void))_wrap_EECHistBase1DId_sum, METH_VARARGS|METH_KEYWORDS, "sum(EECHistBase1DId self, unsigned int hist_i=0) -> double"},
+	 { "EECHistBase1DId___iadd__", (PyCFunction)(void(*)(void))_wrap_EECHistBase1DId___iadd__, METH_VARARGS|METH_KEYWORDS, "__iadd__(EECHistBase1DId self, EECHistBase1DId rhs) -> EECHistBase1DId"},
 	 { "EECHistBase1DId_bin_centers_vec", (PyCFunction)(void(*)(void))_wrap_EECHistBase1DId_bin_centers_vec, METH_VARARGS|METH_KEYWORDS, "bin_centers_vec(EECHistBase1DId self, unsigned int i=0) -> vectorDouble"},
 	 { "EECHistBase1DId_bin_edges_vec", (PyCFunction)(void(*)(void))_wrap_EECHistBase1DId_bin_edges_vec, METH_VARARGS|METH_KEYWORDS, "bin_edges_vec(EECHistBase1DId self, unsigned int i=0) -> vectorDouble"},
-	 { "EECHistBase1DId_hists_as_text", (PyCFunction)(void(*)(void))_wrap_EECHistBase1DId_hists_as_text, METH_VARARGS|METH_KEYWORDS, "hists_as_text(EECHistBase1DId self, int precision=16, bool include_overflows=True, std::ostringstream * os=None) -> std::string"},
+	 { "EECHistBase1DId_hists_as_text", (PyCFunction)(void(*)(void))_wrap_EECHistBase1DId_hists_as_text, METH_VARARGS|METH_KEYWORDS, "hists_as_text(EECHistBase1DId self, int hist_level=3, int precision=16, bool include_overflows=True, std::ostringstream * os=None) -> std::string"},
 	 { "EECHistBase1DId_bin_centers", (PyCFunction)(void(*)(void))_wrap_EECHistBase1DId_bin_centers, METH_VARARGS|METH_KEYWORDS, "bin_centers(EECHistBase1DId self, int i=0)"},
 	 { "EECHistBase1DId_bin_edges", (PyCFunction)(void(*)(void))_wrap_EECHistBase1DId_bin_edges, METH_VARARGS|METH_KEYWORDS, "bin_edges(EECHistBase1DId self, int i=0)"},
 	 { "EECHistBase1DId_swigregister", EECHistBase1DId_swigregister, METH_O, NULL},
 	 { "EECHistBase1DId_swiginit", EECHistBase1DId_swiginit, METH_VARARGS, NULL},
 	 { "new_EECHistBase1DLog", (PyCFunction)(void(*)(void))_wrap_new_EECHistBase1DLog, METH_VARARGS|METH_KEYWORDS, "new_EECHistBase1DLog(int num_threads) -> EECHistBase1DLog"},
 	 { "delete_EECHistBase1DLog", _wrap_delete_EECHistBase1DLog, METH_O, "delete_EECHistBase1DLog(EECHistBase1DLog self)"},
-	 { "EECHistBase1DLog_axes_description", _wrap_EECHistBase1DLog_axes_description, METH_O, "axes_description(EECHistBase1DLog self) -> std::string"},
 	 { "EECHistBase1DLog_num_threads", _wrap_EECHistBase1DLog_num_threads, METH_O, "num_threads(EECHistBase1DLog self) -> int"},
 	 { "EECHistBase1DLog_nhists", _wrap_EECHistBase1DLog_nhists, METH_O, "nhists(EECHistBase1DLog self) -> std::size_t"},
 	 { "EECHistBase1DLog_nbins", (PyCFunction)(void(*)(void))_wrap_EECHistBase1DLog_nbins, METH_VARARGS|METH_KEYWORDS, "nbins(EECHistBase1DLog self, unsigned int i=0) -> std::size_t"},
 	 { "EECHistBase1DLog_hist_size", (PyCFunction)(void(*)(void))_wrap_EECHistBase1DLog_hist_size, METH_VARARGS|METH_KEYWORDS, "hist_size(EECHistBase1DLog self, bool include_overflows=True, int i=-1) -> std::size_t"},
+	 { "EECHistBase1DLog_reduce", (PyCFunction)(void(*)(void))_wrap_EECHistBase1DLog_reduce, METH_VARARGS|METH_KEYWORDS, "reduce(EECHistBase1DLog self, vectorReduceCommand rcs)"},
+	 { "EECHistBase1DLog_sum", (PyCFunction)(void(*)(void))_wrap_EECHistBase1DLog_sum, METH_VARARGS|METH_KEYWORDS, "sum(EECHistBase1DLog self, unsigned int hist_i=0) -> double"},
+	 { "EECHistBase1DLog___iadd__", (PyCFunction)(void(*)(void))_wrap_EECHistBase1DLog___iadd__, METH_VARARGS|METH_KEYWORDS, "__iadd__(EECHistBase1DLog self, EECHistBase1DLog rhs) -> EECHistBase1DLog"},
 	 { "EECHistBase1DLog_bin_centers_vec", (PyCFunction)(void(*)(void))_wrap_EECHistBase1DLog_bin_centers_vec, METH_VARARGS|METH_KEYWORDS, "bin_centers_vec(EECHistBase1DLog self, unsigned int i=0) -> vectorDouble"},
 	 { "EECHistBase1DLog_bin_edges_vec", (PyCFunction)(void(*)(void))_wrap_EECHistBase1DLog_bin_edges_vec, METH_VARARGS|METH_KEYWORDS, "bin_edges_vec(EECHistBase1DLog self, unsigned int i=0) -> vectorDouble"},
-	 { "EECHistBase1DLog_hists_as_text", (PyCFunction)(void(*)(void))_wrap_EECHistBase1DLog_hists_as_text, METH_VARARGS|METH_KEYWORDS, "hists_as_text(EECHistBase1DLog self, int precision=16, bool include_overflows=True, std::ostringstream * os=None) -> std::string"},
+	 { "EECHistBase1DLog_hists_as_text", (PyCFunction)(void(*)(void))_wrap_EECHistBase1DLog_hists_as_text, METH_VARARGS|METH_KEYWORDS, "hists_as_text(EECHistBase1DLog self, int hist_level=3, int precision=16, bool include_overflows=True, std::ostringstream * os=None) -> std::string"},
 	 { "EECHistBase1DLog_bin_centers", (PyCFunction)(void(*)(void))_wrap_EECHistBase1DLog_bin_centers, METH_VARARGS|METH_KEYWORDS, "bin_centers(EECHistBase1DLog self, int i=0)"},
 	 { "EECHistBase1DLog_bin_edges", (PyCFunction)(void(*)(void))_wrap_EECHistBase1DLog_bin_edges, METH_VARARGS|METH_KEYWORDS, "bin_edges(EECHistBase1DLog self, int i=0)"},
 	 { "EECHistBase1DLog_swigregister", EECHistBase1DLog_swigregister, METH_O, NULL},
 	 { "EECHistBase1DLog_swiginit", EECHistBase1DLog_swiginit, METH_VARARGS, NULL},
 	 { "new_EECHistBaseIdIdId", (PyCFunction)(void(*)(void))_wrap_new_EECHistBaseIdIdId, METH_VARARGS|METH_KEYWORDS, "new_EECHistBaseIdIdId(int num_threads) -> EECHistBaseIdIdId"},
 	 { "delete_EECHistBaseIdIdId", _wrap_delete_EECHistBaseIdIdId, METH_O, "delete_EECHistBaseIdIdId(EECHistBaseIdIdId self)"},
-	 { "EECHistBaseIdIdId_axes_description", _wrap_EECHistBaseIdIdId_axes_description, METH_O, "axes_description(EECHistBaseIdIdId self) -> std::string"},
 	 { "EECHistBaseIdIdId_num_threads", _wrap_EECHistBaseIdIdId_num_threads, METH_O, "num_threads(EECHistBaseIdIdId self) -> int"},
 	 { "EECHistBaseIdIdId_nhists", _wrap_EECHistBaseIdIdId_nhists, METH_O, "nhists(EECHistBaseIdIdId self) -> std::size_t"},
 	 { "EECHistBaseIdIdId_nbins", (PyCFunction)(void(*)(void))_wrap_EECHistBaseIdIdId_nbins, METH_VARARGS|METH_KEYWORDS, "nbins(EECHistBaseIdIdId self, unsigned int i=0) -> std::size_t"},
 	 { "EECHistBaseIdIdId_hist_size", (PyCFunction)(void(*)(void))_wrap_EECHistBaseIdIdId_hist_size, METH_VARARGS|METH_KEYWORDS, "hist_size(EECHistBaseIdIdId self, bool include_overflows=True, int i=-1) -> std::size_t"},
+	 { "EECHistBaseIdIdId_reduce", (PyCFunction)(void(*)(void))_wrap_EECHistBaseIdIdId_reduce, METH_VARARGS|METH_KEYWORDS, "reduce(EECHistBaseIdIdId self, vectorReduceCommand rcs)"},
+	 { "EECHistBaseIdIdId_sum", (PyCFunction)(void(*)(void))_wrap_EECHistBaseIdIdId_sum, METH_VARARGS|METH_KEYWORDS, "sum(EECHistBaseIdIdId self, unsigned int hist_i=0) -> double"},
+	 { "EECHistBaseIdIdId___iadd__", (PyCFunction)(void(*)(void))_wrap_EECHistBaseIdIdId___iadd__, METH_VARARGS|METH_KEYWORDS, "__iadd__(EECHistBaseIdIdId self, EECHistBaseIdIdId rhs) -> EECHistBaseIdIdId"},
 	 { "EECHistBaseIdIdId_bin_centers_vec", (PyCFunction)(void(*)(void))_wrap_EECHistBaseIdIdId_bin_centers_vec, METH_VARARGS|METH_KEYWORDS, "bin_centers_vec(EECHistBaseIdIdId self, unsigned int i=0) -> vectorDouble"},
 	 { "EECHistBaseIdIdId_bin_edges_vec", (PyCFunction)(void(*)(void))_wrap_EECHistBaseIdIdId_bin_edges_vec, METH_VARARGS|METH_KEYWORDS, "bin_edges_vec(EECHistBaseIdIdId self, unsigned int i=0) -> vectorDouble"},
-	 { "EECHistBaseIdIdId_hists_as_text", (PyCFunction)(void(*)(void))_wrap_EECHistBaseIdIdId_hists_as_text, METH_VARARGS|METH_KEYWORDS, "hists_as_text(EECHistBaseIdIdId self, int precision=16, bool include_overflows=True, std::ostringstream * os=None) -> std::string"},
+	 { "EECHistBaseIdIdId_hists_as_text", (PyCFunction)(void(*)(void))_wrap_EECHistBaseIdIdId_hists_as_text, METH_VARARGS|METH_KEYWORDS, "hists_as_text(EECHistBaseIdIdId self, int hist_level=3, int precision=16, bool include_overflows=True, std::ostringstream * os=None) -> std::string"},
 	 { "EECHistBaseIdIdId_bin_centers", (PyCFunction)(void(*)(void))_wrap_EECHistBaseIdIdId_bin_centers, METH_VARARGS|METH_KEYWORDS, "bin_centers(EECHistBaseIdIdId self, int i=0)"},
 	 { "EECHistBaseIdIdId_bin_edges", (PyCFunction)(void(*)(void))_wrap_EECHistBaseIdIdId_bin_edges, METH_VARARGS|METH_KEYWORDS, "bin_edges(EECHistBaseIdIdId self, int i=0)"},
 	 { "EECHistBaseIdIdId_swigregister", EECHistBaseIdIdId_swigregister, METH_O, NULL},
 	 { "EECHistBaseIdIdId_swiginit", EECHistBaseIdIdId_swiginit, METH_VARARGS, NULL},
 	 { "new_EECHistBaseLogIdId", (PyCFunction)(void(*)(void))_wrap_new_EECHistBaseLogIdId, METH_VARARGS|METH_KEYWORDS, "new_EECHistBaseLogIdId(int num_threads) -> EECHistBaseLogIdId"},
 	 { "delete_EECHistBaseLogIdId", _wrap_delete_EECHistBaseLogIdId, METH_O, "delete_EECHistBaseLogIdId(EECHistBaseLogIdId self)"},
-	 { "EECHistBaseLogIdId_axes_description", _wrap_EECHistBaseLogIdId_axes_description, METH_O, "axes_description(EECHistBaseLogIdId self) -> std::string"},
 	 { "EECHistBaseLogIdId_num_threads", _wrap_EECHistBaseLogIdId_num_threads, METH_O, "num_threads(EECHistBaseLogIdId self) -> int"},
 	 { "EECHistBaseLogIdId_nhists", _wrap_EECHistBaseLogIdId_nhists, METH_O, "nhists(EECHistBaseLogIdId self) -> std::size_t"},
 	 { "EECHistBaseLogIdId_nbins", (PyCFunction)(void(*)(void))_wrap_EECHistBaseLogIdId_nbins, METH_VARARGS|METH_KEYWORDS, "nbins(EECHistBaseLogIdId self, unsigned int i=0) -> std::size_t"},
 	 { "EECHistBaseLogIdId_hist_size", (PyCFunction)(void(*)(void))_wrap_EECHistBaseLogIdId_hist_size, METH_VARARGS|METH_KEYWORDS, "hist_size(EECHistBaseLogIdId self, bool include_overflows=True, int i=-1) -> std::size_t"},
+	 { "EECHistBaseLogIdId_reduce", (PyCFunction)(void(*)(void))_wrap_EECHistBaseLogIdId_reduce, METH_VARARGS|METH_KEYWORDS, "reduce(EECHistBaseLogIdId self, vectorReduceCommand rcs)"},
+	 { "EECHistBaseLogIdId_sum", (PyCFunction)(void(*)(void))_wrap_EECHistBaseLogIdId_sum, METH_VARARGS|METH_KEYWORDS, "sum(EECHistBaseLogIdId self, unsigned int hist_i=0) -> double"},
+	 { "EECHistBaseLogIdId___iadd__", (PyCFunction)(void(*)(void))_wrap_EECHistBaseLogIdId___iadd__, METH_VARARGS|METH_KEYWORDS, "__iadd__(EECHistBaseLogIdId self, EECHistBaseLogIdId rhs) -> EECHistBaseLogIdId"},
 	 { "EECHistBaseLogIdId_bin_centers_vec", (PyCFunction)(void(*)(void))_wrap_EECHistBaseLogIdId_bin_centers_vec, METH_VARARGS|METH_KEYWORDS, "bin_centers_vec(EECHistBaseLogIdId self, unsigned int i=0) -> vectorDouble"},
 	 { "EECHistBaseLogIdId_bin_edges_vec", (PyCFunction)(void(*)(void))_wrap_EECHistBaseLogIdId_bin_edges_vec, METH_VARARGS|METH_KEYWORDS, "bin_edges_vec(EECHistBaseLogIdId self, unsigned int i=0) -> vectorDouble"},
-	 { "EECHistBaseLogIdId_hists_as_text", (PyCFunction)(void(*)(void))_wrap_EECHistBaseLogIdId_hists_as_text, METH_VARARGS|METH_KEYWORDS, "hists_as_text(EECHistBaseLogIdId self, int precision=16, bool include_overflows=True, std::ostringstream * os=None) -> std::string"},
+	 { "EECHistBaseLogIdId_hists_as_text", (PyCFunction)(void(*)(void))_wrap_EECHistBaseLogIdId_hists_as_text, METH_VARARGS|METH_KEYWORDS, "hists_as_text(EECHistBaseLogIdId self, int hist_level=3, int precision=16, bool include_overflows=True, std::ostringstream * os=None) -> std::string"},
 	 { "EECHistBaseLogIdId_bin_centers", (PyCFunction)(void(*)(void))_wrap_EECHistBaseLogIdId_bin_centers, METH_VARARGS|METH_KEYWORDS, "bin_centers(EECHistBaseLogIdId self, int i=0)"},
 	 { "EECHistBaseLogIdId_bin_edges", (PyCFunction)(void(*)(void))_wrap_EECHistBaseLogIdId_bin_edges, METH_VARARGS|METH_KEYWORDS, "bin_edges(EECHistBaseLogIdId self, int i=0)"},
 	 { "EECHistBaseLogIdId_swigregister", EECHistBaseLogIdId_swigregister, METH_O, NULL},
 	 { "EECHistBaseLogIdId_swiginit", EECHistBaseLogIdId_swiginit, METH_VARARGS, NULL},
 	 { "new_EECHistBaseIdLogId", (PyCFunction)(void(*)(void))_wrap_new_EECHistBaseIdLogId, METH_VARARGS|METH_KEYWORDS, "new_EECHistBaseIdLogId(int num_threads) -> EECHistBaseIdLogId"},
 	 { "delete_EECHistBaseIdLogId", _wrap_delete_EECHistBaseIdLogId, METH_O, "delete_EECHistBaseIdLogId(EECHistBaseIdLogId self)"},
-	 { "EECHistBaseIdLogId_axes_description", _wrap_EECHistBaseIdLogId_axes_description, METH_O, "axes_description(EECHistBaseIdLogId self) -> std::string"},
 	 { "EECHistBaseIdLogId_num_threads", _wrap_EECHistBaseIdLogId_num_threads, METH_O, "num_threads(EECHistBaseIdLogId self) -> int"},
 	 { "EECHistBaseIdLogId_nhists", _wrap_EECHistBaseIdLogId_nhists, METH_O, "nhists(EECHistBaseIdLogId self) -> std::size_t"},
 	 { "EECHistBaseIdLogId_nbins", (PyCFunction)(void(*)(void))_wrap_EECHistBaseIdLogId_nbins, METH_VARARGS|METH_KEYWORDS, "nbins(EECHistBaseIdLogId self, unsigned int i=0) -> std::size_t"},
 	 { "EECHistBaseIdLogId_hist_size", (PyCFunction)(void(*)(void))_wrap_EECHistBaseIdLogId_hist_size, METH_VARARGS|METH_KEYWORDS, "hist_size(EECHistBaseIdLogId self, bool include_overflows=True, int i=-1) -> std::size_t"},
+	 { "EECHistBaseIdLogId_reduce", (PyCFunction)(void(*)(void))_wrap_EECHistBaseIdLogId_reduce, METH_VARARGS|METH_KEYWORDS, "reduce(EECHistBaseIdLogId self, vectorReduceCommand rcs)"},
+	 { "EECHistBaseIdLogId_sum", (PyCFunction)(void(*)(void))_wrap_EECHistBaseIdLogId_sum, METH_VARARGS|METH_KEYWORDS, "sum(EECHistBaseIdLogId self, unsigned int hist_i=0) -> double"},
+	 { "EECHistBaseIdLogId___iadd__", (PyCFunction)(void(*)(void))_wrap_EECHistBaseIdLogId___iadd__, METH_VARARGS|METH_KEYWORDS, "__iadd__(EECHistBaseIdLogId self, EECHistBaseIdLogId rhs) -> EECHistBaseIdLogId"},
 	 { "EECHistBaseIdLogId_bin_centers_vec", (PyCFunction)(void(*)(void))_wrap_EECHistBaseIdLogId_bin_centers_vec, METH_VARARGS|METH_KEYWORDS, "bin_centers_vec(EECHistBaseIdLogId self, unsigned int i=0) -> vectorDouble"},
 	 { "EECHistBaseIdLogId_bin_edges_vec", (PyCFunction)(void(*)(void))_wrap_EECHistBaseIdLogId_bin_edges_vec, METH_VARARGS|METH_KEYWORDS, "bin_edges_vec(EECHistBaseIdLogId self, unsigned int i=0) -> vectorDouble"},
-	 { "EECHistBaseIdLogId_hists_as_text", (PyCFunction)(void(*)(void))_wrap_EECHistBaseIdLogId_hists_as_text, METH_VARARGS|METH_KEYWORDS, "hists_as_text(EECHistBaseIdLogId self, int precision=16, bool include_overflows=True, std::ostringstream * os=None) -> std::string"},
+	 { "EECHistBaseIdLogId_hists_as_text", (PyCFunction)(void(*)(void))_wrap_EECHistBaseIdLogId_hists_as_text, METH_VARARGS|METH_KEYWORDS, "hists_as_text(EECHistBaseIdLogId self, int hist_level=3, int precision=16, bool include_overflows=True, std::ostringstream * os=None) -> std::string"},
 	 { "EECHistBaseIdLogId_bin_centers", (PyCFunction)(void(*)(void))_wrap_EECHistBaseIdLogId_bin_centers, METH_VARARGS|METH_KEYWORDS, "bin_centers(EECHistBaseIdLogId self, int i=0)"},
 	 { "EECHistBaseIdLogId_bin_edges", (PyCFunction)(void(*)(void))_wrap_EECHistBaseIdLogId_bin_edges, METH_VARARGS|METH_KEYWORDS, "bin_edges(EECHistBaseIdLogId self, int i=0)"},
 	 { "EECHistBaseIdLogId_swigregister", EECHistBaseIdLogId_swigregister, METH_O, NULL},
 	 { "EECHistBaseIdLogId_swiginit", EECHistBaseIdLogId_swiginit, METH_VARARGS, NULL},
 	 { "new_EECHistBaseLogLogId", (PyCFunction)(void(*)(void))_wrap_new_EECHistBaseLogLogId, METH_VARARGS|METH_KEYWORDS, "new_EECHistBaseLogLogId(int num_threads) -> EECHistBaseLogLogId"},
 	 { "delete_EECHistBaseLogLogId", _wrap_delete_EECHistBaseLogLogId, METH_O, "delete_EECHistBaseLogLogId(EECHistBaseLogLogId self)"},
-	 { "EECHistBaseLogLogId_axes_description", _wrap_EECHistBaseLogLogId_axes_description, METH_O, "axes_description(EECHistBaseLogLogId self) -> std::string"},
 	 { "EECHistBaseLogLogId_num_threads", _wrap_EECHistBaseLogLogId_num_threads, METH_O, "num_threads(EECHistBaseLogLogId self) -> int"},
 	 { "EECHistBaseLogLogId_nhists", _wrap_EECHistBaseLogLogId_nhists, METH_O, "nhists(EECHistBaseLogLogId self) -> std::size_t"},
 	 { "EECHistBaseLogLogId_nbins", (PyCFunction)(void(*)(void))_wrap_EECHistBaseLogLogId_nbins, METH_VARARGS|METH_KEYWORDS, "nbins(EECHistBaseLogLogId self, unsigned int i=0) -> std::size_t"},
 	 { "EECHistBaseLogLogId_hist_size", (PyCFunction)(void(*)(void))_wrap_EECHistBaseLogLogId_hist_size, METH_VARARGS|METH_KEYWORDS, "hist_size(EECHistBaseLogLogId self, bool include_overflows=True, int i=-1) -> std::size_t"},
+	 { "EECHistBaseLogLogId_reduce", (PyCFunction)(void(*)(void))_wrap_EECHistBaseLogLogId_reduce, METH_VARARGS|METH_KEYWORDS, "reduce(EECHistBaseLogLogId self, vectorReduceCommand rcs)"},
+	 { "EECHistBaseLogLogId_sum", (PyCFunction)(void(*)(void))_wrap_EECHistBaseLogLogId_sum, METH_VARARGS|METH_KEYWORDS, "sum(EECHistBaseLogLogId self, unsigned int hist_i=0) -> double"},
+	 { "EECHistBaseLogLogId___iadd__", (PyCFunction)(void(*)(void))_wrap_EECHistBaseLogLogId___iadd__, METH_VARARGS|METH_KEYWORDS, "__iadd__(EECHistBaseLogLogId self, EECHistBaseLogLogId rhs) -> EECHistBaseLogLogId"},
 	 { "EECHistBaseLogLogId_bin_centers_vec", (PyCFunction)(void(*)(void))_wrap_EECHistBaseLogLogId_bin_centers_vec, METH_VARARGS|METH_KEYWORDS, "bin_centers_vec(EECHistBaseLogLogId self, unsigned int i=0) -> vectorDouble"},
 	 { "EECHistBaseLogLogId_bin_edges_vec", (PyCFunction)(void(*)(void))_wrap_EECHistBaseLogLogId_bin_edges_vec, METH_VARARGS|METH_KEYWORDS, "bin_edges_vec(EECHistBaseLogLogId self, unsigned int i=0) -> vectorDouble"},
-	 { "EECHistBaseLogLogId_hists_as_text", (PyCFunction)(void(*)(void))_wrap_EECHistBaseLogLogId_hists_as_text, METH_VARARGS|METH_KEYWORDS, "hists_as_text(EECHistBaseLogLogId self, int precision=16, bool include_overflows=True, std::ostringstream * os=None) -> std::string"},
+	 { "EECHistBaseLogLogId_hists_as_text", (PyCFunction)(void(*)(void))_wrap_EECHistBaseLogLogId_hists_as_text, METH_VARARGS|METH_KEYWORDS, "hists_as_text(EECHistBaseLogLogId self, int hist_level=3, int precision=16, bool include_overflows=True, std::ostringstream * os=None) -> std::string"},
 	 { "EECHistBaseLogLogId_bin_centers", (PyCFunction)(void(*)(void))_wrap_EECHistBaseLogLogId_bin_centers, METH_VARARGS|METH_KEYWORDS, "bin_centers(EECHistBaseLogLogId self, int i=0)"},
 	 { "EECHistBaseLogLogId_bin_edges", (PyCFunction)(void(*)(void))_wrap_EECHistBaseLogLogId_bin_edges, METH_VARARGS|METH_KEYWORDS, "bin_edges(EECHistBaseLogLogId self, int i=0)"},
 	 { "EECHistBaseLogLogId_swigregister", EECHistBaseLogLogId_swigregister, METH_O, NULL},
 	 { "EECHistBaseLogLogId_swiginit", EECHistBaseLogLogId_swiginit, METH_VARARGS, NULL},
 	 { "new_EECHist1DId", (PyCFunction)(void(*)(void))_wrap_new_EECHist1DId, METH_VARARGS|METH_KEYWORDS, "new_EECHist1DId(unsigned int nbins, double axis_min, double axis_max, int num_threads=1) -> EECHist1DId"},
 	 { "delete_EECHist1DId", _wrap_delete_EECHist1DId, METH_O, "delete_EECHist1DId(EECHist1DId self)"},
-	 { "EECHist1DId_axes_description", _wrap_EECHist1DId_axes_description, METH_O, "axes_description(EECHist1DId self) -> std::string"},
+	 { "EECHist1DId_reduce", (PyCFunction)(void(*)(void))_wrap_EECHist1DId_reduce, METH_VARARGS|METH_KEYWORDS, "reduce(EECHist1DId self, reduce_command rc)"},
 	 { "EECHist1DId_get_hist_vars", (PyCFunction)(void(*)(void))_wrap_EECHist1DId_get_hist_vars, METH_VARARGS|METH_KEYWORDS, "get_hist_vars(EECHist1DId self, unsigned int hist_i=0, bool include_overflows=True)"},
 	 { "EECHist1DId_swigregister", EECHist1DId_swigregister, METH_O, NULL},
 	 { "EECHist1DId_swiginit", EECHist1DId_swiginit, METH_VARARGS, NULL},
 	 { "new_EECHist1DLog", (PyCFunction)(void(*)(void))_wrap_new_EECHist1DLog, METH_VARARGS|METH_KEYWORDS, "new_EECHist1DLog(unsigned int nbins, double axis_min, double axis_max, int num_threads=1) -> EECHist1DLog"},
 	 { "delete_EECHist1DLog", _wrap_delete_EECHist1DLog, METH_O, "delete_EECHist1DLog(EECHist1DLog self)"},
-	 { "EECHist1DLog_axes_description", _wrap_EECHist1DLog_axes_description, METH_O, "axes_description(EECHist1DLog self) -> std::string"},
+	 { "EECHist1DLog_reduce", (PyCFunction)(void(*)(void))_wrap_EECHist1DLog_reduce, METH_VARARGS|METH_KEYWORDS, "reduce(EECHist1DLog self, reduce_command rc)"},
 	 { "EECHist1DLog_get_hist_vars", (PyCFunction)(void(*)(void))_wrap_EECHist1DLog_get_hist_vars, METH_VARARGS|METH_KEYWORDS, "get_hist_vars(EECHist1DLog self, unsigned int hist_i=0, bool include_overflows=True)"},
 	 { "EECHist1DLog_swigregister", EECHist1DLog_swigregister, METH_O, NULL},
 	 { "EECHist1DLog_swiginit", EECHist1DLog_swiginit, METH_VARARGS, NULL},
 	 { "new_EECHist3DIdIdId", (PyCFunction)(void(*)(void))_wrap_new_EECHist3DIdIdId, METH_VARARGS|METH_KEYWORDS, "new_EECHist3DIdIdId(unsigned int nbins0, double axis0_min, double axis0_max, unsigned int nbins1, double axis1_min, double axis1_max, unsigned int nbins2, double axis2_min, double axis2_max, int num_threads=1) -> EECHist3DIdIdId"},
 	 { "delete_EECHist3DIdIdId", _wrap_delete_EECHist3DIdIdId, METH_O, "delete_EECHist3DIdIdId(EECHist3DIdIdId self)"},
-	 { "EECHist3DIdIdId_axes_description", _wrap_EECHist3DIdIdId_axes_description, METH_O, "axes_description(EECHist3DIdIdId self) -> std::string"},
 	 { "EECHist3DIdIdId_get_hist_vars", (PyCFunction)(void(*)(void))_wrap_EECHist3DIdIdId_get_hist_vars, METH_VARARGS|METH_KEYWORDS, "get_hist_vars(EECHist3DIdIdId self, unsigned int hist_i=0, bool include_overflows=True)"},
 	 { "EECHist3DIdIdId_swigregister", EECHist3DIdIdId_swigregister, METH_O, NULL},
 	 { "EECHist3DIdIdId_swiginit", EECHist3DIdIdId_swiginit, METH_VARARGS, NULL},
 	 { "new_EECHist3DLogIdId", (PyCFunction)(void(*)(void))_wrap_new_EECHist3DLogIdId, METH_VARARGS|METH_KEYWORDS, "new_EECHist3DLogIdId(unsigned int nbins0, double axis0_min, double axis0_max, unsigned int nbins1, double axis1_min, double axis1_max, unsigned int nbins2, double axis2_min, double axis2_max, int num_threads=1) -> EECHist3DLogIdId"},
 	 { "delete_EECHist3DLogIdId", _wrap_delete_EECHist3DLogIdId, METH_O, "delete_EECHist3DLogIdId(EECHist3DLogIdId self)"},
-	 { "EECHist3DLogIdId_axes_description", _wrap_EECHist3DLogIdId_axes_description, METH_O, "axes_description(EECHist3DLogIdId self) -> std::string"},
 	 { "EECHist3DLogIdId_get_hist_vars", (PyCFunction)(void(*)(void))_wrap_EECHist3DLogIdId_get_hist_vars, METH_VARARGS|METH_KEYWORDS, "get_hist_vars(EECHist3DLogIdId self, unsigned int hist_i=0, bool include_overflows=True)"},
 	 { "EECHist3DLogIdId_swigregister", EECHist3DLogIdId_swigregister, METH_O, NULL},
 	 { "EECHist3DLogIdId_swiginit", EECHist3DLogIdId_swiginit, METH_VARARGS, NULL},
 	 { "new_EECHist3DIdLogId", (PyCFunction)(void(*)(void))_wrap_new_EECHist3DIdLogId, METH_VARARGS|METH_KEYWORDS, "new_EECHist3DIdLogId(unsigned int nbins0, double axis0_min, double axis0_max, unsigned int nbins1, double axis1_min, double axis1_max, unsigned int nbins2, double axis2_min, double axis2_max, int num_threads=1) -> EECHist3DIdLogId"},
 	 { "delete_EECHist3DIdLogId", _wrap_delete_EECHist3DIdLogId, METH_O, "delete_EECHist3DIdLogId(EECHist3DIdLogId self)"},
-	 { "EECHist3DIdLogId_axes_description", _wrap_EECHist3DIdLogId_axes_description, METH_O, "axes_description(EECHist3DIdLogId self) -> std::string"},
 	 { "EECHist3DIdLogId_get_hist_vars", (PyCFunction)(void(*)(void))_wrap_EECHist3DIdLogId_get_hist_vars, METH_VARARGS|METH_KEYWORDS, "get_hist_vars(EECHist3DIdLogId self, unsigned int hist_i=0, bool include_overflows=True)"},
 	 { "EECHist3DIdLogId_swigregister", EECHist3DIdLogId_swigregister, METH_O, NULL},
 	 { "EECHist3DIdLogId_swiginit", EECHist3DIdLogId_swiginit, METH_VARARGS, NULL},
 	 { "new_EECHist3DLogLogId", (PyCFunction)(void(*)(void))_wrap_new_EECHist3DLogLogId, METH_VARARGS|METH_KEYWORDS, "new_EECHist3DLogLogId(unsigned int nbins0, double axis0_min, double axis0_max, unsigned int nbins1, double axis1_min, double axis1_max, unsigned int nbins2, double axis2_min, double axis2_max, int num_threads=1) -> EECHist3DLogLogId"},
 	 { "delete_EECHist3DLogLogId", _wrap_delete_EECHist3DLogLogId, METH_O, "delete_EECHist3DLogLogId(EECHist3DLogLogId self)"},
-	 { "EECHist3DLogLogId_axes_description", _wrap_EECHist3DLogLogId_axes_description, METH_O, "axes_description(EECHist3DLogLogId self) -> std::string"},
 	 { "EECHist3DLogLogId_get_hist_vars", (PyCFunction)(void(*)(void))_wrap_EECHist3DLogLogId_get_hist_vars, METH_VARARGS|METH_KEYWORDS, "get_hist_vars(EECHist3DLogLogId self, unsigned int hist_i=0, bool include_overflows=True)"},
 	 { "EECHist3DLogLogId_swigregister", EECHist3DLogLogId_swigregister, METH_O, NULL},
 	 { "EECHist3DLogLogId_swiginit", EECHist3DLogLogId_swiginit, METH_VARARGS, NULL},
@@ -25366,7 +30395,7 @@ static PyMethodDef SwigMethods_proxydocs[] = {
 	 { "EECEvents_swigregister", EECEvents_swigregister, METH_O, NULL},
 	 { "EECEvents_swiginit", EECEvents_swiginit, METH_VARARGS, NULL},
 	 { "delete_EECBase", _wrap_delete_EECBase, METH_O, "delete_EECBase(EECBase self)"},
-	 { "EECBase_description", (PyCFunction)(void(*)(void))_wrap_EECBase_description, METH_VARARGS|METH_KEYWORDS, "description(EECBase self, bool arg2=False) -> std::string"},
+	 { "EECBase_description", (PyCFunction)(void(*)(void))_wrap_EECBase_description, METH_VARARGS|METH_KEYWORDS, "description(EECBase self, int arg2=1) -> std::string"},
 	 { "EECBase_N", _wrap_EECBase_N, METH_O, "N(EECBase self) -> unsigned int"},
 	 { "EECBase_nsym", _wrap_EECBase_nsym, METH_O, "nsym(EECBase self) -> unsigned int"},
 	 { "EECBase_nfeatures", _wrap_EECBase_nfeatures, METH_O, "nfeatures(EECBase self) -> unsigned int"},
@@ -25379,8 +30408,6 @@ static PyMethodDef SwigMethods_proxydocs[] = {
 	 { "EECBase_set_omp_chunksize", (PyCFunction)(void(*)(void))_wrap_EECBase_set_omp_chunksize, METH_VARARGS|METH_KEYWORDS, "set_omp_chunksize(EECBase self, int chunksize)"},
 	 { "EECBase_set_print_every", (PyCFunction)(void(*)(void))_wrap_EECBase_set_print_every, METH_VARARGS|METH_KEYWORDS, "set_print_every(EECBase self, int print_every)"},
 	 { "EECBase_set_print_stream", (PyCFunction)(void(*)(void))_wrap_EECBase_set_print_stream, METH_VARARGS|METH_KEYWORDS, "set_print_stream(EECBase self, std::ostream & os)"},
-	 { "EECBase___str__", _wrap_EECBase___str__, METH_O, "__str__(EECBase self) -> std::string"},
-	 { "EECBase___repr__", _wrap_EECBase___repr__, METH_O, "__repr__(EECBase self) -> std::string"},
 	 { "EECBase_compute", (PyCFunction)(void(*)(void))_wrap_EECBase_compute, METH_VARARGS|METH_KEYWORDS, "compute(EECBase self, double * particles, double weight=1.0, int thread_i=0)"},
 	 { "EECBase__batch_compute", (PyCFunction)(void(*)(void))_wrap_EECBase__batch_compute, METH_VARARGS|METH_KEYWORDS, "_batch_compute(EECBase self, EECEvents evs)"},
 	 { "EECBase_swigregister", EECBase_swigregister, METH_O, NULL},
@@ -25453,43 +30480,43 @@ static PyMethodDef SwigMethods_proxydocs[] = {
 	 { "Multinomial6_swiginit", Multinomial6_swiginit, METH_VARARGS, NULL},
 	 { "new_EECLongestSideId", (PyCFunction)(void(*)(void))_wrap_new_EECLongestSideId, METH_VARARGS|METH_KEYWORDS, "new_EECLongestSideId(unsigned int N, unsigned int nbins, double axis_min, double axis_max, bool norm=True, vectorDouble pt_powers={1}, vectorUnsigned ch_powers={0}, int num_threads=-1, int print_every=-10, bool check_degen=False, bool average_verts=False, bool use_general_eNc=False) -> EECLongestSideId"},
 	 { "delete_EECLongestSideId", _wrap_delete_EECLongestSideId, METH_O, "delete_EECLongestSideId(EECLongestSideId self)"},
-	 { "EECLongestSideId_description", (PyCFunction)(void(*)(void))_wrap_EECLongestSideId_description, METH_VARARGS|METH_KEYWORDS, "description(EECLongestSideId self, bool include_hists=False) -> std::string"},
-	 { "EECLongestSideId___str__", _wrap_EECLongestSideId___str__, METH_O, "__str__(EECLongestSideId self) -> std::string"},
-	 { "EECLongestSideId___repr__", _wrap_EECLongestSideId___repr__, METH_O, "__repr__(EECLongestSideId self) -> std::string"},
+	 { "EECLongestSideId_description", (PyCFunction)(void(*)(void))_wrap_EECLongestSideId_description, METH_VARARGS|METH_KEYWORDS, "description(EECLongestSideId self, int hist_level=1) -> std::string"},
+	 { "EECLongestSideId___getstate_internal__", _wrap_EECLongestSideId___getstate_internal__, METH_O, "__getstate_internal__(EECLongestSideId self) -> std::string"},
+	 { "EECLongestSideId___setstate_internal__", (PyCFunction)(void(*)(void))_wrap_EECLongestSideId___setstate_internal__, METH_VARARGS|METH_KEYWORDS, "__setstate_internal__(EECLongestSideId self, std::string const & state)"},
 	 { "EECLongestSideId_swigregister", EECLongestSideId_swigregister, METH_O, NULL},
 	 { "EECLongestSideId_swiginit", EECLongestSideId_swiginit, METH_VARARGS, NULL},
 	 { "new_EECLongestSideLog", (PyCFunction)(void(*)(void))_wrap_new_EECLongestSideLog, METH_VARARGS|METH_KEYWORDS, "new_EECLongestSideLog(unsigned int N, unsigned int nbins, double axis_min, double axis_max, bool norm=True, vectorDouble pt_powers={1}, vectorUnsigned ch_powers={0}, int num_threads=-1, int print_every=-10, bool check_degen=False, bool average_verts=False, bool use_general_eNc=False) -> EECLongestSideLog"},
 	 { "delete_EECLongestSideLog", _wrap_delete_EECLongestSideLog, METH_O, "delete_EECLongestSideLog(EECLongestSideLog self)"},
-	 { "EECLongestSideLog_description", (PyCFunction)(void(*)(void))_wrap_EECLongestSideLog_description, METH_VARARGS|METH_KEYWORDS, "description(EECLongestSideLog self, bool include_hists=False) -> std::string"},
-	 { "EECLongestSideLog___str__", _wrap_EECLongestSideLog___str__, METH_O, "__str__(EECLongestSideLog self) -> std::string"},
-	 { "EECLongestSideLog___repr__", _wrap_EECLongestSideLog___repr__, METH_O, "__repr__(EECLongestSideLog self) -> std::string"},
+	 { "EECLongestSideLog_description", (PyCFunction)(void(*)(void))_wrap_EECLongestSideLog_description, METH_VARARGS|METH_KEYWORDS, "description(EECLongestSideLog self, int hist_level=1) -> std::string"},
+	 { "EECLongestSideLog___getstate_internal__", _wrap_EECLongestSideLog___getstate_internal__, METH_O, "__getstate_internal__(EECLongestSideLog self) -> std::string"},
+	 { "EECLongestSideLog___setstate_internal__", (PyCFunction)(void(*)(void))_wrap_EECLongestSideLog___setstate_internal__, METH_VARARGS|METH_KEYWORDS, "__setstate_internal__(EECLongestSideLog self, std::string const & state)"},
 	 { "EECLongestSideLog_swigregister", EECLongestSideLog_swigregister, METH_O, NULL},
 	 { "EECLongestSideLog_swiginit", EECLongestSideLog_swiginit, METH_VARARGS, NULL},
 	 { "new_EECTriangleOPEIdIdId", (PyCFunction)(void(*)(void))_wrap_new_EECTriangleOPEIdIdId, METH_VARARGS|METH_KEYWORDS, "new_EECTriangleOPEIdIdId(unsigned int nbins0, double axis0_min, double axis0_max, unsigned int nbins1, double axis1_min, double axis1_max, unsigned int nbins2, double axis2_min, double axis2_max, bool norm=True, vectorDouble pt_powers={1}, vectorUnsigned ch_powers={0}, int num_threads=-1, int print_every=-10, bool check_degen=False, bool average_verts=False) -> EECTriangleOPEIdIdId"},
-	 { "EECTriangleOPEIdIdId_description", (PyCFunction)(void(*)(void))_wrap_EECTriangleOPEIdIdId_description, METH_VARARGS|METH_KEYWORDS, "description(EECTriangleOPEIdIdId self, bool include_hists=False) -> std::string"},
-	 { "EECTriangleOPEIdIdId___str__", _wrap_EECTriangleOPEIdIdId___str__, METH_O, "__str__(EECTriangleOPEIdIdId self) -> std::string"},
-	 { "EECTriangleOPEIdIdId___repr__", _wrap_EECTriangleOPEIdIdId___repr__, METH_O, "__repr__(EECTriangleOPEIdIdId self) -> std::string"},
+	 { "EECTriangleOPEIdIdId_description", (PyCFunction)(void(*)(void))_wrap_EECTriangleOPEIdIdId_description, METH_VARARGS|METH_KEYWORDS, "description(EECTriangleOPEIdIdId self, int hist_level=1) -> std::string"},
+	 { "EECTriangleOPEIdIdId___getstate_internal__", _wrap_EECTriangleOPEIdIdId___getstate_internal__, METH_O, "__getstate_internal__(EECTriangleOPEIdIdId self) -> std::string"},
+	 { "EECTriangleOPEIdIdId___setstate_internal__", (PyCFunction)(void(*)(void))_wrap_EECTriangleOPEIdIdId___setstate_internal__, METH_VARARGS|METH_KEYWORDS, "__setstate_internal__(EECTriangleOPEIdIdId self, std::string const & state)"},
 	 { "delete_EECTriangleOPEIdIdId", _wrap_delete_EECTriangleOPEIdIdId, METH_O, "delete_EECTriangleOPEIdIdId(EECTriangleOPEIdIdId self)"},
 	 { "EECTriangleOPEIdIdId_swigregister", EECTriangleOPEIdIdId_swigregister, METH_O, NULL},
 	 { "EECTriangleOPEIdIdId_swiginit", EECTriangleOPEIdIdId_swiginit, METH_VARARGS, NULL},
 	 { "new_EECTriangleOPELogIdId", (PyCFunction)(void(*)(void))_wrap_new_EECTriangleOPELogIdId, METH_VARARGS|METH_KEYWORDS, "new_EECTriangleOPELogIdId(unsigned int nbins0, double axis0_min, double axis0_max, unsigned int nbins1, double axis1_min, double axis1_max, unsigned int nbins2, double axis2_min, double axis2_max, bool norm=True, vectorDouble pt_powers={1}, vectorUnsigned ch_powers={0}, int num_threads=-1, int print_every=-10, bool check_degen=False, bool average_verts=False) -> EECTriangleOPELogIdId"},
-	 { "EECTriangleOPELogIdId_description", (PyCFunction)(void(*)(void))_wrap_EECTriangleOPELogIdId_description, METH_VARARGS|METH_KEYWORDS, "description(EECTriangleOPELogIdId self, bool include_hists=False) -> std::string"},
-	 { "EECTriangleOPELogIdId___str__", _wrap_EECTriangleOPELogIdId___str__, METH_O, "__str__(EECTriangleOPELogIdId self) -> std::string"},
-	 { "EECTriangleOPELogIdId___repr__", _wrap_EECTriangleOPELogIdId___repr__, METH_O, "__repr__(EECTriangleOPELogIdId self) -> std::string"},
+	 { "EECTriangleOPELogIdId_description", (PyCFunction)(void(*)(void))_wrap_EECTriangleOPELogIdId_description, METH_VARARGS|METH_KEYWORDS, "description(EECTriangleOPELogIdId self, int hist_level=1) -> std::string"},
+	 { "EECTriangleOPELogIdId___getstate_internal__", _wrap_EECTriangleOPELogIdId___getstate_internal__, METH_O, "__getstate_internal__(EECTriangleOPELogIdId self) -> std::string"},
+	 { "EECTriangleOPELogIdId___setstate_internal__", (PyCFunction)(void(*)(void))_wrap_EECTriangleOPELogIdId___setstate_internal__, METH_VARARGS|METH_KEYWORDS, "__setstate_internal__(EECTriangleOPELogIdId self, std::string const & state)"},
 	 { "delete_EECTriangleOPELogIdId", _wrap_delete_EECTriangleOPELogIdId, METH_O, "delete_EECTriangleOPELogIdId(EECTriangleOPELogIdId self)"},
 	 { "EECTriangleOPELogIdId_swigregister", EECTriangleOPELogIdId_swigregister, METH_O, NULL},
 	 { "EECTriangleOPELogIdId_swiginit", EECTriangleOPELogIdId_swiginit, METH_VARARGS, NULL},
 	 { "new_EECTriangleOPEIdLogId", (PyCFunction)(void(*)(void))_wrap_new_EECTriangleOPEIdLogId, METH_VARARGS|METH_KEYWORDS, "new_EECTriangleOPEIdLogId(unsigned int nbins0, double axis0_min, double axis0_max, unsigned int nbins1, double axis1_min, double axis1_max, unsigned int nbins2, double axis2_min, double axis2_max, bool norm=True, vectorDouble pt_powers={1}, vectorUnsigned ch_powers={0}, int num_threads=-1, int print_every=-10, bool check_degen=False, bool average_verts=False) -> EECTriangleOPEIdLogId"},
-	 { "EECTriangleOPEIdLogId_description", (PyCFunction)(void(*)(void))_wrap_EECTriangleOPEIdLogId_description, METH_VARARGS|METH_KEYWORDS, "description(EECTriangleOPEIdLogId self, bool include_hists=False) -> std::string"},
-	 { "EECTriangleOPEIdLogId___str__", _wrap_EECTriangleOPEIdLogId___str__, METH_O, "__str__(EECTriangleOPEIdLogId self) -> std::string"},
-	 { "EECTriangleOPEIdLogId___repr__", _wrap_EECTriangleOPEIdLogId___repr__, METH_O, "__repr__(EECTriangleOPEIdLogId self) -> std::string"},
+	 { "EECTriangleOPEIdLogId_description", (PyCFunction)(void(*)(void))_wrap_EECTriangleOPEIdLogId_description, METH_VARARGS|METH_KEYWORDS, "description(EECTriangleOPEIdLogId self, int hist_level=1) -> std::string"},
+	 { "EECTriangleOPEIdLogId___getstate_internal__", _wrap_EECTriangleOPEIdLogId___getstate_internal__, METH_O, "__getstate_internal__(EECTriangleOPEIdLogId self) -> std::string"},
+	 { "EECTriangleOPEIdLogId___setstate_internal__", (PyCFunction)(void(*)(void))_wrap_EECTriangleOPEIdLogId___setstate_internal__, METH_VARARGS|METH_KEYWORDS, "__setstate_internal__(EECTriangleOPEIdLogId self, std::string const & state)"},
 	 { "delete_EECTriangleOPEIdLogId", _wrap_delete_EECTriangleOPEIdLogId, METH_O, "delete_EECTriangleOPEIdLogId(EECTriangleOPEIdLogId self)"},
 	 { "EECTriangleOPEIdLogId_swigregister", EECTriangleOPEIdLogId_swigregister, METH_O, NULL},
 	 { "EECTriangleOPEIdLogId_swiginit", EECTriangleOPEIdLogId_swiginit, METH_VARARGS, NULL},
 	 { "new_EECTriangleOPELogLogId", (PyCFunction)(void(*)(void))_wrap_new_EECTriangleOPELogLogId, METH_VARARGS|METH_KEYWORDS, "new_EECTriangleOPELogLogId(unsigned int nbins0, double axis0_min, double axis0_max, unsigned int nbins1, double axis1_min, double axis1_max, unsigned int nbins2, double axis2_min, double axis2_max, bool norm=True, vectorDouble pt_powers={1}, vectorUnsigned ch_powers={0}, int num_threads=-1, int print_every=-10, bool check_degen=False, bool average_verts=False) -> EECTriangleOPELogLogId"},
-	 { "EECTriangleOPELogLogId_description", (PyCFunction)(void(*)(void))_wrap_EECTriangleOPELogLogId_description, METH_VARARGS|METH_KEYWORDS, "description(EECTriangleOPELogLogId self, bool include_hists=False) -> std::string"},
-	 { "EECTriangleOPELogLogId___str__", _wrap_EECTriangleOPELogLogId___str__, METH_O, "__str__(EECTriangleOPELogLogId self) -> std::string"},
-	 { "EECTriangleOPELogLogId___repr__", _wrap_EECTriangleOPELogLogId___repr__, METH_O, "__repr__(EECTriangleOPELogLogId self) -> std::string"},
+	 { "EECTriangleOPELogLogId_description", (PyCFunction)(void(*)(void))_wrap_EECTriangleOPELogLogId_description, METH_VARARGS|METH_KEYWORDS, "description(EECTriangleOPELogLogId self, int hist_level=1) -> std::string"},
+	 { "EECTriangleOPELogLogId___getstate_internal__", _wrap_EECTriangleOPELogLogId___getstate_internal__, METH_O, "__getstate_internal__(EECTriangleOPELogLogId self) -> std::string"},
+	 { "EECTriangleOPELogLogId___setstate_internal__", (PyCFunction)(void(*)(void))_wrap_EECTriangleOPELogLogId___setstate_internal__, METH_VARARGS|METH_KEYWORDS, "__setstate_internal__(EECTriangleOPELogLogId self, std::string const & state)"},
 	 { "delete_EECTriangleOPELogLogId", _wrap_delete_EECTriangleOPELogLogId, METH_O, "delete_EECTriangleOPELogLogId(EECTriangleOPELogLogId self)"},
 	 { "EECTriangleOPELogLogId_swigregister", EECTriangleOPELogLogId_swigregister, METH_O, NULL},
 	 { "EECTriangleOPELogLogId_swiginit", EECTriangleOPELogLogId_swiginit, METH_VARARGS, NULL},
@@ -25499,14 +30526,59 @@ static PyMethodDef SwigMethods_proxydocs[] = {
 
 /* -------- TYPE CONVERSION AND EQUIVALENCE RULES (BEGIN) -------- */
 
-static void *_p_eec__EECLongestSideT_axis__log_tTo_p_eec__hist__EECHist1DT_bh__axis__transform__log_t(void *x, int *SWIGUNUSEDPARM(newmemory)) {
-    return (void *)((eec::hist::EECHist1D< bh::axis::transform::log > *)  ((eec::EECLongestSide< axis::log > *) x));
+static void *_p_eec__hist__EECHist1DT_boost__histogram__axis__transform__log_tTo_p_eec__hist__EECHistBaseT_eec__hist__EECHist1DT_eec__hist__axis__log_t_t(void *x, int *SWIGUNUSEDPARM(newmemory)) {
+    return (void *)((eec::hist::EECHistBase< eec::hist::EECHist1D< eec::hist::axis::log > > *)  ((eec::hist::EECHist1D< boost::histogram::axis::transform::log > *) x));
 }
-static void *_p_eec__EECTriangleOPET_axis__id_axis__id_axis__id_tTo_p_eec__hist__EECHist3DT_bh__axis__transform__id_bh__axis__transform__id_bh__axis__transform__id_t(void *x, int *SWIGUNUSEDPARM(newmemory)) {
-    return (void *)((eec::hist::EECHist3D< bh::axis::transform::id,bh::axis::transform::id,bh::axis::transform::id > *)  ((eec::EECTriangleOPE< axis::id,axis::id,axis::id > *) x));
+static void *_p_eec__EECLongestSideT_axis__log_tTo_p_eec__hist__EECHistBaseT_eec__hist__EECHist1DT_eec__hist__axis__log_t_t(void *x, int *SWIGUNUSEDPARM(newmemory)) {
+    return (void *)((eec::hist::EECHistBase< eec::hist::EECHist1D< eec::hist::axis::log > > *) (eec::hist::EECHist1D< eec::hist::axis::log > *) ((eec::EECLongestSide< axis::log > *) x));
 }
-static void *_p_eec__EECTriangleOPET_axis__id_axis__log_axis__id_tTo_p_eec__hist__EECHist3DT_bh__axis__transform__id_bh__axis__transform__log_bh__axis__transform__id_t(void *x, int *SWIGUNUSEDPARM(newmemory)) {
-    return (void *)((eec::hist::EECHist3D< bh::axis::transform::id,bh::axis::transform::log,bh::axis::transform::id > *)  ((eec::EECTriangleOPE< axis::id,axis::log,axis::id > *) x));
+static void *_p_eec__EECLongestSideT_axis__id_tTo_p_eec__hist__EECHistBaseT_eec__hist__EECHist1DT_eec__hist__axis__id_t_t(void *x, int *SWIGUNUSEDPARM(newmemory)) {
+    return (void *)((eec::hist::EECHistBase< eec::hist::EECHist1D< eec::hist::axis::id > > *) (eec::hist::EECHist1D< eec::hist::axis::id > *) ((eec::EECLongestSide< axis::id > *) x));
+}
+static void *_p_eec__hist__EECHist1DT_boost__histogram__axis__transform__id_tTo_p_eec__hist__EECHistBaseT_eec__hist__EECHist1DT_eec__hist__axis__id_t_t(void *x, int *SWIGUNUSEDPARM(newmemory)) {
+    return (void *)((eec::hist::EECHistBase< eec::hist::EECHist1D< eec::hist::axis::id > > *)  ((eec::hist::EECHist1D< boost::histogram::axis::transform::id > *) x));
+}
+static void *_p_eec__EECTriangleOPET_axis__log_axis__log_axis__id_tTo_p_eec__hist__EECHist3DT_boost__histogram__axis__transform__log_boost__histogram__axis__transform__log_boost__histogram__axis__transform__id_t(void *x, int *SWIGUNUSEDPARM(newmemory)) {
+    return (void *)((eec::hist::EECHist3D< boost::histogram::axis::transform::log,boost::histogram::axis::transform::log,boost::histogram::axis::transform::id > *)  ((eec::EECTriangleOPE< axis::log,axis::log,axis::id > *) x));
+}
+static void *_p_eec__EECTriangleOPET_axis__id_axis__log_axis__id_tTo_p_eec__hist__EECHist3DT_boost__histogram__axis__transform__id_boost__histogram__axis__transform__log_boost__histogram__axis__transform__id_t(void *x, int *SWIGUNUSEDPARM(newmemory)) {
+    return (void *)((eec::hist::EECHist3D< boost::histogram::axis::transform::id,boost::histogram::axis::transform::log,boost::histogram::axis::transform::id > *)  ((eec::EECTriangleOPE< axis::id,axis::log,axis::id > *) x));
+}
+static void *_p_eec__EECTriangleOPET_axis__log_axis__id_axis__id_tTo_p_eec__hist__EECHist3DT_boost__histogram__axis__transform__log_boost__histogram__axis__transform__id_boost__histogram__axis__transform__id_t(void *x, int *SWIGUNUSEDPARM(newmemory)) {
+    return (void *)((eec::hist::EECHist3D< boost::histogram::axis::transform::log,boost::histogram::axis::transform::id,boost::histogram::axis::transform::id > *)  ((eec::EECTriangleOPE< axis::log,axis::id,axis::id > *) x));
+}
+static void *_p_eec__EECTriangleOPET_axis__id_axis__id_axis__id_tTo_p_eec__hist__EECHist3DT_boost__histogram__axis__transform__id_boost__histogram__axis__transform__id_boost__histogram__axis__transform__id_t(void *x, int *SWIGUNUSEDPARM(newmemory)) {
+    return (void *)((eec::hist::EECHist3D< boost::histogram::axis::transform::id,boost::histogram::axis::transform::id,boost::histogram::axis::transform::id > *)  ((eec::EECTriangleOPE< axis::id,axis::id,axis::id > *) x));
+}
+static void *_p_eec__EECLongestSideT_axis__log_tTo_p_eec__hist__EECHist1DT_boost__histogram__axis__transform__log_t(void *x, int *SWIGUNUSEDPARM(newmemory)) {
+    return (void *)((eec::hist::EECHist1D< boost::histogram::axis::transform::log > *)  ((eec::EECLongestSide< axis::log > *) x));
+}
+static void *_p_eec__EECLongestSideT_axis__id_tTo_p_eec__hist__EECHist1DT_boost__histogram__axis__transform__id_t(void *x, int *SWIGUNUSEDPARM(newmemory)) {
+    return (void *)((eec::hist::EECHist1D< boost::histogram::axis::transform::id > *)  ((eec::EECLongestSide< axis::id > *) x));
+}
+static void *_p_eec__hist__EECHist3DT_boost__histogram__axis__transform__log_boost__histogram__axis__transform__log_boost__histogram__axis__transform__id_tTo_p_eec__hist__EECHistBaseT_eec__hist__EECHist3DT_eec__hist__axis__log_eec__hist__axis__log_eec__hist__axis__id_t_t(void *x, int *SWIGUNUSEDPARM(newmemory)) {
+    return (void *)((eec::hist::EECHistBase< eec::hist::EECHist3D< eec::hist::axis::log,eec::hist::axis::log,eec::hist::axis::id > > *)  ((eec::hist::EECHist3D< boost::histogram::axis::transform::log,boost::histogram::axis::transform::log,boost::histogram::axis::transform::id > *) x));
+}
+static void *_p_eec__EECTriangleOPET_axis__log_axis__log_axis__id_tTo_p_eec__hist__EECHistBaseT_eec__hist__EECHist3DT_eec__hist__axis__log_eec__hist__axis__log_eec__hist__axis__id_t_t(void *x, int *SWIGUNUSEDPARM(newmemory)) {
+    return (void *)((eec::hist::EECHistBase< eec::hist::EECHist3D< eec::hist::axis::log,eec::hist::axis::log,eec::hist::axis::id > > *) (eec::hist::EECHist3D< eec::hist::axis::log,eec::hist::axis::log,eec::hist::axis::id > *) ((eec::EECTriangleOPE< axis::log,axis::log,axis::id > *) x));
+}
+static void *_p_eec__EECTriangleOPET_axis__id_axis__log_axis__id_tTo_p_eec__hist__EECHistBaseT_eec__hist__EECHist3DT_eec__hist__axis__id_eec__hist__axis__log_eec__hist__axis__id_t_t(void *x, int *SWIGUNUSEDPARM(newmemory)) {
+    return (void *)((eec::hist::EECHistBase< eec::hist::EECHist3D< eec::hist::axis::id,eec::hist::axis::log,eec::hist::axis::id > > *) (eec::hist::EECHist3D< eec::hist::axis::id,eec::hist::axis::log,eec::hist::axis::id > *) ((eec::EECTriangleOPE< axis::id,axis::log,axis::id > *) x));
+}
+static void *_p_eec__hist__EECHist3DT_boost__histogram__axis__transform__id_boost__histogram__axis__transform__log_boost__histogram__axis__transform__id_tTo_p_eec__hist__EECHistBaseT_eec__hist__EECHist3DT_eec__hist__axis__id_eec__hist__axis__log_eec__hist__axis__id_t_t(void *x, int *SWIGUNUSEDPARM(newmemory)) {
+    return (void *)((eec::hist::EECHistBase< eec::hist::EECHist3D< eec::hist::axis::id,eec::hist::axis::log,eec::hist::axis::id > > *)  ((eec::hist::EECHist3D< boost::histogram::axis::transform::id,boost::histogram::axis::transform::log,boost::histogram::axis::transform::id > *) x));
+}
+static void *_p_eec__EECTriangleOPET_axis__log_axis__id_axis__id_tTo_p_eec__hist__EECHistBaseT_eec__hist__EECHist3DT_eec__hist__axis__log_eec__hist__axis__id_eec__hist__axis__id_t_t(void *x, int *SWIGUNUSEDPARM(newmemory)) {
+    return (void *)((eec::hist::EECHistBase< eec::hist::EECHist3D< eec::hist::axis::log,eec::hist::axis::id,eec::hist::axis::id > > *) (eec::hist::EECHist3D< eec::hist::axis::log,eec::hist::axis::id,eec::hist::axis::id > *) ((eec::EECTriangleOPE< axis::log,axis::id,axis::id > *) x));
+}
+static void *_p_eec__hist__EECHist3DT_boost__histogram__axis__transform__log_boost__histogram__axis__transform__id_boost__histogram__axis__transform__id_tTo_p_eec__hist__EECHistBaseT_eec__hist__EECHist3DT_eec__hist__axis__log_eec__hist__axis__id_eec__hist__axis__id_t_t(void *x, int *SWIGUNUSEDPARM(newmemory)) {
+    return (void *)((eec::hist::EECHistBase< eec::hist::EECHist3D< eec::hist::axis::log,eec::hist::axis::id,eec::hist::axis::id > > *)  ((eec::hist::EECHist3D< boost::histogram::axis::transform::log,boost::histogram::axis::transform::id,boost::histogram::axis::transform::id > *) x));
+}
+static void *_p_eec__EECTriangleOPET_axis__id_axis__id_axis__id_tTo_p_eec__hist__EECHistBaseT_eec__hist__EECHist3DT_eec__hist__axis__id_eec__hist__axis__id_eec__hist__axis__id_t_t(void *x, int *SWIGUNUSEDPARM(newmemory)) {
+    return (void *)((eec::hist::EECHistBase< eec::hist::EECHist3D< eec::hist::axis::id,eec::hist::axis::id,eec::hist::axis::id > > *) (eec::hist::EECHist3D< eec::hist::axis::id,eec::hist::axis::id,eec::hist::axis::id > *) ((eec::EECTriangleOPE< axis::id,axis::id,axis::id > *) x));
+}
+static void *_p_eec__hist__EECHist3DT_boost__histogram__axis__transform__id_boost__histogram__axis__transform__id_boost__histogram__axis__transform__id_tTo_p_eec__hist__EECHistBaseT_eec__hist__EECHist3DT_eec__hist__axis__id_eec__hist__axis__id_eec__hist__axis__id_t_t(void *x, int *SWIGUNUSEDPARM(newmemory)) {
+    return (void *)((eec::hist::EECHistBase< eec::hist::EECHist3D< eec::hist::axis::id,eec::hist::axis::id,eec::hist::axis::id > > *)  ((eec::hist::EECHist3D< boost::histogram::axis::transform::id,boost::histogram::axis::transform::id,boost::histogram::axis::transform::id > *) x));
 }
 static void *_p_eec__EECLongestSideT_axis__id_tTo_p_eec__EECBase(void *x, int *SWIGUNUSEDPARM(newmemory)) {
     return (void *)((eec::EECBase *)  ((eec::EECLongestSide< axis::id > *) x));
@@ -25526,62 +30598,20 @@ static void *_p_eec__EECLongestSideT_axis__log_tTo_p_eec__EECBase(void *x, int *
 static void *_p_eec__EECTriangleOPET_axis__log_axis__log_axis__id_tTo_p_eec__EECBase(void *x, int *SWIGUNUSEDPARM(newmemory)) {
     return (void *)((eec::EECBase *)  ((eec::EECTriangleOPE< axis::log,axis::log,axis::id > *) x));
 }
-static void *_p_eec__hist__EECHist1DT_bh__axis__transform__id_tTo_p_eec__hist__EECHistBaseT_eec__hist__EECHist1DT_eec__hist__axis__id_t_t(void *x, int *SWIGUNUSEDPARM(newmemory)) {
-    return (void *)((eec::hist::EECHistBase< eec::hist::EECHist1D< eec::hist::axis::id > > *)  ((eec::hist::EECHist1D< bh::axis::transform::id > *) x));
-}
-static void *_p_eec__EECLongestSideT_axis__id_tTo_p_eec__hist__EECHistBaseT_eec__hist__EECHist1DT_eec__hist__axis__id_t_t(void *x, int *SWIGUNUSEDPARM(newmemory)) {
-    return (void *)((eec::hist::EECHistBase< eec::hist::EECHist1D< eec::hist::axis::id > > *) (eec::hist::EECHist1D< eec::hist::axis::id > *) ((eec::EECLongestSide< axis::id > *) x));
-}
-static void *_p_eec__hist__EECHist1DT_bh__axis__transform__log_tTo_p_eec__hist__EECHistBaseT_eec__hist__EECHist1DT_eec__hist__axis__log_t_t(void *x, int *SWIGUNUSEDPARM(newmemory)) {
-    return (void *)((eec::hist::EECHistBase< eec::hist::EECHist1D< eec::hist::axis::log > > *)  ((eec::hist::EECHist1D< bh::axis::transform::log > *) x));
-}
-static void *_p_eec__EECLongestSideT_axis__log_tTo_p_eec__hist__EECHistBaseT_eec__hist__EECHist1DT_eec__hist__axis__log_t_t(void *x, int *SWIGUNUSEDPARM(newmemory)) {
-    return (void *)((eec::hist::EECHistBase< eec::hist::EECHist1D< eec::hist::axis::log > > *) (eec::hist::EECHist1D< eec::hist::axis::log > *) ((eec::EECLongestSide< axis::log > *) x));
-}
-static void *_p_eec__hist__EECHist3DT_bh__axis__transform__id_bh__axis__transform__id_bh__axis__transform__id_tTo_p_eec__hist__EECHistBaseT_eec__hist__EECHist3DT_eec__hist__axis__id_eec__hist__axis__id_eec__hist__axis__id_t_t(void *x, int *SWIGUNUSEDPARM(newmemory)) {
-    return (void *)((eec::hist::EECHistBase< eec::hist::EECHist3D< eec::hist::axis::id,eec::hist::axis::id,eec::hist::axis::id > > *)  ((eec::hist::EECHist3D< bh::axis::transform::id,bh::axis::transform::id,bh::axis::transform::id > *) x));
-}
-static void *_p_eec__EECTriangleOPET_axis__id_axis__id_axis__id_tTo_p_eec__hist__EECHistBaseT_eec__hist__EECHist3DT_eec__hist__axis__id_eec__hist__axis__id_eec__hist__axis__id_t_t(void *x, int *SWIGUNUSEDPARM(newmemory)) {
-    return (void *)((eec::hist::EECHistBase< eec::hist::EECHist3D< eec::hist::axis::id,eec::hist::axis::id,eec::hist::axis::id > > *) (eec::hist::EECHist3D< eec::hist::axis::id,eec::hist::axis::id,eec::hist::axis::id > *) ((eec::EECTriangleOPE< axis::id,axis::id,axis::id > *) x));
-}
-static void *_p_eec__hist__EECHist3DT_bh__axis__transform__log_bh__axis__transform__id_bh__axis__transform__id_tTo_p_eec__hist__EECHistBaseT_eec__hist__EECHist3DT_eec__hist__axis__log_eec__hist__axis__id_eec__hist__axis__id_t_t(void *x, int *SWIGUNUSEDPARM(newmemory)) {
-    return (void *)((eec::hist::EECHistBase< eec::hist::EECHist3D< eec::hist::axis::log,eec::hist::axis::id,eec::hist::axis::id > > *)  ((eec::hist::EECHist3D< bh::axis::transform::log,bh::axis::transform::id,bh::axis::transform::id > *) x));
-}
-static void *_p_eec__EECTriangleOPET_axis__log_axis__id_axis__id_tTo_p_eec__hist__EECHistBaseT_eec__hist__EECHist3DT_eec__hist__axis__log_eec__hist__axis__id_eec__hist__axis__id_t_t(void *x, int *SWIGUNUSEDPARM(newmemory)) {
-    return (void *)((eec::hist::EECHistBase< eec::hist::EECHist3D< eec::hist::axis::log,eec::hist::axis::id,eec::hist::axis::id > > *) (eec::hist::EECHist3D< eec::hist::axis::log,eec::hist::axis::id,eec::hist::axis::id > *) ((eec::EECTriangleOPE< axis::log,axis::id,axis::id > *) x));
-}
-static void *_p_eec__hist__EECHist3DT_bh__axis__transform__id_bh__axis__transform__log_bh__axis__transform__id_tTo_p_eec__hist__EECHistBaseT_eec__hist__EECHist3DT_eec__hist__axis__id_eec__hist__axis__log_eec__hist__axis__id_t_t(void *x, int *SWIGUNUSEDPARM(newmemory)) {
-    return (void *)((eec::hist::EECHistBase< eec::hist::EECHist3D< eec::hist::axis::id,eec::hist::axis::log,eec::hist::axis::id > > *)  ((eec::hist::EECHist3D< bh::axis::transform::id,bh::axis::transform::log,bh::axis::transform::id > *) x));
-}
-static void *_p_eec__EECTriangleOPET_axis__id_axis__log_axis__id_tTo_p_eec__hist__EECHistBaseT_eec__hist__EECHist3DT_eec__hist__axis__id_eec__hist__axis__log_eec__hist__axis__id_t_t(void *x, int *SWIGUNUSEDPARM(newmemory)) {
-    return (void *)((eec::hist::EECHistBase< eec::hist::EECHist3D< eec::hist::axis::id,eec::hist::axis::log,eec::hist::axis::id > > *) (eec::hist::EECHist3D< eec::hist::axis::id,eec::hist::axis::log,eec::hist::axis::id > *) ((eec::EECTriangleOPE< axis::id,axis::log,axis::id > *) x));
-}
-static void *_p_eec__hist__EECHist3DT_bh__axis__transform__log_bh__axis__transform__log_bh__axis__transform__id_tTo_p_eec__hist__EECHistBaseT_eec__hist__EECHist3DT_eec__hist__axis__log_eec__hist__axis__log_eec__hist__axis__id_t_t(void *x, int *SWIGUNUSEDPARM(newmemory)) {
-    return (void *)((eec::hist::EECHistBase< eec::hist::EECHist3D< eec::hist::axis::log,eec::hist::axis::log,eec::hist::axis::id > > *)  ((eec::hist::EECHist3D< bh::axis::transform::log,bh::axis::transform::log,bh::axis::transform::id > *) x));
-}
-static void *_p_eec__EECTriangleOPET_axis__log_axis__log_axis__id_tTo_p_eec__hist__EECHistBaseT_eec__hist__EECHist3DT_eec__hist__axis__log_eec__hist__axis__log_eec__hist__axis__id_t_t(void *x, int *SWIGUNUSEDPARM(newmemory)) {
-    return (void *)((eec::hist::EECHistBase< eec::hist::EECHist3D< eec::hist::axis::log,eec::hist::axis::log,eec::hist::axis::id > > *) (eec::hist::EECHist3D< eec::hist::axis::log,eec::hist::axis::log,eec::hist::axis::id > *) ((eec::EECTriangleOPE< axis::log,axis::log,axis::id > *) x));
-}
-static void *_p_eec__EECLongestSideT_axis__id_tTo_p_eec__hist__EECHist1DT_bh__axis__transform__id_t(void *x, int *SWIGUNUSEDPARM(newmemory)) {
-    return (void *)((eec::hist::EECHist1D< bh::axis::transform::id > *)  ((eec::EECLongestSide< axis::id > *) x));
-}
-static void *_p_eec__EECTriangleOPET_axis__log_axis__id_axis__id_tTo_p_eec__hist__EECHist3DT_bh__axis__transform__log_bh__axis__transform__id_bh__axis__transform__id_t(void *x, int *SWIGUNUSEDPARM(newmemory)) {
-    return (void *)((eec::hist::EECHist3D< bh::axis::transform::log,bh::axis::transform::id,bh::axis::transform::id > *)  ((eec::EECTriangleOPE< axis::log,axis::id,axis::id > *) x));
-}
-static void *_p_eec__EECTriangleOPET_axis__log_axis__log_axis__id_tTo_p_eec__hist__EECHist3DT_bh__axis__transform__log_bh__axis__transform__log_bh__axis__transform__id_t(void *x, int *SWIGUNUSEDPARM(newmemory)) {
-    return (void *)((eec::hist::EECHist3D< bh::axis::transform::log,bh::axis::transform::log,bh::axis::transform::id > *)  ((eec::EECTriangleOPE< axis::log,axis::log,axis::id > *) x));
-}
 static swig_type_info _swigt__p_Axis = {"_p_Axis", "Axis *", 0, 0, (void*)0, 0};
 static swig_type_info _swigt__p_Axis0 = {"_p_Axis0", "Axis0 *", 0, 0, (void*)0, 0};
 static swig_type_info _swigt__p_Axis1 = {"_p_Axis1", "Axis1 *", 0, 0, (void*)0, 0};
 static swig_type_info _swigt__p_Axis2 = {"_p_Axis2", "Axis2 *", 0, 0, (void*)0, 0};
+static swig_type_info _swigt__p_Base = {"_p_Base", "Base *", 0, 0, (void*)0, 0};
 static swig_type_info _swigt__p_Hist = {"_p_Hist", "Hist *", 0, 0, (void*)0, 0};
+static swig_type_info _swigt__p_Self = {"_p_Self", "Self *", 0, 0, (void*)0, 0};
 static swig_type_info _swigt__p_SimpleHist = {"_p_SimpleHist", "SimpleHist *", 0, 0, (void*)0, 0};
 static swig_type_info _swigt__p_Traits = {"_p_Traits", "Traits *", 0, 0, (void*)0, 0};
 static swig_type_info _swigt__p_allocator_type = {"_p_allocator_type", "allocator_type *", 0, 0, (void*)0, 0};
-static swig_type_info _swigt__p_bh__axis__transform__id = {"_p_bh__axis__transform__id", "bh::axis::transform::id *|eec::hist::axis::id *", 0, 0, (void*)0, 0};
-static swig_type_info _swigt__p_bh__axis__transform__log = {"_p_bh__axis__transform__log", "bh::axis::transform::log *|eec::hist::axis::log *", 0, 0, (void*)0, 0};
-static swig_type_info _swigt__p_bh__dense_storageT_accumulators__simple_weighted_sumT_t_t = {"_p_bh__dense_storageT_accumulators__simple_weighted_sumT_t_t", "bh::dense_storage< accumulators::simple_weighted_sum< > > *|eec::hist::simple_weight_storage *", 0, 0, (void*)0, 0};
+static swig_type_info _swigt__p_boost__histogram__algorithm__reduce_command = {"_p_boost__histogram__algorithm__reduce_command", "std::vector< boost::histogram::algorithm::reduce_command >::value_type *|boost::histogram::algorithm::reduce_command *", 0, 0, (void*)0, 0};
+static swig_type_info _swigt__p_boost__histogram__axis__transform__id = {"_p_boost__histogram__axis__transform__id", "boost::histogram::axis::transform::id *|eec::hist::axis::id *", 0, 0, (void*)0, 0};
+static swig_type_info _swigt__p_boost__histogram__axis__transform__log = {"_p_boost__histogram__axis__transform__log", "boost::histogram::axis::transform::log *|eec::hist::axis::log *", 0, 0, (void*)0, 0};
+static swig_type_info _swigt__p_boost__histogram__dense_storageT_accumulators__simple_weighted_sumT_t_t = {"_p_boost__histogram__dense_storageT_accumulators__simple_weighted_sumT_t_t", "boost::histogram::dense_storage< accumulators::simple_weighted_sum< > > *|eec::hist::simple_weight_storage *", 0, 0, (void*)0, 0};
 static swig_type_info _swigt__p_char = {"_p_char", "char *", 0, 0, (void*)0, 0};
 static swig_type_info _swigt__p_difference_type = {"_p_difference_type", "difference_type *", 0, 0, (void*)0, 0};
 static swig_type_info _swigt__p_eec__DynamicMultinomial = {"_p_eec__DynamicMultinomial", "eec::DynamicMultinomial *", 0, 0, (void*)0, 0};
@@ -25598,28 +30628,30 @@ static swig_type_info _swigt__p_eec__MultinomialT_3_t = {"_p_eec__MultinomialT_3
 static swig_type_info _swigt__p_eec__MultinomialT_4_t = {"_p_eec__MultinomialT_4_t", "eec::Multinomial< 4 > *", 0, 0, (void*)0, 0};
 static swig_type_info _swigt__p_eec__MultinomialT_5_t = {"_p_eec__MultinomialT_5_t", "eec::Multinomial< 5 > *", 0, 0, (void*)0, 0};
 static swig_type_info _swigt__p_eec__MultinomialT_6_t = {"_p_eec__MultinomialT_6_t", "eec::Multinomial< 6 > *", 0, 0, (void*)0, 0};
-static swig_type_info _swigt__p_eec__hist__EECHist1DT_bh__axis__transform__id_t = {"_p_eec__hist__EECHist1DT_bh__axis__transform__id_t", "eec::hist::EECHist1D< bh::axis::transform::id > *|eec::hist::EECHist1D< eec::hist::axis::id > *", 0, 0, (void*)0, 0};
-static swig_type_info _swigt__p_eec__hist__EECHist1DT_bh__axis__transform__log_t = {"_p_eec__hist__EECHist1DT_bh__axis__transform__log_t", "eec::hist::EECHist1D< bh::axis::transform::log > *|eec::hist::EECHist1D< eec::hist::axis::log > *", 0, 0, (void*)0, 0};
-static swig_type_info _swigt__p_eec__hist__EECHist3DT_bh__axis__transform__id_bh__axis__transform__id_bh__axis__transform__id_t = {"_p_eec__hist__EECHist3DT_bh__axis__transform__id_bh__axis__transform__id_bh__axis__transform__id_t", "eec::hist::EECHist3D< bh::axis::transform::id,bh::axis::transform::id,bh::axis::transform::id > *|eec::hist::EECHist3D< eec::hist::axis::id,eec::hist::axis::id,eec::hist::axis::id > *", 0, 0, (void*)0, 0};
-static swig_type_info _swigt__p_eec__hist__EECHist3DT_bh__axis__transform__id_bh__axis__transform__log_bh__axis__transform__id_t = {"_p_eec__hist__EECHist3DT_bh__axis__transform__id_bh__axis__transform__log_bh__axis__transform__id_t", "eec::hist::EECHist3D< bh::axis::transform::id,bh::axis::transform::log,bh::axis::transform::id > *|eec::hist::EECHist3D< eec::hist::axis::id,eec::hist::axis::log,eec::hist::axis::id > *", 0, 0, (void*)0, 0};
-static swig_type_info _swigt__p_eec__hist__EECHist3DT_bh__axis__transform__log_bh__axis__transform__id_bh__axis__transform__id_t = {"_p_eec__hist__EECHist3DT_bh__axis__transform__log_bh__axis__transform__id_bh__axis__transform__id_t", "eec::hist::EECHist3D< bh::axis::transform::log,bh::axis::transform::id,bh::axis::transform::id > *|eec::hist::EECHist3D< eec::hist::axis::log,eec::hist::axis::id,eec::hist::axis::id > *", 0, 0, (void*)0, 0};
-static swig_type_info _swigt__p_eec__hist__EECHist3DT_bh__axis__transform__log_bh__axis__transform__log_bh__axis__transform__id_t = {"_p_eec__hist__EECHist3DT_bh__axis__transform__log_bh__axis__transform__log_bh__axis__transform__id_t", "eec::hist::EECHist3D< bh::axis::transform::log,bh::axis::transform::log,bh::axis::transform::id > *|eec::hist::EECHist3D< eec::hist::axis::log,eec::hist::axis::log,eec::hist::axis::id > *", 0, 0, (void*)0, 0};
-static swig_type_info _swigt__p_eec__hist__EECHistBaseT_eec__hist__EECHist1DT_eec__hist__axis__id_t_t = {"_p_eec__hist__EECHistBaseT_eec__hist__EECHist1DT_eec__hist__axis__id_t_t", "eec::hist::EECHistBase< eec::hist::EECHist1D< bh::axis::transform::id > > *|eec::hist::EECHistBase< eec::hist::EECHist1D< eec::hist::axis::id > > *", 0, 0, (void*)0, 0};
-static swig_type_info _swigt__p_eec__hist__EECHistBaseT_eec__hist__EECHist1DT_eec__hist__axis__log_t_t = {"_p_eec__hist__EECHistBaseT_eec__hist__EECHist1DT_eec__hist__axis__log_t_t", "eec::hist::EECHistBase< eec::hist::EECHist1D< bh::axis::transform::log > > *|eec::hist::EECHistBase< eec::hist::EECHist1D< eec::hist::axis::log > > *", 0, 0, (void*)0, 0};
-static swig_type_info _swigt__p_eec__hist__EECHistBaseT_eec__hist__EECHist3DT_eec__hist__axis__id_eec__hist__axis__id_eec__hist__axis__id_t_t = {"_p_eec__hist__EECHistBaseT_eec__hist__EECHist3DT_eec__hist__axis__id_eec__hist__axis__id_eec__hist__axis__id_t_t", "eec::hist::EECHistBase< eec::hist::EECHist3D< bh::axis::transform::id,bh::axis::transform::id,bh::axis::transform::id > > *|eec::hist::EECHistBase< eec::hist::EECHist3D< eec::hist::axis::id,eec::hist::axis::id,eec::hist::axis::id > > *", 0, 0, (void*)0, 0};
-static swig_type_info _swigt__p_eec__hist__EECHistBaseT_eec__hist__EECHist3DT_eec__hist__axis__id_eec__hist__axis__log_eec__hist__axis__id_t_t = {"_p_eec__hist__EECHistBaseT_eec__hist__EECHist3DT_eec__hist__axis__id_eec__hist__axis__log_eec__hist__axis__id_t_t", "eec::hist::EECHistBase< eec::hist::EECHist3D< bh::axis::transform::id,bh::axis::transform::log,bh::axis::transform::id > > *|eec::hist::EECHistBase< eec::hist::EECHist3D< eec::hist::axis::id,eec::hist::axis::log,eec::hist::axis::id > > *", 0, 0, (void*)0, 0};
-static swig_type_info _swigt__p_eec__hist__EECHistBaseT_eec__hist__EECHist3DT_eec__hist__axis__log_eec__hist__axis__id_eec__hist__axis__id_t_t = {"_p_eec__hist__EECHistBaseT_eec__hist__EECHist3DT_eec__hist__axis__log_eec__hist__axis__id_eec__hist__axis__id_t_t", "eec::hist::EECHistBase< eec::hist::EECHist3D< bh::axis::transform::log,bh::axis::transform::id,bh::axis::transform::id > > *|eec::hist::EECHistBase< eec::hist::EECHist3D< eec::hist::axis::log,eec::hist::axis::id,eec::hist::axis::id > > *", 0, 0, (void*)0, 0};
-static swig_type_info _swigt__p_eec__hist__EECHistBaseT_eec__hist__EECHist3DT_eec__hist__axis__log_eec__hist__axis__log_eec__hist__axis__id_t_t = {"_p_eec__hist__EECHistBaseT_eec__hist__EECHist3DT_eec__hist__axis__log_eec__hist__axis__log_eec__hist__axis__id_t_t", "eec::hist::EECHistBase< eec::hist::EECHist3D< bh::axis::transform::log,bh::axis::transform::log,bh::axis::transform::id > > *|eec::hist::EECHistBase< eec::hist::EECHist3D< eec::hist::axis::log,eec::hist::axis::log,eec::hist::axis::id > > *", 0, 0, (void*)0, 0};
+static swig_type_info _swigt__p_eec__hist__EECHist1DT_boost__histogram__axis__transform__id_t = {"_p_eec__hist__EECHist1DT_boost__histogram__axis__transform__id_t", "eec::hist::EECHist1D< eec::hist::axis::id > *|eec::hist::EECHist1D< boost::histogram::axis::transform::id > *", 0, 0, (void*)0, 0};
+static swig_type_info _swigt__p_eec__hist__EECHist1DT_boost__histogram__axis__transform__log_t = {"_p_eec__hist__EECHist1DT_boost__histogram__axis__transform__log_t", "eec::hist::EECHist1D< boost::histogram::axis::transform::log > *|eec::hist::EECHist1D< eec::hist::axis::log > *", 0, 0, (void*)0, 0};
+static swig_type_info _swigt__p_eec__hist__EECHist3DT_boost__histogram__axis__transform__id_boost__histogram__axis__transform__id_boost__histogram__axis__transform__id_t = {"_p_eec__hist__EECHist3DT_boost__histogram__axis__transform__id_boost__histogram__axis__transform__id_boost__histogram__axis__transform__id_t", "eec::hist::EECHist3D< eec::hist::axis::id,eec::hist::axis::id,eec::hist::axis::id > *|eec::hist::EECHist3D< boost::histogram::axis::transform::id,boost::histogram::axis::transform::id,boost::histogram::axis::transform::id > *", 0, 0, (void*)0, 0};
+static swig_type_info _swigt__p_eec__hist__EECHist3DT_boost__histogram__axis__transform__id_boost__histogram__axis__transform__log_boost__histogram__axis__transform__id_t = {"_p_eec__hist__EECHist3DT_boost__histogram__axis__transform__id_boost__histogram__axis__transform__log_boost__histogram__axis__transform__id_t", "eec::hist::EECHist3D< eec::hist::axis::id,eec::hist::axis::log,eec::hist::axis::id > *|eec::hist::EECHist3D< boost::histogram::axis::transform::id,boost::histogram::axis::transform::log,boost::histogram::axis::transform::id > *", 0, 0, (void*)0, 0};
+static swig_type_info _swigt__p_eec__hist__EECHist3DT_boost__histogram__axis__transform__log_boost__histogram__axis__transform__id_boost__histogram__axis__transform__id_t = {"_p_eec__hist__EECHist3DT_boost__histogram__axis__transform__log_boost__histogram__axis__transform__id_boost__histogram__axis__transform__id_t", "eec::hist::EECHist3D< eec::hist::axis::log,eec::hist::axis::id,eec::hist::axis::id > *|eec::hist::EECHist3D< boost::histogram::axis::transform::log,boost::histogram::axis::transform::id,boost::histogram::axis::transform::id > *", 0, 0, (void*)0, 0};
+static swig_type_info _swigt__p_eec__hist__EECHist3DT_boost__histogram__axis__transform__log_boost__histogram__axis__transform__log_boost__histogram__axis__transform__id_t = {"_p_eec__hist__EECHist3DT_boost__histogram__axis__transform__log_boost__histogram__axis__transform__log_boost__histogram__axis__transform__id_t", "eec::hist::EECHist3D< eec::hist::axis::log,eec::hist::axis::log,eec::hist::axis::id > *|eec::hist::EECHist3D< boost::histogram::axis::transform::log,boost::histogram::axis::transform::log,boost::histogram::axis::transform::id > *", 0, 0, (void*)0, 0};
+static swig_type_info _swigt__p_eec__hist__EECHistBaseT_eec__hist__EECHist1DT_eec__hist__axis__id_t_t = {"_p_eec__hist__EECHistBaseT_eec__hist__EECHist1DT_eec__hist__axis__id_t_t", "eec::hist::EECHistBase< eec::hist::EECHist1D< boost::histogram::axis::transform::id > > *|eec::hist::EECHistBase< eec::hist::EECHist1D< eec::hist::axis::id > > *", 0, 0, (void*)0, 0};
+static swig_type_info _swigt__p_eec__hist__EECHistBaseT_eec__hist__EECHist1DT_eec__hist__axis__log_t_t = {"_p_eec__hist__EECHistBaseT_eec__hist__EECHist1DT_eec__hist__axis__log_t_t", "eec::hist::EECHistBase< eec::hist::EECHist1D< boost::histogram::axis::transform::log > > *|eec::hist::EECHistBase< eec::hist::EECHist1D< eec::hist::axis::log > > *", 0, 0, (void*)0, 0};
+static swig_type_info _swigt__p_eec__hist__EECHistBaseT_eec__hist__EECHist3DT_eec__hist__axis__id_eec__hist__axis__id_eec__hist__axis__id_t_t = {"_p_eec__hist__EECHistBaseT_eec__hist__EECHist3DT_eec__hist__axis__id_eec__hist__axis__id_eec__hist__axis__id_t_t", "eec::hist::EECHistBase< eec::hist::EECHist3D< boost::histogram::axis::transform::id,boost::histogram::axis::transform::id,boost::histogram::axis::transform::id > > *|eec::hist::EECHistBase< eec::hist::EECHist3D< eec::hist::axis::id,eec::hist::axis::id,eec::hist::axis::id > > *", 0, 0, (void*)0, 0};
+static swig_type_info _swigt__p_eec__hist__EECHistBaseT_eec__hist__EECHist3DT_eec__hist__axis__id_eec__hist__axis__log_eec__hist__axis__id_t_t = {"_p_eec__hist__EECHistBaseT_eec__hist__EECHist3DT_eec__hist__axis__id_eec__hist__axis__log_eec__hist__axis__id_t_t", "eec::hist::EECHistBase< eec::hist::EECHist3D< boost::histogram::axis::transform::id,boost::histogram::axis::transform::log,boost::histogram::axis::transform::id > > *|eec::hist::EECHistBase< eec::hist::EECHist3D< eec::hist::axis::id,eec::hist::axis::log,eec::hist::axis::id > > *", 0, 0, (void*)0, 0};
+static swig_type_info _swigt__p_eec__hist__EECHistBaseT_eec__hist__EECHist3DT_eec__hist__axis__log_eec__hist__axis__id_eec__hist__axis__id_t_t = {"_p_eec__hist__EECHistBaseT_eec__hist__EECHist3DT_eec__hist__axis__log_eec__hist__axis__id_eec__hist__axis__id_t_t", "eec::hist::EECHistBase< eec::hist::EECHist3D< boost::histogram::axis::transform::log,boost::histogram::axis::transform::id,boost::histogram::axis::transform::id > > *|eec::hist::EECHistBase< eec::hist::EECHist3D< eec::hist::axis::log,eec::hist::axis::id,eec::hist::axis::id > > *", 0, 0, (void*)0, 0};
+static swig_type_info _swigt__p_eec__hist__EECHistBaseT_eec__hist__EECHist3DT_eec__hist__axis__log_eec__hist__axis__log_eec__hist__axis__id_t_t = {"_p_eec__hist__EECHistBaseT_eec__hist__EECHist3DT_eec__hist__axis__log_eec__hist__axis__log_eec__hist__axis__id_t_t", "eec::hist::EECHistBase< eec::hist::EECHist3D< boost::histogram::axis::transform::log,boost::histogram::axis::transform::log,boost::histogram::axis::transform::id > > *|eec::hist::EECHistBase< eec::hist::EECHist3D< eec::hist::axis::log,eec::hist::axis::log,eec::hist::axis::id > > *", 0, 0, (void*)0, 0};
 static swig_type_info _swigt__p_int = {"_p_int", "int *", 0, 0, (void*)0, 0};
 static swig_type_info _swigt__p_p_PyObject = {"_p_p_PyObject", "PyObject **", 0, 0, (void*)0, 0};
 static swig_type_info _swigt__p_p_double = {"_p_p_double", "double **", 0, 0, (void*)0, 0};
 static swig_type_info _swigt__p_size_type = {"_p_size_type", "size_type *", 0, 0, (void*)0, 0};
+static swig_type_info _swigt__p_std__allocatorT_boost__histogram__algorithm__reduce_command_t = {"_p_std__allocatorT_boost__histogram__algorithm__reduce_command_t", "std::vector< boost::histogram::algorithm::reduce_command >::allocator_type *|std::allocator< boost::histogram::algorithm::reduce_command > *", 0, 0, (void*)0, 0};
 static swig_type_info _swigt__p_std__allocatorT_double_t = {"_p_std__allocatorT_double_t", "std::vector< double >::allocator_type *|std::allocator< double > *", 0, 0, (void*)0, 0};
 static swig_type_info _swigt__p_std__allocatorT_unsigned_int_t = {"_p_std__allocatorT_unsigned_int_t", "std::vector< unsigned int >::allocator_type *|std::allocator< unsigned int > *", 0, 0, (void*)0, 0};
 static swig_type_info _swigt__p_std__arrayT_unsigned_int_13_t = {"_p_std__arrayT_unsigned_int_13_t", "std::array< unsigned int,13 > *", 0, 0, (void*)0, 0};
 static swig_type_info _swigt__p_std__invalid_argument = {"_p_std__invalid_argument", "std::invalid_argument *", 0, 0, (void*)0, 0};
 static swig_type_info _swigt__p_std__ostream = {"_p_std__ostream", "std::ostream *", 0, 0, (void*)0, 0};
 static swig_type_info _swigt__p_std__ostringstream = {"_p_std__ostringstream", "std::ostringstream *", 0, 0, (void*)0, 0};
+static swig_type_info _swigt__p_std__vectorT_boost__histogram__algorithm__reduce_command_std__allocatorT_boost__histogram__algorithm__reduce_command_t_t = {"_p_std__vectorT_boost__histogram__algorithm__reduce_command_std__allocatorT_boost__histogram__algorithm__reduce_command_t_t", "std::vector< boost::histogram::algorithm::reduce_command > *|std::vector< boost::histogram::algorithm::reduce_command,std::allocator< boost::histogram::algorithm::reduce_command > > *", 0, 0, (void*)0, 0};
 static swig_type_info _swigt__p_std__vectorT_double_const_p_std__allocatorT_double_const_p_t_t = {"_p_std__vectorT_double_const_p_std__allocatorT_double_const_p_t_t", "std::vector< double const *,std::allocator< double const * > > *", 0, 0, (void*)0, 0};
 static swig_type_info _swigt__p_std__vectorT_double_std__allocatorT_double_t_t = {"_p_std__vectorT_double_std__allocatorT_double_t_t", "std::vector< double,std::allocator< double > > *|std::vector< double > *", 0, 0, (void*)0, 0};
 static swig_type_info _swigt__p_std__vectorT_unsigned_int_std__allocatorT_unsigned_int_t_t = {"_p_std__vectorT_unsigned_int_std__allocatorT_unsigned_int_t_t", "std::vector< unsigned int,std::allocator< unsigned int > > *|std::vector< unsigned int > *", 0, 0, (void*)0, 0};
@@ -25631,13 +30663,16 @@ static swig_type_info *swig_type_initial[] = {
   &_swigt__p_Axis0,
   &_swigt__p_Axis1,
   &_swigt__p_Axis2,
+  &_swigt__p_Base,
   &_swigt__p_Hist,
+  &_swigt__p_Self,
   &_swigt__p_SimpleHist,
   &_swigt__p_Traits,
   &_swigt__p_allocator_type,
-  &_swigt__p_bh__axis__transform__id,
-  &_swigt__p_bh__axis__transform__log,
-  &_swigt__p_bh__dense_storageT_accumulators__simple_weighted_sumT_t_t,
+  &_swigt__p_boost__histogram__algorithm__reduce_command,
+  &_swigt__p_boost__histogram__axis__transform__id,
+  &_swigt__p_boost__histogram__axis__transform__log,
+  &_swigt__p_boost__histogram__dense_storageT_accumulators__simple_weighted_sumT_t_t,
   &_swigt__p_char,
   &_swigt__p_difference_type,
   &_swigt__p_eec__DynamicMultinomial,
@@ -25654,12 +30689,12 @@ static swig_type_info *swig_type_initial[] = {
   &_swigt__p_eec__MultinomialT_4_t,
   &_swigt__p_eec__MultinomialT_5_t,
   &_swigt__p_eec__MultinomialT_6_t,
-  &_swigt__p_eec__hist__EECHist1DT_bh__axis__transform__id_t,
-  &_swigt__p_eec__hist__EECHist1DT_bh__axis__transform__log_t,
-  &_swigt__p_eec__hist__EECHist3DT_bh__axis__transform__id_bh__axis__transform__id_bh__axis__transform__id_t,
-  &_swigt__p_eec__hist__EECHist3DT_bh__axis__transform__id_bh__axis__transform__log_bh__axis__transform__id_t,
-  &_swigt__p_eec__hist__EECHist3DT_bh__axis__transform__log_bh__axis__transform__id_bh__axis__transform__id_t,
-  &_swigt__p_eec__hist__EECHist3DT_bh__axis__transform__log_bh__axis__transform__log_bh__axis__transform__id_t,
+  &_swigt__p_eec__hist__EECHist1DT_boost__histogram__axis__transform__id_t,
+  &_swigt__p_eec__hist__EECHist1DT_boost__histogram__axis__transform__log_t,
+  &_swigt__p_eec__hist__EECHist3DT_boost__histogram__axis__transform__id_boost__histogram__axis__transform__id_boost__histogram__axis__transform__id_t,
+  &_swigt__p_eec__hist__EECHist3DT_boost__histogram__axis__transform__id_boost__histogram__axis__transform__log_boost__histogram__axis__transform__id_t,
+  &_swigt__p_eec__hist__EECHist3DT_boost__histogram__axis__transform__log_boost__histogram__axis__transform__id_boost__histogram__axis__transform__id_t,
+  &_swigt__p_eec__hist__EECHist3DT_boost__histogram__axis__transform__log_boost__histogram__axis__transform__log_boost__histogram__axis__transform__id_t,
   &_swigt__p_eec__hist__EECHistBaseT_eec__hist__EECHist1DT_eec__hist__axis__id_t_t,
   &_swigt__p_eec__hist__EECHistBaseT_eec__hist__EECHist1DT_eec__hist__axis__log_t_t,
   &_swigt__p_eec__hist__EECHistBaseT_eec__hist__EECHist3DT_eec__hist__axis__id_eec__hist__axis__id_eec__hist__axis__id_t_t,
@@ -25670,12 +30705,14 @@ static swig_type_info *swig_type_initial[] = {
   &_swigt__p_p_PyObject,
   &_swigt__p_p_double,
   &_swigt__p_size_type,
+  &_swigt__p_std__allocatorT_boost__histogram__algorithm__reduce_command_t,
   &_swigt__p_std__allocatorT_double_t,
   &_swigt__p_std__allocatorT_unsigned_int_t,
   &_swigt__p_std__arrayT_unsigned_int_13_t,
   &_swigt__p_std__invalid_argument,
   &_swigt__p_std__ostream,
   &_swigt__p_std__ostringstream,
+  &_swigt__p_std__vectorT_boost__histogram__algorithm__reduce_command_std__allocatorT_boost__histogram__algorithm__reduce_command_t_t,
   &_swigt__p_std__vectorT_double_const_p_std__allocatorT_double_const_p_t_t,
   &_swigt__p_std__vectorT_double_std__allocatorT_double_t_t,
   &_swigt__p_std__vectorT_unsigned_int_std__allocatorT_unsigned_int_t_t,
@@ -25687,13 +30724,16 @@ static swig_cast_info _swigc__p_Axis[] = {  {&_swigt__p_Axis, 0, 0, 0},{0, 0, 0,
 static swig_cast_info _swigc__p_Axis0[] = {  {&_swigt__p_Axis0, 0, 0, 0},{0, 0, 0, 0}};
 static swig_cast_info _swigc__p_Axis1[] = {  {&_swigt__p_Axis1, 0, 0, 0},{0, 0, 0, 0}};
 static swig_cast_info _swigc__p_Axis2[] = {  {&_swigt__p_Axis2, 0, 0, 0},{0, 0, 0, 0}};
+static swig_cast_info _swigc__p_Base[] = {  {&_swigt__p_Base, 0, 0, 0},{0, 0, 0, 0}};
 static swig_cast_info _swigc__p_Hist[] = {  {&_swigt__p_Hist, 0, 0, 0},{0, 0, 0, 0}};
+static swig_cast_info _swigc__p_Self[] = {  {&_swigt__p_Self, 0, 0, 0},{0, 0, 0, 0}};
 static swig_cast_info _swigc__p_SimpleHist[] = {  {&_swigt__p_SimpleHist, 0, 0, 0},{0, 0, 0, 0}};
 static swig_cast_info _swigc__p_Traits[] = {  {&_swigt__p_Traits, 0, 0, 0},{0, 0, 0, 0}};
 static swig_cast_info _swigc__p_allocator_type[] = {  {&_swigt__p_allocator_type, 0, 0, 0},{0, 0, 0, 0}};
-static swig_cast_info _swigc__p_bh__axis__transform__id[] = {  {&_swigt__p_bh__axis__transform__id, 0, 0, 0},{0, 0, 0, 0}};
-static swig_cast_info _swigc__p_bh__axis__transform__log[] = {  {&_swigt__p_bh__axis__transform__log, 0, 0, 0},{0, 0, 0, 0}};
-static swig_cast_info _swigc__p_bh__dense_storageT_accumulators__simple_weighted_sumT_t_t[] = {  {&_swigt__p_bh__dense_storageT_accumulators__simple_weighted_sumT_t_t, 0, 0, 0},{0, 0, 0, 0}};
+static swig_cast_info _swigc__p_boost__histogram__algorithm__reduce_command[] = {  {&_swigt__p_boost__histogram__algorithm__reduce_command, 0, 0, 0},{0, 0, 0, 0}};
+static swig_cast_info _swigc__p_boost__histogram__axis__transform__id[] = {  {&_swigt__p_boost__histogram__axis__transform__id, 0, 0, 0},{0, 0, 0, 0}};
+static swig_cast_info _swigc__p_boost__histogram__axis__transform__log[] = {  {&_swigt__p_boost__histogram__axis__transform__log, 0, 0, 0},{0, 0, 0, 0}};
+static swig_cast_info _swigc__p_boost__histogram__dense_storageT_accumulators__simple_weighted_sumT_t_t[] = {  {&_swigt__p_boost__histogram__dense_storageT_accumulators__simple_weighted_sumT_t_t, 0, 0, 0},{0, 0, 0, 0}};
 static swig_cast_info _swigc__p_char[] = {  {&_swigt__p_char, 0, 0, 0},{0, 0, 0, 0}};
 static swig_cast_info _swigc__p_difference_type[] = {  {&_swigt__p_difference_type, 0, 0, 0},{0, 0, 0, 0}};
 static swig_cast_info _swigc__p_eec__DynamicMultinomial[] = {  {&_swigt__p_eec__DynamicMultinomial, 0, 0, 0},{0, 0, 0, 0}};
@@ -25710,28 +30750,30 @@ static swig_cast_info _swigc__p_eec__MultinomialT_3_t[] = {  {&_swigt__p_eec__Mu
 static swig_cast_info _swigc__p_eec__MultinomialT_4_t[] = {  {&_swigt__p_eec__MultinomialT_4_t, 0, 0, 0},{0, 0, 0, 0}};
 static swig_cast_info _swigc__p_eec__MultinomialT_5_t[] = {  {&_swigt__p_eec__MultinomialT_5_t, 0, 0, 0},{0, 0, 0, 0}};
 static swig_cast_info _swigc__p_eec__MultinomialT_6_t[] = {  {&_swigt__p_eec__MultinomialT_6_t, 0, 0, 0},{0, 0, 0, 0}};
-static swig_cast_info _swigc__p_eec__hist__EECHist1DT_bh__axis__transform__id_t[] = {  {&_swigt__p_eec__hist__EECHist1DT_bh__axis__transform__id_t, 0, 0, 0},  {&_swigt__p_eec__EECLongestSideT_axis__id_t, _p_eec__EECLongestSideT_axis__id_tTo_p_eec__hist__EECHist1DT_bh__axis__transform__id_t, 0, 0},{0, 0, 0, 0}};
-static swig_cast_info _swigc__p_eec__hist__EECHist1DT_bh__axis__transform__log_t[] = {  {&_swigt__p_eec__hist__EECHist1DT_bh__axis__transform__log_t, 0, 0, 0},  {&_swigt__p_eec__EECLongestSideT_axis__log_t, _p_eec__EECLongestSideT_axis__log_tTo_p_eec__hist__EECHist1DT_bh__axis__transform__log_t, 0, 0},{0, 0, 0, 0}};
-static swig_cast_info _swigc__p_eec__hist__EECHist3DT_bh__axis__transform__id_bh__axis__transform__id_bh__axis__transform__id_t[] = {  {&_swigt__p_eec__EECTriangleOPET_axis__id_axis__id_axis__id_t, _p_eec__EECTriangleOPET_axis__id_axis__id_axis__id_tTo_p_eec__hist__EECHist3DT_bh__axis__transform__id_bh__axis__transform__id_bh__axis__transform__id_t, 0, 0},  {&_swigt__p_eec__hist__EECHist3DT_bh__axis__transform__id_bh__axis__transform__id_bh__axis__transform__id_t, 0, 0, 0},{0, 0, 0, 0}};
-static swig_cast_info _swigc__p_eec__hist__EECHist3DT_bh__axis__transform__id_bh__axis__transform__log_bh__axis__transform__id_t[] = {  {&_swigt__p_eec__EECTriangleOPET_axis__id_axis__log_axis__id_t, _p_eec__EECTriangleOPET_axis__id_axis__log_axis__id_tTo_p_eec__hist__EECHist3DT_bh__axis__transform__id_bh__axis__transform__log_bh__axis__transform__id_t, 0, 0},  {&_swigt__p_eec__hist__EECHist3DT_bh__axis__transform__id_bh__axis__transform__log_bh__axis__transform__id_t, 0, 0, 0},{0, 0, 0, 0}};
-static swig_cast_info _swigc__p_eec__hist__EECHist3DT_bh__axis__transform__log_bh__axis__transform__id_bh__axis__transform__id_t[] = {  {&_swigt__p_eec__hist__EECHist3DT_bh__axis__transform__log_bh__axis__transform__id_bh__axis__transform__id_t, 0, 0, 0},  {&_swigt__p_eec__EECTriangleOPET_axis__log_axis__id_axis__id_t, _p_eec__EECTriangleOPET_axis__log_axis__id_axis__id_tTo_p_eec__hist__EECHist3DT_bh__axis__transform__log_bh__axis__transform__id_bh__axis__transform__id_t, 0, 0},{0, 0, 0, 0}};
-static swig_cast_info _swigc__p_eec__hist__EECHist3DT_bh__axis__transform__log_bh__axis__transform__log_bh__axis__transform__id_t[] = {  {&_swigt__p_eec__hist__EECHist3DT_bh__axis__transform__log_bh__axis__transform__log_bh__axis__transform__id_t, 0, 0, 0},  {&_swigt__p_eec__EECTriangleOPET_axis__log_axis__log_axis__id_t, _p_eec__EECTriangleOPET_axis__log_axis__log_axis__id_tTo_p_eec__hist__EECHist3DT_bh__axis__transform__log_bh__axis__transform__log_bh__axis__transform__id_t, 0, 0},{0, 0, 0, 0}};
-static swig_cast_info _swigc__p_eec__hist__EECHistBaseT_eec__hist__EECHist1DT_eec__hist__axis__id_t_t[] = {  {&_swigt__p_eec__hist__EECHistBaseT_eec__hist__EECHist1DT_eec__hist__axis__id_t_t, 0, 0, 0},  {&_swigt__p_eec__hist__EECHist1DT_bh__axis__transform__id_t, _p_eec__hist__EECHist1DT_bh__axis__transform__id_tTo_p_eec__hist__EECHistBaseT_eec__hist__EECHist1DT_eec__hist__axis__id_t_t, 0, 0},  {&_swigt__p_eec__EECLongestSideT_axis__id_t, _p_eec__EECLongestSideT_axis__id_tTo_p_eec__hist__EECHistBaseT_eec__hist__EECHist1DT_eec__hist__axis__id_t_t, 0, 0},{0, 0, 0, 0}};
-static swig_cast_info _swigc__p_eec__hist__EECHistBaseT_eec__hist__EECHist1DT_eec__hist__axis__log_t_t[] = {  {&_swigt__p_eec__hist__EECHistBaseT_eec__hist__EECHist1DT_eec__hist__axis__log_t_t, 0, 0, 0},  {&_swigt__p_eec__hist__EECHist1DT_bh__axis__transform__log_t, _p_eec__hist__EECHist1DT_bh__axis__transform__log_tTo_p_eec__hist__EECHistBaseT_eec__hist__EECHist1DT_eec__hist__axis__log_t_t, 0, 0},  {&_swigt__p_eec__EECLongestSideT_axis__log_t, _p_eec__EECLongestSideT_axis__log_tTo_p_eec__hist__EECHistBaseT_eec__hist__EECHist1DT_eec__hist__axis__log_t_t, 0, 0},{0, 0, 0, 0}};
-static swig_cast_info _swigc__p_eec__hist__EECHistBaseT_eec__hist__EECHist3DT_eec__hist__axis__id_eec__hist__axis__id_eec__hist__axis__id_t_t[] = {  {&_swigt__p_eec__hist__EECHistBaseT_eec__hist__EECHist3DT_eec__hist__axis__id_eec__hist__axis__id_eec__hist__axis__id_t_t, 0, 0, 0},  {&_swigt__p_eec__EECTriangleOPET_axis__id_axis__id_axis__id_t, _p_eec__EECTriangleOPET_axis__id_axis__id_axis__id_tTo_p_eec__hist__EECHistBaseT_eec__hist__EECHist3DT_eec__hist__axis__id_eec__hist__axis__id_eec__hist__axis__id_t_t, 0, 0},  {&_swigt__p_eec__hist__EECHist3DT_bh__axis__transform__id_bh__axis__transform__id_bh__axis__transform__id_t, _p_eec__hist__EECHist3DT_bh__axis__transform__id_bh__axis__transform__id_bh__axis__transform__id_tTo_p_eec__hist__EECHistBaseT_eec__hist__EECHist3DT_eec__hist__axis__id_eec__hist__axis__id_eec__hist__axis__id_t_t, 0, 0},{0, 0, 0, 0}};
-static swig_cast_info _swigc__p_eec__hist__EECHistBaseT_eec__hist__EECHist3DT_eec__hist__axis__id_eec__hist__axis__log_eec__hist__axis__id_t_t[] = {  {&_swigt__p_eec__hist__EECHistBaseT_eec__hist__EECHist3DT_eec__hist__axis__id_eec__hist__axis__log_eec__hist__axis__id_t_t, 0, 0, 0},  {&_swigt__p_eec__EECTriangleOPET_axis__id_axis__log_axis__id_t, _p_eec__EECTriangleOPET_axis__id_axis__log_axis__id_tTo_p_eec__hist__EECHistBaseT_eec__hist__EECHist3DT_eec__hist__axis__id_eec__hist__axis__log_eec__hist__axis__id_t_t, 0, 0},  {&_swigt__p_eec__hist__EECHist3DT_bh__axis__transform__id_bh__axis__transform__log_bh__axis__transform__id_t, _p_eec__hist__EECHist3DT_bh__axis__transform__id_bh__axis__transform__log_bh__axis__transform__id_tTo_p_eec__hist__EECHistBaseT_eec__hist__EECHist3DT_eec__hist__axis__id_eec__hist__axis__log_eec__hist__axis__id_t_t, 0, 0},{0, 0, 0, 0}};
-static swig_cast_info _swigc__p_eec__hist__EECHistBaseT_eec__hist__EECHist3DT_eec__hist__axis__log_eec__hist__axis__id_eec__hist__axis__id_t_t[] = {  {&_swigt__p_eec__hist__EECHistBaseT_eec__hist__EECHist3DT_eec__hist__axis__log_eec__hist__axis__id_eec__hist__axis__id_t_t, 0, 0, 0},  {&_swigt__p_eec__hist__EECHist3DT_bh__axis__transform__log_bh__axis__transform__id_bh__axis__transform__id_t, _p_eec__hist__EECHist3DT_bh__axis__transform__log_bh__axis__transform__id_bh__axis__transform__id_tTo_p_eec__hist__EECHistBaseT_eec__hist__EECHist3DT_eec__hist__axis__log_eec__hist__axis__id_eec__hist__axis__id_t_t, 0, 0},  {&_swigt__p_eec__EECTriangleOPET_axis__log_axis__id_axis__id_t, _p_eec__EECTriangleOPET_axis__log_axis__id_axis__id_tTo_p_eec__hist__EECHistBaseT_eec__hist__EECHist3DT_eec__hist__axis__log_eec__hist__axis__id_eec__hist__axis__id_t_t, 0, 0},{0, 0, 0, 0}};
-static swig_cast_info _swigc__p_eec__hist__EECHistBaseT_eec__hist__EECHist3DT_eec__hist__axis__log_eec__hist__axis__log_eec__hist__axis__id_t_t[] = {  {&_swigt__p_eec__hist__EECHistBaseT_eec__hist__EECHist3DT_eec__hist__axis__log_eec__hist__axis__log_eec__hist__axis__id_t_t, 0, 0, 0},  {&_swigt__p_eec__hist__EECHist3DT_bh__axis__transform__log_bh__axis__transform__log_bh__axis__transform__id_t, _p_eec__hist__EECHist3DT_bh__axis__transform__log_bh__axis__transform__log_bh__axis__transform__id_tTo_p_eec__hist__EECHistBaseT_eec__hist__EECHist3DT_eec__hist__axis__log_eec__hist__axis__log_eec__hist__axis__id_t_t, 0, 0},  {&_swigt__p_eec__EECTriangleOPET_axis__log_axis__log_axis__id_t, _p_eec__EECTriangleOPET_axis__log_axis__log_axis__id_tTo_p_eec__hist__EECHistBaseT_eec__hist__EECHist3DT_eec__hist__axis__log_eec__hist__axis__log_eec__hist__axis__id_t_t, 0, 0},{0, 0, 0, 0}};
+static swig_cast_info _swigc__p_eec__hist__EECHist1DT_boost__histogram__axis__transform__id_t[] = {  {&_swigt__p_eec__hist__EECHist1DT_boost__histogram__axis__transform__id_t, 0, 0, 0},  {&_swigt__p_eec__EECLongestSideT_axis__id_t, _p_eec__EECLongestSideT_axis__id_tTo_p_eec__hist__EECHist1DT_boost__histogram__axis__transform__id_t, 0, 0},{0, 0, 0, 0}};
+static swig_cast_info _swigc__p_eec__hist__EECHist1DT_boost__histogram__axis__transform__log_t[] = {  {&_swigt__p_eec__hist__EECHist1DT_boost__histogram__axis__transform__log_t, 0, 0, 0},  {&_swigt__p_eec__EECLongestSideT_axis__log_t, _p_eec__EECLongestSideT_axis__log_tTo_p_eec__hist__EECHist1DT_boost__histogram__axis__transform__log_t, 0, 0},{0, 0, 0, 0}};
+static swig_cast_info _swigc__p_eec__hist__EECHist3DT_boost__histogram__axis__transform__id_boost__histogram__axis__transform__id_boost__histogram__axis__transform__id_t[] = {  {&_swigt__p_eec__hist__EECHist3DT_boost__histogram__axis__transform__id_boost__histogram__axis__transform__id_boost__histogram__axis__transform__id_t, 0, 0, 0},  {&_swigt__p_eec__EECTriangleOPET_axis__id_axis__id_axis__id_t, _p_eec__EECTriangleOPET_axis__id_axis__id_axis__id_tTo_p_eec__hist__EECHist3DT_boost__histogram__axis__transform__id_boost__histogram__axis__transform__id_boost__histogram__axis__transform__id_t, 0, 0},{0, 0, 0, 0}};
+static swig_cast_info _swigc__p_eec__hist__EECHist3DT_boost__histogram__axis__transform__id_boost__histogram__axis__transform__log_boost__histogram__axis__transform__id_t[] = {  {&_swigt__p_eec__hist__EECHist3DT_boost__histogram__axis__transform__id_boost__histogram__axis__transform__log_boost__histogram__axis__transform__id_t, 0, 0, 0},  {&_swigt__p_eec__EECTriangleOPET_axis__id_axis__log_axis__id_t, _p_eec__EECTriangleOPET_axis__id_axis__log_axis__id_tTo_p_eec__hist__EECHist3DT_boost__histogram__axis__transform__id_boost__histogram__axis__transform__log_boost__histogram__axis__transform__id_t, 0, 0},{0, 0, 0, 0}};
+static swig_cast_info _swigc__p_eec__hist__EECHist3DT_boost__histogram__axis__transform__log_boost__histogram__axis__transform__id_boost__histogram__axis__transform__id_t[] = {  {&_swigt__p_eec__hist__EECHist3DT_boost__histogram__axis__transform__log_boost__histogram__axis__transform__id_boost__histogram__axis__transform__id_t, 0, 0, 0},  {&_swigt__p_eec__EECTriangleOPET_axis__log_axis__id_axis__id_t, _p_eec__EECTriangleOPET_axis__log_axis__id_axis__id_tTo_p_eec__hist__EECHist3DT_boost__histogram__axis__transform__log_boost__histogram__axis__transform__id_boost__histogram__axis__transform__id_t, 0, 0},{0, 0, 0, 0}};
+static swig_cast_info _swigc__p_eec__hist__EECHist3DT_boost__histogram__axis__transform__log_boost__histogram__axis__transform__log_boost__histogram__axis__transform__id_t[] = {  {&_swigt__p_eec__hist__EECHist3DT_boost__histogram__axis__transform__log_boost__histogram__axis__transform__log_boost__histogram__axis__transform__id_t, 0, 0, 0},  {&_swigt__p_eec__EECTriangleOPET_axis__log_axis__log_axis__id_t, _p_eec__EECTriangleOPET_axis__log_axis__log_axis__id_tTo_p_eec__hist__EECHist3DT_boost__histogram__axis__transform__log_boost__histogram__axis__transform__log_boost__histogram__axis__transform__id_t, 0, 0},{0, 0, 0, 0}};
+static swig_cast_info _swigc__p_eec__hist__EECHistBaseT_eec__hist__EECHist1DT_eec__hist__axis__id_t_t[] = {  {&_swigt__p_eec__hist__EECHistBaseT_eec__hist__EECHist1DT_eec__hist__axis__id_t_t, 0, 0, 0},  {&_swigt__p_eec__hist__EECHist1DT_boost__histogram__axis__transform__id_t, _p_eec__hist__EECHist1DT_boost__histogram__axis__transform__id_tTo_p_eec__hist__EECHistBaseT_eec__hist__EECHist1DT_eec__hist__axis__id_t_t, 0, 0},  {&_swigt__p_eec__EECLongestSideT_axis__id_t, _p_eec__EECLongestSideT_axis__id_tTo_p_eec__hist__EECHistBaseT_eec__hist__EECHist1DT_eec__hist__axis__id_t_t, 0, 0},{0, 0, 0, 0}};
+static swig_cast_info _swigc__p_eec__hist__EECHistBaseT_eec__hist__EECHist1DT_eec__hist__axis__log_t_t[] = {  {&_swigt__p_eec__hist__EECHistBaseT_eec__hist__EECHist1DT_eec__hist__axis__log_t_t, 0, 0, 0},  {&_swigt__p_eec__hist__EECHist1DT_boost__histogram__axis__transform__log_t, _p_eec__hist__EECHist1DT_boost__histogram__axis__transform__log_tTo_p_eec__hist__EECHistBaseT_eec__hist__EECHist1DT_eec__hist__axis__log_t_t, 0, 0},  {&_swigt__p_eec__EECLongestSideT_axis__log_t, _p_eec__EECLongestSideT_axis__log_tTo_p_eec__hist__EECHistBaseT_eec__hist__EECHist1DT_eec__hist__axis__log_t_t, 0, 0},{0, 0, 0, 0}};
+static swig_cast_info _swigc__p_eec__hist__EECHistBaseT_eec__hist__EECHist3DT_eec__hist__axis__id_eec__hist__axis__id_eec__hist__axis__id_t_t[] = {  {&_swigt__p_eec__hist__EECHistBaseT_eec__hist__EECHist3DT_eec__hist__axis__id_eec__hist__axis__id_eec__hist__axis__id_t_t, 0, 0, 0},  {&_swigt__p_eec__hist__EECHist3DT_boost__histogram__axis__transform__id_boost__histogram__axis__transform__id_boost__histogram__axis__transform__id_t, _p_eec__hist__EECHist3DT_boost__histogram__axis__transform__id_boost__histogram__axis__transform__id_boost__histogram__axis__transform__id_tTo_p_eec__hist__EECHistBaseT_eec__hist__EECHist3DT_eec__hist__axis__id_eec__hist__axis__id_eec__hist__axis__id_t_t, 0, 0},  {&_swigt__p_eec__EECTriangleOPET_axis__id_axis__id_axis__id_t, _p_eec__EECTriangleOPET_axis__id_axis__id_axis__id_tTo_p_eec__hist__EECHistBaseT_eec__hist__EECHist3DT_eec__hist__axis__id_eec__hist__axis__id_eec__hist__axis__id_t_t, 0, 0},{0, 0, 0, 0}};
+static swig_cast_info _swigc__p_eec__hist__EECHistBaseT_eec__hist__EECHist3DT_eec__hist__axis__id_eec__hist__axis__log_eec__hist__axis__id_t_t[] = {  {&_swigt__p_eec__hist__EECHistBaseT_eec__hist__EECHist3DT_eec__hist__axis__id_eec__hist__axis__log_eec__hist__axis__id_t_t, 0, 0, 0},  {&_swigt__p_eec__hist__EECHist3DT_boost__histogram__axis__transform__id_boost__histogram__axis__transform__log_boost__histogram__axis__transform__id_t, _p_eec__hist__EECHist3DT_boost__histogram__axis__transform__id_boost__histogram__axis__transform__log_boost__histogram__axis__transform__id_tTo_p_eec__hist__EECHistBaseT_eec__hist__EECHist3DT_eec__hist__axis__id_eec__hist__axis__log_eec__hist__axis__id_t_t, 0, 0},  {&_swigt__p_eec__EECTriangleOPET_axis__id_axis__log_axis__id_t, _p_eec__EECTriangleOPET_axis__id_axis__log_axis__id_tTo_p_eec__hist__EECHistBaseT_eec__hist__EECHist3DT_eec__hist__axis__id_eec__hist__axis__log_eec__hist__axis__id_t_t, 0, 0},{0, 0, 0, 0}};
+static swig_cast_info _swigc__p_eec__hist__EECHistBaseT_eec__hist__EECHist3DT_eec__hist__axis__log_eec__hist__axis__id_eec__hist__axis__id_t_t[] = {  {&_swigt__p_eec__hist__EECHistBaseT_eec__hist__EECHist3DT_eec__hist__axis__log_eec__hist__axis__id_eec__hist__axis__id_t_t, 0, 0, 0},  {&_swigt__p_eec__hist__EECHist3DT_boost__histogram__axis__transform__log_boost__histogram__axis__transform__id_boost__histogram__axis__transform__id_t, _p_eec__hist__EECHist3DT_boost__histogram__axis__transform__log_boost__histogram__axis__transform__id_boost__histogram__axis__transform__id_tTo_p_eec__hist__EECHistBaseT_eec__hist__EECHist3DT_eec__hist__axis__log_eec__hist__axis__id_eec__hist__axis__id_t_t, 0, 0},  {&_swigt__p_eec__EECTriangleOPET_axis__log_axis__id_axis__id_t, _p_eec__EECTriangleOPET_axis__log_axis__id_axis__id_tTo_p_eec__hist__EECHistBaseT_eec__hist__EECHist3DT_eec__hist__axis__log_eec__hist__axis__id_eec__hist__axis__id_t_t, 0, 0},{0, 0, 0, 0}};
+static swig_cast_info _swigc__p_eec__hist__EECHistBaseT_eec__hist__EECHist3DT_eec__hist__axis__log_eec__hist__axis__log_eec__hist__axis__id_t_t[] = {  {&_swigt__p_eec__hist__EECHistBaseT_eec__hist__EECHist3DT_eec__hist__axis__log_eec__hist__axis__log_eec__hist__axis__id_t_t, 0, 0, 0},  {&_swigt__p_eec__hist__EECHist3DT_boost__histogram__axis__transform__log_boost__histogram__axis__transform__log_boost__histogram__axis__transform__id_t, _p_eec__hist__EECHist3DT_boost__histogram__axis__transform__log_boost__histogram__axis__transform__log_boost__histogram__axis__transform__id_tTo_p_eec__hist__EECHistBaseT_eec__hist__EECHist3DT_eec__hist__axis__log_eec__hist__axis__log_eec__hist__axis__id_t_t, 0, 0},  {&_swigt__p_eec__EECTriangleOPET_axis__log_axis__log_axis__id_t, _p_eec__EECTriangleOPET_axis__log_axis__log_axis__id_tTo_p_eec__hist__EECHistBaseT_eec__hist__EECHist3DT_eec__hist__axis__log_eec__hist__axis__log_eec__hist__axis__id_t_t, 0, 0},{0, 0, 0, 0}};
 static swig_cast_info _swigc__p_int[] = {  {&_swigt__p_int, 0, 0, 0},{0, 0, 0, 0}};
 static swig_cast_info _swigc__p_p_PyObject[] = {  {&_swigt__p_p_PyObject, 0, 0, 0},{0, 0, 0, 0}};
 static swig_cast_info _swigc__p_p_double[] = {  {&_swigt__p_p_double, 0, 0, 0},{0, 0, 0, 0}};
 static swig_cast_info _swigc__p_size_type[] = {  {&_swigt__p_size_type, 0, 0, 0},{0, 0, 0, 0}};
+static swig_cast_info _swigc__p_std__allocatorT_boost__histogram__algorithm__reduce_command_t[] = {  {&_swigt__p_std__allocatorT_boost__histogram__algorithm__reduce_command_t, 0, 0, 0},{0, 0, 0, 0}};
 static swig_cast_info _swigc__p_std__allocatorT_double_t[] = {  {&_swigt__p_std__allocatorT_double_t, 0, 0, 0},{0, 0, 0, 0}};
 static swig_cast_info _swigc__p_std__allocatorT_unsigned_int_t[] = {  {&_swigt__p_std__allocatorT_unsigned_int_t, 0, 0, 0},{0, 0, 0, 0}};
 static swig_cast_info _swigc__p_std__arrayT_unsigned_int_13_t[] = {  {&_swigt__p_std__arrayT_unsigned_int_13_t, 0, 0, 0},{0, 0, 0, 0}};
 static swig_cast_info _swigc__p_std__invalid_argument[] = {  {&_swigt__p_std__invalid_argument, 0, 0, 0},{0, 0, 0, 0}};
 static swig_cast_info _swigc__p_std__ostream[] = {  {&_swigt__p_std__ostream, 0, 0, 0},{0, 0, 0, 0}};
 static swig_cast_info _swigc__p_std__ostringstream[] = {  {&_swigt__p_std__ostringstream, 0, 0, 0},{0, 0, 0, 0}};
+static swig_cast_info _swigc__p_std__vectorT_boost__histogram__algorithm__reduce_command_std__allocatorT_boost__histogram__algorithm__reduce_command_t_t[] = {  {&_swigt__p_std__vectorT_boost__histogram__algorithm__reduce_command_std__allocatorT_boost__histogram__algorithm__reduce_command_t_t, 0, 0, 0},{0, 0, 0, 0}};
 static swig_cast_info _swigc__p_std__vectorT_double_const_p_std__allocatorT_double_const_p_t_t[] = {  {&_swigt__p_std__vectorT_double_const_p_std__allocatorT_double_const_p_t_t, 0, 0, 0},{0, 0, 0, 0}};
 static swig_cast_info _swigc__p_std__vectorT_double_std__allocatorT_double_t_t[] = {  {&_swigt__p_std__vectorT_double_std__allocatorT_double_t_t, 0, 0, 0},{0, 0, 0, 0}};
 static swig_cast_info _swigc__p_std__vectorT_unsigned_int_std__allocatorT_unsigned_int_t_t[] = {  {&_swigt__p_std__vectorT_unsigned_int_std__allocatorT_unsigned_int_t_t, 0, 0, 0},{0, 0, 0, 0}};
@@ -25743,13 +30785,16 @@ static swig_cast_info *swig_cast_initial[] = {
   _swigc__p_Axis0,
   _swigc__p_Axis1,
   _swigc__p_Axis2,
+  _swigc__p_Base,
   _swigc__p_Hist,
+  _swigc__p_Self,
   _swigc__p_SimpleHist,
   _swigc__p_Traits,
   _swigc__p_allocator_type,
-  _swigc__p_bh__axis__transform__id,
-  _swigc__p_bh__axis__transform__log,
-  _swigc__p_bh__dense_storageT_accumulators__simple_weighted_sumT_t_t,
+  _swigc__p_boost__histogram__algorithm__reduce_command,
+  _swigc__p_boost__histogram__axis__transform__id,
+  _swigc__p_boost__histogram__axis__transform__log,
+  _swigc__p_boost__histogram__dense_storageT_accumulators__simple_weighted_sumT_t_t,
   _swigc__p_char,
   _swigc__p_difference_type,
   _swigc__p_eec__DynamicMultinomial,
@@ -25766,12 +30811,12 @@ static swig_cast_info *swig_cast_initial[] = {
   _swigc__p_eec__MultinomialT_4_t,
   _swigc__p_eec__MultinomialT_5_t,
   _swigc__p_eec__MultinomialT_6_t,
-  _swigc__p_eec__hist__EECHist1DT_bh__axis__transform__id_t,
-  _swigc__p_eec__hist__EECHist1DT_bh__axis__transform__log_t,
-  _swigc__p_eec__hist__EECHist3DT_bh__axis__transform__id_bh__axis__transform__id_bh__axis__transform__id_t,
-  _swigc__p_eec__hist__EECHist3DT_bh__axis__transform__id_bh__axis__transform__log_bh__axis__transform__id_t,
-  _swigc__p_eec__hist__EECHist3DT_bh__axis__transform__log_bh__axis__transform__id_bh__axis__transform__id_t,
-  _swigc__p_eec__hist__EECHist3DT_bh__axis__transform__log_bh__axis__transform__log_bh__axis__transform__id_t,
+  _swigc__p_eec__hist__EECHist1DT_boost__histogram__axis__transform__id_t,
+  _swigc__p_eec__hist__EECHist1DT_boost__histogram__axis__transform__log_t,
+  _swigc__p_eec__hist__EECHist3DT_boost__histogram__axis__transform__id_boost__histogram__axis__transform__id_boost__histogram__axis__transform__id_t,
+  _swigc__p_eec__hist__EECHist3DT_boost__histogram__axis__transform__id_boost__histogram__axis__transform__log_boost__histogram__axis__transform__id_t,
+  _swigc__p_eec__hist__EECHist3DT_boost__histogram__axis__transform__log_boost__histogram__axis__transform__id_boost__histogram__axis__transform__id_t,
+  _swigc__p_eec__hist__EECHist3DT_boost__histogram__axis__transform__log_boost__histogram__axis__transform__log_boost__histogram__axis__transform__id_t,
   _swigc__p_eec__hist__EECHistBaseT_eec__hist__EECHist1DT_eec__hist__axis__id_t_t,
   _swigc__p_eec__hist__EECHistBaseT_eec__hist__EECHist1DT_eec__hist__axis__log_t_t,
   _swigc__p_eec__hist__EECHistBaseT_eec__hist__EECHist3DT_eec__hist__axis__id_eec__hist__axis__id_eec__hist__axis__id_t_t,
@@ -25782,12 +30827,14 @@ static swig_cast_info *swig_cast_initial[] = {
   _swigc__p_p_PyObject,
   _swigc__p_p_double,
   _swigc__p_size_type,
+  _swigc__p_std__allocatorT_boost__histogram__algorithm__reduce_command_t,
   _swigc__p_std__allocatorT_double_t,
   _swigc__p_std__allocatorT_unsigned_int_t,
   _swigc__p_std__arrayT_unsigned_int_13_t,
   _swigc__p_std__invalid_argument,
   _swigc__p_std__ostream,
   _swigc__p_std__ostringstream,
+  _swigc__p_std__vectorT_boost__histogram__algorithm__reduce_command_std__allocatorT_boost__histogram__algorithm__reduce_command_t_t,
   _swigc__p_std__vectorT_double_const_p_std__allocatorT_double_const_p_t_t,
   _swigc__p_std__vectorT_double_std__allocatorT_double_t_t,
   _swigc__p_std__vectorT_unsigned_int_std__allocatorT_unsigned_int_t_t,

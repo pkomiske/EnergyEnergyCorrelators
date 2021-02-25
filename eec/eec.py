@@ -99,7 +99,10 @@ _eec.SwigPyIterator_swigregister(SwigPyIterator)
 __all__ = ['EECLongestSide', 'EECTriangleOPE',
            'EECLongestSideId', 'EECLongestSideLog',
            'EECTriangleOPEIdIdId', 'EECTriangleOPEIdLogId',
-           'EECTriangleOPELogIdId', 'EECTriangleOPELogLogId']
+           'EECTriangleOPELogIdId', 'EECTriangleOPELogLogId',
+
+# these are used in histogram reduction
+           'rebin', 'shrink', 'slice', 'shrink_and_rebin', 'slice_and_rebin']
 
 class vectorDouble(object):
     r"""Proxy of C++ std::vector< double > class."""
@@ -244,21 +247,94 @@ class arrayUnsigned13(object):
 # Register arrayUnsigned13 in _eec:
 _eec.arrayUnsigned13_swigregister(arrayUnsigned13)
 
+class reduce_command(object):
+    r"""Proxy of C++ boost::histogram::algorithm::reduce_command class."""
+
+    thisown = property(lambda x: x.this.own(), lambda x, v: x.this.own(v), doc="The membership flag")
+    __repr__ = _swig_repr
+
+    def __init__(self):
+        r"""__init__(reduce_command self) -> reduce_command"""
+        _eec.reduce_command_swiginit(self, _eec.new_reduce_command())
+    __swig_destroy__ = _eec.delete_reduce_command
+
+# Register reduce_command in _eec:
+_eec.reduce_command_swigregister(reduce_command)
+
+rebin = _eec.rebin
+shrink = _eec.shrink
+slice = _eec.slice
+shrink_and_rebin = _eec.shrink_and_rebin
+slice_and_rebin = _eec.slice_and_rebin
+class vectorReduceCommand(object):
+    r"""Proxy of C++ std::vector< boost::histogram::algorithm::reduce_command > class."""
+
+    thisown = property(lambda x: x.this.own(), lambda x, v: x.this.own(v), doc="The membership flag")
+    __repr__ = _swig_repr
+    iterator = _swig_new_instance_method(_eec.vectorReduceCommand_iterator)
+    def __iter__(self):
+        return self.iterator()
+    __nonzero__ = _swig_new_instance_method(_eec.vectorReduceCommand___nonzero__)
+    __bool__ = _swig_new_instance_method(_eec.vectorReduceCommand___bool__)
+    __len__ = _swig_new_instance_method(_eec.vectorReduceCommand___len__)
+    __getslice__ = _swig_new_instance_method(_eec.vectorReduceCommand___getslice__)
+    __setslice__ = _swig_new_instance_method(_eec.vectorReduceCommand___setslice__)
+    __delslice__ = _swig_new_instance_method(_eec.vectorReduceCommand___delslice__)
+    __delitem__ = _swig_new_instance_method(_eec.vectorReduceCommand___delitem__)
+    __getitem__ = _swig_new_instance_method(_eec.vectorReduceCommand___getitem__)
+    __setitem__ = _swig_new_instance_method(_eec.vectorReduceCommand___setitem__)
+    pop = _swig_new_instance_method(_eec.vectorReduceCommand_pop)
+    append = _swig_new_instance_method(_eec.vectorReduceCommand_append)
+    empty = _swig_new_instance_method(_eec.vectorReduceCommand_empty)
+    size = _swig_new_instance_method(_eec.vectorReduceCommand_size)
+    swap = _swig_new_instance_method(_eec.vectorReduceCommand_swap)
+    begin = _swig_new_instance_method(_eec.vectorReduceCommand_begin)
+    end = _swig_new_instance_method(_eec.vectorReduceCommand_end)
+    rbegin = _swig_new_instance_method(_eec.vectorReduceCommand_rbegin)
+    rend = _swig_new_instance_method(_eec.vectorReduceCommand_rend)
+    clear = _swig_new_instance_method(_eec.vectorReduceCommand_clear)
+    get_allocator = _swig_new_instance_method(_eec.vectorReduceCommand_get_allocator)
+    pop_back = _swig_new_instance_method(_eec.vectorReduceCommand_pop_back)
+    erase = _swig_new_instance_method(_eec.vectorReduceCommand_erase)
+
+    def __init__(self, *args):
+        r"""
+        __init__(vectorReduceCommand self) -> vectorReduceCommand
+        __init__(vectorReduceCommand self, vectorReduceCommand other) -> vectorReduceCommand
+        __init__(vectorReduceCommand self, std::vector< boost::histogram::algorithm::reduce_command >::size_type size) -> vectorReduceCommand
+        __init__(vectorReduceCommand self, std::vector< boost::histogram::algorithm::reduce_command >::size_type size, reduce_command value) -> vectorReduceCommand
+        """
+        _eec.vectorReduceCommand_swiginit(self, _eec.new_vectorReduceCommand(*args))
+    push_back = _swig_new_instance_method(_eec.vectorReduceCommand_push_back)
+    front = _swig_new_instance_method(_eec.vectorReduceCommand_front)
+    back = _swig_new_instance_method(_eec.vectorReduceCommand_back)
+    assign = _swig_new_instance_method(_eec.vectorReduceCommand_assign)
+    resize = _swig_new_instance_method(_eec.vectorReduceCommand_resize)
+    insert = _swig_new_instance_method(_eec.vectorReduceCommand_insert)
+    reserve = _swig_new_instance_method(_eec.vectorReduceCommand_reserve)
+    capacity = _swig_new_instance_method(_eec.vectorReduceCommand_capacity)
+    __swig_destroy__ = _eec.delete_vectorReduceCommand
+
+# Register vectorReduceCommand in _eec:
+_eec.vectorReduceCommand_swigregister(vectorReduceCommand)
+
 class EECHistBase1DId(object):
     r"""Proxy of C++ eec::hist::EECHistBase< eec::hist::EECHist1D< eec::hist::axis::id > > class."""
 
     thisown = property(lambda x: x.this.own(), lambda x, v: x.this.own(v), doc="The membership flag")
     __repr__ = _swig_repr
 
-    def __init__(self, num_threads: "int"):
+    def __init__(self, num_threads):
         r"""__init__(EECHistBase1DId self, int num_threads) -> EECHistBase1DId"""
         _eec.EECHistBase1DId_swiginit(self, _eec.new_EECHistBase1DId(num_threads))
     __swig_destroy__ = _eec.delete_EECHistBase1DId
-    axes_description = _swig_new_instance_method(_eec.EECHistBase1DId_axes_description)
     num_threads = _swig_new_instance_method(_eec.EECHistBase1DId_num_threads)
     nhists = _swig_new_instance_method(_eec.EECHistBase1DId_nhists)
     nbins = _swig_new_instance_method(_eec.EECHistBase1DId_nbins)
     hist_size = _swig_new_instance_method(_eec.EECHistBase1DId_hist_size)
+    reduce = _swig_new_instance_method(_eec.EECHistBase1DId_reduce)
+    sum = _swig_new_instance_method(_eec.EECHistBase1DId_sum)
+    __iadd__ = _swig_new_instance_method(_eec.EECHistBase1DId___iadd__)
     bin_centers_vec = _swig_new_instance_method(_eec.EECHistBase1DId_bin_centers_vec)
     bin_edges_vec = _swig_new_instance_method(_eec.EECHistBase1DId_bin_edges_vec)
     hists_as_text = _swig_new_instance_method(_eec.EECHistBase1DId_hists_as_text)
@@ -279,15 +355,17 @@ class EECHistBase1DLog(object):
     thisown = property(lambda x: x.this.own(), lambda x, v: x.this.own(v), doc="The membership flag")
     __repr__ = _swig_repr
 
-    def __init__(self, num_threads: "int"):
+    def __init__(self, num_threads):
         r"""__init__(EECHistBase1DLog self, int num_threads) -> EECHistBase1DLog"""
         _eec.EECHistBase1DLog_swiginit(self, _eec.new_EECHistBase1DLog(num_threads))
     __swig_destroy__ = _eec.delete_EECHistBase1DLog
-    axes_description = _swig_new_instance_method(_eec.EECHistBase1DLog_axes_description)
     num_threads = _swig_new_instance_method(_eec.EECHistBase1DLog_num_threads)
     nhists = _swig_new_instance_method(_eec.EECHistBase1DLog_nhists)
     nbins = _swig_new_instance_method(_eec.EECHistBase1DLog_nbins)
     hist_size = _swig_new_instance_method(_eec.EECHistBase1DLog_hist_size)
+    reduce = _swig_new_instance_method(_eec.EECHistBase1DLog_reduce)
+    sum = _swig_new_instance_method(_eec.EECHistBase1DLog_sum)
+    __iadd__ = _swig_new_instance_method(_eec.EECHistBase1DLog___iadd__)
     bin_centers_vec = _swig_new_instance_method(_eec.EECHistBase1DLog_bin_centers_vec)
     bin_edges_vec = _swig_new_instance_method(_eec.EECHistBase1DLog_bin_edges_vec)
     hists_as_text = _swig_new_instance_method(_eec.EECHistBase1DLog_hists_as_text)
@@ -308,15 +386,17 @@ class EECHistBaseIdIdId(object):
     thisown = property(lambda x: x.this.own(), lambda x, v: x.this.own(v), doc="The membership flag")
     __repr__ = _swig_repr
 
-    def __init__(self, num_threads: "int"):
+    def __init__(self, num_threads):
         r"""__init__(EECHistBaseIdIdId self, int num_threads) -> EECHistBaseIdIdId"""
         _eec.EECHistBaseIdIdId_swiginit(self, _eec.new_EECHistBaseIdIdId(num_threads))
     __swig_destroy__ = _eec.delete_EECHistBaseIdIdId
-    axes_description = _swig_new_instance_method(_eec.EECHistBaseIdIdId_axes_description)
     num_threads = _swig_new_instance_method(_eec.EECHistBaseIdIdId_num_threads)
     nhists = _swig_new_instance_method(_eec.EECHistBaseIdIdId_nhists)
     nbins = _swig_new_instance_method(_eec.EECHistBaseIdIdId_nbins)
     hist_size = _swig_new_instance_method(_eec.EECHistBaseIdIdId_hist_size)
+    reduce = _swig_new_instance_method(_eec.EECHistBaseIdIdId_reduce)
+    sum = _swig_new_instance_method(_eec.EECHistBaseIdIdId_sum)
+    __iadd__ = _swig_new_instance_method(_eec.EECHistBaseIdIdId___iadd__)
     bin_centers_vec = _swig_new_instance_method(_eec.EECHistBaseIdIdId_bin_centers_vec)
     bin_edges_vec = _swig_new_instance_method(_eec.EECHistBaseIdIdId_bin_edges_vec)
     hists_as_text = _swig_new_instance_method(_eec.EECHistBaseIdIdId_hists_as_text)
@@ -337,15 +417,17 @@ class EECHistBaseLogIdId(object):
     thisown = property(lambda x: x.this.own(), lambda x, v: x.this.own(v), doc="The membership flag")
     __repr__ = _swig_repr
 
-    def __init__(self, num_threads: "int"):
+    def __init__(self, num_threads):
         r"""__init__(EECHistBaseLogIdId self, int num_threads) -> EECHistBaseLogIdId"""
         _eec.EECHistBaseLogIdId_swiginit(self, _eec.new_EECHistBaseLogIdId(num_threads))
     __swig_destroy__ = _eec.delete_EECHistBaseLogIdId
-    axes_description = _swig_new_instance_method(_eec.EECHistBaseLogIdId_axes_description)
     num_threads = _swig_new_instance_method(_eec.EECHistBaseLogIdId_num_threads)
     nhists = _swig_new_instance_method(_eec.EECHistBaseLogIdId_nhists)
     nbins = _swig_new_instance_method(_eec.EECHistBaseLogIdId_nbins)
     hist_size = _swig_new_instance_method(_eec.EECHistBaseLogIdId_hist_size)
+    reduce = _swig_new_instance_method(_eec.EECHistBaseLogIdId_reduce)
+    sum = _swig_new_instance_method(_eec.EECHistBaseLogIdId_sum)
+    __iadd__ = _swig_new_instance_method(_eec.EECHistBaseLogIdId___iadd__)
     bin_centers_vec = _swig_new_instance_method(_eec.EECHistBaseLogIdId_bin_centers_vec)
     bin_edges_vec = _swig_new_instance_method(_eec.EECHistBaseLogIdId_bin_edges_vec)
     hists_as_text = _swig_new_instance_method(_eec.EECHistBaseLogIdId_hists_as_text)
@@ -366,15 +448,17 @@ class EECHistBaseIdLogId(object):
     thisown = property(lambda x: x.this.own(), lambda x, v: x.this.own(v), doc="The membership flag")
     __repr__ = _swig_repr
 
-    def __init__(self, num_threads: "int"):
+    def __init__(self, num_threads):
         r"""__init__(EECHistBaseIdLogId self, int num_threads) -> EECHistBaseIdLogId"""
         _eec.EECHistBaseIdLogId_swiginit(self, _eec.new_EECHistBaseIdLogId(num_threads))
     __swig_destroy__ = _eec.delete_EECHistBaseIdLogId
-    axes_description = _swig_new_instance_method(_eec.EECHistBaseIdLogId_axes_description)
     num_threads = _swig_new_instance_method(_eec.EECHistBaseIdLogId_num_threads)
     nhists = _swig_new_instance_method(_eec.EECHistBaseIdLogId_nhists)
     nbins = _swig_new_instance_method(_eec.EECHistBaseIdLogId_nbins)
     hist_size = _swig_new_instance_method(_eec.EECHistBaseIdLogId_hist_size)
+    reduce = _swig_new_instance_method(_eec.EECHistBaseIdLogId_reduce)
+    sum = _swig_new_instance_method(_eec.EECHistBaseIdLogId_sum)
+    __iadd__ = _swig_new_instance_method(_eec.EECHistBaseIdLogId___iadd__)
     bin_centers_vec = _swig_new_instance_method(_eec.EECHistBaseIdLogId_bin_centers_vec)
     bin_edges_vec = _swig_new_instance_method(_eec.EECHistBaseIdLogId_bin_edges_vec)
     hists_as_text = _swig_new_instance_method(_eec.EECHistBaseIdLogId_hists_as_text)
@@ -395,15 +479,17 @@ class EECHistBaseLogLogId(object):
     thisown = property(lambda x: x.this.own(), lambda x, v: x.this.own(v), doc="The membership flag")
     __repr__ = _swig_repr
 
-    def __init__(self, num_threads: "int"):
+    def __init__(self, num_threads):
         r"""__init__(EECHistBaseLogLogId self, int num_threads) -> EECHistBaseLogLogId"""
         _eec.EECHistBaseLogLogId_swiginit(self, _eec.new_EECHistBaseLogLogId(num_threads))
     __swig_destroy__ = _eec.delete_EECHistBaseLogLogId
-    axes_description = _swig_new_instance_method(_eec.EECHistBaseLogLogId_axes_description)
     num_threads = _swig_new_instance_method(_eec.EECHistBaseLogLogId_num_threads)
     nhists = _swig_new_instance_method(_eec.EECHistBaseLogLogId_nhists)
     nbins = _swig_new_instance_method(_eec.EECHistBaseLogLogId_nbins)
     hist_size = _swig_new_instance_method(_eec.EECHistBaseLogLogId_hist_size)
+    reduce = _swig_new_instance_method(_eec.EECHistBaseLogLogId_reduce)
+    sum = _swig_new_instance_method(_eec.EECHistBaseLogLogId_sum)
+    __iadd__ = _swig_new_instance_method(_eec.EECHistBaseLogLogId___iadd__)
     bin_centers_vec = _swig_new_instance_method(_eec.EECHistBaseLogLogId_bin_centers_vec)
     bin_edges_vec = _swig_new_instance_method(_eec.EECHistBaseLogLogId_bin_edges_vec)
     hists_as_text = _swig_new_instance_method(_eec.EECHistBaseLogLogId_hists_as_text)
@@ -424,11 +510,11 @@ class EECHist1DId(EECHistBase1DId):
     thisown = property(lambda x: x.this.own(), lambda x, v: x.this.own(v), doc="The membership flag")
     __repr__ = _swig_repr
 
-    def __init__(self, nbins: "unsigned int", axis_min: "double", axis_max: "double", num_threads: "int"=1):
+    def __init__(self, nbins, axis_min, axis_max, num_threads=1):
         r"""__init__(EECHist1DId self, unsigned int nbins, double axis_min, double axis_max, int num_threads=1) -> EECHist1DId"""
         _eec.EECHist1DId_swiginit(self, _eec.new_EECHist1DId(nbins, axis_min, axis_max, num_threads))
     __swig_destroy__ = _eec.delete_EECHist1DId
-    axes_description = _swig_new_instance_method(_eec.EECHist1DId_axes_description)
+    reduce = _swig_new_instance_method(_eec.EECHist1DId_reduce)
     get_hist_vars = _swig_new_instance_method(_eec.EECHist1DId_get_hist_vars)
 
 # Register EECHist1DId in _eec:
@@ -440,11 +526,11 @@ class EECHist1DLog(EECHistBase1DLog):
     thisown = property(lambda x: x.this.own(), lambda x, v: x.this.own(v), doc="The membership flag")
     __repr__ = _swig_repr
 
-    def __init__(self, nbins: "unsigned int", axis_min: "double", axis_max: "double", num_threads: "int"=1):
+    def __init__(self, nbins, axis_min, axis_max, num_threads=1):
         r"""__init__(EECHist1DLog self, unsigned int nbins, double axis_min, double axis_max, int num_threads=1) -> EECHist1DLog"""
         _eec.EECHist1DLog_swiginit(self, _eec.new_EECHist1DLog(nbins, axis_min, axis_max, num_threads))
     __swig_destroy__ = _eec.delete_EECHist1DLog
-    axes_description = _swig_new_instance_method(_eec.EECHist1DLog_axes_description)
+    reduce = _swig_new_instance_method(_eec.EECHist1DLog_reduce)
     get_hist_vars = _swig_new_instance_method(_eec.EECHist1DLog_get_hist_vars)
 
 # Register EECHist1DLog in _eec:
@@ -456,11 +542,10 @@ class EECHist3DIdIdId(EECHistBaseIdIdId):
     thisown = property(lambda x: x.this.own(), lambda x, v: x.this.own(v), doc="The membership flag")
     __repr__ = _swig_repr
 
-    def __init__(self, nbins0: "unsigned int", axis0_min: "double", axis0_max: "double", nbins1: "unsigned int", axis1_min: "double", axis1_max: "double", nbins2: "unsigned int", axis2_min: "double", axis2_max: "double", num_threads: "int"=1):
+    def __init__(self, nbins0, axis0_min, axis0_max, nbins1, axis1_min, axis1_max, nbins2, axis2_min, axis2_max, num_threads=1):
         r"""__init__(EECHist3DIdIdId self, unsigned int nbins0, double axis0_min, double axis0_max, unsigned int nbins1, double axis1_min, double axis1_max, unsigned int nbins2, double axis2_min, double axis2_max, int num_threads=1) -> EECHist3DIdIdId"""
         _eec.EECHist3DIdIdId_swiginit(self, _eec.new_EECHist3DIdIdId(nbins0, axis0_min, axis0_max, nbins1, axis1_min, axis1_max, nbins2, axis2_min, axis2_max, num_threads))
     __swig_destroy__ = _eec.delete_EECHist3DIdIdId
-    axes_description = _swig_new_instance_method(_eec.EECHist3DIdIdId_axes_description)
     get_hist_vars = _swig_new_instance_method(_eec.EECHist3DIdIdId_get_hist_vars)
 
 # Register EECHist3DIdIdId in _eec:
@@ -472,11 +557,10 @@ class EECHist3DLogIdId(EECHistBaseLogIdId):
     thisown = property(lambda x: x.this.own(), lambda x, v: x.this.own(v), doc="The membership flag")
     __repr__ = _swig_repr
 
-    def __init__(self, nbins0: "unsigned int", axis0_min: "double", axis0_max: "double", nbins1: "unsigned int", axis1_min: "double", axis1_max: "double", nbins2: "unsigned int", axis2_min: "double", axis2_max: "double", num_threads: "int"=1):
+    def __init__(self, nbins0, axis0_min, axis0_max, nbins1, axis1_min, axis1_max, nbins2, axis2_min, axis2_max, num_threads=1):
         r"""__init__(EECHist3DLogIdId self, unsigned int nbins0, double axis0_min, double axis0_max, unsigned int nbins1, double axis1_min, double axis1_max, unsigned int nbins2, double axis2_min, double axis2_max, int num_threads=1) -> EECHist3DLogIdId"""
         _eec.EECHist3DLogIdId_swiginit(self, _eec.new_EECHist3DLogIdId(nbins0, axis0_min, axis0_max, nbins1, axis1_min, axis1_max, nbins2, axis2_min, axis2_max, num_threads))
     __swig_destroy__ = _eec.delete_EECHist3DLogIdId
-    axes_description = _swig_new_instance_method(_eec.EECHist3DLogIdId_axes_description)
     get_hist_vars = _swig_new_instance_method(_eec.EECHist3DLogIdId_get_hist_vars)
 
 # Register EECHist3DLogIdId in _eec:
@@ -488,11 +572,10 @@ class EECHist3DIdLogId(EECHistBaseIdLogId):
     thisown = property(lambda x: x.this.own(), lambda x, v: x.this.own(v), doc="The membership flag")
     __repr__ = _swig_repr
 
-    def __init__(self, nbins0: "unsigned int", axis0_min: "double", axis0_max: "double", nbins1: "unsigned int", axis1_min: "double", axis1_max: "double", nbins2: "unsigned int", axis2_min: "double", axis2_max: "double", num_threads: "int"=1):
+    def __init__(self, nbins0, axis0_min, axis0_max, nbins1, axis1_min, axis1_max, nbins2, axis2_min, axis2_max, num_threads=1):
         r"""__init__(EECHist3DIdLogId self, unsigned int nbins0, double axis0_min, double axis0_max, unsigned int nbins1, double axis1_min, double axis1_max, unsigned int nbins2, double axis2_min, double axis2_max, int num_threads=1) -> EECHist3DIdLogId"""
         _eec.EECHist3DIdLogId_swiginit(self, _eec.new_EECHist3DIdLogId(nbins0, axis0_min, axis0_max, nbins1, axis1_min, axis1_max, nbins2, axis2_min, axis2_max, num_threads))
     __swig_destroy__ = _eec.delete_EECHist3DIdLogId
-    axes_description = _swig_new_instance_method(_eec.EECHist3DIdLogId_axes_description)
     get_hist_vars = _swig_new_instance_method(_eec.EECHist3DIdLogId_get_hist_vars)
 
 # Register EECHist3DIdLogId in _eec:
@@ -504,11 +587,10 @@ class EECHist3DLogLogId(EECHistBaseLogLogId):
     thisown = property(lambda x: x.this.own(), lambda x, v: x.this.own(v), doc="The membership flag")
     __repr__ = _swig_repr
 
-    def __init__(self, nbins0: "unsigned int", axis0_min: "double", axis0_max: "double", nbins1: "unsigned int", axis1_min: "double", axis1_max: "double", nbins2: "unsigned int", axis2_min: "double", axis2_max: "double", num_threads: "int"=1):
+    def __init__(self, nbins0, axis0_min, axis0_max, nbins1, axis1_min, axis1_max, nbins2, axis2_min, axis2_max, num_threads=1):
         r"""__init__(EECHist3DLogLogId self, unsigned int nbins0, double axis0_min, double axis0_max, unsigned int nbins1, double axis1_min, double axis1_max, unsigned int nbins2, double axis2_min, double axis2_max, int num_threads=1) -> EECHist3DLogLogId"""
         _eec.EECHist3DLogLogId_swiginit(self, _eec.new_EECHist3DLogLogId(nbins0, axis0_min, axis0_max, nbins1, axis1_min, axis1_max, nbins2, axis2_min, axis2_max, num_threads))
     __swig_destroy__ = _eec.delete_EECHist3DLogLogId
-    axes_description = _swig_new_instance_method(_eec.EECHist3DLogLogId_axes_description)
     get_hist_vars = _swig_new_instance_method(_eec.EECHist3DLogLogId_get_hist_vars)
 
 # Register EECHist3DLogLogId in _eec:
@@ -520,7 +602,7 @@ class EECEvents(object):
     thisown = property(lambda x: x.this.own(), lambda x, v: x.this.own(v), doc="The membership flag")
     __repr__ = _swig_repr
 
-    def __init__(self, nev: "std::size_t"=0, nfeatures: "unsigned int"=0):
+    def __init__(self, nev=0, nfeatures=0):
         r"""__init__(EECEvents self, std::size_t nev=0, unsigned int nfeatures=0) -> EECEvents"""
         _eec.EECEvents_swiginit(self, _eec.new_EECEvents(nev, nfeatures))
     events = _swig_new_instance_method(_eec.EECEvents_events)
@@ -539,6 +621,7 @@ class EECBase(object):
 
     def __init__(self, *args, **kwargs):
         raise AttributeError("No constructor defined - class is abstract")
+    __repr__ = _swig_repr
     __swig_destroy__ = _eec.delete_EECBase
     description = _swig_new_instance_method(_eec.EECBase_description)
     N = _swig_new_instance_method(_eec.EECBase_N)
@@ -553,8 +636,18 @@ class EECBase(object):
     set_omp_chunksize = _swig_new_instance_method(_eec.EECBase_set_omp_chunksize)
     set_print_every = _swig_new_instance_method(_eec.EECBase_set_print_every)
     set_print_stream = _swig_new_instance_method(_eec.EECBase_set_print_stream)
-    __str__ = _swig_new_instance_method(_eec.EECBase___str__)
-    __repr__ = _swig_new_instance_method(_eec.EECBase___repr__)
+
+    def __repr__(self):
+        return self.description().decode('utf-8')
+
+
+    def __getstate__(self):
+        return (self.__getstate_internal__(),)
+
+    def __setstate__(self, state):
+        self.__init__(*self._default_args)
+        self.__setstate_internal__(state[0])
+
     compute = _swig_new_instance_method(_eec.EECBase_compute)
     _batch_compute = _swig_new_instance_method(_eec.EECBase__batch_compute)
 
@@ -587,7 +680,7 @@ class DynamicMultinomial(object):
     thisown = property(lambda x: x.this.own(), lambda x, v: x.this.own(v), doc="The membership flag")
     __repr__ = _swig_repr
 
-    def __init__(self, N: "unsigned int"):
+    def __init__(self, N):
         r"""__init__(DynamicMultinomial self, unsigned int N) -> DynamicMultinomial"""
         _eec.DynamicMultinomial_swiginit(self, _eec.new_DynamicMultinomial(N))
     set_index = _swig_new_instance_method(_eec.DynamicMultinomial_set_index)
@@ -713,14 +806,22 @@ class EECLongestSideId(EECBase, EECHist1DId):
     r"""Proxy of C++ eec::EECLongestSide< axis::id > class."""
 
     thisown = property(lambda x: x.this.own(), lambda x, v: x.this.own(v), doc="The membership flag")
+    __repr__ = _swig_repr
 
     def __init__(self, *args, **kwargs):
         r"""__init__(EECLongestSideId self, unsigned int N, unsigned int nbins, double axis_min, double axis_max, bool norm=True, vectorDouble pt_powers={1}, vectorUnsigned ch_powers={0}, int num_threads=-1, int print_every=-10, bool check_degen=False, bool average_verts=False, bool use_general_eNc=False) -> EECLongestSideId"""
         _eec.EECLongestSideId_swiginit(self, _eec.new_EECLongestSideId(*args, **kwargs))
     __swig_destroy__ = _eec.delete_EECLongestSideId
     description = _swig_new_instance_method(_eec.EECLongestSideId_description)
-    __str__ = _swig_new_instance_method(_eec.EECLongestSideId___str__)
-    __repr__ = _swig_new_instance_method(_eec.EECLongestSideId___repr__)
+    __getstate_internal__ = _swig_new_instance_method(_eec.EECLongestSideId___getstate_internal__)
+    __setstate_internal__ = _swig_new_instance_method(_eec.EECLongestSideId___setstate_internal__)
+
+    def __repr__(self):
+        return self.description().decode('utf-8')
+
+
+    _default_args = (2, 1, 0.1, 1.0)
+
 
 # Register EECLongestSideId in _eec:
 _eec.EECLongestSideId_swigregister(EECLongestSideId)
@@ -729,14 +830,22 @@ class EECLongestSideLog(EECBase, EECHist1DLog):
     r"""Proxy of C++ eec::EECLongestSide< axis::log > class."""
 
     thisown = property(lambda x: x.this.own(), lambda x, v: x.this.own(v), doc="The membership flag")
+    __repr__ = _swig_repr
 
     def __init__(self, *args, **kwargs):
         r"""__init__(EECLongestSideLog self, unsigned int N, unsigned int nbins, double axis_min, double axis_max, bool norm=True, vectorDouble pt_powers={1}, vectorUnsigned ch_powers={0}, int num_threads=-1, int print_every=-10, bool check_degen=False, bool average_verts=False, bool use_general_eNc=False) -> EECLongestSideLog"""
         _eec.EECLongestSideLog_swiginit(self, _eec.new_EECLongestSideLog(*args, **kwargs))
     __swig_destroy__ = _eec.delete_EECLongestSideLog
     description = _swig_new_instance_method(_eec.EECLongestSideLog_description)
-    __str__ = _swig_new_instance_method(_eec.EECLongestSideLog___str__)
-    __repr__ = _swig_new_instance_method(_eec.EECLongestSideLog___repr__)
+    __getstate_internal__ = _swig_new_instance_method(_eec.EECLongestSideLog___getstate_internal__)
+    __setstate_internal__ = _swig_new_instance_method(_eec.EECLongestSideLog___setstate_internal__)
+
+    def __repr__(self):
+        return self.description().decode('utf-8')
+
+
+    _default_args = (2, 1, 0.1, 1.0)
+
 
 # Register EECLongestSideLog in _eec:
 _eec.EECLongestSideLog_swigregister(EECLongestSideLog)
@@ -745,13 +854,21 @@ class EECTriangleOPEIdIdId(EECBase, EECHist3DIdIdId):
     r"""Proxy of C++ eec::EECTriangleOPE< axis::id,axis::id,axis::id > class."""
 
     thisown = property(lambda x: x.this.own(), lambda x, v: x.this.own(v), doc="The membership flag")
+    __repr__ = _swig_repr
 
     def __init__(self, *args, **kwargs):
         r"""__init__(EECTriangleOPEIdIdId self, unsigned int nbins0, double axis0_min, double axis0_max, unsigned int nbins1, double axis1_min, double axis1_max, unsigned int nbins2, double axis2_min, double axis2_max, bool norm=True, vectorDouble pt_powers={1}, vectorUnsigned ch_powers={0}, int num_threads=-1, int print_every=-10, bool check_degen=False, bool average_verts=False) -> EECTriangleOPEIdIdId"""
         _eec.EECTriangleOPEIdIdId_swiginit(self, _eec.new_EECTriangleOPEIdIdId(*args, **kwargs))
     description = _swig_new_instance_method(_eec.EECTriangleOPEIdIdId_description)
-    __str__ = _swig_new_instance_method(_eec.EECTriangleOPEIdIdId___str__)
-    __repr__ = _swig_new_instance_method(_eec.EECTriangleOPEIdIdId___repr__)
+    __getstate_internal__ = _swig_new_instance_method(_eec.EECTriangleOPEIdIdId___getstate_internal__)
+    __setstate_internal__ = _swig_new_instance_method(_eec.EECTriangleOPEIdIdId___setstate_internal__)
+
+    def __repr__(self):
+        return self.description().decode('utf-8')
+
+
+    _default_args = (1, 0.1, 1.0, 1, 0.1, 1.0, 1, 0., 1.5)
+
     __swig_destroy__ = _eec.delete_EECTriangleOPEIdIdId
 
 # Register EECTriangleOPEIdIdId in _eec:
@@ -761,13 +878,21 @@ class EECTriangleOPELogIdId(EECBase, EECHist3DLogIdId):
     r"""Proxy of C++ eec::EECTriangleOPE< axis::log,axis::id,axis::id > class."""
 
     thisown = property(lambda x: x.this.own(), lambda x, v: x.this.own(v), doc="The membership flag")
+    __repr__ = _swig_repr
 
     def __init__(self, *args, **kwargs):
         r"""__init__(EECTriangleOPELogIdId self, unsigned int nbins0, double axis0_min, double axis0_max, unsigned int nbins1, double axis1_min, double axis1_max, unsigned int nbins2, double axis2_min, double axis2_max, bool norm=True, vectorDouble pt_powers={1}, vectorUnsigned ch_powers={0}, int num_threads=-1, int print_every=-10, bool check_degen=False, bool average_verts=False) -> EECTriangleOPELogIdId"""
         _eec.EECTriangleOPELogIdId_swiginit(self, _eec.new_EECTriangleOPELogIdId(*args, **kwargs))
     description = _swig_new_instance_method(_eec.EECTriangleOPELogIdId_description)
-    __str__ = _swig_new_instance_method(_eec.EECTriangleOPELogIdId___str__)
-    __repr__ = _swig_new_instance_method(_eec.EECTriangleOPELogIdId___repr__)
+    __getstate_internal__ = _swig_new_instance_method(_eec.EECTriangleOPELogIdId___getstate_internal__)
+    __setstate_internal__ = _swig_new_instance_method(_eec.EECTriangleOPELogIdId___setstate_internal__)
+
+    def __repr__(self):
+        return self.description().decode('utf-8')
+
+
+    _default_args = (1, 0.1, 1.0, 1, 0.1, 1.0, 1, 0., 1.5)
+
     __swig_destroy__ = _eec.delete_EECTriangleOPELogIdId
 
 # Register EECTriangleOPELogIdId in _eec:
@@ -777,13 +902,21 @@ class EECTriangleOPEIdLogId(EECBase, EECHist3DIdLogId):
     r"""Proxy of C++ eec::EECTriangleOPE< axis::id,axis::log,axis::id > class."""
 
     thisown = property(lambda x: x.this.own(), lambda x, v: x.this.own(v), doc="The membership flag")
+    __repr__ = _swig_repr
 
     def __init__(self, *args, **kwargs):
         r"""__init__(EECTriangleOPEIdLogId self, unsigned int nbins0, double axis0_min, double axis0_max, unsigned int nbins1, double axis1_min, double axis1_max, unsigned int nbins2, double axis2_min, double axis2_max, bool norm=True, vectorDouble pt_powers={1}, vectorUnsigned ch_powers={0}, int num_threads=-1, int print_every=-10, bool check_degen=False, bool average_verts=False) -> EECTriangleOPEIdLogId"""
         _eec.EECTriangleOPEIdLogId_swiginit(self, _eec.new_EECTriangleOPEIdLogId(*args, **kwargs))
     description = _swig_new_instance_method(_eec.EECTriangleOPEIdLogId_description)
-    __str__ = _swig_new_instance_method(_eec.EECTriangleOPEIdLogId___str__)
-    __repr__ = _swig_new_instance_method(_eec.EECTriangleOPEIdLogId___repr__)
+    __getstate_internal__ = _swig_new_instance_method(_eec.EECTriangleOPEIdLogId___getstate_internal__)
+    __setstate_internal__ = _swig_new_instance_method(_eec.EECTriangleOPEIdLogId___setstate_internal__)
+
+    def __repr__(self):
+        return self.description().decode('utf-8')
+
+
+    _default_args = (1, 0.1, 1.0, 1, 0.1, 1.0, 1, 0., 1.5)
+
     __swig_destroy__ = _eec.delete_EECTriangleOPEIdLogId
 
 # Register EECTriangleOPEIdLogId in _eec:
@@ -793,13 +926,21 @@ class EECTriangleOPELogLogId(EECBase, EECHist3DLogLogId):
     r"""Proxy of C++ eec::EECTriangleOPE< axis::log,axis::log,axis::id > class."""
 
     thisown = property(lambda x: x.this.own(), lambda x, v: x.this.own(v), doc="The membership flag")
+    __repr__ = _swig_repr
 
     def __init__(self, *args, **kwargs):
         r"""__init__(EECTriangleOPELogLogId self, unsigned int nbins0, double axis0_min, double axis0_max, unsigned int nbins1, double axis1_min, double axis1_max, unsigned int nbins2, double axis2_min, double axis2_max, bool norm=True, vectorDouble pt_powers={1}, vectorUnsigned ch_powers={0}, int num_threads=-1, int print_every=-10, bool check_degen=False, bool average_verts=False) -> EECTriangleOPELogLogId"""
         _eec.EECTriangleOPELogLogId_swiginit(self, _eec.new_EECTriangleOPELogLogId(*args, **kwargs))
     description = _swig_new_instance_method(_eec.EECTriangleOPELogLogId_description)
-    __str__ = _swig_new_instance_method(_eec.EECTriangleOPELogLogId___str__)
-    __repr__ = _swig_new_instance_method(_eec.EECTriangleOPELogLogId___repr__)
+    __getstate_internal__ = _swig_new_instance_method(_eec.EECTriangleOPELogLogId___getstate_internal__)
+    __setstate_internal__ = _swig_new_instance_method(_eec.EECTriangleOPELogLogId___setstate_internal__)
+
+    def __repr__(self):
+        return self.description().decode('utf-8')
+
+
+    _default_args = (1, 0.1, 1.0, 1, 0.1, 1.0, 1, 0., 1.5)
+
     __swig_destroy__ = _eec.delete_EECTriangleOPELogLogId
 
 # Register EECTriangleOPELogLogId in _eec:

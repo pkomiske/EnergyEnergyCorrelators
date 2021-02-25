@@ -31,6 +31,7 @@
 #ifndef EEC_HIST_HH
 #define EEC_HIST_HH
 
+#include <array>
 #include <cstddef>
 #include <iomanip>
 #include <ostream>
@@ -48,9 +49,9 @@
 namespace eec {
 namespace hist {
 
-#ifndef SWIG_PREPROCESSOR
-  // naming shortcuts
-  namespace bh = boost::histogram;
+namespace bh = boost::histogram;
+
+#ifndef SWIG_PREPROCESSOR  
   using bh::weight;
 #endif
 
@@ -105,34 +106,23 @@ std::string name_transform() {
 }
 
 template<class Axis>
-void output_axis(std::ostream & os, const Axis & axis, int precision = 16) {
+void output_axis(std::ostream & os, const Axis & axis, int hist_level, int precision) {
   os.precision(precision);
-  os << "# " << name_transform<Axis>() << " axis, "
-     << axis.size() << " bins, (" << axis.value(0) << ", " << axis.value(axis.size()) << ")\n";
-  os << "bin_edges :";
-  for (double edge : get_bin_edges(axis))
-    os << ' ' << edge;
-  os << '\n'
-     << "bin_centers :";
-  for (double center : get_bin_centers(axis))
-    os << ' ' << center;
-  os << "\n\n";
-}
-
-template<class Hist>
-void output_hist(std::ostream & os, const Hist & hist, int precision = 16,
-                 bool include_overflows = true, int hist_i = -1) {
-  os.precision(precision);
-  os << "# hist";
-  if (hist_i != -1) os << ' ' << hist_i;
-  os << ", rank " << hist.rank() << ", " << hist.size() << " total bins\n"
-     << "# bin_multi_index : bin_value bin_variance\n";
-  for (auto && x : bh::indexed(hist, include_overflows ? bh::coverage::all : bh::coverage::inner)) {
-    for (int index : x.indices())
-      os << index << ' ';
-    os << ": " << x->value() << ' ' << x->variance() << '\n';
+  if (hist_level > 1) os << "# ";
+  else os << "  ";
+  if (hist_level > 0)
+    os << name_transform<Axis>() << " axis, "
+       << axis.size() << " bins, (" << axis.value(0) << ", " << axis.value(axis.size()) << ")\n";
+  if (hist_level > 1) {
+    os << "bin_edges :";
+    for (double edge : get_bin_edges(axis))
+      os << ' ' << edge;
+    os << '\n'
+       << "bin_centers :";
+    for (double center : get_bin_centers(axis))
+      os << ' ' << center;
+    os << "\n\n";
   }
-  os << '\n';
 }
 
 //-----------------------------------------------------------------------------
@@ -200,7 +190,7 @@ public:
 
   template <class Archive>
   void serialize(Archive& ar, unsigned /* version */) {
-    ar& make_nvp("value", value_);
+    ar & value_;
   }
 
 private:
@@ -228,14 +218,18 @@ public:
   typedef typename EECHistTraits<EECHist>::Hist Hist;
   typedef typename EECHistTraits<EECHist>::SimpleHist SimpleHist;
 
-  EECHistBase(int num_threads) :
-    num_threads_(determine_num_threads(num_threads)),
-    hists_(num_threads_),
-    simple_hists_(num_threads_)
-  {}
+private:
+
+  std::vector<std::vector<Hist>> hists_;
+  std::vector<std::vector<SimpleHist>> simple_hists_;
+
+  int num_threads_;
+
+public:
+
+  EECHistBase(int num_threads) : num_threads_(determine_num_threads(num_threads)) {}
   virtual ~EECHistBase() = default;
 
-  std::string axes_description() const { return ""; }
   int num_threads() const { return num_threads_; }
   std::size_t nhists() const { return hists().size(); }
   std::size_t nbins(unsigned i = 0) const { return axis(i).size(); }
@@ -252,6 +246,70 @@ public:
     return axis(i).size() + (include_overflows ? 2 : 0);
   }
 
+  // reduce histograms
+  void reduce(const std::vector<bh::algorithm::reduce_command> & rcs) {
+
+    for (int thread_i = 0; thread_i < this->num_threads(); thread_i++) {
+      auto & hs(this->hists(thread_i));
+      for (unsigned hist_i = 0; hist_i < this->nhists(); hist_i++) {
+        if (rcs.size() == 1)
+          hs[hist_i] = bh::algorithm::reduce(hs[hist_i], rcs[0]);
+        else if (rcs.size() == 2)
+          hs[hist_i] = bh::algorithm::reduce(hs[hist_i], rcs[0], rcs[1]);
+        else if (rcs.size() == 3)
+          hs[hist_i] = bh::algorithm::reduce(hs[hist_i], rcs[0], rcs[1], rcs[2]);
+        else
+          throw std::invalid_argument("too many reduce_commands");
+      }
+    }
+
+    static_cast<EECHist &>(*this).reset_axes();
+  }
+
+  // tally histograms
+  double sum(unsigned hist_i = 0) const {
+    if (hist_i >= nhists())
+      throw std::invalid_argument("invalid histogram index");
+
+    auto s(bh::algorithm::sum(hists(0)[hist_i]));
+    for (int thread_i = 1; thread_i < num_threads(); thread_i++)
+      s += bh::algorithm::sum(hists(thread_i)[hist_i]);
+
+    return s.value();
+  }
+
+  // compute combined histograms
+  Hist combined_hist(unsigned hist_i = 0) const {
+    if (hist_i >= nhists())
+      throw std::invalid_argument("invalid histogram index");
+
+    Hist hist(hists(0)[hist_i]);
+    for (int thread_i = 1; thread_i < num_threads(); thread_i++)
+      hist += hists(thread_i)[hist_i];
+
+    return hist;
+  }
+
+  // operator to add histograms together
+  EECHistBase & operator+=(const EECHistBase<EECHist> & rhs) {
+    if (nhists() != rhs.nhists())
+      throw std::invalid_argument("cannot add different numbers of histograms together");
+
+    // add everything from rhs to thread 0 histogram WLOG
+    for (unsigned hist_i = 0; hist_i < nhists(); hist_i++)
+      add(rhs.combined_hist(hist_i), hist_i);
+
+    return *this;
+  }
+
+  // function to add specific histograms
+  void add(const Hist & h, unsigned hist_i = 0) {
+    if (hist_i >= nhists())
+      throw std::invalid_argument("invalid histogram index");
+
+    hists()[hist_i] += h;
+  }
+
   std::vector<double> bin_centers(unsigned i = 0) const { return get_bin_centers(hists()[0].axis(i)); }
   std::vector<double> bin_edges(unsigned i = 0) const { return get_bin_edges(hists()[0].axis(i)); }
 
@@ -259,7 +317,7 @@ public:
                      unsigned hist_i = 0, bool include_overflows = true) const {
 
     if (hist_i >= this->nhists())
-      throw std::out_of_range("Requested histogram out of range");
+      throw std::invalid_argument("Requested histogram out of range");
     auto hist(this->combined_hist(hist_i));
 
     // calculate strides
@@ -291,57 +349,68 @@ public:
     return hist_vars;
   }
 
-  std::string hists_as_text(int precision = 16, bool include_overflows = true, std::ostringstream * os = nullptr) const {
+  std::string hists_as_text(int hist_level = 3, int precision = 16,
+                            bool include_overflows = true, std::ostringstream * os = nullptr) const {
 
     bool os_null(os == nullptr);
     if (os_null)
       os = new std::ostringstream();
 
-    hists()[0].for_each_axis([=](const auto & a){ output_axis(*os, a, precision); });
+    hists()[0].for_each_axis([=](const auto & a){ output_axis(*os, a, hist_level, precision); });
 
     // loop over hists
     for (unsigned hist_i = 0; hist_i < nhists(); hist_i++)
-      output_hist(*os, combined_hist(hist_i), precision, include_overflows, hist_i);
+      output_hist(*os, hist_i, hist_level, precision, include_overflows);
 
-    return os_null ? os->str() : "";
+    if (os_null) {
+      std::string s(os->str());
+      delete os;
+      return s;
+    }
+
+    return "";
   }
 
 protected:
+
+  void init(unsigned nh) {
+    hists_.clear();
+    simple_hists_.clear();
+    hists_.resize(num_threads());
+    simple_hists_.resize(num_threads());
+    resize_internal_hists(nh);
+  }
+
+  std::string axes_description() const { return ""; }
 
 #ifndef SWIG_PREPROCESSOR
   auto axis(unsigned i = 0) const { return hists()[0].axis(i); } 
 #endif
 
-  // histogram access functions histogram
+  // access to simple histograms
   std::vector<Hist> & hists(int thread_i = 0) { return hists_[thread_i]; }
   const std::vector<Hist> & hists(int thread_i = 0) const { return hists_[thread_i]; }
   std::vector<SimpleHist> & simple_hists(int thread_i = 0) { return simple_hists_[thread_i]; }
   const std::vector<SimpleHist> & simple_hists(int thread_i = 0) const { return simple_hists_[thread_i]; }
 
-  // combined histograms
-  Hist combined_hist(unsigned hist_i) const {
-
-    Hist hist(hists(0)[hist_i]);
-    for (int thread_i = 1; thread_i < num_threads(); thread_i++)
-      hist += hists(thread_i)[hist_i];
-
-    return hist;
-  }
-
   // these will be overridden in derived classes
   Hist make_hist() const { assert(false); }
   SimpleHist make_simple_hist() const { assert(false); }
 
-  void duplicate_internal_hists(unsigned nhists) {
+  void resize_internal_hists(unsigned nhists) {
     if (nhists == 0)
       throw std::invalid_argument("nhists must be at least 1");
 
     // create histograms
     int nnewhists(int(nhists) - int(this->nhists()));
-    if (nnewhists > 0) {
-      for (int i = 0; i < num_threads(); i++) {
+    for (int i = 0; i < num_threads(); i++) {
+      if (nnewhists > 0) {
         hists(i).insert(hists(i).end(), nnewhists, static_cast<EECHist &>(*this).make_hist());
         simple_hists(i).insert(simple_hists(i).end(), nnewhists, static_cast<EECHist &>(*this).make_simple_hist());
+      }
+      else {
+        hists(i).resize(nhists);
+        simple_hists(i).resize(nhists);
       }
     }
   }
@@ -357,10 +426,53 @@ protected:
 
 private:
 
-  int num_threads_;
-  
-  std::vector<std::vector<Hist>> hists_;
-  std::vector<std::vector<SimpleHist>> simple_hists_;
+  void output_hist(std::ostream & os, int hist_i, int hist_level,
+                                      int precision, bool include_overflows) const {
+    os.precision(precision);
+    if (hist_level > 2) os << "# ";
+    else os << "  ";
+    if (hist_level > 0 && hist_i == 0) {
+      if (hist_i != -1 && hist_level > 2) os << "hist " << hist_i;
+      os << "rank " << hists()[hist_i].rank()
+         << " hist, " << hists()[hist_i].size() << " total bins including overflows\n";
+    }
+    if (hist_level > 2) {
+      os << "# bin_multi_index : bin_value bin_variance\n";
+      auto hist(combined_hist(hist_i));
+      for (auto && x : bh::indexed(hist, include_overflows ? bh::coverage::all : bh::coverage::inner)) {
+        for (int index : x.indices())
+          os << index << ' ';
+        os << ": " << x->value() << ' ' << x->variance() << '\n';
+      }
+      os << '\n';
+    }
+  }
+
+#if defined(EEC_SERIALIZATION) && !defined(SWIG_PREPROCESSOR)
+  friend class boost::serialization::access;
+
+  template<class Archive>
+  void save(Archive & ar, const unsigned int /* file_version */) const {
+    ar & num_threads_ & nhists();
+    for (unsigned hist_i = 0; hist_i < nhists(); hist_i++)
+      ar & combined_hist(hist_i);
+  }
+
+  template<class Archive>
+  void load(Archive & ar, const unsigned int /* file_version */) {
+    std::size_t nh;
+    ar & num_threads_ & nh;
+
+    // initialize with a specific number of histograms
+    init(nh);
+
+    // for each hist, load it into thread 0
+    for (unsigned hist_i = 0; hist_i < nh; hist_i++)
+      ar & hists()[hist_i];
+  }
+
+  BOOST_SERIALIZATION_SPLIT_MEMBER()
+#endif
 
 }; // EECHistBase
 
@@ -371,27 +483,53 @@ private:
 template<class Tr>
 class EECHist1D : public EECHistBase<EECHist1D<Tr>> {
 public:
-  typedef EECHistTraits<EECHist1D<Tr>> Traits;
+  typedef EECHist1D<Tr> Self;
+  typedef EECHistBase<Self> Base;
+  typedef EECHistTraits<Self> Traits;
   typedef typename Traits::Axis Axis;
 
 private:
-  Axis axis_;
+  
+  unsigned nbins_;
+  double axis_min_, axis_max_;
 
 public:
 
   EECHist1D(unsigned nbins, double axis_min, double axis_max, int num_threads = 1) :
     EECHistBase<EECHist1D<Tr>>(num_threads),
-    axis_(nbins, axis_min, axis_max)
+    nbins_(nbins), axis_min_(axis_min), axis_max_(axis_max)
   {
-    this->duplicate_internal_hists(1);
+    this->init(1);
   }
   virtual ~EECHist1D() = default;
 
-  std::string axes_description() const { return name_transform<Tr>(); }
+  void reduce(const bh::algorithm::reduce_command & rc) {
+    Base::reduce({rc});
+  }
 
 #ifndef SWIG_PREPROCESSOR
-  auto make_hist() const { return bh::make_weighted_histogram(axis_); }
-  auto make_simple_hist() const { return bh::make_histogram_with(simple_weight_storage(), axis_); }
+  void reset_axes() {
+    nbins_ = this->nbins();
+    axis_min_ = this->axis().value(0);
+    axis_max_ = this->axis().value(nbins_);
+  }
+  auto make_hist() const { return bh::make_weighted_histogram(Axis(nbins_, axis_min_, axis_max_)); }
+  auto make_simple_hist() const { return bh::make_histogram_with(simple_weight_storage(), Axis(nbins_, axis_min_, axis_max_)); }
+#endif
+
+protected:
+
+  std::string axes_description() const { return name_transform<Tr>(); }
+
+private:
+
+#ifdef EEC_SERIALIZATION
+  friend class boost::serialization::access;
+  template<class Archive>
+  void serialize(Archive & ar, const unsigned int /* file_version */) {
+    ar & nbins_ & axis_min_ & axis_max_;
+    ar & boost::serialization::base_object<Base>(*this);
+  }
 #endif
 
 }; // EECHist1D
@@ -414,15 +552,18 @@ struct EECHistTraits<EECHist1D<T>> {
 template<class Tr0, class Tr1, class Tr2>
 class EECHist3D : public EECHistBase<EECHist3D<Tr0, Tr1, Tr2>> {
 public:
-  typedef EECHistTraits<EECHist3D<Tr0, Tr1, Tr2>> Traits;
+  typedef EECHist3D<Tr0, Tr1, Tr2> Self;
+  typedef EECHistBase<Self> Base;
+  typedef EECHistTraits<Self> Traits;
   typedef typename Traits::Axis0 Axis0;
   typedef typename Traits::Axis1 Axis1;
   typedef typename Traits::Axis2 Axis2;
 
 private:
-  Axis0 axis0_;
-  Axis1 axis1_;
-  Axis2 axis2_;
+  
+  std::array<unsigned, 3> nbins_;
+  std::array<double, 3> axis_mins_;
+  std::array<double, 3> axis_maxs_;
 
 public:
 
@@ -430,25 +571,55 @@ public:
             unsigned nbins1, double axis1_min, double axis1_max,
             unsigned nbins2, double axis2_min, double axis2_max,
             int num_threads = 1) :
-    EECHistBase<EECHist3D<Tr0, Tr1, Tr2>>(num_threads),
-    axis0_(nbins0, axis0_min, axis0_max),
-    axis1_(nbins1, axis1_min, axis1_max),
-    axis2_(nbins2, axis2_min, axis2_max)
+    Base(num_threads),
+    nbins_({nbins0, nbins1, nbins2}),
+    axis_mins_({axis0_min, axis1_min, axis2_min}),
+    axis_maxs_({axis0_max, axis1_max, axis2_max})
   {
-    this->duplicate_internal_hists(1);
+    this->init(1);
   }
   virtual ~EECHist3D() = default;
+
+#ifndef SWIG_PREPROCESSOR
+  void reset_axes() {
+    for (unsigned i = 0; i < 3; i++) {
+      nbins_[i] = this->nbins(i);
+      axis_mins_[i] = this->axis(i).value(0);
+      axis_maxs_[i] = this->axis(i).value(nbins_[i]);
+    }
+  }
+
+  auto make_hist() const {
+    return bh::make_weighted_histogram(Axis0(nbins_[0], axis_mins_[0], axis_maxs_[0]),
+                                       Axis1(nbins_[1], axis_mins_[1], axis_maxs_[1]),
+                                       Axis2(nbins_[2], axis_mins_[2], axis_maxs_[2]));
+  }
+  auto make_simple_hist() const {
+    return bh::make_histogram_with(simple_weight_storage(), Axis0(nbins_[0], axis_mins_[0], axis_maxs_[0]),
+                                                            Axis1(nbins_[1], axis_mins_[1], axis_maxs_[1]),
+                                                            Axis2(nbins_[2], axis_mins_[2], axis_maxs_[2]));
+  }
+#endif
+
+protected:
 
   std::string axes_description() const {
     std::ostringstream os;
     os << name_transform<Tr0>() << ", "
        << name_transform<Tr1>() << ", "
        << name_transform<Tr2>();
-    return os.str(); }
+    return os.str();
+  }
 
-#ifndef SWIG_PREPROCESSOR
-  auto make_hist() const { return bh::make_weighted_histogram(axis0_, axis1_, axis2_); }
-  auto make_simple_hist() const { return bh::make_histogram_with(simple_weight_storage(), axis0_, axis1_, axis2_); }
+private:
+
+#ifdef EEC_SERIALIZATION
+  friend class boost::serialization::access;
+  template<class Archive>
+  void serialize(Archive & ar, const unsigned int /* file_version */) {
+    ar & nbins_ & axis_mins_ & axis_maxs_;
+    ar & boost::serialization::base_object<Base>(*this);
+  }
 #endif
 
 }; // EECHist3D

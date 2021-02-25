@@ -55,29 +55,26 @@ class EECLongestSide : public EECBase, public hist::EECHist1D<Transform> {
   bool use_general_eNc_;
   unsigned N_choose_2_;
 
+  typedef hist::EECHist1D<Transform> EECLongestSideHist1D;
+  typedef typename EECLongestSideHist1D::SimpleHist SimpleHist;
+
   // function pointer to the actual computation that will be run
   void (EECLongestSide::*compute_eec_ptr_)(int);
 
-public:
+#ifdef EEC_SERIALIZATION
+  friend class boost::serialization::access;
+  template<class Archive>
+  void serialize(Archive & ar, const unsigned int /* file_version */) {
+    ar & boost::serialization::base_object<EECBase>(*this)
+       & boost::serialization::base_object<EECLongestSideHist1D>(*this);
+    ar & use_general_eNc_ & N_choose_2_;
 
-  typedef typename hist::EECHist1D<Transform>::SimpleHist SimpleHist;
+    select_eec_function();
+  }
+#endif
 
-  EECLongestSide(unsigned N,
-                 unsigned nbins, double axis_min, double axis_max,
-                 bool norm = true,
-                 const std::vector<double> & pt_powers = {1},
-                 const std::vector<unsigned> & ch_powers = {0},
-                 int num_threads = -1,
-                 int print_every = -10,
-                 bool check_degen = false,
-                 bool average_verts = false,
-                 bool use_general_eNc = false) :
-    EECBase(N, norm, pt_powers, ch_powers, num_threads, print_every, check_degen, average_verts),
-    hist::EECHist1D<Transform>(nbins, axis_min, axis_max, num_threads),
-    use_general_eNc_(use_general_eNc),
-    N_choose_2_(this->N()*(this->N()-1)/2),
-    compute_eec_ptr_(&EECLongestSide::eNc_sym)
-  {
+  void select_eec_function() {
+
     // set pointer to function that will do the computation
     switch (this->N()) {
       case 2:
@@ -98,12 +95,12 @@ public:
 
           case 2:
             compute_eec_ptr_ = &EECLongestSide::eeec_ij_sym;
-            if (!this->average_verts()) this->duplicate_internal_hists(2);
+            if (!this->average_verts()) this->resize_internal_hists(2);
             break;
 
           case 0:
             compute_eec_ptr_ = &EECLongestSide::eeec_no_sym;
-            if (!this->average_verts()) this->duplicate_internal_hists(3);
+            if (!this->average_verts()) this->resize_internal_hists(3);
             break;
 
           default:
@@ -135,14 +132,36 @@ public:
     }
   }
 
+public:
+
+  EECLongestSide(unsigned N,
+                 unsigned nbins, double axis_min, double axis_max,
+                 bool norm = true,
+                 const std::vector<double> & pt_powers = {1},
+                 const std::vector<unsigned> & ch_powers = {0},
+                 int num_threads = -1,
+                 int print_every = -10,
+                 bool check_degen = false,
+                 bool average_verts = false,
+                 bool use_general_eNc = false) :
+    EECBase(N, norm, pt_powers, ch_powers, num_threads, print_every, check_degen, average_verts),
+    EECLongestSideHist1D(nbins, axis_min, axis_max, num_threads),
+    use_general_eNc_(use_general_eNc),
+    N_choose_2_(this->N()*(this->N()-1)/2),
+    compute_eec_ptr_(&EECLongestSide::eNc_sym)
+  {
+    select_eec_function();
+  }
+
   virtual ~EECLongestSide() {}
 
-  std::string description(bool include_hists = false) const {
+  std::string description(int hist_level = 1) const {
     unsigned nh(this->nhists());
 
     std::ostringstream oss;
-    oss << "EECLongestSide<" << this->axes_description() << ">::" << EECBase::description() << '\n'
-        << "  using eNc_sym - " << (use_general_eNc_ ? "true" : "false") << '\n'
+    oss << std::boolalpha
+        << "EECLongestSide<" << this->axes_description() << ">::" << EECBase::description(hist_level) << '\n'
+        << "  using eNc_sym - " << use_general_eNc_ << '\n'
         << "  there " << (nh == 1 ? "is " : "are ") << nh << " histogram";
 
     if (nh == 1) 
@@ -162,9 +181,9 @@ public:
     else 
       throw std::runtime_error("Unexpected number of histograms encountered");
 
-    if (include_hists) {
+    if (hist_level > 0) {
       oss << '\n';
-      this->hists_as_text(16, true, &oss);
+      this->hists_as_text(hist_level, 16, true, &oss);
     }
 
     return oss.str();

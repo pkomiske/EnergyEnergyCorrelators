@@ -114,15 +114,40 @@ private:
   // name of method used for core computation
   std::string compname_;
 
-  #ifdef __FASTJET_PSEUDOJET_HH__
+#ifdef __FASTJET_PSEUDOJET_HH__
   double (*pj_charge_)(const fastjet::PseudoJet &);
-  #endif
+#endif
 
   // vectors used by the computations (outer axis is the thread axis)
   std::vector<std::vector<std::vector<double>>> weights_;
   std::vector<std::vector<double>> dists_;
   std::vector<double> event_weights_;
   std::vector<unsigned> mults_;
+
+#ifdef EEC_SERIALIZATION
+  friend class boost::serialization::access;
+  template<class Archive>
+  void serialize(Archive & ar, const unsigned int /* file_version */) {
+    ar & orig_pt_powers_ & pt_powers_ & orig_ch_powers_ & ch_powers_
+       & N_ & nsym_ & nfeatures_ & event_counter_
+       & norm_ & use_charges_ & check_degen_ & average_verts_
+       & num_threads_ & print_every_ & omp_chunksize_;
+
+    init();
+  }
+#endif
+
+  void init() {
+    set_print_stream(std::cout);
+
+    oss_ = std::ostringstream(std::ios_base::ate);
+    oss_.setf(std::ios_base::fixed, std::ios_base::floatfield);
+
+    weights_.resize(num_threads(), std::vector<std::vector<double>>(N()));
+    dists_.resize(num_threads());
+    event_weights_.resize(num_threads());
+    mults_.resize(num_threads());
+  }
 
 protected:
 
@@ -144,20 +169,15 @@ public:
     N_(N), nsym_(N_), event_counter_(0),
     norm_(norm), use_charges_(false), check_degen_(check_degen), average_verts_(average_verts),
     num_threads_(determine_num_threads(num_threads)),
-    print_every_(print_every),
-    weights_(num_threads_, std::vector<std::vector<double>>(N_)),
-    dists_(num_threads_),
-    event_weights_(num_threads_),
-    mults_(num_threads_)
+    print_every_(print_every)
   {
+
+    // initialize data members
+    init();
 
     // set default thread chunksize
     set_omp_chunksize(10);
-    set_print_stream(std::cout);
-
-    // setup stringstream for printing
-    oss_ = std::ostringstream(std::ios_base::ate);
-    oss_.setf(std::ios_base::fixed, std::ios_base::floatfield);
+    
 
     if (orig_pt_powers_.size() == 1)
       orig_pt_powers_ = std::vector<double>(N_, orig_pt_powers_[0]);
@@ -270,15 +290,16 @@ public:
   }
   virtual ~EECBase() = default;
 
-  virtual std::string description(bool = false) const {
+  virtual std::string description(int = 1) const {
     std::ostringstream oss;
-    oss << compname_ << '\n'
+    oss << std::boolalpha
+        << compname_ << '\n'
         << "  N - " << N() << '\n'
-        << "  norm - " << (norm_ ? "true" : "false") << '\n'
-        << "  use_charges - " << (use_charges_ ? "true" : "false") << '\n'
+        << "  norm - " << norm_ << '\n'
+        << "  use_charges - " << use_charges_ << '\n'
         << "  nfeatures - " << nfeatures() << '\n'
-        << "  check_for_degeneracy - " << (check_degen_ ? "true" : "false") << '\n'
-        << "  average_verts - " << (average_verts_ ? "true" : "false");
+        << "  check_for_degeneracy - " << check_degen_ << '\n'
+        << "  average_verts - " << average_verts_;
 
     // record pt and charge powers
     oss << '\n'
@@ -426,9 +447,8 @@ public:
           if (!x.second) {
             if (ndegen++ == 0)
               std::cerr << "Begin Event\n";
-            std::cerr << "  distance degeneracy encountered, particles " << i << " and " << j << ", distance is " << *x.first << std::endl;
-            //throw std::runtime_error("distance degeneracy encountered, particles " 
-            //                         + std::to_string(i) + " and " + std::to_string(j) + ", distance is " + std::to_string(*x.first));
+            std::cerr << "  distance degeneracy encountered, particles " 
+                      << i << " and " << j << ", distance is " << *x.first << std::endl;
           }
         }
       }
@@ -451,7 +471,7 @@ public:
   }
 
   // fastjet support
-  #ifdef __FASTJET_PSEUDOJET_HH__
+#ifdef __FASTJET_PSEUDOJET_HH__
   void set_pseudojet_charge_func(double (*pj_charge)(const fastjet::PseudoJet &)) {
     pj_charge_ = pj_charge;
   }
@@ -492,7 +512,7 @@ public:
     compute_eec(0);
     event_counter_++;
   }
-  #endif // __FASTJET_PSEUDOJET_HH__
+#endif // __FASTJET_PSEUDOJET_HH__
 
 private:
 

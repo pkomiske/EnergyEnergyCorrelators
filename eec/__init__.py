@@ -32,16 +32,17 @@ from .eec import *
 
 __all__ = eec.__all__ + ['combine_bins', 'midbins']
 
-__version__ = '0.3.0a0'
+__version__ = '0.3.0a1'
+
+# hide numpy so it's not imported
+_np = eec._np
 
 def combine_bins(hist, nbins2combine, axes=None, overflows=True, keep_overflows=False,
                                       add_in_quadrature=False, bins=None):
-
-    import numpy as np
     
     # process arguments
     nax = len(hist.shape)
-    to_iterable = lambda arg: arg if isinstance(arg, (tuple, list, np.ndarray)) else [arg]
+    to_iterable = lambda arg: arg if isinstance(arg, (tuple, list, _np.ndarray)) else [arg]
     nbins2combine = to_iterable(nbins2combine)
     axes = to_iterable(list(range(nax)) if axes is None else axes)
     keep_overflows = to_iterable(keep_overflows)
@@ -71,9 +72,9 @@ def combine_bins(hist, nbins2combine, axes=None, overflows=True, keep_overflows=
         h = hist.transpose(axtrans)
         h = h[...,start:end].reshape(h.shape[:-1] + (nbins//nb2c, nb2c))
         if add_in_quadrature:
-            h = np.sqrt(np.sum(h**2, axis=-1).transpose(np.argsort(axtrans)))
+            h = _np.sqrt(_np.sum(h**2, axis=-1).transpose(_np.argsort(axtrans)))
         else:
-            h = np.sum(h, axis=-1).transpose(np.argsort(axtrans))
+            h = _np.sum(h, axis=-1).transpose(_np.argsort(axtrans))
         
         # add overflows back if requested
         if kov:
@@ -82,7 +83,7 @@ def combine_bins(hist, nbins2combine, axes=None, overflows=True, keep_overflows=
             unders = hist[tuple(inds)]
             inds[ax] = slice(-1, None)
             overs = hist[tuple(inds)]
-            h = np.concatenate((unders, h, overs), axis=ax)
+            h = _np.concatenate((unders, h, overs), axis=ax)
 
         # set hist to result
         hist = h
@@ -90,20 +91,19 @@ def combine_bins(hist, nbins2combine, axes=None, overflows=True, keep_overflows=
     # resample bins as well
     if bins is not None:
         single = len(bins.shape) == 1
-        bins = [x for x in np.atleast_2d(bins)]
+        bins = [x for x in _np.atleast_2d(bins)]
         for ax,nb2c in zip(axes, nbins2combine):
             bins[ax] = bins[ax][::nb2c]
 
         new_bins = [len(b) for b in bins]
-        dtype = np.double if min(new_bins) == max(new_bins) else object
+        dtype = _np.double if min(new_bins) == max(new_bins) else object
 
-        return hist, bins[0] if single else np.asarray(bins, dtype=dtype)
+        return hist, bins[0] if single else _np.asarray(bins, dtype=dtype)
     else:
         return hist
 
 def midbins(bins, axis='id'):
     if axis == 'log' or axis == True:
-        import numpy as np
-        return np.sqrt(bins[:-1]*bins[1:])
+        return _np.sqrt(bins[:-1]*bins[1:])
     else:
         return (bins[:-1] + bins[1:])/2

@@ -37,19 +37,35 @@
 #ifndef SWIG
 #define SWIG
 #endif
-#ifndef SWIG_EEC
-#define SWIG_EEC
-#endif
 
 // needed by numpy.i, harmless otherwise
 #define SWIG_FILE_WITH_INIT
+
+// needed to ensure bytes are returned 
+#define SWIG_PYTHON_STRICT_BYTE_CHAR
 
 // standard library headers we need
 #include <cstdlib>
 #include <cstring>
 
+// serialization code based on boost serialization
+#ifdef EEC_SERIALIZATION
+#include <boost/archive/binary_iarchive.hpp>
+#include <boost/archive/binary_oarchive.hpp>
+#include <boost/serialization/array.hpp>
+#include <boost/serialization/map.hpp>
+#include <boost/serialization/string.hpp>
+#include <boost/serialization/vector.hpp>
+#ifdef EEC_COMPRESSION
+#include <boost/iostreams/filtering_stream.hpp>
+#include <boost/iostreams/filter/zlib.hpp>
+#endif
+#endif
+
 // EEC library headers
 #include "EEC.hh"
+
+typedef boost::histogram::detail::reduce_command reduce_command;
 
 // using namespaces
 using namespace eec;
@@ -66,7 +82,10 @@ import_array();
 __all__ = ['EECLongestSide', 'EECTriangleOPE',
            'EECLongestSideId', 'EECLongestSideLog',
            'EECTriangleOPEIdIdId', 'EECTriangleOPEIdLogId',
-           'EECTriangleOPELogIdId', 'EECTriangleOPELogLogId']
+           'EECTriangleOPELogIdId', 'EECTriangleOPELogLogId',
+
+           # these are used in histogram reduction
+           'rebin', 'shrink', 'slice', 'shrink_and_rebin', 'slice_and_rebin']
 %}
 
 // vector templates
@@ -89,14 +108,65 @@ __all__ = ['EECLongestSide', 'EECTriangleOPE',
                                                                        (double** arr_out1, int* m0, int* m1, int* m2)}
 
 // makes python class printable from a description method
-%define ADD_STR_FROM_DESCRIPTION
-std::string __str__() const {
-  return $self->description();
-}
-std::string __repr__() const {
-  return $self->description();
-}
+%define ADD_REPR_FROM_DESCRIPTION
+%pythoncode %{
+  def __repr__(self):
+      return self.description().decode('utf-8')
+%}
 %enddef
+
+// for pickling
+#ifdef EEC_SERIALIZATION
+  %define PYTHON_PICKLE_FUNCTIONS
+    %pythoncode %{
+      def __getstate__(self):
+          return (self.__getstate_internal__(),)
+
+      def __setstate__(self, state):
+          self.__init__(*self._default_args)
+          self.__setstate_internal__(state[0])
+    %}
+  %enddef
+
+  %define CPP_PICKLE_FUNCTIONS
+    std::string __getstate_internal__() {
+      std::ostringstream oss;
+    %#ifdef EEC_COMPRESSION
+      {
+        boost::iostreams::filtering_ostream fos;
+        fos.push(boost::iostreams::zlib_compressor(boost::iostreams::zlib::best_compression));
+        fos.push(oss);
+        boost::archive::binary_oarchive ar(fos);
+        ar << *($self);
+      }
+    %#else
+      boost::archive::binary_oarchive ar(oss);
+      ar << *($self);
+    %#endif
+
+      return oss.str();
+    }
+
+    void __setstate_internal__(const std::string & state) {
+      std::istringstream iss(state);
+    %#ifdef EEC_COMPRESSION
+      boost::iostreams::filtering_istream fis;
+      fis.push(boost::iostreams::zlib_decompressor());
+      fis.push(iss);
+      boost::archive::binary_iarchive ar(fis);
+    %#else
+      boost::archive::binary_iarchive ar(iss);
+    %#endif
+
+      ar >> *($self);
+    }
+  %enddef
+#else
+  %define PYTHON_PICKLE_FUNCTIONS
+  %enddef
+  %define CPP_PICKLE_FUNCTIONS
+  %enddef
+#endif
 
 // mallocs a 1D array of doubles of the specified size
 %define MALLOC_1D_VALUE_ARRAY(arr_out, n, size, nbytes)
@@ -139,6 +209,8 @@ namespace EECNAMESPACE {
 
 // ignore/rename EECHist functions
 namespace hist {
+  %ignore EECHistBase::add;
+  %ignore EECHistBase::combined_hist;
   %ignore EECHistBase::get_hist_vars;
   %rename(bin_centers_vec) EECHistBase::bin_centers;
   %rename(bin_edges_vec) EECHistBase::bin_edges;
@@ -160,6 +232,28 @@ namespace hist {
 %rename(compute) EECBase::npy_compute;
 
 } // namespace EECNAMESPACE
+
+// custom declaration of this struct because swig can't handle nested unions
+namespace boost {
+  namespace histogram {
+    namespace algorithm {
+      struct reduce_command {};
+
+      reduce_command rebin(unsigned iaxis, unsigned merge);
+      reduce_command rebin(unsigned merge);
+      reduce_command shrink(unsigned iaxis, double lower, double upper);
+      reduce_command shrink(double lower, double upper);
+      reduce_command slice(unsigned iaxis, int begin, int end);
+      reduce_command slice(int begin, int end);
+      reduce_command shrink_and_rebin(unsigned iaxis, double lower, double upper, unsigned merge);
+      reduce_command shrink_and_rebin(double lower, double upper, unsigned merge);
+      reduce_command slice_and_rebin(unsigned iaxis, int begin, int end, unsigned merge);
+      reduce_command slice_and_rebin(int begin, int end, unsigned merge);
+    }
+  }
+}
+
+%template(vectorReduceCommand) std::vector<boost::histogram::algorithm::reduce_command>;
 
 // include EECHist and declare templates
 %include "EECHist.hh"
@@ -269,7 +363,8 @@ namespace EECNAMESPACE {
   }
 
   %extend EECBase {
-    ADD_STR_FROM_DESCRIPTION
+    ADD_REPR_FROM_DESCRIPTION
+    PYTHON_PICKLE_FUNCTIONS
 
     void npy_compute(double* particles, int mult, int nfeatures, double weight = 1.0, int thread_i = 0) {
       if (nfeatures != (int) $self->nfeatures()) {
@@ -309,11 +404,19 @@ namespace EECNAMESPACE {
   }
 
   %extend EECLongestSide {
-    ADD_STR_FROM_DESCRIPTION
+    CPP_PICKLE_FUNCTIONS
+    ADD_REPR_FROM_DESCRIPTION
+    %pythoncode %{
+      _default_args = (2, 1, 0.1, 1.0)
+    %}
   }
 
   %extend EECTriangleOPE {
-    ADD_STR_FROM_DESCRIPTION
+    CPP_PICKLE_FUNCTIONS
+    ADD_REPR_FROM_DESCRIPTION
+    %pythoncode %{
+      _default_args = (1, 0.1, 1.0, 1, 0.1, 1.0, 1, 0., 1.5)
+    %}
   }
 
   // instantiate EEC templates

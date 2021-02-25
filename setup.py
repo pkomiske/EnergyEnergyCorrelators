@@ -28,23 +28,23 @@ import numpy as np
 with open(os.path.join('eec', '__init__.py'), 'r') as f:
     __version__ = re.search(r'__version__\s*=\s*[\'"]([^\'"]*)[\'"]', f.read()).group(1)
 
-cxxflags = ['-fopenmp', '-std=c++14', '-ffast-math', '-g0']
+cxxflags = ['-fopenmp', '-std=c++14', '-ffast-math', '-g0', '-DEEC_SERIALIZATION', '-DEEC_COMPRESSION']
 ldflags = ['-fopenmp']
-libs = []
+libs = ['boost_serialization', 'boost_iostreams']
+swig_opts = ['-DEEC_SERIALIZATION']
 if platform.system() == 'Darwin':
     cxxflags.insert(0, '-Xpreprocessor')
     del ldflags[0]
-    libs = ['omp']
+    libs.append('omp')
 elif platform.system() == 'Windows':
-    cxxflags[0] = ldflags[0] = '/openmp'
-    cxxflags[1] = '/std:c++14'
-    del cxxflags[2], ldflags[0]
+    ldflags[0] = '/openmp'
+    cxxflags = ['/openmp', '/std:c++14', '/DEEC_SERIALIZATION', '/DEEC_COMPRESSION']
 
 if sys.argv[1] == 'swig':
-    opts = '-fastproxy -w511 -keyword -Ieec/include'
+    swig_opts += ['-fastproxy', '-w511', '-keyword', '-Ieec/include']
     if len(sys.argv) >= 3 and sys.argv[2] == '-py3':
-        opts += ' -py3'
-    command = 'swig -python -c++ {} -o eec/eec.cpp eec/swig/eec.i'.format(opts)
+        swig_opts.append('-py3')
+    command = 'swig -python -c++ {} -o eec/eec.cpp eec/swig/eec.i'.format(' '.join(swig_opts))
     print(command)
     subprocess.run(command.split())
 

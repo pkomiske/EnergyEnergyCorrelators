@@ -2,6 +2,8 @@ from collections import Counter
 import itertools
 import math
 from operator import itemgetter
+import pickle
+import tempfile
 
 import energyflow as ef
 import numpy as np
@@ -572,7 +574,7 @@ def test_multinomial(N, nparticles):
                         assert dm.value() == eec.multinomial((i, j, k, l))
 
 @pytest.mark.pycompare
-@pytest.mark.parametrize('nparticles', [0, 1, 2, 5, 10][2:])
+@pytest.mark.parametrize('nparticles', [0, 1, 2, 4, 8])
 @pytest.mark.parametrize('ch_powers', [0, 1, 2][:1])
 @pytest.mark.parametrize('pt_powers', [1, 2][:1])
 @pytest.mark.parametrize('nbins', [1, 15])
@@ -584,7 +586,7 @@ def test_pycompare_longestside(N, axis, nbins, pt_powers, ch_powers, nparticles)
     slow_eec = SlowEECLongestSideSym(N, (nbins,), ((1e-5, 1),), (axis,), True, pt_powers, ch_powers)
     slow_eec.construct_inds_factors(nparticles, N)
 
-    local_events = [event[:nparticles,:(3 if ch_powers==0 else 4)] for event in events[:200]]
+    local_events = [event[:nparticles] for event in events[:200]]
     weights = 2*np.random.rand(len(events))
 
     super_slow_eec(local_events, weights)
@@ -595,7 +597,7 @@ def test_pycompare_longestside(N, axis, nbins, pt_powers, ch_powers, nparticles)
 
 @pytest.mark.longestside
 @pytest.mark.sym
-@pytest.mark.parametrize('nparticles', [0, 1, 2, 5, 10])
+@pytest.mark.parametrize('nparticles', [0, 1, 2, 4, 8, 16])
 @pytest.mark.parametrize('ch_powers', [0, 1, 2])
 @pytest.mark.parametrize('pt_powers', [1, 2])
 @pytest.mark.parametrize('num_threads', [1, -1])
@@ -603,7 +605,7 @@ def test_pycompare_longestside(N, axis, nbins, pt_powers, ch_powers, nparticles)
 @pytest.mark.parametrize('axis', ['log', 'id'])
 @pytest.mark.parametrize('N', [2, 3, 4, 5, 6])
 def test_longestside_sym(N, axis, use_general_eNc, num_threads, pt_powers, ch_powers, nparticles):
-    if nparticles > 5 and N > 5:
+    if nparticles > 8 and N >= 5:
         pytest.skip()
 
     nbins = 15
@@ -612,7 +614,7 @@ def test_longestside_sym(N, axis, use_general_eNc, num_threads, pt_powers, ch_po
     slow_eec = SlowEECLongestSideSym(N, (nbins,), ((1e-5, 1),), (axis,), True, pt_powers, ch_powers)
     slow_eec.construct_inds_factors(nparticles, N)
 
-    local_events = [event[:nparticles,:(3 if ch_powers==0 else 4)] for event in events]
+    local_events = [event[:nparticles] for event in events]
     weights = 2*np.random.rand(len(events))
 
     eec(local_events, weights)
@@ -635,7 +637,7 @@ def test_longestside_asym_N2_average_verts(axis, num_threads, pt_powers, ch_powe
                          print_every=0, num_threads=num_threads)
     super_slow_eec = SuperSlowEECLongestSide(2, (15,), ((1e-5, 1),), (axis,), True, pt_powers, ch_powers)
 
-    local_events = [event[:nparticles] for event in events]
+    local_events = [event[-nparticles:] for event in events]
     weights = 2*np.random.rand(len(events))
 
     eec(local_events, weights)
@@ -662,7 +664,7 @@ def test_longestside_asym_N3(axis, num_threads, pt_powers, ch_powers, average_ve
                       SuperSlowEECLongestSideAsymN3(3, (15,), ((1e-5, 1),), (axis,), True, pt_powers, ch_powers))
 
     nev = 100
-    local_events = [event[:nparticles] for event in events[:nev]]
+    local_events = [event[-nparticles:] for event in events[:nev]]
     weights = 2*np.random.rand(len(events))[:nev]
 
     eec(local_events, weights)
@@ -695,7 +697,7 @@ def test_triangleope(axes, num_threads, pt_powers, ch_powers, average_verts, npa
                                              average_verts=average_verts)
 
     nev = 100
-    local_events = [event[:nparticles] for event in events[:nev]]
+    local_events = [event[-nparticles:] for event in events[:nev]]
     weights = 2*np.random.rand(len(events))[:nev]
 
     eec(local_events, weights)
@@ -707,3 +709,57 @@ def test_triangleope(axes, num_threads, pt_powers, ch_powers, average_verts, npa
         assert epsilon_either(hist, super_slow_eec.hist[hist_i], 1e-10, 1e-14), hist_i
         assert epsilon_either(errs, super_slow_eec.errs[hist_i], 1e-6, 1e-7), hist_i
 
+@pytest.mark.longestside
+@pytest.mark.pickle
+@pytest.mark.parametrize('nparticles', [2, 4, 8])
+@pytest.mark.parametrize('ch_powers', [0, 1, 2])
+@pytest.mark.parametrize('pt_powers', [1, 2])
+@pytest.mark.parametrize('num_threads', [1, -1])
+@pytest.mark.parametrize('axis', ['log', 'id'])
+@pytest.mark.parametrize('N', [2, 3, 4])
+def test_pickling_longestside(N, axis, num_threads, pt_powers, ch_powers, nparticles):
+
+    nbins = 15
+    eec = EECLongestSide(N, nbins, axis=axis, axis_range=(1e-5, 1), pt_powers=(pt_powers,), ch_powers=(ch_powers,),
+                         print_every=0, num_threads=num_threads)
+
+    local_events = [event[:nparticles] for event in events]
+    weights = 2*np.random.rand(len(events))
+
+    eec(local_events, weights)
+
+    with tempfile.TemporaryFile() as f:
+        pickle.dump(eec, f)
+        f.seek(0)
+        eec_loaded = pickle.load(f)
+
+    for i in range(2):
+        assert np.all(eec_loaded.get_hist_vars()[i] == eec.get_hist_vars()[i])
+
+@pytest.mark.triangleope
+@pytest.mark.pickle
+@pytest.mark.parametrize('nparticles', [2, 4, 8])
+@pytest.mark.parametrize('ch_powers', [(0,0,0), (1,1,1), (0,0,1), (0,1,0), (1,0,0)])
+@pytest.mark.parametrize('pt_powers', [(1,1,1), (1,1,2), (1,2,1), (2,1,1)])
+@pytest.mark.parametrize('num_threads', [1, -1])
+@pytest.mark.parametrize('axes', [('log', 'log', 'id'), ('id', 'id', 'id'), ('log', 'id', 'id'), ('id', 'log', 'id')])
+def test_pickling_triangleope(axes, num_threads, pt_powers, ch_powers, nparticles):
+    
+    bin_ranges = [(1e-5, 1), (1e-5, 1), (0, np.pi/2)]
+    eec = EECTriangleOPE(nbins=(15, 15, 15), axes=axes, axis_ranges=bin_ranges,
+                         pt_powers=pt_powers, ch_powers=ch_powers,
+                         print_every=0, num_threads=num_threads)
+
+    nev = 100
+    local_events = [event[-nparticles:] for event in events[:nev]]
+    weights = 2*np.random.rand(len(events))[:nev]
+
+    eec(local_events, weights)
+
+    with tempfile.TemporaryFile() as f:
+        pickle.dump(eec, f)
+        f.seek(0)
+        eec_loaded = pickle.load(f)
+
+    for i in range(2):
+        assert np.all(eec_loaded.get_hist_vars()[i] == eec.get_hist_vars()[i])
