@@ -25,20 +25,22 @@ from setuptools.extension import Extension
 
 import numpy as np
 
+serialization = (platform.system() != 'Windows')
+
 with open(os.path.join('eec', '__init__.py'), 'r') as f:
     __version__ = re.search(r'__version__\s*=\s*[\'"]([^\'"]*)[\'"]', f.read()).group(1)
 
-cxxflags = ['-fopenmp', '-std=c++14', '-ffast-math', '-g0', '-DEEC_SERIALIZATION', '-DEEC_COMPRESSION']
+cxxflags = ['-fopenmp', '-std=c++14', '-ffast-math', '-g0', '-DEEC_SERIALIZATION', '-DEEC_COMPRESSION'][:(6 if serialization else 4)]
 ldflags = ['-fopenmp']
-libs = ['boost_serialization', 'boost_iostreams']
-swig_opts = ['-DEEC_SERIALIZATION']
+libs = ['boost_serialization', 'boost_iostreams'][:(2 if serialization else 0)]
+swig_opts = ['-DEEC_SERIALIZATION'][:(1 if serialization else 0)]
 if platform.system() == 'Darwin':
     cxxflags.insert(0, '-Xpreprocessor')
     del ldflags[0]
     libs.append('omp')
 elif platform.system() == 'Windows':
     ldflags[0] = '/openmp'
-    cxxflags = ['/openmp', '/std:c++14', '/DEEC_SERIALIZATION', '/DEEC_COMPRESSION']
+    cxxflags = ['/openmp', '/std:c++14', '/fp:fast' '/DEEC_SERIALIZATION', '/DEEC_COMPRESSION'][:(5 if serialization else 3)]
 
 if sys.argv[1] == 'swig':
     swig_opts += ['-fastproxy', '-w511', '-keyword', '-Ieec/include']
@@ -51,7 +53,8 @@ if sys.argv[1] == 'swig':
 else:
     eec = Extension('eec._eec',
                     sources=[os.path.join('eec', 'eec.cpp')],
-                    include_dirs=[np.get_include(), os.path.join('eec', 'include')],
+                    include_dirs=[np.get_include(), os.path.join('eec', 'include'), '.'],
+                    library_dirs=['/usr/local/lib'],
                     extra_compile_args=cxxflags,
                     extra_link_args=ldflags,
                     libraries=libs)

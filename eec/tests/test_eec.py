@@ -644,8 +644,8 @@ def test_longestside_asym_N2_average_verts(axis, num_threads, pt_powers, ch_powe
     super_slow_eec(local_events, weights)
 
     hist, errs = eec.get_hist_errs()
-    assert epsilon_percent(hist, super_slow_eec.hist, 1e-10)
-    assert epsilon_percent(errs, super_slow_eec.errs, 10**-5.5)
+    assert epsilon_either(hist, super_slow_eec.hist, 10**-11, 1e-13)
+    assert epsilon_either(errs, super_slow_eec.errs, 10**-6, 1e-6)
 
 @pytest.mark.longestside
 @pytest.mark.asym
@@ -672,13 +672,13 @@ def test_longestside_asym_N3(axis, num_threads, pt_powers, ch_powers, average_ve
 
     if average_verts or len(super_slow_eec.hist.shape) == 1:
         hist, errs = eec.get_hist_errs()
-        assert epsilon_percent(hist, super_slow_eec.hist, 1e-10)
-        assert epsilon_percent(errs, super_slow_eec.errs, 10**-5.5)
+        assert epsilon_either(hist, super_slow_eec.hist, 10**-11, 1e-13)
+        assert epsilon_either(errs, super_slow_eec.errs, 10**-6, 1e-6)
     else:
         for hist_i in range(super_slow_eec.hist.shape[0]):
             hist, errs = eec.get_hist_errs(hist_i)
-            assert epsilon_either(hist, super_slow_eec.hist[hist_i], 1e-12, 1e-14), hist_i
-            assert epsilon_either(errs, super_slow_eec.errs[hist_i], 1e-6, 1e-7), hist_i
+            assert epsilon_either(hist, super_slow_eec.hist[hist_i], 1e-12, 1e-13), hist_i
+            assert epsilon_either(errs, super_slow_eec.errs[hist_i], 1e-6, 1e-6), hist_i
 
 @pytest.mark.triangleope
 @pytest.mark.parametrize('nparticles', [1, 4, 10])

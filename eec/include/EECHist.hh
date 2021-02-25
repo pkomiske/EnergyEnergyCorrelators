@@ -46,6 +46,17 @@
 
 #include "EECUtils.hh"
 
+// alias old "reduce_option" as "reduce_command"
+#if (BOOST_VERSION < 107300)
+namespace boost {
+  namespace histogram {
+    namespace algorithm {
+      using reduce_command = reduce_option;
+    }
+  }
+}
+#endif
+
 namespace eec {
 namespace hist {
 

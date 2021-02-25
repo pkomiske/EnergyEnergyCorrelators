@@ -3397,7 +3397,7 @@ SWIG_AsVal_ptrdiff_t (PyObject * obj, ptrdiff_t *val)
 // EEC library headers
 #include "EEC.hh"
 
-typedef boost::histogram::detail::reduce_command reduce_command;
+typedef boost::histogram::algorithm::reduce_command reduce_command;
 
 // using namespaces
 using namespace eec;
