@@ -4,11 +4,11 @@ script:
   - python3 setup.py test
 
 before_install:
-  sudo apt-get update
-  sudo apt-get -y install libboost-all-dev
+  - sudo apt-get update
+  - sudo apt-get -y install libboost-all-dev
 
 install:
-  python3 -m pip install numpy scipy energyflow pytest
+  - python3 -m pip install numpy scipy energyflow pytest
 
 stages:
   - test
@@ -56,7 +56,7 @@ jobs:
       before_install: |
         brew update > /dev/null
         brew install libomp
-        brew install boost
+        brew upgrade boost
 
     # test on Windows
     - name: Test on Windows
@@ -102,7 +102,7 @@ jobs:
       before_install: |
         brew update > /dev/null
         brew install libomp
-        brew install boost
+        brew upgrade boost
       install: python3 -m pip install cibuildwheel
       script: python3 -m cibuildwheel --output-dir wheelhouse
       after_success: |
