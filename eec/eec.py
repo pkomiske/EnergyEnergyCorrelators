@@ -96,13 +96,14 @@ class SwigPyIterator(object):
 _eec.SwigPyIterator_swigregister(SwigPyIterator)
 
 
-__all__ = ['EECLongestSide', 'EECTriangleOPE',
-           'EECLongestSideId', 'EECLongestSideLog',
+__all__ = ['EECLongestSideId', 'EECLongestSideLog',
            'EECTriangleOPEIdIdId', 'EECTriangleOPEIdLogId',
            'EECTriangleOPELogIdId', 'EECTriangleOPELogLogId',
 
 # these are used in histogram reduction
            'rebin', 'shrink', 'slice', 'shrink_and_rebin', 'slice_and_rebin']
+
+import numpy as _np
 
 class vectorDouble(object):
     r"""Proxy of C++ std::vector< double > class."""
@@ -946,54 +947,6 @@ class EECTriangleOPELogLogId(EECBase, EECHist3DLogLogId):
 
 # Register EECTriangleOPELogLogId in _eec:
 _eec.EECTriangleOPELogLogId_swigregister(EECTriangleOPELogLogId)
-
-
-
-import numpy as _np
-
-def EECLongestSide(*args, axis='log', **kwargs):
-
-    axis_range = kwargs.pop('axis_range', None)
-    if axis_range is not None:
-        assert len(axis_range) == 2, '`axis_range` must be length 2'
-        kwargs['axis_min'] = axis_range[0]
-        kwargs['axis_max'] = axis_range[1]
-
-    if axis.lower() == 'log':
-        return EECLongestSideLog(*args, **kwargs)
-    elif axis.lower() == 'id':
-        return EECLongestSideId(*args, **kwargs)
-    else:
-        raise TypeError('axis `{}` not understood'.format(axis))
-
-def EECTriangleOPE(*args, axes=('log', 'log', 'id'), **kwargs):
-
-    axes = tuple(map(lambda x: x.lower(), axes))
-
-    nbins = kwargs.pop('nbins', None)
-    if nbins is not None:
-        assert len(nbins) == 3, '`nbins` must be length 3'
-        kwargs['nbins0'], kwargs['nbins1'], kwargs['nbins2'] = nbins
-
-    axis_ranges = kwargs.pop('axis_ranges', None)
-    if axis_ranges is not None:
-        assert len(axis_ranges) == 3, '`axis_ranges` must be length 3'
-        for i,axis_range in enumerate(axis_ranges):
-            assert len(axis_range) == 2, 'axis_range ' + str(axis_range) + ' not length 2'
-            kwargs['axis{}_min'.format(i)] = axis_range[0]
-            kwargs['axis{}_max'.format(i)] = axis_range[1]
-
-    if axes == ('log', 'log', 'id'):
-        return EECTriangleOPELogLogId(*args, **kwargs)
-    elif axes == ('id', 'log', 'id'):
-        return EECTriangleOPEIdLogId(*args, **kwargs)
-    elif axes == ('log', 'id', 'id'):
-        return EECTriangleOPELogIdId(*args, **kwargs)
-    elif axes == ('id', 'id', 'id'):
-        return EECTriangleOPEIdIdId(*args, **kwargs)
-    else:
-        raise TypeError('axes `{}` not understood'.format(axes))
-
 
 
 

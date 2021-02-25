@@ -705,7 +705,7 @@ def test_longestside_asym_N3(axis, num_threads, pt_powers, ch_powers, average_ve
 def test_triangleope(axes, num_threads, pt_powers, ch_powers, average_verts, nparticles):
 
     bin_ranges = [(1e-5, 1), (1e-5, 1), (0, np.pi/2)]
-    eec = EECTriangleOPE(nbins=(15, 15, 15), axes=axes, axis_ranges=bin_ranges,
+    eec = EECTriangleOPE(nbins=(15, 15, 15), axes=axes, axes_range=bin_ranges,
                          pt_powers=pt_powers, ch_powers=ch_powers,
                          print_every=0, num_threads=num_threads, average_verts=average_verts)
     super_slow_eec = SuperSlowEECTriangleOPE(3, (15, 15, 15), bin_ranges, axes, True, pt_powers, ch_powers,
@@ -767,7 +767,7 @@ def test_pickling_triangleope(axes, num_threads, pt_powers, ch_powers, nparticle
         pytest.skip()
     
     bin_ranges = [(1e-5, 1), (1e-5, 1), (0, np.pi/2)]
-    e = EECTriangleOPE(nbins=(15, 15, 15), axes=axes, axis_ranges=bin_ranges,
+    e = EECTriangleOPE(nbins=(15, 15, 15), axes=axes, axes_range=bin_ranges,
                          pt_powers=pt_powers, ch_powers=ch_powers,
                          print_every=0, num_threads=num_threads)
 

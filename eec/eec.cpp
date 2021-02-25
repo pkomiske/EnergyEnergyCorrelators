@@ -5375,7 +5375,7 @@ SWIG_From_std_string  (const std::string& s)
 
 
 SWIGINTERN void eec_hist_EECHistBase_Sl_eec_hist_EECHist1D_Sl_eec_hist_axis_id_Sg__Sg__npy_bin_centers(eec::hist::EECHistBase< eec::hist::EECHist1D< eec::hist::axis::id > > *self,double **arr_out0,int *n0,int i=0){
-        /*@SWIG:eec/swig/eec.i,165,MALLOC_1D_VALUE_ARRAY@*/
+        /*@SWIG:eec/swig/eec.i,166,MALLOC_1D_VALUE_ARRAY@*/
   *n0 = self->nbins(i);
   size_t nbytes = size_t(*n0)*sizeof(double);
   *arr_out0 = (double *) malloc(nbytes);
@@ -5387,7 +5387,7 @@ SWIGINTERN void eec_hist_EECHistBase_Sl_eec_hist_EECHist1D_Sl_eec_hist_axis_id_S
         memcpy(*arr_out0, self->bin_centers(i).data(), nbytes);
       }
 SWIGINTERN void eec_hist_EECHistBase_Sl_eec_hist_EECHist1D_Sl_eec_hist_axis_id_Sg__Sg__npy_bin_edges(eec::hist::EECHistBase< eec::hist::EECHist1D< eec::hist::axis::id > > *self,double **arr_out0,int *n0,int i=0){
-        /*@SWIG:eec/swig/eec.i,165,MALLOC_1D_VALUE_ARRAY@*/
+        /*@SWIG:eec/swig/eec.i,166,MALLOC_1D_VALUE_ARRAY@*/
   *n0 = self->nbins(i)+1;
   size_t nbytes = size_t(*n0)*sizeof(double);
   *arr_out0 = (double *) malloc(nbytes);
@@ -5399,7 +5399,7 @@ SWIGINTERN void eec_hist_EECHistBase_Sl_eec_hist_EECHist1D_Sl_eec_hist_axis_id_S
         memcpy(*arr_out0, self->bin_edges(i).data(), nbytes);
       }
 SWIGINTERN void eec_hist_EECHistBase_Sl_eec_hist_EECHist1D_Sl_eec_hist_axis_log_Sg__Sg__npy_bin_centers(eec::hist::EECHistBase< eec::hist::EECHist1D< eec::hist::axis::log > > *self,double **arr_out0,int *n0,int i=0){
-        /*@SWIG:eec/swig/eec.i,165,MALLOC_1D_VALUE_ARRAY@*/
+        /*@SWIG:eec/swig/eec.i,166,MALLOC_1D_VALUE_ARRAY@*/
   *n0 = self->nbins(i);
   size_t nbytes = size_t(*n0)*sizeof(double);
   *arr_out0 = (double *) malloc(nbytes);
@@ -5411,7 +5411,7 @@ SWIGINTERN void eec_hist_EECHistBase_Sl_eec_hist_EECHist1D_Sl_eec_hist_axis_log_
         memcpy(*arr_out0, self->bin_centers(i).data(), nbytes);
       }
 SWIGINTERN void eec_hist_EECHistBase_Sl_eec_hist_EECHist1D_Sl_eec_hist_axis_log_Sg__Sg__npy_bin_edges(eec::hist::EECHistBase< eec::hist::EECHist1D< eec::hist::axis::log > > *self,double **arr_out0,int *n0,int i=0){
-        /*@SWIG:eec/swig/eec.i,165,MALLOC_1D_VALUE_ARRAY@*/
+        /*@SWIG:eec/swig/eec.i,166,MALLOC_1D_VALUE_ARRAY@*/
   *n0 = self->nbins(i)+1;
   size_t nbytes = size_t(*n0)*sizeof(double);
   *arr_out0 = (double *) malloc(nbytes);
@@ -5423,7 +5423,7 @@ SWIGINTERN void eec_hist_EECHistBase_Sl_eec_hist_EECHist1D_Sl_eec_hist_axis_log_
         memcpy(*arr_out0, self->bin_edges(i).data(), nbytes);
       }
 SWIGINTERN void eec_hist_EECHistBase_Sl_eec_hist_EECHist3D_Sl_eec_hist_axis_id_Sc_eec_hist_axis_id_Sc_eec_hist_axis_id_Sg__Sg__npy_bin_centers(eec::hist::EECHistBase< eec::hist::EECHist3D< eec::hist::axis::id,eec::hist::axis::id,eec::hist::axis::id > > *self,double **arr_out0,int *n0,int i=0){
-        /*@SWIG:eec/swig/eec.i,165,MALLOC_1D_VALUE_ARRAY@*/
+        /*@SWIG:eec/swig/eec.i,166,MALLOC_1D_VALUE_ARRAY@*/
   *n0 = self->nbins(i);
   size_t nbytes = size_t(*n0)*sizeof(double);
   *arr_out0 = (double *) malloc(nbytes);
@@ -5435,7 +5435,7 @@ SWIGINTERN void eec_hist_EECHistBase_Sl_eec_hist_EECHist3D_Sl_eec_hist_axis_id_S
         memcpy(*arr_out0, self->bin_centers(i).data(), nbytes);
       }
 SWIGINTERN void eec_hist_EECHistBase_Sl_eec_hist_EECHist3D_Sl_eec_hist_axis_id_Sc_eec_hist_axis_id_Sc_eec_hist_axis_id_Sg__Sg__npy_bin_edges(eec::hist::EECHistBase< eec::hist::EECHist3D< eec::hist::axis::id,eec::hist::axis::id,eec::hist::axis::id > > *self,double **arr_out0,int *n0,int i=0){
-        /*@SWIG:eec/swig/eec.i,165,MALLOC_1D_VALUE_ARRAY@*/
+        /*@SWIG:eec/swig/eec.i,166,MALLOC_1D_VALUE_ARRAY@*/
   *n0 = self->nbins(i)+1;
   size_t nbytes = size_t(*n0)*sizeof(double);
   *arr_out0 = (double *) malloc(nbytes);
@@ -5447,7 +5447,7 @@ SWIGINTERN void eec_hist_EECHistBase_Sl_eec_hist_EECHist3D_Sl_eec_hist_axis_id_S
         memcpy(*arr_out0, self->bin_edges(i).data(), nbytes);
       }
 SWIGINTERN void eec_hist_EECHistBase_Sl_eec_hist_EECHist3D_Sl_eec_hist_axis_log_Sc_eec_hist_axis_id_Sc_eec_hist_axis_id_Sg__Sg__npy_bin_centers(eec::hist::EECHistBase< eec::hist::EECHist3D< eec::hist::axis::log,eec::hist::axis::id,eec::hist::axis::id > > *self,double **arr_out0,int *n0,int i=0){
-        /*@SWIG:eec/swig/eec.i,165,MALLOC_1D_VALUE_ARRAY@*/
+        /*@SWIG:eec/swig/eec.i,166,MALLOC_1D_VALUE_ARRAY@*/
   *n0 = self->nbins(i);
   size_t nbytes = size_t(*n0)*sizeof(double);
   *arr_out0 = (double *) malloc(nbytes);
@@ -5459,7 +5459,7 @@ SWIGINTERN void eec_hist_EECHistBase_Sl_eec_hist_EECHist3D_Sl_eec_hist_axis_log_
         memcpy(*arr_out0, self->bin_centers(i).data(), nbytes);
       }
 SWIGINTERN void eec_hist_EECHistBase_Sl_eec_hist_EECHist3D_Sl_eec_hist_axis_log_Sc_eec_hist_axis_id_Sc_eec_hist_axis_id_Sg__Sg__npy_bin_edges(eec::hist::EECHistBase< eec::hist::EECHist3D< eec::hist::axis::log,eec::hist::axis::id,eec::hist::axis::id > > *self,double **arr_out0,int *n0,int i=0){
-        /*@SWIG:eec/swig/eec.i,165,MALLOC_1D_VALUE_ARRAY@*/
+        /*@SWIG:eec/swig/eec.i,166,MALLOC_1D_VALUE_ARRAY@*/
   *n0 = self->nbins(i)+1;
   size_t nbytes = size_t(*n0)*sizeof(double);
   *arr_out0 = (double *) malloc(nbytes);
@@ -5471,7 +5471,7 @@ SWIGINTERN void eec_hist_EECHistBase_Sl_eec_hist_EECHist3D_Sl_eec_hist_axis_log_
         memcpy(*arr_out0, self->bin_edges(i).data(), nbytes);
       }
 SWIGINTERN void eec_hist_EECHistBase_Sl_eec_hist_EECHist3D_Sl_eec_hist_axis_id_Sc_eec_hist_axis_log_Sc_eec_hist_axis_id_Sg__Sg__npy_bin_centers(eec::hist::EECHistBase< eec::hist::EECHist3D< eec::hist::axis::id,eec::hist::axis::log,eec::hist::axis::id > > *self,double **arr_out0,int *n0,int i=0){
-        /*@SWIG:eec/swig/eec.i,165,MALLOC_1D_VALUE_ARRAY@*/
+        /*@SWIG:eec/swig/eec.i,166,MALLOC_1D_VALUE_ARRAY@*/
   *n0 = self->nbins(i);
   size_t nbytes = size_t(*n0)*sizeof(double);
   *arr_out0 = (double *) malloc(nbytes);
@@ -5483,7 +5483,7 @@ SWIGINTERN void eec_hist_EECHistBase_Sl_eec_hist_EECHist3D_Sl_eec_hist_axis_id_S
         memcpy(*arr_out0, self->bin_centers(i).data(), nbytes);
       }
 SWIGINTERN void eec_hist_EECHistBase_Sl_eec_hist_EECHist3D_Sl_eec_hist_axis_id_Sc_eec_hist_axis_log_Sc_eec_hist_axis_id_Sg__Sg__npy_bin_edges(eec::hist::EECHistBase< eec::hist::EECHist3D< eec::hist::axis::id,eec::hist::axis::log,eec::hist::axis::id > > *self,double **arr_out0,int *n0,int i=0){
-        /*@SWIG:eec/swig/eec.i,165,MALLOC_1D_VALUE_ARRAY@*/
+        /*@SWIG:eec/swig/eec.i,166,MALLOC_1D_VALUE_ARRAY@*/
   *n0 = self->nbins(i)+1;
   size_t nbytes = size_t(*n0)*sizeof(double);
   *arr_out0 = (double *) malloc(nbytes);
@@ -5495,7 +5495,7 @@ SWIGINTERN void eec_hist_EECHistBase_Sl_eec_hist_EECHist3D_Sl_eec_hist_axis_id_S
         memcpy(*arr_out0, self->bin_edges(i).data(), nbytes);
       }
 SWIGINTERN void eec_hist_EECHistBase_Sl_eec_hist_EECHist3D_Sl_eec_hist_axis_log_Sc_eec_hist_axis_log_Sc_eec_hist_axis_id_Sg__Sg__npy_bin_centers(eec::hist::EECHistBase< eec::hist::EECHist3D< eec::hist::axis::log,eec::hist::axis::log,eec::hist::axis::id > > *self,double **arr_out0,int *n0,int i=0){
-        /*@SWIG:eec/swig/eec.i,165,MALLOC_1D_VALUE_ARRAY@*/
+        /*@SWIG:eec/swig/eec.i,166,MALLOC_1D_VALUE_ARRAY@*/
   *n0 = self->nbins(i);
   size_t nbytes = size_t(*n0)*sizeof(double);
   *arr_out0 = (double *) malloc(nbytes);
@@ -5507,7 +5507,7 @@ SWIGINTERN void eec_hist_EECHistBase_Sl_eec_hist_EECHist3D_Sl_eec_hist_axis_log_
         memcpy(*arr_out0, self->bin_centers(i).data(), nbytes);
       }
 SWIGINTERN void eec_hist_EECHistBase_Sl_eec_hist_EECHist3D_Sl_eec_hist_axis_log_Sc_eec_hist_axis_log_Sc_eec_hist_axis_id_Sg__Sg__npy_bin_edges(eec::hist::EECHistBase< eec::hist::EECHist3D< eec::hist::axis::log,eec::hist::axis::log,eec::hist::axis::id > > *self,double **arr_out0,int *n0,int i=0){
-        /*@SWIG:eec/swig/eec.i,165,MALLOC_1D_VALUE_ARRAY@*/
+        /*@SWIG:eec/swig/eec.i,166,MALLOC_1D_VALUE_ARRAY@*/
   *n0 = self->nbins(i)+1;
   size_t nbytes = size_t(*n0)*sizeof(double);
   *arr_out0 = (double *) malloc(nbytes);
@@ -5519,7 +5519,7 @@ SWIGINTERN void eec_hist_EECHistBase_Sl_eec_hist_EECHist3D_Sl_eec_hist_axis_log_
         memcpy(*arr_out0, self->bin_edges(i).data(), nbytes);
       }
 SWIGINTERN void eec_hist_EECHist1D_Sl_eec_hist_axis_id_Sg__npy_get_hist_vars(eec::hist::EECHist1D< eec::hist::axis::id > *self,double **arr_out0,int *n0,double **arr_out1,int *n1,unsigned int hist_i=0,bool include_overflows=true){
-        /*@SWIG:eec/swig/eec.i,165,MALLOC_1D_VALUE_ARRAY@*/
+        /*@SWIG:eec/swig/eec.i,166,MALLOC_1D_VALUE_ARRAY@*/
   *n0 = self->hist_size(include_overflows);
   size_t nbytes0 = size_t(*n0)*sizeof(double);
   *arr_out0 = (double *) malloc(nbytes0);
@@ -5528,7 +5528,7 @@ SWIGINTERN void eec_hist_EECHist1D_Sl_eec_hist_axis_id_Sg__npy_get_hist_vars(eec
     return;
   }
 /*@SWIG@*/
-        /*@SWIG:eec/swig/eec.i,165,MALLOC_1D_VALUE_ARRAY@*/
+        /*@SWIG:eec/swig/eec.i,166,MALLOC_1D_VALUE_ARRAY@*/
   *n1 = self->hist_size(include_overflows);
   size_t nbytes1 = size_t(*n1)*sizeof(double);
   *arr_out1 = (double *) malloc(nbytes1);
@@ -5547,7 +5547,7 @@ SWIGINTERN void eec_hist_EECHist1D_Sl_eec_hist_axis_id_Sg__npy_get_hist_vars(eec
         }
       }
 SWIGINTERN void eec_hist_EECHist1D_Sl_eec_hist_axis_log_Sg__npy_get_hist_vars(eec::hist::EECHist1D< eec::hist::axis::log > *self,double **arr_out0,int *n0,double **arr_out1,int *n1,unsigned int hist_i=0,bool include_overflows=true){
-        /*@SWIG:eec/swig/eec.i,165,MALLOC_1D_VALUE_ARRAY@*/
+        /*@SWIG:eec/swig/eec.i,166,MALLOC_1D_VALUE_ARRAY@*/
   *n0 = self->hist_size(include_overflows);
   size_t nbytes0 = size_t(*n0)*sizeof(double);
   *arr_out0 = (double *) malloc(nbytes0);
@@ -5556,7 +5556,7 @@ SWIGINTERN void eec_hist_EECHist1D_Sl_eec_hist_axis_log_Sg__npy_get_hist_vars(ee
     return;
   }
 /*@SWIG@*/
-        /*@SWIG:eec/swig/eec.i,165,MALLOC_1D_VALUE_ARRAY@*/
+        /*@SWIG:eec/swig/eec.i,166,MALLOC_1D_VALUE_ARRAY@*/
   *n1 = self->hist_size(include_overflows);
   size_t nbytes1 = size_t(*n1)*sizeof(double);
   *arr_out1 = (double *) malloc(nbytes1);
@@ -5575,7 +5575,7 @@ SWIGINTERN void eec_hist_EECHist1D_Sl_eec_hist_axis_log_Sg__npy_get_hist_vars(ee
         }
       }
 SWIGINTERN void eec_hist_EECHist3D_Sl_eec_hist_axis_id_Sc_eec_hist_axis_id_Sc_eec_hist_axis_id_Sg__npy_get_hist_vars(eec::hist::EECHist3D< eec::hist::axis::id,eec::hist::axis::id,eec::hist::axis::id > *self,double **arr_out0,int *n0,int *n1,int *n2,double **arr_out1,int *m0,int *m1,int *m2,unsigned int hist_i=0,bool include_overflows=true){
-        /*@SWIG:eec/swig/eec.i,176,MALLOC_3D_VALUE_ARRAY@*/
+        /*@SWIG:eec/swig/eec.i,177,MALLOC_3D_VALUE_ARRAY@*/
   *n0 = self->hist_size(include_overflows, 0);
   *n1 = self->hist_size(include_overflows, 1);
   *n2 = self->hist_size(include_overflows, 2);
@@ -5588,7 +5588,7 @@ SWIGINTERN void eec_hist_EECHist3D_Sl_eec_hist_axis_id_Sc_eec_hist_axis_id_Sc_ee
 /*@SWIG@*/
 
 
-        /*@SWIG:eec/swig/eec.i,176,MALLOC_3D_VALUE_ARRAY@*/
+        /*@SWIG:eec/swig/eec.i,177,MALLOC_3D_VALUE_ARRAY@*/
   *m0 = self->hist_size(include_overflows, 0);
   *m1 = self->hist_size(include_overflows, 1);
   *m2 = self->hist_size(include_overflows, 2);
@@ -5611,7 +5611,7 @@ SWIGINTERN void eec_hist_EECHist3D_Sl_eec_hist_axis_id_Sc_eec_hist_axis_id_Sc_ee
         }
       }
 SWIGINTERN void eec_hist_EECHist3D_Sl_eec_hist_axis_log_Sc_eec_hist_axis_id_Sc_eec_hist_axis_id_Sg__npy_get_hist_vars(eec::hist::EECHist3D< eec::hist::axis::log,eec::hist::axis::id,eec::hist::axis::id > *self,double **arr_out0,int *n0,int *n1,int *n2,double **arr_out1,int *m0,int *m1,int *m2,unsigned int hist_i=0,bool include_overflows=true){
-        /*@SWIG:eec/swig/eec.i,176,MALLOC_3D_VALUE_ARRAY@*/
+        /*@SWIG:eec/swig/eec.i,177,MALLOC_3D_VALUE_ARRAY@*/
   *n0 = self->hist_size(include_overflows, 0);
   *n1 = self->hist_size(include_overflows, 1);
   *n2 = self->hist_size(include_overflows, 2);
@@ -5624,7 +5624,7 @@ SWIGINTERN void eec_hist_EECHist3D_Sl_eec_hist_axis_log_Sc_eec_hist_axis_id_Sc_e
 /*@SWIG@*/
 
 
-        /*@SWIG:eec/swig/eec.i,176,MALLOC_3D_VALUE_ARRAY@*/
+        /*@SWIG:eec/swig/eec.i,177,MALLOC_3D_VALUE_ARRAY@*/
   *m0 = self->hist_size(include_overflows, 0);
   *m1 = self->hist_size(include_overflows, 1);
   *m2 = self->hist_size(include_overflows, 2);
@@ -5647,7 +5647,7 @@ SWIGINTERN void eec_hist_EECHist3D_Sl_eec_hist_axis_log_Sc_eec_hist_axis_id_Sc_e
         }
       }
 SWIGINTERN void eec_hist_EECHist3D_Sl_eec_hist_axis_id_Sc_eec_hist_axis_log_Sc_eec_hist_axis_id_Sg__npy_get_hist_vars(eec::hist::EECHist3D< eec::hist::axis::id,eec::hist::axis::log,eec::hist::axis::id > *self,double **arr_out0,int *n0,int *n1,int *n2,double **arr_out1,int *m0,int *m1,int *m2,unsigned int hist_i=0,bool include_overflows=true){
-        /*@SWIG:eec/swig/eec.i,176,MALLOC_3D_VALUE_ARRAY@*/
+        /*@SWIG:eec/swig/eec.i,177,MALLOC_3D_VALUE_ARRAY@*/
   *n0 = self->hist_size(include_overflows, 0);
   *n1 = self->hist_size(include_overflows, 1);
   *n2 = self->hist_size(include_overflows, 2);
@@ -5660,7 +5660,7 @@ SWIGINTERN void eec_hist_EECHist3D_Sl_eec_hist_axis_id_Sc_eec_hist_axis_log_Sc_e
 /*@SWIG@*/
 
 
-        /*@SWIG:eec/swig/eec.i,176,MALLOC_3D_VALUE_ARRAY@*/
+        /*@SWIG:eec/swig/eec.i,177,MALLOC_3D_VALUE_ARRAY@*/
   *m0 = self->hist_size(include_overflows, 0);
   *m1 = self->hist_size(include_overflows, 1);
   *m2 = self->hist_size(include_overflows, 2);
@@ -5683,7 +5683,7 @@ SWIGINTERN void eec_hist_EECHist3D_Sl_eec_hist_axis_id_Sc_eec_hist_axis_log_Sc_e
         }
       }
 SWIGINTERN void eec_hist_EECHist3D_Sl_eec_hist_axis_log_Sc_eec_hist_axis_log_Sc_eec_hist_axis_id_Sg__npy_get_hist_vars(eec::hist::EECHist3D< eec::hist::axis::log,eec::hist::axis::log,eec::hist::axis::id > *self,double **arr_out0,int *n0,int *n1,int *n2,double **arr_out1,int *m0,int *m1,int *m2,unsigned int hist_i=0,bool include_overflows=true){
-        /*@SWIG:eec/swig/eec.i,176,MALLOC_3D_VALUE_ARRAY@*/
+        /*@SWIG:eec/swig/eec.i,177,MALLOC_3D_VALUE_ARRAY@*/
   *n0 = self->hist_size(include_overflows, 0);
   *n1 = self->hist_size(include_overflows, 1);
   *n2 = self->hist_size(include_overflows, 2);
@@ -5696,7 +5696,7 @@ SWIGINTERN void eec_hist_EECHist3D_Sl_eec_hist_axis_log_Sc_eec_hist_axis_log_Sc_
 /*@SWIG@*/
 
 
-        /*@SWIG:eec/swig/eec.i,176,MALLOC_3D_VALUE_ARRAY@*/
+        /*@SWIG:eec/swig/eec.i,177,MALLOC_3D_VALUE_ARRAY@*/
   *m0 = self->hist_size(include_overflows, 0);
   *m1 = self->hist_size(include_overflows, 1);
   *m2 = self->hist_size(include_overflows, 2);
