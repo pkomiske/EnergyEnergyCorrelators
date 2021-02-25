@@ -3,6 +3,9 @@ language: python
 script:
   - python3 setup.py test
 
+before_install:
+  apt-get install libboost-all-dev
+
 install:
   python3 -m pip install numpy scipy energyflow pytest
 
@@ -12,8 +15,7 @@ stages:
 
 jobs:
   exclude:
-    - stage: test
-      os: mac
+    - stage: build
 
   include:
 
@@ -24,25 +26,25 @@ jobs:
     # test on linux
     - name: Python3.6 - Linux
       stage: test
-      dist: bionic
+      dist: focal
       python: 3.6
 
     # test on linux
     - name: Python3.7 - Linux
       stage: test
-      dist: bionic
+      dist: focal
       python: 3.7
 
     # test on linux
     - name: Python3.8 - Linux
       stage: test
-      dist: bionic
+      dist: focal
       python: 3.8
 
     # test on linux
     - name: Python3.9 - Linux
       stage: test
-      dist: bionic
+      dist: focal
       python: 3.9
 
     # test on Mac
@@ -62,11 +64,11 @@ jobs:
       os: windows
       language: shell
       before_install: 
-        - choco install python
+        - choco install python --version 3.9.2
         - choco install boost-msvc-14.1
-        - ln -s /c/Python38/python.exe /c/Python38/python3.exe
+        - ln -s /c/Python39/python.exe /c/Python39/python3.exe
       env:
-        - PATH=/c/Python38:/c/Python38/Scripts:$PATH
+        - PATH=/c/Python38:/c/Python39/Scripts:$PATH
 
   ##############################################################################
   # BUILDS
@@ -77,6 +79,7 @@ jobs:
       stage: build
       dist: bionic
       services: docker
+      before_install:
       install: python3 -m pip install cibuildwheel twine
       script: |
         python3 setup.py sdist --formats=gztar
@@ -115,9 +118,9 @@ jobs:
       os: windows
       language: shell
       before_install:
-        - choco install python
+        - choco install python --version 3.9.2
         - choco install boost-msvc-14.1
-        - ln -s /c/Python38/python.exe /c/Python38/python3.exe
+        - ln -s /c/Python39/python.exe /c/Python39/python3.exe
       install: python3 -m pip install cibuildwheel
       script: python3 -m cibuildwheel --output-dir wheelhouse
       after_success: |
@@ -126,7 +129,7 @@ jobs:
           python3 -m twine upload -r testpypi --skip-existing wheelhouse/*.whl
         fi
       env:
-        - PATH=/c/Python38:/c/Python38/Scripts:$PATH CIBW_BUILD="cp36-win_amd64 cp37-win_amd64 cp38-win_amd64 cp39-win_amd64"
+        - PATH=/c/Python39:/c/Python39/Scripts:$PATH CIBW_BUILD="cp36-win_amd64 cp37-win_amd64 cp38-win_amd64 cp39-win_amd64"
 
 env:
   global:

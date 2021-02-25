@@ -1,3 +1,3 @@
 include eec/include/*.hh
 include eec/swig/*.i
-recursive-include eec/include/boost *.hpp
+recursive-include boost *.hpp
