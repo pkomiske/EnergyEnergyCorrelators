@@ -4,7 +4,8 @@ script:
   - python3 setup.py test
 
 before_install:
-  apt-get install libboost-all-dev
+  sudo apt-get update
+  sudo apt-get -y install libboost-all-dev
 
 install:
   python3 -m pip install numpy scipy energyflow pytest
@@ -15,7 +16,6 @@ stages:
 
 jobs:
   exclude:
-    - stage: build
 
   include:
 
@@ -82,6 +82,7 @@ jobs:
       before_install:
       install: python3 -m pip install cibuildwheel twine
       script: |
+        echo $GHCR_TOKEN | docker login ghcr.io -u pkomiske --password-stdin
         python3 setup.py sdist --formats=gztar
         python3 -m cibuildwheel --output-dir wheelhouse
       after_success: |
@@ -136,6 +137,7 @@ env:
     - TWINE_USERNAME=__token__
     - CIBW_BEFORE_BUILD="pip install numpy"
     - CIBW_BUILD_VERBOSITY=1
+    - CIBW_MANYLINUX_X86_64_IMAGE=ghcr.io/pkomiske/eec_manylinux2010:latest
     - CIBW_TEST_COMMAND="pytest {package}"
     - CIBW_TEST_REQUIRES="pytest numpy scipy energyflow"
     - PYPI_TEST=true
