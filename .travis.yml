@@ -3,7 +3,6 @@ stages:
 
 jobs:
   exclude:
-    os: windows
 
   include:
 
@@ -25,9 +24,12 @@ jobs:
         python3 setup.py sdist --formats=gztar
         python3 -m cibuildwheel --output-dir wheelhouse
       after_success: |
-        if [ ! -z $PYPI_TEST ]; then
+        if [ ! -z $PYPI_TEST || ! -z $PYPI ]; then
           python3 -m twine upload -r testpypi --skip-existing dist/*.tar.gz
           python3 -m twine upload -r testpypi --skip-existing wheelhouse/*.whl
+        fi
+        if [ ! -z $PYPI ]; then
+          python3 -m twine upload --skip-existing wheelhouse/*.whl
         fi
       env:
         - CIBW_BUILD="cp36-manylinux_x86_64 cp37-manylinux_x86_64 cp38-manylinux_x86_64 cp39-manylinux_x86_64"
@@ -45,9 +47,12 @@ jobs:
       install: python3 -m pip install cibuildwheel
       script: python3 -m cibuildwheel --output-dir wheelhouse
       after_success: |
-        if [ ! -z $PYPI_TEST ]; then
+        if [ ! -z $PYPI_TEST || ! -z $PYPI ]; then
           python3 -m pip install twine
           python3 -m twine upload -r testpypi --skip-existing wheelhouse/*.whl
+        fi
+        if [ ! -z $PYPI ]; then
+          python3 -m twine upload --skip-existing wheelhouse/*.whl
         fi
       env:
         - CIBW_BUILD="cp36-macosx_x86_64 cp37-macosx_x86_64 cp38-macosx_x86_64 cp39-macosx_x86_64"
@@ -59,14 +64,16 @@ jobs:
       language: shell
       before_install:
         - choco install python --version 3.9.2
-        - choco install boost-msvc-14.1
         - ln -s /c/Python39/python.exe /c/Python39/python3.exe
       install: python3 -m pip install cibuildwheel
       script: python3 -m cibuildwheel --output-dir wheelhouse
       after_success: |
-        if [ ! -z $PYPI_TEST ]; then
+        if [ ! -z $PYPI_TEST || ! -z $PYPI ]; then
           python3 -m pip install twine
           python3 -m twine upload -r testpypi --skip-existing wheelhouse/*.whl
+        fi
+        if [ ! -z $PYPI ]; then
+          python3 -m twine upload --skip-existing wheelhouse/*.whl
         fi
       env:
         - PATH=/c/Python39:/c/Python39/Scripts:$PATH CIBW_BUILD="cp36-win_amd64 cp37-win_amd64 cp38-win_amd64 cp39-win_amd64"
@@ -79,7 +86,7 @@ env:
     - export CIBW_MANYLINUX_X86_64_IMAGE=ghcr.io/pkomiske/eec_manylinux2010:latest
     - export CIBW_TEST_COMMAND="pytest {package}"
     - export CIBW_TEST_REQUIRES="pytest numpy scipy energyflow"
-    - PYPI_TEST=true
+    - PYPI=true
 
 branches:
   only:

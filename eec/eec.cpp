@@ -5375,7 +5375,7 @@ SWIG_From_std_string  (const std::string& s)
 
 
 SWIGINTERN void eec_hist_EECHistBase_Sl_eec_hist_EECHist1D_Sl_eec_hist_axis_id_Sg__Sg__npy_bin_centers(eec::hist::EECHistBase< eec::hist::EECHist1D< eec::hist::axis::id > > *self,double **arr_out0,int *n0,int i=0){
-        /*@SWIG:eec/swig/eec.i,172,MALLOC_1D_VALUE_ARRAY@*/
+        /*@SWIG:eec/swig/eec.i,165,MALLOC_1D_VALUE_ARRAY@*/
   *n0 = self->nbins(i);
   size_t nbytes = size_t(*n0)*sizeof(double);
   *arr_out0 = (double *) malloc(nbytes);
@@ -5387,7 +5387,7 @@ SWIGINTERN void eec_hist_EECHistBase_Sl_eec_hist_EECHist1D_Sl_eec_hist_axis_id_S
         memcpy(*arr_out0, self->bin_centers(i).data(), nbytes);
       }
 SWIGINTERN void eec_hist_EECHistBase_Sl_eec_hist_EECHist1D_Sl_eec_hist_axis_id_Sg__Sg__npy_bin_edges(eec::hist::EECHistBase< eec::hist::EECHist1D< eec::hist::axis::id > > *self,double **arr_out0,int *n0,int i=0){
-        /*@SWIG:eec/swig/eec.i,172,MALLOC_1D_VALUE_ARRAY@*/
+        /*@SWIG:eec/swig/eec.i,165,MALLOC_1D_VALUE_ARRAY@*/
   *n0 = self->nbins(i)+1;
   size_t nbytes = size_t(*n0)*sizeof(double);
   *arr_out0 = (double *) malloc(nbytes);
@@ -5399,7 +5399,7 @@ SWIGINTERN void eec_hist_EECHistBase_Sl_eec_hist_EECHist1D_Sl_eec_hist_axis_id_S
         memcpy(*arr_out0, self->bin_edges(i).data(), nbytes);
       }
 SWIGINTERN void eec_hist_EECHistBase_Sl_eec_hist_EECHist1D_Sl_eec_hist_axis_log_Sg__Sg__npy_bin_centers(eec::hist::EECHistBase< eec::hist::EECHist1D< eec::hist::axis::log > > *self,double **arr_out0,int *n0,int i=0){
-        /*@SWIG:eec/swig/eec.i,172,MALLOC_1D_VALUE_ARRAY@*/
+        /*@SWIG:eec/swig/eec.i,165,MALLOC_1D_VALUE_ARRAY@*/
   *n0 = self->nbins(i);
   size_t nbytes = size_t(*n0)*sizeof(double);
   *arr_out0 = (double *) malloc(nbytes);
@@ -5411,7 +5411,7 @@ SWIGINTERN void eec_hist_EECHistBase_Sl_eec_hist_EECHist1D_Sl_eec_hist_axis_log_
         memcpy(*arr_out0, self->bin_centers(i).data(), nbytes);
       }
 SWIGINTERN void eec_hist_EECHistBase_Sl_eec_hist_EECHist1D_Sl_eec_hist_axis_log_Sg__Sg__npy_bin_edges(eec::hist::EECHistBase< eec::hist::EECHist1D< eec::hist::axis::log > > *self,double **arr_out0,int *n0,int i=0){
-        /*@SWIG:eec/swig/eec.i,172,MALLOC_1D_VALUE_ARRAY@*/
+        /*@SWIG:eec/swig/eec.i,165,MALLOC_1D_VALUE_ARRAY@*/
   *n0 = self->nbins(i)+1;
   size_t nbytes = size_t(*n0)*sizeof(double);
   *arr_out0 = (double *) malloc(nbytes);
@@ -5423,7 +5423,7 @@ SWIGINTERN void eec_hist_EECHistBase_Sl_eec_hist_EECHist1D_Sl_eec_hist_axis_log_
         memcpy(*arr_out0, self->bin_edges(i).data(), nbytes);
       }
 SWIGINTERN void eec_hist_EECHistBase_Sl_eec_hist_EECHist3D_Sl_eec_hist_axis_id_Sc_eec_hist_axis_id_Sc_eec_hist_axis_id_Sg__Sg__npy_bin_centers(eec::hist::EECHistBase< eec::hist::EECHist3D< eec::hist::axis::id,eec::hist::axis::id,eec::hist::axis::id > > *self,double **arr_out0,int *n0,int i=0){
-        /*@SWIG:eec/swig/eec.i,172,MALLOC_1D_VALUE_ARRAY@*/
+        /*@SWIG:eec/swig/eec.i,165,MALLOC_1D_VALUE_ARRAY@*/
   *n0 = self->nbins(i);
   size_t nbytes = size_t(*n0)*sizeof(double);
   *arr_out0 = (double *) malloc(nbytes);
@@ -5435,7 +5435,7 @@ SWIGINTERN void eec_hist_EECHistBase_Sl_eec_hist_EECHist3D_Sl_eec_hist_axis_id_S
         memcpy(*arr_out0, self->bin_centers(i).data(), nbytes);
       }
 SWIGINTERN void eec_hist_EECHistBase_Sl_eec_hist_EECHist3D_Sl_eec_hist_axis_id_Sc_eec_hist_axis_id_Sc_eec_hist_axis_id_Sg__Sg__npy_bin_edges(eec::hist::EECHistBase< eec::hist::EECHist3D< eec::hist::axis::id,eec::hist::axis::id,eec::hist::axis::id > > *self,double **arr_out0,int *n0,int i=0){
-        /*@SWIG:eec/swig/eec.i,172,MALLOC_1D_VALUE_ARRAY@*/
+        /*@SWIG:eec/swig/eec.i,165,MALLOC_1D_VALUE_ARRAY@*/
   *n0 = self->nbins(i)+1;
   size_t nbytes = size_t(*n0)*sizeof(double);
   *arr_out0 = (double *) malloc(nbytes);
@@ -5447,7 +5447,7 @@ SWIGINTERN void eec_hist_EECHistBase_Sl_eec_hist_EECHist3D_Sl_eec_hist_axis_id_S
         memcpy(*arr_out0, self->bin_edges(i).data(), nbytes);
       }
 SWIGINTERN void eec_hist_EECHistBase_Sl_eec_hist_EECHist3D_Sl_eec_hist_axis_log_Sc_eec_hist_axis_id_Sc_eec_hist_axis_id_Sg__Sg__npy_bin_centers(eec::hist::EECHistBase< eec::hist::EECHist3D< eec::hist::axis::log,eec::hist::axis::id,eec::hist::axis::id > > *self,double **arr_out0,int *n0,int i=0){
-        /*@SWIG:eec/swig/eec.i,172,MALLOC_1D_VALUE_ARRAY@*/
+        /*@SWIG:eec/swig/eec.i,165,MALLOC_1D_VALUE_ARRAY@*/
   *n0 = self->nbins(i);
   size_t nbytes = size_t(*n0)*sizeof(double);
   *arr_out0 = (double *) malloc(nbytes);
@@ -5459,7 +5459,7 @@ SWIGINTERN void eec_hist_EECHistBase_Sl_eec_hist_EECHist3D_Sl_eec_hist_axis_log_
         memcpy(*arr_out0, self->bin_centers(i).data(), nbytes);
       }
 SWIGINTERN void eec_hist_EECHistBase_Sl_eec_hist_EECHist3D_Sl_eec_hist_axis_log_Sc_eec_hist_axis_id_Sc_eec_hist_axis_id_Sg__Sg__npy_bin_edges(eec::hist::EECHistBase< eec::hist::EECHist3D< eec::hist::axis::log,eec::hist::axis::id,eec::hist::axis::id > > *self,double **arr_out0,int *n0,int i=0){
-        /*@SWIG:eec/swig/eec.i,172,MALLOC_1D_VALUE_ARRAY@*/
+        /*@SWIG:eec/swig/eec.i,165,MALLOC_1D_VALUE_ARRAY@*/
   *n0 = self->nbins(i)+1;
   size_t nbytes = size_t(*n0)*sizeof(double);
   *arr_out0 = (double *) malloc(nbytes);
@@ -5471,7 +5471,7 @@ SWIGINTERN void eec_hist_EECHistBase_Sl_eec_hist_EECHist3D_Sl_eec_hist_axis_log_
         memcpy(*arr_out0, self->bin_edges(i).data(), nbytes);
       }
 SWIGINTERN void eec_hist_EECHistBase_Sl_eec_hist_EECHist3D_Sl_eec_hist_axis_id_Sc_eec_hist_axis_log_Sc_eec_hist_axis_id_Sg__Sg__npy_bin_centers(eec::hist::EECHistBase< eec::hist::EECHist3D< eec::hist::axis::id,eec::hist::axis::log,eec::hist::axis::id > > *self,double **arr_out0,int *n0,int i=0){
-        /*@SWIG:eec/swig/eec.i,172,MALLOC_1D_VALUE_ARRAY@*/
+        /*@SWIG:eec/swig/eec.i,165,MALLOC_1D_VALUE_ARRAY@*/
   *n0 = self->nbins(i);
   size_t nbytes = size_t(*n0)*sizeof(double);
   *arr_out0 = (double *) malloc(nbytes);
@@ -5483,7 +5483,7 @@ SWIGINTERN void eec_hist_EECHistBase_Sl_eec_hist_EECHist3D_Sl_eec_hist_axis_id_S
         memcpy(*arr_out0, self->bin_centers(i).data(), nbytes);
       }
 SWIGINTERN void eec_hist_EECHistBase_Sl_eec_hist_EECHist3D_Sl_eec_hist_axis_id_Sc_eec_hist_axis_log_Sc_eec_hist_axis_id_Sg__Sg__npy_bin_edges(eec::hist::EECHistBase< eec::hist::EECHist3D< eec::hist::axis::id,eec::hist::axis::log,eec::hist::axis::id > > *self,double **arr_out0,int *n0,int i=0){
-        /*@SWIG:eec/swig/eec.i,172,MALLOC_1D_VALUE_ARRAY@*/
+        /*@SWIG:eec/swig/eec.i,165,MALLOC_1D_VALUE_ARRAY@*/
   *n0 = self->nbins(i)+1;
   size_t nbytes = size_t(*n0)*sizeof(double);
   *arr_out0 = (double *) malloc(nbytes);
@@ -5495,7 +5495,7 @@ SWIGINTERN void eec_hist_EECHistBase_Sl_eec_hist_EECHist3D_Sl_eec_hist_axis_id_S
         memcpy(*arr_out0, self->bin_edges(i).data(), nbytes);
       }
 SWIGINTERN void eec_hist_EECHistBase_Sl_eec_hist_EECHist3D_Sl_eec_hist_axis_log_Sc_eec_hist_axis_log_Sc_eec_hist_axis_id_Sg__Sg__npy_bin_centers(eec::hist::EECHistBase< eec::hist::EECHist3D< eec::hist::axis::log,eec::hist::axis::log,eec::hist::axis::id > > *self,double **arr_out0,int *n0,int i=0){
-        /*@SWIG:eec/swig/eec.i,172,MALLOC_1D_VALUE_ARRAY@*/
+        /*@SWIG:eec/swig/eec.i,165,MALLOC_1D_VALUE_ARRAY@*/
   *n0 = self->nbins(i);
   size_t nbytes = size_t(*n0)*sizeof(double);
   *arr_out0 = (double *) malloc(nbytes);
@@ -5507,7 +5507,7 @@ SWIGINTERN void eec_hist_EECHistBase_Sl_eec_hist_EECHist3D_Sl_eec_hist_axis_log_
         memcpy(*arr_out0, self->bin_centers(i).data(), nbytes);
       }
 SWIGINTERN void eec_hist_EECHistBase_Sl_eec_hist_EECHist3D_Sl_eec_hist_axis_log_Sc_eec_hist_axis_log_Sc_eec_hist_axis_id_Sg__Sg__npy_bin_edges(eec::hist::EECHistBase< eec::hist::EECHist3D< eec::hist::axis::log,eec::hist::axis::log,eec::hist::axis::id > > *self,double **arr_out0,int *n0,int i=0){
-        /*@SWIG:eec/swig/eec.i,172,MALLOC_1D_VALUE_ARRAY@*/
+        /*@SWIG:eec/swig/eec.i,165,MALLOC_1D_VALUE_ARRAY@*/
   *n0 = self->nbins(i)+1;
   size_t nbytes = size_t(*n0)*sizeof(double);
   *arr_out0 = (double *) malloc(nbytes);
@@ -5519,7 +5519,7 @@ SWIGINTERN void eec_hist_EECHistBase_Sl_eec_hist_EECHist3D_Sl_eec_hist_axis_log_
         memcpy(*arr_out0, self->bin_edges(i).data(), nbytes);
       }
 SWIGINTERN void eec_hist_EECHist1D_Sl_eec_hist_axis_id_Sg__npy_get_hist_vars(eec::hist::EECHist1D< eec::hist::axis::id > *self,double **arr_out0,int *n0,double **arr_out1,int *n1,unsigned int hist_i=0,bool include_overflows=true){
-        /*@SWIG:eec/swig/eec.i,172,MALLOC_1D_VALUE_ARRAY@*/
+        /*@SWIG:eec/swig/eec.i,165,MALLOC_1D_VALUE_ARRAY@*/
   *n0 = self->hist_size(include_overflows);
   size_t nbytes0 = size_t(*n0)*sizeof(double);
   *arr_out0 = (double *) malloc(nbytes0);
@@ -5528,7 +5528,7 @@ SWIGINTERN void eec_hist_EECHist1D_Sl_eec_hist_axis_id_Sg__npy_get_hist_vars(eec
     return;
   }
 /*@SWIG@*/
-        /*@SWIG:eec/swig/eec.i,172,MALLOC_1D_VALUE_ARRAY@*/
+        /*@SWIG:eec/swig/eec.i,165,MALLOC_1D_VALUE_ARRAY@*/
   *n1 = self->hist_size(include_overflows);
   size_t nbytes1 = size_t(*n1)*sizeof(double);
   *arr_out1 = (double *) malloc(nbytes1);
@@ -5547,7 +5547,7 @@ SWIGINTERN void eec_hist_EECHist1D_Sl_eec_hist_axis_id_Sg__npy_get_hist_vars(eec
         }
       }
 SWIGINTERN void eec_hist_EECHist1D_Sl_eec_hist_axis_log_Sg__npy_get_hist_vars(eec::hist::EECHist1D< eec::hist::axis::log > *self,double **arr_out0,int *n0,double **arr_out1,int *n1,unsigned int hist_i=0,bool include_overflows=true){
-        /*@SWIG:eec/swig/eec.i,172,MALLOC_1D_VALUE_ARRAY@*/
+        /*@SWIG:eec/swig/eec.i,165,MALLOC_1D_VALUE_ARRAY@*/
   *n0 = self->hist_size(include_overflows);
   size_t nbytes0 = size_t(*n0)*sizeof(double);
   *arr_out0 = (double *) malloc(nbytes0);
@@ -5556,7 +5556,7 @@ SWIGINTERN void eec_hist_EECHist1D_Sl_eec_hist_axis_log_Sg__npy_get_hist_vars(ee
     return;
   }
 /*@SWIG@*/
-        /*@SWIG:eec/swig/eec.i,172,MALLOC_1D_VALUE_ARRAY@*/
+        /*@SWIG:eec/swig/eec.i,165,MALLOC_1D_VALUE_ARRAY@*/
   *n1 = self->hist_size(include_overflows);
   size_t nbytes1 = size_t(*n1)*sizeof(double);
   *arr_out1 = (double *) malloc(nbytes1);
@@ -5575,7 +5575,7 @@ SWIGINTERN void eec_hist_EECHist1D_Sl_eec_hist_axis_log_Sg__npy_get_hist_vars(ee
         }
       }
 SWIGINTERN void eec_hist_EECHist3D_Sl_eec_hist_axis_id_Sc_eec_hist_axis_id_Sc_eec_hist_axis_id_Sg__npy_get_hist_vars(eec::hist::EECHist3D< eec::hist::axis::id,eec::hist::axis::id,eec::hist::axis::id > *self,double **arr_out0,int *n0,int *n1,int *n2,double **arr_out1,int *m0,int *m1,int *m2,unsigned int hist_i=0,bool include_overflows=true){
-        /*@SWIG:eec/swig/eec.i,183,MALLOC_3D_VALUE_ARRAY@*/
+        /*@SWIG:eec/swig/eec.i,176,MALLOC_3D_VALUE_ARRAY@*/
   *n0 = self->hist_size(include_overflows, 0);
   *n1 = self->hist_size(include_overflows, 1);
   *n2 = self->hist_size(include_overflows, 2);
@@ -5588,7 +5588,7 @@ SWIGINTERN void eec_hist_EECHist3D_Sl_eec_hist_axis_id_Sc_eec_hist_axis_id_Sc_ee
 /*@SWIG@*/
 
 
-        /*@SWIG:eec/swig/eec.i,183,MALLOC_3D_VALUE_ARRAY@*/
+        /*@SWIG:eec/swig/eec.i,176,MALLOC_3D_VALUE_ARRAY@*/
   *m0 = self->hist_size(include_overflows, 0);
   *m1 = self->hist_size(include_overflows, 1);
   *m2 = self->hist_size(include_overflows, 2);
@@ -5611,7 +5611,7 @@ SWIGINTERN void eec_hist_EECHist3D_Sl_eec_hist_axis_id_Sc_eec_hist_axis_id_Sc_ee
         }
       }
 SWIGINTERN void eec_hist_EECHist3D_Sl_eec_hist_axis_log_Sc_eec_hist_axis_id_Sc_eec_hist_axis_id_Sg__npy_get_hist_vars(eec::hist::EECHist3D< eec::hist::axis::log,eec::hist::axis::id,eec::hist::axis::id > *self,double **arr_out0,int *n0,int *n1,int *n2,double **arr_out1,int *m0,int *m1,int *m2,unsigned int hist_i=0,bool include_overflows=true){
-        /*@SWIG:eec/swig/eec.i,183,MALLOC_3D_VALUE_ARRAY@*/
+        /*@SWIG:eec/swig/eec.i,176,MALLOC_3D_VALUE_ARRAY@*/
   *n0 = self->hist_size(include_overflows, 0);
   *n1 = self->hist_size(include_overflows, 1);
   *n2 = self->hist_size(include_overflows, 2);
@@ -5624,7 +5624,7 @@ SWIGINTERN void eec_hist_EECHist3D_Sl_eec_hist_axis_log_Sc_eec_hist_axis_id_Sc_e
 /*@SWIG@*/
 
 
-        /*@SWIG:eec/swig/eec.i,183,MALLOC_3D_VALUE_ARRAY@*/
+        /*@SWIG:eec/swig/eec.i,176,MALLOC_3D_VALUE_ARRAY@*/
   *m0 = self->hist_size(include_overflows, 0);
   *m1 = self->hist_size(include_overflows, 1);
   *m2 = self->hist_size(include_overflows, 2);
@@ -5647,7 +5647,7 @@ SWIGINTERN void eec_hist_EECHist3D_Sl_eec_hist_axis_log_Sc_eec_hist_axis_id_Sc_e
         }
       }
 SWIGINTERN void eec_hist_EECHist3D_Sl_eec_hist_axis_id_Sc_eec_hist_axis_log_Sc_eec_hist_axis_id_Sg__npy_get_hist_vars(eec::hist::EECHist3D< eec::hist::axis::id,eec::hist::axis::log,eec::hist::axis::id > *self,double **arr_out0,int *n0,int *n1,int *n2,double **arr_out1,int *m0,int *m1,int *m2,unsigned int hist_i=0,bool include_overflows=true){
-        /*@SWIG:eec/swig/eec.i,183,MALLOC_3D_VALUE_ARRAY@*/
+        /*@SWIG:eec/swig/eec.i,176,MALLOC_3D_VALUE_ARRAY@*/
   *n0 = self->hist_size(include_overflows, 0);
   *n1 = self->hist_size(include_overflows, 1);
   *n2 = self->hist_size(include_overflows, 2);
@@ -5660,7 +5660,7 @@ SWIGINTERN void eec_hist_EECHist3D_Sl_eec_hist_axis_id_Sc_eec_hist_axis_log_Sc_e
 /*@SWIG@*/
 
 
-        /*@SWIG:eec/swig/eec.i,183,MALLOC_3D_VALUE_ARRAY@*/
+        /*@SWIG:eec/swig/eec.i,176,MALLOC_3D_VALUE_ARRAY@*/
   *m0 = self->hist_size(include_overflows, 0);
   *m1 = self->hist_size(include_overflows, 1);
   *m2 = self->hist_size(include_overflows, 2);
@@ -5683,7 +5683,7 @@ SWIGINTERN void eec_hist_EECHist3D_Sl_eec_hist_axis_id_Sc_eec_hist_axis_log_Sc_e
         }
       }
 SWIGINTERN void eec_hist_EECHist3D_Sl_eec_hist_axis_log_Sc_eec_hist_axis_log_Sc_eec_hist_axis_id_Sg__npy_get_hist_vars(eec::hist::EECHist3D< eec::hist::axis::log,eec::hist::axis::log,eec::hist::axis::id > *self,double **arr_out0,int *n0,int *n1,int *n2,double **arr_out1,int *m0,int *m1,int *m2,unsigned int hist_i=0,bool include_overflows=true){
-        /*@SWIG:eec/swig/eec.i,183,MALLOC_3D_VALUE_ARRAY@*/
+        /*@SWIG:eec/swig/eec.i,176,MALLOC_3D_VALUE_ARRAY@*/
   *n0 = self->hist_size(include_overflows, 0);
   *n1 = self->hist_size(include_overflows, 1);
   *n2 = self->hist_size(include_overflows, 2);
@@ -5696,7 +5696,7 @@ SWIGINTERN void eec_hist_EECHist3D_Sl_eec_hist_axis_log_Sc_eec_hist_axis_log_Sc_
 /*@SWIG@*/
 
 
-        /*@SWIG:eec/swig/eec.i,183,MALLOC_3D_VALUE_ARRAY@*/
+        /*@SWIG:eec/swig/eec.i,176,MALLOC_3D_VALUE_ARRAY@*/
   *m0 = self->hist_size(include_overflows, 0);
   *m1 = self->hist_size(include_overflows, 1);
   *m2 = self->hist_size(include_overflows, 2);
@@ -6234,22 +6234,22 @@ SWIGINTERN void eec_Multinomial_Sl_6_Sg__py_set_index_Sl_4_Sg_(eec::Multinomial<
       self->set_index<4>(ind);
     }
 SWIGINTERN std::string eec_EECLongestSide_Sl_axis_id_Sg____getstate_internal__(eec::EECLongestSide< axis::id > *self){
-      std::ostringstream oss;
-    #ifdef EEC_COMPRESSION
-      {
-        boost::iostreams::filtering_ostream fos;
-        fos.push(boost::iostreams::zlib_compressor(boost::iostreams::zlib::best_compression));
-        fos.push(oss);
-        boost::archive::binary_oarchive ar(fos);
-        ar << *(self);
-      }
-    #else
-      boost::archive::binary_oarchive ar(oss);
+    std::ostringstream oss;
+  #ifdef EEC_COMPRESSION
+    {
+      boost::iostreams::filtering_ostream fos;
+      fos.push(boost::iostreams::zlib_compressor(boost::iostreams::zlib::best_compression));
+      fos.push(oss);
+      boost::archive::binary_oarchive ar(fos);
       ar << *(self);
-    #endif
-
-      return oss.str();
     }
+  #elif EEC_SERIALIZATION
+    boost::archive::binary_oarchive ar(oss);
+    ar << *(self);
+  #endif
+
+    return oss.str();
+  }
 
 SWIGINTERN int
 SWIG_AsCharPtrAndSize(PyObject *obj, char** cptr, size_t* psize, int *alloc)
@@ -6391,168 +6391,168 @@ SWIG_AsPtr_std_string (PyObject * obj, std::string **val)
 }
 
 SWIGINTERN void eec_EECLongestSide_Sl_axis_id_Sg____setstate_internal__(eec::EECLongestSide< axis::id > *self,std::string const &state){
-      std::istringstream iss(state);
-    #ifdef EEC_COMPRESSION
-      boost::iostreams::filtering_istream fis;
-      fis.push(boost::iostreams::zlib_decompressor());
-      fis.push(iss);
-      boost::archive::binary_iarchive ar(fis);
-    #else
-      boost::archive::binary_iarchive ar(iss);
-    #endif
-
-      ar >> *(self);
-    }
+    std::istringstream iss(state);
+  #ifdef EEC_COMPRESSION
+    boost::iostreams::filtering_istream fis;
+    fis.push(boost::iostreams::zlib_decompressor());
+    fis.push(iss);
+    boost::archive::binary_iarchive ar(fis);
+    ar >> *(self);
+  #elif EEC_SERIALIZATION
+    boost::archive::binary_iarchive ar(iss);
+    ar >> *(self);
+  #endif
+  }
 SWIGINTERN std::string eec_EECLongestSide_Sl_axis_log_Sg____getstate_internal__(eec::EECLongestSide< axis::log > *self){
-      std::ostringstream oss;
-    #ifdef EEC_COMPRESSION
-      {
-        boost::iostreams::filtering_ostream fos;
-        fos.push(boost::iostreams::zlib_compressor(boost::iostreams::zlib::best_compression));
-        fos.push(oss);
-        boost::archive::binary_oarchive ar(fos);
-        ar << *(self);
-      }
-    #else
-      boost::archive::binary_oarchive ar(oss);
+    std::ostringstream oss;
+  #ifdef EEC_COMPRESSION
+    {
+      boost::iostreams::filtering_ostream fos;
+      fos.push(boost::iostreams::zlib_compressor(boost::iostreams::zlib::best_compression));
+      fos.push(oss);
+      boost::archive::binary_oarchive ar(fos);
       ar << *(self);
-    #endif
-
-      return oss.str();
     }
+  #elif EEC_SERIALIZATION
+    boost::archive::binary_oarchive ar(oss);
+    ar << *(self);
+  #endif
+
+    return oss.str();
+  }
 SWIGINTERN void eec_EECLongestSide_Sl_axis_log_Sg____setstate_internal__(eec::EECLongestSide< axis::log > *self,std::string const &state){
-      std::istringstream iss(state);
-    #ifdef EEC_COMPRESSION
-      boost::iostreams::filtering_istream fis;
-      fis.push(boost::iostreams::zlib_decompressor());
-      fis.push(iss);
-      boost::archive::binary_iarchive ar(fis);
-    #else
-      boost::archive::binary_iarchive ar(iss);
-    #endif
-
-      ar >> *(self);
-    }
+    std::istringstream iss(state);
+  #ifdef EEC_COMPRESSION
+    boost::iostreams::filtering_istream fis;
+    fis.push(boost::iostreams::zlib_decompressor());
+    fis.push(iss);
+    boost::archive::binary_iarchive ar(fis);
+    ar >> *(self);
+  #elif EEC_SERIALIZATION
+    boost::archive::binary_iarchive ar(iss);
+    ar >> *(self);
+  #endif
+  }
 SWIGINTERN std::string eec_EECTriangleOPE_Sl_axis_id_Sc_axis_id_Sc_axis_id_Sg____getstate_internal__(eec::EECTriangleOPE< axis::id,axis::id,axis::id > *self){
-      std::ostringstream oss;
-    #ifdef EEC_COMPRESSION
-      {
-        boost::iostreams::filtering_ostream fos;
-        fos.push(boost::iostreams::zlib_compressor(boost::iostreams::zlib::best_compression));
-        fos.push(oss);
-        boost::archive::binary_oarchive ar(fos);
-        ar << *(self);
-      }
-    #else
-      boost::archive::binary_oarchive ar(oss);
+    std::ostringstream oss;
+  #ifdef EEC_COMPRESSION
+    {
+      boost::iostreams::filtering_ostream fos;
+      fos.push(boost::iostreams::zlib_compressor(boost::iostreams::zlib::best_compression));
+      fos.push(oss);
+      boost::archive::binary_oarchive ar(fos);
       ar << *(self);
-    #endif
-
-      return oss.str();
     }
+  #elif EEC_SERIALIZATION
+    boost::archive::binary_oarchive ar(oss);
+    ar << *(self);
+  #endif
+
+    return oss.str();
+  }
 SWIGINTERN void eec_EECTriangleOPE_Sl_axis_id_Sc_axis_id_Sc_axis_id_Sg____setstate_internal__(eec::EECTriangleOPE< axis::id,axis::id,axis::id > *self,std::string const &state){
-      std::istringstream iss(state);
-    #ifdef EEC_COMPRESSION
-      boost::iostreams::filtering_istream fis;
-      fis.push(boost::iostreams::zlib_decompressor());
-      fis.push(iss);
-      boost::archive::binary_iarchive ar(fis);
-    #else
-      boost::archive::binary_iarchive ar(iss);
-    #endif
-
-      ar >> *(self);
-    }
+    std::istringstream iss(state);
+  #ifdef EEC_COMPRESSION
+    boost::iostreams::filtering_istream fis;
+    fis.push(boost::iostreams::zlib_decompressor());
+    fis.push(iss);
+    boost::archive::binary_iarchive ar(fis);
+    ar >> *(self);
+  #elif EEC_SERIALIZATION
+    boost::archive::binary_iarchive ar(iss);
+    ar >> *(self);
+  #endif
+  }
 SWIGINTERN std::string eec_EECTriangleOPE_Sl_axis_log_Sc_axis_id_Sc_axis_id_Sg____getstate_internal__(eec::EECTriangleOPE< axis::log,axis::id,axis::id > *self){
-      std::ostringstream oss;
-    #ifdef EEC_COMPRESSION
-      {
-        boost::iostreams::filtering_ostream fos;
-        fos.push(boost::iostreams::zlib_compressor(boost::iostreams::zlib::best_compression));
-        fos.push(oss);
-        boost::archive::binary_oarchive ar(fos);
-        ar << *(self);
-      }
-    #else
-      boost::archive::binary_oarchive ar(oss);
+    std::ostringstream oss;
+  #ifdef EEC_COMPRESSION
+    {
+      boost::iostreams::filtering_ostream fos;
+      fos.push(boost::iostreams::zlib_compressor(boost::iostreams::zlib::best_compression));
+      fos.push(oss);
+      boost::archive::binary_oarchive ar(fos);
       ar << *(self);
-    #endif
-
-      return oss.str();
     }
+  #elif EEC_SERIALIZATION
+    boost::archive::binary_oarchive ar(oss);
+    ar << *(self);
+  #endif
+
+    return oss.str();
+  }
 SWIGINTERN void eec_EECTriangleOPE_Sl_axis_log_Sc_axis_id_Sc_axis_id_Sg____setstate_internal__(eec::EECTriangleOPE< axis::log,axis::id,axis::id > *self,std::string const &state){
-      std::istringstream iss(state);
-    #ifdef EEC_COMPRESSION
-      boost::iostreams::filtering_istream fis;
-      fis.push(boost::iostreams::zlib_decompressor());
-      fis.push(iss);
-      boost::archive::binary_iarchive ar(fis);
-    #else
-      boost::archive::binary_iarchive ar(iss);
-    #endif
-
-      ar >> *(self);
-    }
+    std::istringstream iss(state);
+  #ifdef EEC_COMPRESSION
+    boost::iostreams::filtering_istream fis;
+    fis.push(boost::iostreams::zlib_decompressor());
+    fis.push(iss);
+    boost::archive::binary_iarchive ar(fis);
+    ar >> *(self);
+  #elif EEC_SERIALIZATION
+    boost::archive::binary_iarchive ar(iss);
+    ar >> *(self);
+  #endif
+  }
 SWIGINTERN std::string eec_EECTriangleOPE_Sl_axis_id_Sc_axis_log_Sc_axis_id_Sg____getstate_internal__(eec::EECTriangleOPE< axis::id,axis::log,axis::id > *self){
-      std::ostringstream oss;
-    #ifdef EEC_COMPRESSION
-      {
-        boost::iostreams::filtering_ostream fos;
-        fos.push(boost::iostreams::zlib_compressor(boost::iostreams::zlib::best_compression));
-        fos.push(oss);
-        boost::archive::binary_oarchive ar(fos);
-        ar << *(self);
-      }
-    #else
-      boost::archive::binary_oarchive ar(oss);
+    std::ostringstream oss;
+  #ifdef EEC_COMPRESSION
+    {
+      boost::iostreams::filtering_ostream fos;
+      fos.push(boost::iostreams::zlib_compressor(boost::iostreams::zlib::best_compression));
+      fos.push(oss);
+      boost::archive::binary_oarchive ar(fos);
       ar << *(self);
-    #endif
-
-      return oss.str();
     }
+  #elif EEC_SERIALIZATION
+    boost::archive::binary_oarchive ar(oss);
+    ar << *(self);
+  #endif
+
+    return oss.str();
+  }
 SWIGINTERN void eec_EECTriangleOPE_Sl_axis_id_Sc_axis_log_Sc_axis_id_Sg____setstate_internal__(eec::EECTriangleOPE< axis::id,axis::log,axis::id > *self,std::string const &state){
-      std::istringstream iss(state);
-    #ifdef EEC_COMPRESSION
-      boost::iostreams::filtering_istream fis;
-      fis.push(boost::iostreams::zlib_decompressor());
-      fis.push(iss);
-      boost::archive::binary_iarchive ar(fis);
-    #else
-      boost::archive::binary_iarchive ar(iss);
-    #endif
-
-      ar >> *(self);
-    }
+    std::istringstream iss(state);
+  #ifdef EEC_COMPRESSION
+    boost::iostreams::filtering_istream fis;
+    fis.push(boost::iostreams::zlib_decompressor());
+    fis.push(iss);
+    boost::archive::binary_iarchive ar(fis);
+    ar >> *(self);
+  #elif EEC_SERIALIZATION
+    boost::archive::binary_iarchive ar(iss);
+    ar >> *(self);
+  #endif
+  }
 SWIGINTERN std::string eec_EECTriangleOPE_Sl_axis_log_Sc_axis_log_Sc_axis_id_Sg____getstate_internal__(eec::EECTriangleOPE< axis::log,axis::log,axis::id > *self){
-      std::ostringstream oss;
-    #ifdef EEC_COMPRESSION
-      {
-        boost::iostreams::filtering_ostream fos;
-        fos.push(boost::iostreams::zlib_compressor(boost::iostreams::zlib::best_compression));
-        fos.push(oss);
-        boost::archive::binary_oarchive ar(fos);
-        ar << *(self);
-      }
-    #else
-      boost::archive::binary_oarchive ar(oss);
+    std::ostringstream oss;
+  #ifdef EEC_COMPRESSION
+    {
+      boost::iostreams::filtering_ostream fos;
+      fos.push(boost::iostreams::zlib_compressor(boost::iostreams::zlib::best_compression));
+      fos.push(oss);
+      boost::archive::binary_oarchive ar(fos);
       ar << *(self);
-    #endif
-
-      return oss.str();
     }
+  #elif EEC_SERIALIZATION
+    boost::archive::binary_oarchive ar(oss);
+    ar << *(self);
+  #endif
+
+    return oss.str();
+  }
 SWIGINTERN void eec_EECTriangleOPE_Sl_axis_log_Sc_axis_log_Sc_axis_id_Sg____setstate_internal__(eec::EECTriangleOPE< axis::log,axis::log,axis::id > *self,std::string const &state){
-      std::istringstream iss(state);
-    #ifdef EEC_COMPRESSION
-      boost::iostreams::filtering_istream fis;
-      fis.push(boost::iostreams::zlib_decompressor());
-      fis.push(iss);
-      boost::archive::binary_iarchive ar(fis);
-    #else
-      boost::archive::binary_iarchive ar(iss);
-    #endif
-
-      ar >> *(self);
-    }
+    std::istringstream iss(state);
+  #ifdef EEC_COMPRESSION
+    boost::iostreams::filtering_istream fis;
+    fis.push(boost::iostreams::zlib_decompressor());
+    fis.push(iss);
+    boost::archive::binary_iarchive ar(fis);
+    ar >> *(self);
+  #elif EEC_SERIALIZATION
+    boost::archive::binary_iarchive ar(iss);
+    ar >> *(self);
+  #endif
+  }
 #ifdef __cplusplus
 extern "C" {
 #endif
@@ -15884,6 +15884,20 @@ SWIGINTERN PyObject *vectorReduceCommand_swigregister(PyObject *SWIGUNUSEDPARM(s
 SWIGINTERN PyObject *vectorReduceCommand_swiginit(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
   return SWIG_Python_InitShadowInstance(args);
 }
+
+SWIGINTERN int Swig_var_HAS_PICKLE_SUPPORT_set(PyObject *) {
+  SWIG_Error(SWIG_AttributeError,"Variable HAS_PICKLE_SUPPORT is read-only.");
+  return 1;
+}
+
+
+SWIGINTERN PyObject *Swig_var_HAS_PICKLE_SUPPORT_get(void) {
+  PyObject *pyobj = 0;
+  
+  pyobj = SWIG_From_bool(static_cast< bool >(eec::hist::HAS_PICKLE_SUPPORT));
+  return pyobj;
+}
+
 
 SWIGINTERN PyObject *_wrap_new_EECHistBase1DId(PyObject *SWIGUNUSEDPARM(self), PyObject *args, PyObject *kwargs) {
   PyObject *resultobj = 0;
@@ -31593,6 +31607,7 @@ SWIG_init(void) {
   }
   PyDict_SetItemString(md, "cvar", globals);
   Py_DECREF(globals);
+  SWIG_addvarlink(globals, "HAS_PICKLE_SUPPORT", Swig_var_HAS_PICKLE_SUPPORT_get, Swig_var_HAS_PICKLE_SUPPORT_set);
   SWIG_addvarlink(globals, "FACTORIALS", Swig_var_FACTORIALS_get, Swig_var_FACTORIALS_set);
   
   /* Initialize threading */

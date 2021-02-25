@@ -348,6 +348,8 @@ class EECHistBase1DId(object):
 
 # Register EECHistBase1DId in _eec:
 _eec.EECHistBase1DId_swigregister(EECHistBase1DId)
+cvar = _eec.cvar
+HAS_PICKLE_SUPPORT = cvar.HAS_PICKLE_SUPPORT
 
 class EECHistBase1DLog(object):
     r"""Proxy of C++ eec::hist::EECHistBase< eec::hist::EECHist1D< eec::hist::axis::log > > class."""
@@ -689,7 +691,6 @@ class DynamicMultinomial(object):
 
 # Register DynamicMultinomial in _eec:
 _eec.DynamicMultinomial_swigregister(DynamicMultinomial)
-cvar = _eec.cvar
 FACTORIALS = cvar.FACTORIALS
 
 class Multinomial2(object):

@@ -1,5 +1,5 @@
 // EnergyEnergyCorrelators - Evaluates EECs on particle physics events
-// Copyright (C) 2020 Patrick T. Komiske III
+// Copyright (C) 2020-2021 Patrick T. Komiske III
 // 
 // This program is free software: you can redistribute it and/or modify
 // it under the terms of the GNU General Public License as published by
@@ -46,17 +46,6 @@
 
 #include "EECUtils.hh"
 
-// alias old "reduce_option" as "reduce_command"
-#if (BOOST_VERSION < 107300)
-namespace boost {
-  namespace histogram {
-    namespace algorithm {
-      using reduce_command = reduce_option;
-    }
-  }
-}
-#endif
-
 namespace eec {
 namespace hist {
 
@@ -80,6 +69,15 @@ using log = bh::axis::transform::log;
 //-----------------------------------------------------------------------------
 // Histogram helper functions
 //-----------------------------------------------------------------------------
+
+#ifdef SWIG
+constexpr bool HAS_PICKLE_SUPPORT = 
+  #ifdef EEC_SERIALIZATION
+    true;
+  #else
+    false;
+  #endif
+#endif
 
 // gets bin centers from an axis
 template<class Axis>

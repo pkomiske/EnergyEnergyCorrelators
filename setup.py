@@ -33,7 +33,7 @@ with open(os.path.join('eec', '__init__.py'), 'r') as f:
 cxxflags = ['-fopenmp', '-std=c++14', '-ffast-math', '-g0', '-DEEC_SERIALIZATION', '-DEEC_COMPRESSION'][:(6 if serialization else 4)]
 ldflags = ['-fopenmp']
 libs = ['boost_serialization', 'boost_iostreams'][:(2 if serialization else 0)]
-swig_opts = ['-DEEC_SERIALIZATION'][:(1 if serialization else 0)]
+include_dirs = [np.get_include(), os.path.join('eec', 'include')]
 if platform.system() == 'Darwin':
     cxxflags.insert(0, '-Xpreprocessor')
     del ldflags[0]
@@ -41,9 +41,10 @@ if platform.system() == 'Darwin':
 elif platform.system() == 'Windows':
     ldflags[0] = '/openmp'
     cxxflags = ['/openmp', '/std:c++14', '/fp:fast' '/DEEC_SERIALIZATION', '/DEEC_COMPRESSION'][:(5 if serialization else 3)]
+    include_dirs.append('.')
 
 if sys.argv[1] == 'swig':
-    swig_opts += ['-fastproxy', '-w511', '-keyword', '-Ieec/include']
+    swig_opts = ['-fastproxy', '-w511', '-keyword', '-Ieec/include']
     if len(sys.argv) >= 3 and sys.argv[2] == '-py3':
         swig_opts.append('-py3')
     command = 'swig -python -c++ {} -o eec/eec.cpp eec/swig/eec.i'.format(' '.join(swig_opts))
@@ -53,8 +54,7 @@ if sys.argv[1] == 'swig':
 else:
     eec = Extension('eec._eec',
                     sources=[os.path.join('eec', 'eec.cpp')],
-                    include_dirs=[np.get_include(), os.path.join('eec', 'include'), '.'],
-                    library_dirs=['/usr/local/lib'],
+                    include_dirs=include_dirs,
                     extra_compile_args=cxxflags,
                     extra_link_args=ldflags,
                     libraries=libs)

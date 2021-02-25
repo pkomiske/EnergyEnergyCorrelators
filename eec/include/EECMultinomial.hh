@@ -1,5 +1,5 @@
 // EnergyEnergyCorrelators - Evaluates EECs on particle physics events
-// Copyright (C) 2020 Patrick T. Komiske III
+// Copyright (C) 2020-2021 Patrick T. Komiske III
 // 
 // This program is free software: you can redistribute it and/or modify
 // it under the terms of the GNU General Public License as published by

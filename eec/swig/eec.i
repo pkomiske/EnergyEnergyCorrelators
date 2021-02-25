@@ -1,7 +1,7 @@
 // -*- C++ -*-
 //
 // EnergyEnergyCorrelators - Evaluates EECs on particle physics events
-// Copyright (C) 2020 Patrick T. Komiske III
+// Copyright (C) 2020-2021 Patrick T. Komiske III
 // 
 // This program is free software: you can redistribute it and/or modify
 // it under the terms of the GNU General Public License as published by
@@ -116,57 +116,50 @@ __all__ = ['EECLongestSide', 'EECTriangleOPE',
 %enddef
 
 // for pickling
-#ifdef EEC_SERIALIZATION
-  %define PYTHON_PICKLE_FUNCTIONS
-    %pythoncode %{
-      def __getstate__(self):
-          return (self.__getstate_internal__(),)
+%define PYTHON_PICKLE_FUNCTIONS
+  %pythoncode %{
+    def __getstate__(self):
+        return (self.__getstate_internal__(),)
 
-      def __setstate__(self, state):
-          self.__init__(*self._default_args)
-          self.__setstate_internal__(state[0])
-    %}
-  %enddef
+    def __setstate__(self, state):
+        self.__init__(*self._default_args)
+        self.__setstate_internal__(state[0])
+  %}
+%enddef
 
-  %define CPP_PICKLE_FUNCTIONS
-    std::string __getstate_internal__() {
-      std::ostringstream oss;
-    %#ifdef EEC_COMPRESSION
-      {
-        boost::iostreams::filtering_ostream fos;
-        fos.push(boost::iostreams::zlib_compressor(boost::iostreams::zlib::best_compression));
-        fos.push(oss);
-        boost::archive::binary_oarchive ar(fos);
-        ar << *($self);
-      }
-    %#else
-      boost::archive::binary_oarchive ar(oss);
+%define CPP_PICKLE_FUNCTIONS
+  std::string __getstate_internal__() {
+    std::ostringstream oss;
+  %#ifdef EEC_COMPRESSION
+    {
+      boost::iostreams::filtering_ostream fos;
+      fos.push(boost::iostreams::zlib_compressor(boost::iostreams::zlib::best_compression));
+      fos.push(oss);
+      boost::archive::binary_oarchive ar(fos);
       ar << *($self);
-    %#endif
-
-      return oss.str();
     }
+  %#elif EEC_SERIALIZATION
+    boost::archive::binary_oarchive ar(oss);
+    ar << *($self);
+  %#endif
 
-    void __setstate_internal__(const std::string & state) {
-      std::istringstream iss(state);
-    %#ifdef EEC_COMPRESSION
-      boost::iostreams::filtering_istream fis;
-      fis.push(boost::iostreams::zlib_decompressor());
-      fis.push(iss);
-      boost::archive::binary_iarchive ar(fis);
-    %#else
-      boost::archive::binary_iarchive ar(iss);
-    %#endif
+    return oss.str();
+  }
 
-      ar >> *($self);
-    }
-  %enddef
-#else
-  %define PYTHON_PICKLE_FUNCTIONS
-  %enddef
-  %define CPP_PICKLE_FUNCTIONS
-  %enddef
-#endif
+  void __setstate_internal__(const std::string & state) {
+    std::istringstream iss(state);
+  %#ifdef EEC_COMPRESSION
+    boost::iostreams::filtering_istream fis;
+    fis.push(boost::iostreams::zlib_decompressor());
+    fis.push(iss);
+    boost::archive::binary_iarchive ar(fis);
+    ar >> *($self);
+  %#elif EEC_SERIALIZATION
+    boost::archive::binary_iarchive ar(iss);
+    ar >> *($self);
+  %#endif
+  }
+%enddef
 
 // mallocs a 1D array of doubles of the specified size
 %define MALLOC_1D_VALUE_ARRAY(arr_out, n, size, nbytes)

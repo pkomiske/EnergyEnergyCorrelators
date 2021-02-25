@@ -1,3 +1,19 @@
+# EnergyEnergyCorrelators - Evaluates EECs on particle physics events
+# Copyright (C) 2020-2021 Patrick T. Komiske III
+# 
+# This program is free software: you can redistribute it and/or modify
+# it under the terms of the GNU General Public License as published by
+# the Free Software Foundation, either version 3 of the License, or
+# (at your option) any later version.
+# 
+# This program is distributed in the hope that it will be useful,
+# but WITHOUT ANY WARRANTY; without even the implied warranty of
+# MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+# GNU General Public License for more details.
+# 
+# You should have received a copy of the GNU General Public License
+# along with this program.  If not, see <https://www.gnu.org/licenses/>.
+
 from collections import Counter
 import itertools
 import math
@@ -10,7 +26,6 @@ import numpy as np
 import pytest
 from scipy.spatial.distance import cdist
 
-from eec import eec
 from eec import *
 
 # load some reasonable test data
@@ -719,22 +734,25 @@ def test_triangleope(axes, num_threads, pt_powers, ch_powers, average_verts, npa
 @pytest.mark.parametrize('N', [2, 3, 4])
 def test_pickling_longestside(N, axis, num_threads, pt_powers, ch_powers, nparticles):
 
+    if not eec.HAS_PICKLE_SUPPORT:
+        pytest.skip()
+
     nbins = 15
-    eec = EECLongestSide(N, nbins, axis=axis, axis_range=(1e-5, 1), pt_powers=(pt_powers,), ch_powers=(ch_powers,),
+    e = EECLongestSide(N, nbins, axis=axis, axis_range=(1e-5, 1), pt_powers=(pt_powers,), ch_powers=(ch_powers,),
                          print_every=0, num_threads=num_threads)
 
     local_events = [event[:nparticles] for event in events]
     weights = 2*np.random.rand(len(events))
 
-    eec(local_events, weights)
+    e(local_events, weights)
 
     with tempfile.TemporaryFile() as f:
-        pickle.dump(eec, f)
+        pickle.dump(e, f)
         f.seek(0)
-        eec_loaded = pickle.load(f)
+        e_loaded = pickle.load(f)
 
     for i in range(2):
-        assert np.all(eec_loaded.get_hist_vars()[i] == eec.get_hist_vars()[i])
+        assert np.all(e_loaded.get_hist_vars()[i] == e.get_hist_vars()[i])
 
 @pytest.mark.triangleope
 @pytest.mark.pickle
@@ -744,9 +762,12 @@ def test_pickling_longestside(N, axis, num_threads, pt_powers, ch_powers, nparti
 @pytest.mark.parametrize('num_threads', [1, -1])
 @pytest.mark.parametrize('axes', [('log', 'log', 'id'), ('id', 'id', 'id'), ('log', 'id', 'id'), ('id', 'log', 'id')])
 def test_pickling_triangleope(axes, num_threads, pt_powers, ch_powers, nparticles):
+
+    if not eec.HAS_PICKLE_SUPPORT:
+        pytest.skip()
     
     bin_ranges = [(1e-5, 1), (1e-5, 1), (0, np.pi/2)]
-    eec = EECTriangleOPE(nbins=(15, 15, 15), axes=axes, axis_ranges=bin_ranges,
+    e = EECTriangleOPE(nbins=(15, 15, 15), axes=axes, axis_ranges=bin_ranges,
                          pt_powers=pt_powers, ch_powers=ch_powers,
                          print_every=0, num_threads=num_threads)
 
@@ -754,12 +775,12 @@ def test_pickling_triangleope(axes, num_threads, pt_powers, ch_powers, nparticle
     local_events = [event[-nparticles:] for event in events[:nev]]
     weights = 2*np.random.rand(len(events))[:nev]
 
-    eec(local_events, weights)
+    e(local_events, weights)
 
     with tempfile.TemporaryFile() as f:
-        pickle.dump(eec, f)
+        pickle.dump(e, f)
         f.seek(0)
-        eec_loaded = pickle.load(f)
+        e_loaded = pickle.load(f)
 
     for i in range(2):
-        assert np.all(eec_loaded.get_hist_vars()[i] == eec.get_hist_vars()[i])
+        assert np.all(e_loaded.get_hist_vars()[i] == e.get_hist_vars()[i])
