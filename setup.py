@@ -25,14 +25,13 @@ from setuptools.extension import Extension
 
 import numpy as np
 
-serialization = (platform.system() != 'Windows')
-
 with open(os.path.join('eec', '__init__.py'), 'r') as f:
     __version__ = re.search(r'__version__\s*=\s*[\'"]([^\'"]*)[\'"]', f.read()).group(1)
 
-cxxflags = ['-fopenmp', '-std=c++14', '-ffast-math', '-g0', '-DEEC_SERIALIZATION', '-DEEC_COMPRESSION'][:(6 if serialization else 4)]
+# compiler flags, libraries, etc
+cxxflags = ['-fopenmp', '-std=c++14', '-ffast-math', '-g0']
 ldflags = ['-fopenmp']
-libs = ['boost_serialization', 'boost_iostreams'][:(2 if serialization else 0)]
+libs = []
 include_dirs = [np.get_include(), os.path.join('eec', 'include')]
 if platform.system() == 'Darwin':
     cxxflags.insert(0, '-Xpreprocessor')
@@ -40,9 +39,16 @@ if platform.system() == 'Darwin':
     libs.append('omp')
 elif platform.system() == 'Windows':
     ldflags[0] = '/openmp'
-    cxxflags = ['/openmp', '/std:c++14', '/fp:fast' '/DEEC_SERIALIZATION', '/DEEC_COMPRESSION'][:(5 if serialization else 3)]
+    cxxflags = ['/openmp', '/std:c++14', '/fp:fast']
     include_dirs.append('.')
 
+# we only serialize on non-windows platforms
+serialization = (platform.system() != 'Windows')
+if serialization:
+    cxxflags.extend(['-DEEC_SERIALIZATION', '-DEEC_COMPRESSION'])
+    libs.extend(['boost_serialization', 'boost_iostreams'])
+
+# run swig to generate eec.py and eec.cpp from eec.i
 if sys.argv[1] == 'swig':
     swig_opts = ['-fastproxy', '-w511', '-keyword', '-Ieec/include']
     if len(sys.argv) >= 3 and sys.argv[2] == '-py3':
@@ -51,6 +57,7 @@ if sys.argv[1] == 'swig':
     print(command)
     subprocess.run(command.split())
 
+# build extension
 else:
     eec = Extension('eec._eec',
                     sources=[os.path.join('eec', 'eec.cpp')],
