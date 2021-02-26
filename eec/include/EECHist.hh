@@ -427,9 +427,12 @@ protected:
   void fill_hist_with_simple_hist(int thread_i = 0) {
     for (unsigned hist_i = 0; hist_i < nhists(); hist_i++) {
       auto h_it(hists(thread_i)[hist_i].begin()), h_end(hists(thread_i)[hist_i].end());
-      for (auto sh_it = simple_hists(thread_i)[hist_i].begin(); h_it != h_end; ++h_it, ++sh_it)
-        *h_it += hist::weight(sh_it->value());
-      simple_hists(thread_i)[hist_i].reset();
+      for (auto sh_it = simple_hists(thread_i)[hist_i].begin(); h_it != h_end; ++h_it, ++sh_it) {
+        if (sh_it->value() != 0) {
+          *h_it += hist::weight(sh_it->value());
+          *sh_it = 0;
+        }
+      }
     }
   }
 

@@ -30,7 +30,7 @@ from __future__ import absolute_import
 from . import eec
 from .eec import *
 
-__version__ = '1.0.0'
+__version__ = '1.0.1'
 
 import numpy as _np
 
