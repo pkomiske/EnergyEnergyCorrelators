@@ -68,8 +68,8 @@ env:
     - export CIBW_BEFORE_BUILD="pip install numpy"
     - export CIBW_BUILD_VERBOSITY=1
     - export CIBW_MANYLINUX_X86_64_IMAGE=ghcr.io/pkomiske/eec_manylinux2010:latest
-    - export CIBW_TEST_COMMAND="pytest {package}"
-    - export CIBW_TEST_REQUIRES="pytest numpy scipy energyflow"
+    #- export CIBW_TEST_COMMAND="pytest {package}"
+    #- export CIBW_TEST_REQUIRES="pytest numpy scipy energyflow"
     - PYPI=true
 
 branches:
