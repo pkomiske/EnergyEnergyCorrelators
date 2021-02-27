@@ -19,10 +19,10 @@ jobs:
       services: docker
       before_install:
       install: python3 -m pip install cibuildwheel twine
-      script: |
-        echo $GHCR_TOKEN | docker login ghcr.io -u pkomiske --password-stdin
-        python3 setup.py sdist --formats=gztar
-        python3 -m cibuildwheel --output-dir wheelhouse
+      script:
+        - echo $GHCR_TOKEN | docker login ghcr.io -u pkomiske --password-stdin
+        - python3 setup.py sdist --formats=gztar
+        - python3 -m cibuildwheel --output-dir wheelhouse
       after_success:
         - ./scripts/pypi-upload.sh sdist
       env:
@@ -34,10 +34,10 @@ jobs:
       os: osx
       osx_image: xcode11
       language: shell
-      before_install: |
-        brew update > /dev/null
-        brew install libomp
-        brew upgrade boost
+      before_install:
+        - brew update > /dev/null
+        - brew install libomp
+        - brew upgrade boost
       install: python3 -m pip install cibuildwheel
       script: python3 -m cibuildwheel --output-dir wheelhouse
       after_success:
@@ -68,9 +68,9 @@ env:
     - export CIBW_BEFORE_BUILD="pip install numpy"
     - export CIBW_BUILD_VERBOSITY=1
     - export CIBW_MANYLINUX_X86_64_IMAGE=ghcr.io/pkomiske/eec_manylinux2010:latest
-    #- export CIBW_TEST_COMMAND="pytest {package}"
-    #- export CIBW_TEST_REQUIRES="pytest numpy scipy energyflow"
-    - PYPI=true
+    - export CIBW_TEST_COMMAND="pytest {package}"
+    - export CIBW_TEST_REQUIRES="pytest numpy scipy energyflow"
+    #- PYPI=true
 
 branches:
   only:

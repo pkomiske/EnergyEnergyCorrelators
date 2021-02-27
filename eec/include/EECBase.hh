@@ -571,7 +571,7 @@ private:
     unsigned nevents_width(std::to_string(nevents).size());
     oss_.str("  ");
     oss_ << std::setw(nevents_width) << counter << " / "
-         << std::setw(nevents_width) << nevents << "  EMDs computed  - "
+         << std::setw(nevents_width) << nevents << "  EECs computed  - "
          << std::setprecision(2) << std::setw(6) << double(counter)/nevents*100
          << "% completed - "
          << std::setprecision(3) << duration << 's';
@@ -581,7 +581,7 @@ private:
       SWIG_PYTHON_THREAD_BEGIN_BLOCK;
       if (print_every_ != 0) *print_stream_ << oss_.str() << std::endl;
       if (PyErr_CheckSignals() != 0)
-        throw std::runtime_error("KeyboardInterrupt received in PairwiseEMD::compute");
+        throw std::runtime_error("KeyboardInterrupt received in EECBase::batch_compute");
       SWIG_PYTHON_THREAD_END_BLOCK;
     #else
       if (print_every_ != 0) *print_stream_ << oss_.str() << std::endl;
