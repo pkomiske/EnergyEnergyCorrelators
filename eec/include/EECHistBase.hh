@@ -31,6 +31,7 @@
 #ifndef EEC_HIST_HH
 #define EEC_HIST_HH
 
+#include <algorithm>
 #include <array>
 #include <cstddef>
 #include <sstream>
@@ -58,56 +59,6 @@ template<class T0, class T1> class EECHist2D;
 template<class T0, class T1, class T2> class EECHist3D;
 template<class Hist> struct EECHistTraits;
 
-// EECHistTraits for EECHist1D
-template<class T>
-struct EECHistTraits<EECHist1D<T>> {
-  typedef T Transform;
-  typedef bh::axis::regular<double, Transform> Axis;
-
-  typedef struct HistFactory {
-    static auto make_hist(const Axis & axis) {
-      return bh::make_histogram_with(bh::weight_storage(), axis);
-    }
-    static auto make_simple_hist(const Axis & axis) {
-      return bh::make_histogram_with(simple_weight_storage(), axis);
-    }
-    static auto make_covariance_hist(const Axis & axis) {
-      return bh::make_histogram_with(simple_weight_storage(), axis, axis);
-    }
-  } HistFactory;
-
-  typedef decltype(HistFactory::make_hist(Axis())) Hist;
-  typedef decltype(HistFactory::make_simple_hist(Axis())) SimpleHist;
-  typedef decltype(HistFactory::make_covariance_hist(Axis())) CovarianceHist;
-};
-
-// EECHistTraits for EECHist3D
-template<class T0, class T1, class T2>
-struct EECHistTraits<EECHist3D<T0, T1, T2>> {
-  typedef T0 Transform0;
-  typedef T1 Transform1;
-  typedef T2 Transform2;
-  typedef bh::axis::regular<double, Transform0> Axis0;
-  typedef bh::axis::regular<double, Transform1> Axis1;
-  typedef bh::axis::regular<double, Transform2> Axis2;
-
-  typedef struct HistFactory {
-    static auto make_hist(const Axis0 & axis0, const Axis1 & axis1, const Axis2 & axis2) {
-      return bh::make_histogram_with(bh::weight_storage(), axis0, axis1, axis2);
-    }
-    static auto make_simple_hist(const Axis0 & axis0, const Axis1 & axis1, const Axis2 & axis2) {
-      return bh::make_histogram_with(simple_weight_storage(), axis0, axis1, axis2);
-    }
-    static auto make_covariance_hist(const Axis0 & axis0, const Axis1 & axis1, const Axis2 & axis2) {
-      return bh::make_histogram_with(simple_weight_storage(), axis0, axis1, axis2, axis0, axis1, axis2);
-    }
-  } HistFactory;
-
-  typedef decltype(HistFactory::make_hist(Axis0(), Axis1(), Axis2())) Hist;
-  typedef decltype(HistFactory::make_simple_hist(Axis0(), Axis1(), Axis2())) SimpleHist;
-  typedef decltype(HistFactory::make_covariance_hist(Axis0(), Axis1(), Axis2())) CovarianceHist;
-};
-
 #endif // SWIG_PREPROCESSOR
 
 //------------------------------------------------------------------------------
@@ -118,9 +69,10 @@ template<class EECHist>
 class EECHistBase {
 public:
 
-  typedef typename EECHistTraits<EECHist>::Hist Hist;
-  typedef typename EECHistTraits<EECHist>::SimpleHist SimpleHist;
-  typedef typename EECHistTraits<EECHist>::CovarianceHist CovarianceHist;
+  typedef EECHistTraits<EECHist> Traits;
+  typedef typename Traits::Hist Hist;
+  typedef typename Traits::SimpleHist SimpleHist;
+  typedef typename Traits::CovarianceHist CovarianceHist;
 
 private:
 
@@ -158,6 +110,7 @@ public:
 
   std::size_t nhists() const { return hists_[0].size(); }
   std::size_t nbins(unsigned i = 0) const { return axis(i).size(); }
+  constexpr unsigned rank() const { return Traits::rank; }
   std::size_t hist_size(bool include_overflows = true, int i = -1) const {
     if (i == -1) {
       if (include_overflows)
@@ -274,19 +227,19 @@ public:
     auto hist(this->combined_hist(hist_i));
 
     // calculate strides
-    int extra(include_overflows ? 2 : 0);
-    std::array<std::size_t, hist.rank()> strides;
+    axis::index_type extra(include_overflows ? 2 : 0);
+    std::array<std::size_t, 2*hist.rank()> strides;
     strides.back() = 1;
-    for (int r = hist.rank() - 1; r > 0; r--)
-      strides[r-1] = strides[r] * (axis(r).size() + extra);
+    for (axis::index_type r = 2*hist.rank() - 1; r > 0; r--)
+      strides[r-1] = strides[r] * (axis(r % hist.rank()).size() + extra);
     
     extra = (include_overflows ? 1 : 0);
     for (auto && x : bh::indexed(hist, include_overflows ? bh::coverage::all : bh::coverage::inner)) {
 
       // get linearized C-style index
       std::size_t ind(0);
-      int r(0);
-      for (int index : x.indices())
+      axis::index_type r(hist.rank());
+      for (axis::index_type index : x.indices())
         ind += strides[r++] * (index + extra);
 
       hist_vals[ind] = x->value();
@@ -375,8 +328,40 @@ protected:
       // track covariances
       if (track_covariance_) {
 
+        CovarianceHist & cov_hist(covariance_hists_[thread_i][hist_i]);
+        std::array<axis::index_type, 2*Traits::rank> cov_inds;
+
         // iterate over pairs of simple_hist bins
-        //for (auto && inds0 : bh::indexed(simple_hists_[thread_i][hist_i], bh::coverage::all)) {}        
+        auto outer_ind_range(bh::indexed(simple_hists_[thread_i][hist_i], bh::coverage::all));
+        auto outer_it = outer_ind_range.begin(), end(outer_ind_range.end());
+
+        // specialize for 2D covariance
+        if (cov_hist.rank() == 2) {
+          for (; outer_it != end; ++outer_it) {
+            const double outer_bin_val((*outer_it)->value());
+            cov_inds[0] = outer_it->index(0);
+
+            // inner loop picks up from where outer loop is
+            for (auto inner_it = outer_it; inner_it != end; ++inner_it) {
+              cov_inds[1] = inner_it->index(0);
+              cov_hist[cov_inds] += outer_bin_val * (*inner_it)->value();
+            }
+          }
+        }
+        else {
+          for (; outer_it != end; ++outer_it) {
+            const double outer_bin_val((*outer_it)->value());
+            auto outer_inds(outer_it->indices());
+            std::copy(outer_inds.begin(), outer_inds.end(), cov_inds.begin());
+
+            // inner loop picks up from where outer loop is
+            for (auto inner_it = outer_it; inner_it != end; ++inner_it) {
+              auto inner_inds(inner_it->indices());
+              std::copy(inner_inds.begin(), inner_inds.end(), cov_inds.begin() + rank());
+              cov_hist[cov_inds] += outer_bin_val * (*inner_it)->value();
+            }
+          } 
+        }
       }
 
       // iterator over hist
@@ -438,7 +423,7 @@ private:
       os << "# bin_multi_index : bin_value bin_variance\n";
       auto hist(combined_hist(hist_i));
       for (auto && x : bh::indexed(hist, include_overflows ? bh::coverage::all : bh::coverage::inner)) {
-        for (int index : x.indices())
+        for (axis::index_type index : x.indices())
           os << index << ' ';
         os << ": " << x->value() << ' ' << x->variance() << '\n';
       }

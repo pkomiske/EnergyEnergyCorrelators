@@ -103,6 +103,7 @@ namespace axis {
 
 using id = bh::axis::transform::id;
 using log = bh::axis::transform::log;
+using index_type = bh::axis::index_type;
 
 }
 

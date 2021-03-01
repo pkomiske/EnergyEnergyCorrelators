@@ -36,6 +36,35 @@
 namespace eec {
 namespace hist {
 
+#ifndef SWIG_PREPROCESSOR
+
+// EECHistTraits for EECHist1D
+template<class T>
+struct EECHistTraits<EECHist1D<T>> {
+  typedef T Transform;
+  typedef bh::axis::regular<double, Transform> Axis;
+
+  static constexpr unsigned rank = 1;
+
+  typedef struct HistFactory {
+    static auto make_hist(const Axis & axis) {
+      return bh::make_histogram_with(bh::weight_storage(), axis);
+    }
+    static auto make_simple_hist(const Axis & axis) {
+      return bh::make_histogram_with(simple_weight_storage(), axis);
+    }
+    static auto make_covariance_hist(const Axis & axis) {
+      return bh::make_histogram_with(simple_weight_storage(), axis, axis);
+    }
+  } HistFactory;
+
+  typedef decltype(HistFactory::make_hist(Axis())) Hist;
+  typedef decltype(HistFactory::make_simple_hist(Axis())) SimpleHist;
+  typedef decltype(HistFactory::make_covariance_hist(Axis())) CovarianceHist;
+};
+
+#endif // SWIG_PREPROCESSOR
+
 //-----------------------------------------------------------------------------
 // 1D histogram class
 //-----------------------------------------------------------------------------

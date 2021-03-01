@@ -38,6 +38,39 @@
 namespace eec {
 namespace hist {
 
+#ifndef SWIG_PREPROCESSOR
+
+// EECHistTraits for EECHist3D
+template<class T0, class T1, class T2>
+struct EECHistTraits<EECHist3D<T0, T1, T2>> {
+  typedef T0 Transform0;
+  typedef T1 Transform1;
+  typedef T2 Transform2;
+  typedef bh::axis::regular<double, Transform0> Axis0;
+  typedef bh::axis::regular<double, Transform1> Axis1;
+  typedef bh::axis::regular<double, Transform2> Axis2;
+
+  static constexpr unsigned rank = 3;
+
+  typedef struct HistFactory {
+    static auto make_hist(const Axis0 & axis0, const Axis1 & axis1, const Axis2 & axis2) {
+      return bh::make_histogram_with(bh::weight_storage(), axis0, axis1, axis2);
+    }
+    static auto make_simple_hist(const Axis0 & axis0, const Axis1 & axis1, const Axis2 & axis2) {
+      return bh::make_histogram_with(simple_weight_storage(), axis0, axis1, axis2);
+    }
+    static auto make_covariance_hist(const Axis0 & axis0, const Axis1 & axis1, const Axis2 & axis2) {
+      return bh::make_histogram_with(simple_weight_storage(), axis0, axis1, axis2, axis0, axis1, axis2);
+    }
+  } HistFactory;
+
+  typedef decltype(HistFactory::make_hist(Axis0(), Axis1(), Axis2())) Hist;
+  typedef decltype(HistFactory::make_simple_hist(Axis0(), Axis1(), Axis2())) SimpleHist;
+  typedef decltype(HistFactory::make_covariance_hist(Axis0(), Axis1(), Axis2())) CovarianceHist;
+};
+
+#endif // SWIG_PREPROCESSOR
+
 //-----------------------------------------------------------------------------
 // 3D histogram class
 //-----------------------------------------------------------------------------
