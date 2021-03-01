@@ -48,20 +48,6 @@
 #include <cstdlib>
 #include <cstring>
 
-// serialization code based on boost serialization
-#ifdef EEC_SERIALIZATION
-#include <boost/archive/binary_iarchive.hpp>
-#include <boost/archive/binary_oarchive.hpp>
-#include <boost/serialization/array.hpp>
-#include <boost/serialization/map.hpp>
-#include <boost/serialization/string.hpp>
-#include <boost/serialization/vector.hpp>
-#ifdef EEC_COMPRESSION
-#include <boost/iostreams/filtering_stream.hpp>
-#include <boost/iostreams/filter/zlib.hpp>
-#endif
-#endif
-
 // EEC library headers
 #include "EEC.hh"
 
@@ -201,6 +187,9 @@ void pyname(double** arr_out0, int* n0) {
 
 namespace EECNAMESPACE {
 
+// ignore EECUtils functions
+%ignore get_thread_num;
+
 // ignore/rename EECHist functions
 namespace hist {
   %ignore EECHistBase::add;
@@ -250,7 +239,10 @@ namespace boost {
 %template(vectorReduceCommand) std::vector<boost::histogram::algorithm::reduce_command>;
 
 // include EECHist and declare templates
-%include "EECHist.hh"
+%include "EECUtils.hh"
+%include "EECHistBase.hh"
+%include "EECHist1D.hh"
+%include "EECHist3D.hh"
 
 namespace EECNAMESPACE {
   namespace hist {
@@ -333,6 +325,7 @@ namespace EECNAMESPACE {
 
 // include EEC code and declare templates
 %include "EECBase.hh"
+%include "EECEvents.hh"
 %include "EECMultinomial.hh"
 %include "EECLongestSide.hh"
 %include "EECTriangleOPE.hh"

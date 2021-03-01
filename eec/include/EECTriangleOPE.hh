@@ -35,7 +35,7 @@
 #include <array>
 
 #include "EECBase.hh"
-#include "EECHist.hh"
+#include "EECHist3D.hh"
 
 // namespace for EEC code
 namespace eec {
@@ -74,22 +74,23 @@ inline void fill_hist(Hist & hist, double weight, double xS, double xM, double x
 template<class Transform0, class Transform1, class Transform2>
 class EECTriangleOPE : public EECBase, public hist::EECHist3D<Transform0, Transform1, Transform2> {
 
-  typedef hist::EECHist3D<Transform0, Transform1, Transform2> EECTriangleOPEHist3D;
-  typedef typename EECTriangleOPEHist3D::SimpleHist SimpleHist;
+  typedef hist::EECHist3D<Transform0, Transform1, Transform2> EECHist3D;
+  typedef typename EECHist3D::SimpleHist SimpleHist;
 
   // function pointer to the actual computation that will be run
   void (EECTriangleOPE::*compute_eec_ptr_)(int);
 
-#ifdef EEC_SERIALIZATION
+#ifdef BOOST_SERIALIZATION_ACCESS_HPP
   friend class boost::serialization::access;
+#endif
+
   template<class Archive>
   void serialize(Archive & ar, const unsigned int /* file_version */) {
     ar & boost::serialization::base_object<EECBase>(*this);
-    ar & boost::serialization::base_object<EECTriangleOPEHist3D>(*this);
+    ar & boost::serialization::base_object<EECHist3D>(*this);
 
     select_eec_function();
   }
-#endif
 
   void select_eec_function() {
     switch (nsym()) {
@@ -123,12 +124,16 @@ public:
                  int num_threads = -1,
                  int print_every = -10,
                  bool check_degen = false,
-                 bool average_verts = false) :
+                 bool average_verts = false,
+                 bool error_bound = true,
+                 bool track_covariance = false,
+                 bool error_bound_include_overflows = true) :
     EECBase(3, norm, pt_powers, ch_powers, num_threads, print_every, check_degen, average_verts),
-    EECTriangleOPEHist3D(nbins0, axis0_min, axis0_max,
-                         nbins1, axis1_min, axis1_max,
-                         nbins2, axis2_min, axis2_max,
-                         num_threads)
+    EECHist3D(nbins0, axis0_min, axis0_max,
+              nbins1, axis1_min, axis1_max,
+              nbins2, axis2_min, axis2_max,
+              num_threads,
+              error_bound, track_covariance, error_bound_include_overflows)
   {
     select_eec_function();
   }

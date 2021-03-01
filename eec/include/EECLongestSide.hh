@@ -39,7 +39,7 @@
 #include <type_traits>
 
 #include "EECBase.hh"
-#include "EECHist.hh"
+#include "EECHist1D.hh"
 #include "EECMultinomial.hh"
 
 // namespace for EEC code
@@ -55,23 +55,24 @@ class EECLongestSide : public EECBase, public hist::EECHist1D<Transform> {
   bool use_general_eNc_;
   unsigned N_choose_2_;
 
-  typedef hist::EECHist1D<Transform> EECLongestSideHist1D;
-  typedef typename EECLongestSideHist1D::SimpleHist SimpleHist;
+  typedef hist::EECHist1D<Transform> EECHist1D;
+  typedef typename EECHist1D::SimpleHist SimpleHist;
 
   // function pointer to the actual computation that will be run
   void (EECLongestSide::*compute_eec_ptr_)(int);
 
-#ifdef EEC_SERIALIZATION
+#ifdef BOOST_SERIALIZATION_ACCESS_HPP
   friend class boost::serialization::access;
+#endif
+
   template<class Archive>
   void serialize(Archive & ar, const unsigned int /* file_version */) {
     ar & boost::serialization::base_object<EECBase>(*this)
-       & boost::serialization::base_object<EECLongestSideHist1D>(*this);
+       & boost::serialization::base_object<EECHist1D>(*this);
     ar & use_general_eNc_ & N_choose_2_;
 
     select_eec_function();
   }
-#endif
 
   void select_eec_function() {
 
@@ -143,9 +144,13 @@ public:
                  int print_every = -10,
                  bool check_degen = false,
                  bool average_verts = false,
+                 bool error_bound = true,
+                 bool track_covariance = true,
+                 bool error_bound_include_overflows = true,
                  bool use_general_eNc = false) :
     EECBase(N, norm, pt_powers, ch_powers, num_threads, print_every, check_degen, average_verts),
-    EECLongestSideHist1D(nbins, axis_min, axis_max, num_threads),
+    EECHist1D(nbins, axis_min, axis_max, num_threads,
+              error_bound, track_covariance, error_bound_include_overflows),
     use_general_eNc_(use_general_eNc),
     N_choose_2_(this->N()*(this->N()-1)/2),
     compute_eec_ptr_(&EECLongestSide::eNc_sym)

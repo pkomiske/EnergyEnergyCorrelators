@@ -261,7 +261,6 @@
     {
       result = ary;
       *is_new_object = 0;
-      std::cout << "Array is already contiguous!\n";
     }
     else
     {
@@ -270,7 +269,6 @@
                                                               min_dims,
                                                               max_dims);
       *is_new_object = 1;
-      std::cout << "Converting array to contiguous!\n";
     }
     return result;
   }
