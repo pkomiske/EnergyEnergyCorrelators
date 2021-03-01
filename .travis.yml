@@ -71,7 +71,3 @@ env:
     - export CIBW_TEST_COMMAND="pytest {package}"
     - export CIBW_TEST_REQUIRES="pytest numpy scipy energyflow"
     #- PYPI=true
-
-branches:
-  only:
-    - master
