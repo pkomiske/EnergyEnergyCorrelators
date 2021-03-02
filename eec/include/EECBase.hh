@@ -61,7 +61,8 @@ private:
   // details of the EEC computation
   unsigned N_, nsym_, nfeatures_;
   bool norm_, use_charges_, check_degen_, average_verts_;
-  int num_threads_, print_every_, omp_chunksize_;
+  int num_threads_, omp_chunksize_;
+  long print_every_;
   std::string compname_;
 
   // internal vectors used by the computations (outer axis is the thread axis)
@@ -69,10 +70,6 @@ private:
   std::vector<std::vector<double>> dists_;
   std::vector<double> event_weights_;
   std::vector<unsigned> mults_;
-
-  // internal variables used by the computations
-  std::size_t event_counter_;
-  double weight_total_, weight_squared_total_;
 
   // printing/tracking variables
   std::ostream * print_stream_;
@@ -83,14 +80,12 @@ public:
 
   EECBase(unsigned N, bool norm,
           const std::vector<double> & pt_powers, const std::vector<unsigned> & ch_powers,
-          int num_threads, int print_every, bool check_degen, bool average_verts) : 
+          int num_threads, long print_every, bool check_degen, bool average_verts) : 
     orig_pt_powers_(pt_powers), orig_ch_powers_(ch_powers),
     N_(N), nsym_(N_),
     norm_(norm), use_charges_(false), check_degen_(check_degen), average_verts_(average_verts),
     num_threads_(determine_num_threads(num_threads)),
-    print_every_(print_every),
-    event_counter_(0),
-    weight_total_(0), weight_squared_total_(0)
+    print_every_(print_every)
   {
     // initialize data members
     init();
@@ -214,15 +209,16 @@ public:
     oss << std::boolalpha
         << compname_ << '\n'
         << "  N - " << N() << '\n'
-        << "  norm - " << norm_ << '\n'
-        << "  use_charges - " << use_charges_ << '\n'
+        << "  norm - " << norm() << '\n'
+        << "  use_charges - " << use_charges() << '\n'
         << "  nfeatures - " << nfeatures() << '\n'
-        << "  check_for_degeneracy - " << check_degen_ << '\n'
-        << "  average_verts - " << average_verts_;
+        << "  check_for_degeneracy - " << check_degen() << '\n'
+        << "  average_verts - " << average_verts() << '\n'
+        << "  print_every - " << print_every() << '\n'
+        << "  num_threads - " << num_threads() << '\n';
 
     // record pt and charge powers
-    oss << '\n'
-        << "  pt_powers - (" << pt_powers_[0];
+    oss << "  pt_powers - (" << pt_powers_[0];
     for (unsigned i = 1; i < orig_pt_powers_.size(); i++)
       oss << ", " << orig_pt_powers_[i];
     oss << ")\n"
@@ -240,16 +236,14 @@ public:
   unsigned nfeatures() const { return nfeatures_; }
   bool norm() const { return norm_; }
   bool use_charges() const { return use_charges_; }
+  bool check_degen() const { return check_degen_; }
   bool average_verts() const { return average_verts_; }
   int num_threads() const { return num_threads_; }
-  int print_every() const { return print_every_; }
+  long print_every() const { return print_every_; }
 
   // set some computation options
   void set_omp_chunksize(int chunksize) { omp_chunksize_ = std::abs(chunksize); }
   void set_print_stream(std::ostream & os) { print_stream_ = &os; }
-
-  // access overall statistics
-  std::size_t event_counter() const { return event_counter_; }
 
   // compute on a vector of events (themselves vectors of particles)
   void batch_compute(const std::vector<std::vector<double>> & events,
@@ -277,28 +271,28 @@ public:
                      const std::vector<double> & weights) {
   
     // check number of events
-    long long nevents(events.size());
+    long nevents(events.size());
     if (events.size() != mults.size())
       throw std::runtime_error("events and mults are different sizes");
     if (events.size() != weights.size())
       throw std::runtime_error("events and weights are different sizes");
 
     // handle print_every
-    int print_every(print_every_ == 0 ? -1 : print_every_);
+    long print_every(print_every_ == 0 ? -1 : print_every_);
     if (print_every < 0) {
       print_every = nevents/std::abs(print_every);
       if (print_every == 0 || (print_every_ != 0 && nevents % std::abs(print_every_) != 0))
         print_every++;
     }
 
-    long long start(0), counter(0);
+    long start(0), counter(0);
     start_time_ = std::chrono::steady_clock::now();
     while (counter < nevents) {
       counter += print_every;
       if (counter > nevents) counter = nevents;
 
       #pragma omp parallel for num_threads(num_threads()) default(shared) schedule(dynamic, omp_chunksize_)
-      for (long long i = start; i < counter; i++)
+      for (long i = start; i < counter; i++)
         compute(events[i], mults[i], weights[i], get_thread_num());
 
       // update counter
@@ -495,17 +489,6 @@ private:
     else
       eectot *= std::pow(pttot, N());
 
-    // update weight totals atomically
-    #pragma omp atomic
-    weight_total_ += eectot;
-
-    double eectot2(eectot*eectot);
-    #pragma omp atomic
-    weight_squared_total_ += eectot2;
-
-    #pragma omp atomic
-    event_counter_++;
-
     unsigned mult(mults_[thread_i]);
     for (unsigned i = 0, npowers = pt_powers_.size(); i < npowers; i++) {
       std::vector<double> & weights(weights_[thread_i][i]);
@@ -557,8 +540,7 @@ private:
     ar & orig_pt_powers_ & pt_powers_ & orig_ch_powers_ & ch_powers_
        & N_ & nsym_ & nfeatures_
        & norm_ & use_charges_ & check_degen_ & average_verts_
-       & num_threads_ & print_every_ & omp_chunksize_
-       & event_counter_ & weight_total_ & weight_squared_total_;
+       & num_threads_ & print_every_ & omp_chunksize_;
 
     init();
   }

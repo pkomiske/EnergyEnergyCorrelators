@@ -321,36 +321,39 @@ class vectorReduceCommand(object):
 _eec.vectorReduceCommand_swigregister(vectorReduceCommand)
 
 determine_num_threads = _eec.determine_num_threads
+get_coverage = _eec.get_coverage
 class EECHistBase1DId(object):
     r"""Proxy of C++ eec::hist::EECHistBase< eec::hist::EECHist1D< eec::hist::axis::id > > class."""
 
     thisown = property(lambda x: x.this.own(), lambda x, v: x.this.own(v), doc="The membership flag")
     __repr__ = _swig_repr
 
-    def __init__(self, num_threads, error_bound, track_covariance, error_bound_include_overflows):
-        r"""__init__(EECHistBase1DId self, int num_threads, bool error_bound, bool track_covariance, bool error_bound_include_overflows) -> EECHistBase1DId"""
-        _eec.EECHistBase1DId_swiginit(self, _eec.new_EECHistBase1DId(num_threads, error_bound, track_covariance, error_bound_include_overflows))
+    def __init__(self, num_threads, track_covariance, variance_bound, variance_bound_includes_overflows):
+        r"""__init__(EECHistBase1DId self, int num_threads, bool track_covariance, bool variance_bound, bool variance_bound_includes_overflows) -> EECHistBase1DId"""
+        _eec.EECHistBase1DId_swiginit(self, _eec.new_EECHistBase1DId(num_threads, track_covariance, variance_bound, variance_bound_includes_overflows))
     __swig_destroy__ = _eec.delete_EECHistBase1DId
     num_threads = _swig_new_instance_method(_eec.EECHistBase1DId_num_threads)
-    error_bound = _swig_new_instance_method(_eec.EECHistBase1DId_error_bound)
     track_covariance = _swig_new_instance_method(_eec.EECHistBase1DId_track_covariance)
+    variance_bound = _swig_new_instance_method(_eec.EECHistBase1DId_variance_bound)
+    variance_bound_includes_overflows = _swig_new_instance_method(_eec.EECHistBase1DId_variance_bound_includes_overflows)
     nhists = _swig_new_instance_method(_eec.EECHistBase1DId_nhists)
     nbins = _swig_new_instance_method(_eec.EECHistBase1DId_nbins)
     rank = _swig_new_instance_method(_eec.EECHistBase1DId_rank)
     hist_size = _swig_new_instance_method(_eec.EECHistBase1DId_hist_size)
     covariance_size = _swig_new_instance_method(_eec.EECHistBase1DId_covariance_size)
+    event_counter = _swig_new_instance_method(_eec.EECHistBase1DId_event_counter)
     reduce = _swig_new_instance_method(_eec.EECHistBase1DId_reduce)
     sum = _swig_new_instance_method(_eec.EECHistBase1DId_sum)
-    combined_error_bound = _swig_new_instance_method(_eec.EECHistBase1DId_combined_error_bound)
     combined_covariance = _swig_new_instance_method(_eec.EECHistBase1DId_combined_covariance)
+    combined_variance_bound = _swig_new_instance_method(_eec.EECHistBase1DId_combined_variance_bound)
     __iadd__ = _swig_new_instance_method(_eec.EECHistBase1DId___iadd__)
     __imul__ = _swig_new_instance_method(_eec.EECHistBase1DId___imul__)
     scale = _swig_new_instance_method(_eec.EECHistBase1DId_scale)
     bin_centers_vec = _swig_new_instance_method(_eec.EECHistBase1DId_bin_centers_vec)
     bin_edges_vec = _swig_new_instance_method(_eec.EECHistBase1DId_bin_edges_vec)
     hists_as_text = _swig_new_instance_method(_eec.EECHistBase1DId_hists_as_text)
-    get_var_bound = _swig_new_instance_method(_eec.EECHistBase1DId_get_var_bound)
     get_covariance = _swig_new_instance_method(_eec.EECHistBase1DId_get_covariance)
+    get_variance_bound = _swig_new_instance_method(_eec.EECHistBase1DId_get_variance_bound)
     bin_centers = _swig_new_instance_method(_eec.EECHistBase1DId_bin_centers)
     bin_edges = _swig_new_instance_method(_eec.EECHistBase1DId_bin_edges)
 
@@ -359,7 +362,7 @@ class EECHistBase1DId(object):
         return hist, _np.sqrt(vars)
 
     def get_error_bound(self, hist_i=0, include_overflows=True):
-        return _np.sqrt(self.get_var_bound(hist_i, include_overflows))
+        return _np.sqrt(self.get_variance_bound(hist_i, include_overflows))
 
 
 # Register EECHistBase1DId in _eec:
@@ -376,30 +379,32 @@ class EECHistBase1DLog(object):
     thisown = property(lambda x: x.this.own(), lambda x, v: x.this.own(v), doc="The membership flag")
     __repr__ = _swig_repr
 
-    def __init__(self, num_threads, error_bound, track_covariance, error_bound_include_overflows):
-        r"""__init__(EECHistBase1DLog self, int num_threads, bool error_bound, bool track_covariance, bool error_bound_include_overflows) -> EECHistBase1DLog"""
-        _eec.EECHistBase1DLog_swiginit(self, _eec.new_EECHistBase1DLog(num_threads, error_bound, track_covariance, error_bound_include_overflows))
+    def __init__(self, num_threads, track_covariance, variance_bound, variance_bound_includes_overflows):
+        r"""__init__(EECHistBase1DLog self, int num_threads, bool track_covariance, bool variance_bound, bool variance_bound_includes_overflows) -> EECHistBase1DLog"""
+        _eec.EECHistBase1DLog_swiginit(self, _eec.new_EECHistBase1DLog(num_threads, track_covariance, variance_bound, variance_bound_includes_overflows))
     __swig_destroy__ = _eec.delete_EECHistBase1DLog
     num_threads = _swig_new_instance_method(_eec.EECHistBase1DLog_num_threads)
-    error_bound = _swig_new_instance_method(_eec.EECHistBase1DLog_error_bound)
     track_covariance = _swig_new_instance_method(_eec.EECHistBase1DLog_track_covariance)
+    variance_bound = _swig_new_instance_method(_eec.EECHistBase1DLog_variance_bound)
+    variance_bound_includes_overflows = _swig_new_instance_method(_eec.EECHistBase1DLog_variance_bound_includes_overflows)
     nhists = _swig_new_instance_method(_eec.EECHistBase1DLog_nhists)
     nbins = _swig_new_instance_method(_eec.EECHistBase1DLog_nbins)
     rank = _swig_new_instance_method(_eec.EECHistBase1DLog_rank)
     hist_size = _swig_new_instance_method(_eec.EECHistBase1DLog_hist_size)
     covariance_size = _swig_new_instance_method(_eec.EECHistBase1DLog_covariance_size)
+    event_counter = _swig_new_instance_method(_eec.EECHistBase1DLog_event_counter)
     reduce = _swig_new_instance_method(_eec.EECHistBase1DLog_reduce)
     sum = _swig_new_instance_method(_eec.EECHistBase1DLog_sum)
-    combined_error_bound = _swig_new_instance_method(_eec.EECHistBase1DLog_combined_error_bound)
     combined_covariance = _swig_new_instance_method(_eec.EECHistBase1DLog_combined_covariance)
+    combined_variance_bound = _swig_new_instance_method(_eec.EECHistBase1DLog_combined_variance_bound)
     __iadd__ = _swig_new_instance_method(_eec.EECHistBase1DLog___iadd__)
     __imul__ = _swig_new_instance_method(_eec.EECHistBase1DLog___imul__)
     scale = _swig_new_instance_method(_eec.EECHistBase1DLog_scale)
     bin_centers_vec = _swig_new_instance_method(_eec.EECHistBase1DLog_bin_centers_vec)
     bin_edges_vec = _swig_new_instance_method(_eec.EECHistBase1DLog_bin_edges_vec)
     hists_as_text = _swig_new_instance_method(_eec.EECHistBase1DLog_hists_as_text)
-    get_var_bound = _swig_new_instance_method(_eec.EECHistBase1DLog_get_var_bound)
     get_covariance = _swig_new_instance_method(_eec.EECHistBase1DLog_get_covariance)
+    get_variance_bound = _swig_new_instance_method(_eec.EECHistBase1DLog_get_variance_bound)
     bin_centers = _swig_new_instance_method(_eec.EECHistBase1DLog_bin_centers)
     bin_edges = _swig_new_instance_method(_eec.EECHistBase1DLog_bin_edges)
 
@@ -408,7 +413,7 @@ class EECHistBase1DLog(object):
         return hist, _np.sqrt(vars)
 
     def get_error_bound(self, hist_i=0, include_overflows=True):
-        return _np.sqrt(self.get_var_bound(hist_i, include_overflows))
+        return _np.sqrt(self.get_variance_bound(hist_i, include_overflows))
 
 
 # Register EECHistBase1DLog in _eec:
@@ -420,30 +425,32 @@ class EECHistBaseIdIdId(object):
     thisown = property(lambda x: x.this.own(), lambda x, v: x.this.own(v), doc="The membership flag")
     __repr__ = _swig_repr
 
-    def __init__(self, num_threads, error_bound, track_covariance, error_bound_include_overflows):
-        r"""__init__(EECHistBaseIdIdId self, int num_threads, bool error_bound, bool track_covariance, bool error_bound_include_overflows) -> EECHistBaseIdIdId"""
-        _eec.EECHistBaseIdIdId_swiginit(self, _eec.new_EECHistBaseIdIdId(num_threads, error_bound, track_covariance, error_bound_include_overflows))
+    def __init__(self, num_threads, track_covariance, variance_bound, variance_bound_includes_overflows):
+        r"""__init__(EECHistBaseIdIdId self, int num_threads, bool track_covariance, bool variance_bound, bool variance_bound_includes_overflows) -> EECHistBaseIdIdId"""
+        _eec.EECHistBaseIdIdId_swiginit(self, _eec.new_EECHistBaseIdIdId(num_threads, track_covariance, variance_bound, variance_bound_includes_overflows))
     __swig_destroy__ = _eec.delete_EECHistBaseIdIdId
     num_threads = _swig_new_instance_method(_eec.EECHistBaseIdIdId_num_threads)
-    error_bound = _swig_new_instance_method(_eec.EECHistBaseIdIdId_error_bound)
     track_covariance = _swig_new_instance_method(_eec.EECHistBaseIdIdId_track_covariance)
+    variance_bound = _swig_new_instance_method(_eec.EECHistBaseIdIdId_variance_bound)
+    variance_bound_includes_overflows = _swig_new_instance_method(_eec.EECHistBaseIdIdId_variance_bound_includes_overflows)
     nhists = _swig_new_instance_method(_eec.EECHistBaseIdIdId_nhists)
     nbins = _swig_new_instance_method(_eec.EECHistBaseIdIdId_nbins)
     rank = _swig_new_instance_method(_eec.EECHistBaseIdIdId_rank)
     hist_size = _swig_new_instance_method(_eec.EECHistBaseIdIdId_hist_size)
     covariance_size = _swig_new_instance_method(_eec.EECHistBaseIdIdId_covariance_size)
+    event_counter = _swig_new_instance_method(_eec.EECHistBaseIdIdId_event_counter)
     reduce = _swig_new_instance_method(_eec.EECHistBaseIdIdId_reduce)
     sum = _swig_new_instance_method(_eec.EECHistBaseIdIdId_sum)
-    combined_error_bound = _swig_new_instance_method(_eec.EECHistBaseIdIdId_combined_error_bound)
     combined_covariance = _swig_new_instance_method(_eec.EECHistBaseIdIdId_combined_covariance)
+    combined_variance_bound = _swig_new_instance_method(_eec.EECHistBaseIdIdId_combined_variance_bound)
     __iadd__ = _swig_new_instance_method(_eec.EECHistBaseIdIdId___iadd__)
     __imul__ = _swig_new_instance_method(_eec.EECHistBaseIdIdId___imul__)
     scale = _swig_new_instance_method(_eec.EECHistBaseIdIdId_scale)
     bin_centers_vec = _swig_new_instance_method(_eec.EECHistBaseIdIdId_bin_centers_vec)
     bin_edges_vec = _swig_new_instance_method(_eec.EECHistBaseIdIdId_bin_edges_vec)
     hists_as_text = _swig_new_instance_method(_eec.EECHistBaseIdIdId_hists_as_text)
-    get_var_bound = _swig_new_instance_method(_eec.EECHistBaseIdIdId_get_var_bound)
     get_covariance = _swig_new_instance_method(_eec.EECHistBaseIdIdId_get_covariance)
+    get_variance_bound = _swig_new_instance_method(_eec.EECHistBaseIdIdId_get_variance_bound)
     bin_centers = _swig_new_instance_method(_eec.EECHistBaseIdIdId_bin_centers)
     bin_edges = _swig_new_instance_method(_eec.EECHistBaseIdIdId_bin_edges)
 
@@ -452,7 +459,7 @@ class EECHistBaseIdIdId(object):
         return hist, _np.sqrt(vars)
 
     def get_error_bound(self, hist_i=0, include_overflows=True):
-        return _np.sqrt(self.get_var_bound(hist_i, include_overflows))
+        return _np.sqrt(self.get_variance_bound(hist_i, include_overflows))
 
 
 # Register EECHistBaseIdIdId in _eec:
@@ -464,30 +471,32 @@ class EECHistBaseLogIdId(object):
     thisown = property(lambda x: x.this.own(), lambda x, v: x.this.own(v), doc="The membership flag")
     __repr__ = _swig_repr
 
-    def __init__(self, num_threads, error_bound, track_covariance, error_bound_include_overflows):
-        r"""__init__(EECHistBaseLogIdId self, int num_threads, bool error_bound, bool track_covariance, bool error_bound_include_overflows) -> EECHistBaseLogIdId"""
-        _eec.EECHistBaseLogIdId_swiginit(self, _eec.new_EECHistBaseLogIdId(num_threads, error_bound, track_covariance, error_bound_include_overflows))
+    def __init__(self, num_threads, track_covariance, variance_bound, variance_bound_includes_overflows):
+        r"""__init__(EECHistBaseLogIdId self, int num_threads, bool track_covariance, bool variance_bound, bool variance_bound_includes_overflows) -> EECHistBaseLogIdId"""
+        _eec.EECHistBaseLogIdId_swiginit(self, _eec.new_EECHistBaseLogIdId(num_threads, track_covariance, variance_bound, variance_bound_includes_overflows))
     __swig_destroy__ = _eec.delete_EECHistBaseLogIdId
     num_threads = _swig_new_instance_method(_eec.EECHistBaseLogIdId_num_threads)
-    error_bound = _swig_new_instance_method(_eec.EECHistBaseLogIdId_error_bound)
     track_covariance = _swig_new_instance_method(_eec.EECHistBaseLogIdId_track_covariance)
+    variance_bound = _swig_new_instance_method(_eec.EECHistBaseLogIdId_variance_bound)
+    variance_bound_includes_overflows = _swig_new_instance_method(_eec.EECHistBaseLogIdId_variance_bound_includes_overflows)
     nhists = _swig_new_instance_method(_eec.EECHistBaseLogIdId_nhists)
     nbins = _swig_new_instance_method(_eec.EECHistBaseLogIdId_nbins)
     rank = _swig_new_instance_method(_eec.EECHistBaseLogIdId_rank)
     hist_size = _swig_new_instance_method(_eec.EECHistBaseLogIdId_hist_size)
     covariance_size = _swig_new_instance_method(_eec.EECHistBaseLogIdId_covariance_size)
+    event_counter = _swig_new_instance_method(_eec.EECHistBaseLogIdId_event_counter)
     reduce = _swig_new_instance_method(_eec.EECHistBaseLogIdId_reduce)
     sum = _swig_new_instance_method(_eec.EECHistBaseLogIdId_sum)
-    combined_error_bound = _swig_new_instance_method(_eec.EECHistBaseLogIdId_combined_error_bound)
     combined_covariance = _swig_new_instance_method(_eec.EECHistBaseLogIdId_combined_covariance)
+    combined_variance_bound = _swig_new_instance_method(_eec.EECHistBaseLogIdId_combined_variance_bound)
     __iadd__ = _swig_new_instance_method(_eec.EECHistBaseLogIdId___iadd__)
     __imul__ = _swig_new_instance_method(_eec.EECHistBaseLogIdId___imul__)
     scale = _swig_new_instance_method(_eec.EECHistBaseLogIdId_scale)
     bin_centers_vec = _swig_new_instance_method(_eec.EECHistBaseLogIdId_bin_centers_vec)
     bin_edges_vec = _swig_new_instance_method(_eec.EECHistBaseLogIdId_bin_edges_vec)
     hists_as_text = _swig_new_instance_method(_eec.EECHistBaseLogIdId_hists_as_text)
-    get_var_bound = _swig_new_instance_method(_eec.EECHistBaseLogIdId_get_var_bound)
     get_covariance = _swig_new_instance_method(_eec.EECHistBaseLogIdId_get_covariance)
+    get_variance_bound = _swig_new_instance_method(_eec.EECHistBaseLogIdId_get_variance_bound)
     bin_centers = _swig_new_instance_method(_eec.EECHistBaseLogIdId_bin_centers)
     bin_edges = _swig_new_instance_method(_eec.EECHistBaseLogIdId_bin_edges)
 
@@ -496,7 +505,7 @@ class EECHistBaseLogIdId(object):
         return hist, _np.sqrt(vars)
 
     def get_error_bound(self, hist_i=0, include_overflows=True):
-        return _np.sqrt(self.get_var_bound(hist_i, include_overflows))
+        return _np.sqrt(self.get_variance_bound(hist_i, include_overflows))
 
 
 # Register EECHistBaseLogIdId in _eec:
@@ -508,30 +517,32 @@ class EECHistBaseIdLogId(object):
     thisown = property(lambda x: x.this.own(), lambda x, v: x.this.own(v), doc="The membership flag")
     __repr__ = _swig_repr
 
-    def __init__(self, num_threads, error_bound, track_covariance, error_bound_include_overflows):
-        r"""__init__(EECHistBaseIdLogId self, int num_threads, bool error_bound, bool track_covariance, bool error_bound_include_overflows) -> EECHistBaseIdLogId"""
-        _eec.EECHistBaseIdLogId_swiginit(self, _eec.new_EECHistBaseIdLogId(num_threads, error_bound, track_covariance, error_bound_include_overflows))
+    def __init__(self, num_threads, track_covariance, variance_bound, variance_bound_includes_overflows):
+        r"""__init__(EECHistBaseIdLogId self, int num_threads, bool track_covariance, bool variance_bound, bool variance_bound_includes_overflows) -> EECHistBaseIdLogId"""
+        _eec.EECHistBaseIdLogId_swiginit(self, _eec.new_EECHistBaseIdLogId(num_threads, track_covariance, variance_bound, variance_bound_includes_overflows))
     __swig_destroy__ = _eec.delete_EECHistBaseIdLogId
     num_threads = _swig_new_instance_method(_eec.EECHistBaseIdLogId_num_threads)
-    error_bound = _swig_new_instance_method(_eec.EECHistBaseIdLogId_error_bound)
     track_covariance = _swig_new_instance_method(_eec.EECHistBaseIdLogId_track_covariance)
+    variance_bound = _swig_new_instance_method(_eec.EECHistBaseIdLogId_variance_bound)
+    variance_bound_includes_overflows = _swig_new_instance_method(_eec.EECHistBaseIdLogId_variance_bound_includes_overflows)
     nhists = _swig_new_instance_method(_eec.EECHistBaseIdLogId_nhists)
     nbins = _swig_new_instance_method(_eec.EECHistBaseIdLogId_nbins)
     rank = _swig_new_instance_method(_eec.EECHistBaseIdLogId_rank)
     hist_size = _swig_new_instance_method(_eec.EECHistBaseIdLogId_hist_size)
     covariance_size = _swig_new_instance_method(_eec.EECHistBaseIdLogId_covariance_size)
+    event_counter = _swig_new_instance_method(_eec.EECHistBaseIdLogId_event_counter)
     reduce = _swig_new_instance_method(_eec.EECHistBaseIdLogId_reduce)
     sum = _swig_new_instance_method(_eec.EECHistBaseIdLogId_sum)
-    combined_error_bound = _swig_new_instance_method(_eec.EECHistBaseIdLogId_combined_error_bound)
     combined_covariance = _swig_new_instance_method(_eec.EECHistBaseIdLogId_combined_covariance)
+    combined_variance_bound = _swig_new_instance_method(_eec.EECHistBaseIdLogId_combined_variance_bound)
     __iadd__ = _swig_new_instance_method(_eec.EECHistBaseIdLogId___iadd__)
     __imul__ = _swig_new_instance_method(_eec.EECHistBaseIdLogId___imul__)
     scale = _swig_new_instance_method(_eec.EECHistBaseIdLogId_scale)
     bin_centers_vec = _swig_new_instance_method(_eec.EECHistBaseIdLogId_bin_centers_vec)
     bin_edges_vec = _swig_new_instance_method(_eec.EECHistBaseIdLogId_bin_edges_vec)
     hists_as_text = _swig_new_instance_method(_eec.EECHistBaseIdLogId_hists_as_text)
-    get_var_bound = _swig_new_instance_method(_eec.EECHistBaseIdLogId_get_var_bound)
     get_covariance = _swig_new_instance_method(_eec.EECHistBaseIdLogId_get_covariance)
+    get_variance_bound = _swig_new_instance_method(_eec.EECHistBaseIdLogId_get_variance_bound)
     bin_centers = _swig_new_instance_method(_eec.EECHistBaseIdLogId_bin_centers)
     bin_edges = _swig_new_instance_method(_eec.EECHistBaseIdLogId_bin_edges)
 
@@ -540,7 +551,7 @@ class EECHistBaseIdLogId(object):
         return hist, _np.sqrt(vars)
 
     def get_error_bound(self, hist_i=0, include_overflows=True):
-        return _np.sqrt(self.get_var_bound(hist_i, include_overflows))
+        return _np.sqrt(self.get_variance_bound(hist_i, include_overflows))
 
 
 # Register EECHistBaseIdLogId in _eec:
@@ -552,30 +563,32 @@ class EECHistBaseLogLogId(object):
     thisown = property(lambda x: x.this.own(), lambda x, v: x.this.own(v), doc="The membership flag")
     __repr__ = _swig_repr
 
-    def __init__(self, num_threads, error_bound, track_covariance, error_bound_include_overflows):
-        r"""__init__(EECHistBaseLogLogId self, int num_threads, bool error_bound, bool track_covariance, bool error_bound_include_overflows) -> EECHistBaseLogLogId"""
-        _eec.EECHistBaseLogLogId_swiginit(self, _eec.new_EECHistBaseLogLogId(num_threads, error_bound, track_covariance, error_bound_include_overflows))
+    def __init__(self, num_threads, track_covariance, variance_bound, variance_bound_includes_overflows):
+        r"""__init__(EECHistBaseLogLogId self, int num_threads, bool track_covariance, bool variance_bound, bool variance_bound_includes_overflows) -> EECHistBaseLogLogId"""
+        _eec.EECHistBaseLogLogId_swiginit(self, _eec.new_EECHistBaseLogLogId(num_threads, track_covariance, variance_bound, variance_bound_includes_overflows))
     __swig_destroy__ = _eec.delete_EECHistBaseLogLogId
     num_threads = _swig_new_instance_method(_eec.EECHistBaseLogLogId_num_threads)
-    error_bound = _swig_new_instance_method(_eec.EECHistBaseLogLogId_error_bound)
     track_covariance = _swig_new_instance_method(_eec.EECHistBaseLogLogId_track_covariance)
+    variance_bound = _swig_new_instance_method(_eec.EECHistBaseLogLogId_variance_bound)
+    variance_bound_includes_overflows = _swig_new_instance_method(_eec.EECHistBaseLogLogId_variance_bound_includes_overflows)
     nhists = _swig_new_instance_method(_eec.EECHistBaseLogLogId_nhists)
     nbins = _swig_new_instance_method(_eec.EECHistBaseLogLogId_nbins)
     rank = _swig_new_instance_method(_eec.EECHistBaseLogLogId_rank)
     hist_size = _swig_new_instance_method(_eec.EECHistBaseLogLogId_hist_size)
     covariance_size = _swig_new_instance_method(_eec.EECHistBaseLogLogId_covariance_size)
+    event_counter = _swig_new_instance_method(_eec.EECHistBaseLogLogId_event_counter)
     reduce = _swig_new_instance_method(_eec.EECHistBaseLogLogId_reduce)
     sum = _swig_new_instance_method(_eec.EECHistBaseLogLogId_sum)
-    combined_error_bound = _swig_new_instance_method(_eec.EECHistBaseLogLogId_combined_error_bound)
     combined_covariance = _swig_new_instance_method(_eec.EECHistBaseLogLogId_combined_covariance)
+    combined_variance_bound = _swig_new_instance_method(_eec.EECHistBaseLogLogId_combined_variance_bound)
     __iadd__ = _swig_new_instance_method(_eec.EECHistBaseLogLogId___iadd__)
     __imul__ = _swig_new_instance_method(_eec.EECHistBaseLogLogId___imul__)
     scale = _swig_new_instance_method(_eec.EECHistBaseLogLogId_scale)
     bin_centers_vec = _swig_new_instance_method(_eec.EECHistBaseLogLogId_bin_centers_vec)
     bin_edges_vec = _swig_new_instance_method(_eec.EECHistBaseLogLogId_bin_edges_vec)
     hists_as_text = _swig_new_instance_method(_eec.EECHistBaseLogLogId_hists_as_text)
-    get_var_bound = _swig_new_instance_method(_eec.EECHistBaseLogLogId_get_var_bound)
     get_covariance = _swig_new_instance_method(_eec.EECHistBaseLogLogId_get_covariance)
+    get_variance_bound = _swig_new_instance_method(_eec.EECHistBaseLogLogId_get_variance_bound)
     bin_centers = _swig_new_instance_method(_eec.EECHistBaseLogLogId_bin_centers)
     bin_edges = _swig_new_instance_method(_eec.EECHistBaseLogLogId_bin_edges)
 
@@ -584,7 +597,7 @@ class EECHistBaseLogLogId(object):
         return hist, _np.sqrt(vars)
 
     def get_error_bound(self, hist_i=0, include_overflows=True):
-        return _np.sqrt(self.get_var_bound(hist_i, include_overflows))
+        return _np.sqrt(self.get_variance_bound(hist_i, include_overflows))
 
 
 # Register EECHistBaseLogLogId in _eec:
@@ -596,14 +609,14 @@ class EECHist1DId(EECHistBase1DId):
     thisown = property(lambda x: x.this.own(), lambda x, v: x.this.own(v), doc="The membership flag")
     __repr__ = _swig_repr
 
-    def __init__(self, nbins, axis_min, axis_max, num_threads=1, error_bound=True, track_covariance=True, error_bound_include_overflows=True):
-        r"""__init__(EECHist1DId self, unsigned int nbins, double axis_min, double axis_max, int num_threads=1, bool error_bound=True, bool track_covariance=True, bool error_bound_include_overflows=True) -> EECHist1DId"""
-        _eec.EECHist1DId_swiginit(self, _eec.new_EECHist1DId(nbins, axis_min, axis_max, num_threads, error_bound, track_covariance, error_bound_include_overflows))
+    def __init__(self, nbins, axis_min, axis_max, num_threads=1, track_covariance=True, variance_bound=True, variance_bound_include_overflows=True):
+        r"""__init__(EECHist1DId self, unsigned int nbins, double axis_min, double axis_max, int num_threads=1, bool track_covariance=True, bool variance_bound=True, bool variance_bound_include_overflows=True) -> EECHist1DId"""
+        _eec.EECHist1DId_swiginit(self, _eec.new_EECHist1DId(nbins, axis_min, axis_max, num_threads, track_covariance, variance_bound, variance_bound_include_overflows))
     __swig_destroy__ = _eec.delete_EECHist1DId
     reduce = _swig_new_instance_method(_eec.EECHist1DId_reduce)
     get_hist_vars = _swig_new_instance_method(_eec.EECHist1DId_get_hist_vars)
-    get_var_bound = _swig_new_instance_method(_eec.EECHist1DId_get_var_bound)
     get_covariance = _swig_new_instance_method(_eec.EECHist1DId_get_covariance)
+    get_variance_bound = _swig_new_instance_method(_eec.EECHist1DId_get_variance_bound)
 
 # Register EECHist1DId in _eec:
 _eec.EECHist1DId_swigregister(EECHist1DId)
@@ -614,14 +627,14 @@ class EECHist1DLog(EECHistBase1DLog):
     thisown = property(lambda x: x.this.own(), lambda x, v: x.this.own(v), doc="The membership flag")
     __repr__ = _swig_repr
 
-    def __init__(self, nbins, axis_min, axis_max, num_threads=1, error_bound=True, track_covariance=True, error_bound_include_overflows=True):
-        r"""__init__(EECHist1DLog self, unsigned int nbins, double axis_min, double axis_max, int num_threads=1, bool error_bound=True, bool track_covariance=True, bool error_bound_include_overflows=True) -> EECHist1DLog"""
-        _eec.EECHist1DLog_swiginit(self, _eec.new_EECHist1DLog(nbins, axis_min, axis_max, num_threads, error_bound, track_covariance, error_bound_include_overflows))
+    def __init__(self, nbins, axis_min, axis_max, num_threads=1, track_covariance=True, variance_bound=True, variance_bound_include_overflows=True):
+        r"""__init__(EECHist1DLog self, unsigned int nbins, double axis_min, double axis_max, int num_threads=1, bool track_covariance=True, bool variance_bound=True, bool variance_bound_include_overflows=True) -> EECHist1DLog"""
+        _eec.EECHist1DLog_swiginit(self, _eec.new_EECHist1DLog(nbins, axis_min, axis_max, num_threads, track_covariance, variance_bound, variance_bound_include_overflows))
     __swig_destroy__ = _eec.delete_EECHist1DLog
     reduce = _swig_new_instance_method(_eec.EECHist1DLog_reduce)
     get_hist_vars = _swig_new_instance_method(_eec.EECHist1DLog_get_hist_vars)
-    get_var_bound = _swig_new_instance_method(_eec.EECHist1DLog_get_var_bound)
     get_covariance = _swig_new_instance_method(_eec.EECHist1DLog_get_covariance)
+    get_variance_bound = _swig_new_instance_method(_eec.EECHist1DLog_get_variance_bound)
 
 # Register EECHist1DLog in _eec:
 _eec.EECHist1DLog_swigregister(EECHist1DLog)
@@ -632,13 +645,13 @@ class EECHist3DIdIdId(EECHistBaseIdIdId):
     thisown = property(lambda x: x.this.own(), lambda x, v: x.this.own(v), doc="The membership flag")
     __repr__ = _swig_repr
 
-    def __init__(self, nbins0, axis0_min, axis0_max, nbins1, axis1_min, axis1_max, nbins2, axis2_min, axis2_max, num_threads=1, error_bound=True, track_covariance=False, error_bound_include_overflows=True):
-        r"""__init__(EECHist3DIdIdId self, unsigned int nbins0, double axis0_min, double axis0_max, unsigned int nbins1, double axis1_min, double axis1_max, unsigned int nbins2, double axis2_min, double axis2_max, int num_threads=1, bool error_bound=True, bool track_covariance=False, bool error_bound_include_overflows=True) -> EECHist3DIdIdId"""
-        _eec.EECHist3DIdIdId_swiginit(self, _eec.new_EECHist3DIdIdId(nbins0, axis0_min, axis0_max, nbins1, axis1_min, axis1_max, nbins2, axis2_min, axis2_max, num_threads, error_bound, track_covariance, error_bound_include_overflows))
+    def __init__(self, nbins0, axis0_min, axis0_max, nbins1, axis1_min, axis1_max, nbins2, axis2_min, axis2_max, num_threads=1, track_covariance=False, variance_bound=True, variance_bound_include_overflows=True):
+        r"""__init__(EECHist3DIdIdId self, unsigned int nbins0, double axis0_min, double axis0_max, unsigned int nbins1, double axis1_min, double axis1_max, unsigned int nbins2, double axis2_min, double axis2_max, int num_threads=1, bool track_covariance=False, bool variance_bound=True, bool variance_bound_include_overflows=True) -> EECHist3DIdIdId"""
+        _eec.EECHist3DIdIdId_swiginit(self, _eec.new_EECHist3DIdIdId(nbins0, axis0_min, axis0_max, nbins1, axis1_min, axis1_max, nbins2, axis2_min, axis2_max, num_threads, track_covariance, variance_bound, variance_bound_include_overflows))
     __swig_destroy__ = _eec.delete_EECHist3DIdIdId
     get_hist_vars = _swig_new_instance_method(_eec.EECHist3DIdIdId_get_hist_vars)
-    get_var_bound = _swig_new_instance_method(_eec.EECHist3DIdIdId_get_var_bound)
     get_covariance = _swig_new_instance_method(_eec.EECHist3DIdIdId_get_covariance)
+    get_variance_bound = _swig_new_instance_method(_eec.EECHist3DIdIdId_get_variance_bound)
 
 # Register EECHist3DIdIdId in _eec:
 _eec.EECHist3DIdIdId_swigregister(EECHist3DIdIdId)
@@ -649,13 +662,13 @@ class EECHist3DLogIdId(EECHistBaseLogIdId):
     thisown = property(lambda x: x.this.own(), lambda x, v: x.this.own(v), doc="The membership flag")
     __repr__ = _swig_repr
 
-    def __init__(self, nbins0, axis0_min, axis0_max, nbins1, axis1_min, axis1_max, nbins2, axis2_min, axis2_max, num_threads=1, error_bound=True, track_covariance=False, error_bound_include_overflows=True):
-        r"""__init__(EECHist3DLogIdId self, unsigned int nbins0, double axis0_min, double axis0_max, unsigned int nbins1, double axis1_min, double axis1_max, unsigned int nbins2, double axis2_min, double axis2_max, int num_threads=1, bool error_bound=True, bool track_covariance=False, bool error_bound_include_overflows=True) -> EECHist3DLogIdId"""
-        _eec.EECHist3DLogIdId_swiginit(self, _eec.new_EECHist3DLogIdId(nbins0, axis0_min, axis0_max, nbins1, axis1_min, axis1_max, nbins2, axis2_min, axis2_max, num_threads, error_bound, track_covariance, error_bound_include_overflows))
+    def __init__(self, nbins0, axis0_min, axis0_max, nbins1, axis1_min, axis1_max, nbins2, axis2_min, axis2_max, num_threads=1, track_covariance=False, variance_bound=True, variance_bound_include_overflows=True):
+        r"""__init__(EECHist3DLogIdId self, unsigned int nbins0, double axis0_min, double axis0_max, unsigned int nbins1, double axis1_min, double axis1_max, unsigned int nbins2, double axis2_min, double axis2_max, int num_threads=1, bool track_covariance=False, bool variance_bound=True, bool variance_bound_include_overflows=True) -> EECHist3DLogIdId"""
+        _eec.EECHist3DLogIdId_swiginit(self, _eec.new_EECHist3DLogIdId(nbins0, axis0_min, axis0_max, nbins1, axis1_min, axis1_max, nbins2, axis2_min, axis2_max, num_threads, track_covariance, variance_bound, variance_bound_include_overflows))
     __swig_destroy__ = _eec.delete_EECHist3DLogIdId
     get_hist_vars = _swig_new_instance_method(_eec.EECHist3DLogIdId_get_hist_vars)
-    get_var_bound = _swig_new_instance_method(_eec.EECHist3DLogIdId_get_var_bound)
     get_covariance = _swig_new_instance_method(_eec.EECHist3DLogIdId_get_covariance)
+    get_variance_bound = _swig_new_instance_method(_eec.EECHist3DLogIdId_get_variance_bound)
 
 # Register EECHist3DLogIdId in _eec:
 _eec.EECHist3DLogIdId_swigregister(EECHist3DLogIdId)
@@ -666,13 +679,13 @@ class EECHist3DIdLogId(EECHistBaseIdLogId):
     thisown = property(lambda x: x.this.own(), lambda x, v: x.this.own(v), doc="The membership flag")
     __repr__ = _swig_repr
 
-    def __init__(self, nbins0, axis0_min, axis0_max, nbins1, axis1_min, axis1_max, nbins2, axis2_min, axis2_max, num_threads=1, error_bound=True, track_covariance=False, error_bound_include_overflows=True):
-        r"""__init__(EECHist3DIdLogId self, unsigned int nbins0, double axis0_min, double axis0_max, unsigned int nbins1, double axis1_min, double axis1_max, unsigned int nbins2, double axis2_min, double axis2_max, int num_threads=1, bool error_bound=True, bool track_covariance=False, bool error_bound_include_overflows=True) -> EECHist3DIdLogId"""
-        _eec.EECHist3DIdLogId_swiginit(self, _eec.new_EECHist3DIdLogId(nbins0, axis0_min, axis0_max, nbins1, axis1_min, axis1_max, nbins2, axis2_min, axis2_max, num_threads, error_bound, track_covariance, error_bound_include_overflows))
+    def __init__(self, nbins0, axis0_min, axis0_max, nbins1, axis1_min, axis1_max, nbins2, axis2_min, axis2_max, num_threads=1, track_covariance=False, variance_bound=True, variance_bound_include_overflows=True):
+        r"""__init__(EECHist3DIdLogId self, unsigned int nbins0, double axis0_min, double axis0_max, unsigned int nbins1, double axis1_min, double axis1_max, unsigned int nbins2, double axis2_min, double axis2_max, int num_threads=1, bool track_covariance=False, bool variance_bound=True, bool variance_bound_include_overflows=True) -> EECHist3DIdLogId"""
+        _eec.EECHist3DIdLogId_swiginit(self, _eec.new_EECHist3DIdLogId(nbins0, axis0_min, axis0_max, nbins1, axis1_min, axis1_max, nbins2, axis2_min, axis2_max, num_threads, track_covariance, variance_bound, variance_bound_include_overflows))
     __swig_destroy__ = _eec.delete_EECHist3DIdLogId
     get_hist_vars = _swig_new_instance_method(_eec.EECHist3DIdLogId_get_hist_vars)
-    get_var_bound = _swig_new_instance_method(_eec.EECHist3DIdLogId_get_var_bound)
     get_covariance = _swig_new_instance_method(_eec.EECHist3DIdLogId_get_covariance)
+    get_variance_bound = _swig_new_instance_method(_eec.EECHist3DIdLogId_get_variance_bound)
 
 # Register EECHist3DIdLogId in _eec:
 _eec.EECHist3DIdLogId_swigregister(EECHist3DIdLogId)
@@ -683,13 +696,13 @@ class EECHist3DLogLogId(EECHistBaseLogLogId):
     thisown = property(lambda x: x.this.own(), lambda x, v: x.this.own(v), doc="The membership flag")
     __repr__ = _swig_repr
 
-    def __init__(self, nbins0, axis0_min, axis0_max, nbins1, axis1_min, axis1_max, nbins2, axis2_min, axis2_max, num_threads=1, error_bound=True, track_covariance=False, error_bound_include_overflows=True):
-        r"""__init__(EECHist3DLogLogId self, unsigned int nbins0, double axis0_min, double axis0_max, unsigned int nbins1, double axis1_min, double axis1_max, unsigned int nbins2, double axis2_min, double axis2_max, int num_threads=1, bool error_bound=True, bool track_covariance=False, bool error_bound_include_overflows=True) -> EECHist3DLogLogId"""
-        _eec.EECHist3DLogLogId_swiginit(self, _eec.new_EECHist3DLogLogId(nbins0, axis0_min, axis0_max, nbins1, axis1_min, axis1_max, nbins2, axis2_min, axis2_max, num_threads, error_bound, track_covariance, error_bound_include_overflows))
+    def __init__(self, nbins0, axis0_min, axis0_max, nbins1, axis1_min, axis1_max, nbins2, axis2_min, axis2_max, num_threads=1, track_covariance=False, variance_bound=True, variance_bound_include_overflows=True):
+        r"""__init__(EECHist3DLogLogId self, unsigned int nbins0, double axis0_min, double axis0_max, unsigned int nbins1, double axis1_min, double axis1_max, unsigned int nbins2, double axis2_min, double axis2_max, int num_threads=1, bool track_covariance=False, bool variance_bound=True, bool variance_bound_include_overflows=True) -> EECHist3DLogLogId"""
+        _eec.EECHist3DLogLogId_swiginit(self, _eec.new_EECHist3DLogLogId(nbins0, axis0_min, axis0_max, nbins1, axis1_min, axis1_max, nbins2, axis2_min, axis2_max, num_threads, track_covariance, variance_bound, variance_bound_include_overflows))
     __swig_destroy__ = _eec.delete_EECHist3DLogLogId
     get_hist_vars = _swig_new_instance_method(_eec.EECHist3DLogLogId_get_hist_vars)
-    get_var_bound = _swig_new_instance_method(_eec.EECHist3DLogLogId_get_var_bound)
     get_covariance = _swig_new_instance_method(_eec.EECHist3DLogLogId_get_covariance)
+    get_variance_bound = _swig_new_instance_method(_eec.EECHist3DLogLogId_get_variance_bound)
 
 # Register EECHist3DLogLogId in _eec:
 _eec.EECHist3DLogLogId_swigregister(EECHist3DLogLogId)
@@ -727,12 +740,12 @@ class EECBase(object):
     nfeatures = _swig_new_instance_method(_eec.EECBase_nfeatures)
     norm = _swig_new_instance_method(_eec.EECBase_norm)
     use_charges = _swig_new_instance_method(_eec.EECBase_use_charges)
+    check_degen = _swig_new_instance_method(_eec.EECBase_check_degen)
     average_verts = _swig_new_instance_method(_eec.EECBase_average_verts)
     num_threads = _swig_new_instance_method(_eec.EECBase_num_threads)
     print_every = _swig_new_instance_method(_eec.EECBase_print_every)
     set_omp_chunksize = _swig_new_instance_method(_eec.EECBase_set_omp_chunksize)
     set_print_stream = _swig_new_instance_method(_eec.EECBase_set_print_stream)
-    event_counter = _swig_new_instance_method(_eec.EECBase_event_counter)
 
     def __repr__(self):
         return self.description().decode('utf-8')
@@ -905,7 +918,7 @@ class EECLongestSideId(EECBase, EECHist1DId):
     __repr__ = _swig_repr
 
     def __init__(self, *args, **kwargs):
-        r"""__init__(EECLongestSideId self, unsigned int N, unsigned int nbins, double axis_min, double axis_max, bool norm=True, vectorDouble pt_powers={1}, vectorUnsigned ch_powers={0}, int num_threads=-1, int print_every=-10, bool check_degen=False, bool average_verts=False, bool error_bound=True, bool track_covariance=True, bool error_bound_include_overflows=True, bool use_general_eNc=False) -> EECLongestSideId"""
+        r"""__init__(EECLongestSideId self, unsigned int N, unsigned int nbins, double axis_min, double axis_max, bool norm=True, vectorDouble pt_powers={1}, vectorUnsigned ch_powers={0}, int num_threads=-1, long print_every=-10, bool check_degen=False, bool average_verts=False, bool track_covariance=True, bool variance_bound=True, bool variance_bound_include_overflows=True, bool use_general_eNc=False) -> EECLongestSideId"""
         _eec.EECLongestSideId_swiginit(self, _eec.new_EECLongestSideId(*args, **kwargs))
     __swig_destroy__ = _eec.delete_EECLongestSideId
     description = _swig_new_instance_method(_eec.EECLongestSideId_description)
@@ -929,7 +942,7 @@ class EECLongestSideLog(EECBase, EECHist1DLog):
     __repr__ = _swig_repr
 
     def __init__(self, *args, **kwargs):
-        r"""__init__(EECLongestSideLog self, unsigned int N, unsigned int nbins, double axis_min, double axis_max, bool norm=True, vectorDouble pt_powers={1}, vectorUnsigned ch_powers={0}, int num_threads=-1, int print_every=-10, bool check_degen=False, bool average_verts=False, bool error_bound=True, bool track_covariance=True, bool error_bound_include_overflows=True, bool use_general_eNc=False) -> EECLongestSideLog"""
+        r"""__init__(EECLongestSideLog self, unsigned int N, unsigned int nbins, double axis_min, double axis_max, bool norm=True, vectorDouble pt_powers={1}, vectorUnsigned ch_powers={0}, int num_threads=-1, long print_every=-10, bool check_degen=False, bool average_verts=False, bool track_covariance=True, bool variance_bound=True, bool variance_bound_include_overflows=True, bool use_general_eNc=False) -> EECLongestSideLog"""
         _eec.EECLongestSideLog_swiginit(self, _eec.new_EECLongestSideLog(*args, **kwargs))
     __swig_destroy__ = _eec.delete_EECLongestSideLog
     description = _swig_new_instance_method(_eec.EECLongestSideLog_description)
@@ -953,7 +966,7 @@ class EECTriangleOPEIdIdId(EECBase, EECHist3DIdIdId):
     __repr__ = _swig_repr
 
     def __init__(self, *args, **kwargs):
-        r"""__init__(EECTriangleOPEIdIdId self, unsigned int nbins0, double axis0_min, double axis0_max, unsigned int nbins1, double axis1_min, double axis1_max, unsigned int nbins2, double axis2_min, double axis2_max, bool norm=True, vectorDouble pt_powers={1}, vectorUnsigned ch_powers={0}, int num_threads=-1, int print_every=-10, bool check_degen=False, bool average_verts=False, bool error_bound=True, bool track_covariance=False, bool error_bound_include_overflows=True) -> EECTriangleOPEIdIdId"""
+        r"""__init__(EECTriangleOPEIdIdId self, unsigned int nbins0, double axis0_min, double axis0_max, unsigned int nbins1, double axis1_min, double axis1_max, unsigned int nbins2, double axis2_min, double axis2_max, bool norm=True, vectorDouble pt_powers={1}, vectorUnsigned ch_powers={0}, int num_threads=-1, long print_every=-10, bool check_degen=False, bool average_verts=False, bool track_covariance=False, bool variance_bound=True, bool variance_bound_include_overflows=True) -> EECTriangleOPEIdIdId"""
         _eec.EECTriangleOPEIdIdId_swiginit(self, _eec.new_EECTriangleOPEIdIdId(*args, **kwargs))
     description = _swig_new_instance_method(_eec.EECTriangleOPEIdIdId_description)
     __getstate_internal__ = _swig_new_instance_method(_eec.EECTriangleOPEIdIdId___getstate_internal__)
@@ -977,7 +990,7 @@ class EECTriangleOPELogIdId(EECBase, EECHist3DLogIdId):
     __repr__ = _swig_repr
 
     def __init__(self, *args, **kwargs):
-        r"""__init__(EECTriangleOPELogIdId self, unsigned int nbins0, double axis0_min, double axis0_max, unsigned int nbins1, double axis1_min, double axis1_max, unsigned int nbins2, double axis2_min, double axis2_max, bool norm=True, vectorDouble pt_powers={1}, vectorUnsigned ch_powers={0}, int num_threads=-1, int print_every=-10, bool check_degen=False, bool average_verts=False, bool error_bound=True, bool track_covariance=False, bool error_bound_include_overflows=True) -> EECTriangleOPELogIdId"""
+        r"""__init__(EECTriangleOPELogIdId self, unsigned int nbins0, double axis0_min, double axis0_max, unsigned int nbins1, double axis1_min, double axis1_max, unsigned int nbins2, double axis2_min, double axis2_max, bool norm=True, vectorDouble pt_powers={1}, vectorUnsigned ch_powers={0}, int num_threads=-1, long print_every=-10, bool check_degen=False, bool average_verts=False, bool track_covariance=False, bool variance_bound=True, bool variance_bound_include_overflows=True) -> EECTriangleOPELogIdId"""
         _eec.EECTriangleOPELogIdId_swiginit(self, _eec.new_EECTriangleOPELogIdId(*args, **kwargs))
     description = _swig_new_instance_method(_eec.EECTriangleOPELogIdId_description)
     __getstate_internal__ = _swig_new_instance_method(_eec.EECTriangleOPELogIdId___getstate_internal__)
@@ -1001,7 +1014,7 @@ class EECTriangleOPEIdLogId(EECBase, EECHist3DIdLogId):
     __repr__ = _swig_repr
 
     def __init__(self, *args, **kwargs):
-        r"""__init__(EECTriangleOPEIdLogId self, unsigned int nbins0, double axis0_min, double axis0_max, unsigned int nbins1, double axis1_min, double axis1_max, unsigned int nbins2, double axis2_min, double axis2_max, bool norm=True, vectorDouble pt_powers={1}, vectorUnsigned ch_powers={0}, int num_threads=-1, int print_every=-10, bool check_degen=False, bool average_verts=False, bool error_bound=True, bool track_covariance=False, bool error_bound_include_overflows=True) -> EECTriangleOPEIdLogId"""
+        r"""__init__(EECTriangleOPEIdLogId self, unsigned int nbins0, double axis0_min, double axis0_max, unsigned int nbins1, double axis1_min, double axis1_max, unsigned int nbins2, double axis2_min, double axis2_max, bool norm=True, vectorDouble pt_powers={1}, vectorUnsigned ch_powers={0}, int num_threads=-1, long print_every=-10, bool check_degen=False, bool average_verts=False, bool track_covariance=False, bool variance_bound=True, bool variance_bound_include_overflows=True) -> EECTriangleOPEIdLogId"""
         _eec.EECTriangleOPEIdLogId_swiginit(self, _eec.new_EECTriangleOPEIdLogId(*args, **kwargs))
     description = _swig_new_instance_method(_eec.EECTriangleOPEIdLogId_description)
     __getstate_internal__ = _swig_new_instance_method(_eec.EECTriangleOPEIdLogId___getstate_internal__)
@@ -1025,7 +1038,7 @@ class EECTriangleOPELogLogId(EECBase, EECHist3DLogLogId):
     __repr__ = _swig_repr
 
     def __init__(self, *args, **kwargs):
-        r"""__init__(EECTriangleOPELogLogId self, unsigned int nbins0, double axis0_min, double axis0_max, unsigned int nbins1, double axis1_min, double axis1_max, unsigned int nbins2, double axis2_min, double axis2_max, bool norm=True, vectorDouble pt_powers={1}, vectorUnsigned ch_powers={0}, int num_threads=-1, int print_every=-10, bool check_degen=False, bool average_verts=False, bool error_bound=True, bool track_covariance=False, bool error_bound_include_overflows=True) -> EECTriangleOPELogLogId"""
+        r"""__init__(EECTriangleOPELogLogId self, unsigned int nbins0, double axis0_min, double axis0_max, unsigned int nbins1, double axis1_min, double axis1_max, unsigned int nbins2, double axis2_min, double axis2_max, bool norm=True, vectorDouble pt_powers={1}, vectorUnsigned ch_powers={0}, int num_threads=-1, long print_every=-10, bool check_degen=False, bool average_verts=False, bool track_covariance=False, bool variance_bound=True, bool variance_bound_include_overflows=True) -> EECTriangleOPELogLogId"""
         _eec.EECTriangleOPELogLogId_swiginit(self, _eec.new_EECTriangleOPELogLogId(*args, **kwargs))
     description = _swig_new_instance_method(_eec.EECTriangleOPELogLogId_description)
     __getstate_internal__ = _swig_new_instance_method(_eec.EECTriangleOPELogLogId___getstate_internal__)

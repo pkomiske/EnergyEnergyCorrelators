@@ -46,7 +46,7 @@ elif platform.system() == 'Windows':
 serialization = (platform.system() != 'Windows')
 if serialization:
     cxxflags.extend(['-DEEC_SERIALIZATION', '-DEEC_COMPRESSION'])
-    libs.extend(['boost_serialization', 'boost_iostreams'])
+    libs.extend(['boost_serialization', 'boost_iostreams', 'z'])
 
 # run swig to generate eec.py and eec.cpp from eec.i
 if sys.argv[1] == 'swig':

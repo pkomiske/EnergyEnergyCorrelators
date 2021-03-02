@@ -132,6 +132,11 @@ std::vector<double> get_bin_edges(const Axis & axis) {
   return bins_vec;
 }
 
+// gets boost histogram coverage tag from boolean
+inline bh::coverage get_coverage(bool overflows) {
+  return overflows ? bh::coverage::all : bh::coverage::inner;
+}
+
 // names the various axis transforms
 template<class T>
 std::string name_transform() {

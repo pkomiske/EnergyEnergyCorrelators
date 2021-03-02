@@ -64,8 +64,8 @@ struct EECHistTraits<EECHist3D<T0, T1, T2>> {
     }
   } HistFactory;
 
-  typedef decltype(HistFactory::make_hist(Axis0(), Axis1(), Axis2())) Hist;
-  typedef decltype(HistFactory::make_simple_hist(Axis0(), Axis1(), Axis2())) SimpleHist;
+  typedef decltype(HistFactory::make_hist(Axis0(), Axis1(), Axis2())) WeightedHist;
+  typedef decltype(HistFactory::make_simple_hist(Axis0(), Axis1(), Axis2())) SimpleWeightedHist;
   typedef decltype(HistFactory::make_covariance_hist(Axis0(), Axis1(), Axis2())) CovarianceHist;
 };
 
@@ -97,9 +97,10 @@ public:
             unsigned nbins1, double axis1_min, double axis1_max,
             unsigned nbins2, double axis2_min, double axis2_max,
             int num_threads = 1,
-            bool error_bound = true, bool track_covariance = false,
-            bool error_bound_include_overflows = true) :
-    Base(num_threads, error_bound, track_covariance, error_bound_include_overflows),
+            bool track_covariance = false,
+            bool variance_bound = true,
+            bool variance_bound_include_overflows = true) :
+    Base(num_threads, track_covariance, variance_bound, variance_bound_include_overflows),
     nbins_({nbins0, nbins1, nbins2}),
     axis_mins_({axis0_min, axis1_min, axis2_min}),
     axis_maxs_({axis0_max, axis1_max, axis2_max})

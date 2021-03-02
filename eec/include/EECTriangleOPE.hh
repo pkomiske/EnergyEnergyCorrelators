@@ -75,7 +75,7 @@ template<class Transform0, class Transform1, class Transform2>
 class EECTriangleOPE : public EECBase, public hist::EECHist3D<Transform0, Transform1, Transform2> {
 
   typedef hist::EECHist3D<Transform0, Transform1, Transform2> EECHist3D;
-  typedef typename EECHist3D::SimpleHist SimpleHist;
+  typedef typename EECHist3D::SimpleWeightedHist SimpleWeightedHist;
 
   // function pointer to the actual computation that will be run
   void (EECTriangleOPE::*compute_eec_ptr_)(int);
@@ -122,18 +122,18 @@ public:
                  const std::vector<double> & pt_powers = {1},
                  const std::vector<unsigned> & ch_powers = {0},
                  int num_threads = -1,
-                 int print_every = -10,
+                 long print_every = -10,
                  bool check_degen = false,
                  bool average_verts = false,
-                 bool error_bound = true,
                  bool track_covariance = false,
-                 bool error_bound_include_overflows = true) :
+                 bool variance_bound = true,
+                 bool variance_bound_include_overflows = true) :
     EECBase(3, norm, pt_powers, ch_powers, num_threads, print_every, check_degen, average_verts),
     EECHist3D(nbins0, axis0_min, axis0_max,
               nbins1, axis1_min, axis1_max,
               nbins2, axis2_min, axis2_max,
               num_threads,
-              error_bound, track_covariance, error_bound_include_overflows)
+              track_covariance, variance_bound, variance_bound_include_overflows)
   {
     select_eec_function();
   }
@@ -168,7 +168,7 @@ public:
 
     if (hist_level > 0) {
       oss << '\n';
-      this->hists_as_text(hist_level, 16, true, &oss);
+      this->hists_as_text(hist_level, true, 16, &oss);
     }
 
     return oss.str();
@@ -178,7 +178,7 @@ private:
 
   void compute_eec(int thread_i) {
     (this->*compute_eec_ptr_)(thread_i);
-    this->fill_hist_with_simple_hist(thread_i);
+    this->fill_from_single_event(thread_i);
   }
 
   void eeec_ijk_sym(int thread_i) {
@@ -186,7 +186,7 @@ private:
                               & dists(this->dists(thread_i));
     double event_weight(this->event_weight(thread_i));
     unsigned mult(this->mult(thread_i));
-    SimpleHist & simple_hist(this->simple_hists(thread_i)[0]);
+    SimpleWeightedHist & simple_hist(this->per_event_hists(thread_i)[0]);
 
     // loop over symmetric triplets of particles
     std::array<double, 3> dists_arr;
@@ -220,7 +220,7 @@ private:
                               & dists(this->dists(thread_i));
     double event_weight(this->event_weight(thread_i));
     unsigned mult(this->mult(thread_i));
-    std::vector<SimpleHist> & simple_hists(this->simple_hists(thread_i));
+    std::vector<SimpleWeightedHist> & hists(this->per_event_hists(thread_i));
 
     // first index is special, second is symmetric
     std::array<std::pair<double, int>, 3> dists_inds;
@@ -249,24 +249,24 @@ private:
 
           // averaging over verts
           if (average_verts())
-            fill_hist(simple_hists[0], weight_ijk, dists_inds[0].first, dists_inds[1].first, dists_inds[2].first);
+            fill_hist(hists[0], weight_ijk, dists_inds[0].first, dists_inds[1].first, dists_inds[2].first);
 
           // fill specific histogram
           else if (!(ik_match || jk_match))
-            fill_hist(simple_hists[dists_inds[0].second == 0 ? 0 : (dists_inds[1].second == 0 ? 1 : 2)],
+            fill_hist(hists[dists_inds[0].second == 0 ? 0 : (dists_inds[1].second == 0 ? 1 : 2)],
                       weight_ijk, dists_inds[0].first, dists_inds[1].first, dists_inds[2].first);
 
           // fill all histograms
           else if (ik_match && jk_match) {
-            fill_hist(simple_hists[0], weight_ijk, 0, 0, 0);
-            fill_hist(simple_hists[1], weight_ijk, 0, 0, 0);
-            fill_hist(simple_hists[2], weight_ijk, 0, 0, 0);
+            fill_hist(hists[0], weight_ijk, 0, 0, 0);
+            fill_hist(hists[1], weight_ijk, 0, 0, 0);
+            fill_hist(hists[2], weight_ijk, 0, 0, 0);
           }
 
           // fill medium and large histograms
           else if (ik_match || jk_match) {
-            fill_hist(simple_hists[1], weight_ijk, 0, dists_inds[1].first, dists_inds[2].first);
-            fill_hist(simple_hists[2], weight_ijk, 0, dists_inds[1].first, dists_inds[2].first);
+            fill_hist(hists[1], weight_ijk, 0, dists_inds[1].first, dists_inds[2].first);
+            fill_hist(hists[2], weight_ijk, 0, dists_inds[1].first, dists_inds[2].first);
           }
         }
       }
@@ -280,7 +280,7 @@ private:
                               & dists(this->dists(thread_i));
     double event_weight(this->event_weight(thread_i));
     unsigned mult(this->mult(thread_i));
-    std::vector<SimpleHist> & simple_hists(this->simple_hists(thread_i));
+    std::vector<SimpleWeightedHist> & hists(this->per_event_hists(thread_i));
 
     // all indices are different
     std::array<std::pair<double, int>, 3> dists_inds;
@@ -308,7 +308,7 @@ private:
 
           // check for averaging the vertices
           if (average_verts())
-            fill_hist(simple_hists[0], weight_ijk, dists_inds[0].first, dists_inds[1].first, dists_inds[2].first);
+            fill_hist(hists[0], weight_ijk, dists_inds[0].first, dists_inds[1].first, dists_inds[2].first);
 
           // no degeneracy 
           else if (!(ij_match || ik_match || jk_match)) {
@@ -336,35 +336,35 @@ private:
               else hist_i = 5;
             }
 
-            fill_hist(simple_hists[hist_i], weight_ijk, dists_inds[0].first, dists_inds[1].first, dists_inds[2].first);
+            fill_hist(hists[hist_i], weight_ijk, dists_inds[0].first, dists_inds[1].first, dists_inds[2].first);
           }
 
           // everything is degenerate
           else if (ij_match && ik_match) {
-            fill_hist(simple_hists[0], weight_ijk, 0, 0, 0);
-            fill_hist(simple_hists[1], weight_ijk, 0, 0, 0);
-            fill_hist(simple_hists[2], weight_ijk, 0, 0, 0);
-            fill_hist(simple_hists[3], weight_ijk, 0, 0, 0);
-            fill_hist(simple_hists[4], weight_ijk, 0, 0, 0);
-            fill_hist(simple_hists[5], weight_ijk, 0, 0, 0);
+            fill_hist(hists[0], weight_ijk, 0, 0, 0);
+            fill_hist(hists[1], weight_ijk, 0, 0, 0);
+            fill_hist(hists[2], weight_ijk, 0, 0, 0);
+            fill_hist(hists[3], weight_ijk, 0, 0, 0);
+            fill_hist(hists[4], weight_ijk, 0, 0, 0);
+            fill_hist(hists[5], weight_ijk, 0, 0, 0);
           }
 
           // ij are degenerate, fill hists 0 and 1
           else if (ij_match) {
-            fill_hist(simple_hists[0], weight_ijk, 0, dists_inds[1].first, dists_inds[2].first);
-            fill_hist(simple_hists[1], weight_ijk, 0, dists_inds[1].first, dists_inds[2].first);
+            fill_hist(hists[0], weight_ijk, 0, dists_inds[1].first, dists_inds[2].first);
+            fill_hist(hists[1], weight_ijk, 0, dists_inds[1].first, dists_inds[2].first);
           }
 
           // ik are degenerate, fill hists 2 and 4
           else if (ik_match) {
-            fill_hist(simple_hists[2], weight_ijk, 0, dists_inds[1].first, dists_inds[2].first);
-            fill_hist(simple_hists[4], weight_ijk, 0, dists_inds[1].first, dists_inds[2].first);
+            fill_hist(hists[2], weight_ijk, 0, dists_inds[1].first, dists_inds[2].first);
+            fill_hist(hists[4], weight_ijk, 0, dists_inds[1].first, dists_inds[2].first);
           }
 
           // jk are degenerate, fill hists 3 and 5
           else if (jk_match) {
-            fill_hist(simple_hists[3], weight_ijk, 0, dists_inds[1].first, dists_inds[2].first);
-            fill_hist(simple_hists[5], weight_ijk, 0, dists_inds[1].first, dists_inds[2].first);
+            fill_hist(hists[3], weight_ijk, 0, dists_inds[1].first, dists_inds[2].first);
+            fill_hist(hists[5], weight_ijk, 0, dists_inds[1].first, dists_inds[2].first);
           }
 
           // should never get here
