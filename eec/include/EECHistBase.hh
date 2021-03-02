@@ -439,14 +439,19 @@ private:
 protected:
 
   void init(unsigned nh) {
-    //hists_.clear();
-    //per_event_hists_.clear();
+    hists_.clear();
+    per_event_hists_.clear();
+    covariance_hists_.clear();
+    variance_bound_hists_.clear();
+
     hists_.resize(num_threads());
     per_event_hists_.resize(num_threads());
-    event_counters_.resize(num_threads(), 0);
     if (track_covariance_) covariance_hists_.resize(num_threads());
     if (variance_bound_) variance_bound_hists_.resize(num_threads());
+
     resize_internal_hists(nh);
+
+    event_counters_.resize(num_threads(), 0);
   }
 
   void resize_internal_hists(unsigned nhists) {
