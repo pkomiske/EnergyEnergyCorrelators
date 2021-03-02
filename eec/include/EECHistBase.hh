@@ -123,13 +123,28 @@ public:
     }
     return axis(i).size() + (include_overflows ? 2 : 0);
   }
+  std::size_t covariance_size(bool include_overflows = true) const {
+    auto s(hist_size(include_overflows));
+    return s*s;
+  }
+
+#ifndef SWIG
+  // low-level access to hists
+  std::vector<Hist> & hists(int thread_i = 0) { return hists_[thread_i]; }
+  std::vector<SimpleHist> & error_bound_hists(int thread_i = 0) { return error_bound_hists_[thread_i]; }
+  std::vector<CovarianceHist> & covariance_hists(int thread_i = 0) { return covariance_hists_[thread_i]; }
+
+  // read-only access
+  const std::vector<Hist> & hists(int thread_i = 0) const { return hists_[thread_i]; }
+  const std::vector<SimpleHist> & error_bound_hists(int thread_i = 0) const { return error_bound_hists_[thread_i]; }
+  const std::vector<CovarianceHist> & covariance_hists(int thread_i = 0) const { return covariance_hists_[thread_i]; }
+#endif
 
   // reduce histograms
   void reduce(const std::vector<bh::algorithm::reduce_command> & rcs) {
 
-    unsigned r(rcs.size());
-    if (r == 0) return;
-    if (r > 3) throw std::invalid_argument("too many reduce_commands");
+    if (rcs.size() == 0) return;
+    if (rcs.size() > 3) throw std::invalid_argument("too many reduce_commands");
 
     // lambda function for reducing hist
     auto reduce = [](const auto & hist, const auto & rcs) {
@@ -176,6 +191,34 @@ public:
     return hist;
   }
 
+  // compute combined error bound histograms
+  SimpleHist combined_error_bound(unsigned hist_i = 0) const {
+    if (hist_i >= nhists())
+      throw std::invalid_argument("invalid histogram index");
+    if (!error_bound_)
+      throw std::logic_error("not tracking error bounds");
+
+    SimpleHist error_bound_hist(error_bound_hists_[0][hist_i]);
+    for (int thread_i = 1; thread_i < num_threads(); thread_i++)
+      error_bound_hist += error_bound_hists_[thread_i][hist_i];
+
+    return error_bound_hist;
+  }
+
+  // compute combined error bound histograms
+  CovarianceHist combined_covariance(unsigned hist_i = 0) const {
+    if (hist_i >= nhists())
+      throw std::invalid_argument("invalid histogram index");
+    if (!error_bound_)
+      throw std::logic_error("not tracking covariances");
+
+    CovarianceHist covariance_hist(covariance_hists_[0][hist_i]);
+    for (int thread_i = 1; thread_i < num_threads(); thread_i++)
+      covariance_hist += covariance_hists_[thread_i][hist_i];
+
+    return covariance_hist;
+  }
+
   // operator to add histograms together
   EECHistBase & operator+=(const EECHistBase<EECHist> & rhs) {
     if (nhists() != rhs.nhists())
@@ -219,43 +262,6 @@ public:
     return get_bin_edges(hists_[0][0].axis(i));
   }
 
-  void get_hist_vars(double * hist_vals, double * hist_vars,
-                     unsigned hist_i = 0, bool include_overflows = true) const {
-
-    if (hist_i >= this->nhists())
-      throw std::invalid_argument("Requested histogram out of range");
-    auto hist(this->combined_hist(hist_i));
-
-    // calculate strides
-    axis::index_type extra(include_overflows ? 2 : 0);
-    std::array<std::size_t, 2*hist.rank()> strides;
-    strides.back() = 1;
-    for (axis::index_type r = 2*hist.rank() - 1; r > 0; r--)
-      strides[r-1] = strides[r] * (axis(r % hist.rank()).size() + extra);
-    
-    extra = (include_overflows ? 1 : 0);
-    for (auto && x : bh::indexed(hist, include_overflows ? bh::coverage::all : bh::coverage::inner)) {
-
-      // get linearized C-style index
-      std::size_t ind(0);
-      axis::index_type r(hist.rank());
-      for (axis::index_type index : x.indices())
-        ind += strides[r++] * (index + extra);
-
-      hist_vals[ind] = x->value();
-      hist_vars[ind] = x->variance();
-    }
-  }
-
-  // return histogram and errors as a pair of vectors
-  std::pair<std::vector<double>, std::vector<double>>
-  get_hist_vars(bool include_overflows = true, unsigned hist_i = 0) {
-    std::size_t hist_size(this->hist_size(include_overflows));
-    auto hist_vars(std::make_pair(std::vector<double>(hist_size), std::vector<double>(hist_size)));
-    get_hist_vars(hist_vars.first.data(), hist_vars.second.data(), include_overflows, hist_i);
-    return hist_vars;
-  }
-
   std::string hists_as_text(int hist_level = 3, int precision = 16,
                             bool include_overflows = true, std::ostringstream * os = nullptr) const {
 
@@ -276,6 +282,122 @@ public:
     }
 
     return "";
+  }
+
+#ifndef SWIG
+
+  // return histogram and errors as a pair of vectors
+  std::pair<std::vector<double>, std::vector<double>>
+  get_hist_vars(bool include_overflows = true, unsigned hist_i = 0) {
+    std::size_t hist_size(this->hist_size(include_overflows));
+    auto vars(std::make_pair(std::vector<double>(hist_size), std::vector<double>(hist_size)));
+    get_vars(vars.first.data(), vars.second.data(), include_overflows, hist_i);
+    return vars;
+  }
+
+// make low-level functions with pointers private
+private:
+
+#endif // SWIG
+
+  void get_hist_vars(double * hist_vals, double * vars,
+                     unsigned hist_i = 0, bool include_overflows = true) const {
+
+    // this will check hist_i for validity
+    Hist hist(combined_hist(hist_i));
+
+    // calculate strides
+    axis::index_type extra(include_overflows ? 2 : 0);
+    std::array<std::size_t, hist.rank()> strides;
+    strides.back() = 1;
+    for (axis::index_type r = hist.rank() - 1; r > 0; r--)
+      strides[r-1] = strides[r] * (axis(r).size() + extra);
+    
+    extra = (include_overflows ? 1 : 0);
+    for (auto && x : bh::indexed(hist, include_overflows ? bh::coverage::all : bh::coverage::inner)) {
+
+      // get linearized C-style index
+      std::size_t ind(0);
+      unsigned r(0);
+      for (axis::index_type index : x.indices())
+        ind += strides[r++] * (index + extra);
+
+      hist_vals[ind] = x->value();
+      vars[ind] = x->variance();
+    }
+  }
+
+  void get_var_bound(double * var_bound,
+                     unsigned hist_i = 0, bool include_overflows = true) const {
+
+    // this will check hist_i for validity and that we're tracking error bounds
+    SimpleHist error_bound_hist(combined_error_bound(hist_i));
+
+    // todo: make function for calculating strides
+
+    // calculate strides
+    axis::index_type extra(include_overflows ? 2 : 0);
+    std::array<std::size_t, error_bound_hist.rank()> strides;
+    strides.back() = 1;
+    for (axis::index_type r = error_bound_hist.rank() - 1; r > 0; r--)
+      strides[r-1] = strides[r] * (axis(r).size() + extra);
+    
+    extra = (include_overflows ? 1 : 0);
+    for (auto && x : bh::indexed(error_bound_hist,
+                                 include_overflows ? bh::coverage::all : bh::coverage::inner)) {
+
+      // get linearized C-style index
+      std::size_t ind(0);
+      unsigned r(0);
+      for (axis::index_type index : x.indices())
+        ind += strides[r++] * (index + extra);
+
+      var_bound[ind] = x->value();
+    }
+  }
+
+  void get_covariance(double * covariance,
+                      unsigned hist_i = 0, bool include_overflows = true) const {
+
+    // this will check hist_i for validity and that we're tracking error bounds
+    Hist hist(combined_hist(hist_i));
+    CovarianceHist covariance_hist(combined_covariance(hist_i));
+
+    // calculate strides
+    axis::index_type extra(include_overflows ? 2 : 0);
+    std::array<std::size_t, covariance_hist.rank()> strides;
+    strides.back() = 1;
+    for (axis::index_type r = covariance_hist.rank() - 1; r > 0; r--)
+      strides[r-1] = strides[r] * (axis(r % rank()).size() + extra);
+
+    // zero out the input
+    std::fill(covariance, covariance + covariance_size(include_overflows), 0);
+
+    // iterate over pairs of simple_hist bins
+    extra = (include_overflows ? 1 : 0);
+    for (auto && x : bh::indexed(covariance_hist,
+                                 include_overflows ? bh::coverage::all : bh::coverage::inner)) {
+      if (x->value() == 0) continue;
+
+      // get linearized C-style index
+      std::size_t ind(0), indT(0);
+      unsigned r(0);
+      std::array<std::array<axis::index_type, hist.rank()>, 2> hist_inds;
+      for (axis::index_type index : x.indices()) {
+        hist_inds[r/hist.rank()][r%hist.rank()] = index;
+        std::size_t i(index + extra);
+        indT += strides[(r + rank()) % strides.size()] * i;
+        ind += strides[r++] * i;
+      }
+
+      // only upper triangular covariance was stored, so ensure we yield correct symmetric result
+      if (ind == indT)
+        covariance[ind] = x->value() - hist[hist_inds[0]]*hist[hist_inds[1]];
+      else {
+        covariance[ind] += x->value();
+        covariance[indT] += x->value();
+      }
+    }
   }
 
 protected:
@@ -339,6 +461,9 @@ protected:
         if (cov_hist.rank() == 2) {
           for (; outer_it != end; ++outer_it) {
             const double outer_bin_val((*outer_it)->value());
+            if (outer_bin_val == 0) continue;
+
+            // store bin index in cov_inds
             cov_inds[0] = outer_it->index(0);
 
             // inner loop picks up from where outer loop is
@@ -351,13 +476,16 @@ protected:
         else {
           for (; outer_it != end; ++outer_it) {
             const double outer_bin_val((*outer_it)->value());
+            if (outer_bin_val == 0) continue;
+
+            // store bin indices in cov_inds
             auto outer_inds(outer_it->indices());
             std::copy(outer_inds.begin(), outer_inds.end(), cov_inds.begin());
 
             // inner loop picks up from where outer loop is
             for (auto inner_it = outer_it; inner_it != end; ++inner_it) {
               auto inner_inds(inner_it->indices());
-              std::copy(inner_inds.begin(), inner_inds.end(), cov_inds.begin() + rank());
+              std::copy(inner_inds.begin(), inner_inds.end(), cov_inds.begin() + Traits::rank);
               cov_hist[cov_inds] += outer_bin_val * (*inner_it)->value();
             }
           } 

@@ -96,14 +96,15 @@ class SwigPyIterator(object):
 _eec.SwigPyIterator_swigregister(SwigPyIterator)
 
 
+import numpy as _np
+
+
 __all__ = ['EECLongestSideId', 'EECLongestSideLog',
            'EECTriangleOPEIdIdId', 'EECTriangleOPEIdLogId',
            'EECTriangleOPELogIdId', 'EECTriangleOPELogLogId',
 
 # these are used in histogram reduction
            'rebin', 'shrink', 'slice', 'shrink_and_rebin', 'slice_and_rebin']
-
-import numpy as _np
 
 class vectorDouble(object):
     r"""Proxy of C++ std::vector< double > class."""
@@ -337,20 +338,28 @@ class EECHistBase1DId(object):
     nbins = _swig_new_instance_method(_eec.EECHistBase1DId_nbins)
     rank = _swig_new_instance_method(_eec.EECHistBase1DId_rank)
     hist_size = _swig_new_instance_method(_eec.EECHistBase1DId_hist_size)
+    covariance_size = _swig_new_instance_method(_eec.EECHistBase1DId_covariance_size)
     reduce = _swig_new_instance_method(_eec.EECHistBase1DId_reduce)
     sum = _swig_new_instance_method(_eec.EECHistBase1DId_sum)
+    combined_error_bound = _swig_new_instance_method(_eec.EECHistBase1DId_combined_error_bound)
+    combined_covariance = _swig_new_instance_method(_eec.EECHistBase1DId_combined_covariance)
     __iadd__ = _swig_new_instance_method(_eec.EECHistBase1DId___iadd__)
     __imul__ = _swig_new_instance_method(_eec.EECHistBase1DId___imul__)
     scale = _swig_new_instance_method(_eec.EECHistBase1DId_scale)
     bin_centers_vec = _swig_new_instance_method(_eec.EECHistBase1DId_bin_centers_vec)
     bin_edges_vec = _swig_new_instance_method(_eec.EECHistBase1DId_bin_edges_vec)
     hists_as_text = _swig_new_instance_method(_eec.EECHistBase1DId_hists_as_text)
+    get_var_bound = _swig_new_instance_method(_eec.EECHistBase1DId_get_var_bound)
+    get_covariance = _swig_new_instance_method(_eec.EECHistBase1DId_get_covariance)
     bin_centers = _swig_new_instance_method(_eec.EECHistBase1DId_bin_centers)
     bin_edges = _swig_new_instance_method(_eec.EECHistBase1DId_bin_edges)
 
     def get_hist_errs(self, hist_i=0, include_overflows=True):
         hist, vars = self.get_hist_vars(hist_i, include_overflows)
         return hist, _np.sqrt(vars)
+
+    def get_error_bound(self, hist_i=0, include_overflows=True):
+        return _np.sqrt(self.get_var_bound(hist_i, include_overflows))
 
 
 # Register EECHistBase1DId in _eec:
@@ -378,20 +387,28 @@ class EECHistBase1DLog(object):
     nbins = _swig_new_instance_method(_eec.EECHistBase1DLog_nbins)
     rank = _swig_new_instance_method(_eec.EECHistBase1DLog_rank)
     hist_size = _swig_new_instance_method(_eec.EECHistBase1DLog_hist_size)
+    covariance_size = _swig_new_instance_method(_eec.EECHistBase1DLog_covariance_size)
     reduce = _swig_new_instance_method(_eec.EECHistBase1DLog_reduce)
     sum = _swig_new_instance_method(_eec.EECHistBase1DLog_sum)
+    combined_error_bound = _swig_new_instance_method(_eec.EECHistBase1DLog_combined_error_bound)
+    combined_covariance = _swig_new_instance_method(_eec.EECHistBase1DLog_combined_covariance)
     __iadd__ = _swig_new_instance_method(_eec.EECHistBase1DLog___iadd__)
     __imul__ = _swig_new_instance_method(_eec.EECHistBase1DLog___imul__)
     scale = _swig_new_instance_method(_eec.EECHistBase1DLog_scale)
     bin_centers_vec = _swig_new_instance_method(_eec.EECHistBase1DLog_bin_centers_vec)
     bin_edges_vec = _swig_new_instance_method(_eec.EECHistBase1DLog_bin_edges_vec)
     hists_as_text = _swig_new_instance_method(_eec.EECHistBase1DLog_hists_as_text)
+    get_var_bound = _swig_new_instance_method(_eec.EECHistBase1DLog_get_var_bound)
+    get_covariance = _swig_new_instance_method(_eec.EECHistBase1DLog_get_covariance)
     bin_centers = _swig_new_instance_method(_eec.EECHistBase1DLog_bin_centers)
     bin_edges = _swig_new_instance_method(_eec.EECHistBase1DLog_bin_edges)
 
     def get_hist_errs(self, hist_i=0, include_overflows=True):
         hist, vars = self.get_hist_vars(hist_i, include_overflows)
         return hist, _np.sqrt(vars)
+
+    def get_error_bound(self, hist_i=0, include_overflows=True):
+        return _np.sqrt(self.get_var_bound(hist_i, include_overflows))
 
 
 # Register EECHistBase1DLog in _eec:
@@ -414,20 +431,28 @@ class EECHistBaseIdIdId(object):
     nbins = _swig_new_instance_method(_eec.EECHistBaseIdIdId_nbins)
     rank = _swig_new_instance_method(_eec.EECHistBaseIdIdId_rank)
     hist_size = _swig_new_instance_method(_eec.EECHistBaseIdIdId_hist_size)
+    covariance_size = _swig_new_instance_method(_eec.EECHistBaseIdIdId_covariance_size)
     reduce = _swig_new_instance_method(_eec.EECHistBaseIdIdId_reduce)
     sum = _swig_new_instance_method(_eec.EECHistBaseIdIdId_sum)
+    combined_error_bound = _swig_new_instance_method(_eec.EECHistBaseIdIdId_combined_error_bound)
+    combined_covariance = _swig_new_instance_method(_eec.EECHistBaseIdIdId_combined_covariance)
     __iadd__ = _swig_new_instance_method(_eec.EECHistBaseIdIdId___iadd__)
     __imul__ = _swig_new_instance_method(_eec.EECHistBaseIdIdId___imul__)
     scale = _swig_new_instance_method(_eec.EECHistBaseIdIdId_scale)
     bin_centers_vec = _swig_new_instance_method(_eec.EECHistBaseIdIdId_bin_centers_vec)
     bin_edges_vec = _swig_new_instance_method(_eec.EECHistBaseIdIdId_bin_edges_vec)
     hists_as_text = _swig_new_instance_method(_eec.EECHistBaseIdIdId_hists_as_text)
+    get_var_bound = _swig_new_instance_method(_eec.EECHistBaseIdIdId_get_var_bound)
+    get_covariance = _swig_new_instance_method(_eec.EECHistBaseIdIdId_get_covariance)
     bin_centers = _swig_new_instance_method(_eec.EECHistBaseIdIdId_bin_centers)
     bin_edges = _swig_new_instance_method(_eec.EECHistBaseIdIdId_bin_edges)
 
     def get_hist_errs(self, hist_i=0, include_overflows=True):
         hist, vars = self.get_hist_vars(hist_i, include_overflows)
         return hist, _np.sqrt(vars)
+
+    def get_error_bound(self, hist_i=0, include_overflows=True):
+        return _np.sqrt(self.get_var_bound(hist_i, include_overflows))
 
 
 # Register EECHistBaseIdIdId in _eec:
@@ -450,20 +475,28 @@ class EECHistBaseLogIdId(object):
     nbins = _swig_new_instance_method(_eec.EECHistBaseLogIdId_nbins)
     rank = _swig_new_instance_method(_eec.EECHistBaseLogIdId_rank)
     hist_size = _swig_new_instance_method(_eec.EECHistBaseLogIdId_hist_size)
+    covariance_size = _swig_new_instance_method(_eec.EECHistBaseLogIdId_covariance_size)
     reduce = _swig_new_instance_method(_eec.EECHistBaseLogIdId_reduce)
     sum = _swig_new_instance_method(_eec.EECHistBaseLogIdId_sum)
+    combined_error_bound = _swig_new_instance_method(_eec.EECHistBaseLogIdId_combined_error_bound)
+    combined_covariance = _swig_new_instance_method(_eec.EECHistBaseLogIdId_combined_covariance)
     __iadd__ = _swig_new_instance_method(_eec.EECHistBaseLogIdId___iadd__)
     __imul__ = _swig_new_instance_method(_eec.EECHistBaseLogIdId___imul__)
     scale = _swig_new_instance_method(_eec.EECHistBaseLogIdId_scale)
     bin_centers_vec = _swig_new_instance_method(_eec.EECHistBaseLogIdId_bin_centers_vec)
     bin_edges_vec = _swig_new_instance_method(_eec.EECHistBaseLogIdId_bin_edges_vec)
     hists_as_text = _swig_new_instance_method(_eec.EECHistBaseLogIdId_hists_as_text)
+    get_var_bound = _swig_new_instance_method(_eec.EECHistBaseLogIdId_get_var_bound)
+    get_covariance = _swig_new_instance_method(_eec.EECHistBaseLogIdId_get_covariance)
     bin_centers = _swig_new_instance_method(_eec.EECHistBaseLogIdId_bin_centers)
     bin_edges = _swig_new_instance_method(_eec.EECHistBaseLogIdId_bin_edges)
 
     def get_hist_errs(self, hist_i=0, include_overflows=True):
         hist, vars = self.get_hist_vars(hist_i, include_overflows)
         return hist, _np.sqrt(vars)
+
+    def get_error_bound(self, hist_i=0, include_overflows=True):
+        return _np.sqrt(self.get_var_bound(hist_i, include_overflows))
 
 
 # Register EECHistBaseLogIdId in _eec:
@@ -486,20 +519,28 @@ class EECHistBaseIdLogId(object):
     nbins = _swig_new_instance_method(_eec.EECHistBaseIdLogId_nbins)
     rank = _swig_new_instance_method(_eec.EECHistBaseIdLogId_rank)
     hist_size = _swig_new_instance_method(_eec.EECHistBaseIdLogId_hist_size)
+    covariance_size = _swig_new_instance_method(_eec.EECHistBaseIdLogId_covariance_size)
     reduce = _swig_new_instance_method(_eec.EECHistBaseIdLogId_reduce)
     sum = _swig_new_instance_method(_eec.EECHistBaseIdLogId_sum)
+    combined_error_bound = _swig_new_instance_method(_eec.EECHistBaseIdLogId_combined_error_bound)
+    combined_covariance = _swig_new_instance_method(_eec.EECHistBaseIdLogId_combined_covariance)
     __iadd__ = _swig_new_instance_method(_eec.EECHistBaseIdLogId___iadd__)
     __imul__ = _swig_new_instance_method(_eec.EECHistBaseIdLogId___imul__)
     scale = _swig_new_instance_method(_eec.EECHistBaseIdLogId_scale)
     bin_centers_vec = _swig_new_instance_method(_eec.EECHistBaseIdLogId_bin_centers_vec)
     bin_edges_vec = _swig_new_instance_method(_eec.EECHistBaseIdLogId_bin_edges_vec)
     hists_as_text = _swig_new_instance_method(_eec.EECHistBaseIdLogId_hists_as_text)
+    get_var_bound = _swig_new_instance_method(_eec.EECHistBaseIdLogId_get_var_bound)
+    get_covariance = _swig_new_instance_method(_eec.EECHistBaseIdLogId_get_covariance)
     bin_centers = _swig_new_instance_method(_eec.EECHistBaseIdLogId_bin_centers)
     bin_edges = _swig_new_instance_method(_eec.EECHistBaseIdLogId_bin_edges)
 
     def get_hist_errs(self, hist_i=0, include_overflows=True):
         hist, vars = self.get_hist_vars(hist_i, include_overflows)
         return hist, _np.sqrt(vars)
+
+    def get_error_bound(self, hist_i=0, include_overflows=True):
+        return _np.sqrt(self.get_var_bound(hist_i, include_overflows))
 
 
 # Register EECHistBaseIdLogId in _eec:
@@ -522,20 +563,28 @@ class EECHistBaseLogLogId(object):
     nbins = _swig_new_instance_method(_eec.EECHistBaseLogLogId_nbins)
     rank = _swig_new_instance_method(_eec.EECHistBaseLogLogId_rank)
     hist_size = _swig_new_instance_method(_eec.EECHistBaseLogLogId_hist_size)
+    covariance_size = _swig_new_instance_method(_eec.EECHistBaseLogLogId_covariance_size)
     reduce = _swig_new_instance_method(_eec.EECHistBaseLogLogId_reduce)
     sum = _swig_new_instance_method(_eec.EECHistBaseLogLogId_sum)
+    combined_error_bound = _swig_new_instance_method(_eec.EECHistBaseLogLogId_combined_error_bound)
+    combined_covariance = _swig_new_instance_method(_eec.EECHistBaseLogLogId_combined_covariance)
     __iadd__ = _swig_new_instance_method(_eec.EECHistBaseLogLogId___iadd__)
     __imul__ = _swig_new_instance_method(_eec.EECHistBaseLogLogId___imul__)
     scale = _swig_new_instance_method(_eec.EECHistBaseLogLogId_scale)
     bin_centers_vec = _swig_new_instance_method(_eec.EECHistBaseLogLogId_bin_centers_vec)
     bin_edges_vec = _swig_new_instance_method(_eec.EECHistBaseLogLogId_bin_edges_vec)
     hists_as_text = _swig_new_instance_method(_eec.EECHistBaseLogLogId_hists_as_text)
+    get_var_bound = _swig_new_instance_method(_eec.EECHistBaseLogLogId_get_var_bound)
+    get_covariance = _swig_new_instance_method(_eec.EECHistBaseLogLogId_get_covariance)
     bin_centers = _swig_new_instance_method(_eec.EECHistBaseLogLogId_bin_centers)
     bin_edges = _swig_new_instance_method(_eec.EECHistBaseLogLogId_bin_edges)
 
     def get_hist_errs(self, hist_i=0, include_overflows=True):
         hist, vars = self.get_hist_vars(hist_i, include_overflows)
         return hist, _np.sqrt(vars)
+
+    def get_error_bound(self, hist_i=0, include_overflows=True):
+        return _np.sqrt(self.get_var_bound(hist_i, include_overflows))
 
 
 # Register EECHistBaseLogLogId in _eec:
@@ -553,6 +602,8 @@ class EECHist1DId(EECHistBase1DId):
     __swig_destroy__ = _eec.delete_EECHist1DId
     reduce = _swig_new_instance_method(_eec.EECHist1DId_reduce)
     get_hist_vars = _swig_new_instance_method(_eec.EECHist1DId_get_hist_vars)
+    get_var_bound = _swig_new_instance_method(_eec.EECHist1DId_get_var_bound)
+    get_covariance = _swig_new_instance_method(_eec.EECHist1DId_get_covariance)
 
 # Register EECHist1DId in _eec:
 _eec.EECHist1DId_swigregister(EECHist1DId)
@@ -569,6 +620,8 @@ class EECHist1DLog(EECHistBase1DLog):
     __swig_destroy__ = _eec.delete_EECHist1DLog
     reduce = _swig_new_instance_method(_eec.EECHist1DLog_reduce)
     get_hist_vars = _swig_new_instance_method(_eec.EECHist1DLog_get_hist_vars)
+    get_var_bound = _swig_new_instance_method(_eec.EECHist1DLog_get_var_bound)
+    get_covariance = _swig_new_instance_method(_eec.EECHist1DLog_get_covariance)
 
 # Register EECHist1DLog in _eec:
 _eec.EECHist1DLog_swigregister(EECHist1DLog)
@@ -584,6 +637,8 @@ class EECHist3DIdIdId(EECHistBaseIdIdId):
         _eec.EECHist3DIdIdId_swiginit(self, _eec.new_EECHist3DIdIdId(nbins0, axis0_min, axis0_max, nbins1, axis1_min, axis1_max, nbins2, axis2_min, axis2_max, num_threads, error_bound, track_covariance, error_bound_include_overflows))
     __swig_destroy__ = _eec.delete_EECHist3DIdIdId
     get_hist_vars = _swig_new_instance_method(_eec.EECHist3DIdIdId_get_hist_vars)
+    get_var_bound = _swig_new_instance_method(_eec.EECHist3DIdIdId_get_var_bound)
+    get_covariance = _swig_new_instance_method(_eec.EECHist3DIdIdId_get_covariance)
 
 # Register EECHist3DIdIdId in _eec:
 _eec.EECHist3DIdIdId_swigregister(EECHist3DIdIdId)
@@ -599,6 +654,8 @@ class EECHist3DLogIdId(EECHistBaseLogIdId):
         _eec.EECHist3DLogIdId_swiginit(self, _eec.new_EECHist3DLogIdId(nbins0, axis0_min, axis0_max, nbins1, axis1_min, axis1_max, nbins2, axis2_min, axis2_max, num_threads, error_bound, track_covariance, error_bound_include_overflows))
     __swig_destroy__ = _eec.delete_EECHist3DLogIdId
     get_hist_vars = _swig_new_instance_method(_eec.EECHist3DLogIdId_get_hist_vars)
+    get_var_bound = _swig_new_instance_method(_eec.EECHist3DLogIdId_get_var_bound)
+    get_covariance = _swig_new_instance_method(_eec.EECHist3DLogIdId_get_covariance)
 
 # Register EECHist3DLogIdId in _eec:
 _eec.EECHist3DLogIdId_swigregister(EECHist3DLogIdId)
@@ -614,6 +671,8 @@ class EECHist3DIdLogId(EECHistBaseIdLogId):
         _eec.EECHist3DIdLogId_swiginit(self, _eec.new_EECHist3DIdLogId(nbins0, axis0_min, axis0_max, nbins1, axis1_min, axis1_max, nbins2, axis2_min, axis2_max, num_threads, error_bound, track_covariance, error_bound_include_overflows))
     __swig_destroy__ = _eec.delete_EECHist3DIdLogId
     get_hist_vars = _swig_new_instance_method(_eec.EECHist3DIdLogId_get_hist_vars)
+    get_var_bound = _swig_new_instance_method(_eec.EECHist3DIdLogId_get_var_bound)
+    get_covariance = _swig_new_instance_method(_eec.EECHist3DIdLogId_get_covariance)
 
 # Register EECHist3DIdLogId in _eec:
 _eec.EECHist3DIdLogId_swigregister(EECHist3DIdLogId)
@@ -629,9 +688,29 @@ class EECHist3DLogLogId(EECHistBaseLogLogId):
         _eec.EECHist3DLogLogId_swiginit(self, _eec.new_EECHist3DLogLogId(nbins0, axis0_min, axis0_max, nbins1, axis1_min, axis1_max, nbins2, axis2_min, axis2_max, num_threads, error_bound, track_covariance, error_bound_include_overflows))
     __swig_destroy__ = _eec.delete_EECHist3DLogLogId
     get_hist_vars = _swig_new_instance_method(_eec.EECHist3DLogLogId_get_hist_vars)
+    get_var_bound = _swig_new_instance_method(_eec.EECHist3DLogLogId_get_var_bound)
+    get_covariance = _swig_new_instance_method(_eec.EECHist3DLogLogId_get_covariance)
 
 # Register EECHist3DLogLogId in _eec:
 _eec.EECHist3DLogLogId_swigregister(EECHist3DLogLogId)
+
+class EECEvents(object):
+    r"""Proxy of C++ eec::EECEvents class."""
+
+    thisown = property(lambda x: x.this.own(), lambda x, v: x.this.own(v), doc="The membership flag")
+    __repr__ = _swig_repr
+
+    def __init__(self, nev=0, nfeatures=0):
+        r"""__init__(EECEvents self, std::size_t nev=0, unsigned int nfeatures=0) -> EECEvents"""
+        _eec.EECEvents_swiginit(self, _eec.new_EECEvents(nev, nfeatures))
+    events = _swig_new_instance_method(_eec.EECEvents_events)
+    mults = _swig_new_instance_method(_eec.EECEvents_mults)
+    weights = _swig_new_instance_method(_eec.EECEvents_weights)
+    add_event = _swig_new_instance_method(_eec.EECEvents_add_event)
+    __swig_destroy__ = _eec.delete_EECEvents
+
+# Register EECEvents in _eec:
+_eec.EECEvents_swigregister(EECEvents)
 
 class EECBase(object):
     r"""Proxy of C++ eec::EECBase class."""
@@ -690,24 +769,6 @@ class EECBase(object):
 
 # Register EECBase in _eec:
 _eec.EECBase_swigregister(EECBase)
-
-class EECEvents(object):
-    r"""Proxy of C++ eec::EECEvents class."""
-
-    thisown = property(lambda x: x.this.own(), lambda x, v: x.this.own(v), doc="The membership flag")
-    __repr__ = _swig_repr
-
-    def __init__(self, nev=0, nfeatures=0):
-        r"""__init__(EECEvents self, std::size_t nev=0, unsigned int nfeatures=0) -> EECEvents"""
-        _eec.EECEvents_swiginit(self, _eec.new_EECEvents(nev, nfeatures))
-    events = _swig_new_instance_method(_eec.EECEvents_events)
-    mults = _swig_new_instance_method(_eec.EECEvents_mults)
-    weights = _swig_new_instance_method(_eec.EECEvents_weights)
-    add_event = _swig_new_instance_method(_eec.EECEvents_add_event)
-    __swig_destroy__ = _eec.delete_EECEvents
-
-# Register EECEvents in _eec:
-_eec.EECEvents_swigregister(EECEvents)
 
 multinomial = _eec.multinomial
 class DynamicMultinomial(object):

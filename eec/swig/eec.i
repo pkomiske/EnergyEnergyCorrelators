@@ -38,15 +38,8 @@
 #define SWIG
 #endif
 
-// needed by numpy.i, harmless otherwise
-#define SWIG_FILE_WITH_INIT
-
 // needed to ensure bytes are returned 
 #define SWIG_PYTHON_STRICT_BYTE_CHAR
-
-// standard library headers we need
-#include <cstdlib>
-#include <cstring>
 
 // EEC library headers
 #include "EEC.hh"
@@ -58,11 +51,12 @@ using namespace eec;
 using namespace eec::hist;
 %}
 
-// include numpy typemaps
-%include numpy.i
-%init %{
-import_array();
-%}
+// include numpy support
+%include numpy_helpers.i
+
+// additional numpy typemaps
+%apply (double* IN_ARRAY2, int DIM1, int DIM2) {(double* particles, int mult, int nfeatures)}
+%apply (double* INPLACE_ARRAY2, int DIM1, int DIM2) {(double* particles_noconvert, int mult, int nfeatures)}
 
 %pythoncode %{
 __all__ = ['EECLongestSideId', 'EECLongestSideLog',
@@ -71,8 +65,6 @@ __all__ = ['EECLongestSideId', 'EECLongestSideLog',
 
            # these are used in histogram reduction
            'rebin', 'shrink', 'slice', 'shrink_and_rebin', 'slice_and_rebin']
-
-import numpy as _np
 %}
 
 // vector templates
@@ -84,15 +76,6 @@ import numpy as _np
 
 // allow threads in PairwiseEMD computation
 %threadallow EECNAMESPACE::EECBase::_batch_compute;
-;
-
-// numpy typemaps
-%apply (double* IN_ARRAY2, int DIM1, int DIM2) {(double* particles, int mult, int nfeatures)}
-%apply (double* INPLACE_ARRAY2, int DIM1, int DIM2) {(double* particles_noconvert, int mult, int nfeatures)}
-%apply (double** ARGOUTVIEWM_ARRAY1, int* DIM1) {(double** arr_out0, int* n0),
-                                                 (double** arr_out1, int* n1)}
-%apply (double** ARGOUTVIEWM_ARRAY3, int* DIM1, int* DIM2, int* DIM3) {(double** arr_out0, int* n0, int* n1, int* n2),
-                                                                       (double** arr_out1, int* m0, int* m1, int* m2)}
 
 // makes python class printable from a description method
 %define ADD_REPR_FROM_DESCRIPTION
@@ -148,37 +131,6 @@ import numpy as _np
   }
 %enddef
 
-// mallocs a 1D array of doubles of the specified size
-%define MALLOC_1D_VALUE_ARRAY(arr_out, n, size, nbytes)
-  *n = size;
-  size_t nbytes = size_t(*n)*sizeof(double);
-  *arr_out = (double *) malloc(nbytes);
-  if (*arr_out == NULL) {
-    PyErr_Format(PyExc_MemoryError, "Failed to allocate %zu bytes", nbytes);
-    return;
-  }
-%enddef
-
-// mallocs a 3D array of doubles of the specified size
-%define MALLOC_3D_VALUE_ARRAY(arr_out, n0, n1, n2, size0, size1, size2, nbytes)
-  *n0 = size0;
-  *n1 = size1;
-  *n2 = size2;
-  size_t nbytes = size_t(*n0)*size_t(*n1)*size_t(*n2)*sizeof(double);
-  *arr_out = (double *) malloc(nbytes);
-  if (*arr_out == NULL) {
-    PyErr_Format(PyExc_MemoryError, "Failed to allocate %zu bytes", nbytes);
-    return;
-  }
-%enddef
-
-%define RETURN_1DNUMPY_FROM_VECTOR(pyname, cppname, size)
-void pyname(double** arr_out0, int* n0) {
-  MALLOC_1D_VALUE_ARRAY(arr_out0, n0, size, nbytes)
-  memcpy(*arr_out0, $self->cppname().data(), nbytes);
-}
-%enddef
-
 // basic exception handling for all functions
 %exception {
   try { $action }
@@ -201,6 +153,10 @@ namespace hist {
   %rename(bin_edges) EECHistBase::npy_bin_edges;
   %rename(get_hist_vars) EECHist1D::npy_get_hist_vars;
   %rename(get_hist_vars) EECHist3D::npy_get_hist_vars;
+  %rename(get_var_bound) EECHist1D::npy_get_var_bound;
+  %rename(get_var_bound) EECHist3D::npy_get_var_bound;
+  %rename(get_covariance) EECHist1D::npy_get_covariance;
+  %rename(get_covariance) EECHist3D::npy_get_covariance;
 }
 
 // ignore/rename Multinomial functions
@@ -244,25 +200,47 @@ namespace boost {
 %include "EECHist1D.hh"
 %include "EECHist3D.hh"
 
+%define GET_HIST_TWO_QUANTITIES(cppfunc)
+try {
+  $self->cppfunc(*arr_out0, *arr_out1, hist_i, include_overflows);
+}
+catch (...) {
+  free(*arr_out0);
+  free(*arr_out1);
+  throw;
+}
+%enddef
+
+%define GET_HIST_ONE_QUANTITY(cppfunc)
+try {
+  $self->cppfunc(*arr_out0, hist_i, include_overflows);
+}
+catch (...) {
+  free(*arr_out0);
+  throw;
+}
+%enddef
+
 namespace EECNAMESPACE {
   namespace hist {
 
     // extend EECHistBase
     %extend EECHistBase {
       void npy_bin_centers(double** arr_out0, int* n0, int i = 0) {
-        MALLOC_1D_VALUE_ARRAY(arr_out0, n0, $self->nbins(i), nbytes)
-        memcpy(*arr_out0, $self->bin_centers(i).data(), nbytes);
+        COPY_1DARRAY_TO_NUMPY(arr_out0, n0, $self->nbins(i), nbytes, $self->bin_centers(i).data())
       }
 
       void npy_bin_edges(double** arr_out0, int* n0, int i = 0) {
-        MALLOC_1D_VALUE_ARRAY(arr_out0, n0, $self->nbins(i)+1, nbytes)
-        memcpy(*arr_out0, $self->bin_edges(i).data(), nbytes);
+        COPY_1DARRAY_TO_NUMPY(arr_out0, n0, $self->nbins(i)+1, nbytes, $self->bin_edges(i).data())
       }
 
       %pythoncode {
         def get_hist_errs(self, hist_i=0, include_overflows=True):
             hist, vars = self.get_hist_vars(hist_i, include_overflows)
             return hist, _np.sqrt(vars)
+
+        def get_error_bound(self, hist_i=0, include_overflows=True):
+            return _np.sqrt(self.get_var_bound(hist_i, include_overflows))
       }
     }
 
@@ -271,16 +249,22 @@ namespace EECNAMESPACE {
       void npy_get_hist_vars(double** arr_out0, int* n0,
                              double** arr_out1, int* n1,
                              unsigned hist_i = 0, bool include_overflows = true) {
-        MALLOC_1D_VALUE_ARRAY(arr_out0, n0, $self->hist_size(include_overflows), nbytes0)
-        MALLOC_1D_VALUE_ARRAY(arr_out1, n1, $self->hist_size(include_overflows), nbytes1)
-        try {
-          $self->get_hist_vars(*arr_out0, *arr_out1, hist_i, include_overflows);
-        }
-        catch (std::exception & e) {
-          free(*arr_out0);
-          free(*arr_out1);
-          throw;
-        }
+        MALLOC_1D_DOUBLE_ARRAY(arr_out0, n0, $self->hist_size(include_overflows), nbytes0)
+        MALLOC_1D_DOUBLE_ARRAY(arr_out1, n1, $self->hist_size(include_overflows), nbytes1)
+        GET_HIST_TWO_QUANTITIES(get_hist_vars)
+      }
+
+      void npy_get_var_bound(double** arr_out0, int* n0,
+                             unsigned hist_i = 0, bool include_overflows = true) {
+        MALLOC_1D_DOUBLE_ARRAY(arr_out0, n0, $self->hist_size(include_overflows), nbytes0)
+        GET_HIST_ONE_QUANTITY(get_var_bound)
+      }
+
+      void npy_get_covariance(double** arr_out0, int* n0, int* n1,
+                              unsigned hist_i = 0, bool include_overflows = true) {
+        std::size_t s($self->hist_size(include_overflows));
+        MALLOC_2D_DOUBLE_ARRAY(arr_out0, n0, n1, s, s, nbytes0)
+        GET_HIST_ONE_QUANTITY(get_covariance)
       }
     }
 
@@ -289,20 +273,34 @@ namespace EECNAMESPACE {
       void npy_get_hist_vars(double** arr_out0, int* n0, int* n1, int* n2,
                              double** arr_out1, int* m0, int* m1, int* m2,
                              unsigned hist_i = 0, bool include_overflows = true) {
-        MALLOC_3D_VALUE_ARRAY(arr_out0, n0, n1, n2, $self->hist_size(include_overflows, 0),
-                                                    $self->hist_size(include_overflows, 1),
-                                                    $self->hist_size(include_overflows, 2), nbytes0)
-        MALLOC_3D_VALUE_ARRAY(arr_out1, m0, m1, m2, $self->hist_size(include_overflows, 0),
-                                                    $self->hist_size(include_overflows, 1),
-                                                    $self->hist_size(include_overflows, 2), nbytes1)
-        try {
-          $self->get_hist_vars(*arr_out0, *arr_out1, hist_i, include_overflows);
-        }
-        catch (std::exception & e) {
-          free(*arr_out0);
-          free(*arr_out1);
-          throw;
-        }
+        MALLOC_3D_DOUBLE_ARRAY(arr_out0, n0, n1, n2, $self->hist_size(include_overflows, 0),
+                                                     $self->hist_size(include_overflows, 1),
+                                                     $self->hist_size(include_overflows, 2), nbytes0)
+        MALLOC_3D_DOUBLE_ARRAY(arr_out1, m0, m1, m2, $self->hist_size(include_overflows, 0),
+                                                     $self->hist_size(include_overflows, 1),
+                                                     $self->hist_size(include_overflows, 2), nbytes1)
+        GET_HIST_TWO_QUANTITIES(get_hist_vars)
+      }
+
+      void npy_get_var_bound(double** arr_out0, int* n0, int* n1, int* n2,
+                             unsigned hist_i = 0, bool include_overflows = true) {
+        MALLOC_3D_DOUBLE_ARRAY(arr_out0, n0, n1, n2, $self->hist_size(include_overflows, 0),
+                                                     $self->hist_size(include_overflows, 1),
+                                                     $self->hist_size(include_overflows, 2), nbytes0)
+        GET_HIST_ONE_QUANTITY(get_var_bound)
+      }
+
+      void npy_get_covariance(double** arr_out0, int* n0, int* n1, int* n2, int* n3, int* n4, int* n5,
+                          unsigned hist_i = 0, bool include_overflows = true) {
+        MALLOC_6D_DOUBLE_ARRAY(arr_out0, n0, n1, n2, n3, n4, n5,
+                                         $self->hist_size(include_overflows, 0),
+                                         $self->hist_size(include_overflows, 1),
+                                         $self->hist_size(include_overflows, 2),
+                                         $self->hist_size(include_overflows, 0),
+                                         $self->hist_size(include_overflows, 1),
+                                         $self->hist_size(include_overflows, 2),
+                               nbytes0)
+        GET_HIST_ONE_QUANTITY(get_covariance)
       }
     }
 
@@ -324,8 +322,8 @@ namespace EECNAMESPACE {
 } // namespace EECNAMESPACE
 
 // include EEC code and declare templates
-%include "EECBase.hh"
 %include "EECEvents.hh"
+%include "EECBase.hh"
 %include "EECMultinomial.hh"
 %include "EECLongestSide.hh"
 %include "EECTriangleOPE.hh"
