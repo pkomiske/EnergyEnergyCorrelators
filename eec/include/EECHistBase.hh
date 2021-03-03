@@ -112,7 +112,7 @@ public:
 
   std::size_t nhists() const { return hists_[0].size(); }
   std::size_t nbins(unsigned i = 0) const { return axis(i).size(); }
-  constexpr unsigned rank() const { return Traits::rank; }
+  static constexpr unsigned rank() { return Traits::rank; }
   std::size_t hist_size(bool include_overflows = true, int i = -1) const {
     if (i == -1) {
       if (include_overflows)
@@ -331,6 +331,14 @@ public:
     return covariance;
   }
 
+  // return covariance and errors as a pair of vectors
+  std::vector<double>
+  get_variance_bound(bool include_overflows = true, unsigned hist_i = 0) {
+    std::vector<double> variance_bound(hist_size(include_overflows));
+    get_variance_bound(variance_bound.data(), include_overflows, hist_i);
+    return variance_bound;
+  }
+
 // make low-level functions with pointers private
 private:
 
@@ -343,13 +351,8 @@ private:
     WeightedHist hist(combined_hist(hist_i));
 
     // calculate strides
-    axis::index_type extra(include_overflows ? 2 : 0);
-    std::array<std::size_t, hist.rank()> strides;
-    strides.back() = 1;
-    for (axis::index_type r = hist.rank() - 1; r > 0; r--)
-      strides[r-1] = strides[r] * (axis(r).size() + extra);
-    
-    extra = (include_overflows ? 1 : 0);
+    auto strides(construct_strides<rank()>(include_overflows));
+    axis::index_type extra(include_overflows ? 1 : 0);
     for (auto && x : bh::indexed(hist, get_coverage(include_overflows))) {
 
       // get linearized C-style index
@@ -370,18 +373,14 @@ private:
     WeightedHist hist(combined_hist(hist_i));
     CovarianceHist covariance_hist(combined_covariance(hist_i));
 
-    // calculate strides
-    axis::index_type extra(include_overflows ? 2 : 0);
-    std::array<std::size_t, covariance_hist.rank()> strides;
-    strides.back() = 1;
-    for (axis::index_type r = covariance_hist.rank() - 1; r > 0; r--)
-      strides[r-1] = strides[r] * (axis(r % rank()).size() + extra);
-
     // zero out the input
     std::fill(covariance, covariance + covariance_size(include_overflows), 0);
 
+    // calculate strides
+    auto strides(construct_strides<2*rank()>(include_overflows));
+
     // iterate over pairs of simple_hist bins
-    extra = (include_overflows ? 1 : 0);
+    axis::index_type extra(include_overflows ? 1 : 0);
     double event_count(event_counter());
     for (auto && x : bh::indexed(covariance_hist, get_coverage(include_overflows))) {
       if (x->value() == 0) continue;
@@ -417,13 +416,8 @@ private:
     // todo: make function for calculating strides
 
     // calculate strides
-    axis::index_type extra(include_overflows ? 2 : 0);
-    std::array<std::size_t, variance_bound_hist.rank()> strides;
-    strides.back() = 1;
-    for (axis::index_type r = variance_bound_hist.rank() - 1; r > 0; r--)
-      strides[r-1] = strides[r] * (axis(r).size() + extra);
-    
-    extra = (include_overflows ? 1 : 0);
+    auto strides(construct_strides<rank()>(include_overflows));
+    axis::index_type extra(include_overflows ? 1 : 0);
     for (auto && x : bh::indexed(variance_bound_hist, get_coverage(include_overflows))) {
 
       // get linearized C-style index
@@ -579,6 +573,19 @@ protected:
   }
 
 private:
+
+  template<unsigned N>
+  std::array<std::size_t, N> construct_strides(bool include_overflows) const {
+
+    // calculate strides
+    axis::index_type extra(include_overflows ? 2 : 0);
+    std::array<std::size_t, N> strides;
+    strides.back() = 1;
+    for (axis::index_type r = N - 1; r > 0; r--)
+      strides[r-1] = strides[r] * (axis(r % rank()).size() + extra);
+
+    return strides;
+  }
 
   void output_hist(std::ostream & os, int hist_i, int hist_level,
                                       int precision, bool include_overflows) const {

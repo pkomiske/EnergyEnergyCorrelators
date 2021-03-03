@@ -147,7 +147,11 @@ namespace EECNAMESPACE {
 namespace hist {
   %ignore EECHistBase::add;
   %ignore EECHistBase::combined_hist;
+  %ignore EECHistBase::combined_covariance;
+  %ignore EECHistBase::combined_variance_bound;
   %ignore EECHistBase::get_hist_vars;
+  %ignore EECHistBase::get_covariance;
+  %ignore EECHistBase::get_variance_bound;
   %rename(bin_centers_vec) EECHistBase::bin_centers;
   %rename(bin_edges_vec) EECHistBase::bin_edges;
   %rename(bin_centers) EECHistBase::npy_bin_centers;

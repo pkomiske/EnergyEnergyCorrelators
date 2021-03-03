@@ -2699,76 +2699,63 @@ SWIGINTERN PyObject *SWIG_PyStaticMethod_New(PyObject *SWIGUNUSEDPARM(self), PyO
 #define SWIGTYPE_p_Axis2 swig_types[3]
 #define SWIGTYPE_p_Base swig_types[4]
 #define SWIGTYPE_p_CovarianceHist swig_types[5]
-#define SWIGTYPE_p_EECHistTraitsT_eec__hist__EECHist1DT_boost__histogram__axis__transform__id_t_t__CovarianceHist swig_types[6]
-#define SWIGTYPE_p_EECHistTraitsT_eec__hist__EECHist1DT_boost__histogram__axis__transform__id_t_t__SimpleWeightedHist swig_types[7]
-#define SWIGTYPE_p_EECHistTraitsT_eec__hist__EECHist1DT_boost__histogram__axis__transform__log_t_t__CovarianceHist swig_types[8]
-#define SWIGTYPE_p_EECHistTraitsT_eec__hist__EECHist1DT_boost__histogram__axis__transform__log_t_t__SimpleWeightedHist swig_types[9]
-#define SWIGTYPE_p_EECHistTraitsT_eec__hist__EECHist3DT_boost__histogram__axis__transform__id_boost__histogram__axis__transform__id_boost__histogram__axis__transform__id_t_t__CovarianceHist swig_types[10]
-#define SWIGTYPE_p_EECHistTraitsT_eec__hist__EECHist3DT_boost__histogram__axis__transform__id_boost__histogram__axis__transform__id_boost__histogram__axis__transform__id_t_t__SimpleWeightedHist swig_types[11]
-#define SWIGTYPE_p_EECHistTraitsT_eec__hist__EECHist3DT_boost__histogram__axis__transform__id_boost__histogram__axis__transform__log_boost__histogram__axis__transform__id_t_t__CovarianceHist swig_types[12]
-#define SWIGTYPE_p_EECHistTraitsT_eec__hist__EECHist3DT_boost__histogram__axis__transform__id_boost__histogram__axis__transform__log_boost__histogram__axis__transform__id_t_t__SimpleWeightedHist swig_types[13]
-#define SWIGTYPE_p_EECHistTraitsT_eec__hist__EECHist3DT_boost__histogram__axis__transform__log_boost__histogram__axis__transform__id_boost__histogram__axis__transform__id_t_t__CovarianceHist swig_types[14]
-#define SWIGTYPE_p_EECHistTraitsT_eec__hist__EECHist3DT_boost__histogram__axis__transform__log_boost__histogram__axis__transform__id_boost__histogram__axis__transform__id_t_t__SimpleWeightedHist swig_types[15]
-#define SWIGTYPE_p_EECHistTraitsT_eec__hist__EECHist3DT_boost__histogram__axis__transform__log_boost__histogram__axis__transform__log_boost__histogram__axis__transform__id_t_t__CovarianceHist swig_types[16]
-#define SWIGTYPE_p_EECHistTraitsT_eec__hist__EECHist3DT_boost__histogram__axis__transform__log_boost__histogram__axis__transform__log_boost__histogram__axis__transform__id_t_t__SimpleWeightedHist swig_types[17]
-#define SWIGTYPE_p_Self swig_types[18]
-#define SWIGTYPE_p_SimpleWeightedHist swig_types[19]
-#define SWIGTYPE_p_Traits swig_types[20]
-#define SWIGTYPE_p_WeightedHist swig_types[21]
-#define SWIGTYPE_p_allocator_type swig_types[22]
-#define SWIGTYPE_p_boost__histogram__algorithm__reduce_command swig_types[23]
-#define SWIGTYPE_p_boost__histogram__axis__index_type swig_types[24]
-#define SWIGTYPE_p_boost__histogram__axis__transform__id swig_types[25]
-#define SWIGTYPE_p_boost__histogram__axis__transform__log swig_types[26]
-#define SWIGTYPE_p_boost__histogram__coverage swig_types[27]
-#define SWIGTYPE_p_char swig_types[28]
-#define SWIGTYPE_p_difference_type swig_types[29]
-#define SWIGTYPE_p_double swig_types[30]
-#define SWIGTYPE_p_eec__DynamicMultinomial swig_types[31]
-#define SWIGTYPE_p_eec__EECBase swig_types[32]
-#define SWIGTYPE_p_eec__EECEvents swig_types[33]
-#define SWIGTYPE_p_eec__EECLongestSideT_axis__id_t swig_types[34]
-#define SWIGTYPE_p_eec__EECLongestSideT_axis__log_t swig_types[35]
-#define SWIGTYPE_p_eec__EECTriangleOPET_axis__id_axis__id_axis__id_t swig_types[36]
-#define SWIGTYPE_p_eec__EECTriangleOPET_axis__id_axis__log_axis__id_t swig_types[37]
-#define SWIGTYPE_p_eec__EECTriangleOPET_axis__log_axis__id_axis__id_t swig_types[38]
-#define SWIGTYPE_p_eec__EECTriangleOPET_axis__log_axis__log_axis__id_t swig_types[39]
-#define SWIGTYPE_p_eec__MultinomialT_2_t swig_types[40]
-#define SWIGTYPE_p_eec__MultinomialT_3_t swig_types[41]
-#define SWIGTYPE_p_eec__MultinomialT_4_t swig_types[42]
-#define SWIGTYPE_p_eec__MultinomialT_5_t swig_types[43]
-#define SWIGTYPE_p_eec__MultinomialT_6_t swig_types[44]
-#define SWIGTYPE_p_eec__hist__EECHist1DT_boost__histogram__axis__transform__id_t swig_types[45]
-#define SWIGTYPE_p_eec__hist__EECHist1DT_boost__histogram__axis__transform__log_t swig_types[46]
-#define SWIGTYPE_p_eec__hist__EECHist3DT_boost__histogram__axis__transform__id_boost__histogram__axis__transform__id_boost__histogram__axis__transform__id_t swig_types[47]
-#define SWIGTYPE_p_eec__hist__EECHist3DT_boost__histogram__axis__transform__id_boost__histogram__axis__transform__log_boost__histogram__axis__transform__id_t swig_types[48]
-#define SWIGTYPE_p_eec__hist__EECHist3DT_boost__histogram__axis__transform__log_boost__histogram__axis__transform__id_boost__histogram__axis__transform__id_t swig_types[49]
-#define SWIGTYPE_p_eec__hist__EECHist3DT_boost__histogram__axis__transform__log_boost__histogram__axis__transform__log_boost__histogram__axis__transform__id_t swig_types[50]
-#define SWIGTYPE_p_eec__hist__EECHistBaseT_eec__hist__EECHist1DT_eec__hist__axis__id_t_t swig_types[51]
-#define SWIGTYPE_p_eec__hist__EECHistBaseT_eec__hist__EECHist1DT_eec__hist__axis__log_t_t swig_types[52]
-#define SWIGTYPE_p_eec__hist__EECHistBaseT_eec__hist__EECHist3DT_eec__hist__axis__id_eec__hist__axis__id_eec__hist__axis__id_t_t swig_types[53]
-#define SWIGTYPE_p_eec__hist__EECHistBaseT_eec__hist__EECHist3DT_eec__hist__axis__id_eec__hist__axis__log_eec__hist__axis__id_t_t swig_types[54]
-#define SWIGTYPE_p_eec__hist__EECHistBaseT_eec__hist__EECHist3DT_eec__hist__axis__log_eec__hist__axis__id_eec__hist__axis__id_t_t swig_types[55]
-#define SWIGTYPE_p_eec__hist__EECHistBaseT_eec__hist__EECHist3DT_eec__hist__axis__log_eec__hist__axis__log_eec__hist__axis__id_t_t swig_types[56]
-#define SWIGTYPE_p_int swig_types[57]
-#define SWIGTYPE_p_p_PyObject swig_types[58]
-#define SWIGTYPE_p_p_double swig_types[59]
-#define SWIGTYPE_p_size_type swig_types[60]
-#define SWIGTYPE_p_std__allocatorT_boost__histogram__algorithm__reduce_command_t swig_types[61]
-#define SWIGTYPE_p_std__allocatorT_double_t swig_types[62]
-#define SWIGTYPE_p_std__allocatorT_unsigned_int_t swig_types[63]
-#define SWIGTYPE_p_std__arrayT_unsigned_int_13_t swig_types[64]
-#define SWIGTYPE_p_std__invalid_argument swig_types[65]
-#define SWIGTYPE_p_std__ostream swig_types[66]
-#define SWIGTYPE_p_std__ostringstream swig_types[67]
-#define SWIGTYPE_p_std__vectorT_boost__histogram__algorithm__reduce_command_std__allocatorT_boost__histogram__algorithm__reduce_command_t_t swig_types[68]
-#define SWIGTYPE_p_std__vectorT_double_const_p_std__allocatorT_double_const_p_t_t swig_types[69]
-#define SWIGTYPE_p_std__vectorT_double_std__allocatorT_double_t_t swig_types[70]
-#define SWIGTYPE_p_std__vectorT_unsigned_int_std__allocatorT_unsigned_int_t_t swig_types[71]
-#define SWIGTYPE_p_swig__SwigPyIterator swig_types[72]
-#define SWIGTYPE_p_value_type swig_types[73]
-static swig_type_info *swig_types[75];
-static swig_module_info swig_module = {swig_types, 74, 0, 0, 0, 0};
+#define SWIGTYPE_p_Self swig_types[6]
+#define SWIGTYPE_p_SimpleWeightedHist swig_types[7]
+#define SWIGTYPE_p_Traits swig_types[8]
+#define SWIGTYPE_p_WeightedHist swig_types[9]
+#define SWIGTYPE_p_allocator_type swig_types[10]
+#define SWIGTYPE_p_boost__histogram__algorithm__reduce_command swig_types[11]
+#define SWIGTYPE_p_boost__histogram__axis__index_type swig_types[12]
+#define SWIGTYPE_p_boost__histogram__axis__transform__id swig_types[13]
+#define SWIGTYPE_p_boost__histogram__axis__transform__log swig_types[14]
+#define SWIGTYPE_p_boost__histogram__coverage swig_types[15]
+#define SWIGTYPE_p_char swig_types[16]
+#define SWIGTYPE_p_difference_type swig_types[17]
+#define SWIGTYPE_p_eec__DynamicMultinomial swig_types[18]
+#define SWIGTYPE_p_eec__EECBase swig_types[19]
+#define SWIGTYPE_p_eec__EECEvents swig_types[20]
+#define SWIGTYPE_p_eec__EECLongestSideT_axis__id_t swig_types[21]
+#define SWIGTYPE_p_eec__EECLongestSideT_axis__log_t swig_types[22]
+#define SWIGTYPE_p_eec__EECTriangleOPET_axis__id_axis__id_axis__id_t swig_types[23]
+#define SWIGTYPE_p_eec__EECTriangleOPET_axis__id_axis__log_axis__id_t swig_types[24]
+#define SWIGTYPE_p_eec__EECTriangleOPET_axis__log_axis__id_axis__id_t swig_types[25]
+#define SWIGTYPE_p_eec__EECTriangleOPET_axis__log_axis__log_axis__id_t swig_types[26]
+#define SWIGTYPE_p_eec__MultinomialT_2_t swig_types[27]
+#define SWIGTYPE_p_eec__MultinomialT_3_t swig_types[28]
+#define SWIGTYPE_p_eec__MultinomialT_4_t swig_types[29]
+#define SWIGTYPE_p_eec__MultinomialT_5_t swig_types[30]
+#define SWIGTYPE_p_eec__MultinomialT_6_t swig_types[31]
+#define SWIGTYPE_p_eec__hist__EECHist1DT_boost__histogram__axis__transform__id_t swig_types[32]
+#define SWIGTYPE_p_eec__hist__EECHist1DT_boost__histogram__axis__transform__log_t swig_types[33]
+#define SWIGTYPE_p_eec__hist__EECHist3DT_boost__histogram__axis__transform__id_boost__histogram__axis__transform__id_boost__histogram__axis__transform__id_t swig_types[34]
+#define SWIGTYPE_p_eec__hist__EECHist3DT_boost__histogram__axis__transform__id_boost__histogram__axis__transform__log_boost__histogram__axis__transform__id_t swig_types[35]
+#define SWIGTYPE_p_eec__hist__EECHist3DT_boost__histogram__axis__transform__log_boost__histogram__axis__transform__id_boost__histogram__axis__transform__id_t swig_types[36]
+#define SWIGTYPE_p_eec__hist__EECHist3DT_boost__histogram__axis__transform__log_boost__histogram__axis__transform__log_boost__histogram__axis__transform__id_t swig_types[37]
+#define SWIGTYPE_p_eec__hist__EECHistBaseT_eec__hist__EECHist1DT_eec__hist__axis__id_t_t swig_types[38]
+#define SWIGTYPE_p_eec__hist__EECHistBaseT_eec__hist__EECHist1DT_eec__hist__axis__log_t_t swig_types[39]
+#define SWIGTYPE_p_eec__hist__EECHistBaseT_eec__hist__EECHist3DT_eec__hist__axis__id_eec__hist__axis__id_eec__hist__axis__id_t_t swig_types[40]
+#define SWIGTYPE_p_eec__hist__EECHistBaseT_eec__hist__EECHist3DT_eec__hist__axis__id_eec__hist__axis__log_eec__hist__axis__id_t_t swig_types[41]
+#define SWIGTYPE_p_eec__hist__EECHistBaseT_eec__hist__EECHist3DT_eec__hist__axis__log_eec__hist__axis__id_eec__hist__axis__id_t_t swig_types[42]
+#define SWIGTYPE_p_eec__hist__EECHistBaseT_eec__hist__EECHist3DT_eec__hist__axis__log_eec__hist__axis__log_eec__hist__axis__id_t_t swig_types[43]
+#define SWIGTYPE_p_int swig_types[44]
+#define SWIGTYPE_p_p_PyObject swig_types[45]
+#define SWIGTYPE_p_p_double swig_types[46]
+#define SWIGTYPE_p_size_type swig_types[47]
+#define SWIGTYPE_p_std__allocatorT_boost__histogram__algorithm__reduce_command_t swig_types[48]
+#define SWIGTYPE_p_std__allocatorT_double_t swig_types[49]
+#define SWIGTYPE_p_std__allocatorT_unsigned_int_t swig_types[50]
+#define SWIGTYPE_p_std__arrayT_unsigned_int_13_t swig_types[51]
+#define SWIGTYPE_p_std__invalid_argument swig_types[52]
+#define SWIGTYPE_p_std__ostream swig_types[53]
+#define SWIGTYPE_p_std__ostringstream swig_types[54]
+#define SWIGTYPE_p_std__vectorT_boost__histogram__algorithm__reduce_command_std__allocatorT_boost__histogram__algorithm__reduce_command_t_t swig_types[55]
+#define SWIGTYPE_p_std__vectorT_double_const_p_std__allocatorT_double_const_p_t_t swig_types[56]
+#define SWIGTYPE_p_std__vectorT_double_std__allocatorT_double_t_t swig_types[57]
+#define SWIGTYPE_p_std__vectorT_unsigned_int_std__allocatorT_unsigned_int_t_t swig_types[58]
+#define SWIGTYPE_p_swig__SwigPyIterator swig_types[59]
+#define SWIGTYPE_p_value_type swig_types[60]
+static swig_type_info *swig_types[62];
+static swig_module_info swig_module = {swig_types, 61, 0, 0, 0, 0};
 #define SWIG_TypeQuery(name) SWIG_TypeQueryModule(&swig_module, &swig_module, name)
 #define SWIG_MangledTypeQuery(name) SWIG_MangledTypeQueryModule(&swig_module, &swig_module, name)
 
@@ -5535,7 +5522,7 @@ SWIGINTERN void eec_hist_EECHist1D_Sl_eec_hist_axis_id_Sg__npy_get_hist_vars(eec
   if (*arr_out1 == NULL)
     throw std::runtime_error("failed to allocate " + std::to_string(nbytes1) + " bytes");
 /*@SWIG@*/
-        /*@SWIG:eec/swig/eec.i,204,GET_HIST_TWO_QUANTITIES@*/
+        /*@SWIG:eec/swig/eec.i,208,GET_HIST_TWO_QUANTITIES@*/
 try {
   self->get_hist_vars(*arr_out0, *arr_out1, hist_i, include_overflows);
 }
@@ -5556,7 +5543,7 @@ SWIGINTERN void eec_hist_EECHist1D_Sl_eec_hist_axis_id_Sg__npy_get_covariance(ee
   if (*arr_out0 == NULL)
     throw std::runtime_error("failed to allocate " + std::to_string(nbytes0) + " bytes");
 /*@SWIG@*/
-        /*@SWIG:eec/swig/eec.i,215,GET_HIST_ONE_QUANTITY@*/
+        /*@SWIG:eec/swig/eec.i,219,GET_HIST_ONE_QUANTITY@*/
 try {
   self->get_covariance(*arr_out0, hist_i, include_overflows);
 }
@@ -5574,7 +5561,7 @@ SWIGINTERN void eec_hist_EECHist1D_Sl_eec_hist_axis_id_Sg__npy_get_variance_boun
   if (*arr_out0 == NULL)
     throw std::runtime_error("failed to allocate " + std::to_string(nbytes0) + " bytes");
 /*@SWIG@*/
-        /*@SWIG:eec/swig/eec.i,215,GET_HIST_ONE_QUANTITY@*/
+        /*@SWIG:eec/swig/eec.i,219,GET_HIST_ONE_QUANTITY@*/
 try {
   self->get_variance_bound(*arr_out0, hist_i, include_overflows);
 }
@@ -5599,7 +5586,7 @@ SWIGINTERN void eec_hist_EECHist1D_Sl_eec_hist_axis_log_Sg__npy_get_hist_vars(ee
   if (*arr_out1 == NULL)
     throw std::runtime_error("failed to allocate " + std::to_string(nbytes1) + " bytes");
 /*@SWIG@*/
-        /*@SWIG:eec/swig/eec.i,204,GET_HIST_TWO_QUANTITIES@*/
+        /*@SWIG:eec/swig/eec.i,208,GET_HIST_TWO_QUANTITIES@*/
 try {
   self->get_hist_vars(*arr_out0, *arr_out1, hist_i, include_overflows);
 }
@@ -5620,7 +5607,7 @@ SWIGINTERN void eec_hist_EECHist1D_Sl_eec_hist_axis_log_Sg__npy_get_covariance(e
   if (*arr_out0 == NULL)
     throw std::runtime_error("failed to allocate " + std::to_string(nbytes0) + " bytes");
 /*@SWIG@*/
-        /*@SWIG:eec/swig/eec.i,215,GET_HIST_ONE_QUANTITY@*/
+        /*@SWIG:eec/swig/eec.i,219,GET_HIST_ONE_QUANTITY@*/
 try {
   self->get_covariance(*arr_out0, hist_i, include_overflows);
 }
@@ -5638,7 +5625,7 @@ SWIGINTERN void eec_hist_EECHist1D_Sl_eec_hist_axis_log_Sg__npy_get_variance_bou
   if (*arr_out0 == NULL)
     throw std::runtime_error("failed to allocate " + std::to_string(nbytes0) + " bytes");
 /*@SWIG@*/
-        /*@SWIG:eec/swig/eec.i,215,GET_HIST_ONE_QUANTITY@*/
+        /*@SWIG:eec/swig/eec.i,219,GET_HIST_ONE_QUANTITY@*/
 try {
   self->get_variance_bound(*arr_out0, hist_i, include_overflows);
 }
@@ -5671,7 +5658,7 @@ SWIGINTERN void eec_hist_EECHist3D_Sl_eec_hist_axis_id_Sc_eec_hist_axis_id_Sc_ee
 /*@SWIG@*/
 
 
-        /*@SWIG:eec/swig/eec.i,204,GET_HIST_TWO_QUANTITIES@*/
+        /*@SWIG:eec/swig/eec.i,208,GET_HIST_TWO_QUANTITIES@*/
 try {
   self->get_hist_vars(*arr_out0, *arr_out1, hist_i, include_overflows);
 }
@@ -5702,7 +5689,7 @@ SWIGINTERN void eec_hist_EECHist3D_Sl_eec_hist_axis_id_Sc_eec_hist_axis_id_Sc_ee
 
 
 
-        /*@SWIG:eec/swig/eec.i,215,GET_HIST_ONE_QUANTITY@*/
+        /*@SWIG:eec/swig/eec.i,219,GET_HIST_ONE_QUANTITY@*/
 try {
   self->get_covariance(*arr_out0, hist_i, include_overflows);
 }
@@ -5724,7 +5711,7 @@ SWIGINTERN void eec_hist_EECHist3D_Sl_eec_hist_axis_id_Sc_eec_hist_axis_id_Sc_ee
 /*@SWIG@*/
 
 
-        /*@SWIG:eec/swig/eec.i,215,GET_HIST_ONE_QUANTITY@*/
+        /*@SWIG:eec/swig/eec.i,219,GET_HIST_ONE_QUANTITY@*/
 try {
   self->get_variance_bound(*arr_out0, hist_i, include_overflows);
 }
@@ -5757,7 +5744,7 @@ SWIGINTERN void eec_hist_EECHist3D_Sl_eec_hist_axis_log_Sc_eec_hist_axis_id_Sc_e
 /*@SWIG@*/
 
 
-        /*@SWIG:eec/swig/eec.i,204,GET_HIST_TWO_QUANTITIES@*/
+        /*@SWIG:eec/swig/eec.i,208,GET_HIST_TWO_QUANTITIES@*/
 try {
   self->get_hist_vars(*arr_out0, *arr_out1, hist_i, include_overflows);
 }
@@ -5788,7 +5775,7 @@ SWIGINTERN void eec_hist_EECHist3D_Sl_eec_hist_axis_log_Sc_eec_hist_axis_id_Sc_e
 
 
 
-        /*@SWIG:eec/swig/eec.i,215,GET_HIST_ONE_QUANTITY@*/
+        /*@SWIG:eec/swig/eec.i,219,GET_HIST_ONE_QUANTITY@*/
 try {
   self->get_covariance(*arr_out0, hist_i, include_overflows);
 }
@@ -5810,7 +5797,7 @@ SWIGINTERN void eec_hist_EECHist3D_Sl_eec_hist_axis_log_Sc_eec_hist_axis_id_Sc_e
 /*@SWIG@*/
 
 
-        /*@SWIG:eec/swig/eec.i,215,GET_HIST_ONE_QUANTITY@*/
+        /*@SWIG:eec/swig/eec.i,219,GET_HIST_ONE_QUANTITY@*/
 try {
   self->get_variance_bound(*arr_out0, hist_i, include_overflows);
 }
@@ -5843,7 +5830,7 @@ SWIGINTERN void eec_hist_EECHist3D_Sl_eec_hist_axis_id_Sc_eec_hist_axis_log_Sc_e
 /*@SWIG@*/
 
 
-        /*@SWIG:eec/swig/eec.i,204,GET_HIST_TWO_QUANTITIES@*/
+        /*@SWIG:eec/swig/eec.i,208,GET_HIST_TWO_QUANTITIES@*/
 try {
   self->get_hist_vars(*arr_out0, *arr_out1, hist_i, include_overflows);
 }
@@ -5874,7 +5861,7 @@ SWIGINTERN void eec_hist_EECHist3D_Sl_eec_hist_axis_id_Sc_eec_hist_axis_log_Sc_e
 
 
 
-        /*@SWIG:eec/swig/eec.i,215,GET_HIST_ONE_QUANTITY@*/
+        /*@SWIG:eec/swig/eec.i,219,GET_HIST_ONE_QUANTITY@*/
 try {
   self->get_covariance(*arr_out0, hist_i, include_overflows);
 }
@@ -5896,7 +5883,7 @@ SWIGINTERN void eec_hist_EECHist3D_Sl_eec_hist_axis_id_Sc_eec_hist_axis_log_Sc_e
 /*@SWIG@*/
 
 
-        /*@SWIG:eec/swig/eec.i,215,GET_HIST_ONE_QUANTITY@*/
+        /*@SWIG:eec/swig/eec.i,219,GET_HIST_ONE_QUANTITY@*/
 try {
   self->get_variance_bound(*arr_out0, hist_i, include_overflows);
 }
@@ -5929,7 +5916,7 @@ SWIGINTERN void eec_hist_EECHist3D_Sl_eec_hist_axis_log_Sc_eec_hist_axis_log_Sc_
 /*@SWIG@*/
 
 
-        /*@SWIG:eec/swig/eec.i,204,GET_HIST_TWO_QUANTITIES@*/
+        /*@SWIG:eec/swig/eec.i,208,GET_HIST_TWO_QUANTITIES@*/
 try {
   self->get_hist_vars(*arr_out0, *arr_out1, hist_i, include_overflows);
 }
@@ -5960,7 +5947,7 @@ SWIGINTERN void eec_hist_EECHist3D_Sl_eec_hist_axis_log_Sc_eec_hist_axis_log_Sc_
 
 
 
-        /*@SWIG:eec/swig/eec.i,215,GET_HIST_ONE_QUANTITY@*/
+        /*@SWIG:eec/swig/eec.i,219,GET_HIST_ONE_QUANTITY@*/
 try {
   self->get_covariance(*arr_out0, hist_i, include_overflows);
 }
@@ -5982,7 +5969,7 @@ SWIGINTERN void eec_hist_EECHist3D_Sl_eec_hist_axis_log_Sc_eec_hist_axis_log_Sc_
 /*@SWIG@*/
 
 
-        /*@SWIG:eec/swig/eec.i,215,GET_HIST_ONE_QUANTITY@*/
+        /*@SWIG:eec/swig/eec.i,219,GET_HIST_ONE_QUANTITY@*/
 try {
   self->get_variance_bound(*arr_out0, hist_i, include_overflows);
 }
@@ -16700,22 +16687,12 @@ fail:
 
 SWIGINTERN PyObject *_wrap_EECHistBase1DId_rank(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
   PyObject *resultobj = 0;
-  eec::hist::EECHistBase< eec::hist::EECHist1D< eec::hist::axis::id > > *arg1 = (eec::hist::EECHistBase< eec::hist::EECHist1D< eec::hist::axis::id > > *) 0 ;
-  void *argp1 = 0 ;
-  int res1 = 0 ;
-  PyObject *swig_obj[1] ;
   unsigned int result;
   
-  if (!args) SWIG_fail;
-  swig_obj[0] = args;
-  res1 = SWIG_ConvertPtr(swig_obj[0], &argp1,SWIGTYPE_p_eec__hist__EECHistBaseT_eec__hist__EECHist1DT_eec__hist__axis__id_t_t, 0 |  0 );
-  if (!SWIG_IsOK(res1)) {
-    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "EECHistBase1DId_rank" "', argument " "1"" of type '" "eec::hist::EECHistBase< eec::hist::EECHist1D< eec::hist::axis::id > > const *""'"); 
-  }
-  arg1 = reinterpret_cast< eec::hist::EECHistBase< eec::hist::EECHist1D< eec::hist::axis::id > > * >(argp1);
+  if (!SWIG_Python_UnpackTuple(args, "EECHistBase1DId_rank", 0, 0, 0)) SWIG_fail;
   {
     try {
-      result = (unsigned int)((eec::hist::EECHistBase< eec::hist::EECHist1D< eec::hist::axis::id > > const *)arg1)->rank(); 
+      result = (unsigned int)eec::hist::EECHistBase< eec::hist::EECHist1D< eec::hist::axis::id > >::SWIGTEMPLATEDISAMBIGUATOR rank(); 
     }
     /*@SWIG:/usr/local/Cellar/swig/4.0.2/share/swig/4.0.2/typemaps/exception.swg,58,SWIG_CATCH_STDEXCEPT@*/  /* catching std::exception  */
     catch (std::invalid_argument& e) {
@@ -17036,120 +17013,6 @@ SWIGINTERN PyObject *_wrap_EECHistBase1DId_sum(PyObject *SWIGUNUSEDPARM(self), P
     /*@SWIG@*/
   }
   resultobj = SWIG_From_double(static_cast< double >(result));
-  return resultobj;
-fail:
-  return NULL;
-}
-
-
-SWIGINTERN PyObject *_wrap_EECHistBase1DId_combined_covariance(PyObject *SWIGUNUSEDPARM(self), PyObject *args, PyObject *kwargs) {
-  PyObject *resultobj = 0;
-  eec::hist::EECHistBase< eec::hist::EECHist1D< eec::hist::axis::id > > *arg1 = (eec::hist::EECHistBase< eec::hist::EECHist1D< eec::hist::axis::id > > *) 0 ;
-  unsigned int arg2 = (unsigned int) 0 ;
-  void *argp1 = 0 ;
-  int res1 = 0 ;
-  unsigned int val2 ;
-  int ecode2 = 0 ;
-  PyObject * obj0 = 0 ;
-  PyObject * obj1 = 0 ;
-  char * kwnames[] = {
-    (char *)"self",  (char *)"hist_i",  NULL 
-  };
-  SwigValueWrapper< EECHistTraits< eec::hist::EECHist1D< boost::histogram::axis::transform::id > >::CovarianceHist > result;
-  
-  if (!PyArg_ParseTupleAndKeywords(args, kwargs, "O|O:EECHistBase1DId_combined_covariance", kwnames, &obj0, &obj1)) SWIG_fail;
-  res1 = SWIG_ConvertPtr(obj0, &argp1,SWIGTYPE_p_eec__hist__EECHistBaseT_eec__hist__EECHist1DT_eec__hist__axis__id_t_t, 0 |  0 );
-  if (!SWIG_IsOK(res1)) {
-    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "EECHistBase1DId_combined_covariance" "', argument " "1"" of type '" "eec::hist::EECHistBase< eec::hist::EECHist1D< eec::hist::axis::id > > const *""'"); 
-  }
-  arg1 = reinterpret_cast< eec::hist::EECHistBase< eec::hist::EECHist1D< eec::hist::axis::id > > * >(argp1);
-  if (obj1) {
-    ecode2 = SWIG_AsVal_unsigned_SS_int(obj1, &val2);
-    if (!SWIG_IsOK(ecode2)) {
-      SWIG_exception_fail(SWIG_ArgError(ecode2), "in method '" "EECHistBase1DId_combined_covariance" "', argument " "2"" of type '" "unsigned int""'");
-    } 
-    arg2 = static_cast< unsigned int >(val2);
-  }
-  {
-    try {
-      result = ((eec::hist::EECHistBase< eec::hist::EECHist1D< eec::hist::axis::id > > const *)arg1)->combined_covariance(arg2); 
-    }
-    /*@SWIG:/usr/local/Cellar/swig/4.0.2/share/swig/4.0.2/typemaps/exception.swg,58,SWIG_CATCH_STDEXCEPT@*/  /* catching std::exception  */
-    catch (std::invalid_argument& e) {
-      SWIG_exception_fail(SWIG_ValueError, e.what() );
-    } catch (std::domain_error& e) {
-      SWIG_exception_fail(SWIG_ValueError, e.what() );
-    } catch (std::overflow_error& e) {
-      SWIG_exception_fail(SWIG_OverflowError, e.what() );
-    } catch (std::out_of_range& e) {
-      SWIG_exception_fail(SWIG_IndexError, e.what() );
-    } catch (std::length_error& e) {
-      SWIG_exception_fail(SWIG_IndexError, e.what() );
-    } catch (std::runtime_error& e) {
-      SWIG_exception_fail(SWIG_RuntimeError, e.what() );
-    } catch (std::exception& e) {
-      SWIG_exception_fail(SWIG_SystemError, e.what() );
-    }
-    /*@SWIG@*/
-  }
-  resultobj = SWIG_NewPointerObj((new eec::hist::EECHistBase< eec::hist::EECHist1D< boost::histogram::axis::transform::id > >::CovarianceHist(static_cast< const eec::hist::EECHistBase< eec::hist::EECHist1D< boost::histogram::axis::transform::id > >::CovarianceHist& >(result))), SWIGTYPE_p_EECHistTraitsT_eec__hist__EECHist1DT_boost__histogram__axis__transform__id_t_t__CovarianceHist, SWIG_POINTER_OWN |  0 );
-  return resultobj;
-fail:
-  return NULL;
-}
-
-
-SWIGINTERN PyObject *_wrap_EECHistBase1DId_combined_variance_bound(PyObject *SWIGUNUSEDPARM(self), PyObject *args, PyObject *kwargs) {
-  PyObject *resultobj = 0;
-  eec::hist::EECHistBase< eec::hist::EECHist1D< eec::hist::axis::id > > *arg1 = (eec::hist::EECHistBase< eec::hist::EECHist1D< eec::hist::axis::id > > *) 0 ;
-  unsigned int arg2 = (unsigned int) 0 ;
-  void *argp1 = 0 ;
-  int res1 = 0 ;
-  unsigned int val2 ;
-  int ecode2 = 0 ;
-  PyObject * obj0 = 0 ;
-  PyObject * obj1 = 0 ;
-  char * kwnames[] = {
-    (char *)"self",  (char *)"hist_i",  NULL 
-  };
-  SwigValueWrapper< EECHistTraits< eec::hist::EECHist1D< boost::histogram::axis::transform::id > >::SimpleWeightedHist > result;
-  
-  if (!PyArg_ParseTupleAndKeywords(args, kwargs, "O|O:EECHistBase1DId_combined_variance_bound", kwnames, &obj0, &obj1)) SWIG_fail;
-  res1 = SWIG_ConvertPtr(obj0, &argp1,SWIGTYPE_p_eec__hist__EECHistBaseT_eec__hist__EECHist1DT_eec__hist__axis__id_t_t, 0 |  0 );
-  if (!SWIG_IsOK(res1)) {
-    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "EECHistBase1DId_combined_variance_bound" "', argument " "1"" of type '" "eec::hist::EECHistBase< eec::hist::EECHist1D< eec::hist::axis::id > > const *""'"); 
-  }
-  arg1 = reinterpret_cast< eec::hist::EECHistBase< eec::hist::EECHist1D< eec::hist::axis::id > > * >(argp1);
-  if (obj1) {
-    ecode2 = SWIG_AsVal_unsigned_SS_int(obj1, &val2);
-    if (!SWIG_IsOK(ecode2)) {
-      SWIG_exception_fail(SWIG_ArgError(ecode2), "in method '" "EECHistBase1DId_combined_variance_bound" "', argument " "2"" of type '" "unsigned int""'");
-    } 
-    arg2 = static_cast< unsigned int >(val2);
-  }
-  {
-    try {
-      result = ((eec::hist::EECHistBase< eec::hist::EECHist1D< eec::hist::axis::id > > const *)arg1)->combined_variance_bound(arg2); 
-    }
-    /*@SWIG:/usr/local/Cellar/swig/4.0.2/share/swig/4.0.2/typemaps/exception.swg,58,SWIG_CATCH_STDEXCEPT@*/  /* catching std::exception  */
-    catch (std::invalid_argument& e) {
-      SWIG_exception_fail(SWIG_ValueError, e.what() );
-    } catch (std::domain_error& e) {
-      SWIG_exception_fail(SWIG_ValueError, e.what() );
-    } catch (std::overflow_error& e) {
-      SWIG_exception_fail(SWIG_OverflowError, e.what() );
-    } catch (std::out_of_range& e) {
-      SWIG_exception_fail(SWIG_IndexError, e.what() );
-    } catch (std::length_error& e) {
-      SWIG_exception_fail(SWIG_IndexError, e.what() );
-    } catch (std::runtime_error& e) {
-      SWIG_exception_fail(SWIG_RuntimeError, e.what() );
-    } catch (std::exception& e) {
-      SWIG_exception_fail(SWIG_SystemError, e.what() );
-    }
-    /*@SWIG@*/
-  }
-  resultobj = SWIG_NewPointerObj((new eec::hist::EECHistBase< eec::hist::EECHist1D< boost::histogram::axis::transform::id > >::SimpleWeightedHist(static_cast< const eec::hist::EECHistBase< eec::hist::EECHist1D< boost::histogram::axis::transform::id > >::SimpleWeightedHist& >(result))), SWIGTYPE_p_EECHistTraitsT_eec__hist__EECHist1DT_boost__histogram__axis__transform__id_t_t__SimpleWeightedHist, SWIG_POINTER_OWN |  0 );
   return resultobj;
 fail:
   return NULL;
@@ -17543,158 +17406,6 @@ SWIGINTERN PyObject *_wrap_EECHistBase1DId_hists_as_text(PyObject *SWIGUNUSEDPAR
     /*@SWIG@*/
   }
   resultobj = SWIG_From_std_string(static_cast< std::string >(result));
-  return resultobj;
-fail:
-  return NULL;
-}
-
-
-SWIGINTERN PyObject *_wrap_EECHistBase1DId_get_covariance(PyObject *SWIGUNUSEDPARM(self), PyObject *args, PyObject *kwargs) {
-  PyObject *resultobj = 0;
-  eec::hist::EECHistBase< eec::hist::EECHist1D< eec::hist::axis::id > > *arg1 = (eec::hist::EECHistBase< eec::hist::EECHist1D< eec::hist::axis::id > > *) 0 ;
-  double *arg2 = (double *) 0 ;
-  unsigned int arg3 = (unsigned int) 0 ;
-  bool arg4 = (bool) true ;
-  void *argp1 = 0 ;
-  int res1 = 0 ;
-  void *argp2 = 0 ;
-  int res2 = 0 ;
-  unsigned int val3 ;
-  int ecode3 = 0 ;
-  bool val4 ;
-  int ecode4 = 0 ;
-  PyObject * obj0 = 0 ;
-  PyObject * obj1 = 0 ;
-  PyObject * obj2 = 0 ;
-  PyObject * obj3 = 0 ;
-  char * kwnames[] = {
-    (char *)"self",  (char *)"covariance",  (char *)"hist_i",  (char *)"include_overflows",  NULL 
-  };
-  
-  if (!PyArg_ParseTupleAndKeywords(args, kwargs, "OO|OO:EECHistBase1DId_get_covariance", kwnames, &obj0, &obj1, &obj2, &obj3)) SWIG_fail;
-  res1 = SWIG_ConvertPtr(obj0, &argp1,SWIGTYPE_p_eec__hist__EECHistBaseT_eec__hist__EECHist1DT_eec__hist__axis__id_t_t, 0 |  0 );
-  if (!SWIG_IsOK(res1)) {
-    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "EECHistBase1DId_get_covariance" "', argument " "1"" of type '" "eec::hist::EECHistBase< eec::hist::EECHist1D< eec::hist::axis::id > > const *""'"); 
-  }
-  arg1 = reinterpret_cast< eec::hist::EECHistBase< eec::hist::EECHist1D< eec::hist::axis::id > > * >(argp1);
-  res2 = SWIG_ConvertPtr(obj1, &argp2,SWIGTYPE_p_double, 0 |  0 );
-  if (!SWIG_IsOK(res2)) {
-    SWIG_exception_fail(SWIG_ArgError(res2), "in method '" "EECHistBase1DId_get_covariance" "', argument " "2"" of type '" "double *""'"); 
-  }
-  arg2 = reinterpret_cast< double * >(argp2);
-  if (obj2) {
-    ecode3 = SWIG_AsVal_unsigned_SS_int(obj2, &val3);
-    if (!SWIG_IsOK(ecode3)) {
-      SWIG_exception_fail(SWIG_ArgError(ecode3), "in method '" "EECHistBase1DId_get_covariance" "', argument " "3"" of type '" "unsigned int""'");
-    } 
-    arg3 = static_cast< unsigned int >(val3);
-  }
-  if (obj3) {
-    ecode4 = SWIG_AsVal_bool(obj3, &val4);
-    if (!SWIG_IsOK(ecode4)) {
-      SWIG_exception_fail(SWIG_ArgError(ecode4), "in method '" "EECHistBase1DId_get_covariance" "', argument " "4"" of type '" "bool""'");
-    } 
-    arg4 = static_cast< bool >(val4);
-  }
-  {
-    try {
-      ((eec::hist::EECHistBase< eec::hist::EECHist1D< eec::hist::axis::id > > const *)arg1)->get_covariance(arg2,arg3,arg4); 
-    }
-    /*@SWIG:/usr/local/Cellar/swig/4.0.2/share/swig/4.0.2/typemaps/exception.swg,58,SWIG_CATCH_STDEXCEPT@*/  /* catching std::exception  */
-    catch (std::invalid_argument& e) {
-      SWIG_exception_fail(SWIG_ValueError, e.what() );
-    } catch (std::domain_error& e) {
-      SWIG_exception_fail(SWIG_ValueError, e.what() );
-    } catch (std::overflow_error& e) {
-      SWIG_exception_fail(SWIG_OverflowError, e.what() );
-    } catch (std::out_of_range& e) {
-      SWIG_exception_fail(SWIG_IndexError, e.what() );
-    } catch (std::length_error& e) {
-      SWIG_exception_fail(SWIG_IndexError, e.what() );
-    } catch (std::runtime_error& e) {
-      SWIG_exception_fail(SWIG_RuntimeError, e.what() );
-    } catch (std::exception& e) {
-      SWIG_exception_fail(SWIG_SystemError, e.what() );
-    }
-    /*@SWIG@*/
-  }
-  resultobj = SWIG_Py_Void();
-  return resultobj;
-fail:
-  return NULL;
-}
-
-
-SWIGINTERN PyObject *_wrap_EECHistBase1DId_get_variance_bound(PyObject *SWIGUNUSEDPARM(self), PyObject *args, PyObject *kwargs) {
-  PyObject *resultobj = 0;
-  eec::hist::EECHistBase< eec::hist::EECHist1D< eec::hist::axis::id > > *arg1 = (eec::hist::EECHistBase< eec::hist::EECHist1D< eec::hist::axis::id > > *) 0 ;
-  double *arg2 = (double *) 0 ;
-  unsigned int arg3 = (unsigned int) 0 ;
-  bool arg4 = (bool) true ;
-  void *argp1 = 0 ;
-  int res1 = 0 ;
-  void *argp2 = 0 ;
-  int res2 = 0 ;
-  unsigned int val3 ;
-  int ecode3 = 0 ;
-  bool val4 ;
-  int ecode4 = 0 ;
-  PyObject * obj0 = 0 ;
-  PyObject * obj1 = 0 ;
-  PyObject * obj2 = 0 ;
-  PyObject * obj3 = 0 ;
-  char * kwnames[] = {
-    (char *)"self",  (char *)"variance_bound",  (char *)"hist_i",  (char *)"include_overflows",  NULL 
-  };
-  
-  if (!PyArg_ParseTupleAndKeywords(args, kwargs, "OO|OO:EECHistBase1DId_get_variance_bound", kwnames, &obj0, &obj1, &obj2, &obj3)) SWIG_fail;
-  res1 = SWIG_ConvertPtr(obj0, &argp1,SWIGTYPE_p_eec__hist__EECHistBaseT_eec__hist__EECHist1DT_eec__hist__axis__id_t_t, 0 |  0 );
-  if (!SWIG_IsOK(res1)) {
-    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "EECHistBase1DId_get_variance_bound" "', argument " "1"" of type '" "eec::hist::EECHistBase< eec::hist::EECHist1D< eec::hist::axis::id > > const *""'"); 
-  }
-  arg1 = reinterpret_cast< eec::hist::EECHistBase< eec::hist::EECHist1D< eec::hist::axis::id > > * >(argp1);
-  res2 = SWIG_ConvertPtr(obj1, &argp2,SWIGTYPE_p_double, 0 |  0 );
-  if (!SWIG_IsOK(res2)) {
-    SWIG_exception_fail(SWIG_ArgError(res2), "in method '" "EECHistBase1DId_get_variance_bound" "', argument " "2"" of type '" "double *""'"); 
-  }
-  arg2 = reinterpret_cast< double * >(argp2);
-  if (obj2) {
-    ecode3 = SWIG_AsVal_unsigned_SS_int(obj2, &val3);
-    if (!SWIG_IsOK(ecode3)) {
-      SWIG_exception_fail(SWIG_ArgError(ecode3), "in method '" "EECHistBase1DId_get_variance_bound" "', argument " "3"" of type '" "unsigned int""'");
-    } 
-    arg3 = static_cast< unsigned int >(val3);
-  }
-  if (obj3) {
-    ecode4 = SWIG_AsVal_bool(obj3, &val4);
-    if (!SWIG_IsOK(ecode4)) {
-      SWIG_exception_fail(SWIG_ArgError(ecode4), "in method '" "EECHistBase1DId_get_variance_bound" "', argument " "4"" of type '" "bool""'");
-    } 
-    arg4 = static_cast< bool >(val4);
-  }
-  {
-    try {
-      ((eec::hist::EECHistBase< eec::hist::EECHist1D< eec::hist::axis::id > > const *)arg1)->get_variance_bound(arg2,arg3,arg4); 
-    }
-    /*@SWIG:/usr/local/Cellar/swig/4.0.2/share/swig/4.0.2/typemaps/exception.swg,58,SWIG_CATCH_STDEXCEPT@*/  /* catching std::exception  */
-    catch (std::invalid_argument& e) {
-      SWIG_exception_fail(SWIG_ValueError, e.what() );
-    } catch (std::domain_error& e) {
-      SWIG_exception_fail(SWIG_ValueError, e.what() );
-    } catch (std::overflow_error& e) {
-      SWIG_exception_fail(SWIG_OverflowError, e.what() );
-    } catch (std::out_of_range& e) {
-      SWIG_exception_fail(SWIG_IndexError, e.what() );
-    } catch (std::length_error& e) {
-      SWIG_exception_fail(SWIG_IndexError, e.what() );
-    } catch (std::runtime_error& e) {
-      SWIG_exception_fail(SWIG_RuntimeError, e.what() );
-    } catch (std::exception& e) {
-      SWIG_exception_fail(SWIG_SystemError, e.what() );
-    }
-    /*@SWIG@*/
-  }
-  resultobj = SWIG_Py_Void();
   return resultobj;
 fail:
   return NULL;
@@ -18281,22 +17992,12 @@ fail:
 
 SWIGINTERN PyObject *_wrap_EECHistBase1DLog_rank(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
   PyObject *resultobj = 0;
-  eec::hist::EECHistBase< eec::hist::EECHist1D< eec::hist::axis::log > > *arg1 = (eec::hist::EECHistBase< eec::hist::EECHist1D< eec::hist::axis::log > > *) 0 ;
-  void *argp1 = 0 ;
-  int res1 = 0 ;
-  PyObject *swig_obj[1] ;
   unsigned int result;
   
-  if (!args) SWIG_fail;
-  swig_obj[0] = args;
-  res1 = SWIG_ConvertPtr(swig_obj[0], &argp1,SWIGTYPE_p_eec__hist__EECHistBaseT_eec__hist__EECHist1DT_eec__hist__axis__log_t_t, 0 |  0 );
-  if (!SWIG_IsOK(res1)) {
-    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "EECHistBase1DLog_rank" "', argument " "1"" of type '" "eec::hist::EECHistBase< eec::hist::EECHist1D< eec::hist::axis::log > > const *""'"); 
-  }
-  arg1 = reinterpret_cast< eec::hist::EECHistBase< eec::hist::EECHist1D< eec::hist::axis::log > > * >(argp1);
+  if (!SWIG_Python_UnpackTuple(args, "EECHistBase1DLog_rank", 0, 0, 0)) SWIG_fail;
   {
     try {
-      result = (unsigned int)((eec::hist::EECHistBase< eec::hist::EECHist1D< eec::hist::axis::log > > const *)arg1)->rank(); 
+      result = (unsigned int)eec::hist::EECHistBase< eec::hist::EECHist1D< eec::hist::axis::log > >::SWIGTEMPLATEDISAMBIGUATOR rank(); 
     }
     /*@SWIG:/usr/local/Cellar/swig/4.0.2/share/swig/4.0.2/typemaps/exception.swg,58,SWIG_CATCH_STDEXCEPT@*/  /* catching std::exception  */
     catch (std::invalid_argument& e) {
@@ -18617,120 +18318,6 @@ SWIGINTERN PyObject *_wrap_EECHistBase1DLog_sum(PyObject *SWIGUNUSEDPARM(self), 
     /*@SWIG@*/
   }
   resultobj = SWIG_From_double(static_cast< double >(result));
-  return resultobj;
-fail:
-  return NULL;
-}
-
-
-SWIGINTERN PyObject *_wrap_EECHistBase1DLog_combined_covariance(PyObject *SWIGUNUSEDPARM(self), PyObject *args, PyObject *kwargs) {
-  PyObject *resultobj = 0;
-  eec::hist::EECHistBase< eec::hist::EECHist1D< eec::hist::axis::log > > *arg1 = (eec::hist::EECHistBase< eec::hist::EECHist1D< eec::hist::axis::log > > *) 0 ;
-  unsigned int arg2 = (unsigned int) 0 ;
-  void *argp1 = 0 ;
-  int res1 = 0 ;
-  unsigned int val2 ;
-  int ecode2 = 0 ;
-  PyObject * obj0 = 0 ;
-  PyObject * obj1 = 0 ;
-  char * kwnames[] = {
-    (char *)"self",  (char *)"hist_i",  NULL 
-  };
-  SwigValueWrapper< EECHistTraits< eec::hist::EECHist1D< boost::histogram::axis::transform::log > >::CovarianceHist > result;
-  
-  if (!PyArg_ParseTupleAndKeywords(args, kwargs, "O|O:EECHistBase1DLog_combined_covariance", kwnames, &obj0, &obj1)) SWIG_fail;
-  res1 = SWIG_ConvertPtr(obj0, &argp1,SWIGTYPE_p_eec__hist__EECHistBaseT_eec__hist__EECHist1DT_eec__hist__axis__log_t_t, 0 |  0 );
-  if (!SWIG_IsOK(res1)) {
-    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "EECHistBase1DLog_combined_covariance" "', argument " "1"" of type '" "eec::hist::EECHistBase< eec::hist::EECHist1D< eec::hist::axis::log > > const *""'"); 
-  }
-  arg1 = reinterpret_cast< eec::hist::EECHistBase< eec::hist::EECHist1D< eec::hist::axis::log > > * >(argp1);
-  if (obj1) {
-    ecode2 = SWIG_AsVal_unsigned_SS_int(obj1, &val2);
-    if (!SWIG_IsOK(ecode2)) {
-      SWIG_exception_fail(SWIG_ArgError(ecode2), "in method '" "EECHistBase1DLog_combined_covariance" "', argument " "2"" of type '" "unsigned int""'");
-    } 
-    arg2 = static_cast< unsigned int >(val2);
-  }
-  {
-    try {
-      result = ((eec::hist::EECHistBase< eec::hist::EECHist1D< eec::hist::axis::log > > const *)arg1)->combined_covariance(arg2); 
-    }
-    /*@SWIG:/usr/local/Cellar/swig/4.0.2/share/swig/4.0.2/typemaps/exception.swg,58,SWIG_CATCH_STDEXCEPT@*/  /* catching std::exception  */
-    catch (std::invalid_argument& e) {
-      SWIG_exception_fail(SWIG_ValueError, e.what() );
-    } catch (std::domain_error& e) {
-      SWIG_exception_fail(SWIG_ValueError, e.what() );
-    } catch (std::overflow_error& e) {
-      SWIG_exception_fail(SWIG_OverflowError, e.what() );
-    } catch (std::out_of_range& e) {
-      SWIG_exception_fail(SWIG_IndexError, e.what() );
-    } catch (std::length_error& e) {
-      SWIG_exception_fail(SWIG_IndexError, e.what() );
-    } catch (std::runtime_error& e) {
-      SWIG_exception_fail(SWIG_RuntimeError, e.what() );
-    } catch (std::exception& e) {
-      SWIG_exception_fail(SWIG_SystemError, e.what() );
-    }
-    /*@SWIG@*/
-  }
-  resultobj = SWIG_NewPointerObj((new eec::hist::EECHistBase< eec::hist::EECHist1D< boost::histogram::axis::transform::log > >::CovarianceHist(static_cast< const eec::hist::EECHistBase< eec::hist::EECHist1D< boost::histogram::axis::transform::log > >::CovarianceHist& >(result))), SWIGTYPE_p_EECHistTraitsT_eec__hist__EECHist1DT_boost__histogram__axis__transform__log_t_t__CovarianceHist, SWIG_POINTER_OWN |  0 );
-  return resultobj;
-fail:
-  return NULL;
-}
-
-
-SWIGINTERN PyObject *_wrap_EECHistBase1DLog_combined_variance_bound(PyObject *SWIGUNUSEDPARM(self), PyObject *args, PyObject *kwargs) {
-  PyObject *resultobj = 0;
-  eec::hist::EECHistBase< eec::hist::EECHist1D< eec::hist::axis::log > > *arg1 = (eec::hist::EECHistBase< eec::hist::EECHist1D< eec::hist::axis::log > > *) 0 ;
-  unsigned int arg2 = (unsigned int) 0 ;
-  void *argp1 = 0 ;
-  int res1 = 0 ;
-  unsigned int val2 ;
-  int ecode2 = 0 ;
-  PyObject * obj0 = 0 ;
-  PyObject * obj1 = 0 ;
-  char * kwnames[] = {
-    (char *)"self",  (char *)"hist_i",  NULL 
-  };
-  SwigValueWrapper< EECHistTraits< eec::hist::EECHist1D< boost::histogram::axis::transform::log > >::SimpleWeightedHist > result;
-  
-  if (!PyArg_ParseTupleAndKeywords(args, kwargs, "O|O:EECHistBase1DLog_combined_variance_bound", kwnames, &obj0, &obj1)) SWIG_fail;
-  res1 = SWIG_ConvertPtr(obj0, &argp1,SWIGTYPE_p_eec__hist__EECHistBaseT_eec__hist__EECHist1DT_eec__hist__axis__log_t_t, 0 |  0 );
-  if (!SWIG_IsOK(res1)) {
-    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "EECHistBase1DLog_combined_variance_bound" "', argument " "1"" of type '" "eec::hist::EECHistBase< eec::hist::EECHist1D< eec::hist::axis::log > > const *""'"); 
-  }
-  arg1 = reinterpret_cast< eec::hist::EECHistBase< eec::hist::EECHist1D< eec::hist::axis::log > > * >(argp1);
-  if (obj1) {
-    ecode2 = SWIG_AsVal_unsigned_SS_int(obj1, &val2);
-    if (!SWIG_IsOK(ecode2)) {
-      SWIG_exception_fail(SWIG_ArgError(ecode2), "in method '" "EECHistBase1DLog_combined_variance_bound" "', argument " "2"" of type '" "unsigned int""'");
-    } 
-    arg2 = static_cast< unsigned int >(val2);
-  }
-  {
-    try {
-      result = ((eec::hist::EECHistBase< eec::hist::EECHist1D< eec::hist::axis::log > > const *)arg1)->combined_variance_bound(arg2); 
-    }
-    /*@SWIG:/usr/local/Cellar/swig/4.0.2/share/swig/4.0.2/typemaps/exception.swg,58,SWIG_CATCH_STDEXCEPT@*/  /* catching std::exception  */
-    catch (std::invalid_argument& e) {
-      SWIG_exception_fail(SWIG_ValueError, e.what() );
-    } catch (std::domain_error& e) {
-      SWIG_exception_fail(SWIG_ValueError, e.what() );
-    } catch (std::overflow_error& e) {
-      SWIG_exception_fail(SWIG_OverflowError, e.what() );
-    } catch (std::out_of_range& e) {
-      SWIG_exception_fail(SWIG_IndexError, e.what() );
-    } catch (std::length_error& e) {
-      SWIG_exception_fail(SWIG_IndexError, e.what() );
-    } catch (std::runtime_error& e) {
-      SWIG_exception_fail(SWIG_RuntimeError, e.what() );
-    } catch (std::exception& e) {
-      SWIG_exception_fail(SWIG_SystemError, e.what() );
-    }
-    /*@SWIG@*/
-  }
-  resultobj = SWIG_NewPointerObj((new eec::hist::EECHistBase< eec::hist::EECHist1D< boost::histogram::axis::transform::log > >::SimpleWeightedHist(static_cast< const eec::hist::EECHistBase< eec::hist::EECHist1D< boost::histogram::axis::transform::log > >::SimpleWeightedHist& >(result))), SWIGTYPE_p_EECHistTraitsT_eec__hist__EECHist1DT_boost__histogram__axis__transform__log_t_t__SimpleWeightedHist, SWIG_POINTER_OWN |  0 );
   return resultobj;
 fail:
   return NULL;
@@ -19124,158 +18711,6 @@ SWIGINTERN PyObject *_wrap_EECHistBase1DLog_hists_as_text(PyObject *SWIGUNUSEDPA
     /*@SWIG@*/
   }
   resultobj = SWIG_From_std_string(static_cast< std::string >(result));
-  return resultobj;
-fail:
-  return NULL;
-}
-
-
-SWIGINTERN PyObject *_wrap_EECHistBase1DLog_get_covariance(PyObject *SWIGUNUSEDPARM(self), PyObject *args, PyObject *kwargs) {
-  PyObject *resultobj = 0;
-  eec::hist::EECHistBase< eec::hist::EECHist1D< eec::hist::axis::log > > *arg1 = (eec::hist::EECHistBase< eec::hist::EECHist1D< eec::hist::axis::log > > *) 0 ;
-  double *arg2 = (double *) 0 ;
-  unsigned int arg3 = (unsigned int) 0 ;
-  bool arg4 = (bool) true ;
-  void *argp1 = 0 ;
-  int res1 = 0 ;
-  void *argp2 = 0 ;
-  int res2 = 0 ;
-  unsigned int val3 ;
-  int ecode3 = 0 ;
-  bool val4 ;
-  int ecode4 = 0 ;
-  PyObject * obj0 = 0 ;
-  PyObject * obj1 = 0 ;
-  PyObject * obj2 = 0 ;
-  PyObject * obj3 = 0 ;
-  char * kwnames[] = {
-    (char *)"self",  (char *)"covariance",  (char *)"hist_i",  (char *)"include_overflows",  NULL 
-  };
-  
-  if (!PyArg_ParseTupleAndKeywords(args, kwargs, "OO|OO:EECHistBase1DLog_get_covariance", kwnames, &obj0, &obj1, &obj2, &obj3)) SWIG_fail;
-  res1 = SWIG_ConvertPtr(obj0, &argp1,SWIGTYPE_p_eec__hist__EECHistBaseT_eec__hist__EECHist1DT_eec__hist__axis__log_t_t, 0 |  0 );
-  if (!SWIG_IsOK(res1)) {
-    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "EECHistBase1DLog_get_covariance" "', argument " "1"" of type '" "eec::hist::EECHistBase< eec::hist::EECHist1D< eec::hist::axis::log > > const *""'"); 
-  }
-  arg1 = reinterpret_cast< eec::hist::EECHistBase< eec::hist::EECHist1D< eec::hist::axis::log > > * >(argp1);
-  res2 = SWIG_ConvertPtr(obj1, &argp2,SWIGTYPE_p_double, 0 |  0 );
-  if (!SWIG_IsOK(res2)) {
-    SWIG_exception_fail(SWIG_ArgError(res2), "in method '" "EECHistBase1DLog_get_covariance" "', argument " "2"" of type '" "double *""'"); 
-  }
-  arg2 = reinterpret_cast< double * >(argp2);
-  if (obj2) {
-    ecode3 = SWIG_AsVal_unsigned_SS_int(obj2, &val3);
-    if (!SWIG_IsOK(ecode3)) {
-      SWIG_exception_fail(SWIG_ArgError(ecode3), "in method '" "EECHistBase1DLog_get_covariance" "', argument " "3"" of type '" "unsigned int""'");
-    } 
-    arg3 = static_cast< unsigned int >(val3);
-  }
-  if (obj3) {
-    ecode4 = SWIG_AsVal_bool(obj3, &val4);
-    if (!SWIG_IsOK(ecode4)) {
-      SWIG_exception_fail(SWIG_ArgError(ecode4), "in method '" "EECHistBase1DLog_get_covariance" "', argument " "4"" of type '" "bool""'");
-    } 
-    arg4 = static_cast< bool >(val4);
-  }
-  {
-    try {
-      ((eec::hist::EECHistBase< eec::hist::EECHist1D< eec::hist::axis::log > > const *)arg1)->get_covariance(arg2,arg3,arg4); 
-    }
-    /*@SWIG:/usr/local/Cellar/swig/4.0.2/share/swig/4.0.2/typemaps/exception.swg,58,SWIG_CATCH_STDEXCEPT@*/  /* catching std::exception  */
-    catch (std::invalid_argument& e) {
-      SWIG_exception_fail(SWIG_ValueError, e.what() );
-    } catch (std::domain_error& e) {
-      SWIG_exception_fail(SWIG_ValueError, e.what() );
-    } catch (std::overflow_error& e) {
-      SWIG_exception_fail(SWIG_OverflowError, e.what() );
-    } catch (std::out_of_range& e) {
-      SWIG_exception_fail(SWIG_IndexError, e.what() );
-    } catch (std::length_error& e) {
-      SWIG_exception_fail(SWIG_IndexError, e.what() );
-    } catch (std::runtime_error& e) {
-      SWIG_exception_fail(SWIG_RuntimeError, e.what() );
-    } catch (std::exception& e) {
-      SWIG_exception_fail(SWIG_SystemError, e.what() );
-    }
-    /*@SWIG@*/
-  }
-  resultobj = SWIG_Py_Void();
-  return resultobj;
-fail:
-  return NULL;
-}
-
-
-SWIGINTERN PyObject *_wrap_EECHistBase1DLog_get_variance_bound(PyObject *SWIGUNUSEDPARM(self), PyObject *args, PyObject *kwargs) {
-  PyObject *resultobj = 0;
-  eec::hist::EECHistBase< eec::hist::EECHist1D< eec::hist::axis::log > > *arg1 = (eec::hist::EECHistBase< eec::hist::EECHist1D< eec::hist::axis::log > > *) 0 ;
-  double *arg2 = (double *) 0 ;
-  unsigned int arg3 = (unsigned int) 0 ;
-  bool arg4 = (bool) true ;
-  void *argp1 = 0 ;
-  int res1 = 0 ;
-  void *argp2 = 0 ;
-  int res2 = 0 ;
-  unsigned int val3 ;
-  int ecode3 = 0 ;
-  bool val4 ;
-  int ecode4 = 0 ;
-  PyObject * obj0 = 0 ;
-  PyObject * obj1 = 0 ;
-  PyObject * obj2 = 0 ;
-  PyObject * obj3 = 0 ;
-  char * kwnames[] = {
-    (char *)"self",  (char *)"variance_bound",  (char *)"hist_i",  (char *)"include_overflows",  NULL 
-  };
-  
-  if (!PyArg_ParseTupleAndKeywords(args, kwargs, "OO|OO:EECHistBase1DLog_get_variance_bound", kwnames, &obj0, &obj1, &obj2, &obj3)) SWIG_fail;
-  res1 = SWIG_ConvertPtr(obj0, &argp1,SWIGTYPE_p_eec__hist__EECHistBaseT_eec__hist__EECHist1DT_eec__hist__axis__log_t_t, 0 |  0 );
-  if (!SWIG_IsOK(res1)) {
-    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "EECHistBase1DLog_get_variance_bound" "', argument " "1"" of type '" "eec::hist::EECHistBase< eec::hist::EECHist1D< eec::hist::axis::log > > const *""'"); 
-  }
-  arg1 = reinterpret_cast< eec::hist::EECHistBase< eec::hist::EECHist1D< eec::hist::axis::log > > * >(argp1);
-  res2 = SWIG_ConvertPtr(obj1, &argp2,SWIGTYPE_p_double, 0 |  0 );
-  if (!SWIG_IsOK(res2)) {
-    SWIG_exception_fail(SWIG_ArgError(res2), "in method '" "EECHistBase1DLog_get_variance_bound" "', argument " "2"" of type '" "double *""'"); 
-  }
-  arg2 = reinterpret_cast< double * >(argp2);
-  if (obj2) {
-    ecode3 = SWIG_AsVal_unsigned_SS_int(obj2, &val3);
-    if (!SWIG_IsOK(ecode3)) {
-      SWIG_exception_fail(SWIG_ArgError(ecode3), "in method '" "EECHistBase1DLog_get_variance_bound" "', argument " "3"" of type '" "unsigned int""'");
-    } 
-    arg3 = static_cast< unsigned int >(val3);
-  }
-  if (obj3) {
-    ecode4 = SWIG_AsVal_bool(obj3, &val4);
-    if (!SWIG_IsOK(ecode4)) {
-      SWIG_exception_fail(SWIG_ArgError(ecode4), "in method '" "EECHistBase1DLog_get_variance_bound" "', argument " "4"" of type '" "bool""'");
-    } 
-    arg4 = static_cast< bool >(val4);
-  }
-  {
-    try {
-      ((eec::hist::EECHistBase< eec::hist::EECHist1D< eec::hist::axis::log > > const *)arg1)->get_variance_bound(arg2,arg3,arg4); 
-    }
-    /*@SWIG:/usr/local/Cellar/swig/4.0.2/share/swig/4.0.2/typemaps/exception.swg,58,SWIG_CATCH_STDEXCEPT@*/  /* catching std::exception  */
-    catch (std::invalid_argument& e) {
-      SWIG_exception_fail(SWIG_ValueError, e.what() );
-    } catch (std::domain_error& e) {
-      SWIG_exception_fail(SWIG_ValueError, e.what() );
-    } catch (std::overflow_error& e) {
-      SWIG_exception_fail(SWIG_OverflowError, e.what() );
-    } catch (std::out_of_range& e) {
-      SWIG_exception_fail(SWIG_IndexError, e.what() );
-    } catch (std::length_error& e) {
-      SWIG_exception_fail(SWIG_IndexError, e.what() );
-    } catch (std::runtime_error& e) {
-      SWIG_exception_fail(SWIG_RuntimeError, e.what() );
-    } catch (std::exception& e) {
-      SWIG_exception_fail(SWIG_SystemError, e.what() );
-    }
-    /*@SWIG@*/
-  }
-  resultobj = SWIG_Py_Void();
   return resultobj;
 fail:
   return NULL;
@@ -19862,22 +19297,12 @@ fail:
 
 SWIGINTERN PyObject *_wrap_EECHistBaseIdIdId_rank(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
   PyObject *resultobj = 0;
-  eec::hist::EECHistBase< eec::hist::EECHist3D< eec::hist::axis::id,eec::hist::axis::id,eec::hist::axis::id > > *arg1 = (eec::hist::EECHistBase< eec::hist::EECHist3D< eec::hist::axis::id,eec::hist::axis::id,eec::hist::axis::id > > *) 0 ;
-  void *argp1 = 0 ;
-  int res1 = 0 ;
-  PyObject *swig_obj[1] ;
   unsigned int result;
   
-  if (!args) SWIG_fail;
-  swig_obj[0] = args;
-  res1 = SWIG_ConvertPtr(swig_obj[0], &argp1,SWIGTYPE_p_eec__hist__EECHistBaseT_eec__hist__EECHist3DT_eec__hist__axis__id_eec__hist__axis__id_eec__hist__axis__id_t_t, 0 |  0 );
-  if (!SWIG_IsOK(res1)) {
-    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "EECHistBaseIdIdId_rank" "', argument " "1"" of type '" "eec::hist::EECHistBase< eec::hist::EECHist3D< eec::hist::axis::id,eec::hist::axis::id,eec::hist::axis::id > > const *""'"); 
-  }
-  arg1 = reinterpret_cast< eec::hist::EECHistBase< eec::hist::EECHist3D< eec::hist::axis::id,eec::hist::axis::id,eec::hist::axis::id > > * >(argp1);
+  if (!SWIG_Python_UnpackTuple(args, "EECHistBaseIdIdId_rank", 0, 0, 0)) SWIG_fail;
   {
     try {
-      result = (unsigned int)((eec::hist::EECHistBase< eec::hist::EECHist3D< eec::hist::axis::id,eec::hist::axis::id,eec::hist::axis::id > > const *)arg1)->rank(); 
+      result = (unsigned int)eec::hist::EECHistBase< eec::hist::EECHist3D< eec::hist::axis::id,eec::hist::axis::id,eec::hist::axis::id > >::SWIGTEMPLATEDISAMBIGUATOR rank(); 
     }
     /*@SWIG:/usr/local/Cellar/swig/4.0.2/share/swig/4.0.2/typemaps/exception.swg,58,SWIG_CATCH_STDEXCEPT@*/  /* catching std::exception  */
     catch (std::invalid_argument& e) {
@@ -20198,120 +19623,6 @@ SWIGINTERN PyObject *_wrap_EECHistBaseIdIdId_sum(PyObject *SWIGUNUSEDPARM(self),
     /*@SWIG@*/
   }
   resultobj = SWIG_From_double(static_cast< double >(result));
-  return resultobj;
-fail:
-  return NULL;
-}
-
-
-SWIGINTERN PyObject *_wrap_EECHistBaseIdIdId_combined_covariance(PyObject *SWIGUNUSEDPARM(self), PyObject *args, PyObject *kwargs) {
-  PyObject *resultobj = 0;
-  eec::hist::EECHistBase< eec::hist::EECHist3D< eec::hist::axis::id,eec::hist::axis::id,eec::hist::axis::id > > *arg1 = (eec::hist::EECHistBase< eec::hist::EECHist3D< eec::hist::axis::id,eec::hist::axis::id,eec::hist::axis::id > > *) 0 ;
-  unsigned int arg2 = (unsigned int) 0 ;
-  void *argp1 = 0 ;
-  int res1 = 0 ;
-  unsigned int val2 ;
-  int ecode2 = 0 ;
-  PyObject * obj0 = 0 ;
-  PyObject * obj1 = 0 ;
-  char * kwnames[] = {
-    (char *)"self",  (char *)"hist_i",  NULL 
-  };
-  SwigValueWrapper< EECHistTraits< eec::hist::EECHist3D< boost::histogram::axis::transform::id,boost::histogram::axis::transform::id,boost::histogram::axis::transform::id > >::CovarianceHist > result;
-  
-  if (!PyArg_ParseTupleAndKeywords(args, kwargs, "O|O:EECHistBaseIdIdId_combined_covariance", kwnames, &obj0, &obj1)) SWIG_fail;
-  res1 = SWIG_ConvertPtr(obj0, &argp1,SWIGTYPE_p_eec__hist__EECHistBaseT_eec__hist__EECHist3DT_eec__hist__axis__id_eec__hist__axis__id_eec__hist__axis__id_t_t, 0 |  0 );
-  if (!SWIG_IsOK(res1)) {
-    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "EECHistBaseIdIdId_combined_covariance" "', argument " "1"" of type '" "eec::hist::EECHistBase< eec::hist::EECHist3D< eec::hist::axis::id,eec::hist::axis::id,eec::hist::axis::id > > const *""'"); 
-  }
-  arg1 = reinterpret_cast< eec::hist::EECHistBase< eec::hist::EECHist3D< eec::hist::axis::id,eec::hist::axis::id,eec::hist::axis::id > > * >(argp1);
-  if (obj1) {
-    ecode2 = SWIG_AsVal_unsigned_SS_int(obj1, &val2);
-    if (!SWIG_IsOK(ecode2)) {
-      SWIG_exception_fail(SWIG_ArgError(ecode2), "in method '" "EECHistBaseIdIdId_combined_covariance" "', argument " "2"" of type '" "unsigned int""'");
-    } 
-    arg2 = static_cast< unsigned int >(val2);
-  }
-  {
-    try {
-      result = ((eec::hist::EECHistBase< eec::hist::EECHist3D< eec::hist::axis::id,eec::hist::axis::id,eec::hist::axis::id > > const *)arg1)->combined_covariance(arg2); 
-    }
-    /*@SWIG:/usr/local/Cellar/swig/4.0.2/share/swig/4.0.2/typemaps/exception.swg,58,SWIG_CATCH_STDEXCEPT@*/  /* catching std::exception  */
-    catch (std::invalid_argument& e) {
-      SWIG_exception_fail(SWIG_ValueError, e.what() );
-    } catch (std::domain_error& e) {
-      SWIG_exception_fail(SWIG_ValueError, e.what() );
-    } catch (std::overflow_error& e) {
-      SWIG_exception_fail(SWIG_OverflowError, e.what() );
-    } catch (std::out_of_range& e) {
-      SWIG_exception_fail(SWIG_IndexError, e.what() );
-    } catch (std::length_error& e) {
-      SWIG_exception_fail(SWIG_IndexError, e.what() );
-    } catch (std::runtime_error& e) {
-      SWIG_exception_fail(SWIG_RuntimeError, e.what() );
-    } catch (std::exception& e) {
-      SWIG_exception_fail(SWIG_SystemError, e.what() );
-    }
-    /*@SWIG@*/
-  }
-  resultobj = SWIG_NewPointerObj((new eec::hist::EECHistBase< eec::hist::EECHist3D< boost::histogram::axis::transform::id,boost::histogram::axis::transform::id,boost::histogram::axis::transform::id > >::CovarianceHist(static_cast< const eec::hist::EECHistBase< eec::hist::EECHist3D< boost::histogram::axis::transform::id,boost::histogram::axis::transform::id,boost::histogram::axis::transform::id > >::CovarianceHist& >(result))), SWIGTYPE_p_EECHistTraitsT_eec__hist__EECHist3DT_boost__histogram__axis__transform__id_boost__histogram__axis__transform__id_boost__histogram__axis__transform__id_t_t__CovarianceHist, SWIG_POINTER_OWN |  0 );
-  return resultobj;
-fail:
-  return NULL;
-}
-
-
-SWIGINTERN PyObject *_wrap_EECHistBaseIdIdId_combined_variance_bound(PyObject *SWIGUNUSEDPARM(self), PyObject *args, PyObject *kwargs) {
-  PyObject *resultobj = 0;
-  eec::hist::EECHistBase< eec::hist::EECHist3D< eec::hist::axis::id,eec::hist::axis::id,eec::hist::axis::id > > *arg1 = (eec::hist::EECHistBase< eec::hist::EECHist3D< eec::hist::axis::id,eec::hist::axis::id,eec::hist::axis::id > > *) 0 ;
-  unsigned int arg2 = (unsigned int) 0 ;
-  void *argp1 = 0 ;
-  int res1 = 0 ;
-  unsigned int val2 ;
-  int ecode2 = 0 ;
-  PyObject * obj0 = 0 ;
-  PyObject * obj1 = 0 ;
-  char * kwnames[] = {
-    (char *)"self",  (char *)"hist_i",  NULL 
-  };
-  SwigValueWrapper< EECHistTraits< eec::hist::EECHist3D< boost::histogram::axis::transform::id,boost::histogram::axis::transform::id,boost::histogram::axis::transform::id > >::SimpleWeightedHist > result;
-  
-  if (!PyArg_ParseTupleAndKeywords(args, kwargs, "O|O:EECHistBaseIdIdId_combined_variance_bound", kwnames, &obj0, &obj1)) SWIG_fail;
-  res1 = SWIG_ConvertPtr(obj0, &argp1,SWIGTYPE_p_eec__hist__EECHistBaseT_eec__hist__EECHist3DT_eec__hist__axis__id_eec__hist__axis__id_eec__hist__axis__id_t_t, 0 |  0 );
-  if (!SWIG_IsOK(res1)) {
-    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "EECHistBaseIdIdId_combined_variance_bound" "', argument " "1"" of type '" "eec::hist::EECHistBase< eec::hist::EECHist3D< eec::hist::axis::id,eec::hist::axis::id,eec::hist::axis::id > > const *""'"); 
-  }
-  arg1 = reinterpret_cast< eec::hist::EECHistBase< eec::hist::EECHist3D< eec::hist::axis::id,eec::hist::axis::id,eec::hist::axis::id > > * >(argp1);
-  if (obj1) {
-    ecode2 = SWIG_AsVal_unsigned_SS_int(obj1, &val2);
-    if (!SWIG_IsOK(ecode2)) {
-      SWIG_exception_fail(SWIG_ArgError(ecode2), "in method '" "EECHistBaseIdIdId_combined_variance_bound" "', argument " "2"" of type '" "unsigned int""'");
-    } 
-    arg2 = static_cast< unsigned int >(val2);
-  }
-  {
-    try {
-      result = ((eec::hist::EECHistBase< eec::hist::EECHist3D< eec::hist::axis::id,eec::hist::axis::id,eec::hist::axis::id > > const *)arg1)->combined_variance_bound(arg2); 
-    }
-    /*@SWIG:/usr/local/Cellar/swig/4.0.2/share/swig/4.0.2/typemaps/exception.swg,58,SWIG_CATCH_STDEXCEPT@*/  /* catching std::exception  */
-    catch (std::invalid_argument& e) {
-      SWIG_exception_fail(SWIG_ValueError, e.what() );
-    } catch (std::domain_error& e) {
-      SWIG_exception_fail(SWIG_ValueError, e.what() );
-    } catch (std::overflow_error& e) {
-      SWIG_exception_fail(SWIG_OverflowError, e.what() );
-    } catch (std::out_of_range& e) {
-      SWIG_exception_fail(SWIG_IndexError, e.what() );
-    } catch (std::length_error& e) {
-      SWIG_exception_fail(SWIG_IndexError, e.what() );
-    } catch (std::runtime_error& e) {
-      SWIG_exception_fail(SWIG_RuntimeError, e.what() );
-    } catch (std::exception& e) {
-      SWIG_exception_fail(SWIG_SystemError, e.what() );
-    }
-    /*@SWIG@*/
-  }
-  resultobj = SWIG_NewPointerObj((new eec::hist::EECHistBase< eec::hist::EECHist3D< boost::histogram::axis::transform::id,boost::histogram::axis::transform::id,boost::histogram::axis::transform::id > >::SimpleWeightedHist(static_cast< const eec::hist::EECHistBase< eec::hist::EECHist3D< boost::histogram::axis::transform::id,boost::histogram::axis::transform::id,boost::histogram::axis::transform::id > >::SimpleWeightedHist& >(result))), SWIGTYPE_p_EECHistTraitsT_eec__hist__EECHist3DT_boost__histogram__axis__transform__id_boost__histogram__axis__transform__id_boost__histogram__axis__transform__id_t_t__SimpleWeightedHist, SWIG_POINTER_OWN |  0 );
   return resultobj;
 fail:
   return NULL;
@@ -20705,158 +20016,6 @@ SWIGINTERN PyObject *_wrap_EECHistBaseIdIdId_hists_as_text(PyObject *SWIGUNUSEDP
     /*@SWIG@*/
   }
   resultobj = SWIG_From_std_string(static_cast< std::string >(result));
-  return resultobj;
-fail:
-  return NULL;
-}
-
-
-SWIGINTERN PyObject *_wrap_EECHistBaseIdIdId_get_covariance(PyObject *SWIGUNUSEDPARM(self), PyObject *args, PyObject *kwargs) {
-  PyObject *resultobj = 0;
-  eec::hist::EECHistBase< eec::hist::EECHist3D< eec::hist::axis::id,eec::hist::axis::id,eec::hist::axis::id > > *arg1 = (eec::hist::EECHistBase< eec::hist::EECHist3D< eec::hist::axis::id,eec::hist::axis::id,eec::hist::axis::id > > *) 0 ;
-  double *arg2 = (double *) 0 ;
-  unsigned int arg3 = (unsigned int) 0 ;
-  bool arg4 = (bool) true ;
-  void *argp1 = 0 ;
-  int res1 = 0 ;
-  void *argp2 = 0 ;
-  int res2 = 0 ;
-  unsigned int val3 ;
-  int ecode3 = 0 ;
-  bool val4 ;
-  int ecode4 = 0 ;
-  PyObject * obj0 = 0 ;
-  PyObject * obj1 = 0 ;
-  PyObject * obj2 = 0 ;
-  PyObject * obj3 = 0 ;
-  char * kwnames[] = {
-    (char *)"self",  (char *)"covariance",  (char *)"hist_i",  (char *)"include_overflows",  NULL 
-  };
-  
-  if (!PyArg_ParseTupleAndKeywords(args, kwargs, "OO|OO:EECHistBaseIdIdId_get_covariance", kwnames, &obj0, &obj1, &obj2, &obj3)) SWIG_fail;
-  res1 = SWIG_ConvertPtr(obj0, &argp1,SWIGTYPE_p_eec__hist__EECHistBaseT_eec__hist__EECHist3DT_eec__hist__axis__id_eec__hist__axis__id_eec__hist__axis__id_t_t, 0 |  0 );
-  if (!SWIG_IsOK(res1)) {
-    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "EECHistBaseIdIdId_get_covariance" "', argument " "1"" of type '" "eec::hist::EECHistBase< eec::hist::EECHist3D< eec::hist::axis::id,eec::hist::axis::id,eec::hist::axis::id > > const *""'"); 
-  }
-  arg1 = reinterpret_cast< eec::hist::EECHistBase< eec::hist::EECHist3D< eec::hist::axis::id,eec::hist::axis::id,eec::hist::axis::id > > * >(argp1);
-  res2 = SWIG_ConvertPtr(obj1, &argp2,SWIGTYPE_p_double, 0 |  0 );
-  if (!SWIG_IsOK(res2)) {
-    SWIG_exception_fail(SWIG_ArgError(res2), "in method '" "EECHistBaseIdIdId_get_covariance" "', argument " "2"" of type '" "double *""'"); 
-  }
-  arg2 = reinterpret_cast< double * >(argp2);
-  if (obj2) {
-    ecode3 = SWIG_AsVal_unsigned_SS_int(obj2, &val3);
-    if (!SWIG_IsOK(ecode3)) {
-      SWIG_exception_fail(SWIG_ArgError(ecode3), "in method '" "EECHistBaseIdIdId_get_covariance" "', argument " "3"" of type '" "unsigned int""'");
-    } 
-    arg3 = static_cast< unsigned int >(val3);
-  }
-  if (obj3) {
-    ecode4 = SWIG_AsVal_bool(obj3, &val4);
-    if (!SWIG_IsOK(ecode4)) {
-      SWIG_exception_fail(SWIG_ArgError(ecode4), "in method '" "EECHistBaseIdIdId_get_covariance" "', argument " "4"" of type '" "bool""'");
-    } 
-    arg4 = static_cast< bool >(val4);
-  }
-  {
-    try {
-      ((eec::hist::EECHistBase< eec::hist::EECHist3D< eec::hist::axis::id,eec::hist::axis::id,eec::hist::axis::id > > const *)arg1)->get_covariance(arg2,arg3,arg4); 
-    }
-    /*@SWIG:/usr/local/Cellar/swig/4.0.2/share/swig/4.0.2/typemaps/exception.swg,58,SWIG_CATCH_STDEXCEPT@*/  /* catching std::exception  */
-    catch (std::invalid_argument& e) {
-      SWIG_exception_fail(SWIG_ValueError, e.what() );
-    } catch (std::domain_error& e) {
-      SWIG_exception_fail(SWIG_ValueError, e.what() );
-    } catch (std::overflow_error& e) {
-      SWIG_exception_fail(SWIG_OverflowError, e.what() );
-    } catch (std::out_of_range& e) {
-      SWIG_exception_fail(SWIG_IndexError, e.what() );
-    } catch (std::length_error& e) {
-      SWIG_exception_fail(SWIG_IndexError, e.what() );
-    } catch (std::runtime_error& e) {
-      SWIG_exception_fail(SWIG_RuntimeError, e.what() );
-    } catch (std::exception& e) {
-      SWIG_exception_fail(SWIG_SystemError, e.what() );
-    }
-    /*@SWIG@*/
-  }
-  resultobj = SWIG_Py_Void();
-  return resultobj;
-fail:
-  return NULL;
-}
-
-
-SWIGINTERN PyObject *_wrap_EECHistBaseIdIdId_get_variance_bound(PyObject *SWIGUNUSEDPARM(self), PyObject *args, PyObject *kwargs) {
-  PyObject *resultobj = 0;
-  eec::hist::EECHistBase< eec::hist::EECHist3D< eec::hist::axis::id,eec::hist::axis::id,eec::hist::axis::id > > *arg1 = (eec::hist::EECHistBase< eec::hist::EECHist3D< eec::hist::axis::id,eec::hist::axis::id,eec::hist::axis::id > > *) 0 ;
-  double *arg2 = (double *) 0 ;
-  unsigned int arg3 = (unsigned int) 0 ;
-  bool arg4 = (bool) true ;
-  void *argp1 = 0 ;
-  int res1 = 0 ;
-  void *argp2 = 0 ;
-  int res2 = 0 ;
-  unsigned int val3 ;
-  int ecode3 = 0 ;
-  bool val4 ;
-  int ecode4 = 0 ;
-  PyObject * obj0 = 0 ;
-  PyObject * obj1 = 0 ;
-  PyObject * obj2 = 0 ;
-  PyObject * obj3 = 0 ;
-  char * kwnames[] = {
-    (char *)"self",  (char *)"variance_bound",  (char *)"hist_i",  (char *)"include_overflows",  NULL 
-  };
-  
-  if (!PyArg_ParseTupleAndKeywords(args, kwargs, "OO|OO:EECHistBaseIdIdId_get_variance_bound", kwnames, &obj0, &obj1, &obj2, &obj3)) SWIG_fail;
-  res1 = SWIG_ConvertPtr(obj0, &argp1,SWIGTYPE_p_eec__hist__EECHistBaseT_eec__hist__EECHist3DT_eec__hist__axis__id_eec__hist__axis__id_eec__hist__axis__id_t_t, 0 |  0 );
-  if (!SWIG_IsOK(res1)) {
-    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "EECHistBaseIdIdId_get_variance_bound" "', argument " "1"" of type '" "eec::hist::EECHistBase< eec::hist::EECHist3D< eec::hist::axis::id,eec::hist::axis::id,eec::hist::axis::id > > const *""'"); 
-  }
-  arg1 = reinterpret_cast< eec::hist::EECHistBase< eec::hist::EECHist3D< eec::hist::axis::id,eec::hist::axis::id,eec::hist::axis::id > > * >(argp1);
-  res2 = SWIG_ConvertPtr(obj1, &argp2,SWIGTYPE_p_double, 0 |  0 );
-  if (!SWIG_IsOK(res2)) {
-    SWIG_exception_fail(SWIG_ArgError(res2), "in method '" "EECHistBaseIdIdId_get_variance_bound" "', argument " "2"" of type '" "double *""'"); 
-  }
-  arg2 = reinterpret_cast< double * >(argp2);
-  if (obj2) {
-    ecode3 = SWIG_AsVal_unsigned_SS_int(obj2, &val3);
-    if (!SWIG_IsOK(ecode3)) {
-      SWIG_exception_fail(SWIG_ArgError(ecode3), "in method '" "EECHistBaseIdIdId_get_variance_bound" "', argument " "3"" of type '" "unsigned int""'");
-    } 
-    arg3 = static_cast< unsigned int >(val3);
-  }
-  if (obj3) {
-    ecode4 = SWIG_AsVal_bool(obj3, &val4);
-    if (!SWIG_IsOK(ecode4)) {
-      SWIG_exception_fail(SWIG_ArgError(ecode4), "in method '" "EECHistBaseIdIdId_get_variance_bound" "', argument " "4"" of type '" "bool""'");
-    } 
-    arg4 = static_cast< bool >(val4);
-  }
-  {
-    try {
-      ((eec::hist::EECHistBase< eec::hist::EECHist3D< eec::hist::axis::id,eec::hist::axis::id,eec::hist::axis::id > > const *)arg1)->get_variance_bound(arg2,arg3,arg4); 
-    }
-    /*@SWIG:/usr/local/Cellar/swig/4.0.2/share/swig/4.0.2/typemaps/exception.swg,58,SWIG_CATCH_STDEXCEPT@*/  /* catching std::exception  */
-    catch (std::invalid_argument& e) {
-      SWIG_exception_fail(SWIG_ValueError, e.what() );
-    } catch (std::domain_error& e) {
-      SWIG_exception_fail(SWIG_ValueError, e.what() );
-    } catch (std::overflow_error& e) {
-      SWIG_exception_fail(SWIG_OverflowError, e.what() );
-    } catch (std::out_of_range& e) {
-      SWIG_exception_fail(SWIG_IndexError, e.what() );
-    } catch (std::length_error& e) {
-      SWIG_exception_fail(SWIG_IndexError, e.what() );
-    } catch (std::runtime_error& e) {
-      SWIG_exception_fail(SWIG_RuntimeError, e.what() );
-    } catch (std::exception& e) {
-      SWIG_exception_fail(SWIG_SystemError, e.what() );
-    }
-    /*@SWIG@*/
-  }
-  resultobj = SWIG_Py_Void();
   return resultobj;
 fail:
   return NULL;
@@ -21443,22 +20602,12 @@ fail:
 
 SWIGINTERN PyObject *_wrap_EECHistBaseLogIdId_rank(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
   PyObject *resultobj = 0;
-  eec::hist::EECHistBase< eec::hist::EECHist3D< eec::hist::axis::log,eec::hist::axis::id,eec::hist::axis::id > > *arg1 = (eec::hist::EECHistBase< eec::hist::EECHist3D< eec::hist::axis::log,eec::hist::axis::id,eec::hist::axis::id > > *) 0 ;
-  void *argp1 = 0 ;
-  int res1 = 0 ;
-  PyObject *swig_obj[1] ;
   unsigned int result;
   
-  if (!args) SWIG_fail;
-  swig_obj[0] = args;
-  res1 = SWIG_ConvertPtr(swig_obj[0], &argp1,SWIGTYPE_p_eec__hist__EECHistBaseT_eec__hist__EECHist3DT_eec__hist__axis__log_eec__hist__axis__id_eec__hist__axis__id_t_t, 0 |  0 );
-  if (!SWIG_IsOK(res1)) {
-    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "EECHistBaseLogIdId_rank" "', argument " "1"" of type '" "eec::hist::EECHistBase< eec::hist::EECHist3D< eec::hist::axis::log,eec::hist::axis::id,eec::hist::axis::id > > const *""'"); 
-  }
-  arg1 = reinterpret_cast< eec::hist::EECHistBase< eec::hist::EECHist3D< eec::hist::axis::log,eec::hist::axis::id,eec::hist::axis::id > > * >(argp1);
+  if (!SWIG_Python_UnpackTuple(args, "EECHistBaseLogIdId_rank", 0, 0, 0)) SWIG_fail;
   {
     try {
-      result = (unsigned int)((eec::hist::EECHistBase< eec::hist::EECHist3D< eec::hist::axis::log,eec::hist::axis::id,eec::hist::axis::id > > const *)arg1)->rank(); 
+      result = (unsigned int)eec::hist::EECHistBase< eec::hist::EECHist3D< eec::hist::axis::log,eec::hist::axis::id,eec::hist::axis::id > >::SWIGTEMPLATEDISAMBIGUATOR rank(); 
     }
     /*@SWIG:/usr/local/Cellar/swig/4.0.2/share/swig/4.0.2/typemaps/exception.swg,58,SWIG_CATCH_STDEXCEPT@*/  /* catching std::exception  */
     catch (std::invalid_argument& e) {
@@ -21779,120 +20928,6 @@ SWIGINTERN PyObject *_wrap_EECHistBaseLogIdId_sum(PyObject *SWIGUNUSEDPARM(self)
     /*@SWIG@*/
   }
   resultobj = SWIG_From_double(static_cast< double >(result));
-  return resultobj;
-fail:
-  return NULL;
-}
-
-
-SWIGINTERN PyObject *_wrap_EECHistBaseLogIdId_combined_covariance(PyObject *SWIGUNUSEDPARM(self), PyObject *args, PyObject *kwargs) {
-  PyObject *resultobj = 0;
-  eec::hist::EECHistBase< eec::hist::EECHist3D< eec::hist::axis::log,eec::hist::axis::id,eec::hist::axis::id > > *arg1 = (eec::hist::EECHistBase< eec::hist::EECHist3D< eec::hist::axis::log,eec::hist::axis::id,eec::hist::axis::id > > *) 0 ;
-  unsigned int arg2 = (unsigned int) 0 ;
-  void *argp1 = 0 ;
-  int res1 = 0 ;
-  unsigned int val2 ;
-  int ecode2 = 0 ;
-  PyObject * obj0 = 0 ;
-  PyObject * obj1 = 0 ;
-  char * kwnames[] = {
-    (char *)"self",  (char *)"hist_i",  NULL 
-  };
-  SwigValueWrapper< EECHistTraits< eec::hist::EECHist3D< boost::histogram::axis::transform::log,boost::histogram::axis::transform::id,boost::histogram::axis::transform::id > >::CovarianceHist > result;
-  
-  if (!PyArg_ParseTupleAndKeywords(args, kwargs, "O|O:EECHistBaseLogIdId_combined_covariance", kwnames, &obj0, &obj1)) SWIG_fail;
-  res1 = SWIG_ConvertPtr(obj0, &argp1,SWIGTYPE_p_eec__hist__EECHistBaseT_eec__hist__EECHist3DT_eec__hist__axis__log_eec__hist__axis__id_eec__hist__axis__id_t_t, 0 |  0 );
-  if (!SWIG_IsOK(res1)) {
-    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "EECHistBaseLogIdId_combined_covariance" "', argument " "1"" of type '" "eec::hist::EECHistBase< eec::hist::EECHist3D< eec::hist::axis::log,eec::hist::axis::id,eec::hist::axis::id > > const *""'"); 
-  }
-  arg1 = reinterpret_cast< eec::hist::EECHistBase< eec::hist::EECHist3D< eec::hist::axis::log,eec::hist::axis::id,eec::hist::axis::id > > * >(argp1);
-  if (obj1) {
-    ecode2 = SWIG_AsVal_unsigned_SS_int(obj1, &val2);
-    if (!SWIG_IsOK(ecode2)) {
-      SWIG_exception_fail(SWIG_ArgError(ecode2), "in method '" "EECHistBaseLogIdId_combined_covariance" "', argument " "2"" of type '" "unsigned int""'");
-    } 
-    arg2 = static_cast< unsigned int >(val2);
-  }
-  {
-    try {
-      result = ((eec::hist::EECHistBase< eec::hist::EECHist3D< eec::hist::axis::log,eec::hist::axis::id,eec::hist::axis::id > > const *)arg1)->combined_covariance(arg2); 
-    }
-    /*@SWIG:/usr/local/Cellar/swig/4.0.2/share/swig/4.0.2/typemaps/exception.swg,58,SWIG_CATCH_STDEXCEPT@*/  /* catching std::exception  */
-    catch (std::invalid_argument& e) {
-      SWIG_exception_fail(SWIG_ValueError, e.what() );
-    } catch (std::domain_error& e) {
-      SWIG_exception_fail(SWIG_ValueError, e.what() );
-    } catch (std::overflow_error& e) {
-      SWIG_exception_fail(SWIG_OverflowError, e.what() );
-    } catch (std::out_of_range& e) {
-      SWIG_exception_fail(SWIG_IndexError, e.what() );
-    } catch (std::length_error& e) {
-      SWIG_exception_fail(SWIG_IndexError, e.what() );
-    } catch (std::runtime_error& e) {
-      SWIG_exception_fail(SWIG_RuntimeError, e.what() );
-    } catch (std::exception& e) {
-      SWIG_exception_fail(SWIG_SystemError, e.what() );
-    }
-    /*@SWIG@*/
-  }
-  resultobj = SWIG_NewPointerObj((new eec::hist::EECHistBase< eec::hist::EECHist3D< boost::histogram::axis::transform::log,boost::histogram::axis::transform::id,boost::histogram::axis::transform::id > >::CovarianceHist(static_cast< const eec::hist::EECHistBase< eec::hist::EECHist3D< boost::histogram::axis::transform::log,boost::histogram::axis::transform::id,boost::histogram::axis::transform::id > >::CovarianceHist& >(result))), SWIGTYPE_p_EECHistTraitsT_eec__hist__EECHist3DT_boost__histogram__axis__transform__log_boost__histogram__axis__transform__id_boost__histogram__axis__transform__id_t_t__CovarianceHist, SWIG_POINTER_OWN |  0 );
-  return resultobj;
-fail:
-  return NULL;
-}
-
-
-SWIGINTERN PyObject *_wrap_EECHistBaseLogIdId_combined_variance_bound(PyObject *SWIGUNUSEDPARM(self), PyObject *args, PyObject *kwargs) {
-  PyObject *resultobj = 0;
-  eec::hist::EECHistBase< eec::hist::EECHist3D< eec::hist::axis::log,eec::hist::axis::id,eec::hist::axis::id > > *arg1 = (eec::hist::EECHistBase< eec::hist::EECHist3D< eec::hist::axis::log,eec::hist::axis::id,eec::hist::axis::id > > *) 0 ;
-  unsigned int arg2 = (unsigned int) 0 ;
-  void *argp1 = 0 ;
-  int res1 = 0 ;
-  unsigned int val2 ;
-  int ecode2 = 0 ;
-  PyObject * obj0 = 0 ;
-  PyObject * obj1 = 0 ;
-  char * kwnames[] = {
-    (char *)"self",  (char *)"hist_i",  NULL 
-  };
-  SwigValueWrapper< EECHistTraits< eec::hist::EECHist3D< boost::histogram::axis::transform::log,boost::histogram::axis::transform::id,boost::histogram::axis::transform::id > >::SimpleWeightedHist > result;
-  
-  if (!PyArg_ParseTupleAndKeywords(args, kwargs, "O|O:EECHistBaseLogIdId_combined_variance_bound", kwnames, &obj0, &obj1)) SWIG_fail;
-  res1 = SWIG_ConvertPtr(obj0, &argp1,SWIGTYPE_p_eec__hist__EECHistBaseT_eec__hist__EECHist3DT_eec__hist__axis__log_eec__hist__axis__id_eec__hist__axis__id_t_t, 0 |  0 );
-  if (!SWIG_IsOK(res1)) {
-    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "EECHistBaseLogIdId_combined_variance_bound" "', argument " "1"" of type '" "eec::hist::EECHistBase< eec::hist::EECHist3D< eec::hist::axis::log,eec::hist::axis::id,eec::hist::axis::id > > const *""'"); 
-  }
-  arg1 = reinterpret_cast< eec::hist::EECHistBase< eec::hist::EECHist3D< eec::hist::axis::log,eec::hist::axis::id,eec::hist::axis::id > > * >(argp1);
-  if (obj1) {
-    ecode2 = SWIG_AsVal_unsigned_SS_int(obj1, &val2);
-    if (!SWIG_IsOK(ecode2)) {
-      SWIG_exception_fail(SWIG_ArgError(ecode2), "in method '" "EECHistBaseLogIdId_combined_variance_bound" "', argument " "2"" of type '" "unsigned int""'");
-    } 
-    arg2 = static_cast< unsigned int >(val2);
-  }
-  {
-    try {
-      result = ((eec::hist::EECHistBase< eec::hist::EECHist3D< eec::hist::axis::log,eec::hist::axis::id,eec::hist::axis::id > > const *)arg1)->combined_variance_bound(arg2); 
-    }
-    /*@SWIG:/usr/local/Cellar/swig/4.0.2/share/swig/4.0.2/typemaps/exception.swg,58,SWIG_CATCH_STDEXCEPT@*/  /* catching std::exception  */
-    catch (std::invalid_argument& e) {
-      SWIG_exception_fail(SWIG_ValueError, e.what() );
-    } catch (std::domain_error& e) {
-      SWIG_exception_fail(SWIG_ValueError, e.what() );
-    } catch (std::overflow_error& e) {
-      SWIG_exception_fail(SWIG_OverflowError, e.what() );
-    } catch (std::out_of_range& e) {
-      SWIG_exception_fail(SWIG_IndexError, e.what() );
-    } catch (std::length_error& e) {
-      SWIG_exception_fail(SWIG_IndexError, e.what() );
-    } catch (std::runtime_error& e) {
-      SWIG_exception_fail(SWIG_RuntimeError, e.what() );
-    } catch (std::exception& e) {
-      SWIG_exception_fail(SWIG_SystemError, e.what() );
-    }
-    /*@SWIG@*/
-  }
-  resultobj = SWIG_NewPointerObj((new eec::hist::EECHistBase< eec::hist::EECHist3D< boost::histogram::axis::transform::log,boost::histogram::axis::transform::id,boost::histogram::axis::transform::id > >::SimpleWeightedHist(static_cast< const eec::hist::EECHistBase< eec::hist::EECHist3D< boost::histogram::axis::transform::log,boost::histogram::axis::transform::id,boost::histogram::axis::transform::id > >::SimpleWeightedHist& >(result))), SWIGTYPE_p_EECHistTraitsT_eec__hist__EECHist3DT_boost__histogram__axis__transform__log_boost__histogram__axis__transform__id_boost__histogram__axis__transform__id_t_t__SimpleWeightedHist, SWIG_POINTER_OWN |  0 );
   return resultobj;
 fail:
   return NULL;
@@ -22286,158 +21321,6 @@ SWIGINTERN PyObject *_wrap_EECHistBaseLogIdId_hists_as_text(PyObject *SWIGUNUSED
     /*@SWIG@*/
   }
   resultobj = SWIG_From_std_string(static_cast< std::string >(result));
-  return resultobj;
-fail:
-  return NULL;
-}
-
-
-SWIGINTERN PyObject *_wrap_EECHistBaseLogIdId_get_covariance(PyObject *SWIGUNUSEDPARM(self), PyObject *args, PyObject *kwargs) {
-  PyObject *resultobj = 0;
-  eec::hist::EECHistBase< eec::hist::EECHist3D< eec::hist::axis::log,eec::hist::axis::id,eec::hist::axis::id > > *arg1 = (eec::hist::EECHistBase< eec::hist::EECHist3D< eec::hist::axis::log,eec::hist::axis::id,eec::hist::axis::id > > *) 0 ;
-  double *arg2 = (double *) 0 ;
-  unsigned int arg3 = (unsigned int) 0 ;
-  bool arg4 = (bool) true ;
-  void *argp1 = 0 ;
-  int res1 = 0 ;
-  void *argp2 = 0 ;
-  int res2 = 0 ;
-  unsigned int val3 ;
-  int ecode3 = 0 ;
-  bool val4 ;
-  int ecode4 = 0 ;
-  PyObject * obj0 = 0 ;
-  PyObject * obj1 = 0 ;
-  PyObject * obj2 = 0 ;
-  PyObject * obj3 = 0 ;
-  char * kwnames[] = {
-    (char *)"self",  (char *)"covariance",  (char *)"hist_i",  (char *)"include_overflows",  NULL 
-  };
-  
-  if (!PyArg_ParseTupleAndKeywords(args, kwargs, "OO|OO:EECHistBaseLogIdId_get_covariance", kwnames, &obj0, &obj1, &obj2, &obj3)) SWIG_fail;
-  res1 = SWIG_ConvertPtr(obj0, &argp1,SWIGTYPE_p_eec__hist__EECHistBaseT_eec__hist__EECHist3DT_eec__hist__axis__log_eec__hist__axis__id_eec__hist__axis__id_t_t, 0 |  0 );
-  if (!SWIG_IsOK(res1)) {
-    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "EECHistBaseLogIdId_get_covariance" "', argument " "1"" of type '" "eec::hist::EECHistBase< eec::hist::EECHist3D< eec::hist::axis::log,eec::hist::axis::id,eec::hist::axis::id > > const *""'"); 
-  }
-  arg1 = reinterpret_cast< eec::hist::EECHistBase< eec::hist::EECHist3D< eec::hist::axis::log,eec::hist::axis::id,eec::hist::axis::id > > * >(argp1);
-  res2 = SWIG_ConvertPtr(obj1, &argp2,SWIGTYPE_p_double, 0 |  0 );
-  if (!SWIG_IsOK(res2)) {
-    SWIG_exception_fail(SWIG_ArgError(res2), "in method '" "EECHistBaseLogIdId_get_covariance" "', argument " "2"" of type '" "double *""'"); 
-  }
-  arg2 = reinterpret_cast< double * >(argp2);
-  if (obj2) {
-    ecode3 = SWIG_AsVal_unsigned_SS_int(obj2, &val3);
-    if (!SWIG_IsOK(ecode3)) {
-      SWIG_exception_fail(SWIG_ArgError(ecode3), "in method '" "EECHistBaseLogIdId_get_covariance" "', argument " "3"" of type '" "unsigned int""'");
-    } 
-    arg3 = static_cast< unsigned int >(val3);
-  }
-  if (obj3) {
-    ecode4 = SWIG_AsVal_bool(obj3, &val4);
-    if (!SWIG_IsOK(ecode4)) {
-      SWIG_exception_fail(SWIG_ArgError(ecode4), "in method '" "EECHistBaseLogIdId_get_covariance" "', argument " "4"" of type '" "bool""'");
-    } 
-    arg4 = static_cast< bool >(val4);
-  }
-  {
-    try {
-      ((eec::hist::EECHistBase< eec::hist::EECHist3D< eec::hist::axis::log,eec::hist::axis::id,eec::hist::axis::id > > const *)arg1)->get_covariance(arg2,arg3,arg4); 
-    }
-    /*@SWIG:/usr/local/Cellar/swig/4.0.2/share/swig/4.0.2/typemaps/exception.swg,58,SWIG_CATCH_STDEXCEPT@*/  /* catching std::exception  */
-    catch (std::invalid_argument& e) {
-      SWIG_exception_fail(SWIG_ValueError, e.what() );
-    } catch (std::domain_error& e) {
-      SWIG_exception_fail(SWIG_ValueError, e.what() );
-    } catch (std::overflow_error& e) {
-      SWIG_exception_fail(SWIG_OverflowError, e.what() );
-    } catch (std::out_of_range& e) {
-      SWIG_exception_fail(SWIG_IndexError, e.what() );
-    } catch (std::length_error& e) {
-      SWIG_exception_fail(SWIG_IndexError, e.what() );
-    } catch (std::runtime_error& e) {
-      SWIG_exception_fail(SWIG_RuntimeError, e.what() );
-    } catch (std::exception& e) {
-      SWIG_exception_fail(SWIG_SystemError, e.what() );
-    }
-    /*@SWIG@*/
-  }
-  resultobj = SWIG_Py_Void();
-  return resultobj;
-fail:
-  return NULL;
-}
-
-
-SWIGINTERN PyObject *_wrap_EECHistBaseLogIdId_get_variance_bound(PyObject *SWIGUNUSEDPARM(self), PyObject *args, PyObject *kwargs) {
-  PyObject *resultobj = 0;
-  eec::hist::EECHistBase< eec::hist::EECHist3D< eec::hist::axis::log,eec::hist::axis::id,eec::hist::axis::id > > *arg1 = (eec::hist::EECHistBase< eec::hist::EECHist3D< eec::hist::axis::log,eec::hist::axis::id,eec::hist::axis::id > > *) 0 ;
-  double *arg2 = (double *) 0 ;
-  unsigned int arg3 = (unsigned int) 0 ;
-  bool arg4 = (bool) true ;
-  void *argp1 = 0 ;
-  int res1 = 0 ;
-  void *argp2 = 0 ;
-  int res2 = 0 ;
-  unsigned int val3 ;
-  int ecode3 = 0 ;
-  bool val4 ;
-  int ecode4 = 0 ;
-  PyObject * obj0 = 0 ;
-  PyObject * obj1 = 0 ;
-  PyObject * obj2 = 0 ;
-  PyObject * obj3 = 0 ;
-  char * kwnames[] = {
-    (char *)"self",  (char *)"variance_bound",  (char *)"hist_i",  (char *)"include_overflows",  NULL 
-  };
-  
-  if (!PyArg_ParseTupleAndKeywords(args, kwargs, "OO|OO:EECHistBaseLogIdId_get_variance_bound", kwnames, &obj0, &obj1, &obj2, &obj3)) SWIG_fail;
-  res1 = SWIG_ConvertPtr(obj0, &argp1,SWIGTYPE_p_eec__hist__EECHistBaseT_eec__hist__EECHist3DT_eec__hist__axis__log_eec__hist__axis__id_eec__hist__axis__id_t_t, 0 |  0 );
-  if (!SWIG_IsOK(res1)) {
-    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "EECHistBaseLogIdId_get_variance_bound" "', argument " "1"" of type '" "eec::hist::EECHistBase< eec::hist::EECHist3D< eec::hist::axis::log,eec::hist::axis::id,eec::hist::axis::id > > const *""'"); 
-  }
-  arg1 = reinterpret_cast< eec::hist::EECHistBase< eec::hist::EECHist3D< eec::hist::axis::log,eec::hist::axis::id,eec::hist::axis::id > > * >(argp1);
-  res2 = SWIG_ConvertPtr(obj1, &argp2,SWIGTYPE_p_double, 0 |  0 );
-  if (!SWIG_IsOK(res2)) {
-    SWIG_exception_fail(SWIG_ArgError(res2), "in method '" "EECHistBaseLogIdId_get_variance_bound" "', argument " "2"" of type '" "double *""'"); 
-  }
-  arg2 = reinterpret_cast< double * >(argp2);
-  if (obj2) {
-    ecode3 = SWIG_AsVal_unsigned_SS_int(obj2, &val3);
-    if (!SWIG_IsOK(ecode3)) {
-      SWIG_exception_fail(SWIG_ArgError(ecode3), "in method '" "EECHistBaseLogIdId_get_variance_bound" "', argument " "3"" of type '" "unsigned int""'");
-    } 
-    arg3 = static_cast< unsigned int >(val3);
-  }
-  if (obj3) {
-    ecode4 = SWIG_AsVal_bool(obj3, &val4);
-    if (!SWIG_IsOK(ecode4)) {
-      SWIG_exception_fail(SWIG_ArgError(ecode4), "in method '" "EECHistBaseLogIdId_get_variance_bound" "', argument " "4"" of type '" "bool""'");
-    } 
-    arg4 = static_cast< bool >(val4);
-  }
-  {
-    try {
-      ((eec::hist::EECHistBase< eec::hist::EECHist3D< eec::hist::axis::log,eec::hist::axis::id,eec::hist::axis::id > > const *)arg1)->get_variance_bound(arg2,arg3,arg4); 
-    }
-    /*@SWIG:/usr/local/Cellar/swig/4.0.2/share/swig/4.0.2/typemaps/exception.swg,58,SWIG_CATCH_STDEXCEPT@*/  /* catching std::exception  */
-    catch (std::invalid_argument& e) {
-      SWIG_exception_fail(SWIG_ValueError, e.what() );
-    } catch (std::domain_error& e) {
-      SWIG_exception_fail(SWIG_ValueError, e.what() );
-    } catch (std::overflow_error& e) {
-      SWIG_exception_fail(SWIG_OverflowError, e.what() );
-    } catch (std::out_of_range& e) {
-      SWIG_exception_fail(SWIG_IndexError, e.what() );
-    } catch (std::length_error& e) {
-      SWIG_exception_fail(SWIG_IndexError, e.what() );
-    } catch (std::runtime_error& e) {
-      SWIG_exception_fail(SWIG_RuntimeError, e.what() );
-    } catch (std::exception& e) {
-      SWIG_exception_fail(SWIG_SystemError, e.what() );
-    }
-    /*@SWIG@*/
-  }
-  resultobj = SWIG_Py_Void();
   return resultobj;
 fail:
   return NULL;
@@ -23024,22 +21907,12 @@ fail:
 
 SWIGINTERN PyObject *_wrap_EECHistBaseIdLogId_rank(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
   PyObject *resultobj = 0;
-  eec::hist::EECHistBase< eec::hist::EECHist3D< eec::hist::axis::id,eec::hist::axis::log,eec::hist::axis::id > > *arg1 = (eec::hist::EECHistBase< eec::hist::EECHist3D< eec::hist::axis::id,eec::hist::axis::log,eec::hist::axis::id > > *) 0 ;
-  void *argp1 = 0 ;
-  int res1 = 0 ;
-  PyObject *swig_obj[1] ;
   unsigned int result;
   
-  if (!args) SWIG_fail;
-  swig_obj[0] = args;
-  res1 = SWIG_ConvertPtr(swig_obj[0], &argp1,SWIGTYPE_p_eec__hist__EECHistBaseT_eec__hist__EECHist3DT_eec__hist__axis__id_eec__hist__axis__log_eec__hist__axis__id_t_t, 0 |  0 );
-  if (!SWIG_IsOK(res1)) {
-    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "EECHistBaseIdLogId_rank" "', argument " "1"" of type '" "eec::hist::EECHistBase< eec::hist::EECHist3D< eec::hist::axis::id,eec::hist::axis::log,eec::hist::axis::id > > const *""'"); 
-  }
-  arg1 = reinterpret_cast< eec::hist::EECHistBase< eec::hist::EECHist3D< eec::hist::axis::id,eec::hist::axis::log,eec::hist::axis::id > > * >(argp1);
+  if (!SWIG_Python_UnpackTuple(args, "EECHistBaseIdLogId_rank", 0, 0, 0)) SWIG_fail;
   {
     try {
-      result = (unsigned int)((eec::hist::EECHistBase< eec::hist::EECHist3D< eec::hist::axis::id,eec::hist::axis::log,eec::hist::axis::id > > const *)arg1)->rank(); 
+      result = (unsigned int)eec::hist::EECHistBase< eec::hist::EECHist3D< eec::hist::axis::id,eec::hist::axis::log,eec::hist::axis::id > >::SWIGTEMPLATEDISAMBIGUATOR rank(); 
     }
     /*@SWIG:/usr/local/Cellar/swig/4.0.2/share/swig/4.0.2/typemaps/exception.swg,58,SWIG_CATCH_STDEXCEPT@*/  /* catching std::exception  */
     catch (std::invalid_argument& e) {
@@ -23360,120 +22233,6 @@ SWIGINTERN PyObject *_wrap_EECHistBaseIdLogId_sum(PyObject *SWIGUNUSEDPARM(self)
     /*@SWIG@*/
   }
   resultobj = SWIG_From_double(static_cast< double >(result));
-  return resultobj;
-fail:
-  return NULL;
-}
-
-
-SWIGINTERN PyObject *_wrap_EECHistBaseIdLogId_combined_covariance(PyObject *SWIGUNUSEDPARM(self), PyObject *args, PyObject *kwargs) {
-  PyObject *resultobj = 0;
-  eec::hist::EECHistBase< eec::hist::EECHist3D< eec::hist::axis::id,eec::hist::axis::log,eec::hist::axis::id > > *arg1 = (eec::hist::EECHistBase< eec::hist::EECHist3D< eec::hist::axis::id,eec::hist::axis::log,eec::hist::axis::id > > *) 0 ;
-  unsigned int arg2 = (unsigned int) 0 ;
-  void *argp1 = 0 ;
-  int res1 = 0 ;
-  unsigned int val2 ;
-  int ecode2 = 0 ;
-  PyObject * obj0 = 0 ;
-  PyObject * obj1 = 0 ;
-  char * kwnames[] = {
-    (char *)"self",  (char *)"hist_i",  NULL 
-  };
-  SwigValueWrapper< EECHistTraits< eec::hist::EECHist3D< boost::histogram::axis::transform::id,boost::histogram::axis::transform::log,boost::histogram::axis::transform::id > >::CovarianceHist > result;
-  
-  if (!PyArg_ParseTupleAndKeywords(args, kwargs, "O|O:EECHistBaseIdLogId_combined_covariance", kwnames, &obj0, &obj1)) SWIG_fail;
-  res1 = SWIG_ConvertPtr(obj0, &argp1,SWIGTYPE_p_eec__hist__EECHistBaseT_eec__hist__EECHist3DT_eec__hist__axis__id_eec__hist__axis__log_eec__hist__axis__id_t_t, 0 |  0 );
-  if (!SWIG_IsOK(res1)) {
-    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "EECHistBaseIdLogId_combined_covariance" "', argument " "1"" of type '" "eec::hist::EECHistBase< eec::hist::EECHist3D< eec::hist::axis::id,eec::hist::axis::log,eec::hist::axis::id > > const *""'"); 
-  }
-  arg1 = reinterpret_cast< eec::hist::EECHistBase< eec::hist::EECHist3D< eec::hist::axis::id,eec::hist::axis::log,eec::hist::axis::id > > * >(argp1);
-  if (obj1) {
-    ecode2 = SWIG_AsVal_unsigned_SS_int(obj1, &val2);
-    if (!SWIG_IsOK(ecode2)) {
-      SWIG_exception_fail(SWIG_ArgError(ecode2), "in method '" "EECHistBaseIdLogId_combined_covariance" "', argument " "2"" of type '" "unsigned int""'");
-    } 
-    arg2 = static_cast< unsigned int >(val2);
-  }
-  {
-    try {
-      result = ((eec::hist::EECHistBase< eec::hist::EECHist3D< eec::hist::axis::id,eec::hist::axis::log,eec::hist::axis::id > > const *)arg1)->combined_covariance(arg2); 
-    }
-    /*@SWIG:/usr/local/Cellar/swig/4.0.2/share/swig/4.0.2/typemaps/exception.swg,58,SWIG_CATCH_STDEXCEPT@*/  /* catching std::exception  */
-    catch (std::invalid_argument& e) {
-      SWIG_exception_fail(SWIG_ValueError, e.what() );
-    } catch (std::domain_error& e) {
-      SWIG_exception_fail(SWIG_ValueError, e.what() );
-    } catch (std::overflow_error& e) {
-      SWIG_exception_fail(SWIG_OverflowError, e.what() );
-    } catch (std::out_of_range& e) {
-      SWIG_exception_fail(SWIG_IndexError, e.what() );
-    } catch (std::length_error& e) {
-      SWIG_exception_fail(SWIG_IndexError, e.what() );
-    } catch (std::runtime_error& e) {
-      SWIG_exception_fail(SWIG_RuntimeError, e.what() );
-    } catch (std::exception& e) {
-      SWIG_exception_fail(SWIG_SystemError, e.what() );
-    }
-    /*@SWIG@*/
-  }
-  resultobj = SWIG_NewPointerObj((new eec::hist::EECHistBase< eec::hist::EECHist3D< boost::histogram::axis::transform::id,boost::histogram::axis::transform::log,boost::histogram::axis::transform::id > >::CovarianceHist(static_cast< const eec::hist::EECHistBase< eec::hist::EECHist3D< boost::histogram::axis::transform::id,boost::histogram::axis::transform::log,boost::histogram::axis::transform::id > >::CovarianceHist& >(result))), SWIGTYPE_p_EECHistTraitsT_eec__hist__EECHist3DT_boost__histogram__axis__transform__id_boost__histogram__axis__transform__log_boost__histogram__axis__transform__id_t_t__CovarianceHist, SWIG_POINTER_OWN |  0 );
-  return resultobj;
-fail:
-  return NULL;
-}
-
-
-SWIGINTERN PyObject *_wrap_EECHistBaseIdLogId_combined_variance_bound(PyObject *SWIGUNUSEDPARM(self), PyObject *args, PyObject *kwargs) {
-  PyObject *resultobj = 0;
-  eec::hist::EECHistBase< eec::hist::EECHist3D< eec::hist::axis::id,eec::hist::axis::log,eec::hist::axis::id > > *arg1 = (eec::hist::EECHistBase< eec::hist::EECHist3D< eec::hist::axis::id,eec::hist::axis::log,eec::hist::axis::id > > *) 0 ;
-  unsigned int arg2 = (unsigned int) 0 ;
-  void *argp1 = 0 ;
-  int res1 = 0 ;
-  unsigned int val2 ;
-  int ecode2 = 0 ;
-  PyObject * obj0 = 0 ;
-  PyObject * obj1 = 0 ;
-  char * kwnames[] = {
-    (char *)"self",  (char *)"hist_i",  NULL 
-  };
-  SwigValueWrapper< EECHistTraits< eec::hist::EECHist3D< boost::histogram::axis::transform::id,boost::histogram::axis::transform::log,boost::histogram::axis::transform::id > >::SimpleWeightedHist > result;
-  
-  if (!PyArg_ParseTupleAndKeywords(args, kwargs, "O|O:EECHistBaseIdLogId_combined_variance_bound", kwnames, &obj0, &obj1)) SWIG_fail;
-  res1 = SWIG_ConvertPtr(obj0, &argp1,SWIGTYPE_p_eec__hist__EECHistBaseT_eec__hist__EECHist3DT_eec__hist__axis__id_eec__hist__axis__log_eec__hist__axis__id_t_t, 0 |  0 );
-  if (!SWIG_IsOK(res1)) {
-    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "EECHistBaseIdLogId_combined_variance_bound" "', argument " "1"" of type '" "eec::hist::EECHistBase< eec::hist::EECHist3D< eec::hist::axis::id,eec::hist::axis::log,eec::hist::axis::id > > const *""'"); 
-  }
-  arg1 = reinterpret_cast< eec::hist::EECHistBase< eec::hist::EECHist3D< eec::hist::axis::id,eec::hist::axis::log,eec::hist::axis::id > > * >(argp1);
-  if (obj1) {
-    ecode2 = SWIG_AsVal_unsigned_SS_int(obj1, &val2);
-    if (!SWIG_IsOK(ecode2)) {
-      SWIG_exception_fail(SWIG_ArgError(ecode2), "in method '" "EECHistBaseIdLogId_combined_variance_bound" "', argument " "2"" of type '" "unsigned int""'");
-    } 
-    arg2 = static_cast< unsigned int >(val2);
-  }
-  {
-    try {
-      result = ((eec::hist::EECHistBase< eec::hist::EECHist3D< eec::hist::axis::id,eec::hist::axis::log,eec::hist::axis::id > > const *)arg1)->combined_variance_bound(arg2); 
-    }
-    /*@SWIG:/usr/local/Cellar/swig/4.0.2/share/swig/4.0.2/typemaps/exception.swg,58,SWIG_CATCH_STDEXCEPT@*/  /* catching std::exception  */
-    catch (std::invalid_argument& e) {
-      SWIG_exception_fail(SWIG_ValueError, e.what() );
-    } catch (std::domain_error& e) {
-      SWIG_exception_fail(SWIG_ValueError, e.what() );
-    } catch (std::overflow_error& e) {
-      SWIG_exception_fail(SWIG_OverflowError, e.what() );
-    } catch (std::out_of_range& e) {
-      SWIG_exception_fail(SWIG_IndexError, e.what() );
-    } catch (std::length_error& e) {
-      SWIG_exception_fail(SWIG_IndexError, e.what() );
-    } catch (std::runtime_error& e) {
-      SWIG_exception_fail(SWIG_RuntimeError, e.what() );
-    } catch (std::exception& e) {
-      SWIG_exception_fail(SWIG_SystemError, e.what() );
-    }
-    /*@SWIG@*/
-  }
-  resultobj = SWIG_NewPointerObj((new eec::hist::EECHistBase< eec::hist::EECHist3D< boost::histogram::axis::transform::id,boost::histogram::axis::transform::log,boost::histogram::axis::transform::id > >::SimpleWeightedHist(static_cast< const eec::hist::EECHistBase< eec::hist::EECHist3D< boost::histogram::axis::transform::id,boost::histogram::axis::transform::log,boost::histogram::axis::transform::id > >::SimpleWeightedHist& >(result))), SWIGTYPE_p_EECHistTraitsT_eec__hist__EECHist3DT_boost__histogram__axis__transform__id_boost__histogram__axis__transform__log_boost__histogram__axis__transform__id_t_t__SimpleWeightedHist, SWIG_POINTER_OWN |  0 );
   return resultobj;
 fail:
   return NULL;
@@ -23867,158 +22626,6 @@ SWIGINTERN PyObject *_wrap_EECHistBaseIdLogId_hists_as_text(PyObject *SWIGUNUSED
     /*@SWIG@*/
   }
   resultobj = SWIG_From_std_string(static_cast< std::string >(result));
-  return resultobj;
-fail:
-  return NULL;
-}
-
-
-SWIGINTERN PyObject *_wrap_EECHistBaseIdLogId_get_covariance(PyObject *SWIGUNUSEDPARM(self), PyObject *args, PyObject *kwargs) {
-  PyObject *resultobj = 0;
-  eec::hist::EECHistBase< eec::hist::EECHist3D< eec::hist::axis::id,eec::hist::axis::log,eec::hist::axis::id > > *arg1 = (eec::hist::EECHistBase< eec::hist::EECHist3D< eec::hist::axis::id,eec::hist::axis::log,eec::hist::axis::id > > *) 0 ;
-  double *arg2 = (double *) 0 ;
-  unsigned int arg3 = (unsigned int) 0 ;
-  bool arg4 = (bool) true ;
-  void *argp1 = 0 ;
-  int res1 = 0 ;
-  void *argp2 = 0 ;
-  int res2 = 0 ;
-  unsigned int val3 ;
-  int ecode3 = 0 ;
-  bool val4 ;
-  int ecode4 = 0 ;
-  PyObject * obj0 = 0 ;
-  PyObject * obj1 = 0 ;
-  PyObject * obj2 = 0 ;
-  PyObject * obj3 = 0 ;
-  char * kwnames[] = {
-    (char *)"self",  (char *)"covariance",  (char *)"hist_i",  (char *)"include_overflows",  NULL 
-  };
-  
-  if (!PyArg_ParseTupleAndKeywords(args, kwargs, "OO|OO:EECHistBaseIdLogId_get_covariance", kwnames, &obj0, &obj1, &obj2, &obj3)) SWIG_fail;
-  res1 = SWIG_ConvertPtr(obj0, &argp1,SWIGTYPE_p_eec__hist__EECHistBaseT_eec__hist__EECHist3DT_eec__hist__axis__id_eec__hist__axis__log_eec__hist__axis__id_t_t, 0 |  0 );
-  if (!SWIG_IsOK(res1)) {
-    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "EECHistBaseIdLogId_get_covariance" "', argument " "1"" of type '" "eec::hist::EECHistBase< eec::hist::EECHist3D< eec::hist::axis::id,eec::hist::axis::log,eec::hist::axis::id > > const *""'"); 
-  }
-  arg1 = reinterpret_cast< eec::hist::EECHistBase< eec::hist::EECHist3D< eec::hist::axis::id,eec::hist::axis::log,eec::hist::axis::id > > * >(argp1);
-  res2 = SWIG_ConvertPtr(obj1, &argp2,SWIGTYPE_p_double, 0 |  0 );
-  if (!SWIG_IsOK(res2)) {
-    SWIG_exception_fail(SWIG_ArgError(res2), "in method '" "EECHistBaseIdLogId_get_covariance" "', argument " "2"" of type '" "double *""'"); 
-  }
-  arg2 = reinterpret_cast< double * >(argp2);
-  if (obj2) {
-    ecode3 = SWIG_AsVal_unsigned_SS_int(obj2, &val3);
-    if (!SWIG_IsOK(ecode3)) {
-      SWIG_exception_fail(SWIG_ArgError(ecode3), "in method '" "EECHistBaseIdLogId_get_covariance" "', argument " "3"" of type '" "unsigned int""'");
-    } 
-    arg3 = static_cast< unsigned int >(val3);
-  }
-  if (obj3) {
-    ecode4 = SWIG_AsVal_bool(obj3, &val4);
-    if (!SWIG_IsOK(ecode4)) {
-      SWIG_exception_fail(SWIG_ArgError(ecode4), "in method '" "EECHistBaseIdLogId_get_covariance" "', argument " "4"" of type '" "bool""'");
-    } 
-    arg4 = static_cast< bool >(val4);
-  }
-  {
-    try {
-      ((eec::hist::EECHistBase< eec::hist::EECHist3D< eec::hist::axis::id,eec::hist::axis::log,eec::hist::axis::id > > const *)arg1)->get_covariance(arg2,arg3,arg4); 
-    }
-    /*@SWIG:/usr/local/Cellar/swig/4.0.2/share/swig/4.0.2/typemaps/exception.swg,58,SWIG_CATCH_STDEXCEPT@*/  /* catching std::exception  */
-    catch (std::invalid_argument& e) {
-      SWIG_exception_fail(SWIG_ValueError, e.what() );
-    } catch (std::domain_error& e) {
-      SWIG_exception_fail(SWIG_ValueError, e.what() );
-    } catch (std::overflow_error& e) {
-      SWIG_exception_fail(SWIG_OverflowError, e.what() );
-    } catch (std::out_of_range& e) {
-      SWIG_exception_fail(SWIG_IndexError, e.what() );
-    } catch (std::length_error& e) {
-      SWIG_exception_fail(SWIG_IndexError, e.what() );
-    } catch (std::runtime_error& e) {
-      SWIG_exception_fail(SWIG_RuntimeError, e.what() );
-    } catch (std::exception& e) {
-      SWIG_exception_fail(SWIG_SystemError, e.what() );
-    }
-    /*@SWIG@*/
-  }
-  resultobj = SWIG_Py_Void();
-  return resultobj;
-fail:
-  return NULL;
-}
-
-
-SWIGINTERN PyObject *_wrap_EECHistBaseIdLogId_get_variance_bound(PyObject *SWIGUNUSEDPARM(self), PyObject *args, PyObject *kwargs) {
-  PyObject *resultobj = 0;
-  eec::hist::EECHistBase< eec::hist::EECHist3D< eec::hist::axis::id,eec::hist::axis::log,eec::hist::axis::id > > *arg1 = (eec::hist::EECHistBase< eec::hist::EECHist3D< eec::hist::axis::id,eec::hist::axis::log,eec::hist::axis::id > > *) 0 ;
-  double *arg2 = (double *) 0 ;
-  unsigned int arg3 = (unsigned int) 0 ;
-  bool arg4 = (bool) true ;
-  void *argp1 = 0 ;
-  int res1 = 0 ;
-  void *argp2 = 0 ;
-  int res2 = 0 ;
-  unsigned int val3 ;
-  int ecode3 = 0 ;
-  bool val4 ;
-  int ecode4 = 0 ;
-  PyObject * obj0 = 0 ;
-  PyObject * obj1 = 0 ;
-  PyObject * obj2 = 0 ;
-  PyObject * obj3 = 0 ;
-  char * kwnames[] = {
-    (char *)"self",  (char *)"variance_bound",  (char *)"hist_i",  (char *)"include_overflows",  NULL 
-  };
-  
-  if (!PyArg_ParseTupleAndKeywords(args, kwargs, "OO|OO:EECHistBaseIdLogId_get_variance_bound", kwnames, &obj0, &obj1, &obj2, &obj3)) SWIG_fail;
-  res1 = SWIG_ConvertPtr(obj0, &argp1,SWIGTYPE_p_eec__hist__EECHistBaseT_eec__hist__EECHist3DT_eec__hist__axis__id_eec__hist__axis__log_eec__hist__axis__id_t_t, 0 |  0 );
-  if (!SWIG_IsOK(res1)) {
-    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "EECHistBaseIdLogId_get_variance_bound" "', argument " "1"" of type '" "eec::hist::EECHistBase< eec::hist::EECHist3D< eec::hist::axis::id,eec::hist::axis::log,eec::hist::axis::id > > const *""'"); 
-  }
-  arg1 = reinterpret_cast< eec::hist::EECHistBase< eec::hist::EECHist3D< eec::hist::axis::id,eec::hist::axis::log,eec::hist::axis::id > > * >(argp1);
-  res2 = SWIG_ConvertPtr(obj1, &argp2,SWIGTYPE_p_double, 0 |  0 );
-  if (!SWIG_IsOK(res2)) {
-    SWIG_exception_fail(SWIG_ArgError(res2), "in method '" "EECHistBaseIdLogId_get_variance_bound" "', argument " "2"" of type '" "double *""'"); 
-  }
-  arg2 = reinterpret_cast< double * >(argp2);
-  if (obj2) {
-    ecode3 = SWIG_AsVal_unsigned_SS_int(obj2, &val3);
-    if (!SWIG_IsOK(ecode3)) {
-      SWIG_exception_fail(SWIG_ArgError(ecode3), "in method '" "EECHistBaseIdLogId_get_variance_bound" "', argument " "3"" of type '" "unsigned int""'");
-    } 
-    arg3 = static_cast< unsigned int >(val3);
-  }
-  if (obj3) {
-    ecode4 = SWIG_AsVal_bool(obj3, &val4);
-    if (!SWIG_IsOK(ecode4)) {
-      SWIG_exception_fail(SWIG_ArgError(ecode4), "in method '" "EECHistBaseIdLogId_get_variance_bound" "', argument " "4"" of type '" "bool""'");
-    } 
-    arg4 = static_cast< bool >(val4);
-  }
-  {
-    try {
-      ((eec::hist::EECHistBase< eec::hist::EECHist3D< eec::hist::axis::id,eec::hist::axis::log,eec::hist::axis::id > > const *)arg1)->get_variance_bound(arg2,arg3,arg4); 
-    }
-    /*@SWIG:/usr/local/Cellar/swig/4.0.2/share/swig/4.0.2/typemaps/exception.swg,58,SWIG_CATCH_STDEXCEPT@*/  /* catching std::exception  */
-    catch (std::invalid_argument& e) {
-      SWIG_exception_fail(SWIG_ValueError, e.what() );
-    } catch (std::domain_error& e) {
-      SWIG_exception_fail(SWIG_ValueError, e.what() );
-    } catch (std::overflow_error& e) {
-      SWIG_exception_fail(SWIG_OverflowError, e.what() );
-    } catch (std::out_of_range& e) {
-      SWIG_exception_fail(SWIG_IndexError, e.what() );
-    } catch (std::length_error& e) {
-      SWIG_exception_fail(SWIG_IndexError, e.what() );
-    } catch (std::runtime_error& e) {
-      SWIG_exception_fail(SWIG_RuntimeError, e.what() );
-    } catch (std::exception& e) {
-      SWIG_exception_fail(SWIG_SystemError, e.what() );
-    }
-    /*@SWIG@*/
-  }
-  resultobj = SWIG_Py_Void();
   return resultobj;
 fail:
   return NULL;
@@ -24605,22 +23212,12 @@ fail:
 
 SWIGINTERN PyObject *_wrap_EECHistBaseLogLogId_rank(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
   PyObject *resultobj = 0;
-  eec::hist::EECHistBase< eec::hist::EECHist3D< eec::hist::axis::log,eec::hist::axis::log,eec::hist::axis::id > > *arg1 = (eec::hist::EECHistBase< eec::hist::EECHist3D< eec::hist::axis::log,eec::hist::axis::log,eec::hist::axis::id > > *) 0 ;
-  void *argp1 = 0 ;
-  int res1 = 0 ;
-  PyObject *swig_obj[1] ;
   unsigned int result;
   
-  if (!args) SWIG_fail;
-  swig_obj[0] = args;
-  res1 = SWIG_ConvertPtr(swig_obj[0], &argp1,SWIGTYPE_p_eec__hist__EECHistBaseT_eec__hist__EECHist3DT_eec__hist__axis__log_eec__hist__axis__log_eec__hist__axis__id_t_t, 0 |  0 );
-  if (!SWIG_IsOK(res1)) {
-    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "EECHistBaseLogLogId_rank" "', argument " "1"" of type '" "eec::hist::EECHistBase< eec::hist::EECHist3D< eec::hist::axis::log,eec::hist::axis::log,eec::hist::axis::id > > const *""'"); 
-  }
-  arg1 = reinterpret_cast< eec::hist::EECHistBase< eec::hist::EECHist3D< eec::hist::axis::log,eec::hist::axis::log,eec::hist::axis::id > > * >(argp1);
+  if (!SWIG_Python_UnpackTuple(args, "EECHistBaseLogLogId_rank", 0, 0, 0)) SWIG_fail;
   {
     try {
-      result = (unsigned int)((eec::hist::EECHistBase< eec::hist::EECHist3D< eec::hist::axis::log,eec::hist::axis::log,eec::hist::axis::id > > const *)arg1)->rank(); 
+      result = (unsigned int)eec::hist::EECHistBase< eec::hist::EECHist3D< eec::hist::axis::log,eec::hist::axis::log,eec::hist::axis::id > >::SWIGTEMPLATEDISAMBIGUATOR rank(); 
     }
     /*@SWIG:/usr/local/Cellar/swig/4.0.2/share/swig/4.0.2/typemaps/exception.swg,58,SWIG_CATCH_STDEXCEPT@*/  /* catching std::exception  */
     catch (std::invalid_argument& e) {
@@ -24941,120 +23538,6 @@ SWIGINTERN PyObject *_wrap_EECHistBaseLogLogId_sum(PyObject *SWIGUNUSEDPARM(self
     /*@SWIG@*/
   }
   resultobj = SWIG_From_double(static_cast< double >(result));
-  return resultobj;
-fail:
-  return NULL;
-}
-
-
-SWIGINTERN PyObject *_wrap_EECHistBaseLogLogId_combined_covariance(PyObject *SWIGUNUSEDPARM(self), PyObject *args, PyObject *kwargs) {
-  PyObject *resultobj = 0;
-  eec::hist::EECHistBase< eec::hist::EECHist3D< eec::hist::axis::log,eec::hist::axis::log,eec::hist::axis::id > > *arg1 = (eec::hist::EECHistBase< eec::hist::EECHist3D< eec::hist::axis::log,eec::hist::axis::log,eec::hist::axis::id > > *) 0 ;
-  unsigned int arg2 = (unsigned int) 0 ;
-  void *argp1 = 0 ;
-  int res1 = 0 ;
-  unsigned int val2 ;
-  int ecode2 = 0 ;
-  PyObject * obj0 = 0 ;
-  PyObject * obj1 = 0 ;
-  char * kwnames[] = {
-    (char *)"self",  (char *)"hist_i",  NULL 
-  };
-  SwigValueWrapper< EECHistTraits< eec::hist::EECHist3D< boost::histogram::axis::transform::log,boost::histogram::axis::transform::log,boost::histogram::axis::transform::id > >::CovarianceHist > result;
-  
-  if (!PyArg_ParseTupleAndKeywords(args, kwargs, "O|O:EECHistBaseLogLogId_combined_covariance", kwnames, &obj0, &obj1)) SWIG_fail;
-  res1 = SWIG_ConvertPtr(obj0, &argp1,SWIGTYPE_p_eec__hist__EECHistBaseT_eec__hist__EECHist3DT_eec__hist__axis__log_eec__hist__axis__log_eec__hist__axis__id_t_t, 0 |  0 );
-  if (!SWIG_IsOK(res1)) {
-    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "EECHistBaseLogLogId_combined_covariance" "', argument " "1"" of type '" "eec::hist::EECHistBase< eec::hist::EECHist3D< eec::hist::axis::log,eec::hist::axis::log,eec::hist::axis::id > > const *""'"); 
-  }
-  arg1 = reinterpret_cast< eec::hist::EECHistBase< eec::hist::EECHist3D< eec::hist::axis::log,eec::hist::axis::log,eec::hist::axis::id > > * >(argp1);
-  if (obj1) {
-    ecode2 = SWIG_AsVal_unsigned_SS_int(obj1, &val2);
-    if (!SWIG_IsOK(ecode2)) {
-      SWIG_exception_fail(SWIG_ArgError(ecode2), "in method '" "EECHistBaseLogLogId_combined_covariance" "', argument " "2"" of type '" "unsigned int""'");
-    } 
-    arg2 = static_cast< unsigned int >(val2);
-  }
-  {
-    try {
-      result = ((eec::hist::EECHistBase< eec::hist::EECHist3D< eec::hist::axis::log,eec::hist::axis::log,eec::hist::axis::id > > const *)arg1)->combined_covariance(arg2); 
-    }
-    /*@SWIG:/usr/local/Cellar/swig/4.0.2/share/swig/4.0.2/typemaps/exception.swg,58,SWIG_CATCH_STDEXCEPT@*/  /* catching std::exception  */
-    catch (std::invalid_argument& e) {
-      SWIG_exception_fail(SWIG_ValueError, e.what() );
-    } catch (std::domain_error& e) {
-      SWIG_exception_fail(SWIG_ValueError, e.what() );
-    } catch (std::overflow_error& e) {
-      SWIG_exception_fail(SWIG_OverflowError, e.what() );
-    } catch (std::out_of_range& e) {
-      SWIG_exception_fail(SWIG_IndexError, e.what() );
-    } catch (std::length_error& e) {
-      SWIG_exception_fail(SWIG_IndexError, e.what() );
-    } catch (std::runtime_error& e) {
-      SWIG_exception_fail(SWIG_RuntimeError, e.what() );
-    } catch (std::exception& e) {
-      SWIG_exception_fail(SWIG_SystemError, e.what() );
-    }
-    /*@SWIG@*/
-  }
-  resultobj = SWIG_NewPointerObj((new eec::hist::EECHistBase< eec::hist::EECHist3D< boost::histogram::axis::transform::log,boost::histogram::axis::transform::log,boost::histogram::axis::transform::id > >::CovarianceHist(static_cast< const eec::hist::EECHistBase< eec::hist::EECHist3D< boost::histogram::axis::transform::log,boost::histogram::axis::transform::log,boost::histogram::axis::transform::id > >::CovarianceHist& >(result))), SWIGTYPE_p_EECHistTraitsT_eec__hist__EECHist3DT_boost__histogram__axis__transform__log_boost__histogram__axis__transform__log_boost__histogram__axis__transform__id_t_t__CovarianceHist, SWIG_POINTER_OWN |  0 );
-  return resultobj;
-fail:
-  return NULL;
-}
-
-
-SWIGINTERN PyObject *_wrap_EECHistBaseLogLogId_combined_variance_bound(PyObject *SWIGUNUSEDPARM(self), PyObject *args, PyObject *kwargs) {
-  PyObject *resultobj = 0;
-  eec::hist::EECHistBase< eec::hist::EECHist3D< eec::hist::axis::log,eec::hist::axis::log,eec::hist::axis::id > > *arg1 = (eec::hist::EECHistBase< eec::hist::EECHist3D< eec::hist::axis::log,eec::hist::axis::log,eec::hist::axis::id > > *) 0 ;
-  unsigned int arg2 = (unsigned int) 0 ;
-  void *argp1 = 0 ;
-  int res1 = 0 ;
-  unsigned int val2 ;
-  int ecode2 = 0 ;
-  PyObject * obj0 = 0 ;
-  PyObject * obj1 = 0 ;
-  char * kwnames[] = {
-    (char *)"self",  (char *)"hist_i",  NULL 
-  };
-  SwigValueWrapper< EECHistTraits< eec::hist::EECHist3D< boost::histogram::axis::transform::log,boost::histogram::axis::transform::log,boost::histogram::axis::transform::id > >::SimpleWeightedHist > result;
-  
-  if (!PyArg_ParseTupleAndKeywords(args, kwargs, "O|O:EECHistBaseLogLogId_combined_variance_bound", kwnames, &obj0, &obj1)) SWIG_fail;
-  res1 = SWIG_ConvertPtr(obj0, &argp1,SWIGTYPE_p_eec__hist__EECHistBaseT_eec__hist__EECHist3DT_eec__hist__axis__log_eec__hist__axis__log_eec__hist__axis__id_t_t, 0 |  0 );
-  if (!SWIG_IsOK(res1)) {
-    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "EECHistBaseLogLogId_combined_variance_bound" "', argument " "1"" of type '" "eec::hist::EECHistBase< eec::hist::EECHist3D< eec::hist::axis::log,eec::hist::axis::log,eec::hist::axis::id > > const *""'"); 
-  }
-  arg1 = reinterpret_cast< eec::hist::EECHistBase< eec::hist::EECHist3D< eec::hist::axis::log,eec::hist::axis::log,eec::hist::axis::id > > * >(argp1);
-  if (obj1) {
-    ecode2 = SWIG_AsVal_unsigned_SS_int(obj1, &val2);
-    if (!SWIG_IsOK(ecode2)) {
-      SWIG_exception_fail(SWIG_ArgError(ecode2), "in method '" "EECHistBaseLogLogId_combined_variance_bound" "', argument " "2"" of type '" "unsigned int""'");
-    } 
-    arg2 = static_cast< unsigned int >(val2);
-  }
-  {
-    try {
-      result = ((eec::hist::EECHistBase< eec::hist::EECHist3D< eec::hist::axis::log,eec::hist::axis::log,eec::hist::axis::id > > const *)arg1)->combined_variance_bound(arg2); 
-    }
-    /*@SWIG:/usr/local/Cellar/swig/4.0.2/share/swig/4.0.2/typemaps/exception.swg,58,SWIG_CATCH_STDEXCEPT@*/  /* catching std::exception  */
-    catch (std::invalid_argument& e) {
-      SWIG_exception_fail(SWIG_ValueError, e.what() );
-    } catch (std::domain_error& e) {
-      SWIG_exception_fail(SWIG_ValueError, e.what() );
-    } catch (std::overflow_error& e) {
-      SWIG_exception_fail(SWIG_OverflowError, e.what() );
-    } catch (std::out_of_range& e) {
-      SWIG_exception_fail(SWIG_IndexError, e.what() );
-    } catch (std::length_error& e) {
-      SWIG_exception_fail(SWIG_IndexError, e.what() );
-    } catch (std::runtime_error& e) {
-      SWIG_exception_fail(SWIG_RuntimeError, e.what() );
-    } catch (std::exception& e) {
-      SWIG_exception_fail(SWIG_SystemError, e.what() );
-    }
-    /*@SWIG@*/
-  }
-  resultobj = SWIG_NewPointerObj((new eec::hist::EECHistBase< eec::hist::EECHist3D< boost::histogram::axis::transform::log,boost::histogram::axis::transform::log,boost::histogram::axis::transform::id > >::SimpleWeightedHist(static_cast< const eec::hist::EECHistBase< eec::hist::EECHist3D< boost::histogram::axis::transform::log,boost::histogram::axis::transform::log,boost::histogram::axis::transform::id > >::SimpleWeightedHist& >(result))), SWIGTYPE_p_EECHistTraitsT_eec__hist__EECHist3DT_boost__histogram__axis__transform__log_boost__histogram__axis__transform__log_boost__histogram__axis__transform__id_t_t__SimpleWeightedHist, SWIG_POINTER_OWN |  0 );
   return resultobj;
 fail:
   return NULL;
@@ -25448,158 +23931,6 @@ SWIGINTERN PyObject *_wrap_EECHistBaseLogLogId_hists_as_text(PyObject *SWIGUNUSE
     /*@SWIG@*/
   }
   resultobj = SWIG_From_std_string(static_cast< std::string >(result));
-  return resultobj;
-fail:
-  return NULL;
-}
-
-
-SWIGINTERN PyObject *_wrap_EECHistBaseLogLogId_get_covariance(PyObject *SWIGUNUSEDPARM(self), PyObject *args, PyObject *kwargs) {
-  PyObject *resultobj = 0;
-  eec::hist::EECHistBase< eec::hist::EECHist3D< eec::hist::axis::log,eec::hist::axis::log,eec::hist::axis::id > > *arg1 = (eec::hist::EECHistBase< eec::hist::EECHist3D< eec::hist::axis::log,eec::hist::axis::log,eec::hist::axis::id > > *) 0 ;
-  double *arg2 = (double *) 0 ;
-  unsigned int arg3 = (unsigned int) 0 ;
-  bool arg4 = (bool) true ;
-  void *argp1 = 0 ;
-  int res1 = 0 ;
-  void *argp2 = 0 ;
-  int res2 = 0 ;
-  unsigned int val3 ;
-  int ecode3 = 0 ;
-  bool val4 ;
-  int ecode4 = 0 ;
-  PyObject * obj0 = 0 ;
-  PyObject * obj1 = 0 ;
-  PyObject * obj2 = 0 ;
-  PyObject * obj3 = 0 ;
-  char * kwnames[] = {
-    (char *)"self",  (char *)"covariance",  (char *)"hist_i",  (char *)"include_overflows",  NULL 
-  };
-  
-  if (!PyArg_ParseTupleAndKeywords(args, kwargs, "OO|OO:EECHistBaseLogLogId_get_covariance", kwnames, &obj0, &obj1, &obj2, &obj3)) SWIG_fail;
-  res1 = SWIG_ConvertPtr(obj0, &argp1,SWIGTYPE_p_eec__hist__EECHistBaseT_eec__hist__EECHist3DT_eec__hist__axis__log_eec__hist__axis__log_eec__hist__axis__id_t_t, 0 |  0 );
-  if (!SWIG_IsOK(res1)) {
-    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "EECHistBaseLogLogId_get_covariance" "', argument " "1"" of type '" "eec::hist::EECHistBase< eec::hist::EECHist3D< eec::hist::axis::log,eec::hist::axis::log,eec::hist::axis::id > > const *""'"); 
-  }
-  arg1 = reinterpret_cast< eec::hist::EECHistBase< eec::hist::EECHist3D< eec::hist::axis::log,eec::hist::axis::log,eec::hist::axis::id > > * >(argp1);
-  res2 = SWIG_ConvertPtr(obj1, &argp2,SWIGTYPE_p_double, 0 |  0 );
-  if (!SWIG_IsOK(res2)) {
-    SWIG_exception_fail(SWIG_ArgError(res2), "in method '" "EECHistBaseLogLogId_get_covariance" "', argument " "2"" of type '" "double *""'"); 
-  }
-  arg2 = reinterpret_cast< double * >(argp2);
-  if (obj2) {
-    ecode3 = SWIG_AsVal_unsigned_SS_int(obj2, &val3);
-    if (!SWIG_IsOK(ecode3)) {
-      SWIG_exception_fail(SWIG_ArgError(ecode3), "in method '" "EECHistBaseLogLogId_get_covariance" "', argument " "3"" of type '" "unsigned int""'");
-    } 
-    arg3 = static_cast< unsigned int >(val3);
-  }
-  if (obj3) {
-    ecode4 = SWIG_AsVal_bool(obj3, &val4);
-    if (!SWIG_IsOK(ecode4)) {
-      SWIG_exception_fail(SWIG_ArgError(ecode4), "in method '" "EECHistBaseLogLogId_get_covariance" "', argument " "4"" of type '" "bool""'");
-    } 
-    arg4 = static_cast< bool >(val4);
-  }
-  {
-    try {
-      ((eec::hist::EECHistBase< eec::hist::EECHist3D< eec::hist::axis::log,eec::hist::axis::log,eec::hist::axis::id > > const *)arg1)->get_covariance(arg2,arg3,arg4); 
-    }
-    /*@SWIG:/usr/local/Cellar/swig/4.0.2/share/swig/4.0.2/typemaps/exception.swg,58,SWIG_CATCH_STDEXCEPT@*/  /* catching std::exception  */
-    catch (std::invalid_argument& e) {
-      SWIG_exception_fail(SWIG_ValueError, e.what() );
-    } catch (std::domain_error& e) {
-      SWIG_exception_fail(SWIG_ValueError, e.what() );
-    } catch (std::overflow_error& e) {
-      SWIG_exception_fail(SWIG_OverflowError, e.what() );
-    } catch (std::out_of_range& e) {
-      SWIG_exception_fail(SWIG_IndexError, e.what() );
-    } catch (std::length_error& e) {
-      SWIG_exception_fail(SWIG_IndexError, e.what() );
-    } catch (std::runtime_error& e) {
-      SWIG_exception_fail(SWIG_RuntimeError, e.what() );
-    } catch (std::exception& e) {
-      SWIG_exception_fail(SWIG_SystemError, e.what() );
-    }
-    /*@SWIG@*/
-  }
-  resultobj = SWIG_Py_Void();
-  return resultobj;
-fail:
-  return NULL;
-}
-
-
-SWIGINTERN PyObject *_wrap_EECHistBaseLogLogId_get_variance_bound(PyObject *SWIGUNUSEDPARM(self), PyObject *args, PyObject *kwargs) {
-  PyObject *resultobj = 0;
-  eec::hist::EECHistBase< eec::hist::EECHist3D< eec::hist::axis::log,eec::hist::axis::log,eec::hist::axis::id > > *arg1 = (eec::hist::EECHistBase< eec::hist::EECHist3D< eec::hist::axis::log,eec::hist::axis::log,eec::hist::axis::id > > *) 0 ;
-  double *arg2 = (double *) 0 ;
-  unsigned int arg3 = (unsigned int) 0 ;
-  bool arg4 = (bool) true ;
-  void *argp1 = 0 ;
-  int res1 = 0 ;
-  void *argp2 = 0 ;
-  int res2 = 0 ;
-  unsigned int val3 ;
-  int ecode3 = 0 ;
-  bool val4 ;
-  int ecode4 = 0 ;
-  PyObject * obj0 = 0 ;
-  PyObject * obj1 = 0 ;
-  PyObject * obj2 = 0 ;
-  PyObject * obj3 = 0 ;
-  char * kwnames[] = {
-    (char *)"self",  (char *)"variance_bound",  (char *)"hist_i",  (char *)"include_overflows",  NULL 
-  };
-  
-  if (!PyArg_ParseTupleAndKeywords(args, kwargs, "OO|OO:EECHistBaseLogLogId_get_variance_bound", kwnames, &obj0, &obj1, &obj2, &obj3)) SWIG_fail;
-  res1 = SWIG_ConvertPtr(obj0, &argp1,SWIGTYPE_p_eec__hist__EECHistBaseT_eec__hist__EECHist3DT_eec__hist__axis__log_eec__hist__axis__log_eec__hist__axis__id_t_t, 0 |  0 );
-  if (!SWIG_IsOK(res1)) {
-    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "EECHistBaseLogLogId_get_variance_bound" "', argument " "1"" of type '" "eec::hist::EECHistBase< eec::hist::EECHist3D< eec::hist::axis::log,eec::hist::axis::log,eec::hist::axis::id > > const *""'"); 
-  }
-  arg1 = reinterpret_cast< eec::hist::EECHistBase< eec::hist::EECHist3D< eec::hist::axis::log,eec::hist::axis::log,eec::hist::axis::id > > * >(argp1);
-  res2 = SWIG_ConvertPtr(obj1, &argp2,SWIGTYPE_p_double, 0 |  0 );
-  if (!SWIG_IsOK(res2)) {
-    SWIG_exception_fail(SWIG_ArgError(res2), "in method '" "EECHistBaseLogLogId_get_variance_bound" "', argument " "2"" of type '" "double *""'"); 
-  }
-  arg2 = reinterpret_cast< double * >(argp2);
-  if (obj2) {
-    ecode3 = SWIG_AsVal_unsigned_SS_int(obj2, &val3);
-    if (!SWIG_IsOK(ecode3)) {
-      SWIG_exception_fail(SWIG_ArgError(ecode3), "in method '" "EECHistBaseLogLogId_get_variance_bound" "', argument " "3"" of type '" "unsigned int""'");
-    } 
-    arg3 = static_cast< unsigned int >(val3);
-  }
-  if (obj3) {
-    ecode4 = SWIG_AsVal_bool(obj3, &val4);
-    if (!SWIG_IsOK(ecode4)) {
-      SWIG_exception_fail(SWIG_ArgError(ecode4), "in method '" "EECHistBaseLogLogId_get_variance_bound" "', argument " "4"" of type '" "bool""'");
-    } 
-    arg4 = static_cast< bool >(val4);
-  }
-  {
-    try {
-      ((eec::hist::EECHistBase< eec::hist::EECHist3D< eec::hist::axis::log,eec::hist::axis::log,eec::hist::axis::id > > const *)arg1)->get_variance_bound(arg2,arg3,arg4); 
-    }
-    /*@SWIG:/usr/local/Cellar/swig/4.0.2/share/swig/4.0.2/typemaps/exception.swg,58,SWIG_CATCH_STDEXCEPT@*/  /* catching std::exception  */
-    catch (std::invalid_argument& e) {
-      SWIG_exception_fail(SWIG_ValueError, e.what() );
-    } catch (std::domain_error& e) {
-      SWIG_exception_fail(SWIG_ValueError, e.what() );
-    } catch (std::overflow_error& e) {
-      SWIG_exception_fail(SWIG_OverflowError, e.what() );
-    } catch (std::out_of_range& e) {
-      SWIG_exception_fail(SWIG_IndexError, e.what() );
-    } catch (std::length_error& e) {
-      SWIG_exception_fail(SWIG_IndexError, e.what() );
-    } catch (std::runtime_error& e) {
-      SWIG_exception_fail(SWIG_RuntimeError, e.what() );
-    } catch (std::exception& e) {
-      SWIG_exception_fail(SWIG_SystemError, e.what() );
-    }
-    /*@SWIG@*/
-  }
-  resultobj = SWIG_Py_Void();
   return resultobj;
 fail:
   return NULL;
@@ -36041,22 +34372,18 @@ static PyMethodDef SwigMethods[] = {
 	 { "EECHistBase1DId_variance_bound_includes_overflows", _wrap_EECHistBase1DId_variance_bound_includes_overflows, METH_O, "EECHistBase1DId_variance_bound_includes_overflows(EECHistBase1DId self) -> bool"},
 	 { "EECHistBase1DId_nhists", _wrap_EECHistBase1DId_nhists, METH_O, "EECHistBase1DId_nhists(EECHistBase1DId self) -> std::size_t"},
 	 { "EECHistBase1DId_nbins", (PyCFunction)(void(*)(void))_wrap_EECHistBase1DId_nbins, METH_VARARGS|METH_KEYWORDS, "EECHistBase1DId_nbins(EECHistBase1DId self, unsigned int i=0) -> std::size_t"},
-	 { "EECHistBase1DId_rank", _wrap_EECHistBase1DId_rank, METH_O, "EECHistBase1DId_rank(EECHistBase1DId self) -> unsigned int"},
+	 { "EECHistBase1DId_rank", _wrap_EECHistBase1DId_rank, METH_NOARGS, "EECHistBase1DId_rank() -> unsigned int"},
 	 { "EECHistBase1DId_hist_size", (PyCFunction)(void(*)(void))_wrap_EECHistBase1DId_hist_size, METH_VARARGS|METH_KEYWORDS, "EECHistBase1DId_hist_size(EECHistBase1DId self, bool include_overflows=True, int i=-1) -> std::size_t"},
 	 { "EECHistBase1DId_covariance_size", (PyCFunction)(void(*)(void))_wrap_EECHistBase1DId_covariance_size, METH_VARARGS|METH_KEYWORDS, "EECHistBase1DId_covariance_size(EECHistBase1DId self, bool include_overflows=True) -> std::size_t"},
 	 { "EECHistBase1DId_event_counter", (PyCFunction)(void(*)(void))_wrap_EECHistBase1DId_event_counter, METH_VARARGS|METH_KEYWORDS, "EECHistBase1DId_event_counter(EECHistBase1DId self, int thread_i=-1) -> std::size_t"},
 	 { "EECHistBase1DId_reduce", (PyCFunction)(void(*)(void))_wrap_EECHistBase1DId_reduce, METH_VARARGS|METH_KEYWORDS, "EECHistBase1DId_reduce(EECHistBase1DId self, vectorReduceCommand rcs)"},
 	 { "EECHistBase1DId_sum", (PyCFunction)(void(*)(void))_wrap_EECHistBase1DId_sum, METH_VARARGS|METH_KEYWORDS, "EECHistBase1DId_sum(EECHistBase1DId self, unsigned int hist_i=0) -> double"},
-	 { "EECHistBase1DId_combined_covariance", (PyCFunction)(void(*)(void))_wrap_EECHistBase1DId_combined_covariance, METH_VARARGS|METH_KEYWORDS, "EECHistBase1DId_combined_covariance(EECHistBase1DId self, unsigned int hist_i=0) -> eec::hist::EECHistBase< eec::hist::EECHist1D< boost::histogram::axis::transform::id > >::CovarianceHist"},
-	 { "EECHistBase1DId_combined_variance_bound", (PyCFunction)(void(*)(void))_wrap_EECHistBase1DId_combined_variance_bound, METH_VARARGS|METH_KEYWORDS, "EECHistBase1DId_combined_variance_bound(EECHistBase1DId self, unsigned int hist_i=0) -> eec::hist::EECHistBase< eec::hist::EECHist1D< boost::histogram::axis::transform::id > >::SimpleWeightedHist"},
 	 { "EECHistBase1DId___iadd__", (PyCFunction)(void(*)(void))_wrap_EECHistBase1DId___iadd__, METH_VARARGS|METH_KEYWORDS, "EECHistBase1DId___iadd__(EECHistBase1DId self, EECHistBase1DId rhs) -> EECHistBase1DId"},
 	 { "EECHistBase1DId___imul__", (PyCFunction)(void(*)(void))_wrap_EECHistBase1DId___imul__, METH_VARARGS|METH_KEYWORDS, "EECHistBase1DId___imul__(EECHistBase1DId self, double const x) -> EECHistBase1DId"},
 	 { "EECHistBase1DId_scale", (PyCFunction)(void(*)(void))_wrap_EECHistBase1DId_scale, METH_VARARGS|METH_KEYWORDS, "EECHistBase1DId_scale(EECHistBase1DId self, double const x, unsigned int hist_i=0, int thread_i=0)"},
 	 { "EECHistBase1DId_bin_centers_vec", (PyCFunction)(void(*)(void))_wrap_EECHistBase1DId_bin_centers_vec, METH_VARARGS|METH_KEYWORDS, "EECHistBase1DId_bin_centers_vec(EECHistBase1DId self, unsigned int i=0) -> vectorDouble"},
 	 { "EECHistBase1DId_bin_edges_vec", (PyCFunction)(void(*)(void))_wrap_EECHistBase1DId_bin_edges_vec, METH_VARARGS|METH_KEYWORDS, "EECHistBase1DId_bin_edges_vec(EECHistBase1DId self, unsigned int i=0) -> vectorDouble"},
 	 { "EECHistBase1DId_hists_as_text", (PyCFunction)(void(*)(void))_wrap_EECHistBase1DId_hists_as_text, METH_VARARGS|METH_KEYWORDS, "EECHistBase1DId_hists_as_text(EECHistBase1DId self, int hist_level=3, bool include_overflows=True, int precision=16, std::ostringstream * os=None) -> std::string"},
-	 { "EECHistBase1DId_get_covariance", (PyCFunction)(void(*)(void))_wrap_EECHistBase1DId_get_covariance, METH_VARARGS|METH_KEYWORDS, "EECHistBase1DId_get_covariance(EECHistBase1DId self, double * covariance, unsigned int hist_i=0, bool include_overflows=True)"},
-	 { "EECHistBase1DId_get_variance_bound", (PyCFunction)(void(*)(void))_wrap_EECHistBase1DId_get_variance_bound, METH_VARARGS|METH_KEYWORDS, "EECHistBase1DId_get_variance_bound(EECHistBase1DId self, double * variance_bound, unsigned int hist_i=0, bool include_overflows=True)"},
 	 { "EECHistBase1DId_bin_centers", (PyCFunction)(void(*)(void))_wrap_EECHistBase1DId_bin_centers, METH_VARARGS|METH_KEYWORDS, "EECHistBase1DId_bin_centers(EECHistBase1DId self, int i=0)"},
 	 { "EECHistBase1DId_bin_edges", (PyCFunction)(void(*)(void))_wrap_EECHistBase1DId_bin_edges, METH_VARARGS|METH_KEYWORDS, "EECHistBase1DId_bin_edges(EECHistBase1DId self, int i=0)"},
 	 { "EECHistBase1DId_swigregister", EECHistBase1DId_swigregister, METH_O, NULL},
@@ -36069,22 +34396,18 @@ static PyMethodDef SwigMethods[] = {
 	 { "EECHistBase1DLog_variance_bound_includes_overflows", _wrap_EECHistBase1DLog_variance_bound_includes_overflows, METH_O, "EECHistBase1DLog_variance_bound_includes_overflows(EECHistBase1DLog self) -> bool"},
 	 { "EECHistBase1DLog_nhists", _wrap_EECHistBase1DLog_nhists, METH_O, "EECHistBase1DLog_nhists(EECHistBase1DLog self) -> std::size_t"},
 	 { "EECHistBase1DLog_nbins", (PyCFunction)(void(*)(void))_wrap_EECHistBase1DLog_nbins, METH_VARARGS|METH_KEYWORDS, "EECHistBase1DLog_nbins(EECHistBase1DLog self, unsigned int i=0) -> std::size_t"},
-	 { "EECHistBase1DLog_rank", _wrap_EECHistBase1DLog_rank, METH_O, "EECHistBase1DLog_rank(EECHistBase1DLog self) -> unsigned int"},
+	 { "EECHistBase1DLog_rank", _wrap_EECHistBase1DLog_rank, METH_NOARGS, "EECHistBase1DLog_rank() -> unsigned int"},
 	 { "EECHistBase1DLog_hist_size", (PyCFunction)(void(*)(void))_wrap_EECHistBase1DLog_hist_size, METH_VARARGS|METH_KEYWORDS, "EECHistBase1DLog_hist_size(EECHistBase1DLog self, bool include_overflows=True, int i=-1) -> std::size_t"},
 	 { "EECHistBase1DLog_covariance_size", (PyCFunction)(void(*)(void))_wrap_EECHistBase1DLog_covariance_size, METH_VARARGS|METH_KEYWORDS, "EECHistBase1DLog_covariance_size(EECHistBase1DLog self, bool include_overflows=True) -> std::size_t"},
 	 { "EECHistBase1DLog_event_counter", (PyCFunction)(void(*)(void))_wrap_EECHistBase1DLog_event_counter, METH_VARARGS|METH_KEYWORDS, "EECHistBase1DLog_event_counter(EECHistBase1DLog self, int thread_i=-1) -> std::size_t"},
 	 { "EECHistBase1DLog_reduce", (PyCFunction)(void(*)(void))_wrap_EECHistBase1DLog_reduce, METH_VARARGS|METH_KEYWORDS, "EECHistBase1DLog_reduce(EECHistBase1DLog self, vectorReduceCommand rcs)"},
 	 { "EECHistBase1DLog_sum", (PyCFunction)(void(*)(void))_wrap_EECHistBase1DLog_sum, METH_VARARGS|METH_KEYWORDS, "EECHistBase1DLog_sum(EECHistBase1DLog self, unsigned int hist_i=0) -> double"},
-	 { "EECHistBase1DLog_combined_covariance", (PyCFunction)(void(*)(void))_wrap_EECHistBase1DLog_combined_covariance, METH_VARARGS|METH_KEYWORDS, "EECHistBase1DLog_combined_covariance(EECHistBase1DLog self, unsigned int hist_i=0) -> eec::hist::EECHistBase< eec::hist::EECHist1D< boost::histogram::axis::transform::log > >::CovarianceHist"},
-	 { "EECHistBase1DLog_combined_variance_bound", (PyCFunction)(void(*)(void))_wrap_EECHistBase1DLog_combined_variance_bound, METH_VARARGS|METH_KEYWORDS, "EECHistBase1DLog_combined_variance_bound(EECHistBase1DLog self, unsigned int hist_i=0) -> eec::hist::EECHistBase< eec::hist::EECHist1D< boost::histogram::axis::transform::log > >::SimpleWeightedHist"},
 	 { "EECHistBase1DLog___iadd__", (PyCFunction)(void(*)(void))_wrap_EECHistBase1DLog___iadd__, METH_VARARGS|METH_KEYWORDS, "EECHistBase1DLog___iadd__(EECHistBase1DLog self, EECHistBase1DLog rhs) -> EECHistBase1DLog"},
 	 { "EECHistBase1DLog___imul__", (PyCFunction)(void(*)(void))_wrap_EECHistBase1DLog___imul__, METH_VARARGS|METH_KEYWORDS, "EECHistBase1DLog___imul__(EECHistBase1DLog self, double const x) -> EECHistBase1DLog"},
 	 { "EECHistBase1DLog_scale", (PyCFunction)(void(*)(void))_wrap_EECHistBase1DLog_scale, METH_VARARGS|METH_KEYWORDS, "EECHistBase1DLog_scale(EECHistBase1DLog self, double const x, unsigned int hist_i=0, int thread_i=0)"},
 	 { "EECHistBase1DLog_bin_centers_vec", (PyCFunction)(void(*)(void))_wrap_EECHistBase1DLog_bin_centers_vec, METH_VARARGS|METH_KEYWORDS, "EECHistBase1DLog_bin_centers_vec(EECHistBase1DLog self, unsigned int i=0) -> vectorDouble"},
 	 { "EECHistBase1DLog_bin_edges_vec", (PyCFunction)(void(*)(void))_wrap_EECHistBase1DLog_bin_edges_vec, METH_VARARGS|METH_KEYWORDS, "EECHistBase1DLog_bin_edges_vec(EECHistBase1DLog self, unsigned int i=0) -> vectorDouble"},
 	 { "EECHistBase1DLog_hists_as_text", (PyCFunction)(void(*)(void))_wrap_EECHistBase1DLog_hists_as_text, METH_VARARGS|METH_KEYWORDS, "EECHistBase1DLog_hists_as_text(EECHistBase1DLog self, int hist_level=3, bool include_overflows=True, int precision=16, std::ostringstream * os=None) -> std::string"},
-	 { "EECHistBase1DLog_get_covariance", (PyCFunction)(void(*)(void))_wrap_EECHistBase1DLog_get_covariance, METH_VARARGS|METH_KEYWORDS, "EECHistBase1DLog_get_covariance(EECHistBase1DLog self, double * covariance, unsigned int hist_i=0, bool include_overflows=True)"},
-	 { "EECHistBase1DLog_get_variance_bound", (PyCFunction)(void(*)(void))_wrap_EECHistBase1DLog_get_variance_bound, METH_VARARGS|METH_KEYWORDS, "EECHistBase1DLog_get_variance_bound(EECHistBase1DLog self, double * variance_bound, unsigned int hist_i=0, bool include_overflows=True)"},
 	 { "EECHistBase1DLog_bin_centers", (PyCFunction)(void(*)(void))_wrap_EECHistBase1DLog_bin_centers, METH_VARARGS|METH_KEYWORDS, "EECHistBase1DLog_bin_centers(EECHistBase1DLog self, int i=0)"},
 	 { "EECHistBase1DLog_bin_edges", (PyCFunction)(void(*)(void))_wrap_EECHistBase1DLog_bin_edges, METH_VARARGS|METH_KEYWORDS, "EECHistBase1DLog_bin_edges(EECHistBase1DLog self, int i=0)"},
 	 { "EECHistBase1DLog_swigregister", EECHistBase1DLog_swigregister, METH_O, NULL},
@@ -36097,22 +34420,18 @@ static PyMethodDef SwigMethods[] = {
 	 { "EECHistBaseIdIdId_variance_bound_includes_overflows", _wrap_EECHistBaseIdIdId_variance_bound_includes_overflows, METH_O, "EECHistBaseIdIdId_variance_bound_includes_overflows(EECHistBaseIdIdId self) -> bool"},
 	 { "EECHistBaseIdIdId_nhists", _wrap_EECHistBaseIdIdId_nhists, METH_O, "EECHistBaseIdIdId_nhists(EECHistBaseIdIdId self) -> std::size_t"},
 	 { "EECHistBaseIdIdId_nbins", (PyCFunction)(void(*)(void))_wrap_EECHistBaseIdIdId_nbins, METH_VARARGS|METH_KEYWORDS, "EECHistBaseIdIdId_nbins(EECHistBaseIdIdId self, unsigned int i=0) -> std::size_t"},
-	 { "EECHistBaseIdIdId_rank", _wrap_EECHistBaseIdIdId_rank, METH_O, "EECHistBaseIdIdId_rank(EECHistBaseIdIdId self) -> unsigned int"},
+	 { "EECHistBaseIdIdId_rank", _wrap_EECHistBaseIdIdId_rank, METH_NOARGS, "EECHistBaseIdIdId_rank() -> unsigned int"},
 	 { "EECHistBaseIdIdId_hist_size", (PyCFunction)(void(*)(void))_wrap_EECHistBaseIdIdId_hist_size, METH_VARARGS|METH_KEYWORDS, "EECHistBaseIdIdId_hist_size(EECHistBaseIdIdId self, bool include_overflows=True, int i=-1) -> std::size_t"},
 	 { "EECHistBaseIdIdId_covariance_size", (PyCFunction)(void(*)(void))_wrap_EECHistBaseIdIdId_covariance_size, METH_VARARGS|METH_KEYWORDS, "EECHistBaseIdIdId_covariance_size(EECHistBaseIdIdId self, bool include_overflows=True) -> std::size_t"},
 	 { "EECHistBaseIdIdId_event_counter", (PyCFunction)(void(*)(void))_wrap_EECHistBaseIdIdId_event_counter, METH_VARARGS|METH_KEYWORDS, "EECHistBaseIdIdId_event_counter(EECHistBaseIdIdId self, int thread_i=-1) -> std::size_t"},
 	 { "EECHistBaseIdIdId_reduce", (PyCFunction)(void(*)(void))_wrap_EECHistBaseIdIdId_reduce, METH_VARARGS|METH_KEYWORDS, "EECHistBaseIdIdId_reduce(EECHistBaseIdIdId self, vectorReduceCommand rcs)"},
 	 { "EECHistBaseIdIdId_sum", (PyCFunction)(void(*)(void))_wrap_EECHistBaseIdIdId_sum, METH_VARARGS|METH_KEYWORDS, "EECHistBaseIdIdId_sum(EECHistBaseIdIdId self, unsigned int hist_i=0) -> double"},
-	 { "EECHistBaseIdIdId_combined_covariance", (PyCFunction)(void(*)(void))_wrap_EECHistBaseIdIdId_combined_covariance, METH_VARARGS|METH_KEYWORDS, "EECHistBaseIdIdId_combined_covariance(EECHistBaseIdIdId self, unsigned int hist_i=0) -> eec::hist::EECHistBase< eec::hist::EECHist3D< boost::histogram::axis::transform::id,boost::histogram::axis::transform::id,boost::histogram::axis::transform::id > >::CovarianceHist"},
-	 { "EECHistBaseIdIdId_combined_variance_bound", (PyCFunction)(void(*)(void))_wrap_EECHistBaseIdIdId_combined_variance_bound, METH_VARARGS|METH_KEYWORDS, "EECHistBaseIdIdId_combined_variance_bound(EECHistBaseIdIdId self, unsigned int hist_i=0) -> eec::hist::EECHistBase< eec::hist::EECHist3D< boost::histogram::axis::transform::id,boost::histogram::axis::transform::id,boost::histogram::axis::transform::id > >::SimpleWeightedHist"},
 	 { "EECHistBaseIdIdId___iadd__", (PyCFunction)(void(*)(void))_wrap_EECHistBaseIdIdId___iadd__, METH_VARARGS|METH_KEYWORDS, "EECHistBaseIdIdId___iadd__(EECHistBaseIdIdId self, EECHistBaseIdIdId rhs) -> EECHistBaseIdIdId"},
 	 { "EECHistBaseIdIdId___imul__", (PyCFunction)(void(*)(void))_wrap_EECHistBaseIdIdId___imul__, METH_VARARGS|METH_KEYWORDS, "EECHistBaseIdIdId___imul__(EECHistBaseIdIdId self, double const x) -> EECHistBaseIdIdId"},
 	 { "EECHistBaseIdIdId_scale", (PyCFunction)(void(*)(void))_wrap_EECHistBaseIdIdId_scale, METH_VARARGS|METH_KEYWORDS, "EECHistBaseIdIdId_scale(EECHistBaseIdIdId self, double const x, unsigned int hist_i=0, int thread_i=0)"},
 	 { "EECHistBaseIdIdId_bin_centers_vec", (PyCFunction)(void(*)(void))_wrap_EECHistBaseIdIdId_bin_centers_vec, METH_VARARGS|METH_KEYWORDS, "EECHistBaseIdIdId_bin_centers_vec(EECHistBaseIdIdId self, unsigned int i=0) -> vectorDouble"},
 	 { "EECHistBaseIdIdId_bin_edges_vec", (PyCFunction)(void(*)(void))_wrap_EECHistBaseIdIdId_bin_edges_vec, METH_VARARGS|METH_KEYWORDS, "EECHistBaseIdIdId_bin_edges_vec(EECHistBaseIdIdId self, unsigned int i=0) -> vectorDouble"},
 	 { "EECHistBaseIdIdId_hists_as_text", (PyCFunction)(void(*)(void))_wrap_EECHistBaseIdIdId_hists_as_text, METH_VARARGS|METH_KEYWORDS, "EECHistBaseIdIdId_hists_as_text(EECHistBaseIdIdId self, int hist_level=3, bool include_overflows=True, int precision=16, std::ostringstream * os=None) -> std::string"},
-	 { "EECHistBaseIdIdId_get_covariance", (PyCFunction)(void(*)(void))_wrap_EECHistBaseIdIdId_get_covariance, METH_VARARGS|METH_KEYWORDS, "EECHistBaseIdIdId_get_covariance(EECHistBaseIdIdId self, double * covariance, unsigned int hist_i=0, bool include_overflows=True)"},
-	 { "EECHistBaseIdIdId_get_variance_bound", (PyCFunction)(void(*)(void))_wrap_EECHistBaseIdIdId_get_variance_bound, METH_VARARGS|METH_KEYWORDS, "EECHistBaseIdIdId_get_variance_bound(EECHistBaseIdIdId self, double * variance_bound, unsigned int hist_i=0, bool include_overflows=True)"},
 	 { "EECHistBaseIdIdId_bin_centers", (PyCFunction)(void(*)(void))_wrap_EECHistBaseIdIdId_bin_centers, METH_VARARGS|METH_KEYWORDS, "EECHistBaseIdIdId_bin_centers(EECHistBaseIdIdId self, int i=0)"},
 	 { "EECHistBaseIdIdId_bin_edges", (PyCFunction)(void(*)(void))_wrap_EECHistBaseIdIdId_bin_edges, METH_VARARGS|METH_KEYWORDS, "EECHistBaseIdIdId_bin_edges(EECHistBaseIdIdId self, int i=0)"},
 	 { "EECHistBaseIdIdId_swigregister", EECHistBaseIdIdId_swigregister, METH_O, NULL},
@@ -36125,22 +34444,18 @@ static PyMethodDef SwigMethods[] = {
 	 { "EECHistBaseLogIdId_variance_bound_includes_overflows", _wrap_EECHistBaseLogIdId_variance_bound_includes_overflows, METH_O, "EECHistBaseLogIdId_variance_bound_includes_overflows(EECHistBaseLogIdId self) -> bool"},
 	 { "EECHistBaseLogIdId_nhists", _wrap_EECHistBaseLogIdId_nhists, METH_O, "EECHistBaseLogIdId_nhists(EECHistBaseLogIdId self) -> std::size_t"},
 	 { "EECHistBaseLogIdId_nbins", (PyCFunction)(void(*)(void))_wrap_EECHistBaseLogIdId_nbins, METH_VARARGS|METH_KEYWORDS, "EECHistBaseLogIdId_nbins(EECHistBaseLogIdId self, unsigned int i=0) -> std::size_t"},
-	 { "EECHistBaseLogIdId_rank", _wrap_EECHistBaseLogIdId_rank, METH_O, "EECHistBaseLogIdId_rank(EECHistBaseLogIdId self) -> unsigned int"},
+	 { "EECHistBaseLogIdId_rank", _wrap_EECHistBaseLogIdId_rank, METH_NOARGS, "EECHistBaseLogIdId_rank() -> unsigned int"},
 	 { "EECHistBaseLogIdId_hist_size", (PyCFunction)(void(*)(void))_wrap_EECHistBaseLogIdId_hist_size, METH_VARARGS|METH_KEYWORDS, "EECHistBaseLogIdId_hist_size(EECHistBaseLogIdId self, bool include_overflows=True, int i=-1) -> std::size_t"},
 	 { "EECHistBaseLogIdId_covariance_size", (PyCFunction)(void(*)(void))_wrap_EECHistBaseLogIdId_covariance_size, METH_VARARGS|METH_KEYWORDS, "EECHistBaseLogIdId_covariance_size(EECHistBaseLogIdId self, bool include_overflows=True) -> std::size_t"},
 	 { "EECHistBaseLogIdId_event_counter", (PyCFunction)(void(*)(void))_wrap_EECHistBaseLogIdId_event_counter, METH_VARARGS|METH_KEYWORDS, "EECHistBaseLogIdId_event_counter(EECHistBaseLogIdId self, int thread_i=-1) -> std::size_t"},
 	 { "EECHistBaseLogIdId_reduce", (PyCFunction)(void(*)(void))_wrap_EECHistBaseLogIdId_reduce, METH_VARARGS|METH_KEYWORDS, "EECHistBaseLogIdId_reduce(EECHistBaseLogIdId self, vectorReduceCommand rcs)"},
 	 { "EECHistBaseLogIdId_sum", (PyCFunction)(void(*)(void))_wrap_EECHistBaseLogIdId_sum, METH_VARARGS|METH_KEYWORDS, "EECHistBaseLogIdId_sum(EECHistBaseLogIdId self, unsigned int hist_i=0) -> double"},
-	 { "EECHistBaseLogIdId_combined_covariance", (PyCFunction)(void(*)(void))_wrap_EECHistBaseLogIdId_combined_covariance, METH_VARARGS|METH_KEYWORDS, "EECHistBaseLogIdId_combined_covariance(EECHistBaseLogIdId self, unsigned int hist_i=0) -> eec::hist::EECHistBase< eec::hist::EECHist3D< boost::histogram::axis::transform::log,boost::histogram::axis::transform::id,boost::histogram::axis::transform::id > >::CovarianceHist"},
-	 { "EECHistBaseLogIdId_combined_variance_bound", (PyCFunction)(void(*)(void))_wrap_EECHistBaseLogIdId_combined_variance_bound, METH_VARARGS|METH_KEYWORDS, "EECHistBaseLogIdId_combined_variance_bound(EECHistBaseLogIdId self, unsigned int hist_i=0) -> eec::hist::EECHistBase< eec::hist::EECHist3D< boost::histogram::axis::transform::log,boost::histogram::axis::transform::id,boost::histogram::axis::transform::id > >::SimpleWeightedHist"},
 	 { "EECHistBaseLogIdId___iadd__", (PyCFunction)(void(*)(void))_wrap_EECHistBaseLogIdId___iadd__, METH_VARARGS|METH_KEYWORDS, "EECHistBaseLogIdId___iadd__(EECHistBaseLogIdId self, EECHistBaseLogIdId rhs) -> EECHistBaseLogIdId"},
 	 { "EECHistBaseLogIdId___imul__", (PyCFunction)(void(*)(void))_wrap_EECHistBaseLogIdId___imul__, METH_VARARGS|METH_KEYWORDS, "EECHistBaseLogIdId___imul__(EECHistBaseLogIdId self, double const x) -> EECHistBaseLogIdId"},
 	 { "EECHistBaseLogIdId_scale", (PyCFunction)(void(*)(void))_wrap_EECHistBaseLogIdId_scale, METH_VARARGS|METH_KEYWORDS, "EECHistBaseLogIdId_scale(EECHistBaseLogIdId self, double const x, unsigned int hist_i=0, int thread_i=0)"},
 	 { "EECHistBaseLogIdId_bin_centers_vec", (PyCFunction)(void(*)(void))_wrap_EECHistBaseLogIdId_bin_centers_vec, METH_VARARGS|METH_KEYWORDS, "EECHistBaseLogIdId_bin_centers_vec(EECHistBaseLogIdId self, unsigned int i=0) -> vectorDouble"},
 	 { "EECHistBaseLogIdId_bin_edges_vec", (PyCFunction)(void(*)(void))_wrap_EECHistBaseLogIdId_bin_edges_vec, METH_VARARGS|METH_KEYWORDS, "EECHistBaseLogIdId_bin_edges_vec(EECHistBaseLogIdId self, unsigned int i=0) -> vectorDouble"},
 	 { "EECHistBaseLogIdId_hists_as_text", (PyCFunction)(void(*)(void))_wrap_EECHistBaseLogIdId_hists_as_text, METH_VARARGS|METH_KEYWORDS, "EECHistBaseLogIdId_hists_as_text(EECHistBaseLogIdId self, int hist_level=3, bool include_overflows=True, int precision=16, std::ostringstream * os=None) -> std::string"},
-	 { "EECHistBaseLogIdId_get_covariance", (PyCFunction)(void(*)(void))_wrap_EECHistBaseLogIdId_get_covariance, METH_VARARGS|METH_KEYWORDS, "EECHistBaseLogIdId_get_covariance(EECHistBaseLogIdId self, double * covariance, unsigned int hist_i=0, bool include_overflows=True)"},
-	 { "EECHistBaseLogIdId_get_variance_bound", (PyCFunction)(void(*)(void))_wrap_EECHistBaseLogIdId_get_variance_bound, METH_VARARGS|METH_KEYWORDS, "EECHistBaseLogIdId_get_variance_bound(EECHistBaseLogIdId self, double * variance_bound, unsigned int hist_i=0, bool include_overflows=True)"},
 	 { "EECHistBaseLogIdId_bin_centers", (PyCFunction)(void(*)(void))_wrap_EECHistBaseLogIdId_bin_centers, METH_VARARGS|METH_KEYWORDS, "EECHistBaseLogIdId_bin_centers(EECHistBaseLogIdId self, int i=0)"},
 	 { "EECHistBaseLogIdId_bin_edges", (PyCFunction)(void(*)(void))_wrap_EECHistBaseLogIdId_bin_edges, METH_VARARGS|METH_KEYWORDS, "EECHistBaseLogIdId_bin_edges(EECHistBaseLogIdId self, int i=0)"},
 	 { "EECHistBaseLogIdId_swigregister", EECHistBaseLogIdId_swigregister, METH_O, NULL},
@@ -36153,22 +34468,18 @@ static PyMethodDef SwigMethods[] = {
 	 { "EECHistBaseIdLogId_variance_bound_includes_overflows", _wrap_EECHistBaseIdLogId_variance_bound_includes_overflows, METH_O, "EECHistBaseIdLogId_variance_bound_includes_overflows(EECHistBaseIdLogId self) -> bool"},
 	 { "EECHistBaseIdLogId_nhists", _wrap_EECHistBaseIdLogId_nhists, METH_O, "EECHistBaseIdLogId_nhists(EECHistBaseIdLogId self) -> std::size_t"},
 	 { "EECHistBaseIdLogId_nbins", (PyCFunction)(void(*)(void))_wrap_EECHistBaseIdLogId_nbins, METH_VARARGS|METH_KEYWORDS, "EECHistBaseIdLogId_nbins(EECHistBaseIdLogId self, unsigned int i=0) -> std::size_t"},
-	 { "EECHistBaseIdLogId_rank", _wrap_EECHistBaseIdLogId_rank, METH_O, "EECHistBaseIdLogId_rank(EECHistBaseIdLogId self) -> unsigned int"},
+	 { "EECHistBaseIdLogId_rank", _wrap_EECHistBaseIdLogId_rank, METH_NOARGS, "EECHistBaseIdLogId_rank() -> unsigned int"},
 	 { "EECHistBaseIdLogId_hist_size", (PyCFunction)(void(*)(void))_wrap_EECHistBaseIdLogId_hist_size, METH_VARARGS|METH_KEYWORDS, "EECHistBaseIdLogId_hist_size(EECHistBaseIdLogId self, bool include_overflows=True, int i=-1) -> std::size_t"},
 	 { "EECHistBaseIdLogId_covariance_size", (PyCFunction)(void(*)(void))_wrap_EECHistBaseIdLogId_covariance_size, METH_VARARGS|METH_KEYWORDS, "EECHistBaseIdLogId_covariance_size(EECHistBaseIdLogId self, bool include_overflows=True) -> std::size_t"},
 	 { "EECHistBaseIdLogId_event_counter", (PyCFunction)(void(*)(void))_wrap_EECHistBaseIdLogId_event_counter, METH_VARARGS|METH_KEYWORDS, "EECHistBaseIdLogId_event_counter(EECHistBaseIdLogId self, int thread_i=-1) -> std::size_t"},
 	 { "EECHistBaseIdLogId_reduce", (PyCFunction)(void(*)(void))_wrap_EECHistBaseIdLogId_reduce, METH_VARARGS|METH_KEYWORDS, "EECHistBaseIdLogId_reduce(EECHistBaseIdLogId self, vectorReduceCommand rcs)"},
 	 { "EECHistBaseIdLogId_sum", (PyCFunction)(void(*)(void))_wrap_EECHistBaseIdLogId_sum, METH_VARARGS|METH_KEYWORDS, "EECHistBaseIdLogId_sum(EECHistBaseIdLogId self, unsigned int hist_i=0) -> double"},
-	 { "EECHistBaseIdLogId_combined_covariance", (PyCFunction)(void(*)(void))_wrap_EECHistBaseIdLogId_combined_covariance, METH_VARARGS|METH_KEYWORDS, "EECHistBaseIdLogId_combined_covariance(EECHistBaseIdLogId self, unsigned int hist_i=0) -> eec::hist::EECHistBase< eec::hist::EECHist3D< boost::histogram::axis::transform::id,boost::histogram::axis::transform::log,boost::histogram::axis::transform::id > >::CovarianceHist"},
-	 { "EECHistBaseIdLogId_combined_variance_bound", (PyCFunction)(void(*)(void))_wrap_EECHistBaseIdLogId_combined_variance_bound, METH_VARARGS|METH_KEYWORDS, "EECHistBaseIdLogId_combined_variance_bound(EECHistBaseIdLogId self, unsigned int hist_i=0) -> eec::hist::EECHistBase< eec::hist::EECHist3D< boost::histogram::axis::transform::id,boost::histogram::axis::transform::log,boost::histogram::axis::transform::id > >::SimpleWeightedHist"},
 	 { "EECHistBaseIdLogId___iadd__", (PyCFunction)(void(*)(void))_wrap_EECHistBaseIdLogId___iadd__, METH_VARARGS|METH_KEYWORDS, "EECHistBaseIdLogId___iadd__(EECHistBaseIdLogId self, EECHistBaseIdLogId rhs) -> EECHistBaseIdLogId"},
 	 { "EECHistBaseIdLogId___imul__", (PyCFunction)(void(*)(void))_wrap_EECHistBaseIdLogId___imul__, METH_VARARGS|METH_KEYWORDS, "EECHistBaseIdLogId___imul__(EECHistBaseIdLogId self, double const x) -> EECHistBaseIdLogId"},
 	 { "EECHistBaseIdLogId_scale", (PyCFunction)(void(*)(void))_wrap_EECHistBaseIdLogId_scale, METH_VARARGS|METH_KEYWORDS, "EECHistBaseIdLogId_scale(EECHistBaseIdLogId self, double const x, unsigned int hist_i=0, int thread_i=0)"},
 	 { "EECHistBaseIdLogId_bin_centers_vec", (PyCFunction)(void(*)(void))_wrap_EECHistBaseIdLogId_bin_centers_vec, METH_VARARGS|METH_KEYWORDS, "EECHistBaseIdLogId_bin_centers_vec(EECHistBaseIdLogId self, unsigned int i=0) -> vectorDouble"},
 	 { "EECHistBaseIdLogId_bin_edges_vec", (PyCFunction)(void(*)(void))_wrap_EECHistBaseIdLogId_bin_edges_vec, METH_VARARGS|METH_KEYWORDS, "EECHistBaseIdLogId_bin_edges_vec(EECHistBaseIdLogId self, unsigned int i=0) -> vectorDouble"},
 	 { "EECHistBaseIdLogId_hists_as_text", (PyCFunction)(void(*)(void))_wrap_EECHistBaseIdLogId_hists_as_text, METH_VARARGS|METH_KEYWORDS, "EECHistBaseIdLogId_hists_as_text(EECHistBaseIdLogId self, int hist_level=3, bool include_overflows=True, int precision=16, std::ostringstream * os=None) -> std::string"},
-	 { "EECHistBaseIdLogId_get_covariance", (PyCFunction)(void(*)(void))_wrap_EECHistBaseIdLogId_get_covariance, METH_VARARGS|METH_KEYWORDS, "EECHistBaseIdLogId_get_covariance(EECHistBaseIdLogId self, double * covariance, unsigned int hist_i=0, bool include_overflows=True)"},
-	 { "EECHistBaseIdLogId_get_variance_bound", (PyCFunction)(void(*)(void))_wrap_EECHistBaseIdLogId_get_variance_bound, METH_VARARGS|METH_KEYWORDS, "EECHistBaseIdLogId_get_variance_bound(EECHistBaseIdLogId self, double * variance_bound, unsigned int hist_i=0, bool include_overflows=True)"},
 	 { "EECHistBaseIdLogId_bin_centers", (PyCFunction)(void(*)(void))_wrap_EECHistBaseIdLogId_bin_centers, METH_VARARGS|METH_KEYWORDS, "EECHistBaseIdLogId_bin_centers(EECHistBaseIdLogId self, int i=0)"},
 	 { "EECHistBaseIdLogId_bin_edges", (PyCFunction)(void(*)(void))_wrap_EECHistBaseIdLogId_bin_edges, METH_VARARGS|METH_KEYWORDS, "EECHistBaseIdLogId_bin_edges(EECHistBaseIdLogId self, int i=0)"},
 	 { "EECHistBaseIdLogId_swigregister", EECHistBaseIdLogId_swigregister, METH_O, NULL},
@@ -36181,22 +34492,18 @@ static PyMethodDef SwigMethods[] = {
 	 { "EECHistBaseLogLogId_variance_bound_includes_overflows", _wrap_EECHistBaseLogLogId_variance_bound_includes_overflows, METH_O, "EECHistBaseLogLogId_variance_bound_includes_overflows(EECHistBaseLogLogId self) -> bool"},
 	 { "EECHistBaseLogLogId_nhists", _wrap_EECHistBaseLogLogId_nhists, METH_O, "EECHistBaseLogLogId_nhists(EECHistBaseLogLogId self) -> std::size_t"},
 	 { "EECHistBaseLogLogId_nbins", (PyCFunction)(void(*)(void))_wrap_EECHistBaseLogLogId_nbins, METH_VARARGS|METH_KEYWORDS, "EECHistBaseLogLogId_nbins(EECHistBaseLogLogId self, unsigned int i=0) -> std::size_t"},
-	 { "EECHistBaseLogLogId_rank", _wrap_EECHistBaseLogLogId_rank, METH_O, "EECHistBaseLogLogId_rank(EECHistBaseLogLogId self) -> unsigned int"},
+	 { "EECHistBaseLogLogId_rank", _wrap_EECHistBaseLogLogId_rank, METH_NOARGS, "EECHistBaseLogLogId_rank() -> unsigned int"},
 	 { "EECHistBaseLogLogId_hist_size", (PyCFunction)(void(*)(void))_wrap_EECHistBaseLogLogId_hist_size, METH_VARARGS|METH_KEYWORDS, "EECHistBaseLogLogId_hist_size(EECHistBaseLogLogId self, bool include_overflows=True, int i=-1) -> std::size_t"},
 	 { "EECHistBaseLogLogId_covariance_size", (PyCFunction)(void(*)(void))_wrap_EECHistBaseLogLogId_covariance_size, METH_VARARGS|METH_KEYWORDS, "EECHistBaseLogLogId_covariance_size(EECHistBaseLogLogId self, bool include_overflows=True) -> std::size_t"},
 	 { "EECHistBaseLogLogId_event_counter", (PyCFunction)(void(*)(void))_wrap_EECHistBaseLogLogId_event_counter, METH_VARARGS|METH_KEYWORDS, "EECHistBaseLogLogId_event_counter(EECHistBaseLogLogId self, int thread_i=-1) -> std::size_t"},
 	 { "EECHistBaseLogLogId_reduce", (PyCFunction)(void(*)(void))_wrap_EECHistBaseLogLogId_reduce, METH_VARARGS|METH_KEYWORDS, "EECHistBaseLogLogId_reduce(EECHistBaseLogLogId self, vectorReduceCommand rcs)"},
 	 { "EECHistBaseLogLogId_sum", (PyCFunction)(void(*)(void))_wrap_EECHistBaseLogLogId_sum, METH_VARARGS|METH_KEYWORDS, "EECHistBaseLogLogId_sum(EECHistBaseLogLogId self, unsigned int hist_i=0) -> double"},
-	 { "EECHistBaseLogLogId_combined_covariance", (PyCFunction)(void(*)(void))_wrap_EECHistBaseLogLogId_combined_covariance, METH_VARARGS|METH_KEYWORDS, "EECHistBaseLogLogId_combined_covariance(EECHistBaseLogLogId self, unsigned int hist_i=0) -> eec::hist::EECHistBase< eec::hist::EECHist3D< boost::histogram::axis::transform::log,boost::histogram::axis::transform::log,boost::histogram::axis::transform::id > >::CovarianceHist"},
-	 { "EECHistBaseLogLogId_combined_variance_bound", (PyCFunction)(void(*)(void))_wrap_EECHistBaseLogLogId_combined_variance_bound, METH_VARARGS|METH_KEYWORDS, "EECHistBaseLogLogId_combined_variance_bound(EECHistBaseLogLogId self, unsigned int hist_i=0) -> eec::hist::EECHistBase< eec::hist::EECHist3D< boost::histogram::axis::transform::log,boost::histogram::axis::transform::log,boost::histogram::axis::transform::id > >::SimpleWeightedHist"},
 	 { "EECHistBaseLogLogId___iadd__", (PyCFunction)(void(*)(void))_wrap_EECHistBaseLogLogId___iadd__, METH_VARARGS|METH_KEYWORDS, "EECHistBaseLogLogId___iadd__(EECHistBaseLogLogId self, EECHistBaseLogLogId rhs) -> EECHistBaseLogLogId"},
 	 { "EECHistBaseLogLogId___imul__", (PyCFunction)(void(*)(void))_wrap_EECHistBaseLogLogId___imul__, METH_VARARGS|METH_KEYWORDS, "EECHistBaseLogLogId___imul__(EECHistBaseLogLogId self, double const x) -> EECHistBaseLogLogId"},
 	 { "EECHistBaseLogLogId_scale", (PyCFunction)(void(*)(void))_wrap_EECHistBaseLogLogId_scale, METH_VARARGS|METH_KEYWORDS, "EECHistBaseLogLogId_scale(EECHistBaseLogLogId self, double const x, unsigned int hist_i=0, int thread_i=0)"},
 	 { "EECHistBaseLogLogId_bin_centers_vec", (PyCFunction)(void(*)(void))_wrap_EECHistBaseLogLogId_bin_centers_vec, METH_VARARGS|METH_KEYWORDS, "EECHistBaseLogLogId_bin_centers_vec(EECHistBaseLogLogId self, unsigned int i=0) -> vectorDouble"},
 	 { "EECHistBaseLogLogId_bin_edges_vec", (PyCFunction)(void(*)(void))_wrap_EECHistBaseLogLogId_bin_edges_vec, METH_VARARGS|METH_KEYWORDS, "EECHistBaseLogLogId_bin_edges_vec(EECHistBaseLogLogId self, unsigned int i=0) -> vectorDouble"},
 	 { "EECHistBaseLogLogId_hists_as_text", (PyCFunction)(void(*)(void))_wrap_EECHistBaseLogLogId_hists_as_text, METH_VARARGS|METH_KEYWORDS, "EECHistBaseLogLogId_hists_as_text(EECHistBaseLogLogId self, int hist_level=3, bool include_overflows=True, int precision=16, std::ostringstream * os=None) -> std::string"},
-	 { "EECHistBaseLogLogId_get_covariance", (PyCFunction)(void(*)(void))_wrap_EECHistBaseLogLogId_get_covariance, METH_VARARGS|METH_KEYWORDS, "EECHistBaseLogLogId_get_covariance(EECHistBaseLogLogId self, double * covariance, unsigned int hist_i=0, bool include_overflows=True)"},
-	 { "EECHistBaseLogLogId_get_variance_bound", (PyCFunction)(void(*)(void))_wrap_EECHistBaseLogLogId_get_variance_bound, METH_VARARGS|METH_KEYWORDS, "EECHistBaseLogLogId_get_variance_bound(EECHistBaseLogLogId self, double * variance_bound, unsigned int hist_i=0, bool include_overflows=True)"},
 	 { "EECHistBaseLogLogId_bin_centers", (PyCFunction)(void(*)(void))_wrap_EECHistBaseLogLogId_bin_centers, METH_VARARGS|METH_KEYWORDS, "EECHistBaseLogLogId_bin_centers(EECHistBaseLogLogId self, int i=0)"},
 	 { "EECHistBaseLogLogId_bin_edges", (PyCFunction)(void(*)(void))_wrap_EECHistBaseLogLogId_bin_edges, METH_VARARGS|METH_KEYWORDS, "EECHistBaseLogLogId_bin_edges(EECHistBaseLogLogId self, int i=0)"},
 	 { "EECHistBaseLogLogId_swigregister", EECHistBaseLogLogId_swigregister, METH_O, NULL},
@@ -36665,22 +34972,18 @@ static PyMethodDef SwigMethods_proxydocs[] = {
 	 { "EECHistBase1DId_variance_bound_includes_overflows", _wrap_EECHistBase1DId_variance_bound_includes_overflows, METH_O, "variance_bound_includes_overflows(EECHistBase1DId self) -> bool"},
 	 { "EECHistBase1DId_nhists", _wrap_EECHistBase1DId_nhists, METH_O, "nhists(EECHistBase1DId self) -> std::size_t"},
 	 { "EECHistBase1DId_nbins", (PyCFunction)(void(*)(void))_wrap_EECHistBase1DId_nbins, METH_VARARGS|METH_KEYWORDS, "nbins(EECHistBase1DId self, unsigned int i=0) -> std::size_t"},
-	 { "EECHistBase1DId_rank", _wrap_EECHistBase1DId_rank, METH_O, "rank(EECHistBase1DId self) -> unsigned int"},
+	 { "EECHistBase1DId_rank", _wrap_EECHistBase1DId_rank, METH_NOARGS, "rank() -> unsigned int"},
 	 { "EECHistBase1DId_hist_size", (PyCFunction)(void(*)(void))_wrap_EECHistBase1DId_hist_size, METH_VARARGS|METH_KEYWORDS, "hist_size(EECHistBase1DId self, bool include_overflows=True, int i=-1) -> std::size_t"},
 	 { "EECHistBase1DId_covariance_size", (PyCFunction)(void(*)(void))_wrap_EECHistBase1DId_covariance_size, METH_VARARGS|METH_KEYWORDS, "covariance_size(EECHistBase1DId self, bool include_overflows=True) -> std::size_t"},
 	 { "EECHistBase1DId_event_counter", (PyCFunction)(void(*)(void))_wrap_EECHistBase1DId_event_counter, METH_VARARGS|METH_KEYWORDS, "event_counter(EECHistBase1DId self, int thread_i=-1) -> std::size_t"},
 	 { "EECHistBase1DId_reduce", (PyCFunction)(void(*)(void))_wrap_EECHistBase1DId_reduce, METH_VARARGS|METH_KEYWORDS, "reduce(EECHistBase1DId self, vectorReduceCommand rcs)"},
 	 { "EECHistBase1DId_sum", (PyCFunction)(void(*)(void))_wrap_EECHistBase1DId_sum, METH_VARARGS|METH_KEYWORDS, "sum(EECHistBase1DId self, unsigned int hist_i=0) -> double"},
-	 { "EECHistBase1DId_combined_covariance", (PyCFunction)(void(*)(void))_wrap_EECHistBase1DId_combined_covariance, METH_VARARGS|METH_KEYWORDS, "combined_covariance(EECHistBase1DId self, unsigned int hist_i=0) -> eec::hist::EECHistBase< eec::hist::EECHist1D< boost::histogram::axis::transform::id > >::CovarianceHist"},
-	 { "EECHistBase1DId_combined_variance_bound", (PyCFunction)(void(*)(void))_wrap_EECHistBase1DId_combined_variance_bound, METH_VARARGS|METH_KEYWORDS, "combined_variance_bound(EECHistBase1DId self, unsigned int hist_i=0) -> eec::hist::EECHistBase< eec::hist::EECHist1D< boost::histogram::axis::transform::id > >::SimpleWeightedHist"},
 	 { "EECHistBase1DId___iadd__", (PyCFunction)(void(*)(void))_wrap_EECHistBase1DId___iadd__, METH_VARARGS|METH_KEYWORDS, "__iadd__(EECHistBase1DId self, EECHistBase1DId rhs) -> EECHistBase1DId"},
 	 { "EECHistBase1DId___imul__", (PyCFunction)(void(*)(void))_wrap_EECHistBase1DId___imul__, METH_VARARGS|METH_KEYWORDS, "__imul__(EECHistBase1DId self, double const x) -> EECHistBase1DId"},
 	 { "EECHistBase1DId_scale", (PyCFunction)(void(*)(void))_wrap_EECHistBase1DId_scale, METH_VARARGS|METH_KEYWORDS, "scale(EECHistBase1DId self, double const x, unsigned int hist_i=0, int thread_i=0)"},
 	 { "EECHistBase1DId_bin_centers_vec", (PyCFunction)(void(*)(void))_wrap_EECHistBase1DId_bin_centers_vec, METH_VARARGS|METH_KEYWORDS, "bin_centers_vec(EECHistBase1DId self, unsigned int i=0) -> vectorDouble"},
 	 { "EECHistBase1DId_bin_edges_vec", (PyCFunction)(void(*)(void))_wrap_EECHistBase1DId_bin_edges_vec, METH_VARARGS|METH_KEYWORDS, "bin_edges_vec(EECHistBase1DId self, unsigned int i=0) -> vectorDouble"},
 	 { "EECHistBase1DId_hists_as_text", (PyCFunction)(void(*)(void))_wrap_EECHistBase1DId_hists_as_text, METH_VARARGS|METH_KEYWORDS, "hists_as_text(EECHistBase1DId self, int hist_level=3, bool include_overflows=True, int precision=16, std::ostringstream * os=None) -> std::string"},
-	 { "EECHistBase1DId_get_covariance", (PyCFunction)(void(*)(void))_wrap_EECHistBase1DId_get_covariance, METH_VARARGS|METH_KEYWORDS, "get_covariance(EECHistBase1DId self, double * covariance, unsigned int hist_i=0, bool include_overflows=True)"},
-	 { "EECHistBase1DId_get_variance_bound", (PyCFunction)(void(*)(void))_wrap_EECHistBase1DId_get_variance_bound, METH_VARARGS|METH_KEYWORDS, "get_variance_bound(EECHistBase1DId self, double * variance_bound, unsigned int hist_i=0, bool include_overflows=True)"},
 	 { "EECHistBase1DId_bin_centers", (PyCFunction)(void(*)(void))_wrap_EECHistBase1DId_bin_centers, METH_VARARGS|METH_KEYWORDS, "bin_centers(EECHistBase1DId self, int i=0)"},
 	 { "EECHistBase1DId_bin_edges", (PyCFunction)(void(*)(void))_wrap_EECHistBase1DId_bin_edges, METH_VARARGS|METH_KEYWORDS, "bin_edges(EECHistBase1DId self, int i=0)"},
 	 { "EECHistBase1DId_swigregister", EECHistBase1DId_swigregister, METH_O, NULL},
@@ -36693,22 +34996,18 @@ static PyMethodDef SwigMethods_proxydocs[] = {
 	 { "EECHistBase1DLog_variance_bound_includes_overflows", _wrap_EECHistBase1DLog_variance_bound_includes_overflows, METH_O, "variance_bound_includes_overflows(EECHistBase1DLog self) -> bool"},
 	 { "EECHistBase1DLog_nhists", _wrap_EECHistBase1DLog_nhists, METH_O, "nhists(EECHistBase1DLog self) -> std::size_t"},
 	 { "EECHistBase1DLog_nbins", (PyCFunction)(void(*)(void))_wrap_EECHistBase1DLog_nbins, METH_VARARGS|METH_KEYWORDS, "nbins(EECHistBase1DLog self, unsigned int i=0) -> std::size_t"},
-	 { "EECHistBase1DLog_rank", _wrap_EECHistBase1DLog_rank, METH_O, "rank(EECHistBase1DLog self) -> unsigned int"},
+	 { "EECHistBase1DLog_rank", _wrap_EECHistBase1DLog_rank, METH_NOARGS, "rank() -> unsigned int"},
 	 { "EECHistBase1DLog_hist_size", (PyCFunction)(void(*)(void))_wrap_EECHistBase1DLog_hist_size, METH_VARARGS|METH_KEYWORDS, "hist_size(EECHistBase1DLog self, bool include_overflows=True, int i=-1) -> std::size_t"},
 	 { "EECHistBase1DLog_covariance_size", (PyCFunction)(void(*)(void))_wrap_EECHistBase1DLog_covariance_size, METH_VARARGS|METH_KEYWORDS, "covariance_size(EECHistBase1DLog self, bool include_overflows=True) -> std::size_t"},
 	 { "EECHistBase1DLog_event_counter", (PyCFunction)(void(*)(void))_wrap_EECHistBase1DLog_event_counter, METH_VARARGS|METH_KEYWORDS, "event_counter(EECHistBase1DLog self, int thread_i=-1) -> std::size_t"},
 	 { "EECHistBase1DLog_reduce", (PyCFunction)(void(*)(void))_wrap_EECHistBase1DLog_reduce, METH_VARARGS|METH_KEYWORDS, "reduce(EECHistBase1DLog self, vectorReduceCommand rcs)"},
 	 { "EECHistBase1DLog_sum", (PyCFunction)(void(*)(void))_wrap_EECHistBase1DLog_sum, METH_VARARGS|METH_KEYWORDS, "sum(EECHistBase1DLog self, unsigned int hist_i=0) -> double"},
-	 { "EECHistBase1DLog_combined_covariance", (PyCFunction)(void(*)(void))_wrap_EECHistBase1DLog_combined_covariance, METH_VARARGS|METH_KEYWORDS, "combined_covariance(EECHistBase1DLog self, unsigned int hist_i=0) -> eec::hist::EECHistBase< eec::hist::EECHist1D< boost::histogram::axis::transform::log > >::CovarianceHist"},
-	 { "EECHistBase1DLog_combined_variance_bound", (PyCFunction)(void(*)(void))_wrap_EECHistBase1DLog_combined_variance_bound, METH_VARARGS|METH_KEYWORDS, "combined_variance_bound(EECHistBase1DLog self, unsigned int hist_i=0) -> eec::hist::EECHistBase< eec::hist::EECHist1D< boost::histogram::axis::transform::log > >::SimpleWeightedHist"},
 	 { "EECHistBase1DLog___iadd__", (PyCFunction)(void(*)(void))_wrap_EECHistBase1DLog___iadd__, METH_VARARGS|METH_KEYWORDS, "__iadd__(EECHistBase1DLog self, EECHistBase1DLog rhs) -> EECHistBase1DLog"},
 	 { "EECHistBase1DLog___imul__", (PyCFunction)(void(*)(void))_wrap_EECHistBase1DLog___imul__, METH_VARARGS|METH_KEYWORDS, "__imul__(EECHistBase1DLog self, double const x) -> EECHistBase1DLog"},
 	 { "EECHistBase1DLog_scale", (PyCFunction)(void(*)(void))_wrap_EECHistBase1DLog_scale, METH_VARARGS|METH_KEYWORDS, "scale(EECHistBase1DLog self, double const x, unsigned int hist_i=0, int thread_i=0)"},
 	 { "EECHistBase1DLog_bin_centers_vec", (PyCFunction)(void(*)(void))_wrap_EECHistBase1DLog_bin_centers_vec, METH_VARARGS|METH_KEYWORDS, "bin_centers_vec(EECHistBase1DLog self, unsigned int i=0) -> vectorDouble"},
 	 { "EECHistBase1DLog_bin_edges_vec", (PyCFunction)(void(*)(void))_wrap_EECHistBase1DLog_bin_edges_vec, METH_VARARGS|METH_KEYWORDS, "bin_edges_vec(EECHistBase1DLog self, unsigned int i=0) -> vectorDouble"},
 	 { "EECHistBase1DLog_hists_as_text", (PyCFunction)(void(*)(void))_wrap_EECHistBase1DLog_hists_as_text, METH_VARARGS|METH_KEYWORDS, "hists_as_text(EECHistBase1DLog self, int hist_level=3, bool include_overflows=True, int precision=16, std::ostringstream * os=None) -> std::string"},
-	 { "EECHistBase1DLog_get_covariance", (PyCFunction)(void(*)(void))_wrap_EECHistBase1DLog_get_covariance, METH_VARARGS|METH_KEYWORDS, "get_covariance(EECHistBase1DLog self, double * covariance, unsigned int hist_i=0, bool include_overflows=True)"},
-	 { "EECHistBase1DLog_get_variance_bound", (PyCFunction)(void(*)(void))_wrap_EECHistBase1DLog_get_variance_bound, METH_VARARGS|METH_KEYWORDS, "get_variance_bound(EECHistBase1DLog self, double * variance_bound, unsigned int hist_i=0, bool include_overflows=True)"},
 	 { "EECHistBase1DLog_bin_centers", (PyCFunction)(void(*)(void))_wrap_EECHistBase1DLog_bin_centers, METH_VARARGS|METH_KEYWORDS, "bin_centers(EECHistBase1DLog self, int i=0)"},
 	 { "EECHistBase1DLog_bin_edges", (PyCFunction)(void(*)(void))_wrap_EECHistBase1DLog_bin_edges, METH_VARARGS|METH_KEYWORDS, "bin_edges(EECHistBase1DLog self, int i=0)"},
 	 { "EECHistBase1DLog_swigregister", EECHistBase1DLog_swigregister, METH_O, NULL},
@@ -36721,22 +35020,18 @@ static PyMethodDef SwigMethods_proxydocs[] = {
 	 { "EECHistBaseIdIdId_variance_bound_includes_overflows", _wrap_EECHistBaseIdIdId_variance_bound_includes_overflows, METH_O, "variance_bound_includes_overflows(EECHistBaseIdIdId self) -> bool"},
 	 { "EECHistBaseIdIdId_nhists", _wrap_EECHistBaseIdIdId_nhists, METH_O, "nhists(EECHistBaseIdIdId self) -> std::size_t"},
 	 { "EECHistBaseIdIdId_nbins", (PyCFunction)(void(*)(void))_wrap_EECHistBaseIdIdId_nbins, METH_VARARGS|METH_KEYWORDS, "nbins(EECHistBaseIdIdId self, unsigned int i=0) -> std::size_t"},
-	 { "EECHistBaseIdIdId_rank", _wrap_EECHistBaseIdIdId_rank, METH_O, "rank(EECHistBaseIdIdId self) -> unsigned int"},
+	 { "EECHistBaseIdIdId_rank", _wrap_EECHistBaseIdIdId_rank, METH_NOARGS, "rank() -> unsigned int"},
 	 { "EECHistBaseIdIdId_hist_size", (PyCFunction)(void(*)(void))_wrap_EECHistBaseIdIdId_hist_size, METH_VARARGS|METH_KEYWORDS, "hist_size(EECHistBaseIdIdId self, bool include_overflows=True, int i=-1) -> std::size_t"},
 	 { "EECHistBaseIdIdId_covariance_size", (PyCFunction)(void(*)(void))_wrap_EECHistBaseIdIdId_covariance_size, METH_VARARGS|METH_KEYWORDS, "covariance_size(EECHistBaseIdIdId self, bool include_overflows=True) -> std::size_t"},
 	 { "EECHistBaseIdIdId_event_counter", (PyCFunction)(void(*)(void))_wrap_EECHistBaseIdIdId_event_counter, METH_VARARGS|METH_KEYWORDS, "event_counter(EECHistBaseIdIdId self, int thread_i=-1) -> std::size_t"},
 	 { "EECHistBaseIdIdId_reduce", (PyCFunction)(void(*)(void))_wrap_EECHistBaseIdIdId_reduce, METH_VARARGS|METH_KEYWORDS, "reduce(EECHistBaseIdIdId self, vectorReduceCommand rcs)"},
 	 { "EECHistBaseIdIdId_sum", (PyCFunction)(void(*)(void))_wrap_EECHistBaseIdIdId_sum, METH_VARARGS|METH_KEYWORDS, "sum(EECHistBaseIdIdId self, unsigned int hist_i=0) -> double"},
-	 { "EECHistBaseIdIdId_combined_covariance", (PyCFunction)(void(*)(void))_wrap_EECHistBaseIdIdId_combined_covariance, METH_VARARGS|METH_KEYWORDS, "combined_covariance(EECHistBaseIdIdId self, unsigned int hist_i=0) -> eec::hist::EECHistBase< eec::hist::EECHist3D< boost::histogram::axis::transform::id,boost::histogram::axis::transform::id,boost::histogram::axis::transform::id > >::CovarianceHist"},
-	 { "EECHistBaseIdIdId_combined_variance_bound", (PyCFunction)(void(*)(void))_wrap_EECHistBaseIdIdId_combined_variance_bound, METH_VARARGS|METH_KEYWORDS, "combined_variance_bound(EECHistBaseIdIdId self, unsigned int hist_i=0) -> eec::hist::EECHistBase< eec::hist::EECHist3D< boost::histogram::axis::transform::id,boost::histogram::axis::transform::id,boost::histogram::axis::transform::id > >::SimpleWeightedHist"},
 	 { "EECHistBaseIdIdId___iadd__", (PyCFunction)(void(*)(void))_wrap_EECHistBaseIdIdId___iadd__, METH_VARARGS|METH_KEYWORDS, "__iadd__(EECHistBaseIdIdId self, EECHistBaseIdIdId rhs) -> EECHistBaseIdIdId"},
 	 { "EECHistBaseIdIdId___imul__", (PyCFunction)(void(*)(void))_wrap_EECHistBaseIdIdId___imul__, METH_VARARGS|METH_KEYWORDS, "__imul__(EECHistBaseIdIdId self, double const x) -> EECHistBaseIdIdId"},
 	 { "EECHistBaseIdIdId_scale", (PyCFunction)(void(*)(void))_wrap_EECHistBaseIdIdId_scale, METH_VARARGS|METH_KEYWORDS, "scale(EECHistBaseIdIdId self, double const x, unsigned int hist_i=0, int thread_i=0)"},
 	 { "EECHistBaseIdIdId_bin_centers_vec", (PyCFunction)(void(*)(void))_wrap_EECHistBaseIdIdId_bin_centers_vec, METH_VARARGS|METH_KEYWORDS, "bin_centers_vec(EECHistBaseIdIdId self, unsigned int i=0) -> vectorDouble"},
 	 { "EECHistBaseIdIdId_bin_edges_vec", (PyCFunction)(void(*)(void))_wrap_EECHistBaseIdIdId_bin_edges_vec, METH_VARARGS|METH_KEYWORDS, "bin_edges_vec(EECHistBaseIdIdId self, unsigned int i=0) -> vectorDouble"},
 	 { "EECHistBaseIdIdId_hists_as_text", (PyCFunction)(void(*)(void))_wrap_EECHistBaseIdIdId_hists_as_text, METH_VARARGS|METH_KEYWORDS, "hists_as_text(EECHistBaseIdIdId self, int hist_level=3, bool include_overflows=True, int precision=16, std::ostringstream * os=None) -> std::string"},
-	 { "EECHistBaseIdIdId_get_covariance", (PyCFunction)(void(*)(void))_wrap_EECHistBaseIdIdId_get_covariance, METH_VARARGS|METH_KEYWORDS, "get_covariance(EECHistBaseIdIdId self, double * covariance, unsigned int hist_i=0, bool include_overflows=True)"},
-	 { "EECHistBaseIdIdId_get_variance_bound", (PyCFunction)(void(*)(void))_wrap_EECHistBaseIdIdId_get_variance_bound, METH_VARARGS|METH_KEYWORDS, "get_variance_bound(EECHistBaseIdIdId self, double * variance_bound, unsigned int hist_i=0, bool include_overflows=True)"},
 	 { "EECHistBaseIdIdId_bin_centers", (PyCFunction)(void(*)(void))_wrap_EECHistBaseIdIdId_bin_centers, METH_VARARGS|METH_KEYWORDS, "bin_centers(EECHistBaseIdIdId self, int i=0)"},
 	 { "EECHistBaseIdIdId_bin_edges", (PyCFunction)(void(*)(void))_wrap_EECHistBaseIdIdId_bin_edges, METH_VARARGS|METH_KEYWORDS, "bin_edges(EECHistBaseIdIdId self, int i=0)"},
 	 { "EECHistBaseIdIdId_swigregister", EECHistBaseIdIdId_swigregister, METH_O, NULL},
@@ -36749,22 +35044,18 @@ static PyMethodDef SwigMethods_proxydocs[] = {
 	 { "EECHistBaseLogIdId_variance_bound_includes_overflows", _wrap_EECHistBaseLogIdId_variance_bound_includes_overflows, METH_O, "variance_bound_includes_overflows(EECHistBaseLogIdId self) -> bool"},
 	 { "EECHistBaseLogIdId_nhists", _wrap_EECHistBaseLogIdId_nhists, METH_O, "nhists(EECHistBaseLogIdId self) -> std::size_t"},
 	 { "EECHistBaseLogIdId_nbins", (PyCFunction)(void(*)(void))_wrap_EECHistBaseLogIdId_nbins, METH_VARARGS|METH_KEYWORDS, "nbins(EECHistBaseLogIdId self, unsigned int i=0) -> std::size_t"},
-	 { "EECHistBaseLogIdId_rank", _wrap_EECHistBaseLogIdId_rank, METH_O, "rank(EECHistBaseLogIdId self) -> unsigned int"},
+	 { "EECHistBaseLogIdId_rank", _wrap_EECHistBaseLogIdId_rank, METH_NOARGS, "rank() -> unsigned int"},
 	 { "EECHistBaseLogIdId_hist_size", (PyCFunction)(void(*)(void))_wrap_EECHistBaseLogIdId_hist_size, METH_VARARGS|METH_KEYWORDS, "hist_size(EECHistBaseLogIdId self, bool include_overflows=True, int i=-1) -> std::size_t"},
 	 { "EECHistBaseLogIdId_covariance_size", (PyCFunction)(void(*)(void))_wrap_EECHistBaseLogIdId_covariance_size, METH_VARARGS|METH_KEYWORDS, "covariance_size(EECHistBaseLogIdId self, bool include_overflows=True) -> std::size_t"},
 	 { "EECHistBaseLogIdId_event_counter", (PyCFunction)(void(*)(void))_wrap_EECHistBaseLogIdId_event_counter, METH_VARARGS|METH_KEYWORDS, "event_counter(EECHistBaseLogIdId self, int thread_i=-1) -> std::size_t"},
 	 { "EECHistBaseLogIdId_reduce", (PyCFunction)(void(*)(void))_wrap_EECHistBaseLogIdId_reduce, METH_VARARGS|METH_KEYWORDS, "reduce(EECHistBaseLogIdId self, vectorReduceCommand rcs)"},
 	 { "EECHistBaseLogIdId_sum", (PyCFunction)(void(*)(void))_wrap_EECHistBaseLogIdId_sum, METH_VARARGS|METH_KEYWORDS, "sum(EECHistBaseLogIdId self, unsigned int hist_i=0) -> double"},
-	 { "EECHistBaseLogIdId_combined_covariance", (PyCFunction)(void(*)(void))_wrap_EECHistBaseLogIdId_combined_covariance, METH_VARARGS|METH_KEYWORDS, "combined_covariance(EECHistBaseLogIdId self, unsigned int hist_i=0) -> eec::hist::EECHistBase< eec::hist::EECHist3D< boost::histogram::axis::transform::log,boost::histogram::axis::transform::id,boost::histogram::axis::transform::id > >::CovarianceHist"},
-	 { "EECHistBaseLogIdId_combined_variance_bound", (PyCFunction)(void(*)(void))_wrap_EECHistBaseLogIdId_combined_variance_bound, METH_VARARGS|METH_KEYWORDS, "combined_variance_bound(EECHistBaseLogIdId self, unsigned int hist_i=0) -> eec::hist::EECHistBase< eec::hist::EECHist3D< boost::histogram::axis::transform::log,boost::histogram::axis::transform::id,boost::histogram::axis::transform::id > >::SimpleWeightedHist"},
 	 { "EECHistBaseLogIdId___iadd__", (PyCFunction)(void(*)(void))_wrap_EECHistBaseLogIdId___iadd__, METH_VARARGS|METH_KEYWORDS, "__iadd__(EECHistBaseLogIdId self, EECHistBaseLogIdId rhs) -> EECHistBaseLogIdId"},
 	 { "EECHistBaseLogIdId___imul__", (PyCFunction)(void(*)(void))_wrap_EECHistBaseLogIdId___imul__, METH_VARARGS|METH_KEYWORDS, "__imul__(EECHistBaseLogIdId self, double const x) -> EECHistBaseLogIdId"},
 	 { "EECHistBaseLogIdId_scale", (PyCFunction)(void(*)(void))_wrap_EECHistBaseLogIdId_scale, METH_VARARGS|METH_KEYWORDS, "scale(EECHistBaseLogIdId self, double const x, unsigned int hist_i=0, int thread_i=0)"},
 	 { "EECHistBaseLogIdId_bin_centers_vec", (PyCFunction)(void(*)(void))_wrap_EECHistBaseLogIdId_bin_centers_vec, METH_VARARGS|METH_KEYWORDS, "bin_centers_vec(EECHistBaseLogIdId self, unsigned int i=0) -> vectorDouble"},
 	 { "EECHistBaseLogIdId_bin_edges_vec", (PyCFunction)(void(*)(void))_wrap_EECHistBaseLogIdId_bin_edges_vec, METH_VARARGS|METH_KEYWORDS, "bin_edges_vec(EECHistBaseLogIdId self, unsigned int i=0) -> vectorDouble"},
 	 { "EECHistBaseLogIdId_hists_as_text", (PyCFunction)(void(*)(void))_wrap_EECHistBaseLogIdId_hists_as_text, METH_VARARGS|METH_KEYWORDS, "hists_as_text(EECHistBaseLogIdId self, int hist_level=3, bool include_overflows=True, int precision=16, std::ostringstream * os=None) -> std::string"},
-	 { "EECHistBaseLogIdId_get_covariance", (PyCFunction)(void(*)(void))_wrap_EECHistBaseLogIdId_get_covariance, METH_VARARGS|METH_KEYWORDS, "get_covariance(EECHistBaseLogIdId self, double * covariance, unsigned int hist_i=0, bool include_overflows=True)"},
-	 { "EECHistBaseLogIdId_get_variance_bound", (PyCFunction)(void(*)(void))_wrap_EECHistBaseLogIdId_get_variance_bound, METH_VARARGS|METH_KEYWORDS, "get_variance_bound(EECHistBaseLogIdId self, double * variance_bound, unsigned int hist_i=0, bool include_overflows=True)"},
 	 { "EECHistBaseLogIdId_bin_centers", (PyCFunction)(void(*)(void))_wrap_EECHistBaseLogIdId_bin_centers, METH_VARARGS|METH_KEYWORDS, "bin_centers(EECHistBaseLogIdId self, int i=0)"},
 	 { "EECHistBaseLogIdId_bin_edges", (PyCFunction)(void(*)(void))_wrap_EECHistBaseLogIdId_bin_edges, METH_VARARGS|METH_KEYWORDS, "bin_edges(EECHistBaseLogIdId self, int i=0)"},
 	 { "EECHistBaseLogIdId_swigregister", EECHistBaseLogIdId_swigregister, METH_O, NULL},
@@ -36777,22 +35068,18 @@ static PyMethodDef SwigMethods_proxydocs[] = {
 	 { "EECHistBaseIdLogId_variance_bound_includes_overflows", _wrap_EECHistBaseIdLogId_variance_bound_includes_overflows, METH_O, "variance_bound_includes_overflows(EECHistBaseIdLogId self) -> bool"},
 	 { "EECHistBaseIdLogId_nhists", _wrap_EECHistBaseIdLogId_nhists, METH_O, "nhists(EECHistBaseIdLogId self) -> std::size_t"},
 	 { "EECHistBaseIdLogId_nbins", (PyCFunction)(void(*)(void))_wrap_EECHistBaseIdLogId_nbins, METH_VARARGS|METH_KEYWORDS, "nbins(EECHistBaseIdLogId self, unsigned int i=0) -> std::size_t"},
-	 { "EECHistBaseIdLogId_rank", _wrap_EECHistBaseIdLogId_rank, METH_O, "rank(EECHistBaseIdLogId self) -> unsigned int"},
+	 { "EECHistBaseIdLogId_rank", _wrap_EECHistBaseIdLogId_rank, METH_NOARGS, "rank() -> unsigned int"},
 	 { "EECHistBaseIdLogId_hist_size", (PyCFunction)(void(*)(void))_wrap_EECHistBaseIdLogId_hist_size, METH_VARARGS|METH_KEYWORDS, "hist_size(EECHistBaseIdLogId self, bool include_overflows=True, int i=-1) -> std::size_t"},
 	 { "EECHistBaseIdLogId_covariance_size", (PyCFunction)(void(*)(void))_wrap_EECHistBaseIdLogId_covariance_size, METH_VARARGS|METH_KEYWORDS, "covariance_size(EECHistBaseIdLogId self, bool include_overflows=True) -> std::size_t"},
 	 { "EECHistBaseIdLogId_event_counter", (PyCFunction)(void(*)(void))_wrap_EECHistBaseIdLogId_event_counter, METH_VARARGS|METH_KEYWORDS, "event_counter(EECHistBaseIdLogId self, int thread_i=-1) -> std::size_t"},
 	 { "EECHistBaseIdLogId_reduce", (PyCFunction)(void(*)(void))_wrap_EECHistBaseIdLogId_reduce, METH_VARARGS|METH_KEYWORDS, "reduce(EECHistBaseIdLogId self, vectorReduceCommand rcs)"},
 	 { "EECHistBaseIdLogId_sum", (PyCFunction)(void(*)(void))_wrap_EECHistBaseIdLogId_sum, METH_VARARGS|METH_KEYWORDS, "sum(EECHistBaseIdLogId self, unsigned int hist_i=0) -> double"},
-	 { "EECHistBaseIdLogId_combined_covariance", (PyCFunction)(void(*)(void))_wrap_EECHistBaseIdLogId_combined_covariance, METH_VARARGS|METH_KEYWORDS, "combined_covariance(EECHistBaseIdLogId self, unsigned int hist_i=0) -> eec::hist::EECHistBase< eec::hist::EECHist3D< boost::histogram::axis::transform::id,boost::histogram::axis::transform::log,boost::histogram::axis::transform::id > >::CovarianceHist"},
-	 { "EECHistBaseIdLogId_combined_variance_bound", (PyCFunction)(void(*)(void))_wrap_EECHistBaseIdLogId_combined_variance_bound, METH_VARARGS|METH_KEYWORDS, "combined_variance_bound(EECHistBaseIdLogId self, unsigned int hist_i=0) -> eec::hist::EECHistBase< eec::hist::EECHist3D< boost::histogram::axis::transform::id,boost::histogram::axis::transform::log,boost::histogram::axis::transform::id > >::SimpleWeightedHist"},
 	 { "EECHistBaseIdLogId___iadd__", (PyCFunction)(void(*)(void))_wrap_EECHistBaseIdLogId___iadd__, METH_VARARGS|METH_KEYWORDS, "__iadd__(EECHistBaseIdLogId self, EECHistBaseIdLogId rhs) -> EECHistBaseIdLogId"},
 	 { "EECHistBaseIdLogId___imul__", (PyCFunction)(void(*)(void))_wrap_EECHistBaseIdLogId___imul__, METH_VARARGS|METH_KEYWORDS, "__imul__(EECHistBaseIdLogId self, double const x) -> EECHistBaseIdLogId"},
 	 { "EECHistBaseIdLogId_scale", (PyCFunction)(void(*)(void))_wrap_EECHistBaseIdLogId_scale, METH_VARARGS|METH_KEYWORDS, "scale(EECHistBaseIdLogId self, double const x, unsigned int hist_i=0, int thread_i=0)"},
 	 { "EECHistBaseIdLogId_bin_centers_vec", (PyCFunction)(void(*)(void))_wrap_EECHistBaseIdLogId_bin_centers_vec, METH_VARARGS|METH_KEYWORDS, "bin_centers_vec(EECHistBaseIdLogId self, unsigned int i=0) -> vectorDouble"},
 	 { "EECHistBaseIdLogId_bin_edges_vec", (PyCFunction)(void(*)(void))_wrap_EECHistBaseIdLogId_bin_edges_vec, METH_VARARGS|METH_KEYWORDS, "bin_edges_vec(EECHistBaseIdLogId self, unsigned int i=0) -> vectorDouble"},
 	 { "EECHistBaseIdLogId_hists_as_text", (PyCFunction)(void(*)(void))_wrap_EECHistBaseIdLogId_hists_as_text, METH_VARARGS|METH_KEYWORDS, "hists_as_text(EECHistBaseIdLogId self, int hist_level=3, bool include_overflows=True, int precision=16, std::ostringstream * os=None) -> std::string"},
-	 { "EECHistBaseIdLogId_get_covariance", (PyCFunction)(void(*)(void))_wrap_EECHistBaseIdLogId_get_covariance, METH_VARARGS|METH_KEYWORDS, "get_covariance(EECHistBaseIdLogId self, double * covariance, unsigned int hist_i=0, bool include_overflows=True)"},
-	 { "EECHistBaseIdLogId_get_variance_bound", (PyCFunction)(void(*)(void))_wrap_EECHistBaseIdLogId_get_variance_bound, METH_VARARGS|METH_KEYWORDS, "get_variance_bound(EECHistBaseIdLogId self, double * variance_bound, unsigned int hist_i=0, bool include_overflows=True)"},
 	 { "EECHistBaseIdLogId_bin_centers", (PyCFunction)(void(*)(void))_wrap_EECHistBaseIdLogId_bin_centers, METH_VARARGS|METH_KEYWORDS, "bin_centers(EECHistBaseIdLogId self, int i=0)"},
 	 { "EECHistBaseIdLogId_bin_edges", (PyCFunction)(void(*)(void))_wrap_EECHistBaseIdLogId_bin_edges, METH_VARARGS|METH_KEYWORDS, "bin_edges(EECHistBaseIdLogId self, int i=0)"},
 	 { "EECHistBaseIdLogId_swigregister", EECHistBaseIdLogId_swigregister, METH_O, NULL},
@@ -36805,22 +35092,18 @@ static PyMethodDef SwigMethods_proxydocs[] = {
 	 { "EECHistBaseLogLogId_variance_bound_includes_overflows", _wrap_EECHistBaseLogLogId_variance_bound_includes_overflows, METH_O, "variance_bound_includes_overflows(EECHistBaseLogLogId self) -> bool"},
 	 { "EECHistBaseLogLogId_nhists", _wrap_EECHistBaseLogLogId_nhists, METH_O, "nhists(EECHistBaseLogLogId self) -> std::size_t"},
 	 { "EECHistBaseLogLogId_nbins", (PyCFunction)(void(*)(void))_wrap_EECHistBaseLogLogId_nbins, METH_VARARGS|METH_KEYWORDS, "nbins(EECHistBaseLogLogId self, unsigned int i=0) -> std::size_t"},
-	 { "EECHistBaseLogLogId_rank", _wrap_EECHistBaseLogLogId_rank, METH_O, "rank(EECHistBaseLogLogId self) -> unsigned int"},
+	 { "EECHistBaseLogLogId_rank", _wrap_EECHistBaseLogLogId_rank, METH_NOARGS, "rank() -> unsigned int"},
 	 { "EECHistBaseLogLogId_hist_size", (PyCFunction)(void(*)(void))_wrap_EECHistBaseLogLogId_hist_size, METH_VARARGS|METH_KEYWORDS, "hist_size(EECHistBaseLogLogId self, bool include_overflows=True, int i=-1) -> std::size_t"},
 	 { "EECHistBaseLogLogId_covariance_size", (PyCFunction)(void(*)(void))_wrap_EECHistBaseLogLogId_covariance_size, METH_VARARGS|METH_KEYWORDS, "covariance_size(EECHistBaseLogLogId self, bool include_overflows=True) -> std::size_t"},
 	 { "EECHistBaseLogLogId_event_counter", (PyCFunction)(void(*)(void))_wrap_EECHistBaseLogLogId_event_counter, METH_VARARGS|METH_KEYWORDS, "event_counter(EECHistBaseLogLogId self, int thread_i=-1) -> std::size_t"},
 	 { "EECHistBaseLogLogId_reduce", (PyCFunction)(void(*)(void))_wrap_EECHistBaseLogLogId_reduce, METH_VARARGS|METH_KEYWORDS, "reduce(EECHistBaseLogLogId self, vectorReduceCommand rcs)"},
 	 { "EECHistBaseLogLogId_sum", (PyCFunction)(void(*)(void))_wrap_EECHistBaseLogLogId_sum, METH_VARARGS|METH_KEYWORDS, "sum(EECHistBaseLogLogId self, unsigned int hist_i=0) -> double"},
-	 { "EECHistBaseLogLogId_combined_covariance", (PyCFunction)(void(*)(void))_wrap_EECHistBaseLogLogId_combined_covariance, METH_VARARGS|METH_KEYWORDS, "combined_covariance(EECHistBaseLogLogId self, unsigned int hist_i=0) -> eec::hist::EECHistBase< eec::hist::EECHist3D< boost::histogram::axis::transform::log,boost::histogram::axis::transform::log,boost::histogram::axis::transform::id > >::CovarianceHist"},
-	 { "EECHistBaseLogLogId_combined_variance_bound", (PyCFunction)(void(*)(void))_wrap_EECHistBaseLogLogId_combined_variance_bound, METH_VARARGS|METH_KEYWORDS, "combined_variance_bound(EECHistBaseLogLogId self, unsigned int hist_i=0) -> eec::hist::EECHistBase< eec::hist::EECHist3D< boost::histogram::axis::transform::log,boost::histogram::axis::transform::log,boost::histogram::axis::transform::id > >::SimpleWeightedHist"},
 	 { "EECHistBaseLogLogId___iadd__", (PyCFunction)(void(*)(void))_wrap_EECHistBaseLogLogId___iadd__, METH_VARARGS|METH_KEYWORDS, "__iadd__(EECHistBaseLogLogId self, EECHistBaseLogLogId rhs) -> EECHistBaseLogLogId"},
 	 { "EECHistBaseLogLogId___imul__", (PyCFunction)(void(*)(void))_wrap_EECHistBaseLogLogId___imul__, METH_VARARGS|METH_KEYWORDS, "__imul__(EECHistBaseLogLogId self, double const x) -> EECHistBaseLogLogId"},
 	 { "EECHistBaseLogLogId_scale", (PyCFunction)(void(*)(void))_wrap_EECHistBaseLogLogId_scale, METH_VARARGS|METH_KEYWORDS, "scale(EECHistBaseLogLogId self, double const x, unsigned int hist_i=0, int thread_i=0)"},
 	 { "EECHistBaseLogLogId_bin_centers_vec", (PyCFunction)(void(*)(void))_wrap_EECHistBaseLogLogId_bin_centers_vec, METH_VARARGS|METH_KEYWORDS, "bin_centers_vec(EECHistBaseLogLogId self, unsigned int i=0) -> vectorDouble"},
 	 { "EECHistBaseLogLogId_bin_edges_vec", (PyCFunction)(void(*)(void))_wrap_EECHistBaseLogLogId_bin_edges_vec, METH_VARARGS|METH_KEYWORDS, "bin_edges_vec(EECHistBaseLogLogId self, unsigned int i=0) -> vectorDouble"},
 	 { "EECHistBaseLogLogId_hists_as_text", (PyCFunction)(void(*)(void))_wrap_EECHistBaseLogLogId_hists_as_text, METH_VARARGS|METH_KEYWORDS, "hists_as_text(EECHistBaseLogLogId self, int hist_level=3, bool include_overflows=True, int precision=16, std::ostringstream * os=None) -> std::string"},
-	 { "EECHistBaseLogLogId_get_covariance", (PyCFunction)(void(*)(void))_wrap_EECHistBaseLogLogId_get_covariance, METH_VARARGS|METH_KEYWORDS, "get_covariance(EECHistBaseLogLogId self, double * covariance, unsigned int hist_i=0, bool include_overflows=True)"},
-	 { "EECHistBaseLogLogId_get_variance_bound", (PyCFunction)(void(*)(void))_wrap_EECHistBaseLogLogId_get_variance_bound, METH_VARARGS|METH_KEYWORDS, "get_variance_bound(EECHistBaseLogLogId self, double * variance_bound, unsigned int hist_i=0, bool include_overflows=True)"},
 	 { "EECHistBaseLogLogId_bin_centers", (PyCFunction)(void(*)(void))_wrap_EECHistBaseLogLogId_bin_centers, METH_VARARGS|METH_KEYWORDS, "bin_centers(EECHistBaseLogLogId self, int i=0)"},
 	 { "EECHistBaseLogLogId_bin_edges", (PyCFunction)(void(*)(void))_wrap_EECHistBaseLogLogId_bin_edges, METH_VARARGS|METH_KEYWORDS, "bin_edges(EECHistBaseLogLogId self, int i=0)"},
 	 { "EECHistBaseLogLogId_swigregister", EECHistBaseLogLogId_swigregister, METH_O, NULL},
@@ -37086,18 +35369,6 @@ static swig_type_info _swigt__p_Axis1 = {"_p_Axis1", "Axis1 *", 0, 0, (void*)0, 
 static swig_type_info _swigt__p_Axis2 = {"_p_Axis2", "Axis2 *", 0, 0, (void*)0, 0};
 static swig_type_info _swigt__p_Base = {"_p_Base", "Base *", 0, 0, (void*)0, 0};
 static swig_type_info _swigt__p_CovarianceHist = {"_p_CovarianceHist", "CovarianceHist *", 0, 0, (void*)0, 0};
-static swig_type_info _swigt__p_EECHistTraitsT_eec__hist__EECHist1DT_boost__histogram__axis__transform__id_t_t__CovarianceHist = {"_p_EECHistTraitsT_eec__hist__EECHist1DT_boost__histogram__axis__transform__id_t_t__CovarianceHist", "eec::hist::EECHistBase< eec::hist::EECHist1D< boost::histogram::axis::transform::id > >::CovarianceHist *|EECHistTraits< eec::hist::EECHist1D< boost::histogram::axis::transform::id > >::CovarianceHist *", 0, 0, (void*)0, 0};
-static swig_type_info _swigt__p_EECHistTraitsT_eec__hist__EECHist1DT_boost__histogram__axis__transform__id_t_t__SimpleWeightedHist = {"_p_EECHistTraitsT_eec__hist__EECHist1DT_boost__histogram__axis__transform__id_t_t__SimpleWeightedHist", "eec::hist::EECHistBase< eec::hist::EECHist1D< boost::histogram::axis::transform::id > >::SimpleWeightedHist *|EECHistTraits< eec::hist::EECHist1D< boost::histogram::axis::transform::id > >::SimpleWeightedHist *", 0, 0, (void*)0, 0};
-static swig_type_info _swigt__p_EECHistTraitsT_eec__hist__EECHist1DT_boost__histogram__axis__transform__log_t_t__CovarianceHist = {"_p_EECHistTraitsT_eec__hist__EECHist1DT_boost__histogram__axis__transform__log_t_t__CovarianceHist", "eec::hist::EECHistBase< eec::hist::EECHist1D< boost::histogram::axis::transform::log > >::CovarianceHist *|EECHistTraits< eec::hist::EECHist1D< boost::histogram::axis::transform::log > >::CovarianceHist *", 0, 0, (void*)0, 0};
-static swig_type_info _swigt__p_EECHistTraitsT_eec__hist__EECHist1DT_boost__histogram__axis__transform__log_t_t__SimpleWeightedHist = {"_p_EECHistTraitsT_eec__hist__EECHist1DT_boost__histogram__axis__transform__log_t_t__SimpleWeightedHist", "eec::hist::EECHistBase< eec::hist::EECHist1D< boost::histogram::axis::transform::log > >::SimpleWeightedHist *|EECHistTraits< eec::hist::EECHist1D< boost::histogram::axis::transform::log > >::SimpleWeightedHist *", 0, 0, (void*)0, 0};
-static swig_type_info _swigt__p_EECHistTraitsT_eec__hist__EECHist3DT_boost__histogram__axis__transform__id_boost__histogram__axis__transform__id_boost__histogram__axis__transform__id_t_t__CovarianceHist = {"_p_EECHistTraitsT_eec__hist__EECHist3DT_boost__histogram__axis__transform__id_boost__histogram__axis__transform__id_boost__histogram__axis__transform__id_t_t__CovarianceHist", "eec::hist::EECHistBase< eec::hist::EECHist3D< boost::histogram::axis::transform::id,boost::histogram::axis::transform::id,boost::histogram::axis::transform::id > >::CovarianceHist *|EECHistTraits< eec::hist::EECHist3D< boost::histogram::axis::transform::id,boost::histogram::axis::transform::id,boost::histogram::axis::transform::id > >::CovarianceHist *", 0, 0, (void*)0, 0};
-static swig_type_info _swigt__p_EECHistTraitsT_eec__hist__EECHist3DT_boost__histogram__axis__transform__id_boost__histogram__axis__transform__id_boost__histogram__axis__transform__id_t_t__SimpleWeightedHist = {"_p_EECHistTraitsT_eec__hist__EECHist3DT_boost__histogram__axis__transform__id_boost__histogram__axis__transform__id_boost__histogram__axis__transform__id_t_t__SimpleWeightedHist", "eec::hist::EECHistBase< eec::hist::EECHist3D< boost::histogram::axis::transform::id,boost::histogram::axis::transform::id,boost::histogram::axis::transform::id > >::SimpleWeightedHist *|EECHistTraits< eec::hist::EECHist3D< boost::histogram::axis::transform::id,boost::histogram::axis::transform::id,boost::histogram::axis::transform::id > >::SimpleWeightedHist *", 0, 0, (void*)0, 0};
-static swig_type_info _swigt__p_EECHistTraitsT_eec__hist__EECHist3DT_boost__histogram__axis__transform__id_boost__histogram__axis__transform__log_boost__histogram__axis__transform__id_t_t__CovarianceHist = {"_p_EECHistTraitsT_eec__hist__EECHist3DT_boost__histogram__axis__transform__id_boost__histogram__axis__transform__log_boost__histogram__axis__transform__id_t_t__CovarianceHist", "eec::hist::EECHistBase< eec::hist::EECHist3D< boost::histogram::axis::transform::id,boost::histogram::axis::transform::log,boost::histogram::axis::transform::id > >::CovarianceHist *|EECHistTraits< eec::hist::EECHist3D< boost::histogram::axis::transform::id,boost::histogram::axis::transform::log,boost::histogram::axis::transform::id > >::CovarianceHist *", 0, 0, (void*)0, 0};
-static swig_type_info _swigt__p_EECHistTraitsT_eec__hist__EECHist3DT_boost__histogram__axis__transform__id_boost__histogram__axis__transform__log_boost__histogram__axis__transform__id_t_t__SimpleWeightedHist = {"_p_EECHistTraitsT_eec__hist__EECHist3DT_boost__histogram__axis__transform__id_boost__histogram__axis__transform__log_boost__histogram__axis__transform__id_t_t__SimpleWeightedHist", "eec::hist::EECHistBase< eec::hist::EECHist3D< boost::histogram::axis::transform::id,boost::histogram::axis::transform::log,boost::histogram::axis::transform::id > >::SimpleWeightedHist *|EECHistTraits< eec::hist::EECHist3D< boost::histogram::axis::transform::id,boost::histogram::axis::transform::log,boost::histogram::axis::transform::id > >::SimpleWeightedHist *", 0, 0, (void*)0, 0};
-static swig_type_info _swigt__p_EECHistTraitsT_eec__hist__EECHist3DT_boost__histogram__axis__transform__log_boost__histogram__axis__transform__id_boost__histogram__axis__transform__id_t_t__CovarianceHist = {"_p_EECHistTraitsT_eec__hist__EECHist3DT_boost__histogram__axis__transform__log_boost__histogram__axis__transform__id_boost__histogram__axis__transform__id_t_t__CovarianceHist", "eec::hist::EECHistBase< eec::hist::EECHist3D< boost::histogram::axis::transform::log,boost::histogram::axis::transform::id,boost::histogram::axis::transform::id > >::CovarianceHist *|EECHistTraits< eec::hist::EECHist3D< boost::histogram::axis::transform::log,boost::histogram::axis::transform::id,boost::histogram::axis::transform::id > >::CovarianceHist *", 0, 0, (void*)0, 0};
-static swig_type_info _swigt__p_EECHistTraitsT_eec__hist__EECHist3DT_boost__histogram__axis__transform__log_boost__histogram__axis__transform__id_boost__histogram__axis__transform__id_t_t__SimpleWeightedHist = {"_p_EECHistTraitsT_eec__hist__EECHist3DT_boost__histogram__axis__transform__log_boost__histogram__axis__transform__id_boost__histogram__axis__transform__id_t_t__SimpleWeightedHist", "eec::hist::EECHistBase< eec::hist::EECHist3D< boost::histogram::axis::transform::log,boost::histogram::axis::transform::id,boost::histogram::axis::transform::id > >::SimpleWeightedHist *|EECHistTraits< eec::hist::EECHist3D< boost::histogram::axis::transform::log,boost::histogram::axis::transform::id,boost::histogram::axis::transform::id > >::SimpleWeightedHist *", 0, 0, (void*)0, 0};
-static swig_type_info _swigt__p_EECHistTraitsT_eec__hist__EECHist3DT_boost__histogram__axis__transform__log_boost__histogram__axis__transform__log_boost__histogram__axis__transform__id_t_t__CovarianceHist = {"_p_EECHistTraitsT_eec__hist__EECHist3DT_boost__histogram__axis__transform__log_boost__histogram__axis__transform__log_boost__histogram__axis__transform__id_t_t__CovarianceHist", "eec::hist::EECHistBase< eec::hist::EECHist3D< boost::histogram::axis::transform::log,boost::histogram::axis::transform::log,boost::histogram::axis::transform::id > >::CovarianceHist *|EECHistTraits< eec::hist::EECHist3D< boost::histogram::axis::transform::log,boost::histogram::axis::transform::log,boost::histogram::axis::transform::id > >::CovarianceHist *", 0, 0, (void*)0, 0};
-static swig_type_info _swigt__p_EECHistTraitsT_eec__hist__EECHist3DT_boost__histogram__axis__transform__log_boost__histogram__axis__transform__log_boost__histogram__axis__transform__id_t_t__SimpleWeightedHist = {"_p_EECHistTraitsT_eec__hist__EECHist3DT_boost__histogram__axis__transform__log_boost__histogram__axis__transform__log_boost__histogram__axis__transform__id_t_t__SimpleWeightedHist", "eec::hist::EECHistBase< eec::hist::EECHist3D< boost::histogram::axis::transform::log,boost::histogram::axis::transform::log,boost::histogram::axis::transform::id > >::SimpleWeightedHist *|EECHistTraits< eec::hist::EECHist3D< boost::histogram::axis::transform::log,boost::histogram::axis::transform::log,boost::histogram::axis::transform::id > >::SimpleWeightedHist *", 0, 0, (void*)0, 0};
 static swig_type_info _swigt__p_Self = {"_p_Self", "Self *", 0, 0, (void*)0, 0};
 static swig_type_info _swigt__p_SimpleWeightedHist = {"_p_SimpleWeightedHist", "SimpleWeightedHist *", 0, 0, (void*)0, 0};
 static swig_type_info _swigt__p_Traits = {"_p_Traits", "Traits *", 0, 0, (void*)0, 0};
@@ -37110,7 +35381,6 @@ static swig_type_info _swigt__p_boost__histogram__axis__transform__log = {"_p_bo
 static swig_type_info _swigt__p_boost__histogram__coverage = {"_p_boost__histogram__coverage", "boost::histogram::coverage *", 0, 0, (void*)0, 0};
 static swig_type_info _swigt__p_char = {"_p_char", "char *", 0, 0, (void*)0, 0};
 static swig_type_info _swigt__p_difference_type = {"_p_difference_type", "difference_type *", 0, 0, (void*)0, 0};
-static swig_type_info _swigt__p_double = {"_p_double", "double *", 0, 0, (void*)0, 0};
 static swig_type_info _swigt__p_eec__DynamicMultinomial = {"_p_eec__DynamicMultinomial", "eec::DynamicMultinomial *", 0, 0, (void*)0, 0};
 static swig_type_info _swigt__p_eec__EECBase = {"_p_eec__EECBase", "eec::EECBase *", 0, 0, (void*)0, 0};
 static swig_type_info _swigt__p_eec__EECEvents = {"_p_eec__EECEvents", "eec::EECEvents *", 0, 0, (void*)0, 0};
@@ -37162,18 +35432,6 @@ static swig_type_info *swig_type_initial[] = {
   &_swigt__p_Axis2,
   &_swigt__p_Base,
   &_swigt__p_CovarianceHist,
-  &_swigt__p_EECHistTraitsT_eec__hist__EECHist1DT_boost__histogram__axis__transform__id_t_t__CovarianceHist,
-  &_swigt__p_EECHistTraitsT_eec__hist__EECHist1DT_boost__histogram__axis__transform__id_t_t__SimpleWeightedHist,
-  &_swigt__p_EECHistTraitsT_eec__hist__EECHist1DT_boost__histogram__axis__transform__log_t_t__CovarianceHist,
-  &_swigt__p_EECHistTraitsT_eec__hist__EECHist1DT_boost__histogram__axis__transform__log_t_t__SimpleWeightedHist,
-  &_swigt__p_EECHistTraitsT_eec__hist__EECHist3DT_boost__histogram__axis__transform__id_boost__histogram__axis__transform__id_boost__histogram__axis__transform__id_t_t__CovarianceHist,
-  &_swigt__p_EECHistTraitsT_eec__hist__EECHist3DT_boost__histogram__axis__transform__id_boost__histogram__axis__transform__id_boost__histogram__axis__transform__id_t_t__SimpleWeightedHist,
-  &_swigt__p_EECHistTraitsT_eec__hist__EECHist3DT_boost__histogram__axis__transform__id_boost__histogram__axis__transform__log_boost__histogram__axis__transform__id_t_t__CovarianceHist,
-  &_swigt__p_EECHistTraitsT_eec__hist__EECHist3DT_boost__histogram__axis__transform__id_boost__histogram__axis__transform__log_boost__histogram__axis__transform__id_t_t__SimpleWeightedHist,
-  &_swigt__p_EECHistTraitsT_eec__hist__EECHist3DT_boost__histogram__axis__transform__log_boost__histogram__axis__transform__id_boost__histogram__axis__transform__id_t_t__CovarianceHist,
-  &_swigt__p_EECHistTraitsT_eec__hist__EECHist3DT_boost__histogram__axis__transform__log_boost__histogram__axis__transform__id_boost__histogram__axis__transform__id_t_t__SimpleWeightedHist,
-  &_swigt__p_EECHistTraitsT_eec__hist__EECHist3DT_boost__histogram__axis__transform__log_boost__histogram__axis__transform__log_boost__histogram__axis__transform__id_t_t__CovarianceHist,
-  &_swigt__p_EECHistTraitsT_eec__hist__EECHist3DT_boost__histogram__axis__transform__log_boost__histogram__axis__transform__log_boost__histogram__axis__transform__id_t_t__SimpleWeightedHist,
   &_swigt__p_Self,
   &_swigt__p_SimpleWeightedHist,
   &_swigt__p_Traits,
@@ -37186,7 +35444,6 @@ static swig_type_info *swig_type_initial[] = {
   &_swigt__p_boost__histogram__coverage,
   &_swigt__p_char,
   &_swigt__p_difference_type,
-  &_swigt__p_double,
   &_swigt__p_eec__DynamicMultinomial,
   &_swigt__p_eec__EECBase,
   &_swigt__p_eec__EECEvents,
@@ -37238,18 +35495,6 @@ static swig_cast_info _swigc__p_Axis1[] = {  {&_swigt__p_Axis1, 0, 0, 0},{0, 0, 
 static swig_cast_info _swigc__p_Axis2[] = {  {&_swigt__p_Axis2, 0, 0, 0},{0, 0, 0, 0}};
 static swig_cast_info _swigc__p_Base[] = {  {&_swigt__p_Base, 0, 0, 0},{0, 0, 0, 0}};
 static swig_cast_info _swigc__p_CovarianceHist[] = {  {&_swigt__p_CovarianceHist, 0, 0, 0},{0, 0, 0, 0}};
-static swig_cast_info _swigc__p_EECHistTraitsT_eec__hist__EECHist1DT_boost__histogram__axis__transform__id_t_t__CovarianceHist[] = {  {&_swigt__p_EECHistTraitsT_eec__hist__EECHist1DT_boost__histogram__axis__transform__id_t_t__CovarianceHist, 0, 0, 0},{0, 0, 0, 0}};
-static swig_cast_info _swigc__p_EECHistTraitsT_eec__hist__EECHist1DT_boost__histogram__axis__transform__id_t_t__SimpleWeightedHist[] = {  {&_swigt__p_EECHistTraitsT_eec__hist__EECHist1DT_boost__histogram__axis__transform__id_t_t__SimpleWeightedHist, 0, 0, 0},{0, 0, 0, 0}};
-static swig_cast_info _swigc__p_EECHistTraitsT_eec__hist__EECHist1DT_boost__histogram__axis__transform__log_t_t__CovarianceHist[] = {  {&_swigt__p_EECHistTraitsT_eec__hist__EECHist1DT_boost__histogram__axis__transform__log_t_t__CovarianceHist, 0, 0, 0},{0, 0, 0, 0}};
-static swig_cast_info _swigc__p_EECHistTraitsT_eec__hist__EECHist1DT_boost__histogram__axis__transform__log_t_t__SimpleWeightedHist[] = {  {&_swigt__p_EECHistTraitsT_eec__hist__EECHist1DT_boost__histogram__axis__transform__log_t_t__SimpleWeightedHist, 0, 0, 0},{0, 0, 0, 0}};
-static swig_cast_info _swigc__p_EECHistTraitsT_eec__hist__EECHist3DT_boost__histogram__axis__transform__id_boost__histogram__axis__transform__id_boost__histogram__axis__transform__id_t_t__CovarianceHist[] = {  {&_swigt__p_EECHistTraitsT_eec__hist__EECHist3DT_boost__histogram__axis__transform__id_boost__histogram__axis__transform__id_boost__histogram__axis__transform__id_t_t__CovarianceHist, 0, 0, 0},{0, 0, 0, 0}};
-static swig_cast_info _swigc__p_EECHistTraitsT_eec__hist__EECHist3DT_boost__histogram__axis__transform__id_boost__histogram__axis__transform__id_boost__histogram__axis__transform__id_t_t__SimpleWeightedHist[] = {  {&_swigt__p_EECHistTraitsT_eec__hist__EECHist3DT_boost__histogram__axis__transform__id_boost__histogram__axis__transform__id_boost__histogram__axis__transform__id_t_t__SimpleWeightedHist, 0, 0, 0},{0, 0, 0, 0}};
-static swig_cast_info _swigc__p_EECHistTraitsT_eec__hist__EECHist3DT_boost__histogram__axis__transform__id_boost__histogram__axis__transform__log_boost__histogram__axis__transform__id_t_t__CovarianceHist[] = {  {&_swigt__p_EECHistTraitsT_eec__hist__EECHist3DT_boost__histogram__axis__transform__id_boost__histogram__axis__transform__log_boost__histogram__axis__transform__id_t_t__CovarianceHist, 0, 0, 0},{0, 0, 0, 0}};
-static swig_cast_info _swigc__p_EECHistTraitsT_eec__hist__EECHist3DT_boost__histogram__axis__transform__id_boost__histogram__axis__transform__log_boost__histogram__axis__transform__id_t_t__SimpleWeightedHist[] = {  {&_swigt__p_EECHistTraitsT_eec__hist__EECHist3DT_boost__histogram__axis__transform__id_boost__histogram__axis__transform__log_boost__histogram__axis__transform__id_t_t__SimpleWeightedHist, 0, 0, 0},{0, 0, 0, 0}};
-static swig_cast_info _swigc__p_EECHistTraitsT_eec__hist__EECHist3DT_boost__histogram__axis__transform__log_boost__histogram__axis__transform__id_boost__histogram__axis__transform__id_t_t__CovarianceHist[] = {  {&_swigt__p_EECHistTraitsT_eec__hist__EECHist3DT_boost__histogram__axis__transform__log_boost__histogram__axis__transform__id_boost__histogram__axis__transform__id_t_t__CovarianceHist, 0, 0, 0},{0, 0, 0, 0}};
-static swig_cast_info _swigc__p_EECHistTraitsT_eec__hist__EECHist3DT_boost__histogram__axis__transform__log_boost__histogram__axis__transform__id_boost__histogram__axis__transform__id_t_t__SimpleWeightedHist[] = {  {&_swigt__p_EECHistTraitsT_eec__hist__EECHist3DT_boost__histogram__axis__transform__log_boost__histogram__axis__transform__id_boost__histogram__axis__transform__id_t_t__SimpleWeightedHist, 0, 0, 0},{0, 0, 0, 0}};
-static swig_cast_info _swigc__p_EECHistTraitsT_eec__hist__EECHist3DT_boost__histogram__axis__transform__log_boost__histogram__axis__transform__log_boost__histogram__axis__transform__id_t_t__CovarianceHist[] = {  {&_swigt__p_EECHistTraitsT_eec__hist__EECHist3DT_boost__histogram__axis__transform__log_boost__histogram__axis__transform__log_boost__histogram__axis__transform__id_t_t__CovarianceHist, 0, 0, 0},{0, 0, 0, 0}};
-static swig_cast_info _swigc__p_EECHistTraitsT_eec__hist__EECHist3DT_boost__histogram__axis__transform__log_boost__histogram__axis__transform__log_boost__histogram__axis__transform__id_t_t__SimpleWeightedHist[] = {  {&_swigt__p_EECHistTraitsT_eec__hist__EECHist3DT_boost__histogram__axis__transform__log_boost__histogram__axis__transform__log_boost__histogram__axis__transform__id_t_t__SimpleWeightedHist, 0, 0, 0},{0, 0, 0, 0}};
 static swig_cast_info _swigc__p_Self[] = {  {&_swigt__p_Self, 0, 0, 0},{0, 0, 0, 0}};
 static swig_cast_info _swigc__p_SimpleWeightedHist[] = {  {&_swigt__p_SimpleWeightedHist, 0, 0, 0},{0, 0, 0, 0}};
 static swig_cast_info _swigc__p_Traits[] = {  {&_swigt__p_Traits, 0, 0, 0},{0, 0, 0, 0}};
@@ -37262,7 +35507,6 @@ static swig_cast_info _swigc__p_boost__histogram__axis__transform__log[] = {  {&
 static swig_cast_info _swigc__p_boost__histogram__coverage[] = {  {&_swigt__p_boost__histogram__coverage, 0, 0, 0},{0, 0, 0, 0}};
 static swig_cast_info _swigc__p_char[] = {  {&_swigt__p_char, 0, 0, 0},{0, 0, 0, 0}};
 static swig_cast_info _swigc__p_difference_type[] = {  {&_swigt__p_difference_type, 0, 0, 0},{0, 0, 0, 0}};
-static swig_cast_info _swigc__p_double[] = {  {&_swigt__p_double, 0, 0, 0},{0, 0, 0, 0}};
 static swig_cast_info _swigc__p_eec__DynamicMultinomial[] = {  {&_swigt__p_eec__DynamicMultinomial, 0, 0, 0},{0, 0, 0, 0}};
 static swig_cast_info _swigc__p_eec__EECBase[] = {  {&_swigt__p_eec__EECBase, 0, 0, 0},  {&_swigt__p_eec__EECLongestSideT_axis__id_t, _p_eec__EECLongestSideT_axis__id_tTo_p_eec__EECBase, 0, 0},  {&_swigt__p_eec__EECTriangleOPET_axis__id_axis__id_axis__id_t, _p_eec__EECTriangleOPET_axis__id_axis__id_axis__id_tTo_p_eec__EECBase, 0, 0},  {&_swigt__p_eec__EECLongestSideT_axis__log_t, _p_eec__EECLongestSideT_axis__log_tTo_p_eec__EECBase, 0, 0},  {&_swigt__p_eec__EECTriangleOPET_axis__log_axis__log_axis__id_t, _p_eec__EECTriangleOPET_axis__log_axis__log_axis__id_tTo_p_eec__EECBase, 0, 0},  {&_swigt__p_eec__EECTriangleOPET_axis__log_axis__id_axis__id_t, _p_eec__EECTriangleOPET_axis__log_axis__id_axis__id_tTo_p_eec__EECBase, 0, 0},  {&_swigt__p_eec__EECTriangleOPET_axis__id_axis__log_axis__id_t, _p_eec__EECTriangleOPET_axis__id_axis__log_axis__id_tTo_p_eec__EECBase, 0, 0},{0, 0, 0, 0}};
 static swig_cast_info _swigc__p_eec__EECEvents[] = {  {&_swigt__p_eec__EECEvents, 0, 0, 0},{0, 0, 0, 0}};
@@ -37314,18 +35558,6 @@ static swig_cast_info *swig_cast_initial[] = {
   _swigc__p_Axis2,
   _swigc__p_Base,
   _swigc__p_CovarianceHist,
-  _swigc__p_EECHistTraitsT_eec__hist__EECHist1DT_boost__histogram__axis__transform__id_t_t__CovarianceHist,
-  _swigc__p_EECHistTraitsT_eec__hist__EECHist1DT_boost__histogram__axis__transform__id_t_t__SimpleWeightedHist,
-  _swigc__p_EECHistTraitsT_eec__hist__EECHist1DT_boost__histogram__axis__transform__log_t_t__CovarianceHist,
-  _swigc__p_EECHistTraitsT_eec__hist__EECHist1DT_boost__histogram__axis__transform__log_t_t__SimpleWeightedHist,
-  _swigc__p_EECHistTraitsT_eec__hist__EECHist3DT_boost__histogram__axis__transform__id_boost__histogram__axis__transform__id_boost__histogram__axis__transform__id_t_t__CovarianceHist,
-  _swigc__p_EECHistTraitsT_eec__hist__EECHist3DT_boost__histogram__axis__transform__id_boost__histogram__axis__transform__id_boost__histogram__axis__transform__id_t_t__SimpleWeightedHist,
-  _swigc__p_EECHistTraitsT_eec__hist__EECHist3DT_boost__histogram__axis__transform__id_boost__histogram__axis__transform__log_boost__histogram__axis__transform__id_t_t__CovarianceHist,
-  _swigc__p_EECHistTraitsT_eec__hist__EECHist3DT_boost__histogram__axis__transform__id_boost__histogram__axis__transform__log_boost__histogram__axis__transform__id_t_t__SimpleWeightedHist,
-  _swigc__p_EECHistTraitsT_eec__hist__EECHist3DT_boost__histogram__axis__transform__log_boost__histogram__axis__transform__id_boost__histogram__axis__transform__id_t_t__CovarianceHist,
-  _swigc__p_EECHistTraitsT_eec__hist__EECHist3DT_boost__histogram__axis__transform__log_boost__histogram__axis__transform__id_boost__histogram__axis__transform__id_t_t__SimpleWeightedHist,
-  _swigc__p_EECHistTraitsT_eec__hist__EECHist3DT_boost__histogram__axis__transform__log_boost__histogram__axis__transform__log_boost__histogram__axis__transform__id_t_t__CovarianceHist,
-  _swigc__p_EECHistTraitsT_eec__hist__EECHist3DT_boost__histogram__axis__transform__log_boost__histogram__axis__transform__log_boost__histogram__axis__transform__id_t_t__SimpleWeightedHist,
   _swigc__p_Self,
   _swigc__p_SimpleWeightedHist,
   _swigc__p_Traits,
@@ -37338,7 +35570,6 @@ static swig_cast_info *swig_cast_initial[] = {
   _swigc__p_boost__histogram__coverage,
   _swigc__p_char,
   _swigc__p_difference_type,
-  _swigc__p_double,
   _swigc__p_eec__DynamicMultinomial,
   _swigc__p_eec__EECBase,
   _swigc__p_eec__EECEvents,
