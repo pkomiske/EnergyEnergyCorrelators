@@ -353,12 +353,12 @@ class EECHistBase1DId(object):
     bin_centers = _swig_new_instance_method(_eec.EECHistBase1DId_bin_centers)
     bin_edges = _swig_new_instance_method(_eec.EECHistBase1DId_bin_edges)
 
-    def get_hist_errs(self, hist_i=0, include_overflows=True):
-        hist, vars = self.get_hist_vars(hist_i, include_overflows)
+    def get_hist_errs(self, hist_i=0, overflows=True):
+        hist, vars = self.get_hist_vars(hist_i, overflows)
         return hist, _np.sqrt(vars)
 
-    def get_error_bound(self, hist_i=0, include_overflows=True):
-        return _np.sqrt(self.get_variance_bound(hist_i, include_overflows))
+    def get_error_bound(self, hist_i=0, overflows=True):
+        return _np.sqrt(self.get_variance_bound(hist_i, overflows))
 
 
 # Register EECHistBase1DId in _eec:
@@ -401,12 +401,12 @@ class EECHistBase1DLog(object):
     bin_centers = _swig_new_instance_method(_eec.EECHistBase1DLog_bin_centers)
     bin_edges = _swig_new_instance_method(_eec.EECHistBase1DLog_bin_edges)
 
-    def get_hist_errs(self, hist_i=0, include_overflows=True):
-        hist, vars = self.get_hist_vars(hist_i, include_overflows)
+    def get_hist_errs(self, hist_i=0, overflows=True):
+        hist, vars = self.get_hist_vars(hist_i, overflows)
         return hist, _np.sqrt(vars)
 
-    def get_error_bound(self, hist_i=0, include_overflows=True):
-        return _np.sqrt(self.get_variance_bound(hist_i, include_overflows))
+    def get_error_bound(self, hist_i=0, overflows=True):
+        return _np.sqrt(self.get_variance_bound(hist_i, overflows))
 
 
 # Register EECHistBase1DLog in _eec:
@@ -444,12 +444,12 @@ class EECHistBaseIdIdId(object):
     bin_centers = _swig_new_instance_method(_eec.EECHistBaseIdIdId_bin_centers)
     bin_edges = _swig_new_instance_method(_eec.EECHistBaseIdIdId_bin_edges)
 
-    def get_hist_errs(self, hist_i=0, include_overflows=True):
-        hist, vars = self.get_hist_vars(hist_i, include_overflows)
+    def get_hist_errs(self, hist_i=0, overflows=True):
+        hist, vars = self.get_hist_vars(hist_i, overflows)
         return hist, _np.sqrt(vars)
 
-    def get_error_bound(self, hist_i=0, include_overflows=True):
-        return _np.sqrt(self.get_variance_bound(hist_i, include_overflows))
+    def get_error_bound(self, hist_i=0, overflows=True):
+        return _np.sqrt(self.get_variance_bound(hist_i, overflows))
 
 
 # Register EECHistBaseIdIdId in _eec:
@@ -487,12 +487,12 @@ class EECHistBaseLogIdId(object):
     bin_centers = _swig_new_instance_method(_eec.EECHistBaseLogIdId_bin_centers)
     bin_edges = _swig_new_instance_method(_eec.EECHistBaseLogIdId_bin_edges)
 
-    def get_hist_errs(self, hist_i=0, include_overflows=True):
-        hist, vars = self.get_hist_vars(hist_i, include_overflows)
+    def get_hist_errs(self, hist_i=0, overflows=True):
+        hist, vars = self.get_hist_vars(hist_i, overflows)
         return hist, _np.sqrt(vars)
 
-    def get_error_bound(self, hist_i=0, include_overflows=True):
-        return _np.sqrt(self.get_variance_bound(hist_i, include_overflows))
+    def get_error_bound(self, hist_i=0, overflows=True):
+        return _np.sqrt(self.get_variance_bound(hist_i, overflows))
 
 
 # Register EECHistBaseLogIdId in _eec:
@@ -530,12 +530,12 @@ class EECHistBaseIdLogId(object):
     bin_centers = _swig_new_instance_method(_eec.EECHistBaseIdLogId_bin_centers)
     bin_edges = _swig_new_instance_method(_eec.EECHistBaseIdLogId_bin_edges)
 
-    def get_hist_errs(self, hist_i=0, include_overflows=True):
-        hist, vars = self.get_hist_vars(hist_i, include_overflows)
+    def get_hist_errs(self, hist_i=0, overflows=True):
+        hist, vars = self.get_hist_vars(hist_i, overflows)
         return hist, _np.sqrt(vars)
 
-    def get_error_bound(self, hist_i=0, include_overflows=True):
-        return _np.sqrt(self.get_variance_bound(hist_i, include_overflows))
+    def get_error_bound(self, hist_i=0, overflows=True):
+        return _np.sqrt(self.get_variance_bound(hist_i, overflows))
 
 
 # Register EECHistBaseIdLogId in _eec:
@@ -573,12 +573,12 @@ class EECHistBaseLogLogId(object):
     bin_centers = _swig_new_instance_method(_eec.EECHistBaseLogLogId_bin_centers)
     bin_edges = _swig_new_instance_method(_eec.EECHistBaseLogLogId_bin_edges)
 
-    def get_hist_errs(self, hist_i=0, include_overflows=True):
-        hist, vars = self.get_hist_vars(hist_i, include_overflows)
+    def get_hist_errs(self, hist_i=0, overflows=True):
+        hist, vars = self.get_hist_vars(hist_i, overflows)
         return hist, _np.sqrt(vars)
 
-    def get_error_bound(self, hist_i=0, include_overflows=True):
-        return _np.sqrt(self.get_variance_bound(hist_i, include_overflows))
+    def get_error_bound(self, hist_i=0, overflows=True):
+        return _np.sqrt(self.get_variance_bound(hist_i, overflows))
 
 
 # Register EECHistBaseLogLogId in _eec:
@@ -595,7 +595,6 @@ class EECHist1DId(EECHistBase1DId):
         r"""__init__(EECHist1DId self, unsigned int nbins, double axis_min, double axis_max, int num_threads=1, bool track_covariance=True, bool variance_bound=True, bool variance_bound_include_overflows=True) -> EECHist1DId"""
         _eec.EECHist1DId_swiginit(self, _eec.new_EECHist1DId(nbins, axis_min, axis_max, num_threads, track_covariance, variance_bound, variance_bound_include_overflows))
     __swig_destroy__ = _eec.delete_EECHist1DId
-    reduce = _swig_new_instance_method(_eec.EECHist1DId_reduce)
     get_hist_vars = _swig_new_instance_method(_eec.EECHist1DId_get_hist_vars)
     get_covariance = _swig_new_instance_method(_eec.EECHist1DId_get_covariance)
     get_variance_bound = _swig_new_instance_method(_eec.EECHist1DId_get_variance_bound)
@@ -613,7 +612,6 @@ class EECHist1DLog(EECHistBase1DLog):
         r"""__init__(EECHist1DLog self, unsigned int nbins, double axis_min, double axis_max, int num_threads=1, bool track_covariance=True, bool variance_bound=True, bool variance_bound_include_overflows=True) -> EECHist1DLog"""
         _eec.EECHist1DLog_swiginit(self, _eec.new_EECHist1DLog(nbins, axis_min, axis_max, num_threads, track_covariance, variance_bound, variance_bound_include_overflows))
     __swig_destroy__ = _eec.delete_EECHist1DLog
-    reduce = _swig_new_instance_method(_eec.EECHist1DLog_reduce)
     get_hist_vars = _swig_new_instance_method(_eec.EECHist1DLog_get_hist_vars)
     get_covariance = _swig_new_instance_method(_eec.EECHist1DLog_get_covariance)
     get_variance_bound = _swig_new_instance_method(_eec.EECHist1DLog_get_variance_bound)
@@ -726,6 +724,7 @@ class EECBase(object):
     average_verts = _swig_new_instance_method(_eec.EECBase_average_verts)
     num_threads = _swig_new_instance_method(_eec.EECBase_num_threads)
     print_every = _swig_new_instance_method(_eec.EECBase_print_every)
+    get_omp_chunksize = _swig_new_instance_method(_eec.EECBase_get_omp_chunksize)
     set_omp_chunksize = _swig_new_instance_method(_eec.EECBase_set_omp_chunksize)
     set_print_stream = _swig_new_instance_method(_eec.EECBase_set_print_stream)
 

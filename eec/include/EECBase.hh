@@ -241,7 +241,8 @@ public:
   int num_threads() const { return num_threads_; }
   long print_every() const { return print_every_; }
 
-  // set some computation options
+  // get/set some computation options
+  int get_omp_chunksize() const { return omp_chunksize_; }
   void set_omp_chunksize(int chunksize) { omp_chunksize_ = std::abs(chunksize); }
   void set_print_stream(std::ostream & os) { print_stream_ = &os; }
 

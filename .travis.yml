@@ -70,4 +70,4 @@ env:
     - export CIBW_MANYLINUX_X86_64_IMAGE=ghcr.io/pkomiske/eec_manylinux2010:latest
     - export CIBW_TEST_COMMAND="pytest {package}"
     - export CIBW_TEST_REQUIRES="pytest numpy scipy energyflow"
-    #- PYPI=true
+    - PYPI_TEST=true

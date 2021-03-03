@@ -76,6 +76,7 @@ __all__ = ['EECLongestSideId', 'EECLongestSideLog',
 
 // allow threads in PairwiseEMD computation
 %threadallow EECNAMESPACE::EECBase::_batch_compute;
+%threadallow EECNAMESPACE::hist::EECHistBase::reduce;
 
 // makes python class printable from a description method
 %define ADD_REPR_FROM_DESCRIPTION
@@ -207,7 +208,7 @@ namespace boost {
 
 %define GET_HIST_TWO_QUANTITIES(cppfunc)
 try {
-  $self->cppfunc(*arr_out0, *arr_out1, hist_i, include_overflows);
+  $self->cppfunc(*arr_out0, *arr_out1, hist_i, overflows);
 }
 catch (...) {
   free(*arr_out0);
@@ -218,7 +219,7 @@ catch (...) {
 
 %define GET_HIST_ONE_QUANTITY(cppfunc)
 try {
-  $self->cppfunc(*arr_out0, hist_i, include_overflows);
+  $self->cppfunc(*arr_out0, hist_i, overflows);
 }
 catch (...) {
   free(*arr_out0);
@@ -240,12 +241,12 @@ namespace EECNAMESPACE {
       }
 
       %pythoncode {
-        def get_hist_errs(self, hist_i=0, include_overflows=True):
-            hist, vars = self.get_hist_vars(hist_i, include_overflows)
+        def get_hist_errs(self, hist_i=0, overflows=True):
+            hist, vars = self.get_hist_vars(hist_i, overflows)
             return hist, _np.sqrt(vars)
 
-        def get_error_bound(self, hist_i=0, include_overflows=True):
-            return _np.sqrt(self.get_variance_bound(hist_i, include_overflows))
+        def get_error_bound(self, hist_i=0, overflows=True):
+            return _np.sqrt(self.get_variance_bound(hist_i, overflows))
       }
     }
 
@@ -253,22 +254,22 @@ namespace EECNAMESPACE {
     %extend EECHist1D {
       void npy_get_hist_vars(double** arr_out0, int* n0,
                              double** arr_out1, int* n1,
-                             unsigned hist_i = 0, bool include_overflows = true) {
-        MALLOC_1D_DOUBLE_ARRAY(arr_out0, n0, $self->hist_size(include_overflows), nbytes0)
-        MALLOC_1D_DOUBLE_ARRAY(arr_out1, n1, $self->hist_size(include_overflows), nbytes1)
+                             unsigned hist_i = 0, bool overflows = true) {
+        MALLOC_1D_DOUBLE_ARRAY(arr_out0, n0, $self->hist_size(overflows), nbytes0)
+        MALLOC_1D_DOUBLE_ARRAY(arr_out1, n1, $self->hist_size(overflows), nbytes1)
         GET_HIST_TWO_QUANTITIES(get_hist_vars)
       }
 
       void npy_get_covariance(double** arr_out0, int* n0, int* n1,
-                              unsigned hist_i = 0, bool include_overflows = true) {
-        std::size_t s($self->hist_size(include_overflows));
+                              unsigned hist_i = 0, bool overflows = true) {
+        std::size_t s($self->hist_size(overflows));
         MALLOC_2D_DOUBLE_ARRAY(arr_out0, n0, n1, s, s, nbytes0)
         GET_HIST_ONE_QUANTITY(get_covariance)
       }
 
       void npy_get_variance_bound(double** arr_out0, int* n0,
-                             unsigned hist_i = 0, bool include_overflows = true) {
-        MALLOC_1D_DOUBLE_ARRAY(arr_out0, n0, $self->hist_size(include_overflows), nbytes0)
+                             unsigned hist_i = 0, bool overflows = true) {
+        MALLOC_1D_DOUBLE_ARRAY(arr_out0, n0, $self->hist_size(overflows), nbytes0)
         GET_HIST_ONE_QUANTITY(get_variance_bound)
       }
     }
@@ -277,34 +278,34 @@ namespace EECNAMESPACE {
     %extend EECHist3D {
       void npy_get_hist_vars(double** arr_out0, int* n0, int* n1, int* n2,
                              double** arr_out1, int* m0, int* m1, int* m2,
-                             unsigned hist_i = 0, bool include_overflows = true) {
-        MALLOC_3D_DOUBLE_ARRAY(arr_out0, n0, n1, n2, $self->hist_size(include_overflows, 0),
-                                                     $self->hist_size(include_overflows, 1),
-                                                     $self->hist_size(include_overflows, 2), nbytes0)
-        MALLOC_3D_DOUBLE_ARRAY(arr_out1, m0, m1, m2, $self->hist_size(include_overflows, 0),
-                                                     $self->hist_size(include_overflows, 1),
-                                                     $self->hist_size(include_overflows, 2), nbytes1)
+                             unsigned hist_i = 0, bool overflows = true) {
+        MALLOC_3D_DOUBLE_ARRAY(arr_out0, n0, n1, n2, $self->hist_size(overflows, 0),
+                                                     $self->hist_size(overflows, 1),
+                                                     $self->hist_size(overflows, 2), nbytes0)
+        MALLOC_3D_DOUBLE_ARRAY(arr_out1, m0, m1, m2, $self->hist_size(overflows, 0),
+                                                     $self->hist_size(overflows, 1),
+                                                     $self->hist_size(overflows, 2), nbytes1)
         GET_HIST_TWO_QUANTITIES(get_hist_vars)
       }
 
       void npy_get_covariance(double** arr_out0, int* n0, int* n1, int* n2, int* n3, int* n4, int* n5,
-                          unsigned hist_i = 0, bool include_overflows = true) {
+                          unsigned hist_i = 0, bool overflows = true) {
         MALLOC_6D_DOUBLE_ARRAY(arr_out0, n0, n1, n2, n3, n4, n5,
-                                         $self->hist_size(include_overflows, 0),
-                                         $self->hist_size(include_overflows, 1),
-                                         $self->hist_size(include_overflows, 2),
-                                         $self->hist_size(include_overflows, 0),
-                                         $self->hist_size(include_overflows, 1),
-                                         $self->hist_size(include_overflows, 2),
+                                         $self->hist_size(overflows, 0),
+                                         $self->hist_size(overflows, 1),
+                                         $self->hist_size(overflows, 2),
+                                         $self->hist_size(overflows, 0),
+                                         $self->hist_size(overflows, 1),
+                                         $self->hist_size(overflows, 2),
                                nbytes0)
         GET_HIST_ONE_QUANTITY(get_covariance)
       }
 
       void npy_get_variance_bound(double** arr_out0, int* n0, int* n1, int* n2,
-                             unsigned hist_i = 0, bool include_overflows = true) {
-        MALLOC_3D_DOUBLE_ARRAY(arr_out0, n0, n1, n2, $self->hist_size(include_overflows, 0),
-                                                     $self->hist_size(include_overflows, 1),
-                                                     $self->hist_size(include_overflows, 2), nbytes0)
+                             unsigned hist_i = 0, bool overflows = true) {
+        MALLOC_3D_DOUBLE_ARRAY(arr_out0, n0, n1, n2, $self->hist_size(overflows, 0),
+                                                     $self->hist_size(overflows, 1),
+                                                     $self->hist_size(overflows, 2), nbytes0)
         GET_HIST_ONE_QUANTITY(get_variance_bound)
       }
     }

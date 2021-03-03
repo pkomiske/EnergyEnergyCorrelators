@@ -96,11 +96,6 @@ public:
   }
   virtual ~EECHist1D() = default;
 
-  // this method wraps rc in a vector and passes on to the base class
-  void reduce(const bh::algorithm::reduce_command & rc) {
-    Base::reduce({rc});
-  }
-
 #ifndef SWIG_PREPROCESSOR
   void reset_axes() {
     nbins_ = this->nbins();
