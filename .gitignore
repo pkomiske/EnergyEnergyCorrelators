@@ -5,7 +5,6 @@
 *.egg-info
 .eggs/
 dist/
-clean.sh
 build/
 **/.deps
 basic_example
