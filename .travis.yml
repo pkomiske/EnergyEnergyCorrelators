@@ -64,7 +64,7 @@ env:
     - CIBW_BEFORE_BUILD="pip install -U numpy"
     - CIBW_BUILD_VERBOSITY=1
     - CIBW_MANYLINUX_X86_64_IMAGE=ghcr.io/pkomiske/eec_manylinux2010:latest
-    - CIBW_SKIP="pp*"
+    - CIBW_SKIP="pp* *i686"
     - CIBW_TEST_COMMAND="pytest {package}"
     - CIBW_TEST_REQUIRES="pytest numpy scipy energyflow"
     - CIBW_TEST_SKIP="*i686 *win32"
