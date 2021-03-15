@@ -592,7 +592,8 @@ private:
 
 } // namespace eec
 
-#ifndef SWIG_PREPROCESSOR
+#if !defined(SWIG_PREPROCESSOR) && defined(EEC_SERIALIZATION)
+BOOST_SERIALIZATION_ASSUME_ABSTRACT(eex::EECBase)
 BOOST_CLASS_VERSION(eec::EECBase, 1)
 #endif
 
