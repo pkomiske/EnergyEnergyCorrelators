@@ -25,6 +25,10 @@
 #ifndef EEC_HH
 #define EEC_HH
 
+#ifdef SWIG_FASTJET
+#include "fastjet/PseudoJet.hh"
+#endif
+
 // serialization code based on boost serialization
 #ifdef EEC_SERIALIZATION
 #include <boost/archive/binary_iarchive.hpp>

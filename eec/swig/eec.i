@@ -32,6 +32,15 @@
 %include <std_string.i>
 %include <std_vector.i>
 
+// this makes SWIG aware of the types contained in the main fastjet library
+// but does not generate new wrappers for them here
+#ifdef SWIG_FASTJET
+%import FASTJET_PREFIX/share/fastjet/pyinterface/fastjet.i
+
+// turn off exception handling for now, since fastjet::Error is not thrown here
+%exception;
+#endif
+
 %{
 // include these to avoid needing to define them at compile time 
 #ifndef SWIG
@@ -56,7 +65,7 @@ using namespace eec::hist;
 
 // additional numpy typemaps
 %apply (double* IN_ARRAY2, int DIM1, int DIM2) {(double* particles, int mult, int nfeatures)}
-%apply (double* INPLACE_ARRAY2, int DIM1, int DIM2) {(double* particles_noconvert, int mult, int nfeatures)}
+%apply (double* INPLACE_ARRAY2, int DIM1, int DIM2) {(const double* event_ptr, unsigned mult, unsigned nfeatures)}
 
 %pythoncode %{
 __all__ = ['EECLongestSideId', 'EECLongestSideLog',
@@ -101,34 +110,21 @@ __all__ = ['EECLongestSideId', 'EECLongestSideLog',
 %define CPP_PICKLE_FUNCTIONS
   std::string __getstate_internal__() {
     std::ostringstream oss;
-  %#ifdef EEC_COMPRESSION
-    {
-      boost::iostreams::filtering_ostream fos;
-      fos.push(boost::iostreams::zlib_compressor(boost::iostreams::zlib::best_compression));
-      fos.push(oss);
-      boost::archive::binary_oarchive ar(fos);
-      ar << *($self);
-    }
-  %#elif EEC_SERIALIZATION
-    boost::archive::binary_oarchive ar(oss);
-    ar << *($self);
-  %#endif
-
+    $self->save(oss);
     return oss.str();
   }
 
   void __setstate_internal__(const std::string & state) {
     std::istringstream iss(state);
-  %#ifdef EEC_COMPRESSION
-    boost::iostreams::filtering_istream fis;
-    fis.push(boost::iostreams::zlib_decompressor());
-    fis.push(iss);
-    boost::archive::binary_iarchive ar(fis);
-    ar >> *($self);
-  %#elif EEC_SERIALIZATION
-    boost::archive::binary_iarchive ar(iss);
-    ar >> *($self);
-  %#endif
+    $self->load(iss);
+  }
+%enddef
+
+// for overloading operators in final derived class
+%define DEFINE_OPERATORS(Class) 
+  Class & operator*=(const double x) {
+    $self->operator*=(x);
+    return *$self;
   }
 %enddef
 
@@ -146,13 +142,14 @@ namespace EECNAMESPACE {
 
 // ignore/rename EECHist functions
 namespace hist {
-  %ignore EECHistBase::add;
   %ignore EECHistBase::combined_hist;
   %ignore EECHistBase::combined_covariance;
   %ignore EECHistBase::combined_variance_bound;
   %ignore EECHistBase::get_hist_vars;
   %ignore EECHistBase::get_covariance;
   %ignore EECHistBase::get_variance_bound;
+  %ignore EECHistBase::operator+=;
+  %ignore EECHistBase::operator*=;
   %rename(bin_centers_vec) EECHistBase::bin_centers;
   %rename(bin_edges_vec) EECHistBase::bin_edges;
   %rename(bin_centers) EECHistBase::npy_bin_centers;
@@ -171,9 +168,11 @@ namespace hist {
 
 // ignore EEC functions
 %ignore argsort3;
-%ignore EECEvents::append;
+%ignore EECEvents::set_pseudojet_charge_func;
 %ignore EECBase::batch_compute;
 %ignore EECBase::compute;
+%ignore EECBase::operator+=;
+%ignore EECBase::set_pseudojet_charge_func;
 %rename(compute) EECBase::npy_compute;
 
 } // namespace EECNAMESPACE
@@ -346,13 +345,6 @@ namespace EECNAMESPACE {
     }
   }
 
-  // extend functionality to include numpy support
-  %extend EECEvents {
-    void add_event(double* particles_noconvert, int mult, int nfeatures, double weight = 1.0) {
-      $self->append(particles_noconvert, mult, nfeatures, weight);
-    }
-  }
-
   %extend EECBase {
     ADD_REPR_FROM_DESCRIPTION
     PYTHON_PICKLE_FUNCTIONS
@@ -387,7 +379,7 @@ namespace EECNAMESPACE {
           events_arr = []
           for event,weight in zip(events, weights):
               event = _np.asarray(_np.atleast_2d(event)[:,:ncol], dtype=_np.double, order='C')
-              eecevents.add_event(event, weight)
+              eecevents.append(event, weight)
               events_arr.append(event)
 
           self._batch_compute(eecevents)
@@ -397,6 +389,7 @@ namespace EECNAMESPACE {
   %extend EECLongestSide {
     CPP_PICKLE_FUNCTIONS
     ADD_REPR_FROM_DESCRIPTION
+    DEFINE_OPERATORS(EECLongestSide)
     %pythoncode %{
       _default_args = (2, 1, 0.1, 1.0)
     %}
@@ -405,6 +398,7 @@ namespace EECNAMESPACE {
   %extend EECTriangleOPE {
     CPP_PICKLE_FUNCTIONS
     ADD_REPR_FROM_DESCRIPTION
+    DEFINE_OPERATORS(EECTriangleOPE)
     %pythoncode %{
       _default_args = (1, 0.1, 1.0, 1, 0.1, 1.0, 1, 0., 1.5)
     %}

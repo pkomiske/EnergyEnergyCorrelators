@@ -74,6 +74,7 @@ inline void fill_hist(Hist & hist, double weight, double xS, double xM, double x
 template<class Transform0, class Transform1, class Transform2>
 class EECTriangleOPE : public EECBase, public hist::EECHist3D<Transform0, Transform1, Transform2> {
 
+  typedef EECTriangleOPE<Transform0, Transform1, Transform2> Self;
   typedef hist::EECHist3D<Transform0, Transform1, Transform2> EECHist3D;
   typedef typename EECHist3D::SimpleWeightedHist SimpleWeightedHist;
 
@@ -172,6 +173,21 @@ public:
     }
 
     return oss.str();
+  }
+
+  void load(std::istream & is) {
+    EECBase::load<Self>(is);
+  }
+
+  void save(std::ostream & os) {
+    EECBase::save<Self>(os);
+  }
+
+  EECTriangleOPE & operator+=(const EECTriangleOPE & rhs) {
+    EECBase::operator+=(rhs);
+    EECHist3D::operator+=(rhs);
+
+    return *this;
   }
 
 private:

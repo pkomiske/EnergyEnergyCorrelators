@@ -64,6 +64,7 @@ private:
   int num_threads_, omp_chunksize_;
   long print_every_;
   std::string compname_;
+  double total_weight_;
 
   // internal vectors used by the computations (outer axis is the thread axis)
   std::vector<std::vector<std::vector<double>>> weights_;
@@ -74,7 +75,6 @@ private:
   // printing/tracking variables
   std::ostream * print_stream_;
   std::ostringstream oss_;
-  std::chrono::steady_clock::time_point start_time_;
 
 public:
 
@@ -85,7 +85,8 @@ public:
     N_(N), nsym_(N_),
     norm_(norm), use_charges_(false), check_degen_(check_degen), average_verts_(average_verts),
     num_threads_(determine_num_threads(num_threads)),
-    print_every_(print_every)
+    print_every_(print_every),
+    total_weight_(0)
   {
     // initialize data members
     init();
@@ -195,12 +196,7 @@ public:
     for (int ch_power : ch_powers_)
       if (ch_power != 0)
         use_charges_ = true;
-    nfeatures_ = (use_charges_ ? 4 : 3);
-
-    // initialize this to null in case we have FastJet support
-    #ifdef __FASTJET_PSEUDOJET_HH__
-    pj_charge_ = nullptr;
-    #endif   
+    nfeatures_ = (use_charges() ? 4 : 3); 
   }
   virtual ~EECBase() = default;
 
@@ -230,6 +226,61 @@ public:
     return oss.str();
   }
 
+  template <class EEC>
+  void save(std::ostream & os) {
+    #ifdef EEC_SERIALIZATION
+      #ifdef EEC_COMPRESSION
+      {
+        boost::iostreams::filtering_ostream fos;
+        fos.push(boost::iostreams::zlib_compressor(boost::iostreams::zlib::best_compression));
+        fos.push(os);
+        boost::archive::binary_oarchive ar(fos);
+        ar << dynamic_cast<EEC &>(*this);
+      }
+      #else
+        boost::archive::binary_oarchive ar(os);
+        ar << dynamic_cast<EEC &>(*this);
+      #endif
+    #endif
+  }
+
+  template <class EEC>
+  void load(std::istream & is) {
+    #ifdef EEC_SERIALIZATION
+      #ifdef EEC_COMPRESSION
+        boost::iostreams::filtering_istream fis;
+        fis.push(boost::iostreams::zlib_decompressor());
+        fis.push(is);
+        boost::archive::binary_iarchive ar(fis);
+      #else
+        boost::archive::binary_iarchive ar(is);
+      #endif
+      ar >> dynamic_cast<EEC &>(*this);
+    #endif
+  }
+
+  // allow EECs to be added together
+  EECBase & operator+=(const EECBase & rhs) {
+
+    auto error(std::invalid_argument("EEC computations must match in order to be added together"));
+    if (N()             != rhs.N()            ||
+        nsym()          != rhs.nsym()         ||
+        use_charges()   != rhs.use_charges()  ||
+        check_degen()   != rhs.check_degen()  ||
+        average_verts() != rhs.average_verts())
+      throw error;
+
+    for (unsigned i = 0; i < N(); i++) {
+      if (pt_powers_[i] != rhs.pt_powers_[i] || 
+          ch_powers_[i] != rhs.ch_powers_[i])
+        throw error;
+    }
+
+    total_weight_ += rhs.total_weight();
+
+    return *this;
+  }
+
   // access computation details
   unsigned N() const { return N_; }
   unsigned nsym() const { return nsym_; }
@@ -240,28 +291,14 @@ public:
   bool average_verts() const { return average_verts_; }
   int num_threads() const { return num_threads_; }
   long print_every() const { return print_every_; }
+  double total_weight() const { return total_weight_; }
 
   // get/set some computation options
   int get_omp_chunksize() const { return omp_chunksize_; }
   void set_omp_chunksize(int chunksize) { omp_chunksize_ = std::abs(chunksize); }
   void set_print_stream(std::ostream & os) { print_stream_ = &os; }
 
-  // compute on a vector of events (themselves vectors of particles)
-  void batch_compute(const std::vector<std::vector<double>> & events,
-                     const std::vector<double> & weights) {
-    if (events.size() != weights.size())
-      throw std::runtime_error("events and weights are different sizes");
-
-    EECEvents evs(events.size());
-    for (unsigned i = 0; i < events.size(); i++) {
-      evs.append(events[i].data(), events[i].size()/nfeatures());
-      if (events[i].size() % nfeatures() != 0)
-        throw std::runtime_error("incorrect particles size");
-    }
-
-    batch_compute(evs.events(), evs.mults(), weights);
-  }
-
+  // run batch_compute from EECEvents object
   void batch_compute(const EECEvents & evs) {
     batch_compute(evs.events(), evs.mults(), evs.weights());
   }
@@ -287,7 +324,7 @@ public:
     }
 
     long start(0), counter(0);
-    start_time_ = std::chrono::steady_clock::now();
+    auto start_time(std::chrono::steady_clock::now());
     while (counter < nevents) {
       counter += print_every;
       if (counter > nevents) counter = nevents;
@@ -300,7 +337,7 @@ public:
       start = counter;
 
       // print update
-      auto diff(std::chrono::steady_clock::now() - start_time_);
+      auto diff(std::chrono::steady_clock::now() - start_time);
       double duration(std::chrono::duration_cast<std::chrono::duration<double>>(diff).count());
       unsigned nevents_width(std::to_string(nevents).size());
       oss_.str("  ");
@@ -365,14 +402,14 @@ public:
 
     // store charges
     std::vector<double> charges;
-    if (use_charges_) {
+    if (use_charges()) {
       charges.resize(mult);
       for (unsigned i = 0; i < mult; i++)
         charges[i] = particles[i*nfeatures() + 3];
     }
 
     // check for degeneracy
-    if (check_degen_) {
+    if (check_degen()) {
       std::unordered_set<double> dists_set;
       unsigned ndegen(0);
       for (unsigned i = 0; i < mult; i++) {
@@ -391,21 +428,20 @@ public:
         std::cerr << "End Event\n";
     }
 
-    // run actual computation
-    else {
-
-      // fill weights with powers of pts and charges
-      set_weights(pts, charges, thread_i);
-
-      // delegate EEC computation to subclass
-      compute_eec(thread_i);
-    }
+    // run actual computation from pts and charges
+    else
+      init_weights_and_compute(pts, charges, thread_i);
   }
 
   // fastjet support
-#ifdef __FASTJET_PSEUDOJET_HH__
+#ifdef EEC_FASTJET_SUPPORT
+
   void set_pseudojet_charge_func(double (*pj_charge)(const fastjet::PseudoJet &)) {
     pj_charge_ = pj_charge;
+    if (pj_charge_ != nullptr && nfeatures_ != 4)
+      throw std::runtime_error("nfeatures should be 4 if using charges");
+    if (pj_charge_ == nullptr && nfeatures_ != 3)
+      throw std::runtime_error("nfeatures should be 3 if not using charges");
   }
 
   void compute(const std::vector<fastjet::PseudoJet> & pjs, const double weight = 1.0) {
@@ -428,7 +464,7 @@ public:
 
     // store charges if provided a function to do so
     std::vector<double> charges;
-    if (use_charges_) {
+    if (use_charges()) {
       if (pj_charge_ == nullptr)
         throw std::runtime_error("No function provided to get charges from PseudoJets");
       
@@ -437,13 +473,11 @@ public:
         charges[i] = pj_charge_(pjs[i]);  
     }
 
-    // fill weights with powers of pts and charges
-    set_weights(pts, charges, 0);
-
-    // delegate EEC computation to subclass
-    compute_eec(0);
+    // run actual computation from pts and charges
+    else init_weights_and_compute(pts, charges, 0);
   }
-#endif // __FASTJET_PSEUDOJET_HH__
+
+#endif // EEC_FASTJET_SUPPORT
 
 protected:
 
@@ -472,7 +506,11 @@ private:
   }
 
   // get weights as powers of pts and charges
-  void set_weights(std::vector<double> & pts, const std::vector<double> & charges, int thread_i) {
+  void init_weights_and_compute(std::vector<double> & pts, const std::vector<double> & charges, int thread_i) {
+
+    // tally weights
+    #pragma omp atomic
+    total_weight_ += event_weights_[thread_i];
 
     // tally pts
     double pttot(0);
@@ -481,14 +519,12 @@ private:
 
     // normalize pts, EEC total will be event_weight
     double eectot(event_weights_[thread_i]);
-    if (norm_) {
+    if (norm())
       for (double & pt : pts)
         pt /= pttot;
-    }
 
     // EEC total will be event_Weight * pttot^N
-    else
-      eectot *= std::pow(pttot, N());
+    else eectot *= std::pow(pttot, N());
 
     unsigned mult(mults_[thread_i]);
     for (unsigned i = 0, npowers = pt_powers_.size(); i < npowers; i++) {
@@ -511,7 +547,7 @@ private:
           weights[j] = std::pow(pts[j], pt_power);
 
       // include effect of charge
-      if (use_charges_) {
+      if (use_charges()) {
         double ch_power(ch_powers_[i]);
         if (ch_power == 0) {}
         else if (ch_power == 1)
@@ -525,11 +561,14 @@ private:
             weights[j] *= std::pow(charges[j], ch_power);
       }
     }
+
+    // delegate EEC computation to subclass
+    compute_eec(thread_i);
   }
 
-#ifdef __FASTJET_PSEUDOJET_HH__
+#ifdef EEC_FASTJET_SUPPORT
   // pointer to function to get charge from a PseudoJet
-  double (*pj_charge_)(const fastjet::PseudoJet &);
+  double (*pj_charge_)(const fastjet::PseudoJet &) = nullptr;
 #endif
 
 #ifdef BOOST_SERIALIZATION_ACCESS_HPP
@@ -537,11 +576,14 @@ private:
 #endif
 
   template<class Archive>
-  void serialize(Archive & ar, const unsigned int /* file_version */) {
+  void serialize(Archive & ar, const unsigned int version) {
     ar & orig_pt_powers_ & pt_powers_ & orig_ch_powers_ & ch_powers_
        & N_ & nsym_ & nfeatures_
        & norm_ & use_charges_ & check_degen_ & average_verts_
        & num_threads_ & print_every_ & omp_chunksize_;
+
+    if (version >= 1)
+      ar & total_weight_;
 
     init();
   }
@@ -549,5 +591,9 @@ private:
 }; // EECBase
 
 } // namespace eec
+
+#ifndef SWIG_PREPROCESSOR
+BOOST_CLASS_VERSION(eec::EECBase, 1)
+#endif
 
 #endif // EEC_BASE_HH

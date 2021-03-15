@@ -43,6 +43,13 @@
 #include <omp.h>
 #endif
 
+// check for fastjet support
+#if defined(__FASTJET_PSEUDOJET_HH__) || defined(SWIG_FASTJET)
+#  ifndef EEC_FASTJET_SUPPORT
+#  define EEC_FASTJET_SUPPORT
+#  endif
+#endif
+
 namespace eec {
 
 //-----------------------------------------------------------------------------

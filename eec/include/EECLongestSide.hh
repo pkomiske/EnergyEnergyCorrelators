@@ -55,6 +55,7 @@ class EECLongestSide : public EECBase, public hist::EECHist1D<Transform> {
   bool use_general_eNc_;
   unsigned N_choose_2_;
 
+  typedef EECLongestSide<Transform> Self;
   typedef hist::EECHist1D<Transform> EECHist1D;
   typedef typename EECHist1D::SimpleWeightedHist SimpleWeightedHist;
 
@@ -192,6 +193,21 @@ public:
     }
 
     return oss.str();
+  }
+
+  void load(std::istream & is) {
+    EECBase::load<Self>(is);
+  }
+
+  void save(std::ostream & os) {
+    EECBase::save<Self>(os);
+  }
+
+  EECLongestSide & operator+=(const EECLongestSide & rhs) {
+    EECBase::operator+=(rhs);
+    EECHist1D::operator+=(rhs);
+
+    return *this;
   }
 
 private:

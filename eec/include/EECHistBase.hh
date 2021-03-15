@@ -171,22 +171,34 @@ public:
     if (rcs.size() == 0) return;
     if (rcs.size() > 3) throw std::invalid_argument("too many reduce_commands");
 
-    // lambda function for reducing hist
-    auto reduce = [](const auto & hist, const auto & rcs) {
-      if (rcs.size() == 1) return bh::algorithm::reduce(hist, rcs[0]);
-      if (rcs.size() == 2) return bh::algorithm::reduce(hist, rcs[0], rcs[1]);
-      return bh::algorithm::reduce(hist, rcs[0], rcs[1], rcs[2]);
-    };
+    // get commands for covariance
+    std::vector<bh::algorithm::reduce_command> cov_rcs;
+    if (track_covariance()) {
+      cov_rcs = rcs;
+      for (const bh::algorithm::reduce_command & rc : rcs) {
+
+        // check if axis is unset, just push to back of cov_rcs
+        if (rc.iaxis == bh::algorithm::reduce_command::unset)
+          cov_rcs.push_back(rc);
+
+        // need to increment axis by rank()
+        else {
+          bh::algorithm::reduce_command new_rc(rc);
+          new_rc.iaxis += rank();
+          cov_rcs.push_back(new_rc);
+        }
+      }
+    }
 
     #pragma omp parallel for num_threads(num_threads()) default(shared) schedule(static)
     for (int thread_i = 0; thread_i < num_threads(); thread_i++) {
       for (unsigned hist_i = 0; hist_i < nhists(); hist_i++) {
-        hists_[thread_i][hist_i] = reduce(hists_[thread_i][hist_i], rcs);
-        per_event_hists_[thread_i][hist_i] = reduce(per_event_hists_[thread_i][hist_i], rcs);
-        if (variance_bound_)
-          variance_bound_hists_[thread_i][hist_i] = reduce(variance_bound_hists_[thread_i][hist_i], rcs);
-        if (track_covariance_)
-          covariance_hists_[thread_i][hist_i] = reduce(covariance_hists_[thread_i][hist_i], rcs);
+        hists_[thread_i][hist_i] = bh::algorithm::reduce(hists_[thread_i][hist_i], rcs);
+        per_event_hists_[thread_i][hist_i] = bh::algorithm::reduce(per_event_hists_[thread_i][hist_i], rcs);
+        if (track_covariance())
+          covariance_hists_[thread_i][hist_i] = bh::algorithm::reduce(covariance_hists_[thread_i][hist_i], cov_rcs);
+        if (variance_bound())
+          variance_bound_hists_[thread_i][hist_i] = bh::algorithm::reduce(variance_bound_hists_[thread_i][hist_i], rcs);
       }
     }
 
@@ -221,7 +233,7 @@ public:
   CovarianceHist combined_covariance(unsigned hist_i = 0) const {
     if (hist_i >= nhists())
       throw std::invalid_argument("invalid histogram index");
-    if (!variance_bound_)
+    if (!track_covariance())
       throw std::runtime_error("not tracking covariances");
 
     CovarianceHist covariance_hist(covariance_hists_[0][hist_i]);
@@ -235,7 +247,7 @@ public:
   SimpleWeightedHist combined_variance_bound(unsigned hist_i = 0) const {
     if (hist_i >= nhists())
       throw std::invalid_argument("invalid histogram index");
-    if (!variance_bound_)
+    if (!variance_bound())
       throw std::runtime_error("not tracking variance bounds");
 
     SimpleWeightedHist variance_bound_hist(variance_bound_hists_[0][hist_i]);
@@ -246,39 +258,56 @@ public:
   }
 
   // operator to add histograms together
-  EECHistBase & operator+=(const EECHistBase<EECHist> & rhs) {
+  EECHistBase & operator+=(const EECHistBase & rhs) {
     if (nhists() != rhs.nhists())
       throw std::invalid_argument("cannot add different numbers of histograms together");
+    if (track_covariance() != rhs.track_covariance())
+      throw std::invalid_argument("track_covariance flags do not match");
+    if (variance_bound() != rhs.variance_bound())
+      throw std::invalid_argument("variance_bound flags do not match");
 
     // add everything from rhs to thread 0 histogram WLOG
-    for (unsigned hist_i = 0; hist_i < nhists(); hist_i++)
-      add(rhs.combined_hist(hist_i), hist_i);
+    for (unsigned hist_i = 0; hist_i < nhists(); hist_i++) {
+
+      // add primary hists
+      hists_[0][hist_i] += rhs.combined_hist(hist_i);
+
+      // consider scaling covariances
+      if (track_covariance())
+        covariance_hists_[0][hist_i] += rhs.combined_covariance(hist_i);
+
+      // consider scaling variance bound
+      if (variance_bound())
+        variance_bound_hists_[0][hist_i] += rhs.combined_variance_bound(hist_i);
+    }
+
+    // include events that rhs has seen in overall event counter
+    event_counters_[0] += rhs.event_counter();
 
     return *this;
   }
 
+  // scale all histograms by a constant
   EECHistBase & operator*=(const double x) {
 
     // scale each histogram in each thread
-    for (int thread_i = 1; thread_i < num_threads(); thread_i++)
-      for (unsigned hist_i = 0; hist_i < nhists(); hist_i++)
-        scale(x, hist_i, thread_i);
+    #pragma omp parallel for num_threads(num_threads()) default(shared) schedule(static)
+    for (int thread_i = 0; thread_i < num_threads(); thread_i++)
+      for (unsigned hist_i = 0; hist_i < nhists(); hist_i++) {
+
+        // scale primary histograms
+        hists_[thread_i][hist_i] *= x;
+
+        // consider scaling covariances
+        if (track_covariance())
+          covariance_hists_[thread_i][hist_i] *= x * x;
+
+        // consider scaling variance bound
+        if (variance_bound())
+          variance_bound_hists_[thread_i][hist_i] *= x * x;
+      }
 
     return *this;
-  }
-
-  // function to add specific histograms
-  void add(const WeightedHist & h, unsigned hist_i = 0, int thread_i = 0) {
-    if (hist_i >= nhists())
-      throw std::invalid_argument("invalid histogram index");
-    hists_[thread_i][hist_i] += h;
-  }
-
-  // function to scale specific histogram by a value
-  void scale(const double x, unsigned hist_i = 0, int thread_i = 0) {
-    if (hist_i >= nhists())
-      throw std::invalid_argument("invalid histogram index");
-    hists_[thread_i][hist_i] *= x;
   }
 
   std::vector<double> bin_centers(unsigned i = 0) const {
@@ -446,8 +475,8 @@ protected:
 
     hists_.resize(num_threads());
     per_event_hists_.resize(num_threads());
-    if (track_covariance_) covariance_hists_.resize(num_threads());
-    if (variance_bound_) variance_bound_hists_.resize(num_threads());
+    if (track_covariance()) covariance_hists_.resize(num_threads());
+    if (variance_bound()) variance_bound_hists_.resize(num_threads());
 
     resize_internal_hists(nh);
 
@@ -462,9 +491,9 @@ protected:
     for (int thread_i = 0; thread_i < num_threads(); thread_i++) {
       hists_[thread_i].resize(nhists, static_cast<EECHist &>(*this).make_hist());
       per_event_hists_[thread_i].resize(nhists, static_cast<EECHist &>(*this).make_simple_hist());
-      if (track_covariance_)
+      if (track_covariance())
         covariance_hists_[thread_i].resize(nhists, static_cast<EECHist &>(*this).make_covariance_hist());
-      if (variance_bound_)
+      if (variance_bound())
         variance_bound_hists_[thread_i].resize(nhists, static_cast<EECHist &>(*this).make_simple_hist());
     }
   }
@@ -491,7 +520,7 @@ protected:
     for (unsigned hist_i = 0; hist_i < nhists(); hist_i++) {
 
       // track covariances
-      if (track_covariance_) {
+      if (track_covariance()) {
 
         CovarianceHist & cov_hist(covariance_hists_[thread_i][hist_i]);
         std::array<axis::index_type, 2*Traits::rank> cov_inds;
@@ -539,7 +568,7 @@ protected:
       auto h_it(hists_[thread_i][hist_i].begin());
 
       // we're keeping track of the variance bound
-      if (variance_bound_) {
+      if (variance_bound()) {
         const double simple_hist_sum(event_weight *
                                      bh::algorithm::sum(per_event_hists_[thread_i][hist_i],
                                                         (variance_bound_includes_overflows_ ?
@@ -628,9 +657,9 @@ private:
 
     for (unsigned hist_i = 0; hist_i < nhists(); hist_i++) {
       ar & combined_hist(hist_i);
-      if (track_covariance_)
+      if (track_covariance())
         ar & combined_covariance(hist_i);
-      if (variance_bound_)
+      if (variance_bound())
         ar & combined_variance_bound(hist_i);
     }
   }
@@ -648,9 +677,9 @@ private:
     // for each hist, load it into thread 0
     for (unsigned hist_i = 0; hist_i < nh; hist_i++) {
       ar & hists_[0][hist_i];
-      if (track_covariance_)
+      if (track_covariance())
         ar & covariance_hists_[0][hist_i];
-      if (variance_bound_)
+      if (variance_bound())
         ar & variance_bound_hists_[0][hist_i];
     }
   }
