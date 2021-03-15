@@ -67,15 +67,6 @@ using namespace eec::hist;
 %apply (double* IN_ARRAY2, int DIM1, int DIM2) {(double* particles, int mult, int nfeatures)}
 %apply (double* INPLACE_ARRAY2, int DIM1, int DIM2) {(const double* event_ptr, unsigned mult, unsigned nfeatures)}
 
-%pythoncode %{
-__all__ = ['EECLongestSideId', 'EECLongestSideLog',
-           'EECTriangleOPEIdIdId', 'EECTriangleOPEIdLogId',
-           'EECTriangleOPELogIdId', 'EECTriangleOPELogLogId',
-
-           # these are used in histogram reduction
-           'rebin', 'shrink', 'slice', 'shrink_and_rebin', 'slice_and_rebin']
-%}
-
 // vector templates
 %template(vectorDouble) std::vector<double>;
 %template(vectorUnsigned) std::vector<unsigned>;
@@ -103,7 +94,12 @@ __all__ = ['EECLongestSideId', 'EECLongestSideLog',
 
     def __setstate__(self, state):
         self.__init__(*self._default_args)
-        self.__setstate_internal__(state[0])
+        try:
+            self.__setstate_internal__(state[0])
+        except Exception as e:
+            raise RuntimeError('issue loading eec - check `eec.get_archive_format()`'
+                               ' and `eec.get_compression_mode()`',
+                               repr(e))
   %}
 %enddef
 

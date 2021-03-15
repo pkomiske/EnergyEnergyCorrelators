@@ -94,7 +94,7 @@ else:
     eec = Extension('eec._eec',
                     sources=[os.path.join('eec', 'eec.cpp')],
                     include_dirs=include_dirs,
-                    library_dirs=fj_libdirs + ['-L/usr/local/lib'],
+                    library_dirs=fj_libdirs + ['/usr/local/lib'],
                     extra_compile_args=cxxflags,
                     extra_link_args=ldflags,
                     libraries=libs)

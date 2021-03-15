@@ -25,27 +25,6 @@
 #ifndef EEC_HH
 #define EEC_HH
 
-#ifdef SWIG_FASTJET
-#include "fastjet/PseudoJet.hh"
-#endif
-
-// serialization code based on boost serialization
-#ifdef EEC_SERIALIZATION
-#include <boost/archive/binary_iarchive.hpp>
-#include <boost/archive/binary_oarchive.hpp>
-#include <boost/serialization/array.hpp>
-#include <boost/serialization/map.hpp>
-#include <boost/serialization/string.hpp>
-#include <boost/serialization/vector.hpp>
-
-// compression based on boost iostreams
-#ifdef EEC_COMPRESSION
-#include <boost/iostreams/filtering_stream.hpp>
-#include <boost/iostreams/filter/zlib.hpp>
-#endif
-
-#endif // EEC_SERIALIZATION
-
 #include "EECLongestSide.hh"
 #include "EECTriangleOPE.hh"
 

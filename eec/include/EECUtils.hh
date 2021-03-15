@@ -40,21 +40,57 @@
 
 // OpenMP for multithreading
 #ifdef _OPENMP
-#include <omp.h>
+# include <omp.h>
 #endif
+
+#ifdef SWIG_FASTJET
+# include "fastjet/PseudoJet.hh"
+#endif
+
+// serialization code based on boost serialization
+#ifdef EEC_SERIALIZATION
+# include <boost/archive/binary_iarchive.hpp>
+# include <boost/archive/binary_oarchive.hpp>
+# include <boost/archive/text_iarchive.hpp>
+# include <boost/archive/text_oarchive.hpp>
+# include <boost/serialization/array.hpp>
+# include <boost/serialization/map.hpp>
+# include <boost/serialization/string.hpp>
+# include <boost/serialization/vector.hpp>
+
+// compression based on boost iostreams
+# ifdef EEC_COMPRESSION
+#  include <boost/iostreams/filtering_stream.hpp>
+#  include <boost/iostreams/filter/zlib.hpp>
+# endif
+
+#endif // EEC_SERIALIZATION
 
 // check for fastjet support
 #if defined(__FASTJET_PSEUDOJET_HH__) || defined(SWIG_FASTJET)
-#  ifndef EEC_FASTJET_SUPPORT
-#  define EEC_FASTJET_SUPPORT
-#  endif
+# ifndef EEC_FASTJET_SUPPORT
+# define EEC_FASTJET_SUPPORT
+# endif
 #endif
 
 namespace eec {
 
 //-----------------------------------------------------------------------------
+// enums
+//-----------------------------------------------------------------------------
+
+enum class ArchiveFormat { Text, Binary };
+enum class CompressionMode { Auto, Plain, Zlib };
+
+//-----------------------------------------------------------------------------
 // Global variables
 //-----------------------------------------------------------------------------
+
+// these should be accessed using the below functions
+#ifndef SWIG_PREPROCESSOR
+static ArchiveFormat archform_ = ArchiveFormat::Text;
+static CompressionMode compmode_ = CompressionMode::Auto;
+#endif
 
 const double REG = 1e-100;
 const double PI = 3.14159265358979323846;
@@ -72,6 +108,30 @@ constexpr bool HAS_PICKLE_SUPPORT =
 //-----------------------------------------------------------------------------
 // Helper functions
 //-----------------------------------------------------------------------------
+
+// get/set some serialization options
+inline ArchiveFormat get_archive_format() { return archform_; }
+inline CompressionMode get_compression_mode() {
+  if (compmode_ == CompressionMode::Auto) {
+    #ifdef EEC_COMPRESSION
+      return CompressionMode::Zlib;
+    #else
+      return CompressionMode::Plain;
+    #endif
+  }
+  return compmode_;
+}
+inline void set_archive_format(ArchiveFormat a) { archform_ = a; }
+inline void set_compression_mode(CompressionMode c) {
+
+  // error if compression specifically requested and not available
+  #ifndef EEC_COMPRESSION
+    if (c != CompressionMode::Auto && c != CompressionMode::Plain)
+      throw std::invalid_argument("compression not available with this build");
+  #endif
+
+  compmode_ = c;
+}
 
 // determine the number of threads to use
 inline int determine_num_threads(int num_threads) {

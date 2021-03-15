@@ -200,6 +200,23 @@ public:
   }
   virtual ~EECBase() = default;
 
+  // access computation details
+  unsigned N() const { return N_; }
+  unsigned nsym() const { return nsym_; }
+  unsigned nfeatures() const { return nfeatures_; }
+  bool norm() const { return norm_; }
+  bool use_charges() const { return use_charges_; }
+  bool check_degen() const { return check_degen_; }
+  bool average_verts() const { return average_verts_; }
+  int num_threads() const { return num_threads_; }
+  long print_every() const { return print_every_; }
+  double total_weight() const { return total_weight_; }
+
+  // get/set some computation options
+  int get_omp_chunksize() const { return omp_chunksize_; }
+  void set_omp_chunksize(int chunksize) { omp_chunksize_ = std::abs(chunksize); }
+  void set_print_stream(std::ostream & os) { print_stream_ = &os; }
+
   virtual std::string description(int = 1) const {
     std::ostringstream oss;
     oss << std::boolalpha
@@ -226,39 +243,6 @@ public:
     return oss.str();
   }
 
-  template <class EEC>
-  void save(std::ostream & os) {
-    #ifdef EEC_SERIALIZATION
-      #ifdef EEC_COMPRESSION
-      {
-        boost::iostreams::filtering_ostream fos;
-        fos.push(boost::iostreams::zlib_compressor(boost::iostreams::zlib::best_compression));
-        fos.push(os);
-        boost::archive::binary_oarchive ar(fos);
-        ar << dynamic_cast<EEC &>(*this);
-      }
-      #else
-        boost::archive::binary_oarchive ar(os);
-        ar << dynamic_cast<EEC &>(*this);
-      #endif
-    #endif
-  }
-
-  template <class EEC>
-  void load(std::istream & is) {
-    #ifdef EEC_SERIALIZATION
-      #ifdef EEC_COMPRESSION
-        boost::iostreams::filtering_istream fis;
-        fis.push(boost::iostreams::zlib_decompressor());
-        fis.push(is);
-        boost::archive::binary_iarchive ar(fis);
-      #else
-        boost::archive::binary_iarchive ar(is);
-      #endif
-      ar >> dynamic_cast<EEC &>(*this);
-    #endif
-  }
-
   // allow EECs to be added together
   EECBase & operator+=(const EECBase & rhs) {
 
@@ -280,23 +264,6 @@ public:
 
     return *this;
   }
-
-  // access computation details
-  unsigned N() const { return N_; }
-  unsigned nsym() const { return nsym_; }
-  unsigned nfeatures() const { return nfeatures_; }
-  bool norm() const { return norm_; }
-  bool use_charges() const { return use_charges_; }
-  bool check_degen() const { return check_degen_; }
-  bool average_verts() const { return average_verts_; }
-  int num_threads() const { return num_threads_; }
-  long print_every() const { return print_every_; }
-  double total_weight() const { return total_weight_; }
-
-  // get/set some computation options
-  int get_omp_chunksize() const { return omp_chunksize_; }
-  void set_omp_chunksize(int chunksize) { omp_chunksize_ = std::abs(chunksize); }
-  void set_print_stream(std::ostream & os) { print_stream_ = &os; }
 
   // run batch_compute from EECEvents object
   void batch_compute(const EECEvents & evs) {
@@ -478,6 +445,82 @@ public:
   }
 
 #endif // EEC_FASTJET_SUPPORT
+
+  template <class EEC>
+  void save(std::ostream & os) {
+    #ifdef EEC_SERIALIZATION
+      #ifdef EEC_COMPRESSION
+
+        // we want to use compression
+        if (get_compression_mode() == CompressionMode::Zlib) {
+          boost::iostreams::filtering_ostream fos;
+          fos.push(boost::iostreams::zlib_compressor(boost::iostreams::zlib::best_compression));
+          fos.push(os);
+          if (get_archive_format() == ArchiveFormat::Binary) {
+            boost::archive::binary_oarchive ar(fos);
+            ar << dynamic_cast<EEC &>(*this);
+          }
+          else {
+            boost::archive::text_oarchive ar(fos);
+            ar << dynamic_cast<EEC &>(*this);
+          }
+          return;
+        }
+
+      #endif // EEC_COMPRESSION
+
+      // no compression, binary
+      if (get_archive_format() == ArchiveFormat::Binary) {
+        boost::archive::binary_oarchive ar(os);
+        ar << dynamic_cast<EEC &>(*this);
+      }
+
+      // no compression, text
+      else {
+        boost::archive::text_oarchive ar(os);
+        ar << dynamic_cast<EEC &>(*this);
+      }
+
+    #endif // EEC_SERIALIZATION
+  }
+
+  template <class EEC>
+  void load(std::istream & is) {
+    #ifdef EEC_SERIALIZATION
+      #ifdef EEC_COMPRESSION
+
+        // we want to use compression
+        if (get_compression_mode() == CompressionMode::Zlib) {
+          boost::iostreams::filtering_istream fis;
+          fis.push(boost::iostreams::zlib_decompressor());
+          fis.push(is);
+          if (get_archive_format() == ArchiveFormat::Binary) {
+            boost::archive::binary_iarchive ar(fis);
+            ar >> dynamic_cast<EEC &>(*this);
+          }
+          else {
+            boost::archive::text_iarchive ar(fis);
+            ar >> dynamic_cast<EEC &>(*this);
+          }
+          return;
+        }
+
+      #endif // EEC_COMPRESSION
+
+      // no compression, binary
+      if (get_archive_format() == ArchiveFormat::Binary) {
+        boost::archive::binary_iarchive ar(is);
+        ar >> dynamic_cast<EEC &>(*this);
+      }
+
+      // no compression, text
+      else {
+        boost::archive::text_iarchive ar(is);
+        ar >> dynamic_cast<EEC &>(*this);
+      }
+
+    #endif // EEC_SERIALIZATION
+  }
 
 protected:
 

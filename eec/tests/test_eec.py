@@ -726,16 +726,21 @@ def test_triangleope(axes, num_threads, pt_powers, ch_powers, average_verts, npa
 
 @pytest.mark.longestside
 @pytest.mark.pickle
+@pytest.mark.parametrize('compmode', [eec.CompressionMode_Auto, eec.CompressionMode_Plain, eec.CompressionMode_Zlib])
+@pytest.mark.parametrize('archform', [eec.ArchiveFormat_Text, eec.ArchiveFormat_Binary])
 @pytest.mark.parametrize('nparticles', [2, 4, 8])
 @pytest.mark.parametrize('ch_powers', [0, 1, 2])
 @pytest.mark.parametrize('pt_powers', [1, 2])
 @pytest.mark.parametrize('num_threads', [1, -1])
 @pytest.mark.parametrize('axis', ['log', 'id'])
 @pytest.mark.parametrize('N', [2, 3, 4])
-def test_pickling_longestside(N, axis, num_threads, pt_powers, ch_powers, nparticles):
+def test_pickling_longestside(N, axis, num_threads, pt_powers, ch_powers, nparticles, archform, compmode):
 
     if not eec.HAS_PICKLE_SUPPORT:
         pytest.skip()
+
+    eec.set_archive_format(archform)
+    eec.set_compression_mode(compmode)
 
     nbins = 15
     e = EECLongestSide(N, nbins, axis=axis, axis_range=(1e-5, 1), pt_powers=(pt_powers,), ch_powers=(ch_powers,),
@@ -756,15 +761,20 @@ def test_pickling_longestside(N, axis, num_threads, pt_powers, ch_powers, nparti
 
 @pytest.mark.triangleope
 @pytest.mark.pickle
+@pytest.mark.parametrize('compmode', [eec.CompressionMode_Auto, eec.CompressionMode_Plain, eec.CompressionMode_Zlib])
+@pytest.mark.parametrize('archform', [eec.ArchiveFormat_Text, eec.ArchiveFormat_Binary])
 @pytest.mark.parametrize('nparticles', [2, 4, 8])
 @pytest.mark.parametrize('ch_powers', [(0,0,0), (1,1,1), (0,0,1), (0,1,0), (1,0,0)])
 @pytest.mark.parametrize('pt_powers', [(1,1,1), (1,1,2), (1,2,1), (2,1,1)])
 @pytest.mark.parametrize('num_threads', [1, -1])
 @pytest.mark.parametrize('axes', [('log', 'log', 'id'), ('id', 'id', 'id'), ('log', 'id', 'id'), ('id', 'log', 'id')])
-def test_pickling_triangleope(axes, num_threads, pt_powers, ch_powers, nparticles):
+def test_pickling_triangleope(axes, num_threads, pt_powers, ch_powers, nparticles, archform, compmode):
 
     if not eec.HAS_PICKLE_SUPPORT:
         pytest.skip()
+
+    eec.set_archive_format(archform)
+    eec.set_compression_mode(compmode)
     
     bin_ranges = [(1e-5, 1), (1e-5, 1), (0, np.pi/2)]
     e = EECTriangleOPE(nbins=(15, 15, 15), axes=axes, axes_range=bin_ranges,

@@ -98,14 +98,6 @@ _eec.SwigPyIterator_swigregister(SwigPyIterator)
 
 import numpy as _np
 
-
-__all__ = ['EECLongestSideId', 'EECLongestSideLog',
-           'EECTriangleOPEIdIdId', 'EECTriangleOPEIdLogId',
-           'EECTriangleOPELogIdId', 'EECTriangleOPELogLogId',
-
-# these are used in histogram reduction
-           'rebin', 'shrink', 'slice', 'shrink_and_rebin', 'slice_and_rebin']
-
 class vectorDouble(object):
     r"""Proxy of C++ std::vector< double > class."""
 
@@ -320,6 +312,20 @@ class vectorReduceCommand(object):
 # Register vectorReduceCommand in _eec:
 _eec.vectorReduceCommand_swigregister(vectorReduceCommand)
 
+ArchiveFormat_Text = _eec.ArchiveFormat_Text
+
+ArchiveFormat_Binary = _eec.ArchiveFormat_Binary
+
+CompressionMode_Auto = _eec.CompressionMode_Auto
+
+CompressionMode_Plain = _eec.CompressionMode_Plain
+
+CompressionMode_Zlib = _eec.CompressionMode_Zlib
+
+get_archive_format = _eec.get_archive_format
+get_compression_mode = _eec.get_compression_mode
+set_archive_format = _eec.set_archive_format
+set_compression_mode = _eec.set_compression_mode
 determine_num_threads = _eec.determine_num_threads
 get_coverage = _eec.get_coverage
 class EECHistBase1DId(object):
@@ -698,7 +704,6 @@ class EECBase(object):
         raise AttributeError("No constructor defined - class is abstract")
     __repr__ = _swig_repr
     __swig_destroy__ = _eec.delete_EECBase
-    description = _swig_new_instance_method(_eec.EECBase_description)
     N = _swig_new_instance_method(_eec.EECBase_N)
     nsym = _swig_new_instance_method(_eec.EECBase_nsym)
     nfeatures = _swig_new_instance_method(_eec.EECBase_nfeatures)
@@ -712,6 +717,7 @@ class EECBase(object):
     get_omp_chunksize = _swig_new_instance_method(_eec.EECBase_get_omp_chunksize)
     set_omp_chunksize = _swig_new_instance_method(_eec.EECBase_set_omp_chunksize)
     set_print_stream = _swig_new_instance_method(_eec.EECBase_set_print_stream)
+    description = _swig_new_instance_method(_eec.EECBase_description)
 
     def __repr__(self):
         return self.description().decode('utf-8')
@@ -722,7 +728,12 @@ class EECBase(object):
 
     def __setstate__(self, state):
         self.__init__(*self._default_args)
-        self.__setstate_internal__(state[0])
+        try:
+            self.__setstate_internal__(state[0])
+        except Exception as e:
+            raise RuntimeError('issue loading eec - check `get_archive_format()`'
+                               ' and `get_compression_mode()`',
+                               repr(e))
 
     compute = _swig_new_instance_method(_eec.EECBase_compute)
     _batch_compute = _swig_new_instance_method(_eec.EECBase__batch_compute)

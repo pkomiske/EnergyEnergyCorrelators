@@ -56,16 +56,17 @@ jobs:
         - python3 -m pip install twine
         - ./scripts/pypi-upload.sh
       env:
-        - PATH=/c/Python39:/c/Python39/Scripts:$PATH CIBW_TEST_SKIP=*win32
+        - PATH=/c/Python39:/c/Python39/Scripts:$PATH
 
 env:
   global:
     - TWINE_USERNAME=__token__
     - CIBW_BEFORE_BUILD="pip install -U numpy"
     - CIBW_BUILD_VERBOSITY=1
-    - CIBW_MANYLINUX_X86_64_IMAGE=ghcr.io/pkomiske/eec_manylinux2010:latest
-    - CIBW_SKIP="pp* *i686"
+    - CIBW_MANYLINUX_X86_64_IMAGE=ghcr.io/pkomiske/eec_manylinux2010_x86_64:latest
+    - CIBW_MANYLINUX_I686_IMAGE=ghcr.io/pkomiske/eec_manylinux2010_i686:latest
+    - CIBW_SKIP="pp*"
     - CIBW_TEST_COMMAND="pytest {package}"
     - CIBW_TEST_REQUIRES="pytest numpy scipy energyflow"
-    - CIBW_TEST_SKIP="*i686 *win32"
+    - CIBW_TEST_SKIP="*macos*"
     - PYPI_TEST=true
