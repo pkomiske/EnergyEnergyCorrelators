@@ -731,8 +731,8 @@ class EECBase(object):
         try:
             self.__setstate_internal__(state[0])
         except Exception as e:
-            raise RuntimeError('issue loading eec - check `get_archive_format()`'
-                               ' and `get_compression_mode()`',
+            raise RuntimeError('issue loading eec - check `eec.get_archive_format()`'
+                               ' and `eec.get_compression_mode()`',
                                repr(e))
 
     compute = _swig_new_instance_method(_eec.EECBase_compute)
