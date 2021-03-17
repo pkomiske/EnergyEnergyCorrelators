@@ -3,6 +3,8 @@ stages:
 
 jobs:
   exclude:
+    - os: osx
+    - os: linux
 
   include:
 
