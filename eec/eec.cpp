@@ -2746,19 +2746,20 @@ SWIGINTERN PyObject *SWIG_PyStaticMethod_New(PyObject *SWIGUNUSEDPARM(self), PyO
 #define SWIGTYPE_p_std__allocatorT_boost__histogram__algorithm__reduce_command_t swig_types[50]
 #define SWIGTYPE_p_std__allocatorT_double_t swig_types[51]
 #define SWIGTYPE_p_std__allocatorT_unsigned_int_t swig_types[52]
-#define SWIGTYPE_p_std__arrayT_unsigned_int_13_t swig_types[53]
-#define SWIGTYPE_p_std__invalid_argument swig_types[54]
-#define SWIGTYPE_p_std__istream swig_types[55]
-#define SWIGTYPE_p_std__ostream swig_types[56]
-#define SWIGTYPE_p_std__ostringstream swig_types[57]
-#define SWIGTYPE_p_std__vectorT_boost__histogram__algorithm__reduce_command_std__allocatorT_boost__histogram__algorithm__reduce_command_t_t swig_types[58]
-#define SWIGTYPE_p_std__vectorT_double_const_p_std__allocatorT_double_const_p_t_t swig_types[59]
-#define SWIGTYPE_p_std__vectorT_double_std__allocatorT_double_t_t swig_types[60]
-#define SWIGTYPE_p_std__vectorT_unsigned_int_std__allocatorT_unsigned_int_t_t swig_types[61]
-#define SWIGTYPE_p_swig__SwigPyIterator swig_types[62]
-#define SWIGTYPE_p_value_type swig_types[63]
-static swig_type_info *swig_types[65];
-static swig_module_info swig_module = {swig_types, 64, 0, 0, 0, 0};
+#define SWIGTYPE_p_std__arrayT_std__size_t_21_t swig_types[53]
+#define SWIGTYPE_p_std__arrayT_unsigned_int_13_t swig_types[54]
+#define SWIGTYPE_p_std__invalid_argument swig_types[55]
+#define SWIGTYPE_p_std__istream swig_types[56]
+#define SWIGTYPE_p_std__ostream swig_types[57]
+#define SWIGTYPE_p_std__ostringstream swig_types[58]
+#define SWIGTYPE_p_std__vectorT_boost__histogram__algorithm__reduce_command_std__allocatorT_boost__histogram__algorithm__reduce_command_t_t swig_types[59]
+#define SWIGTYPE_p_std__vectorT_double_const_p_std__allocatorT_double_const_p_t_t swig_types[60]
+#define SWIGTYPE_p_std__vectorT_double_std__allocatorT_double_t_t swig_types[61]
+#define SWIGTYPE_p_std__vectorT_unsigned_int_std__allocatorT_unsigned_int_t_t swig_types[62]
+#define SWIGTYPE_p_swig__SwigPyIterator swig_types[63]
+#define SWIGTYPE_p_value_type swig_types[64]
+static swig_type_info *swig_types[66];
+static swig_module_info swig_module = {swig_types, 65, 0, 0, 0, 0};
 #define SWIG_TypeQuery(name) SWIG_TypeQueryModule(&swig_module, &swig_module, name)
 #define SWIG_MangledTypeQuery(name) SWIG_MangledTypeQueryModule(&swig_module, &swig_module, name)
 
@@ -28232,6 +28233,20 @@ SWIGINTERN PyObject *Swig_var_FACTORIALS_get(void) {
 }
 
 
+SWIGINTERN int Swig_var_FACTORIALS_64BIT_set(PyObject *) {
+  SWIG_Error(SWIG_AttributeError,"Variable FACTORIALS_64BIT is read-only.");
+  return 1;
+}
+
+
+SWIGINTERN PyObject *Swig_var_FACTORIALS_64BIT_get(void) {
+  PyObject *pyobj = 0;
+  
+  pyobj = SWIG_NewPointerObj(SWIG_as_voidptr(&eec::FACTORIALS_64BIT), SWIGTYPE_p_std__arrayT_std__size_t_21_t,  0 );
+  return pyobj;
+}
+
+
 SWIGINTERN PyObject *_wrap_multinomial(PyObject *SWIGUNUSEDPARM(self), PyObject *args, PyObject *kwargs) {
   PyObject *resultobj = 0;
   std::vector< unsigned int,std::allocator< unsigned int > > *arg1 = 0 ;
@@ -28400,7 +28415,7 @@ SWIGINTERN PyObject *_wrap_DynamicMultinomial_value(PyObject *SWIGUNUSEDPARM(sel
   void *argp1 = 0 ;
   int res1 = 0 ;
   PyObject *swig_obj[1] ;
-  unsigned int result;
+  std::size_t result;
   
   if (!args) SWIG_fail;
   swig_obj[0] = args;
@@ -28411,7 +28426,7 @@ SWIGINTERN PyObject *_wrap_DynamicMultinomial_value(PyObject *SWIGUNUSEDPARM(sel
   arg1 = reinterpret_cast< eec::DynamicMultinomial * >(argp1);
   {
     try {
-      result = (unsigned int)((eec::DynamicMultinomial const *)arg1)->value(); 
+      result = ((eec::DynamicMultinomial const *)arg1)->value(); 
     }
     /*@SWIG:/usr/local/Cellar/swig/4.0.2/share/swig/4.0.2/typemaps/exception.swg,58,SWIG_CATCH_STDEXCEPT@*/  /* catching std::exception  */
     catch (std::invalid_argument& e) {
@@ -28431,7 +28446,7 @@ SWIGINTERN PyObject *_wrap_DynamicMultinomial_value(PyObject *SWIGUNUSEDPARM(sel
     }
     /*@SWIG@*/
   }
-  resultobj = SWIG_From_unsigned_SS_int(static_cast< unsigned int >(result));
+  resultobj = SWIG_From_size_t(static_cast< size_t >(result));
   return resultobj;
 fail:
   return NULL;
@@ -35220,7 +35235,7 @@ static PyMethodDef SwigMethods[] = {
 	 { "multinomial", (PyCFunction)(void(*)(void))_wrap_multinomial, METH_VARARGS|METH_KEYWORDS, "multinomial(vectorUnsigned inds) -> unsigned int"},
 	 { "new_DynamicMultinomial", (PyCFunction)(void(*)(void))_wrap_new_DynamicMultinomial, METH_VARARGS|METH_KEYWORDS, "new_DynamicMultinomial(unsigned int N) -> DynamicMultinomial"},
 	 { "DynamicMultinomial_set_index", (PyCFunction)(void(*)(void))_wrap_DynamicMultinomial_set_index, METH_VARARGS|METH_KEYWORDS, "DynamicMultinomial_set_index(DynamicMultinomial self, unsigned int i, unsigned int ind)"},
-	 { "DynamicMultinomial_value", _wrap_DynamicMultinomial_value, METH_O, "DynamicMultinomial_value(DynamicMultinomial self) -> unsigned int"},
+	 { "DynamicMultinomial_value", _wrap_DynamicMultinomial_value, METH_O, "DynamicMultinomial_value(DynamicMultinomial self) -> std::size_t"},
 	 { "delete_DynamicMultinomial", _wrap_delete_DynamicMultinomial, METH_O, "delete_DynamicMultinomial(DynamicMultinomial self)"},
 	 { "DynamicMultinomial_swigregister", DynamicMultinomial_swigregister, METH_O, NULL},
 	 { "DynamicMultinomial_swiginit", DynamicMultinomial_swiginit, METH_VARARGS, NULL},
@@ -35845,7 +35860,7 @@ static PyMethodDef SwigMethods_proxydocs[] = {
 	 { "multinomial", (PyCFunction)(void(*)(void))_wrap_multinomial, METH_VARARGS|METH_KEYWORDS, "multinomial(vectorUnsigned inds) -> unsigned int"},
 	 { "new_DynamicMultinomial", (PyCFunction)(void(*)(void))_wrap_new_DynamicMultinomial, METH_VARARGS|METH_KEYWORDS, "new_DynamicMultinomial(unsigned int N) -> DynamicMultinomial"},
 	 { "DynamicMultinomial_set_index", (PyCFunction)(void(*)(void))_wrap_DynamicMultinomial_set_index, METH_VARARGS|METH_KEYWORDS, "set_index(DynamicMultinomial self, unsigned int i, unsigned int ind)"},
-	 { "DynamicMultinomial_value", _wrap_DynamicMultinomial_value, METH_O, "value(DynamicMultinomial self) -> unsigned int"},
+	 { "DynamicMultinomial_value", _wrap_DynamicMultinomial_value, METH_O, "value(DynamicMultinomial self) -> std::size_t"},
 	 { "delete_DynamicMultinomial", _wrap_delete_DynamicMultinomial, METH_O, "delete_DynamicMultinomial(DynamicMultinomial self)"},
 	 { "DynamicMultinomial_swigregister", DynamicMultinomial_swigregister, METH_O, NULL},
 	 { "DynamicMultinomial_swiginit", DynamicMultinomial_swiginit, METH_VARARGS, NULL},
@@ -36100,6 +36115,7 @@ static swig_type_info _swigt__p_size_type = {"_p_size_type", "size_type *", 0, 0
 static swig_type_info _swigt__p_std__allocatorT_boost__histogram__algorithm__reduce_command_t = {"_p_std__allocatorT_boost__histogram__algorithm__reduce_command_t", "std::vector< boost::histogram::algorithm::reduce_command >::allocator_type *|std::allocator< boost::histogram::algorithm::reduce_command > *", 0, 0, (void*)0, 0};
 static swig_type_info _swigt__p_std__allocatorT_double_t = {"_p_std__allocatorT_double_t", "std::vector< double >::allocator_type *|std::allocator< double > *", 0, 0, (void*)0, 0};
 static swig_type_info _swigt__p_std__allocatorT_unsigned_int_t = {"_p_std__allocatorT_unsigned_int_t", "std::vector< unsigned int >::allocator_type *|std::allocator< unsigned int > *", 0, 0, (void*)0, 0};
+static swig_type_info _swigt__p_std__arrayT_std__size_t_21_t = {"_p_std__arrayT_std__size_t_21_t", "std::array< std::size_t,21 > *", 0, 0, (void*)0, 0};
 static swig_type_info _swigt__p_std__arrayT_unsigned_int_13_t = {"_p_std__arrayT_unsigned_int_13_t", "std::array< unsigned int,13 > *", 0, 0, (void*)0, 0};
 static swig_type_info _swigt__p_std__invalid_argument = {"_p_std__invalid_argument", "std::invalid_argument *", 0, 0, (void*)0, 0};
 static swig_type_info _swigt__p_std__istream = {"_p_std__istream", "std::istream *", 0, 0, (void*)0, 0};
@@ -36166,6 +36182,7 @@ static swig_type_info *swig_type_initial[] = {
   &_swigt__p_std__allocatorT_boost__histogram__algorithm__reduce_command_t,
   &_swigt__p_std__allocatorT_double_t,
   &_swigt__p_std__allocatorT_unsigned_int_t,
+  &_swigt__p_std__arrayT_std__size_t_21_t,
   &_swigt__p_std__arrayT_unsigned_int_13_t,
   &_swigt__p_std__invalid_argument,
   &_swigt__p_std__istream,
@@ -36232,6 +36249,7 @@ static swig_cast_info _swigc__p_size_type[] = {  {&_swigt__p_size_type, 0, 0, 0}
 static swig_cast_info _swigc__p_std__allocatorT_boost__histogram__algorithm__reduce_command_t[] = {  {&_swigt__p_std__allocatorT_boost__histogram__algorithm__reduce_command_t, 0, 0, 0},{0, 0, 0, 0}};
 static swig_cast_info _swigc__p_std__allocatorT_double_t[] = {  {&_swigt__p_std__allocatorT_double_t, 0, 0, 0},{0, 0, 0, 0}};
 static swig_cast_info _swigc__p_std__allocatorT_unsigned_int_t[] = {  {&_swigt__p_std__allocatorT_unsigned_int_t, 0, 0, 0},{0, 0, 0, 0}};
+static swig_cast_info _swigc__p_std__arrayT_std__size_t_21_t[] = {  {&_swigt__p_std__arrayT_std__size_t_21_t, 0, 0, 0},{0, 0, 0, 0}};
 static swig_cast_info _swigc__p_std__arrayT_unsigned_int_13_t[] = {  {&_swigt__p_std__arrayT_unsigned_int_13_t, 0, 0, 0},{0, 0, 0, 0}};
 static swig_cast_info _swigc__p_std__invalid_argument[] = {  {&_swigt__p_std__invalid_argument, 0, 0, 0},{0, 0, 0, 0}};
 static swig_cast_info _swigc__p_std__istream[] = {  {&_swigt__p_std__istream, 0, 0, 0},{0, 0, 0, 0}};
@@ -36298,6 +36316,7 @@ static swig_cast_info *swig_cast_initial[] = {
   _swigc__p_std__allocatorT_boost__histogram__algorithm__reduce_command_t,
   _swigc__p_std__allocatorT_double_t,
   _swigc__p_std__allocatorT_unsigned_int_t,
+  _swigc__p_std__arrayT_std__size_t_21_t,
   _swigc__p_std__arrayT_unsigned_int_13_t,
   _swigc__p_std__invalid_argument,
   _swigc__p_std__istream,
@@ -37073,6 +37092,7 @@ SWIG_init(void) {
   SWIG_addvarlink(globals, "HAS_PICKLE_SUPPORT", Swig_var_HAS_PICKLE_SUPPORT_get, Swig_var_HAS_PICKLE_SUPPORT_set);
   SWIG_Python_SetConstant(d, "EEC_IGNORED_WEIGHT",SWIG_From_int(static_cast< int >(-1)));
   SWIG_addvarlink(globals, "FACTORIALS", Swig_var_FACTORIALS_get, Swig_var_FACTORIALS_set);
+  SWIG_addvarlink(globals, "FACTORIALS_64BIT", Swig_var_FACTORIALS_64BIT_get, Swig_var_FACTORIALS_64BIT_set);
   
   /* Initialize threading */
   SWIG_PYTHON_INITIALIZE_THREADS;

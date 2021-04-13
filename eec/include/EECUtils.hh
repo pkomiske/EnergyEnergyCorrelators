@@ -79,8 +79,8 @@ namespace eec {
 // enums
 //-----------------------------------------------------------------------------
 
-enum class ArchiveFormat { Text, Binary };
-enum class CompressionMode { Auto, Plain, Zlib };
+enum class ArchiveFormat { Text=0, Binary=1 };
+enum class CompressionMode { Auto=0, Plain=1, Zlib=2 };
 
 //-----------------------------------------------------------------------------
 // Global variables
@@ -121,8 +121,16 @@ inline CompressionMode get_compression_mode() {
   }
   return compmode_;
 }
-inline void set_archive_format(ArchiveFormat a) { archform_ = a; }
+inline void set_archive_format(ArchiveFormat a) {
+  if (int(a) < 0 || int(a) >= 2)
+    throw std::invalid_argument("invalid archive format");
+
+  archform_ = a;
+}
 inline void set_compression_mode(CompressionMode c) {
+
+  if (int(c) < 0 || int(c) >= 3)
+    throw std::invalid_argument("invalid compression mode");
 
   // error if compression specifically requested and not available
   #ifndef EEC_COMPRESSION

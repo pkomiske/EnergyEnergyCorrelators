@@ -38,7 +38,14 @@
 
 namespace eec {
 
-const std::array<unsigned, 13> FACTORIALS{1,1,2,6,24,120,720,5040,40320,362880,3628800,39916800,479001600};
+const std::array<unsigned, 13> FACTORIALS {
+  1,1,2,6,24,120,720,5040,40320,362880,3628800,39916800,479001600
+};
+const std::array<std::size_t, 21> FACTORIALS_64BIT {
+  1,1,2,6,24,120,720,5040,40320,362880,3628800,39916800,479001600,
+  6227020800, 87178291200, 1307674368000, 20922789888000, 355687428096000,
+  6402373705728000, 121645100408832000, 2432902008176640000
+};
 
 // multinomial factor on sorted indices
 template<std::size_t N>
@@ -138,11 +145,11 @@ private:
 struct DynamicMultinomial {
 
   DynamicMultinomial(unsigned N) :
-    N_(N), Nm1_(N_-1), Nfactorial_(FACTORIALS[N_]),
+    N_(N), Nm1_(N_-1), Nfactorial_(FACTORIALS_64BIT[N_]),
     inds_(N_), counts_(N_), denoms_(N_)
   {
-    if (N_ == 0 || N_ > 12)
-      throw std::invalid_argument("N must be positive and less than 13");
+    if (N_ == 0 || N_ > 20)
+      throw std::invalid_argument("N must be positive and less than 20");
   }
 
   // set index at position 0 < i < N-1
@@ -154,11 +161,11 @@ struct DynamicMultinomial {
     else {
       _set_index(i, ind);
       if (i == Nm1_ && counts_[Nm1_] > 1)  
-        denoms_[Nm1_] *= FACTORIALS[counts_[Nm1_]];
+        denoms_[Nm1_] *= FACTORIALS_64BIT[counts_[Nm1_]];
     }
   }
 
-  unsigned value() const {
+  std::size_t value() const {
 
     // if we are entirely degenerate (most cases) return N!
     if (denoms_[Nm1_] == 1) return Nfactorial_;
@@ -169,8 +176,10 @@ struct DynamicMultinomial {
 
 private:
 
-  unsigned N_, Nm1_, Nfactorial_;
-  std::vector<unsigned> inds_, counts_, denoms_;
+  unsigned N_, Nm1_;
+  std::size_t Nfactorial_;
+  std::vector<unsigned> inds_, counts_;
+  std::vector<std::size_t> denoms_;
 
   void _set_index(unsigned i, unsigned ind) {
     unsigned im1(i-1);
@@ -179,7 +188,7 @@ private:
     denoms_[i] = denoms_[im1];
     if (ind == inds_[im1]) counts_[i]++;
     else {
-      denoms_[i] *= FACTORIALS[counts_[i]];
+      denoms_[i] *= FACTORIALS_64BIT[counts_[i]];
       counts_[i] = 1;
     }
   }

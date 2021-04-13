@@ -272,11 +272,11 @@ public:
       // add primary hists
       hists_[0][hist_i] += rhs.combined_hist(hist_i);
 
-      // consider scaling covariances
+      // consider adding covariances
       if (track_covariance())
         covariance_hists_[0][hist_i] += rhs.combined_covariance(hist_i);
 
-      // consider scaling variance bound
+      // consider adding variance bound
       if (variance_bound())
         variance_bound_hists_[0][hist_i] += rhs.combined_variance_bound(hist_i);
     }
@@ -546,19 +546,26 @@ protected:
           }
         }
         else {
+
+          // outer loop
           for (; outer_it != end; ++outer_it) {
             const double outer_bin_val((*outer_it)->value());
             if (outer_bin_val == 0) continue;
 
-            // store bin indices in cov_inds
+            // store bin indices in first half of cov_inds
             auto outer_inds(outer_it->indices());
             std::copy(outer_inds.begin(), outer_inds.end(), cov_inds.begin());
 
             // inner loop picks up from where outer loop is
             for (auto inner_it = outer_it; inner_it != end; ++inner_it) {
+              const double inner_bin_val((*inner_it)->value());
+              if (inner_bin_val == 0) continue;
+
+              // store bin indices in second half of cov_inds
               auto inner_inds(inner_it->indices());
               std::copy(inner_inds.begin(), inner_inds.end(), cov_inds.begin() + Traits::rank);
-              cov_hist[cov_inds] += outer_bin_val * (*inner_it)->value();
+
+              cov_hist[cov_inds] += outer_bin_val * inner_bin_val;
             }
           } 
         }

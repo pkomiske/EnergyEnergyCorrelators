@@ -46,20 +46,19 @@ namespace fastjet {
 class UserInfoPython : public fastjet::PseudoJet::UserInfoBase {
 public:
   UserInfoPython(PyObject * pyobj) : _pyobj(pyobj) {
-    Py_XINCREF(_pyobj);
+    Py_INCREF(_pyobj);
   }
 
   PyObject * get_pyobj() const {
     // since there's going to be an extra reference to this object
     // one must increase the reference count; it seems that this
     // is _our_ responsibility
-    Py_XINCREF(_pyobj);
+    Py_INCREF(_pyobj);
     return _pyobj;
   }
-  //const PyObject * get_pyobj() const {return _pyobj;}
   
   ~UserInfoPython() {
-    Py_XDECREF(_pyobj);
+    Py_DECREF(_pyobj);
   }
 private:
   PyObject * _pyobj;

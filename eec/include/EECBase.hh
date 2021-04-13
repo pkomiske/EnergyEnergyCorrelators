@@ -561,13 +561,13 @@ private:
       pttot += pt;
 
     // normalize pts, EEC total will be event_weight
-    double eectot(event_weights_[thread_i]);
+    //double eectot(event_weights_[thread_i]);
     if (norm())
       for (double & pt : pts)
         pt /= pttot;
 
     // EEC total will be event_Weight * pttot^N
-    else eectot *= std::pow(pttot, N());
+    //else eectot *= std::pow(pttot, N());
 
     unsigned mult(mults_[thread_i]);
     for (unsigned i = 0, npowers = pt_powers_.size(); i < npowers; i++) {
