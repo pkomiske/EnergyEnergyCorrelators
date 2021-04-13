@@ -144,8 +144,12 @@ class EECLongestSide : public EECBase, public hist::EECHist1D<Transform> {
         break;
 
       default:
-        if (this->N() > 20)
-          throw std::invalid_argument("N must be 20 or less due to the use of 60-bit integers (21! > 2^64)");
+        if (this->N() >= FACTORIALS_LONG.size()) {
+          std::ostringstream m;
+          m << "N must be less than " << FACTORIALS_LONG.size()
+            << " due to the use of " << sizeof(std::size_t) << "-bit integers";
+          throw std::invalid_argument(m.str());
+        }
     }
   }
 

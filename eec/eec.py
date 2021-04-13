@@ -777,7 +777,6 @@ class DynamicMultinomial(object):
 # Register DynamicMultinomial in _eec:
 _eec.DynamicMultinomial_swigregister(DynamicMultinomial)
 FACTORIALS = cvar.FACTORIALS
-FACTORIALS_64BIT = cvar.FACTORIALS_64BIT
 
 class Multinomial2(object):
     r"""Proxy of C++ eec::Multinomial< 2 > class."""

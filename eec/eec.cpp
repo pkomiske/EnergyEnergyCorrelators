@@ -2746,20 +2746,19 @@ SWIGINTERN PyObject *SWIG_PyStaticMethod_New(PyObject *SWIGUNUSEDPARM(self), PyO
 #define SWIGTYPE_p_std__allocatorT_boost__histogram__algorithm__reduce_command_t swig_types[50]
 #define SWIGTYPE_p_std__allocatorT_double_t swig_types[51]
 #define SWIGTYPE_p_std__allocatorT_unsigned_int_t swig_types[52]
-#define SWIGTYPE_p_std__arrayT_std__size_t_21_t swig_types[53]
-#define SWIGTYPE_p_std__arrayT_unsigned_int_13_t swig_types[54]
-#define SWIGTYPE_p_std__invalid_argument swig_types[55]
-#define SWIGTYPE_p_std__istream swig_types[56]
-#define SWIGTYPE_p_std__ostream swig_types[57]
-#define SWIGTYPE_p_std__ostringstream swig_types[58]
-#define SWIGTYPE_p_std__vectorT_boost__histogram__algorithm__reduce_command_std__allocatorT_boost__histogram__algorithm__reduce_command_t_t swig_types[59]
-#define SWIGTYPE_p_std__vectorT_double_const_p_std__allocatorT_double_const_p_t_t swig_types[60]
-#define SWIGTYPE_p_std__vectorT_double_std__allocatorT_double_t_t swig_types[61]
-#define SWIGTYPE_p_std__vectorT_unsigned_int_std__allocatorT_unsigned_int_t_t swig_types[62]
-#define SWIGTYPE_p_swig__SwigPyIterator swig_types[63]
-#define SWIGTYPE_p_value_type swig_types[64]
-static swig_type_info *swig_types[66];
-static swig_module_info swig_module = {swig_types, 65, 0, 0, 0, 0};
+#define SWIGTYPE_p_std__arrayT_unsigned_int_13_t swig_types[53]
+#define SWIGTYPE_p_std__invalid_argument swig_types[54]
+#define SWIGTYPE_p_std__istream swig_types[55]
+#define SWIGTYPE_p_std__ostream swig_types[56]
+#define SWIGTYPE_p_std__ostringstream swig_types[57]
+#define SWIGTYPE_p_std__vectorT_boost__histogram__algorithm__reduce_command_std__allocatorT_boost__histogram__algorithm__reduce_command_t_t swig_types[58]
+#define SWIGTYPE_p_std__vectorT_double_const_p_std__allocatorT_double_const_p_t_t swig_types[59]
+#define SWIGTYPE_p_std__vectorT_double_std__allocatorT_double_t_t swig_types[60]
+#define SWIGTYPE_p_std__vectorT_unsigned_int_std__allocatorT_unsigned_int_t_t swig_types[61]
+#define SWIGTYPE_p_swig__SwigPyIterator swig_types[62]
+#define SWIGTYPE_p_value_type swig_types[63]
+static swig_type_info *swig_types[65];
+static swig_module_info swig_module = {swig_types, 64, 0, 0, 0, 0};
 #define SWIG_TypeQuery(name) SWIG_TypeQueryModule(&swig_module, &swig_module, name)
 #define SWIG_MangledTypeQuery(name) SWIG_MangledTypeQueryModule(&swig_module, &swig_module, name)
 
@@ -5526,7 +5525,7 @@ SWIGINTERN void eec_hist_EECHist1D_Sl_eec_hist_axis_id_Sg__npy_get_hist_vars(eec
   if (*arr_out1 == NULL)
     throw std::runtime_error("failed to allocate " + std::to_string(nbytes1) + " bytes");
 /*@SWIG@*/
-        /*@SWIG:eec/swig/eec.i,204,GET_HIST_TWO_QUANTITIES@*/
+        /*@SWIG:eec/swig/eec.i,205,GET_HIST_TWO_QUANTITIES@*/
 try {
   self->get_hist_vars(*arr_out0, *arr_out1, hist_i, overflows);
 }
@@ -5547,7 +5546,7 @@ SWIGINTERN void eec_hist_EECHist1D_Sl_eec_hist_axis_id_Sg__npy_get_covariance(ee
   if (*arr_out0 == NULL)
     throw std::runtime_error("failed to allocate " + std::to_string(nbytes0) + " bytes");
 /*@SWIG@*/
-        /*@SWIG:eec/swig/eec.i,215,GET_HIST_ONE_QUANTITY@*/
+        /*@SWIG:eec/swig/eec.i,216,GET_HIST_ONE_QUANTITY@*/
 try {
   self->get_covariance(*arr_out0, hist_i, overflows);
 }
@@ -5565,7 +5564,7 @@ SWIGINTERN void eec_hist_EECHist1D_Sl_eec_hist_axis_id_Sg__npy_get_variance_boun
   if (*arr_out0 == NULL)
     throw std::runtime_error("failed to allocate " + std::to_string(nbytes0) + " bytes");
 /*@SWIG@*/
-        /*@SWIG:eec/swig/eec.i,215,GET_HIST_ONE_QUANTITY@*/
+        /*@SWIG:eec/swig/eec.i,216,GET_HIST_ONE_QUANTITY@*/
 try {
   self->get_variance_bound(*arr_out0, hist_i, overflows);
 }
@@ -5590,7 +5589,7 @@ SWIGINTERN void eec_hist_EECHist1D_Sl_eec_hist_axis_log_Sg__npy_get_hist_vars(ee
   if (*arr_out1 == NULL)
     throw std::runtime_error("failed to allocate " + std::to_string(nbytes1) + " bytes");
 /*@SWIG@*/
-        /*@SWIG:eec/swig/eec.i,204,GET_HIST_TWO_QUANTITIES@*/
+        /*@SWIG:eec/swig/eec.i,205,GET_HIST_TWO_QUANTITIES@*/
 try {
   self->get_hist_vars(*arr_out0, *arr_out1, hist_i, overflows);
 }
@@ -5611,7 +5610,7 @@ SWIGINTERN void eec_hist_EECHist1D_Sl_eec_hist_axis_log_Sg__npy_get_covariance(e
   if (*arr_out0 == NULL)
     throw std::runtime_error("failed to allocate " + std::to_string(nbytes0) + " bytes");
 /*@SWIG@*/
-        /*@SWIG:eec/swig/eec.i,215,GET_HIST_ONE_QUANTITY@*/
+        /*@SWIG:eec/swig/eec.i,216,GET_HIST_ONE_QUANTITY@*/
 try {
   self->get_covariance(*arr_out0, hist_i, overflows);
 }
@@ -5629,7 +5628,7 @@ SWIGINTERN void eec_hist_EECHist1D_Sl_eec_hist_axis_log_Sg__npy_get_variance_bou
   if (*arr_out0 == NULL)
     throw std::runtime_error("failed to allocate " + std::to_string(nbytes0) + " bytes");
 /*@SWIG@*/
-        /*@SWIG:eec/swig/eec.i,215,GET_HIST_ONE_QUANTITY@*/
+        /*@SWIG:eec/swig/eec.i,216,GET_HIST_ONE_QUANTITY@*/
 try {
   self->get_variance_bound(*arr_out0, hist_i, overflows);
 }
@@ -5662,7 +5661,7 @@ SWIGINTERN void eec_hist_EECHist3D_Sl_eec_hist_axis_id_Sc_eec_hist_axis_id_Sc_ee
 /*@SWIG@*/
 
 
-        /*@SWIG:eec/swig/eec.i,204,GET_HIST_TWO_QUANTITIES@*/
+        /*@SWIG:eec/swig/eec.i,205,GET_HIST_TWO_QUANTITIES@*/
 try {
   self->get_hist_vars(*arr_out0, *arr_out1, hist_i, overflows);
 }
@@ -5693,7 +5692,7 @@ SWIGINTERN void eec_hist_EECHist3D_Sl_eec_hist_axis_id_Sc_eec_hist_axis_id_Sc_ee
 
 
 
-        /*@SWIG:eec/swig/eec.i,215,GET_HIST_ONE_QUANTITY@*/
+        /*@SWIG:eec/swig/eec.i,216,GET_HIST_ONE_QUANTITY@*/
 try {
   self->get_covariance(*arr_out0, hist_i, overflows);
 }
@@ -5715,7 +5714,7 @@ SWIGINTERN void eec_hist_EECHist3D_Sl_eec_hist_axis_id_Sc_eec_hist_axis_id_Sc_ee
 /*@SWIG@*/
 
 
-        /*@SWIG:eec/swig/eec.i,215,GET_HIST_ONE_QUANTITY@*/
+        /*@SWIG:eec/swig/eec.i,216,GET_HIST_ONE_QUANTITY@*/
 try {
   self->get_variance_bound(*arr_out0, hist_i, overflows);
 }
@@ -5748,7 +5747,7 @@ SWIGINTERN void eec_hist_EECHist3D_Sl_eec_hist_axis_log_Sc_eec_hist_axis_id_Sc_e
 /*@SWIG@*/
 
 
-        /*@SWIG:eec/swig/eec.i,204,GET_HIST_TWO_QUANTITIES@*/
+        /*@SWIG:eec/swig/eec.i,205,GET_HIST_TWO_QUANTITIES@*/
 try {
   self->get_hist_vars(*arr_out0, *arr_out1, hist_i, overflows);
 }
@@ -5779,7 +5778,7 @@ SWIGINTERN void eec_hist_EECHist3D_Sl_eec_hist_axis_log_Sc_eec_hist_axis_id_Sc_e
 
 
 
-        /*@SWIG:eec/swig/eec.i,215,GET_HIST_ONE_QUANTITY@*/
+        /*@SWIG:eec/swig/eec.i,216,GET_HIST_ONE_QUANTITY@*/
 try {
   self->get_covariance(*arr_out0, hist_i, overflows);
 }
@@ -5801,7 +5800,7 @@ SWIGINTERN void eec_hist_EECHist3D_Sl_eec_hist_axis_log_Sc_eec_hist_axis_id_Sc_e
 /*@SWIG@*/
 
 
-        /*@SWIG:eec/swig/eec.i,215,GET_HIST_ONE_QUANTITY@*/
+        /*@SWIG:eec/swig/eec.i,216,GET_HIST_ONE_QUANTITY@*/
 try {
   self->get_variance_bound(*arr_out0, hist_i, overflows);
 }
@@ -5834,7 +5833,7 @@ SWIGINTERN void eec_hist_EECHist3D_Sl_eec_hist_axis_id_Sc_eec_hist_axis_log_Sc_e
 /*@SWIG@*/
 
 
-        /*@SWIG:eec/swig/eec.i,204,GET_HIST_TWO_QUANTITIES@*/
+        /*@SWIG:eec/swig/eec.i,205,GET_HIST_TWO_QUANTITIES@*/
 try {
   self->get_hist_vars(*arr_out0, *arr_out1, hist_i, overflows);
 }
@@ -5865,7 +5864,7 @@ SWIGINTERN void eec_hist_EECHist3D_Sl_eec_hist_axis_id_Sc_eec_hist_axis_log_Sc_e
 
 
 
-        /*@SWIG:eec/swig/eec.i,215,GET_HIST_ONE_QUANTITY@*/
+        /*@SWIG:eec/swig/eec.i,216,GET_HIST_ONE_QUANTITY@*/
 try {
   self->get_covariance(*arr_out0, hist_i, overflows);
 }
@@ -5887,7 +5886,7 @@ SWIGINTERN void eec_hist_EECHist3D_Sl_eec_hist_axis_id_Sc_eec_hist_axis_log_Sc_e
 /*@SWIG@*/
 
 
-        /*@SWIG:eec/swig/eec.i,215,GET_HIST_ONE_QUANTITY@*/
+        /*@SWIG:eec/swig/eec.i,216,GET_HIST_ONE_QUANTITY@*/
 try {
   self->get_variance_bound(*arr_out0, hist_i, overflows);
 }
@@ -5920,7 +5919,7 @@ SWIGINTERN void eec_hist_EECHist3D_Sl_eec_hist_axis_log_Sc_eec_hist_axis_log_Sc_
 /*@SWIG@*/
 
 
-        /*@SWIG:eec/swig/eec.i,204,GET_HIST_TWO_QUANTITIES@*/
+        /*@SWIG:eec/swig/eec.i,205,GET_HIST_TWO_QUANTITIES@*/
 try {
   self->get_hist_vars(*arr_out0, *arr_out1, hist_i, overflows);
 }
@@ -5951,7 +5950,7 @@ SWIGINTERN void eec_hist_EECHist3D_Sl_eec_hist_axis_log_Sc_eec_hist_axis_log_Sc_
 
 
 
-        /*@SWIG:eec/swig/eec.i,215,GET_HIST_ONE_QUANTITY@*/
+        /*@SWIG:eec/swig/eec.i,216,GET_HIST_ONE_QUANTITY@*/
 try {
   self->get_covariance(*arr_out0, hist_i, overflows);
 }
@@ -5973,7 +5972,7 @@ SWIGINTERN void eec_hist_EECHist3D_Sl_eec_hist_axis_log_Sc_eec_hist_axis_log_Sc_
 /*@SWIG@*/
 
 
-        /*@SWIG:eec/swig/eec.i,215,GET_HIST_ONE_QUANTITY@*/
+        /*@SWIG:eec/swig/eec.i,216,GET_HIST_ONE_QUANTITY@*/
 try {
   self->get_variance_bound(*arr_out0, hist_i, overflows);
 }
@@ -28233,20 +28232,6 @@ SWIGINTERN PyObject *Swig_var_FACTORIALS_get(void) {
 }
 
 
-SWIGINTERN int Swig_var_FACTORIALS_64BIT_set(PyObject *) {
-  SWIG_Error(SWIG_AttributeError,"Variable FACTORIALS_64BIT is read-only.");
-  return 1;
-}
-
-
-SWIGINTERN PyObject *Swig_var_FACTORIALS_64BIT_get(void) {
-  PyObject *pyobj = 0;
-  
-  pyobj = SWIG_NewPointerObj(SWIG_as_voidptr(&eec::FACTORIALS_64BIT), SWIGTYPE_p_std__arrayT_std__size_t_21_t,  0 );
-  return pyobj;
-}
-
-
 SWIGINTERN PyObject *_wrap_multinomial(PyObject *SWIGUNUSEDPARM(self), PyObject *args, PyObject *kwargs) {
   PyObject *resultobj = 0;
   std::vector< unsigned int,std::allocator< unsigned int > > *arg1 = 0 ;
@@ -36115,7 +36100,6 @@ static swig_type_info _swigt__p_size_type = {"_p_size_type", "size_type *", 0, 0
 static swig_type_info _swigt__p_std__allocatorT_boost__histogram__algorithm__reduce_command_t = {"_p_std__allocatorT_boost__histogram__algorithm__reduce_command_t", "std::vector< boost::histogram::algorithm::reduce_command >::allocator_type *|std::allocator< boost::histogram::algorithm::reduce_command > *", 0, 0, (void*)0, 0};
 static swig_type_info _swigt__p_std__allocatorT_double_t = {"_p_std__allocatorT_double_t", "std::vector< double >::allocator_type *|std::allocator< double > *", 0, 0, (void*)0, 0};
 static swig_type_info _swigt__p_std__allocatorT_unsigned_int_t = {"_p_std__allocatorT_unsigned_int_t", "std::vector< unsigned int >::allocator_type *|std::allocator< unsigned int > *", 0, 0, (void*)0, 0};
-static swig_type_info _swigt__p_std__arrayT_std__size_t_21_t = {"_p_std__arrayT_std__size_t_21_t", "std::array< std::size_t,21 > *", 0, 0, (void*)0, 0};
 static swig_type_info _swigt__p_std__arrayT_unsigned_int_13_t = {"_p_std__arrayT_unsigned_int_13_t", "std::array< unsigned int,13 > *", 0, 0, (void*)0, 0};
 static swig_type_info _swigt__p_std__invalid_argument = {"_p_std__invalid_argument", "std::invalid_argument *", 0, 0, (void*)0, 0};
 static swig_type_info _swigt__p_std__istream = {"_p_std__istream", "std::istream *", 0, 0, (void*)0, 0};
@@ -36182,7 +36166,6 @@ static swig_type_info *swig_type_initial[] = {
   &_swigt__p_std__allocatorT_boost__histogram__algorithm__reduce_command_t,
   &_swigt__p_std__allocatorT_double_t,
   &_swigt__p_std__allocatorT_unsigned_int_t,
-  &_swigt__p_std__arrayT_std__size_t_21_t,
   &_swigt__p_std__arrayT_unsigned_int_13_t,
   &_swigt__p_std__invalid_argument,
   &_swigt__p_std__istream,
@@ -36249,7 +36232,6 @@ static swig_cast_info _swigc__p_size_type[] = {  {&_swigt__p_size_type, 0, 0, 0}
 static swig_cast_info _swigc__p_std__allocatorT_boost__histogram__algorithm__reduce_command_t[] = {  {&_swigt__p_std__allocatorT_boost__histogram__algorithm__reduce_command_t, 0, 0, 0},{0, 0, 0, 0}};
 static swig_cast_info _swigc__p_std__allocatorT_double_t[] = {  {&_swigt__p_std__allocatorT_double_t, 0, 0, 0},{0, 0, 0, 0}};
 static swig_cast_info _swigc__p_std__allocatorT_unsigned_int_t[] = {  {&_swigt__p_std__allocatorT_unsigned_int_t, 0, 0, 0},{0, 0, 0, 0}};
-static swig_cast_info _swigc__p_std__arrayT_std__size_t_21_t[] = {  {&_swigt__p_std__arrayT_std__size_t_21_t, 0, 0, 0},{0, 0, 0, 0}};
 static swig_cast_info _swigc__p_std__arrayT_unsigned_int_13_t[] = {  {&_swigt__p_std__arrayT_unsigned_int_13_t, 0, 0, 0},{0, 0, 0, 0}};
 static swig_cast_info _swigc__p_std__invalid_argument[] = {  {&_swigt__p_std__invalid_argument, 0, 0, 0},{0, 0, 0, 0}};
 static swig_cast_info _swigc__p_std__istream[] = {  {&_swigt__p_std__istream, 0, 0, 0},{0, 0, 0, 0}};
@@ -36316,7 +36298,6 @@ static swig_cast_info *swig_cast_initial[] = {
   _swigc__p_std__allocatorT_boost__histogram__algorithm__reduce_command_t,
   _swigc__p_std__allocatorT_double_t,
   _swigc__p_std__allocatorT_unsigned_int_t,
-  _swigc__p_std__arrayT_std__size_t_21_t,
   _swigc__p_std__arrayT_unsigned_int_13_t,
   _swigc__p_std__invalid_argument,
   _swigc__p_std__istream,
@@ -37092,7 +37073,6 @@ SWIG_init(void) {
   SWIG_addvarlink(globals, "HAS_PICKLE_SUPPORT", Swig_var_HAS_PICKLE_SUPPORT_get, Swig_var_HAS_PICKLE_SUPPORT_set);
   SWIG_Python_SetConstant(d, "EEC_IGNORED_WEIGHT",SWIG_From_int(static_cast< int >(-1)));
   SWIG_addvarlink(globals, "FACTORIALS", Swig_var_FACTORIALS_get, Swig_var_FACTORIALS_set);
-  SWIG_addvarlink(globals, "FACTORIALS_64BIT", Swig_var_FACTORIALS_64BIT_get, Swig_var_FACTORIALS_64BIT_set);
   
   /* Initialize threading */
   SWIG_PYTHON_INITIALIZE_THREADS;

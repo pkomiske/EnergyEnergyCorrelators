@@ -34,18 +34,41 @@
 #include <array>
 #include <cassert>
 #include <cstddef>
+#include <string>
 #include <vector>
+
+// Check for 64 bit compilation
+#if defined(__GNUC__) || defined(__clang__)
+#  if defined(__x86_64__) || defined(__aarch64__)
+#    define ENV64BIT
+#  else
+#    define ENV32BIT
+#  endif
+#elif defined(_MSC_VER)
+#  if defined(_WIN64)
+#    define ENV64BIT
+#  else
+#    define ENV32BIT
+#  endif
+#else
+#  define ENV32BIT
+#endif
 
 namespace eec {
 
 const std::array<unsigned, 13> FACTORIALS {
   1,1,2,6,24,120,720,5040,40320,362880,3628800,39916800,479001600
 };
-const std::array<std::size_t, 21> FACTORIALS_64BIT {
-  1,1,2,6,24,120,720,5040,40320,362880,3628800,39916800,479001600,
-  6227020800, 87178291200, 1307674368000, 20922789888000, 355687428096000,
-  6402373705728000, 121645100408832000, 2432902008176640000
-};
+
+#ifdef ENV64BIT
+  const std::array<std::size_t, 21> FACTORIALS_LONG {
+    1,1,2,6,24,120,720,5040,40320,362880,3628800,39916800,479001600,
+    6227020800, 87178291200, 1307674368000, 20922789888000, 355687428096000,
+    6402373705728000, 121645100408832000, 2432902008176640000
+  };
+#else
+  const std::array<unsigned, 13> FACTORIALS_LONG = FACTORIALS;
+#endif
 
 // multinomial factor on sorted indices
 template<std::size_t N>
@@ -145,11 +168,12 @@ private:
 struct DynamicMultinomial {
 
   DynamicMultinomial(unsigned N) :
-    N_(N), Nm1_(N_-1), Nfactorial_(FACTORIALS_64BIT[N_]),
+    N_(N), Nm1_(N_-1), Nfactorial_(FACTORIALS_LONG[N_]),
     inds_(N_), counts_(N_), denoms_(N_)
   {
-    if (N_ == 0 || N_ > 20)
-      throw std::invalid_argument("N must be positive and less than 20");
+    if (N_ == 0 || N_ >= FACTORIALS_LONG.size())
+      throw std::invalid_argument("N must be positive and less than " +
+                                  std::to_string(FACTORIALS_LONG.size()));
   }
 
   // set index at position 0 < i < N-1
@@ -161,7 +185,7 @@ struct DynamicMultinomial {
     else {
       _set_index(i, ind);
       if (i == Nm1_ && counts_[Nm1_] > 1)  
-        denoms_[Nm1_] *= FACTORIALS_64BIT[counts_[Nm1_]];
+        denoms_[Nm1_] *= FACTORIALS_LONG[counts_[Nm1_]];
     }
   }
 
@@ -188,7 +212,7 @@ private:
     denoms_[i] = denoms_[im1];
     if (ind == inds_[im1]) counts_[i]++;
     else {
-      denoms_[i] *= FACTORIALS_64BIT[counts_[i]];
+      denoms_[i] *= FACTORIALS_LONG[counts_[i]];
       counts_[i] = 1;
     }
   }

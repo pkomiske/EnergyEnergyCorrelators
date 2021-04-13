@@ -159,6 +159,7 @@ namespace hist {
 }
 
 // ignore/rename Multinomial functions
+%ignore FACTORIALS_LONG;
 %ignore multinomial;
 %rename(multinomial) multinomial_vector;
 
