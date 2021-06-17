@@ -45,7 +45,7 @@
 #include "EECUtils.hh"
 #include "EECEvents.hh"
 
-namespace eec {
+BEGIN_EEC_NAMESPACE
 
 //-----------------------------------------------------------------------------
 // Base class for all EEC computations
@@ -104,7 +104,7 @@ public:
     if (orig_ch_powers_.size() != N_)
       throw std::invalid_argument("ch_powers must be a vector of size 1 or " + std::to_string(N_));
 
-    // copy original powers, because these will be modified by how many symmetries there are
+    // update pt_powers and ch_powers according to match above logic
     pt_powers_ = orig_pt_powers_;
     ch_powers_ = orig_ch_powers_;
 
@@ -196,8 +196,10 @@ public:
     for (int ch_power : ch_powers_)
       if (ch_power != 0)
         use_charges_ = true;
+
     nfeatures_ = (use_charges() ? 4 : 3); 
   }
+
   virtual ~EECBase() = default;
 
   // access computation details
@@ -247,14 +249,16 @@ public:
   EECBase & operator+=(const EECBase & rhs) {
 
     auto error(std::invalid_argument("EEC computations must match in order to be added together"));
-    if (N()             != rhs.N()            ||
-        nsym()          != rhs.nsym()         ||
-        use_charges()   != rhs.use_charges()  ||
-        check_degen()   != rhs.check_degen()  ||
-        average_verts() != rhs.average_verts())
+    if (N()               != rhs.N()               ||
+        nsym()            != rhs.nsym()            ||
+        use_charges()     != rhs.use_charges()     ||
+        check_degen()     != rhs.check_degen()     ||
+        average_verts()   != rhs.average_verts()   ||
+        pt_powers_.size() != rhs.pt_powers_.size() ||
+        ch_powers_.size() != rhs.ch_powers_.size())
       throw error;
 
-    for (unsigned i = 0; i < N(); i++) {
+    for (unsigned i = 0; i < pt_powers_.size(); i++) {
       if (pt_powers_[i] != rhs.pt_powers_[i] || 
           ch_powers_[i] != rhs.ch_powers_[i])
         throw error;
@@ -628,16 +632,19 @@ private:
     if (version >= 1)
       ar & total_weight_;
 
+    if (version >= 2)
+      ar & compname_;
+
     init();
   }
 
 }; // EECBase
 
-} // namespace eec
+END_EEC_NAMESPACE
 
 #if !defined(SWIG_PREPROCESSOR) && defined(EEC_SERIALIZATION)
-BOOST_SERIALIZATION_ASSUME_ABSTRACT(eex::EECBase)
-BOOST_CLASS_VERSION(eec::EECBase, 1)
+BOOST_SERIALIZATION_ASSUME_ABSTRACT(EECNAMESPACE::EECBase)
+BOOST_CLASS_VERSION(EECNAMESPACE::EECBase, 2)
 #endif
 
 #endif // EEC_BASE_HH

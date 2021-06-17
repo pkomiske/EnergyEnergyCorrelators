@@ -38,7 +38,7 @@ The entire library is contained in a single header file, [`eec/include/EEC.hh`](
 
 ## Python Usage
 
-The EEC library also contains a Cython-based wrapper of the core C++ code. This is most easily used by installing via `pip`, e.g. `pip install eec`. NumPy is the only required package. Note that a C++14-enabled compiler must be available for the compilation from source to succeed.
+The EEC library also contains a Cython-based wrapper of the core C++ code. This is most easily used by installing via `pip`, e.g. `pip install EnergyEnergyCorrelators`. NumPy is the only required package. Note that a C++14-enabled compiler must be available for the compilation from source to succeed.
 
 There is one Python class for each EEC computation. The templated arguments are dealt with by specifying the axis transforms as a tuple of strings. Currently, only `'id'` and `'log'` are supported, in the combinations for which there is a provided C++ typedef (see above). The arguments to the classes are straightforward, and can be examined more closely in [core.pyx](https://github.com/pkomiske/EnergyEnergyCorrelators/blob/master/eec/core.pyx). There is also an [`eec`](https://github.com/pkomiske/EnergyEnergyCorrelators/blob/master/eec/__init__.py#L50) method that can be used to parallelize computations on many events in Python.
 

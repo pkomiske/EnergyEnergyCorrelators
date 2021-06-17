@@ -355,6 +355,7 @@ class EECHistBase1DId(object):
     hists_as_text = _swig_new_instance_method(_eec.EECHistBase1DId_hists_as_text)
     bin_centers = _swig_new_instance_method(_eec.EECHistBase1DId_bin_centers)
     bin_edges = _swig_new_instance_method(_eec.EECHistBase1DId_bin_edges)
+    scale = _swig_new_instance_method(_eec.EECHistBase1DId_scale)
 
     def get_hist_errs(self, hist_i=0, overflows=True):
         hist, vars = self.get_hist_vars(hist_i, overflows)
@@ -400,6 +401,7 @@ class EECHistBase1DLog(object):
     hists_as_text = _swig_new_instance_method(_eec.EECHistBase1DLog_hists_as_text)
     bin_centers = _swig_new_instance_method(_eec.EECHistBase1DLog_bin_centers)
     bin_edges = _swig_new_instance_method(_eec.EECHistBase1DLog_bin_edges)
+    scale = _swig_new_instance_method(_eec.EECHistBase1DLog_scale)
 
     def get_hist_errs(self, hist_i=0, overflows=True):
         hist, vars = self.get_hist_vars(hist_i, overflows)
@@ -440,6 +442,7 @@ class EECHistBaseIdIdId(object):
     hists_as_text = _swig_new_instance_method(_eec.EECHistBaseIdIdId_hists_as_text)
     bin_centers = _swig_new_instance_method(_eec.EECHistBaseIdIdId_bin_centers)
     bin_edges = _swig_new_instance_method(_eec.EECHistBaseIdIdId_bin_edges)
+    scale = _swig_new_instance_method(_eec.EECHistBaseIdIdId_scale)
 
     def get_hist_errs(self, hist_i=0, overflows=True):
         hist, vars = self.get_hist_vars(hist_i, overflows)
@@ -480,6 +483,7 @@ class EECHistBaseLogIdId(object):
     hists_as_text = _swig_new_instance_method(_eec.EECHistBaseLogIdId_hists_as_text)
     bin_centers = _swig_new_instance_method(_eec.EECHistBaseLogIdId_bin_centers)
     bin_edges = _swig_new_instance_method(_eec.EECHistBaseLogIdId_bin_edges)
+    scale = _swig_new_instance_method(_eec.EECHistBaseLogIdId_scale)
 
     def get_hist_errs(self, hist_i=0, overflows=True):
         hist, vars = self.get_hist_vars(hist_i, overflows)
@@ -520,6 +524,7 @@ class EECHistBaseIdLogId(object):
     hists_as_text = _swig_new_instance_method(_eec.EECHistBaseIdLogId_hists_as_text)
     bin_centers = _swig_new_instance_method(_eec.EECHistBaseIdLogId_bin_centers)
     bin_edges = _swig_new_instance_method(_eec.EECHistBaseIdLogId_bin_edges)
+    scale = _swig_new_instance_method(_eec.EECHistBaseIdLogId_scale)
 
     def get_hist_errs(self, hist_i=0, overflows=True):
         hist, vars = self.get_hist_vars(hist_i, overflows)
@@ -560,6 +565,7 @@ class EECHistBaseLogLogId(object):
     hists_as_text = _swig_new_instance_method(_eec.EECHistBaseLogLogId_hists_as_text)
     bin_centers = _swig_new_instance_method(_eec.EECHistBaseLogLogId_bin_centers)
     bin_edges = _swig_new_instance_method(_eec.EECHistBaseLogLogId_bin_edges)
+    scale = _swig_new_instance_method(_eec.EECHistBaseLogLogId_scale)
 
     def get_hist_errs(self, hist_i=0, overflows=True):
         hist, vars = self.get_hist_vars(hist_i, overflows)
@@ -903,11 +909,11 @@ class EECLongestSideId(EECBase, EECHist1DId):
     save = _swig_new_instance_method(_eec.EECLongestSideId_save)
     __getstate_internal__ = _swig_new_instance_method(_eec.EECLongestSideId___getstate_internal__)
     __setstate_internal__ = _swig_new_instance_method(_eec.EECLongestSideId___setstate_internal__)
+    add = _swig_new_instance_method(_eec.EECLongestSideId_add)
 
     def __repr__(self):
         return self.description().decode('utf-8')
 
-    __imul__ = _swig_new_instance_method(_eec.EECLongestSideId___imul__)
 
     _default_args = (2, 1, 0.1, 1.0)
 
@@ -930,11 +936,11 @@ class EECLongestSideLog(EECBase, EECHist1DLog):
     save = _swig_new_instance_method(_eec.EECLongestSideLog_save)
     __getstate_internal__ = _swig_new_instance_method(_eec.EECLongestSideLog___getstate_internal__)
     __setstate_internal__ = _swig_new_instance_method(_eec.EECLongestSideLog___setstate_internal__)
+    add = _swig_new_instance_method(_eec.EECLongestSideLog_add)
 
     def __repr__(self):
         return self.description().decode('utf-8')
 
-    __imul__ = _swig_new_instance_method(_eec.EECLongestSideLog___imul__)
 
     _default_args = (2, 1, 0.1, 1.0)
 
@@ -956,11 +962,11 @@ class EECTriangleOPEIdIdId(EECBase, EECHist3DIdIdId):
     save = _swig_new_instance_method(_eec.EECTriangleOPEIdIdId_save)
     __getstate_internal__ = _swig_new_instance_method(_eec.EECTriangleOPEIdIdId___getstate_internal__)
     __setstate_internal__ = _swig_new_instance_method(_eec.EECTriangleOPEIdIdId___setstate_internal__)
+    add = _swig_new_instance_method(_eec.EECTriangleOPEIdIdId_add)
 
     def __repr__(self):
         return self.description().decode('utf-8')
 
-    __imul__ = _swig_new_instance_method(_eec.EECTriangleOPEIdIdId___imul__)
 
     _default_args = (1, 0.1, 1.0, 1, 0.1, 1.0, 1, 0., 1.5)
 
@@ -983,11 +989,11 @@ class EECTriangleOPELogIdId(EECBase, EECHist3DLogIdId):
     save = _swig_new_instance_method(_eec.EECTriangleOPELogIdId_save)
     __getstate_internal__ = _swig_new_instance_method(_eec.EECTriangleOPELogIdId___getstate_internal__)
     __setstate_internal__ = _swig_new_instance_method(_eec.EECTriangleOPELogIdId___setstate_internal__)
+    add = _swig_new_instance_method(_eec.EECTriangleOPELogIdId_add)
 
     def __repr__(self):
         return self.description().decode('utf-8')
 
-    __imul__ = _swig_new_instance_method(_eec.EECTriangleOPELogIdId___imul__)
 
     _default_args = (1, 0.1, 1.0, 1, 0.1, 1.0, 1, 0., 1.5)
 
@@ -1010,11 +1016,11 @@ class EECTriangleOPEIdLogId(EECBase, EECHist3DIdLogId):
     save = _swig_new_instance_method(_eec.EECTriangleOPEIdLogId_save)
     __getstate_internal__ = _swig_new_instance_method(_eec.EECTriangleOPEIdLogId___getstate_internal__)
     __setstate_internal__ = _swig_new_instance_method(_eec.EECTriangleOPEIdLogId___setstate_internal__)
+    add = _swig_new_instance_method(_eec.EECTriangleOPEIdLogId_add)
 
     def __repr__(self):
         return self.description().decode('utf-8')
 
-    __imul__ = _swig_new_instance_method(_eec.EECTriangleOPEIdLogId___imul__)
 
     _default_args = (1, 0.1, 1.0, 1, 0.1, 1.0, 1, 0., 1.5)
 
@@ -1037,11 +1043,11 @@ class EECTriangleOPELogLogId(EECBase, EECHist3DLogLogId):
     save = _swig_new_instance_method(_eec.EECTriangleOPELogLogId_save)
     __getstate_internal__ = _swig_new_instance_method(_eec.EECTriangleOPELogLogId___getstate_internal__)
     __setstate_internal__ = _swig_new_instance_method(_eec.EECTriangleOPELogLogId___setstate_internal__)
+    add = _swig_new_instance_method(_eec.EECTriangleOPELogLogId_add)
 
     def __repr__(self):
         return self.description().decode('utf-8')
 
-    __imul__ = _swig_new_instance_method(_eec.EECTriangleOPELogLogId___imul__)
 
     _default_args = (1, 0.1, 1.0, 1, 0.1, 1.0, 1, 0., 1.5)
 

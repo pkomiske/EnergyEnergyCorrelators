@@ -1,5 +1,5 @@
-FROM quay.io/pypa/manylinux2010_i686
+FROM quay.io/pypa/manylinux2010_i686:latest
 LABEL org.opencontainers.image.source=https://github.com/pkomiske/EnergyEnergyCorrelators
-COPY scripts/prepare-eec-docker.sh /
+COPY ./scripts/prepare-eec-docker.sh /
 RUN bash prepare-eec-docker.sh && rm prepare-eec-docker.sh
 CMD ["/bin/bash"]

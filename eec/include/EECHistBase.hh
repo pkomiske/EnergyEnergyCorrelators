@@ -44,7 +44,7 @@
 // this includes "boost/histogram.hpp"
 #include "EECUtils.hh"
 
-namespace eec {
+BEGIN_EEC_NAMESPACE
 namespace hist {
 
 //------------------------------------------------------------------------------
@@ -694,6 +694,6 @@ private:
 }; // EECHistBase
 
 } // namespace hist
-} // namespace eec
+END_EEC_NAMESPACE
 
 #endif // EEC_HISTBASE_HH

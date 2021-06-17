@@ -38,15 +38,6 @@
 // boost histogram
 #include "boost/histogram.hpp"
 
-// OpenMP for multithreading
-#ifdef _OPENMP
-# include <omp.h>
-#endif
-
-#ifdef SWIG_FASTJET
-# include "fastjet/PseudoJet.hh"
-#endif
-
 // serialization code based on boost serialization
 #ifdef EEC_SERIALIZATION
 # include <boost/archive/binary_iarchive.hpp>
@@ -63,17 +54,30 @@
 #  include <boost/iostreams/filtering_stream.hpp>
 #  include <boost/iostreams/filter/zlib.hpp>
 # endif
-
 #endif // EEC_SERIALIZATION
 
-// check for fastjet support
-#if defined(__FASTJET_PSEUDOJET_HH__) || defined(SWIG_FASTJET)
-# ifndef EEC_FASTJET_SUPPORT
-# define EEC_FASTJET_SUPPORT
-# endif
+// OpenMP for multithreading
+#ifdef _OPENMP
+# include <omp.h>
 #endif
 
-namespace eec {
+// handle using PyFJCore for PseudoJet
+#ifdef EEC_USE_PYFJCORE
+# include "pyfjcore/fjcore.hh"
+# define EEC_FASTJET
+#elif defined(SWIG_FASTJET)
+# include "fastjet/PseudoJet.hh"
+# define EEC_FASTJET
+#endif
+
+// include Wasserstein package in the proper namespace
+#ifndef BEGIN_EEC_NAMESPACE
+# define EECNAMESPACE eec
+# define BEGIN_EEC_NAMESPACE namespace EECNAMESPACE {
+# define END_EEC_NAMESPACE }
+#endif
+
+BEGIN_EEC_NAMESPACE
 
 //-----------------------------------------------------------------------------
 // enums
@@ -332,6 +336,6 @@ using simple_weight_storage = bh::dense_storage<accumulators::simple_weighted_su
 } // namespace hist
 #endif // SWIG_PREPROCESSOR
 
-} // namespace eec
+END_EEC_NAMESPACE
 
 #endif // EEC_UTILS_HH

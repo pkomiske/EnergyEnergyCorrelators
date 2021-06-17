@@ -69,7 +69,7 @@ private:
 
 #define EEC_IGNORED_WEIGHT -1
 
-namespace eec {
+BEGIN_EEC_NAMESPACE
 
 //-----------------------------------------------------------------------------
 // Class to help store multiple events for multithreaded computation
@@ -284,6 +284,6 @@ public:
 
 }; // EECEvents
 
-} // namespace eec
+END_EEC_NAMESPACE
 
 #endif // EEC_EVENTS_HH

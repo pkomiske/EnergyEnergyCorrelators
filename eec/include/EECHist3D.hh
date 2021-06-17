@@ -35,7 +35,7 @@
 
 #include "EECHistBase.hh"
 
-namespace eec {
+BEGIN_EEC_NAMESPACE
 namespace hist {
 
 #ifndef SWIG_PREPROCESSOR
@@ -152,6 +152,6 @@ private:
 }; // EECHist3D
 
 } // namespace hist
-} // namespace eec
+END_EEC_NAMESPACE
 
 #endif // EEC_HIST3D_HH

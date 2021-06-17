@@ -1,1 +1,1 @@
-bcp --boost=/usr/local/include histogram.hpp ..
+bcp --boost=/usr/local/include histogram.hpp .

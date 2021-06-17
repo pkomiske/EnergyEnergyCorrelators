@@ -28,25 +28,24 @@
 #include "EECLongestSide.hh"
 #include "EECTriangleOPE.hh"
 
-// namespace for EEC code
-namespace eec {
+BEGIN_EEC_NAMESPACE
 
 //-----------------------------------------------------------------------------
 // EECLongestSide typedefs
 //-----------------------------------------------------------------------------
 
-typedef EECLongestSide<hist::axis::id> EECLongestSideId;
-typedef EECLongestSide<hist::axis::log> EECLongestSideLog;
+using EECLongestSideId = EECLongestSide<hist::axis::id>;
+using EECLongestSideLog = EECLongestSide<hist::axis::log>;
 
 //-----------------------------------------------------------------------------
 // EECTriangleOPE typedefs
 //-----------------------------------------------------------------------------
 
-typedef EECTriangleOPE<hist::axis::id, hist::axis::id, hist::axis::id> EECTriangleOPEIdIdId;
-typedef EECTriangleOPE<hist::axis::log, hist::axis::id, hist::axis::id> EECTriangleOPELogIdId;
-typedef EECTriangleOPE<hist::axis::id, hist::axis::log, hist::axis::id> EECTriangleOPEIdLogId;
-typedef EECTriangleOPE<hist::axis::log, hist::axis::log, hist::axis::id> EECTriangleOPELogLogId;
+using EECTriangleOPEIdIdId = EECTriangleOPE<hist::axis::id, hist::axis::id, hist::axis::id>;
+using EECTriangleOPELogIdId = EECTriangleOPE<hist::axis::log, hist::axis::id, hist::axis::id>;
+using EECTriangleOPEIdLogId = EECTriangleOPE<hist::axis::id, hist::axis::log, hist::axis::id>;
+using EECTriangleOPELogLogId = EECTriangleOPE<hist::axis::log, hist::axis::log, hist::axis::id>;
 
-} // namespace eec
+END_EEC_NAMESPACE
 
 #endif // EEC_HH

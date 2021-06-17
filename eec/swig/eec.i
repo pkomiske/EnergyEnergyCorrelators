@@ -64,8 +64,8 @@ using namespace eec::hist;
 %include numpy_helpers.i
 
 // additional numpy typemaps
-%apply (double* IN_ARRAY2, int DIM1, int DIM2) {(double* particles, int mult, int nfeatures)}
-%apply (double* INPLACE_ARRAY2, int DIM1, int DIM2) {(const double* event_ptr, unsigned mult, unsigned nfeatures)}
+%apply (double* IN_ARRAY2, EEC_INT DIM1, EEC_INT DIM2) {(double* particles, EEC_INT mult, EEC_INT nfeatures)}
+%apply (double* INPLACE_ARRAY2, EEC_INT DIM1, EEC_INT DIM2) {(const double* event_ptr, unsigned mult, unsigned nfeatures)}
 
 // vector templates
 %template(vectorDouble) std::vector<double>;
@@ -103,7 +103,7 @@ using namespace eec::hist;
   %}
 %enddef
 
-%define CPP_PICKLE_FUNCTIONS
+%define CPP_EECCOMP_FUNCTIONS(EECComp)
   std::string __getstate_internal__() {
     std::ostringstream oss;
     $self->save(oss);
@@ -114,13 +114,9 @@ using namespace eec::hist;
     std::istringstream iss(state);
     $self->load(iss);
   }
-%enddef
 
-// for overloading operators in final derived class
-%define DEFINE_OPERATORS(Class) 
-  Class & operator*=(const double x) {
-    $self->operator*=(x);
-    return *$self;
+  void add(const EECComp & rhs) {
+    $self->operator+=(rhs);
   }
 %enddef
 
@@ -203,24 +199,24 @@ namespace boost {
 %include "EECHist3D.hh"
 
 %define GET_HIST_TWO_QUANTITIES(cppfunc)
-try {
-  $self->cppfunc(*arr_out0, *arr_out1, hist_i, overflows);
-}
-catch (...) {
-  free(*arr_out0);
-  free(*arr_out1);
-  throw;
-}
+  try {
+    $self->cppfunc(*arr_out0, *arr_out1, hist_i, overflows);
+  }
+  catch (...) {
+    free(*arr_out0);
+    free(*arr_out1);
+    throw;
+  }
 %enddef
 
 %define GET_HIST_ONE_QUANTITY(cppfunc)
-try {
-  $self->cppfunc(*arr_out0, hist_i, overflows);
-}
-catch (...) {
-  free(*arr_out0);
-  throw;
-}
+  try {
+    $self->cppfunc(*arr_out0, hist_i, overflows);
+  }
+  catch (...) {
+    free(*arr_out0);
+    throw;
+  }
 %enddef
 
 namespace EECNAMESPACE {
@@ -228,12 +224,16 @@ namespace EECNAMESPACE {
 
     // extend EECHistBase
     %extend EECHistBase {
-      void npy_bin_centers(double** arr_out0, int* n0, int i = 0) {
+      void npy_bin_centers(double** arr_out0, EEC_INT* n0, int i = 0) {
         COPY_1DARRAY_TO_NUMPY(arr_out0, n0, $self->nbins(i), nbytes, $self->bin_centers(i).data())
       }
 
-      void npy_bin_edges(double** arr_out0, int* n0, int i = 0) {
+      void npy_bin_edges(double** arr_out0, EEC_INT* n0, int i = 0) {
         COPY_1DARRAY_TO_NUMPY(arr_out0, n0, $self->nbins(i)+1, nbytes, $self->bin_edges(i).data())
+      }
+
+      void scale(double x) {
+        $self->operator*=(x);
       }
 
       %pythoncode {
@@ -248,22 +248,22 @@ namespace EECNAMESPACE {
 
     // extend EECHist1D code
     %extend EECHist1D {
-      void npy_get_hist_vars(double** arr_out0, int* n0,
-                             double** arr_out1, int* n1,
+      void npy_get_hist_vars(double** arr_out0, EEC_INT* n0,
+                             double** arr_out1, EEC_INT* n1,
                              unsigned hist_i = 0, bool overflows = true) {
         MALLOC_1D_DOUBLE_ARRAY(arr_out0, n0, $self->hist_size(overflows), nbytes0)
         MALLOC_1D_DOUBLE_ARRAY(arr_out1, n1, $self->hist_size(overflows), nbytes1)
         GET_HIST_TWO_QUANTITIES(get_hist_vars)
       }
 
-      void npy_get_covariance(double** arr_out0, int* n0, int* n1,
+      void npy_get_covariance(double** arr_out0, EEC_INT* n0, EEC_INT* n1,
                               unsigned hist_i = 0, bool overflows = true) {
         std::size_t s($self->hist_size(overflows));
         MALLOC_2D_DOUBLE_ARRAY(arr_out0, n0, n1, s, s, nbytes0)
         GET_HIST_ONE_QUANTITY(get_covariance)
       }
 
-      void npy_get_variance_bound(double** arr_out0, int* n0,
+      void npy_get_variance_bound(double** arr_out0, EEC_INT* n0,
                              unsigned hist_i = 0, bool overflows = true) {
         MALLOC_1D_DOUBLE_ARRAY(arr_out0, n0, $self->hist_size(overflows), nbytes0)
         GET_HIST_ONE_QUANTITY(get_variance_bound)
@@ -272,8 +272,8 @@ namespace EECNAMESPACE {
 
     // extend EECHist3D code
     %extend EECHist3D {
-      void npy_get_hist_vars(double** arr_out0, int* n0, int* n1, int* n2,
-                             double** arr_out1, int* m0, int* m1, int* m2,
+      void npy_get_hist_vars(double** arr_out0, EEC_INT* n0, EEC_INT* n1, EEC_INT* n2,
+                             double** arr_out1, EEC_INT* m0, EEC_INT* m1, EEC_INT* m2,
                              unsigned hist_i = 0, bool overflows = true) {
         MALLOC_3D_DOUBLE_ARRAY(arr_out0, n0, n1, n2, $self->hist_size(overflows, 0),
                                                      $self->hist_size(overflows, 1),
@@ -284,7 +284,7 @@ namespace EECNAMESPACE {
         GET_HIST_TWO_QUANTITIES(get_hist_vars)
       }
 
-      void npy_get_covariance(double** arr_out0, int* n0, int* n1, int* n2, int* n3, int* n4, int* n5,
+      void npy_get_covariance(double** arr_out0, EEC_INT* n0, EEC_INT* n1, EEC_INT* n2, EEC_INT* n3, EEC_INT* n4, EEC_INT* n5,
                           unsigned hist_i = 0, bool overflows = true) {
         MALLOC_6D_DOUBLE_ARRAY(arr_out0, n0, n1, n2, n3, n4, n5,
                                          $self->hist_size(overflows, 0),
@@ -297,7 +297,7 @@ namespace EECNAMESPACE {
         GET_HIST_ONE_QUANTITY(get_covariance)
       }
 
-      void npy_get_variance_bound(double** arr_out0, int* n0, int* n1, int* n2,
+      void npy_get_variance_bound(double** arr_out0, EEC_INT* n0, EEC_INT* n1, EEC_INT* n2,
                              unsigned hist_i = 0, bool overflows = true) {
         MALLOC_3D_DOUBLE_ARRAY(arr_out0, n0, n1, n2, $self->hist_size(overflows, 0),
                                                      $self->hist_size(overflows, 1),
@@ -384,18 +384,16 @@ namespace EECNAMESPACE {
   }
 
   %extend EECLongestSide {
-    CPP_PICKLE_FUNCTIONS
+    CPP_EECCOMP_FUNCTIONS(EECLongestSide)
     ADD_REPR_FROM_DESCRIPTION
-    DEFINE_OPERATORS(EECLongestSide)
     %pythoncode %{
       _default_args = (2, 1, 0.1, 1.0)
     %}
   }
 
   %extend EECTriangleOPE {
-    CPP_PICKLE_FUNCTIONS
+    CPP_EECCOMP_FUNCTIONS(EECTriangleOPE)
     ADD_REPR_FROM_DESCRIPTION
-    DEFINE_OPERATORS(EECTriangleOPE)
     %pythoncode %{
       _default_args = (1, 0.1, 1.0, 1, 0.1, 1.0, 1, 0., 1.5)
     %}

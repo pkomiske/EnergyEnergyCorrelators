@@ -1,0 +1,61 @@
+name: Tests
+
+on:
+  push:
+    branches:
+      - master
+
+env:
+  PYPI: 1
+  PYPITEST: 1
+  CIBW_BUILD_VERBOSITY: 1
+  CIBW_MANYLINUX_X86_64_IMAGE: ghcr.io/pkomiske/eec_manylinux2010_x86_64:latest
+  CIBW_MANYLINUX_I686_IMAGE: ghcr.io/pkomiske/eec_manylinux2010_i686:latest
+  CIBW_SKIP: pp*
+  CIBW_TEST_COMMAND: pytest {package}
+  CIBW_TEST_REQUIRES: pytest numpy scipy energyflow
+  CIBW_TEST_SKIP: "*i686 *win32"
+  GHCR_TOKEN: ${{ secrets.GHCR_TOKEN }}
+  TWINE_USERNAME: __token__
+  TWINE_PASSWORD_PYPITEST: ${{ secrets.TWINE_PASSWORD_PYPITEST }}
+  TWINE_PASSWORD_PYPI: ${{ secrets.TWINE_PASSWORD_PYPI }}
+
+jobs:
+
+  linux-build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+      - name: Setup Python
+        uses: actions/setup-python@v2
+        with:
+          python-version: '3.8'
+      - name: Login to ghcr
+        run: echo $GHCR_TOKEN | docker login ghcr.io -u pkomiske --password-stdin
+      - name: Build wheels and upload to PyPI
+        run: ./scripts/build-wheels-and-upload.sh sdist
+
+  macos-build:
+    runs-on: macos-latest
+    steps:
+      - uses: actions/checkout@v2
+      - name: Setup Python
+        uses: actions/setup-python@v2
+        with:
+          python-version: '3.8'
+      - name: Install libomp
+        run: brew install libomp
+      - name: Build wheels and upload to PyPI
+        run: ./scripts/build-wheels-and-upload.sh
+
+  windows-build:
+    runs-on: windows-latest
+    steps:
+      - uses: actions/checkout@v2
+      - name: Setup Python
+        uses: actions/setup-python@v2
+        with:
+          python-version: '3.8'
+      - name: Build wheels and upload to PyPI
+        shell: bash
+        run: ./scripts/build-wheels-and-upload.sh

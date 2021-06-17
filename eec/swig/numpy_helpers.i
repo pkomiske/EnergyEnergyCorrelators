@@ -28,12 +28,14 @@
 // include numpy typemaps
 %include numpy.i
 %init %{
-import_array();
+  import_array();
 %}
 
 %pythoncode %{
 import numpy as _np
 %}
+
+#define EEC_INT std::ptrdiff_t
 
 %define %additional_numpy_typemaps(DATA_TYPE, DATA_TYPECODE, DIM_TYPE)
 
@@ -79,22 +81,23 @@ import numpy as _np
 
 %enddef // additional_numpy_typemaps
 
-%additional_numpy_typemaps(double, NPY_DOUBLE, int)
+%numpy_typemaps(double, NPY_DOUBLE, EEC_INT)
+%additional_numpy_typemaps(double, NPY_DOUBLE, EEC_INT)
 
 // numpy typemaps
-%apply (double** ARGOUTVIEWM_ARRAY1, int* DIM1) {
-  (double** arr_out0, int* n0),
-  (double** arr_out1, int* n1)
+%apply (double** ARGOUTVIEWM_ARRAY1, EEC_INT* DIM1) {
+  (double** arr_out0, EEC_INT* n0),
+  (double** arr_out1, EEC_INT* n1)
 }
-%apply (double** ARGOUTVIEWM_ARRAY2, int* DIM1, int* DIM2) {
-  (double** arr_out0, int* n0, int* n1)
+%apply (double** ARGOUTVIEWM_ARRAY2, EEC_INT* DIM1, EEC_INT* DIM2) {
+  (double** arr_out0, EEC_INT* n0, EEC_INT* n1)
 }
-%apply (double** ARGOUTVIEWM_ARRAY3, int* DIM1, int* DIM2, int* DIM3) {
-  (double** arr_out0, int* n0, int* n1, int* n2),
-  (double** arr_out1, int* m0, int* m1, int* m2)
+%apply (double** ARGOUTVIEWM_ARRAY3, EEC_INT* DIM1, EEC_INT* DIM2, EEC_INT* DIM3) {
+  (double** arr_out0, EEC_INT* n0, EEC_INT* n1, EEC_INT* n2),
+  (double** arr_out1, EEC_INT* m0, EEC_INT* m1, EEC_INT* m2)
 }
-%apply (double** ARGOUTVIEWM_ARRAY6, int* DIM1, int* DIM2, int* DIM3, int* DIM4, int* DIM5, int* DIM6) {
-  (double** arr_out0, int* n0, int* n1, int* n2, int* n3, int* n4, int* n5)
+%apply (double** ARGOUTVIEWM_ARRAY6, EEC_INT* DIM1, EEC_INT* DIM2, EEC_INT* DIM3, EEC_INT* DIM4, EEC_INT* DIM5, EEC_INT* DIM6) {
+  (double** arr_out0, EEC_INT* n0, EEC_INT* n1, EEC_INT* n2, EEC_INT* n3, EEC_INT* n4, EEC_INT* n5)
 }
 
 // mallocs a 1D array of doubles of the specified size
@@ -147,7 +150,7 @@ import numpy as _np
 %enddef
 
 %define RETURN_1DNUMPY_FROM_VECTOR(pyname, cppname, size)
-void pyname(double** arr_out0, int* n0) {
+void pyname(double** arr_out0, EEC_INT* n0) {
   COPY_1DARRAY_TO_NUMPY(arr_out0, n0, size, nbytes, $self->cppname().data())
 }
 %enddef

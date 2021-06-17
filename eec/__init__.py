@@ -25,7 +25,6 @@ GNU General Public License for more details.
 You should have received a copy of the GNU General Public License
 along with this program.  If not, see <https://www.gnu.org/licenses/>.
 """
-from __future__ import absolute_import
 
 import numpy as _np
 
@@ -36,7 +35,7 @@ from .eec import *
 __author__ = 'Patrick T. Komiske III'
 __email__ = 'pkomiske@mit.edu'
 __license__ = 'GPLv3'
-__version__ = '1.1.2'
+__version__ = '1.2.0a0'
 
 # Note that axis/axes is supported as well as axis_range/axes_range.
 # The "axes" version is for compatibility with EECTriangleOPE and

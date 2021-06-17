@@ -42,8 +42,7 @@
 #include "EECHist1D.hh"
 #include "EECMultinomial.hh"
 
-// namespace for EEC code
-namespace eec {
+BEGIN_EEC_NAMESPACE
 
 //-----------------------------------------------------------------------------
 // EEC class for histogramming according to the maximum particle distance
@@ -876,6 +875,6 @@ private:
 
 }; // EECLongestSide
 
-} // namespace eec
+END_EEC_NAMESPACE
 
 #endif // EEC_LONGESTSIDE_HH

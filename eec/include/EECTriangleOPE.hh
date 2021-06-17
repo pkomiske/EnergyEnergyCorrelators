@@ -37,14 +37,13 @@
 #include "EECBase.hh"
 #include "EECHist3D.hh"
 
-// namespace for EEC code
-namespace eec {
+BEGIN_EEC_NAMESPACE
 
 //-----------------------------------------------------------------------------
 // Helper functions
 //-----------------------------------------------------------------------------
 
-inline void argsort3(std::array<std::pair<double, int>, 3> & dists_inds) {
+void argsort3(std::array<std::pair<double, int>, 3> & dists_inds) {
 
   // set integers
   dists_inds[0].second = 0;
@@ -57,7 +56,7 @@ inline void argsort3(std::array<std::pair<double, int>, 3> & dists_inds) {
 }
 
 template<class Hist>
-inline void fill_hist(Hist & hist, double weight, double xS, double xM, double xL) {
+void fill_hist(Hist & hist, double weight, double xS, double xM, double xL) {
 
     // define coordinate mapping
     double xi(xS/(xM + REG)), diff(xL - xM), 
@@ -392,6 +391,6 @@ private:
 
 }; // EECTriangleOPE
 
-} // namespace eec
+END_EEC_NAMESPACE
 
 #endif // EEC_TRIANGLEOPE_HH
