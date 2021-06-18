@@ -32,10 +32,11 @@
 #define EEC_MULTINOMIAL_HH
 
 #include <array>
-#include <cassert>
 #include <cstddef>
 #include <string>
 #include <vector>
+
+#include "EECUtils.hh"
 
 // Check for 64 bit compilation
 #if defined(__GNUC__) || defined(__clang__)
@@ -72,7 +73,7 @@ const std::array<unsigned, 13> FACTORIALS {
 
 // multinomial factor on sorted indices
 template<std::size_t N>
-inline unsigned multinomial(const std::array<unsigned, N> & inds) noexcept {
+unsigned multinomial(const std::array<unsigned, N> & inds) noexcept {
 
   unsigned denom(1), count(1);
   for (unsigned i = 1; i < N; i++) {
@@ -110,11 +111,11 @@ struct Multinomial {
   }
 
   // get access to N via a public function
-  unsigned N() const { return N_; }
+  static constexpr unsigned N() noexcept { return N_; }
 
   // set index at position 0 < i < N-1
   template<unsigned i>
-  void set_index(unsigned ind) {
+  void set_index(unsigned ind) noexcept {
   #ifndef SWIG
     static_assert(i > 0 && i < N_-1, "index i must be less than N-1 and greater than 0");
   #endif
@@ -122,27 +123,27 @@ struct Multinomial {
   }
 
   // 0th index is special
-  void set_index_0(unsigned ind) {
+  void set_index_0(unsigned ind) noexcept {
     inds_[0] = ind;
     counts_[0] = denoms_[0] = 1;
   }
 
   // set index at position N-1
-  void set_index_final(unsigned ind) {
-    _set_index<N_-1>(ind);
+  void set_index_final(unsigned ind) noexcept {
+    _set_index<N()-1>(ind);
 
     // handle final degeneracy factor
-    if (counts_[N_-1] > 1)
-      denoms_[N_-1] *= FACTORIALS[counts_[N_-1]];
+    if (counts_[N()-1] > 1)
+      denoms_[N()-1] *= FACTORIALS[counts_[N()-1]];
   }
 
-  unsigned value() const {
+  unsigned value() const noexcept {
 
     // if we are entirely degenerate (most cases) return N!
-    if (denoms_[N_-1] == 1) return Nfactorial_;
+    if (denoms_[N()-1] == 1) return Nfactorial_;
 
     // return N!/(denom)
-    else return Nfactorial_/denoms_[N_-1];
+    else return Nfactorial_/denoms_[N()-1];
   }
 
 private:
@@ -151,7 +152,7 @@ private:
   unsigned Nfactorial_;
 
   template<unsigned i>
-  void _set_index(unsigned ind) {
+  void _set_index(unsigned ind) noexcept {
     inds_[i] = ind;
     counts_[i] = counts_[i-1];
     denoms_[i] = denoms_[i-1];
@@ -176,8 +177,10 @@ struct DynamicMultinomial {
                                   std::to_string(FACTORIALS_LONG.size()));
   }
 
+  unsigned N() const noexcept { return N_; }
+
   // set index at position 0 < i < N-1
-  void set_index(unsigned i, unsigned ind) {
+  void set_index(unsigned i, unsigned ind) noexcept {
     if (i == 0) {
       inds_[0] = ind;
       counts_[0] = denoms_[0] = 1;
@@ -189,7 +192,7 @@ struct DynamicMultinomial {
     }
   }
 
-  std::size_t value() const {
+  std::size_t value() const noexcept {
 
     // if we are entirely degenerate (most cases) return N!
     if (denoms_[Nm1_] == 1) return Nfactorial_;

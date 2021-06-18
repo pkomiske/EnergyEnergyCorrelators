@@ -42,7 +42,7 @@
 #include <vector>
 
 // this includes "boost/histogram.hpp"
-#include "EECUtils.hh"
+#include "EECHistUtils.hh"
 
 BEGIN_EEC_NAMESPACE
 namespace hist {
@@ -349,16 +349,25 @@ public:
 
 #ifndef SWIG
 
-  // return histogram and errors as a pair of vectors
+  // return histogram and variances as a pair of vectors
   std::pair<std::vector<double>, std::vector<double>>
   get_hist_vars(unsigned hist_i = 0, bool overflows = true) {
-    auto vars(std::make_pair(std::vector<double>(hist_size(overflows)),
+    auto hvs(std::make_pair(std::vector<double>(hist_size(overflows)),
                              std::vector<double>(hist_size(overflows))));
-    get_hist_vars(vars.first.data(), vars.second.data(), hist_i, overflows);
-    return vars;
+    get_hist_vars(hvs.first.data(), hvs.second.data(), hist_i, overflows);
+    return hvs;
   }
 
-  // return covariance and errors as a pair of vectors
+  // return histogram and errors as a pair of vectors
+  std::pair<std::vector<double>, std::vector<double>>
+  get_hist_errs(unsigned hist_i = 0, bool overflows = true) {
+    auto hist_vars(get_hist_vars(hist_i, overflows));
+    for (double & v : hist_vars.second)
+      v = std::sqrt(v);
+    return hist_vars;
+  }
+
+  // return covariance as a flattened vector of doubles
   std::vector<double>
   get_covariance(unsigned hist_i = 0, bool overflows = true) {
     std::vector<double> covariance(covariance_size(overflows));
@@ -366,7 +375,7 @@ public:
     return covariance;
   }
 
-  // return covariance and errors as a pair of vectors
+  // return variance bound as a flattened vector of doubles
   std::vector<double>
   get_variance_bound(unsigned hist_i = 0, bool overflows = true) {
     std::vector<double> variance_bound(hist_size(overflows));

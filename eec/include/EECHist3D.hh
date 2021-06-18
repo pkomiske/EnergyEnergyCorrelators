@@ -31,8 +31,6 @@
 #ifndef EEC_HIST3D_HH
 #define EEC_HIST3D_HH
 
-#include <array>
-
 #include "EECHistBase.hh"
 
 BEGIN_EEC_NAMESPACE
@@ -99,8 +97,8 @@ public:
             int num_threads = 1,
             bool track_covariance = false,
             bool variance_bound = true,
-            bool variance_bound_include_overflows = true) :
-    Base(num_threads, track_covariance, variance_bound, variance_bound_include_overflows),
+            bool variance_bound_includes_overflows = true) :
+    Base(num_threads, track_covariance, variance_bound, variance_bound_includes_overflows),
     nbins_({nbins0, nbins1, nbins2}),
     axis_mins_({axis0_min, axis1_min, axis2_min}),
     axis_maxs_({axis0_max, axis1_max, axis2_max})

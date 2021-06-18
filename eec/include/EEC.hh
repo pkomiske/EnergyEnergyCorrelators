@@ -31,14 +31,14 @@
 BEGIN_EEC_NAMESPACE
 
 //-----------------------------------------------------------------------------
-// EECLongestSide typedefs
+// EECLongestSide aliases
 //-----------------------------------------------------------------------------
 
 using EECLongestSideId = EECLongestSide<hist::axis::id>;
 using EECLongestSideLog = EECLongestSide<hist::axis::log>;
 
 //-----------------------------------------------------------------------------
-// EECTriangleOPE typedefs
+// EECTriangleOPE aliases
 //-----------------------------------------------------------------------------
 
 using EECTriangleOPEIdIdId = EECTriangleOPE<hist::axis::id, hist::axis::id, hist::axis::id>;

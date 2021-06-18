@@ -65,7 +65,6 @@ else:
         libs.append('omp')
     elif platform.system() == 'Windows':
         assert not use_fastjet, 'fastjet not yet supported on windows'
-        ldflags[0] = '/openmp'
         cxxflags = ['/openmp', '/std:c++14', '/fp:fast']
         include_dirs.append('.')
 
@@ -94,7 +93,7 @@ else:
     eec = Extension('eec._eec',
                     sources=[os.path.join('eec', 'eec.cpp')],
                     include_dirs=include_dirs,
-                    library_dirs=fj_libdirs + ['/usr/local/lib'],
+                    library_dirs=fj_libdirs,
                     extra_compile_args=cxxflags,
                     extra_link_args=ldflags,
                     libraries=libs)

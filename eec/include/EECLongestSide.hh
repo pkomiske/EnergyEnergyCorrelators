@@ -34,9 +34,9 @@
 #include <algorithm>
 #include <array>
 #include <cassert>
-#include <iomanip>
 #include <stdexcept>
 #include <type_traits>
+#include <vector>
 
 #include "EECBase.hh"
 #include "EECHist1D.hh"
@@ -80,7 +80,7 @@ class EECLongestSide : public EECBase, public hist::EECHist1D<Transform> {
     compute_eec_ptr_ = &EECLongestSide::eNc_sym;
 
     // set pointer to function that will do the computation
-    switch (this->N()) {
+    switch (N()) {
       case 2:
         if (nsym() == 2) {
           if (!use_general_eNc_)
@@ -143,7 +143,7 @@ class EECLongestSide : public EECBase, public hist::EECHist1D<Transform> {
         break;
 
       default:
-        if (this->N() >= FACTORIALS_LONG.size()) {
+        if (N() >= FACTORIALS_LONG.size()) {
           std::ostringstream m;
           m << "N must be less than " << FACTORIALS_LONG.size()
             << " due to the use of " << sizeof(std::size_t) << "-bit integers";
@@ -165,18 +165,18 @@ public:
                  bool average_verts = false,
                  bool track_covariance = true,
                  bool variance_bound = true,
-                 bool variance_bound_include_overflows = true,
+                 bool variance_bound_includes_overflows = true,
                  bool use_general_eNc = false) :
     EECBase(N, norm, pt_powers, ch_powers, num_threads, print_every, check_degen, average_verts),
     EECHist1D(nbins, axis_min, axis_max, num_threads,
-              track_covariance, variance_bound, variance_bound_include_overflows),
+              track_covariance, variance_bound, variance_bound_includes_overflows),
     use_general_eNc_(use_general_eNc),
     N_choose_2_(this->N()*(this->N()-1)/2)
   {
     select_eec_function();
   }
 
-  virtual ~EECLongestSide() {}
+  virtual ~EECLongestSide() = default;
 
   std::string description(int hist_level = 1) const {
     unsigned nh(this->nhists());
@@ -769,7 +769,6 @@ private:
                   dists_arr[20] = dists[oxm + n];
                   dists_arr[20] = *std::max_element(dists_arr.cbegin() + 14, dists_arr.cbegin() + 21);
                   multinom.set_index<6>(o);
-
 
                   for (unsigned p = 0; p <= o; p++) {
                     unsigned pxm(p*mult);

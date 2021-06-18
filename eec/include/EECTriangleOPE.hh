@@ -33,6 +33,7 @@
 
 #include <algorithm>
 #include <array>
+#include <vector>
 
 #include "EECBase.hh"
 #include "EECHist3D.hh"
@@ -127,16 +128,18 @@ public:
                  bool average_verts = false,
                  bool track_covariance = false,
                  bool variance_bound = true,
-                 bool variance_bound_include_overflows = true) :
+                 bool variance_bound_includes_overflows = true) :
     EECBase(3, norm, pt_powers, ch_powers, num_threads, print_every, check_degen, average_verts),
     EECHist3D(nbins0, axis0_min, axis0_max,
               nbins1, axis1_min, axis1_max,
               nbins2, axis2_min, axis2_max,
               num_threads,
-              track_covariance, variance_bound, variance_bound_include_overflows)
+              track_covariance, variance_bound, variance_bound_includes_overflows)
   {
     select_eec_function();
   }
+
+  virtual ~EECTriangleOPE() = default;
 
   std::string description(int hist_level = 1) const {
     unsigned nh(this->nhists());

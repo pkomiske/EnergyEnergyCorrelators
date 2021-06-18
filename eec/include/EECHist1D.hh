@@ -88,8 +88,8 @@ public:
             int num_threads = 1,
             bool track_covariance = true,
             bool variance_bound = true, 
-            bool variance_bound_include_overflows = true) :
-    Base(num_threads, track_covariance, variance_bound, variance_bound_include_overflows),
+            bool variance_bound_includes_overflows = true) :
+    Base(num_threads, track_covariance, variance_bound, variance_bound_includes_overflows),
     nbins_(nbins), axis_min_(axis_min), axis_max_(axis_max)
   {
     this->init(1);
