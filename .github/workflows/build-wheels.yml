@@ -24,37 +24,52 @@ jobs:
   linux-build:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v2
+      - name: Checkout repository and submodules
+        uses: actions/checkout@v2
+        with:
+          submodules: recursive
       - name: Setup Python
         uses: actions/setup-python@v2
         with:
           python-version: '3.8'
       - name: Login to ghcr
         run: echo $GHCR_TOKEN | docker login ghcr.io -u pkomiske --password-stdin
+      - name: Remove spurious boost
+        run: rm -rf EventGeometry/Wasserstein/boost
       - name: Build wheels and upload to PyPI
         run: ./scripts/build-wheels-and-upload.sh sdist
 
   macos-build:
     runs-on: macos-latest
     steps:
-      - uses: actions/checkout@v2
+      - name: Checkout repository and submodules
+        uses: actions/checkout@v2
+        with:
+          submodules: recursive
       - name: Setup Python
         uses: actions/setup-python@v2
         with:
           python-version: '3.8'
       - name: Install Boost and OpenMP
-        run: brew install boost libomp 
+        run: brew install boost libomp
+      - name: Remove spurious boost
+        run: rm -rf EventGeometry/Wasserstein/boost
       - name: Build wheels and upload to PyPI
         run: ./scripts/build-wheels-and-upload.sh
 
   windows-build:
     runs-on: windows-latest
     steps:
-      - uses: actions/checkout@v2
+      - name: Checkout repository and submodules
+        uses: actions/checkout@v2
+        with:
+          submodules: recursive
       - name: Setup Python
         uses: actions/setup-python@v2
         with:
           python-version: '3.8'
+      - name: Remove spurious boost
+        run: rm -rf EventGeometry/Wasserstein/boost
       - name: Build wheels and upload to PyPI
         shell: bash
         run: ./scripts/build-wheels-and-upload.sh
