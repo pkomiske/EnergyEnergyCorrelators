@@ -132,10 +132,11 @@ public:
 
     std::ostringstream oss;
     oss << std::boolalpha
-        << "EECLongestSide<" << EECHist1D::HistTraits::axes_description()
+        << "EECLongestSide<" << EECHist1D::axes_description()
         << ">::" << EECBase::description() << '\n'
         << "  using eNc_sym - " << use_general_eNc_ << '\n'
-        << "  there " << (nh == 1 ? "is " : "are ") << nh << " histogram";
+        << "\n"
+        << "  " << EECHist1D::hist_name() << " -  there " << (nh == 1 ? "is " : "are ") << nh << " histogram";
 
     if (nh == 1) 
       oss << '\n';
@@ -154,10 +155,7 @@ public:
     else 
       throw std::runtime_error("Unexpected number of histograms encountered");
 
-    if (hist_level > 0) {
-      oss << '\n';
-      this->hists_as_text(hist_level, true, 16, &oss);
-    }
+    this->hists_as_text(hist_level, true, 16, &oss);
 
     return oss.str();
   }
@@ -173,6 +171,7 @@ public:
   bool operator!=(const EECLongestSide & rhs) const { return !operator==(rhs); }
   bool operator==(const EECLongestSide & rhs) const {
     return EECBase::operator==(rhs)                       &&
+           EECHist1D::operator==(rhs)                     &&
            use_general_eNc()     == rhs.use_general_eNc() &&
            N_choose_2_           == rhs.N_choose_2_       &&
            compute_eec_func_ptr_ == rhs.compute_eec_func_ptr_;

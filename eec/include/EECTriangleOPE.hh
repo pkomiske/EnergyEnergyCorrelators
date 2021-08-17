@@ -146,9 +146,9 @@ public:
     unsigned nh(this->nhists());
 
     std::ostringstream oss;
-    oss << "EECTriangleOPE<" << EECHist3D::HistTraits::axes_description()
+    oss << "EECTriangleOPE<" << EECHist3D::axes_description()
         << ">::" << EECBase::description() << '\n'
-        << "  there " << (nh == 1 ? "is " : "are ") << nh << " histogram";
+        << "  " << EECHist3D::hist_name() << " -  there " << (nh == 1 ? "is " : "are ") << nh << " histogram";
 
     if (nh == 1) 
       oss << '\n';
@@ -171,10 +171,7 @@ public:
     else 
       throw std::runtime_error("Unexpected number of histograms encountered");
 
-    if (hist_level > 0) {
-      oss << '\n';
-      this->hists_as_text(hist_level, true, 16, &oss);
-    }
+    this->hists_as_text(hist_level, true, 16, &oss);
 
     return oss.str();
   }
@@ -189,7 +186,9 @@ public:
 
   bool operator!=(const EECTriangleOPE & rhs) const { return !operator==(rhs); }
   bool operator==(const EECTriangleOPE & rhs) const {
-    return EECBase::operator==(rhs) && (compute_eec_func_ptr_ == rhs.compute_eec_func_ptr_);
+    return EECBase::operator==(rhs)   &&
+           EECHist3D::operator==(rhs) &&
+           compute_eec_func_ptr_ == rhs.compute_eec_func_ptr_;
   }
 
   EECTriangleOPE & operator+=(const EECTriangleOPE & rhs) {

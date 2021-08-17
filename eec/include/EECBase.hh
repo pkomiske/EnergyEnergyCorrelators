@@ -296,22 +296,22 @@ public:
 
   bool operator!=(const EECBase & rhs) const { return !operator==(rhs); }
   bool operator==(const EECBase & rhs) const {
-    if (N()                    != rhs.N()                    ||
-        nfeatures()            != rhs.nfeatures()            ||
-        nsym()                 != rhs.nsym()                 ||
-        norm()                 != rhs.norm()                 ||
-        use_charges()          != rhs.use_charges()          ||
-        check_degen()          != rhs.check_degen()          ||
-        average_verts()        != rhs.average_verts()        ||
-        num_threads()          != rhs.num_threads()          ||
-        omp_chunksize()        != rhs.omp_chunksize()        ||
-        print_every()          != rhs.print_every()          ||
-        R()                    != rhs.R()                    ||
-        beta()                 != rhs.beta()                 ||
-        particle_weight()      != rhs.particle_weight()      ||
-        pairwise_distance()    != rhs.pairwise_distance()    ||
-        weight_powers().size() != rhs.weight_powers().size() ||
-        charge_powers().size() != rhs.charge_powers().size() ||
+    if (N()                        != rhs.N()                        ||
+        nfeatures()                != rhs.nfeatures()                ||
+        nsym()                     != rhs.nsym()                     ||
+        norm()                     != rhs.norm()                     ||
+        use_charges()              != rhs.use_charges()              ||
+        check_degen()              != rhs.check_degen()              ||
+        average_verts()            != rhs.average_verts()            ||
+        num_threads()              != rhs.num_threads()              ||
+        omp_chunksize()            != rhs.omp_chunksize()            ||
+        print_every()              != rhs.print_every()              ||
+        R()                        != rhs.R()                        ||
+        beta()                     != rhs.beta()                     ||
+        particle_weight()          != rhs.particle_weight()          ||
+        pairwise_distance()        != rhs.pairwise_distance()        ||
+        weight_powers().size()     != rhs.weight_powers().size()     ||
+        charge_powers().size()     != rhs.charge_powers().size()     ||
         orig_weight_powers_.size() != rhs.orig_weight_powers_.size() ||
         orig_charge_powers_.size() != rhs.orig_charge_powers_.size())
       return false;

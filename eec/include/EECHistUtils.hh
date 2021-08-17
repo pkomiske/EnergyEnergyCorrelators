@@ -33,6 +33,7 @@
 
 #include <ostream>
 #include <string>
+#include <type_traits>
 #include <vector>
 
 // boost histogram
@@ -93,7 +94,7 @@ inline bh::coverage get_coverage(bool overflows) {
 
 // names the various axis transforms
 template<class T>
-std::string name_transform() {
+std::string name_transform(const T &) {
   if (std::is_base_of<bh::axis::transform::log, T>::value)
     return "log";
   else if (std::is_base_of<bh::axis::transform::id, T>::value)
@@ -106,23 +107,60 @@ std::string name_transform() {
     return "unknown";
 }
 
-template<class Axis>
-void output_axis(std::ostream & os, const Axis & axis, int hist_level, int precision) {
-  os.precision(precision);
-  if (hist_level > 1) os << "# ";
-  else os << "  ";
-  if (hist_level > 0)
-    os << name_transform<Axis>() << " axis, "
-       << axis.size() << " bins, (" << axis.value(0) << ", " << axis.value(axis.size()) << ")\n";
-  if (hist_level > 1) {
-    os << "bin_edges :";
-    for (double edge : get_bin_edges(axis))
-      os << ' ' << edge;
-    os << '\n'
-       << "bin_centers :";
-    for (double center : get_bin_centers(axis))
-      os << ' ' << center;
-    os << "\n\n";
+std::ostream & operator<<(std::ostream & os, const bh::accumulators::weighted_sum<double> & w) {
+  os << w.value() << ' ' << w.variance();
+  return os;
+}
+
+template<class Hist>
+void output_hist(std::ostream & os, const Hist & hist,
+                                    int hist_level, int hist_i,
+                                    bool overflows,
+                                    const std::string & name) {
+  if (hist_level == 0) return;
+
+  std::string start(hist_level == 1 ? "    " : "# ");
+
+  // extra info for first hist
+  if (hist_i == 0) {
+
+    // summarize hist
+    os << start << name << " rank - " << hist.rank() << '\n'
+       << start << "total bins (including overflows) - " << hist.size() << '\n';
+
+    // output axes
+    unsigned axis_i(0);
+    hist.for_each_axis([&](const auto & axis){
+      os << start << "axis" << axis_i << " - " << name_transform(axis) << '\n'
+         << start << "  nbins" << axis_i << " - " << axis.size() << '\n'
+         << start << "  axis_range" << axis_i << " - (" << axis.value(0) << ", " << axis.value(axis.size()) << ")\n";
+      
+      if (hist_level > 1) {
+        os << start << "  bin_edges :";
+        for (double edge : get_bin_edges(axis))
+          os << ' ' << edge;
+        os << "\n";
+
+        os << start << "  bin_centers :";
+        for (double center : get_bin_centers(axis))
+          os << ' ' << center;
+        os << "\n";
+      }
+
+      axis_i++;
+    });
+  }
+
+  if (hist_level > 2) {
+    os << start << name << ' ' << hist_i << '\n'
+       << "# bin_multi_index : bin_value [bin_variance]\n";
+
+    for (auto && x : bh::indexed(hist, get_coverage(overflows))) {
+      for (axis::index_type index : x.indices())
+        os << index << ' ';
+      os << ": " << *x << '\n';
+    }
+    os << "\n";
   }
 }
 
@@ -202,6 +240,11 @@ private:
   value_type value_{};
 
 }; // simple_weighted_sum
+
+std::ostream & operator<<(std::ostream & os, const simple_weighted_sum<double> & w) {
+  os << w.value();
+  return os;
+}
 
 } // namespace accumulators
 

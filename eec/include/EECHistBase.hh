@@ -115,7 +115,7 @@ public:
   bool variance_bound() const { return variance_bound_; }
   bool variance_bound_includes_overflows() const { return variance_bound_includes_overflows_; }
 
-  std::size_t nhists() const { return hists_[0].size(); }
+  std::size_t nhists() const { return hists().size(); }
   unsigned nbins(unsigned axis = 0) const { return nbins_[axis]; }
   const std::array<double, 2> & axis_range(unsigned axis = 0) const { return axes_range_[axis]; }
   double axis_min(unsigned axis = 0) const { return axis_range(axis)[0]; }
@@ -193,10 +193,10 @@ public:
   std::size_t hist_size(bool overflows = true, int axis = -1) const {
     if (axis == -1) {
       if (overflows)
-        return hists_[0][0].size();
+        return hists()[0].size();
       else {
         std::size_t size(1);
-        hists_[0][0].for_each_axis([&size](const auto & a){ size *= a.size(); });
+        hists()[0].for_each_axis([&size](const auto & a){ size *= a.size(); });
         return size;
       }
     }
@@ -223,21 +223,26 @@ public:
     return event_count;
   }
 
-#ifndef SWIG_PREPROCESSOR
-  // access axis of hist
-  auto axis(unsigned axis = 0) const { return hists_[0][0].axis(axis); }
+  //////////////////////////
+  // HISTOGRAM ACCESS
+  //////////////////////////
 
-  // low-level access to hists
+#ifndef SWIG_PREPROCESSOR
+
+  // access axis of hist
+  auto axis(unsigned axis = 0) const { return hists()[0].axis(axis); }
+
+  // access to boost hists
   std::vector<WeightedHist> & hists(int thread = 0) { return hists_[thread]; }
   std::vector<CovarianceHist> & covariance_hists(int thread = 0) { return covariance_hists_[thread]; }
   std::vector<SimpleWeightedHist> & variance_bound_hists(int thread = 0) { return variance_bound_hists_[thread]; }
 
-  // read-only access
+  // const access to boost hists
   const std::vector<WeightedHist> & hists(int thread = 0) const { return hists_[thread]; }
   const std::vector<CovarianceHist> & covariance_hists(int thread = 0) const { return covariance_hists_[thread]; }
   const std::vector<SimpleWeightedHist> & variance_bound_hists(int thread = 0) const { return variance_bound_hists_[thread]; }
   
-#endif
+#endif // !SWIG_PREPROCESSOR
 
   //////////////////////////
   // HISTOGRAM MANIPULATIONS
@@ -276,12 +281,12 @@ public:
     #pragma omp parallel for num_threads(num_threads()) default(shared) schedule(static)
     for (int thread = 0; thread < num_threads(); thread++) {
       for (unsigned hist_i = 0; hist_i < nhists(); hist_i++) {
-        hists_[thread][hist_i] = bh::algorithm::reduce(hists_[thread][hist_i], rcs);
-        per_event_hists_[thread][hist_i] = bh::algorithm::reduce(per_event_hists_[thread][hist_i], rcs);
+        hists(thread)[hist_i] = bh::algorithm::reduce(hists(thread)[hist_i], rcs);
+        per_event_hists(thread)[hist_i] = bh::algorithm::reduce(per_event_hists(thread)[hist_i], rcs);
         if (track_covariance())
-          covariance_hists_[thread][hist_i] = bh::algorithm::reduce(covariance_hists_[thread][hist_i], cov_rcs);
+          covariance_hists(thread)[hist_i] = bh::algorithm::reduce(covariance_hists(thread)[hist_i], cov_rcs);
         if (variance_bound())
-          variance_bound_hists_[thread][hist_i] = bh::algorithm::reduce(variance_bound_hists_[thread][hist_i], rcs);
+          variance_bound_hists(thread)[hist_i] = bh::algorithm::reduce(variance_bound_hists(thread)[hist_i], rcs);
       }
     }
 
@@ -297,11 +302,93 @@ public:
     if (hist_i >= nhists())
       throw std::invalid_argument("invalid histogram index");
 
-    auto s(bh::algorithm::sum(hists_[0][hist_i]));
+    auto s(bh::algorithm::sum(hists()[hist_i]));
     for (int thread = 1; thread < num_threads(); thread++)
-      s += bh::algorithm::sum(hists_[thread][hist_i]);
+      s += bh::algorithm::sum(hists(thread)[hist_i]);
 
     return s.value();
+  }
+
+  // find largest difference between histograms
+  double diff_hists(const EECHistBase & other, int hist_i = -1, bool overflows = true) const {
+    std::vector<unsigned> which_hists;
+    if (hist_i == -1)
+      for (unsigned i = 0; i < nhists(); i++)
+        which_hists.push_back(i);
+    else
+      which_hists.push_back(hist_i);
+
+    double max_diff(0);
+    for (unsigned i : which_hists) {
+      auto h(combined_hist(i) + -1*other.combined_hist(i));
+      for (auto && x : bh::indexed(h, get_coverage(overflows))) {
+        if (std::abs(x->value()) > max_diff)
+          max_diff = std::abs(x->value());
+      }
+    }
+    return max_diff;
+  }
+
+  // find largest difference between histograms
+  double diff_covariances(const EECHistBase & other, int hist_i = -1, bool overflows = true) const {
+    std::vector<unsigned> which_hists;
+    if (hist_i == -1)
+      for (unsigned i = 0; i < nhists(); i++)
+        which_hists.push_back(i);
+    else
+      which_hists.push_back(hist_i);
+
+    double max_diff(0);
+    for (unsigned i : which_hists) {
+      auto h(combined_covariance(i) + -1*other.combined_covariance(i));
+      for (auto && x : bh::indexed(h, get_coverage(overflows))) {
+        if (std::abs(x->value()) > max_diff)
+          max_diff = std::abs(x->value());
+      }
+    }
+    return max_diff;
+  }
+
+  // find largest difference between histograms
+  double diff_variance_bounds(const EECHistBase & other, int hist_i = -1, bool overflows = true) const {
+    std::vector<unsigned> which_hists;
+    if (hist_i == -1)
+      for (unsigned i = 0; i < nhists(); i++)
+        which_hists.push_back(i);
+    else
+      which_hists.push_back(hist_i);
+
+    double max_diff(0);
+    for (unsigned i : which_hists) {
+      auto h(combined_variance_bound(i) + -1*other.combined_variance_bound(i));
+      for (auto && x : bh::indexed(h, get_coverage(overflows))) {
+        if (std::abs(x->value()) > max_diff)
+          max_diff = std::abs(x->value());
+      }
+    }
+    return max_diff;
+  }
+
+  // equality operators
+  bool operator!=(const EECHistBase & rhs) const { return !operator==(rhs); }
+  bool operator==(const EECHistBase & rhs) const {
+    if (!std::is_same<HistTraits, EECHistBase::HistTraits>::value                      ||
+        rank()                              != rhs.rank()                              ||
+        track_covariance()                  != rhs.track_covariance()                  ||
+        variance_bound()                    != rhs.variance_bound()                    ||
+        variance_bound_includes_overflows() != rhs.variance_bound_includes_overflows() ||
+        num_threads()                       != rhs.num_threads()                       ||
+        event_counter()                     != rhs.event_counter()                     ||
+        nhists()                            != rhs.nhists())
+      return false;
+
+    for (unsigned i = 0; i < rank(); i++)
+      if (nbins(i)    != rhs.nbins(i)    ||
+          axis_min(i) != rhs.axis_min(i) ||
+          axis_max(i) != rhs.axis_max(i))
+        return false;
+
+    return true;
   }
 
   // operator to add histograms together
@@ -317,15 +404,15 @@ public:
     for (unsigned hist_i = 0; hist_i < nhists(); hist_i++) {
 
       // add primary hists
-      hists_[0][hist_i] += rhs.combined_hist(hist_i);
+      hists()[hist_i] += rhs.combined_hist(hist_i);
 
       // consider adding covariances
       if (track_covariance())
-        covariance_hists_[0][hist_i] += rhs.combined_covariance(hist_i);
+        covariance_hists()[hist_i] += rhs.combined_covariance(hist_i);
 
       // consider adding variance bound
       if (variance_bound())
-        variance_bound_hists_[0][hist_i] += rhs.combined_variance_bound(hist_i);
+        variance_bound_hists()[hist_i] += rhs.combined_variance_bound(hist_i);
     }
 
     // include events that rhs has seen in overall event counter
@@ -343,15 +430,15 @@ public:
       for (unsigned hist_i = 0; hist_i < nhists(); hist_i++) {
 
         // scale primary histograms
-        hists_[thread][hist_i] *= x;
+        hists(thread)[hist_i] *= x;
 
         // consider scaling covariances
         if (track_covariance())
-          covariance_hists_[thread][hist_i] *= x * x;
+          covariance_hists(thread)[hist_i] *= x * x;
 
         // consider scaling variance bound
         if (variance_bound())
-          variance_bound_hists_[thread][hist_i] *= x * x;
+          variance_bound_hists(thread)[hist_i] *= x * x;
       }
 
     return *this;
@@ -366,9 +453,9 @@ public:
     if (hist_i >= nhists())
       throw std::invalid_argument("invalid histogram index");
 
-    WeightedHist hist(hists_[0][hist_i]);
+    WeightedHist hist(hists()[hist_i]);
     for (int thread = 1; thread < num_threads(); thread++)
-      hist += hists_[thread][hist_i];
+      hist += hists(thread)[hist_i];
 
     return hist;
   }
@@ -380,9 +467,9 @@ public:
     if (!track_covariance())
       throw std::runtime_error("not tracking covariances");
 
-    CovarianceHist covariance_hist(covariance_hists_[0][hist_i]);
+    CovarianceHist covariance_hist(covariance_hists()[hist_i]);
     for (int thread = 1; thread < num_threads(); thread++)
-      covariance_hist += covariance_hists_[thread][hist_i];
+      covariance_hist += covariance_hists(thread)[hist_i];
 
     return covariance_hist;
   }
@@ -394,9 +481,9 @@ public:
     if (!variance_bound())
       throw std::runtime_error("not tracking variance bounds");
 
-    SimpleWeightedHist variance_bound_hist(variance_bound_hists_[0][hist_i]);
+    SimpleWeightedHist variance_bound_hist(variance_bound_hists()[hist_i]);
     for (int thread = 1; thread < num_threads(); thread++)
-      variance_bound_hist += variance_bound_hists_[thread][hist_i];
+      variance_bound_hist += variance_bound_hists(thread)[hist_i];
 
     return variance_bound_hist;
   }
@@ -405,26 +492,49 @@ public:
   // OUTPUT HISTOGRAMS
   ////////////////////
 
+  // hist_level controls amount of output
+  //   0 - no output
+  //   1 - base output, suitable for Python printing
+  //   2 - more output, suitable for printing to file, includes axes but not hists
+  //   3 - all output, includes all hist contents
   std::string hists_as_text(int hist_level = 3, bool overflows = true,
                             int precision = 16, std::ostringstream * os = nullptr) const {
 
-    bool os_null(os == nullptr);
-    if (os_null)
-      os = new std::ostringstream();
+    if (hist_level <= 0) return "";
 
-    hists_[0][0].for_each_axis([=](const auto & a){ output_axis(*os, a, hist_level, precision); });
+    bool os_null(os == nullptr);
+    if (os_null) os = new std::ostringstream();
+    os->precision(precision);
+
+    if (hist_level > 1) *os << "# " << EECHist::hist_name();
+    *os << '\n';
 
     // some global hist information
-    std::string start(hist_level > 1 ? "# " : "  ");
-    if (hist_level > 0)
-      *os << std::boolalpha
-          << start << "track_covariance - " << track_covariance() << '\n'
-          << start << "variance_bound - " << variance_bound() << '\n'
-          << start << "variance_bound_includes_overflows - " << variance_bound_includes_overflows() << '\n';
+    std::string start(hist_level == 1 ? "    " : "# ");
+    *os << std::boolalpha
+        << start << "track_covariance - " << track_covariance() << '\n'
+        << start << "variance_bound - " << variance_bound() << '\n'
+        << start << "variance_bound_includes_overflows - " << variance_bound_includes_overflows() << '\n'
+        << start << "\n";
 
     // loop over hists
     for (unsigned hist_i = 0; hist_i < nhists(); hist_i++)
-      output_hist(*os, hist_i, hist_level, precision, overflows);
+      output_hist(*os, combined_hist(hist_i), hist_level, hist_i, overflows, "hist");
+    if (hist_level < 3) *os << start << "\n";
+
+    // loop over covariance hists
+    if (track_covariance()) {
+      for (unsigned hist_i = 0; hist_i < nhists(); hist_i++)
+        output_hist(*os, combined_covariance(hist_i), hist_level, hist_i, overflows, "covariance_hist");
+      if (hist_level < 3) *os << start << "\n";
+    }
+
+    // loop over variance bound hists
+    if (variance_bound()) {
+      for (unsigned hist_i = 0; hist_i < nhists(); hist_i++)
+        output_hist(*os, combined_variance_bound(hist_i), hist_level, hist_i, overflows, "variance_bound_hist");
+      if (hist_level < 3) *os << start << "\n";
+    }
 
     if (os_null) {
       std::string s(os->str());
@@ -574,12 +684,12 @@ protected:
 
     // create histograms
     for (int thread = 0; thread < num_threads(); thread++) {
-      hists_[thread].resize(nhists, make_hist());
-      per_event_hists_[thread].resize(nhists, make_simple_hist());
+      hists(thread).resize(nhists, make_hist());
+      per_event_hists(thread).resize(nhists, make_simple_hist());
       if (track_covariance())
-        covariance_hists_[thread].resize(nhists, make_covariance_hist());
+        covariance_hists(thread).resize(nhists, make_covariance_hist());
       if (variance_bound())
-        variance_bound_hists_[thread].resize(nhists, make_simple_hist());
+        variance_bound_hists(thread).resize(nhists, make_simple_hist());
     }
   }
 
@@ -604,11 +714,11 @@ protected:
       // track covariances
       if (track_covariance()) {
 
-        CovarianceHist & cov_hist(covariance_hists_[thread][hist_i]);
+        CovarianceHist & cov_hist(covariance_hists(thread)[hist_i]);
         std::array<axis::index_type, 2*rank()> cov_inds;
 
         // iterate over pairs of simple_hist bins
-        auto outer_ind_range(bh::indexed(per_event_hists_[thread][hist_i], bh::coverage::all));
+        auto outer_ind_range(bh::indexed(per_event_hists(thread)[hist_i], bh::coverage::all));
         auto outer_it = outer_ind_range.begin(), end(outer_ind_range.end());
 
         // specialize for 2D covariance
@@ -654,17 +764,17 @@ protected:
       }
 
       // iterator over hist
-      auto h_it(hists_[thread][hist_i].begin());
+      auto h_it(hists(thread)[hist_i].begin());
 
       // we're keeping track of the variance bound
       if (variance_bound()) {
-        const double simple_hist_sum(bh::algorithm::sum(per_event_hists_[thread][hist_i],
+        const double simple_hist_sum(bh::algorithm::sum(per_event_hists(thread)[hist_i],
                                                         get_coverage(variance_bound_includes_overflows_)
                                                         ).value());
 
-        auto eb_it(variance_bound_hists_[thread][hist_i].begin());
-        for (auto sh_it = per_event_hists_[thread][hist_i].begin(),
-                 sh_end = per_event_hists_[thread][hist_i].end();
+        auto eb_it(variance_bound_hists(thread)[hist_i].begin());
+        for (auto sh_it = per_event_hists(thread)[hist_i].begin(),
+                 sh_end = per_event_hists(thread)[hist_i].end();
              sh_it != sh_end;
              ++sh_it, ++h_it, ++eb_it) {
 
@@ -679,8 +789,8 @@ protected:
 
       // not keeping track of variance bound
       else {
-        for (auto sh_it = per_event_hists_[thread][hist_i].begin(),
-                 sh_end = per_event_hists_[thread][hist_i].end();
+        for (auto sh_it = per_event_hists(thread)[hist_i].begin(),
+                 sh_end = per_event_hists(thread)[hist_i].end();
              sh_it != sh_end;
              ++sh_it, ++h_it) {
 
@@ -742,29 +852,6 @@ private:
     return strides;
   }
 
-  void output_hist(std::ostream & os, int hist_i, int hist_level,
-                                      int precision, bool overflows) const {
-    os.precision(precision);
-    if (hist_level > 2) os << "# ";
-    else os << "  ";
-    if (hist_level > 0 && hist_i == 0) {
-      if (hist_i != -1 && hist_level > 2) os << "hist " << hist_i;
-      os << "rank " << hists_[0][hist_i].rank()
-         << " hist, " << hist_size(overflows) << " total bins, "
-         << (overflows ? "including" : "excluding") << " overflows\n";
-    }
-    if (hist_level > 2) {
-      os << "# bin_multi_index : bin_value bin_variance\n";
-      auto hist(combined_hist(hist_i));
-      for (auto && x : bh::indexed(hist, get_coverage(overflows))) {
-        for (axis::index_type index : x.indices())
-          os << index << ' ';
-        os << ": " << x->value() << ' ' << x->variance() << '\n';
-      }
-      os << '\n';
-    }
-  }
-
   #ifdef BOOST_SERIALIZATION_ACCESS_HPP
     friend class boost::serialization::access;
     BOOST_SERIALIZATION_SPLIT_MEMBER()
@@ -804,16 +891,25 @@ private:
 
       // for each hist, load it into thread 0
       for (unsigned hist_i = 0; hist_i < nh; hist_i++) {
-        ar & hists_[0][hist_i];
+        ar & hists()[hist_i];
         if (track_covariance())
-          ar & covariance_hists_[0][hist_i];
+          ar & covariance_hists()[hist_i];
         if (variance_bound())
-          ar & variance_bound_hists_[0][hist_i];
+          ar & variance_bound_hists()[hist_i];
       }
     }
   #endif // EEC_SERIALIZATION
 
 }; // EECHistBase
+
+// this allows histograms to be fully output with the << operator
+#ifndef SWIG_PREPROCESSOR
+  template<class Hist, typename = typename std::enable_if<std::is_base_of<EECHistBase<Hist>, Hist>::value>::type>
+  std::ostream & operator<<(std::ostream & os, const Hist & hist) {
+    hist.hists_as_text(3, true, 16, &os);
+    return os;
+  }
+#endif
 
 } // namespace hist
 END_EEC_NAMESPACE

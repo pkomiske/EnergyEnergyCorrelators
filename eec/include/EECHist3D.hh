@@ -37,14 +37,14 @@ BEGIN_EEC_NAMESPACE
 namespace hist {
 
 // EECHistTraits for EECHist3D
-template<class Transform0, class Transform1, class Transform2>
-struct EECHistTraits<EECHist3D<Transform0, Transform1, Transform2>> {
+template<class Tr0, class Tr1, class Tr2>
+struct EECHistTraits<EECHist3D<Tr0, Tr1, Tr2>> {
 
   static constexpr unsigned rank = 3;
 
-  typedef bh::axis::regular<double, Transform0> Axis0;
-  typedef bh::axis::regular<double, Transform1> Axis1;
-  typedef bh::axis::regular<double, Transform2> Axis2;
+  typedef bh::axis::regular<double, Tr0> Axis0;
+  typedef bh::axis::regular<double, Tr1> Axis1;
+  typedef bh::axis::regular<double, Tr2> Axis2;
 
   typedef std::array<unsigned, rank> NBins;
   typedef std::array<std::array<double, 2>, rank> AxesRange;
@@ -73,14 +73,6 @@ struct EECHistTraits<EECHist3D<Transform0, Transform1, Transform2>> {
   }
 #endif // !SWIG_PREPROCESSOR
 
-  static std::string axes_description() {
-    std::ostringstream oss;
-    oss << name_transform<Transform0>() << ", "
-        << name_transform<Transform1>() << ", "
-        << name_transform<Transform2>();
-    return oss.str();
-  }
-
 };
 
 //-----------------------------------------------------------------------------
@@ -99,6 +91,15 @@ public:
 #endif
 
   virtual ~EECHist3D() = default;
+
+  static std::string hist_name() { return "EECHist3D"; }
+  static std::string axes_description() {
+    std::ostringstream oss;
+    oss << name_transform(Tr0()) << ", "
+        << name_transform(Tr1()) << ", "
+        << name_transform(Tr2());
+    return oss.str();
+  }
 
 private:
 

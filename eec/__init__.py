@@ -38,12 +38,16 @@ __version__ = '1.2.0a0'
 # Note that axis/axes is supported as well as axis_range/axes_range.
 # The "axes" version is for compatibility with EECTriangleOPE and
 # the values there are expected to be a one item list/tuple
-def EECLongestSide(*args, axis='log', **kwargs):
+def EECLongestSide(N, nbins, axis='log', **kwargs):
 
     axis_range = kwargs.pop('axis_range', None)
     axes_range = kwargs.pop('axes_range', None)
     if axis_range is not None and axes_range is not None:
         raise ValueError('`axis_range` and `axes_range` cannot both be given')
+
+    # provide a default axis_range
+    elif axis_range is None and axes_range is None:
+        axis_range = (1e-5, 1)
 
     if axes_range is not None:
         assert len(axes_range) == 1, '`axes_range` must be length 1'
@@ -60,26 +64,40 @@ def EECLongestSide(*args, axis='log', **kwargs):
         assert len(axes) == 1, '`axes` must be length 1'
         axis = axes[0]
 
+    # allow integers for _powers arguments
+    for key in ['weight_powers', 'charge_powers']:
+        if key in kwargs and isinstance(kwargs[key], (int, float)):
+            kwargs[key] = (kwargs[key],)
+
     if axis.lower() == 'log':
-        return EECLongestSideLog(*args, **kwargs)
+        return EECLongestSideLog(N, nbins, **kwargs)
     elif axis.lower() == 'id':
-        return EECLongestSideId(*args, **kwargs)
+        return EECLongestSideId(N, nbins, **kwargs)
     else:
         raise ValueError('axis `{}` not understood'.format(axis))
 
 # this accepts `axes` as a tuple/list of three strings and `axes_range`
 # as a tuple/list of 3 pairs of values
-def EECTriangleOPE(*args, axes=('log', 'log', 'id'), **kwargs):
+def EECTriangleOPE(nbins,
+                   axes=('log', 'log', 'id'),
+                   axes_range=[(1e-5, 1), (1e-5, 1), (0, eec._np.pi/2)],
+                   **kwargs):
 
+    # allow integers for _powers arguments
+    for key in ['weight_powers', 'charge_powers']:
+        if key in kwargs and isinstance(kwargs[key], (int, float)):
+            kwargs[key] = (kwargs[key],)
+
+    kwargs['axes_range'] = axes_range
     axes = tuple(map(lambda x: x.lower(), axes))
     if axes == ('log', 'log', 'id'):
-        return EECTriangleOPELogLogId(*args, **kwargs)
+        return EECTriangleOPELogLogId(nbins, **kwargs)
     elif axes == ('id', 'log', 'id'):
-        return EECTriangleOPEIdLogId(*args, **kwargs)
+        return EECTriangleOPEIdLogId(nbins, **kwargs)
     elif axes == ('log', 'id', 'id'):
-        return EECTriangleOPELogIdId(*args, **kwargs)
+        return EECTriangleOPELogIdId(nbins, **kwargs)
     elif axes == ('id', 'id', 'id'):
-        return EECTriangleOPEIdIdId(*args, **kwargs)
+        return EECTriangleOPEIdIdId(nbins, **kwargs)
     else:
         raise ValueError('axes `{}` not understood'.format(axes))
 

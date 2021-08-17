@@ -65,8 +65,6 @@ struct EECHistTraits<EECHist1D<Transform>> {
   }
 #endif // !SWIG_PREPROCESSOR
 
-  static std::string axes_description() { return name_transform<Transform>(); }
-
 };
 
 //-----------------------------------------------------------------------------
@@ -85,6 +83,9 @@ public:
 #endif
 
   virtual ~EECHist1D() = default;
+
+  static std::string hist_name() { return "EECHist1D"; }
+  static std::string axes_description() { return name_transform(Transform()); }
 
 private:
 

@@ -575,6 +575,11 @@ class EECHistBase1DId(object):
     event_counter = _swig_new_instance_method(_eec.EECHistBase1DId_event_counter)
     reduce = _swig_new_instance_method(_eec.EECHistBase1DId_reduce)
     sum = _swig_new_instance_method(_eec.EECHistBase1DId_sum)
+    diff_hists = _swig_new_instance_method(_eec.EECHistBase1DId_diff_hists)
+    diff_covariances = _swig_new_instance_method(_eec.EECHistBase1DId_diff_covariances)
+    diff_variance_bounds = _swig_new_instance_method(_eec.EECHistBase1DId_diff_variance_bounds)
+    __ne__ = _swig_new_instance_method(_eec.EECHistBase1DId___ne__)
+    __eq__ = _swig_new_instance_method(_eec.EECHistBase1DId___eq__)
     hists_as_text = _swig_new_instance_method(_eec.EECHistBase1DId_hists_as_text)
     bin_centers = _swig_new_instance_method(_eec.EECHistBase1DId_bin_centers)
     bin_edges = _swig_new_instance_method(_eec.EECHistBase1DId_bin_edges)
@@ -626,6 +631,11 @@ class EECHistBase1DLog(object):
     event_counter = _swig_new_instance_method(_eec.EECHistBase1DLog_event_counter)
     reduce = _swig_new_instance_method(_eec.EECHistBase1DLog_reduce)
     sum = _swig_new_instance_method(_eec.EECHistBase1DLog_sum)
+    diff_hists = _swig_new_instance_method(_eec.EECHistBase1DLog_diff_hists)
+    diff_covariances = _swig_new_instance_method(_eec.EECHistBase1DLog_diff_covariances)
+    diff_variance_bounds = _swig_new_instance_method(_eec.EECHistBase1DLog_diff_variance_bounds)
+    __ne__ = _swig_new_instance_method(_eec.EECHistBase1DLog___ne__)
+    __eq__ = _swig_new_instance_method(_eec.EECHistBase1DLog___eq__)
     hists_as_text = _swig_new_instance_method(_eec.EECHistBase1DLog_hists_as_text)
     bin_centers = _swig_new_instance_method(_eec.EECHistBase1DLog_bin_centers)
     bin_edges = _swig_new_instance_method(_eec.EECHistBase1DLog_bin_edges)
@@ -676,6 +686,11 @@ class EECHistBaseIdIdId(object):
     event_counter = _swig_new_instance_method(_eec.EECHistBaseIdIdId_event_counter)
     reduce = _swig_new_instance_method(_eec.EECHistBaseIdIdId_reduce)
     sum = _swig_new_instance_method(_eec.EECHistBaseIdIdId_sum)
+    diff_hists = _swig_new_instance_method(_eec.EECHistBaseIdIdId_diff_hists)
+    diff_covariances = _swig_new_instance_method(_eec.EECHistBaseIdIdId_diff_covariances)
+    diff_variance_bounds = _swig_new_instance_method(_eec.EECHistBaseIdIdId_diff_variance_bounds)
+    __ne__ = _swig_new_instance_method(_eec.EECHistBaseIdIdId___ne__)
+    __eq__ = _swig_new_instance_method(_eec.EECHistBaseIdIdId___eq__)
     hists_as_text = _swig_new_instance_method(_eec.EECHistBaseIdIdId_hists_as_text)
     bin_centers = _swig_new_instance_method(_eec.EECHistBaseIdIdId_bin_centers)
     bin_edges = _swig_new_instance_method(_eec.EECHistBaseIdIdId_bin_edges)
@@ -726,6 +741,11 @@ class EECHistBaseLogIdId(object):
     event_counter = _swig_new_instance_method(_eec.EECHistBaseLogIdId_event_counter)
     reduce = _swig_new_instance_method(_eec.EECHistBaseLogIdId_reduce)
     sum = _swig_new_instance_method(_eec.EECHistBaseLogIdId_sum)
+    diff_hists = _swig_new_instance_method(_eec.EECHistBaseLogIdId_diff_hists)
+    diff_covariances = _swig_new_instance_method(_eec.EECHistBaseLogIdId_diff_covariances)
+    diff_variance_bounds = _swig_new_instance_method(_eec.EECHistBaseLogIdId_diff_variance_bounds)
+    __ne__ = _swig_new_instance_method(_eec.EECHistBaseLogIdId___ne__)
+    __eq__ = _swig_new_instance_method(_eec.EECHistBaseLogIdId___eq__)
     hists_as_text = _swig_new_instance_method(_eec.EECHistBaseLogIdId_hists_as_text)
     bin_centers = _swig_new_instance_method(_eec.EECHistBaseLogIdId_bin_centers)
     bin_edges = _swig_new_instance_method(_eec.EECHistBaseLogIdId_bin_edges)
@@ -776,6 +796,11 @@ class EECHistBaseIdLogId(object):
     event_counter = _swig_new_instance_method(_eec.EECHistBaseIdLogId_event_counter)
     reduce = _swig_new_instance_method(_eec.EECHistBaseIdLogId_reduce)
     sum = _swig_new_instance_method(_eec.EECHistBaseIdLogId_sum)
+    diff_hists = _swig_new_instance_method(_eec.EECHistBaseIdLogId_diff_hists)
+    diff_covariances = _swig_new_instance_method(_eec.EECHistBaseIdLogId_diff_covariances)
+    diff_variance_bounds = _swig_new_instance_method(_eec.EECHistBaseIdLogId_diff_variance_bounds)
+    __ne__ = _swig_new_instance_method(_eec.EECHistBaseIdLogId___ne__)
+    __eq__ = _swig_new_instance_method(_eec.EECHistBaseIdLogId___eq__)
     hists_as_text = _swig_new_instance_method(_eec.EECHistBaseIdLogId_hists_as_text)
     bin_centers = _swig_new_instance_method(_eec.EECHistBaseIdLogId_bin_centers)
     bin_edges = _swig_new_instance_method(_eec.EECHistBaseIdLogId_bin_edges)
@@ -826,6 +851,11 @@ class EECHistBaseLogLogId(object):
     event_counter = _swig_new_instance_method(_eec.EECHistBaseLogLogId_event_counter)
     reduce = _swig_new_instance_method(_eec.EECHistBaseLogLogId_reduce)
     sum = _swig_new_instance_method(_eec.EECHistBaseLogLogId_sum)
+    diff_hists = _swig_new_instance_method(_eec.EECHistBaseLogLogId_diff_hists)
+    diff_covariances = _swig_new_instance_method(_eec.EECHistBaseLogLogId_diff_covariances)
+    diff_variance_bounds = _swig_new_instance_method(_eec.EECHistBaseLogLogId_diff_variance_bounds)
+    __ne__ = _swig_new_instance_method(_eec.EECHistBaseLogLogId___ne__)
+    __eq__ = _swig_new_instance_method(_eec.EECHistBaseLogLogId___eq__)
     hists_as_text = _swig_new_instance_method(_eec.EECHistBaseLogLogId_hists_as_text)
     bin_centers = _swig_new_instance_method(_eec.EECHistBaseLogLogId_bin_centers)
     bin_edges = _swig_new_instance_method(_eec.EECHistBaseLogLogId_bin_edges)
@@ -852,12 +882,16 @@ class EECHist1DId(EECHistBase1DId):
         raise AttributeError("No constructor defined")
     __repr__ = _swig_repr
     __swig_destroy__ = _eec.delete_EECHist1DId
+    hist_name = _swig_new_static_method(_eec.EECHist1DId_hist_name)
+    axes_description = _swig_new_static_method(_eec.EECHist1DId_axes_description)
     get_hist_vars = _swig_new_instance_method(_eec.EECHist1DId_get_hist_vars)
     get_covariance = _swig_new_instance_method(_eec.EECHist1DId_get_covariance)
     get_variance_bound = _swig_new_instance_method(_eec.EECHist1DId_get_variance_bound)
 
 # Register EECHist1DId in _eec:
 _eec.EECHist1DId_swigregister(EECHist1DId)
+EECHist1DId_hist_name = _eec.EECHist1DId_hist_name
+EECHist1DId_axes_description = _eec.EECHist1DId_axes_description
 
 class EECHist1DLog(EECHistBase1DLog):
     r"""Proxy of C++ fastjet::contrib::eec::hist::EECHist1D< axis::log > class."""
@@ -868,12 +902,16 @@ class EECHist1DLog(EECHistBase1DLog):
         raise AttributeError("No constructor defined")
     __repr__ = _swig_repr
     __swig_destroy__ = _eec.delete_EECHist1DLog
+    hist_name = _swig_new_static_method(_eec.EECHist1DLog_hist_name)
+    axes_description = _swig_new_static_method(_eec.EECHist1DLog_axes_description)
     get_hist_vars = _swig_new_instance_method(_eec.EECHist1DLog_get_hist_vars)
     get_covariance = _swig_new_instance_method(_eec.EECHist1DLog_get_covariance)
     get_variance_bound = _swig_new_instance_method(_eec.EECHist1DLog_get_variance_bound)
 
 # Register EECHist1DLog in _eec:
 _eec.EECHist1DLog_swigregister(EECHist1DLog)
+EECHist1DLog_hist_name = _eec.EECHist1DLog_hist_name
+EECHist1DLog_axes_description = _eec.EECHist1DLog_axes_description
 
 class EECHist3DIdIdId(EECHistBaseIdIdId):
     r"""Proxy of C++ fastjet::contrib::eec::hist::EECHist3D< axis::id,axis::id,axis::id > class."""
@@ -884,12 +922,16 @@ class EECHist3DIdIdId(EECHistBaseIdIdId):
         raise AttributeError("No constructor defined")
     __repr__ = _swig_repr
     __swig_destroy__ = _eec.delete_EECHist3DIdIdId
+    hist_name = _swig_new_static_method(_eec.EECHist3DIdIdId_hist_name)
+    axes_description = _swig_new_static_method(_eec.EECHist3DIdIdId_axes_description)
     get_hist_vars = _swig_new_instance_method(_eec.EECHist3DIdIdId_get_hist_vars)
     get_covariance = _swig_new_instance_method(_eec.EECHist3DIdIdId_get_covariance)
     get_variance_bound = _swig_new_instance_method(_eec.EECHist3DIdIdId_get_variance_bound)
 
 # Register EECHist3DIdIdId in _eec:
 _eec.EECHist3DIdIdId_swigregister(EECHist3DIdIdId)
+EECHist3DIdIdId_hist_name = _eec.EECHist3DIdIdId_hist_name
+EECHist3DIdIdId_axes_description = _eec.EECHist3DIdIdId_axes_description
 
 class EECHist3DLogIdId(EECHistBaseLogIdId):
     r"""Proxy of C++ fastjet::contrib::eec::hist::EECHist3D< axis::log,axis::id,axis::id > class."""
@@ -900,12 +942,16 @@ class EECHist3DLogIdId(EECHistBaseLogIdId):
         raise AttributeError("No constructor defined")
     __repr__ = _swig_repr
     __swig_destroy__ = _eec.delete_EECHist3DLogIdId
+    hist_name = _swig_new_static_method(_eec.EECHist3DLogIdId_hist_name)
+    axes_description = _swig_new_static_method(_eec.EECHist3DLogIdId_axes_description)
     get_hist_vars = _swig_new_instance_method(_eec.EECHist3DLogIdId_get_hist_vars)
     get_covariance = _swig_new_instance_method(_eec.EECHist3DLogIdId_get_covariance)
     get_variance_bound = _swig_new_instance_method(_eec.EECHist3DLogIdId_get_variance_bound)
 
 # Register EECHist3DLogIdId in _eec:
 _eec.EECHist3DLogIdId_swigregister(EECHist3DLogIdId)
+EECHist3DLogIdId_hist_name = _eec.EECHist3DLogIdId_hist_name
+EECHist3DLogIdId_axes_description = _eec.EECHist3DLogIdId_axes_description
 
 class EECHist3DIdLogId(EECHistBaseIdLogId):
     r"""Proxy of C++ fastjet::contrib::eec::hist::EECHist3D< axis::id,axis::log,axis::id > class."""
@@ -916,12 +962,16 @@ class EECHist3DIdLogId(EECHistBaseIdLogId):
         raise AttributeError("No constructor defined")
     __repr__ = _swig_repr
     __swig_destroy__ = _eec.delete_EECHist3DIdLogId
+    hist_name = _swig_new_static_method(_eec.EECHist3DIdLogId_hist_name)
+    axes_description = _swig_new_static_method(_eec.EECHist3DIdLogId_axes_description)
     get_hist_vars = _swig_new_instance_method(_eec.EECHist3DIdLogId_get_hist_vars)
     get_covariance = _swig_new_instance_method(_eec.EECHist3DIdLogId_get_covariance)
     get_variance_bound = _swig_new_instance_method(_eec.EECHist3DIdLogId_get_variance_bound)
 
 # Register EECHist3DIdLogId in _eec:
 _eec.EECHist3DIdLogId_swigregister(EECHist3DIdLogId)
+EECHist3DIdLogId_hist_name = _eec.EECHist3DIdLogId_hist_name
+EECHist3DIdLogId_axes_description = _eec.EECHist3DIdLogId_axes_description
 
 class EECHist3DLogLogId(EECHistBaseLogLogId):
     r"""Proxy of C++ fastjet::contrib::eec::hist::EECHist3D< axis::log,axis::log,axis::id > class."""
@@ -932,12 +982,16 @@ class EECHist3DLogLogId(EECHistBaseLogLogId):
         raise AttributeError("No constructor defined")
     __repr__ = _swig_repr
     __swig_destroy__ = _eec.delete_EECHist3DLogLogId
+    hist_name = _swig_new_static_method(_eec.EECHist3DLogLogId_hist_name)
+    axes_description = _swig_new_static_method(_eec.EECHist3DLogLogId_axes_description)
     get_hist_vars = _swig_new_instance_method(_eec.EECHist3DLogLogId_get_hist_vars)
     get_covariance = _swig_new_instance_method(_eec.EECHist3DLogLogId_get_covariance)
     get_variance_bound = _swig_new_instance_method(_eec.EECHist3DLogLogId_get_variance_bound)
 
 # Register EECHist3DLogLogId in _eec:
 _eec.EECHist3DLogLogId_swigregister(EECHist3DLogLogId)
+EECHist3DLogLogId_hist_name = _eec.EECHist3DLogLogId_hist_name
+EECHist3DLogLogId_axes_description = _eec.EECHist3DLogLogId_axes_description
 
 class EECEvent(object):
     r"""Proxy of C++ fastjet::contrib::eec::EECEvent class."""
