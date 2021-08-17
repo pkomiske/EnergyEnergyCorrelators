@@ -237,6 +237,8 @@ public:
   ///////////////////
 
   void set_weight_powers(const std::vector<double> & wps, bool _leave_valid = true) {
+    ensure_no_events();
+
     if (wps.size() == 1)
       orig_weight_powers_ = std::vector<double>(N(), wps[0]);
     else if (wps.size() != N())
@@ -248,6 +250,8 @@ public:
   }
 
   void set_charge_powers(const std::vector<unsigned> & cps, bool _leave_valid = true) {
+    ensure_no_events();
+
     if (cps.size() == 1)
       orig_charge_powers_ = std::vector<unsigned>(N(), cps[0]);
     else if (cps.size() != N())
@@ -258,8 +262,8 @@ public:
     if (_leave_valid) init_all();
   }
 
-  void set_norm(bool n) { config_.norm = n; }
-  void set_check_degen(bool check) { config_.check_degen = check; }
+  void set_norm(bool n) { config_.norm = n; ensure_no_events(); }
+  void set_check_degen(bool check) { config_.check_degen = check; ensure_no_events(); }
   void set_average_verts(bool averts) { config_.average_verts = averts; init_subclass(); }
   
   void set_num_threads(int nthreads) { config_.num_threads = determine_num_threads(nthreads); }
@@ -267,18 +271,22 @@ public:
   void set_print_every(long print_every) { config_.print_every = print_every; }
 
   void set_R(double R) {
+    ensure_no_events();
+
     if (R <= 0)
       throw std::invalid_argument("R must be positive");
     config_.R = R;
   }
   void set_beta(double beta) {
+    ensure_no_events();
+
     if (beta <= 0)
       throw std::invalid_argument("beta must be positive");
     config_.beta = beta;
   }
 
-  void set_particle_weight(ParticleWeight pw) { config_.particle_weight = pw; }
-  void set_pairwise_distance(PairwiseDistance pd) { config_.pairwise_distance = pd; }
+  void set_particle_weight(ParticleWeight pw) { config_.particle_weight = pw; ensure_no_events(); }
+  void set_pairwise_distance(PairwiseDistance pd) { config_.pairwise_distance = pd; ensure_no_events(); }
 
   void set_print_stream(std::ostream & os) { print_stream_ = &os; }
 
@@ -341,12 +349,18 @@ protected:
   virtual void compute_eec_internal(const EECEvent & event, int thread) = 0;
 
   // subclass initialization
-  virtual void init_subclass() = 0;
+  virtual void init_subclass(bool = false) = 0;
 
   // ensures EECBase and the subclass are initialized consistently
   void init_all() {
     init_base();
     init_subclass();
+  }
+
+  // check that we haven't actually computed any events yet
+  void ensure_no_events() const {
+    if (total_weight() != 0)
+      throw std::runtime_error("cannot alter settings after computing on some events");
   }
 
   // description of the EEC computation
@@ -363,9 +377,9 @@ protected:
         << "\n"
         << "  nfeatures (arrays only) - " << nfeatures() << '\n'
         << "  particle_weight (PseudoJets only) - "
-          << particle_weight_name(particle_weight()) << '\n'
+              << particle_weight_name(particle_weight()) << '\n'
         << "  pairwise_distance (PseudoJets only) - "
-          << pairwise_distance_name(pairwise_distance()) << '\n'
+              << pairwise_distance_name(pairwise_distance()) << '\n'
         << "\n"
         << "  check_degen - " << check_degen() << '\n'
         << "  average_verts - " << average_verts() << '\n'
@@ -497,6 +511,8 @@ private:
   // (re)initializes EECBase
   // sets weight_powers, charge_powers, compname, nsym, nfeatures, use_charges
   void init_base() {
+
+    ensure_no_events();
 
     // begin figuring out weight_powers and charge_powers to be used in config
     config_.weight_powers = orig_weight_powers_;

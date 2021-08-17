@@ -11,7 +11,7 @@ env:
   CIBW_MANYLINUX_X86_64_IMAGE: ghcr.io/pkomiske/eec_manylinux2010_x86_64:latest
   CIBW_MANYLINUX_I686_IMAGE: ghcr.io/pkomiske/eec_manylinux2010_i686:latest
   CIBW_SKIP: pp* cp310*
-  CIBW_TEST_COMMAND: pytest -m pickle {package}/eec
+  CIBW_TEST_COMMAND: pytest {package}/eec
   CIBW_TEST_REQUIRES: pytest numpy scipy energyflow
   CIBW_TEST_SKIP: "*i686 *win32"
   GHCR_TOKEN: ${{ secrets.GHCR_TOKEN }}
@@ -68,9 +68,6 @@ jobs:
         uses: actions/setup-python@v2
         with:
           python-version: '3.8'
-      - name: Remove spurious boost
-        shell: bash
-        run: rm -rf EventGeometry/Wasserstein/boost
       - name: Build wheels and upload to PyPI
         shell: bash
         run: ./scripts/build-wheels-and-upload.sh

@@ -712,7 +712,11 @@ private:
   int num_threads_;
   bool track_covariance_, variance_bound_, variance_bound_includes_overflows_;
 
-  void init(unsigned nhists) {
+  void init(unsigned nhists, bool events_allowed = false) {
+    event_counters_.resize(num_threads(), 0);
+    if (!events_allowed && event_counter() != 0)
+      throw std::runtime_error("cannot alter hist settings after computing on some events");
+
     hists_.clear();
     per_event_hists_.clear();
     covariance_hists_.clear();
@@ -724,8 +728,6 @@ private:
     if (variance_bound()) variance_bound_hists_.resize(num_threads());
 
     duplicate_histograms(nhists);
-
-    event_counters_.resize(num_threads(), 0);
   }
 
   template<unsigned N>
@@ -798,7 +800,7 @@ private:
         ar & nbins_ & axes_range_;
 
       // initialize with a specific number of histograms
-      init(nh);
+      init(nh, true);
 
       // for each hist, load it into thread 0
       for (unsigned hist_i = 0; hist_i < nh; hist_i++) {

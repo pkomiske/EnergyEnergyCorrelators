@@ -205,7 +205,10 @@ private:
   void (EECTriangleOPE::*compute_eec_func_ptr_)(const EECEvent &, int);
 
   // provides initialization of this subclass from configuration
-  void init_subclass() {
+  void init_subclass(bool events_allowed = false) {
+    if (!events_allowed)
+      this->ensure_no_events();
+
     switch (nsym()) {
       case 3:
         compute_eec_func_ptr_ = &EECTriangleOPE::eeec_ijk_sym;
@@ -447,7 +450,7 @@ private:
       ar & boost::serialization::base_object<EECBase>(*this)
          & boost::serialization::base_object<EECHist3D>(*this);
 
-      init_subclass();
+      init_subclass(true);
     }
   #endif
 
