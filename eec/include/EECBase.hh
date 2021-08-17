@@ -597,7 +597,7 @@ private:
   template<class Archive>
   void serialize(Archive & ar, const unsigned int version) {
 
-    std::cout << "EECBase::serialize, version " << version << std::endl;
+    //std::cout << "EECBase::serialize, version " << version << std::endl;
 
     if (version < 3)
       ar & orig_weight_powers_ & config_.weight_powers
@@ -608,23 +608,23 @@ private:
     else
       ar & config_ & orig_weight_powers_ & orig_charge_powers_ & nsym_;
 
-    std::cout << "EECBase::serialize, point 1" << std::endl;
+    //std::cout << "EECBase::serialize, point 1" << std::endl;
 
     if (version > 0)
       ar & total_weight_;
 
-    std::cout << "EECBase::serialize, point 2" << std::endl;
+    //std::cout << "EECBase::serialize, point 2" << std::endl;
 
     if (version > 1)
       ar & compname_;
 
-    std::cout << "EECBase::serialize, point 3" << std::endl;
+    //std::cout << "EECBase::serialize, point 3" << std::endl;
 
     // reset num threads in case maximum number is different on new machine
     set_num_threads(num_threads());
     set_print_stream(std::cout);
 
-    std::cout << "EECBase::serialize, done" << std::endl;
+    //std::cout << "EECBase::serialize, done" << std::endl;
   }
 
 }; // EECBase

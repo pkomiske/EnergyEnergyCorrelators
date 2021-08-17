@@ -110,14 +110,14 @@ private:
   #ifdef EEC_SERIALIZATION
     template<class Archive>
     void save(Archive & ar, const unsigned int version) const {
-      std::cout << "EECHist3D::save, version " << version << std::endl;
+      //std::cout << "EECHist3D::save, version " << version << std::endl;
       ar & boost::serialization::base_object<EECHistBase<EECHist3D<Tr0, Tr1, Tr2>>>(*this);
-      std::cout << "EECHist3D::save, done" << std::endl;
+      //std::cout << "EECHist3D::save, done" << std::endl;
     }
 
     template<class Archive>
     void load(Archive & ar, const unsigned int version) {
-      std::cout << "EECHist3D::load, version " << version << std::endl;
+      //std::cout << "EECHist3D::load, version " << version << std::endl;
       if (version == 0) {
         std::array<double, 3> axis_mins, axis_maxs;
         ar & this->nbins_ & axis_mins & axis_maxs;
@@ -126,7 +126,7 @@ private:
       }
 
       ar & boost::serialization::base_object<EECHistBase<EECHist3D<Tr0, Tr1, Tr2>>>(*this);
-      std::cout << "EECHist3D::load, done" << std::endl;
+      //std::cout << "EECHist3D::load, done" << std::endl;
     }
   #endif // EEC_SERIALIZATION
 
@@ -141,15 +141,14 @@ using EECHist3DLogLogId = EECHist3D<axis::log, axis::log, axis::id>;
 } // namespace hist
 END_EEC_NAMESPACE
 
+#define EEC_HIST3D_SERIALIZATION(T) \
+  
+
 #if !defined(SWIG_PREPROCESSOR) && defined(EEC_SERIALIZATION)
-  BOOST_CLASS_VERSION(EEC_NAMESPACE::hist::EECHist3DIdIdId, 1)
-  BOOST_CLASS_VERSION(EEC_NAMESPACE::hist::EECHist3DLogIdId, 1)
-  BOOST_CLASS_VERSION(EEC_NAMESPACE::hist::EECHist3DIdLogId, 1)
-  BOOST_CLASS_VERSION(EEC_NAMESPACE::hist::EECHist3DLogLogId, 1)
-  EEC_HISTBASE_SERIALIZATION(EEC_NAMESPACE::hist::EECHist3DIdIdId)
-  EEC_HISTBASE_SERIALIZATION(EEC_NAMESPACE::hist::EECHist3DLogIdId)
-  EEC_HISTBASE_SERIALIZATION(EEC_NAMESPACE::hist::EECHist3DIdLogId)
-  EEC_HISTBASE_SERIALIZATION(EEC_NAMESPACE::hist::EECHist3DLogLogId)
+  EEC_HIST_SERIALIZATION(EECHist3DIdIdId, 1)
+  EEC_HIST_SERIALIZATION(EECHist3DLogIdId, 1)
+  EEC_HIST_SERIALIZATION(EECHist3DIdLogId, 1)
+  EEC_HIST_SERIALIZATION(EECHist3DLogLogId, 1)
 #endif
 
 #endif // EEC_HIST3D_HH

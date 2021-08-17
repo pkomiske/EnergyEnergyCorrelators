@@ -34,7 +34,6 @@
 #include <algorithm>
 #include <array>
 #include <cstddef>
-#include <iostream>
 #include <sstream>
 #include <string>
 #include <stdexcept>
@@ -45,13 +44,16 @@
 // this includes "boost/histogram.hpp"
 #include "EECHistUtils.hh"
 
-#define EECHISTBASE_VERSION 1
-#define EEC_HISTBASE_SERIALIZATION(T) \
+#define EEC_HIST_SERIALIZATION(T, version) \
   BOOST_SERIALIZATION_ASSUME_ABSTRACT(EEC_NAMESPACE::hist::EECHistBase<T>) \
-  BOOST_CLASS_VERSION(EEC_NAMESPACE::hist::EECHistBase<T>, EECHISTBASE_VERSION)
+  BOOST_SERIALIZATION_ASSUME_ABSTRACT(EEC_NAMESPACE::hist::T) \
+  BOOST_CLASS_VERSION(EEC_NAMESPACE::hist::EECHistBase<EEC_NAMESPACE::hist::T>, 1) \
+  BOOST_CLASS_VERSION(EEC_NAMESPACE::hist::T, version)
 
 BEGIN_EEC_NAMESPACE
 namespace hist {
+
+const std::string EEC_BOOST_VERSION = BOOST_LIB_VERSION;
 
 //------------------------------------------------------------------------------
 // EECHistTraits - helps with histogram types
@@ -789,7 +791,7 @@ private:
 
   template<class Archive>
   void load(Archive & ar, const unsigned int version) {
-    std::cout << "EECHistBase::load, version " << version << std::endl;
+    //std::cout << "EECHistBase::load, version " << version << std::endl;
     std::size_t nh;
     ar & num_threads_ & nh & event_counters_
        & track_covariance_
@@ -810,7 +812,7 @@ private:
         ar & variance_bound_hists_[0][hist_i];
     }
 
-    std::cout << "EECHistBase::load, done" << std::endl;
+    //std::cout << "EECHistBase::load, done" << std::endl;
   }
 
 }; // EECHistBase

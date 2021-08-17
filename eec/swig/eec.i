@@ -255,10 +255,10 @@ namespace EEC_NAMESPACE {
       %pythoncode {
         def get_hist_errs(self, hist_i=0, overflows=True):
             hist, vars = self.get_hist_vars(hist_i, overflows)
-            return hist, np.sqrt(vars)
+            return hist, _np.sqrt(vars)
 
         def get_error_bound(self, hist_i=0, overflows=True):
-            return np.sqrt(self.get_variance_bound(hist_i, overflows))
+            return _np.sqrt(self.get_variance_bound(hist_i, overflows))
       }
     }
 
@@ -407,15 +407,15 @@ namespace EEC_NAMESPACE {
               eec_event = EECEvent(self.config(), event_weight, event, charges)
 
           elif dists is None:
-              event = np.asarray(np.atleast_2d(event)[:,:self.nfeatures()], dtype=np.double, order='C')
+              event = _np.asarray(_np.atleast_2d(event)[:,:self.nfeatures()], dtype=_np.double, order='C')
 
               eec_event = EECEvent(self.use_charges(), event_weight, event)
               eec_event._numpy_arrays = (event,)
 
           else:
-              raw_weights = np.asarray(event, dtype=np.double, order='C')
-              charges = np.asarray(charges, dtype=np.double, order='C')
-              dists = np.asarray(dists, dtype=np.double, order='C')
+              raw_weights = _np.asarray(event, dtype=_np.double, order='C')
+              charges = _np.asarray(charges, dtype=_np.double, order='C')
+              dists = _np.asarray(dists, dtype=_np.double, order='C')
 
               eec_event = EECEvent(self.use_charges(), event_weight, raw_weights, charges, dists)
               eec_event._numpy_arrays = (raw_weights, dists, charges)
@@ -429,7 +429,7 @@ namespace EEC_NAMESPACE {
       def __call__(self, events, event_weights=None, charges=None, dists=None):
 
           if event_weights is None:
-              event_weights = np.ones(len(events), order='C', dtype=np.double)
+              event_weights = _np.ones(len(events), order='C', dtype=_np.double)
           elif len(event_weights) != len(events):
               raise ValueError('`events` and `event_weights` have different lengths')
 
@@ -466,7 +466,7 @@ namespace EEC_NAMESPACE {
     CPP_EECCOMP_FUNCTIONS(EECTriangleOPE)
     ADD_REPR_FROM_DECODED_DESCRIPTION
     %pythoncode %{
-      _default_args = ((1, 1, 1), ((1e-5, 1), (1e-5, 1), (0, np.pi/2)))
+      _default_args = ((1, 1, 1), ((1e-5, 1), (1e-5, 1), (0, _np.pi/2)))
     %}
   }
 

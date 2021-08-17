@@ -36,7 +36,7 @@
 #include <vector>
 
 // boost histogram
-#include "boost/histogram.hpp"
+#include <boost/histogram.hpp>
 
 #include "EECUtils.hh"
 

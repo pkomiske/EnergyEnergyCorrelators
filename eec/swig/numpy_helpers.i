@@ -32,7 +32,7 @@ import_array();
 %}
 
 %pythoncode %{
-import numpy as np
+import numpy as _np
 %}
 
 %define %additional_numpy_typemaps(DATA_TYPE, DATA_TYPECODE, DIM_TYPE)

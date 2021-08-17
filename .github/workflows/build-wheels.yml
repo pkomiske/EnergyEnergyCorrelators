@@ -7,11 +7,11 @@ on:
 
 env:
   PYPI: 0
-  PYPITEST: 1
+  PYPITEST: 0
   CIBW_MANYLINUX_X86_64_IMAGE: ghcr.io/pkomiske/eec_manylinux2010_x86_64:latest
   CIBW_MANYLINUX_I686_IMAGE: ghcr.io/pkomiske/eec_manylinux2010_i686:latest
   CIBW_SKIP: pp* cp310*
-  CIBW_TEST_COMMAND: pytest {package}
+  CIBW_TEST_COMMAND: pytest -m pickle {package}
   CIBW_TEST_REQUIRES: pytest numpy scipy energyflow
   CIBW_TEST_SKIP: "*i686 *win32"
   GHCR_TOKEN: ${{ secrets.GHCR_TOKEN }}

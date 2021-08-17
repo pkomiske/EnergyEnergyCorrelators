@@ -105,7 +105,7 @@ import pyfjcore
 from pyfjcore import FastJetError
 
 
-import numpy as np
+import numpy as _np
 
 class arrayDouble2(object):
     r"""Proxy of C++ std::array< double,2 > class."""
@@ -542,8 +542,6 @@ class vectorReduceCommand(object):
 # Register vectorReduceCommand in _eec:
 _eec.vectorReduceCommand_swigregister(vectorReduceCommand)
 
-EECHISTBASE_VERSION = _eec.EECHISTBASE_VERSION
-
 class EECHistBase1DId(object):
     r"""Proxy of C++ fastjet::contrib::eec::hist::EECHistBase< fastjet::contrib::eec::hist::EECHist1D< axis::id > > class."""
 
@@ -584,14 +582,15 @@ class EECHistBase1DId(object):
 
     def get_hist_errs(self, hist_i=0, overflows=True):
         hist, vars = self.get_hist_vars(hist_i, overflows)
-        return hist, np.sqrt(vars)
+        return hist, _np.sqrt(vars)
 
     def get_error_bound(self, hist_i=0, overflows=True):
-        return np.sqrt(self.get_variance_bound(hist_i, overflows))
+        return _np.sqrt(self.get_variance_bound(hist_i, overflows))
 
 
 # Register EECHistBase1DId in _eec:
 _eec.EECHistBase1DId_swigregister(EECHistBase1DId)
+EEC_BOOST_VERSION = cvar.EEC_BOOST_VERSION
 EECHistBase1DId_rank = _eec.EECHistBase1DId_rank
 
 class EECHistBase1DLog(object):
@@ -634,10 +633,10 @@ class EECHistBase1DLog(object):
 
     def get_hist_errs(self, hist_i=0, overflows=True):
         hist, vars = self.get_hist_vars(hist_i, overflows)
-        return hist, np.sqrt(vars)
+        return hist, _np.sqrt(vars)
 
     def get_error_bound(self, hist_i=0, overflows=True):
-        return np.sqrt(self.get_variance_bound(hist_i, overflows))
+        return _np.sqrt(self.get_variance_bound(hist_i, overflows))
 
 
 # Register EECHistBase1DLog in _eec:
@@ -684,10 +683,10 @@ class EECHistBaseIdIdId(object):
 
     def get_hist_errs(self, hist_i=0, overflows=True):
         hist, vars = self.get_hist_vars(hist_i, overflows)
-        return hist, np.sqrt(vars)
+        return hist, _np.sqrt(vars)
 
     def get_error_bound(self, hist_i=0, overflows=True):
-        return np.sqrt(self.get_variance_bound(hist_i, overflows))
+        return _np.sqrt(self.get_variance_bound(hist_i, overflows))
 
 
 # Register EECHistBaseIdIdId in _eec:
@@ -734,10 +733,10 @@ class EECHistBaseLogIdId(object):
 
     def get_hist_errs(self, hist_i=0, overflows=True):
         hist, vars = self.get_hist_vars(hist_i, overflows)
-        return hist, np.sqrt(vars)
+        return hist, _np.sqrt(vars)
 
     def get_error_bound(self, hist_i=0, overflows=True):
-        return np.sqrt(self.get_variance_bound(hist_i, overflows))
+        return _np.sqrt(self.get_variance_bound(hist_i, overflows))
 
 
 # Register EECHistBaseLogIdId in _eec:
@@ -784,10 +783,10 @@ class EECHistBaseIdLogId(object):
 
     def get_hist_errs(self, hist_i=0, overflows=True):
         hist, vars = self.get_hist_vars(hist_i, overflows)
-        return hist, np.sqrt(vars)
+        return hist, _np.sqrt(vars)
 
     def get_error_bound(self, hist_i=0, overflows=True):
-        return np.sqrt(self.get_variance_bound(hist_i, overflows))
+        return _np.sqrt(self.get_variance_bound(hist_i, overflows))
 
 
 # Register EECHistBaseIdLogId in _eec:
@@ -834,10 +833,10 @@ class EECHistBaseLogLogId(object):
 
     def get_hist_errs(self, hist_i=0, overflows=True):
         hist, vars = self.get_hist_vars(hist_i, overflows)
-        return hist, np.sqrt(vars)
+        return hist, _np.sqrt(vars)
 
     def get_error_bound(self, hist_i=0, overflows=True):
-        return np.sqrt(self.get_variance_bound(hist_i, overflows))
+        return _np.sqrt(self.get_variance_bound(hist_i, overflows))
 
 
 # Register EECHistBaseLogLogId in _eec:
@@ -1040,15 +1039,15 @@ class EECBase(object):
             eec_event = EECEvent(self.config(), event_weight, event, charges)
 
         elif dists is None:
-            event = np.asarray(np.atleast_2d(event)[:,:self.nfeatures()], dtype=np.double, order='C')
+            event = _np.asarray(_np.atleast_2d(event)[:,:self.nfeatures()], dtype=_np.double, order='C')
 
             eec_event = EECEvent(self.use_charges(), event_weight, event)
             eec_event._numpy_arrays = (event,)
 
         else:
-            raw_weights = np.asarray(event, dtype=np.double, order='C')
-            charges = np.asarray(charges, dtype=np.double, order='C')
-            dists = np.asarray(dists, dtype=np.double, order='C')
+            raw_weights = _np.asarray(event, dtype=_np.double, order='C')
+            charges = _np.asarray(charges, dtype=_np.double, order='C')
+            dists = _np.asarray(dists, dtype=_np.double, order='C')
 
             eec_event = EECEvent(self.use_charges(), event_weight, raw_weights, charges, dists)
             eec_event._numpy_arrays = (raw_weights, dists, charges)
@@ -1062,7 +1061,7 @@ class EECBase(object):
     def __call__(self, events, event_weights=None, charges=None, dists=None):
 
         if event_weights is None:
-            event_weights = np.ones(len(events), order='C', dtype=np.double)
+            event_weights = _np.ones(len(events), order='C', dtype=_np.double)
         elif len(event_weights) != len(events):
             raise ValueError('`events` and `event_weights` have different lengths')
 
@@ -1300,7 +1299,7 @@ class EECTriangleOPEIdIdId(EECBase, EECHist3DIdIdId):
         return self.description().decode('utf-8')
 
 
-    _default_args = ((1, 1, 1), ((1e-5, 1), (1e-5, 1), (0, np.pi/2)))
+    _default_args = ((1, 1, 1), ((1e-5, 1), (1e-5, 1), (0, _np.pi/2)))
 
 
 # Register EECTriangleOPEIdIdId in _eec:
@@ -1326,7 +1325,7 @@ class EECTriangleOPELogIdId(EECBase, EECHist3DLogIdId):
         return self.description().decode('utf-8')
 
 
-    _default_args = ((1, 1, 1), ((1e-5, 1), (1e-5, 1), (0, np.pi/2)))
+    _default_args = ((1, 1, 1), ((1e-5, 1), (1e-5, 1), (0, _np.pi/2)))
 
 
 # Register EECTriangleOPELogIdId in _eec:
@@ -1352,7 +1351,7 @@ class EECTriangleOPEIdLogId(EECBase, EECHist3DIdLogId):
         return self.description().decode('utf-8')
 
 
-    _default_args = ((1, 1, 1), ((1e-5, 1), (1e-5, 1), (0, np.pi/2)))
+    _default_args = ((1, 1, 1), ((1e-5, 1), (1e-5, 1), (0, _np.pi/2)))
 
 
 # Register EECTriangleOPEIdLogId in _eec:
@@ -1378,7 +1377,7 @@ class EECTriangleOPELogLogId(EECBase, EECHist3DLogLogId):
         return self.description().decode('utf-8')
 
 
-    _default_args = ((1, 1, 1), ((1e-5, 1), (1e-5, 1), (0, np.pi/2)))
+    _default_args = ((1, 1, 1), ((1e-5, 1), (1e-5, 1), (0, _np.pi/2)))
 
 
 # Register EECTriangleOPELogLogId in _eec:

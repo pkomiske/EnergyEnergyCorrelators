@@ -95,12 +95,12 @@ private:
   #ifdef EEC_SERIALIZATION
     template<class Archive>
     void serialize(Archive & ar, const unsigned int version) {
-      std::cout << "EECHist1D::serialize, version " << version << std::endl;
+      //std::cout << "EECHist1D::serialize, version " << version << std::endl;
       if (version == 0)
         ar & this->nbins_[0] & this->axes_range_[0][0] & this->axes_range_[0][1];
       
       ar & boost::serialization::base_object<EECHistBase<EECHist1D<Transform>>>(*this);
-      std::cout << "EECHist1D::done" << std::endl;
+      //std::cout << "EECHist1D::done" << std::endl;
     }
   #endif
 
@@ -114,10 +114,8 @@ using EECHist1DLog = EECHist1D<axis::log>;
 END_EEC_NAMESPACE
 
 #if !defined(SWIG_PREPROCESSOR) && defined(EEC_SERIALIZATION)
-  BOOST_CLASS_VERSION(EEC_NAMESPACE::hist::EECHist1DId, 1)
-  BOOST_CLASS_VERSION(EEC_NAMESPACE::hist::EECHist1DLog, 1)
-  EEC_HISTBASE_SERIALIZATION(EEC_NAMESPACE::hist::EECHist1DId)
-  EEC_HISTBASE_SERIALIZATION(EEC_NAMESPACE::hist::EECHist1DLog)
+  EEC_HIST_SERIALIZATION(EECHist1DId, 1)
+  EEC_HIST_SERIALIZATION(EECHist1DLog, 1)
 #endif
 
 #endif // EEC_HIST1D_HH
