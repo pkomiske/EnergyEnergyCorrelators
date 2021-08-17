@@ -170,6 +170,14 @@ public:
     EECBase::save<Self>(os);
   }
 
+  bool operator!=(const EECLongestSide & rhs) const { return !operator==(rhs); }
+  bool operator==(const EECLongestSide & rhs) const {
+    return EECBase::operator==(rhs)                       &&
+           use_general_eNc()     == rhs.use_general_eNc() &&
+           N_choose_2_           == rhs.N_choose_2_       &&
+           compute_eec_func_ptr_ == rhs.compute_eec_func_ptr_;
+  }
+
   EECLongestSide & operator+=(const EECLongestSide & rhs) {
     EECBase::operator+=(rhs);
     EECHist1D::operator+=(rhs);
@@ -960,8 +968,8 @@ private:
   #ifdef EEC_SERIALIZATION
     template<class Archive>
     void serialize(Archive & ar, const unsigned int /* file_version */) {
-      ar & boost::serialization::base_object<EECBase>(*this)
-         & boost::serialization::base_object<EECHist1D>(*this);
+      ar & boost::serialization::base_object<EECBase>(*this);
+         //& boost::serialization::base_object<EECHist1D>(*this);
       ar & use_general_eNc_ & N_choose_2_;
 
       init_subclass();

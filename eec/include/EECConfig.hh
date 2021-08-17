@@ -99,19 +99,11 @@ private:
 
   template<class Archive>
   void serialize(Archive & ar, const unsigned int version) {
-    /*std::cout << "EECConfig::serialize, version " << version << '\n'
-              << weight_powers.size() << ' ' << charge_powers.size() << '\n'
-              << N << ' ' << nfeatures << ' ' << num_threads << ' ' << omp_chunksize << ' ' << print_every << '\n'
-              << std::boolalpha << norm << ' ' << use_charges << ' ' << check_degen << ' ' << average_verts << '\n'
-              << R << ' ' << beta << '\n'
-              << int(particle_weight) << ' ' << int(pairwise_distance) << std::endl;*/
-
     ar & weight_powers & charge_powers
        & N & nfeatures & num_threads & omp_chunksize & print_every
        & norm & use_charges & check_degen & average_verts
        & R & beta
        & particle_weight & pairwise_distance;
-    //std::cout << "EECConfig::serialize, done" << std::endl;
   }
 
 }; // EECConfig

@@ -95,12 +95,10 @@ private:
   #ifdef EEC_SERIALIZATION
     template<class Archive>
     void serialize(Archive & ar, const unsigned int version) {
-      //std::cout << "EECHist1D::serialize, version " << version << std::endl;
       if (version == 0)
         ar & this->nbins_[0] & this->axes_range_[0][0] & this->axes_range_[0][1];
       
       ar & boost::serialization::base_object<EECHistBase<EECHist1D<Transform>>>(*this);
-      //std::cout << "EECHist1D::done" << std::endl;
     }
   #endif
 

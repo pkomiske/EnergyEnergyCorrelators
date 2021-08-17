@@ -286,22 +286,49 @@ public:
   // Allow EECs to be added together
   //////////////////////////////////
 
-  EECBase & operator+=(const EECBase & rhs) {
-    auto error(std::invalid_argument("EEC computations must match in order to be added together"));
-    if (N()               != rhs.N()               ||
-        nsym()            != rhs.nsym()            ||
-        use_charges()     != rhs.use_charges()     ||
-        check_degen()     != rhs.check_degen()     ||
-        average_verts()   != rhs.average_verts()   ||
+  bool operator!=(const EECBase & rhs) const { return !operator==(rhs); }
+  bool operator==(const EECBase & rhs) const {
+    if (N()                    != rhs.N()                    ||
+        nfeatures()            != rhs.nfeatures()            ||
+        nsym()                 != rhs.nsym()                 ||
+        norm()                 != rhs.norm()                 ||
+        use_charges()          != rhs.use_charges()          ||
+        check_degen()          != rhs.check_degen()          ||
+        average_verts()        != rhs.average_verts()        ||
+        num_threads()          != rhs.num_threads()          ||
+        omp_chunksize()        != rhs.omp_chunksize()        ||
+        print_every()          != rhs.print_every()          ||
+        R()                    != rhs.R()                    ||
+        beta()                 != rhs.beta()                 ||
+        particle_weight()      != rhs.particle_weight()      ||
+        pairwise_distance()    != rhs.pairwise_distance()    ||
         weight_powers().size() != rhs.weight_powers().size() ||
-        charge_powers().size() != rhs.charge_powers().size())
-      throw error;
+        charge_powers().size() != rhs.charge_powers().size() ||
+        orig_weight_powers_.size() != rhs.orig_weight_powers_.size() ||
+        orig_charge_powers_.size() != rhs.orig_charge_powers_.size())
+      return false;
 
     for (unsigned i = 0; i < weight_powers().size(); i++) {
       if (weight_powers()[i] != rhs.weight_powers()[i] || 
           charge_powers()[i] != rhs.charge_powers()[i])
-        throw error;
+        return false;
     }
+
+    for (unsigned i = 0; i < orig_weight_powers_.size(); i++)
+      if (orig_weight_powers_[i] != rhs.orig_weight_powers_[i])
+        return false;
+
+    for (unsigned i = 0; i < orig_charge_powers_.size(); i++)
+      if (orig_charge_powers_[i] != rhs.orig_charge_powers_[i])
+        return false;
+
+    return true;
+  }
+
+  EECBase & operator+=(const EECBase & rhs) {
+
+    if ((*this) != rhs)
+      throw std::invalid_argument("EEC computations must match in order to be added together");
 
     total_weight_ += rhs.total_weight();
 
@@ -597,8 +624,6 @@ private:
   template<class Archive>
   void serialize(Archive & ar, const unsigned int version) {
 
-    //std::cout << "EECBase::serialize, version " << version << std::endl;
-
     if (version < 3)
       ar & orig_weight_powers_ & config_.weight_powers
          & orig_charge_powers_ & config_.charge_powers
@@ -608,23 +633,15 @@ private:
     else
       ar & config_ & orig_weight_powers_ & orig_charge_powers_ & nsym_;
 
-    //std::cout << "EECBase::serialize, point 1" << std::endl;
-
     if (version > 0)
       ar & total_weight_;
-
-    //std::cout << "EECBase::serialize, point 2" << std::endl;
 
     if (version > 1)
       ar & compname_;
 
-    //std::cout << "EECBase::serialize, point 3" << std::endl;
-
     // reset num threads in case maximum number is different on new machine
     set_num_threads(num_threads());
     set_print_stream(std::cout);
-
-    //std::cout << "EECBase::serialize, done" << std::endl;
   }
 
 }; // EECBase

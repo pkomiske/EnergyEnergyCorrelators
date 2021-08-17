@@ -1006,6 +1006,8 @@ class EECBase(object):
     set_particle_weight = _swig_new_instance_method(_eec.EECBase_set_particle_weight)
     set_pairwise_distance = _swig_new_instance_method(_eec.EECBase_set_pairwise_distance)
     set_print_stream = _swig_new_instance_method(_eec.EECBase_set_print_stream)
+    __ne__ = _swig_new_instance_method(_eec.EECBase___ne__)
+    __eq__ = _swig_new_instance_method(_eec.EECBase___eq__)
 
     def __repr__(self):
         return self.description().decode('utf-8')
@@ -1237,6 +1239,8 @@ class EECLongestSideId(EECBase, EECHist1DId):
     set_use_general_eNc = _swig_new_instance_method(_eec.EECLongestSideId_set_use_general_eNc)
     set_num_threads = _swig_new_instance_method(_eec.EECLongestSideId_set_num_threads)
     description = _swig_new_instance_method(_eec.EECLongestSideId_description)
+    __ne__ = _swig_new_instance_method(_eec.EECLongestSideId___ne__)
+    __eq__ = _swig_new_instance_method(_eec.EECLongestSideId___eq__)
     __getstate_internal__ = _swig_new_instance_method(_eec.EECLongestSideId___getstate_internal__)
     __setstate_internal__ = _swig_new_instance_method(_eec.EECLongestSideId___setstate_internal__)
     add = _swig_new_instance_method(_eec.EECLongestSideId_add)
@@ -1265,6 +1269,8 @@ class EECLongestSideLog(EECBase, EECHist1DLog):
     set_use_general_eNc = _swig_new_instance_method(_eec.EECLongestSideLog_set_use_general_eNc)
     set_num_threads = _swig_new_instance_method(_eec.EECLongestSideLog_set_num_threads)
     description = _swig_new_instance_method(_eec.EECLongestSideLog_description)
+    __ne__ = _swig_new_instance_method(_eec.EECLongestSideLog___ne__)
+    __eq__ = _swig_new_instance_method(_eec.EECLongestSideLog___eq__)
     __getstate_internal__ = _swig_new_instance_method(_eec.EECLongestSideLog___getstate_internal__)
     __setstate_internal__ = _swig_new_instance_method(_eec.EECLongestSideLog___setstate_internal__)
     add = _swig_new_instance_method(_eec.EECLongestSideLog_add)
@@ -1291,6 +1297,8 @@ class EECTriangleOPEIdIdId(EECBase, EECHist3DIdIdId):
     __swig_destroy__ = _eec.delete_EECTriangleOPEIdIdId
     set_num_threads = _swig_new_instance_method(_eec.EECTriangleOPEIdIdId_set_num_threads)
     description = _swig_new_instance_method(_eec.EECTriangleOPEIdIdId_description)
+    __ne__ = _swig_new_instance_method(_eec.EECTriangleOPEIdIdId___ne__)
+    __eq__ = _swig_new_instance_method(_eec.EECTriangleOPEIdIdId___eq__)
     __getstate_internal__ = _swig_new_instance_method(_eec.EECTriangleOPEIdIdId___getstate_internal__)
     __setstate_internal__ = _swig_new_instance_method(_eec.EECTriangleOPEIdIdId___setstate_internal__)
     add = _swig_new_instance_method(_eec.EECTriangleOPEIdIdId_add)
@@ -1317,6 +1325,8 @@ class EECTriangleOPELogIdId(EECBase, EECHist3DLogIdId):
     __swig_destroy__ = _eec.delete_EECTriangleOPELogIdId
     set_num_threads = _swig_new_instance_method(_eec.EECTriangleOPELogIdId_set_num_threads)
     description = _swig_new_instance_method(_eec.EECTriangleOPELogIdId_description)
+    __ne__ = _swig_new_instance_method(_eec.EECTriangleOPELogIdId___ne__)
+    __eq__ = _swig_new_instance_method(_eec.EECTriangleOPELogIdId___eq__)
     __getstate_internal__ = _swig_new_instance_method(_eec.EECTriangleOPELogIdId___getstate_internal__)
     __setstate_internal__ = _swig_new_instance_method(_eec.EECTriangleOPELogIdId___setstate_internal__)
     add = _swig_new_instance_method(_eec.EECTriangleOPELogIdId_add)
@@ -1343,6 +1353,8 @@ class EECTriangleOPEIdLogId(EECBase, EECHist3DIdLogId):
     __swig_destroy__ = _eec.delete_EECTriangleOPEIdLogId
     set_num_threads = _swig_new_instance_method(_eec.EECTriangleOPEIdLogId_set_num_threads)
     description = _swig_new_instance_method(_eec.EECTriangleOPEIdLogId_description)
+    __ne__ = _swig_new_instance_method(_eec.EECTriangleOPEIdLogId___ne__)
+    __eq__ = _swig_new_instance_method(_eec.EECTriangleOPEIdLogId___eq__)
     __getstate_internal__ = _swig_new_instance_method(_eec.EECTriangleOPEIdLogId___getstate_internal__)
     __setstate_internal__ = _swig_new_instance_method(_eec.EECTriangleOPEIdLogId___setstate_internal__)
     add = _swig_new_instance_method(_eec.EECTriangleOPEIdLogId_add)
@@ -1369,6 +1381,8 @@ class EECTriangleOPELogLogId(EECBase, EECHist3DLogLogId):
     __swig_destroy__ = _eec.delete_EECTriangleOPELogLogId
     set_num_threads = _swig_new_instance_method(_eec.EECTriangleOPELogLogId_set_num_threads)
     description = _swig_new_instance_method(_eec.EECTriangleOPELogLogId_description)
+    __ne__ = _swig_new_instance_method(_eec.EECTriangleOPELogLogId___ne__)
+    __eq__ = _swig_new_instance_method(_eec.EECTriangleOPELogLogId___eq__)
     __getstate_internal__ = _swig_new_instance_method(_eec.EECTriangleOPELogLogId___getstate_internal__)
     __setstate_internal__ = _swig_new_instance_method(_eec.EECTriangleOPELogLogId___setstate_internal__)
     add = _swig_new_instance_method(_eec.EECTriangleOPELogLogId_add)

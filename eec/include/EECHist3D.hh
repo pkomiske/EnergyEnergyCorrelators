@@ -110,14 +110,11 @@ private:
   #ifdef EEC_SERIALIZATION
     template<class Archive>
     void save(Archive & ar, const unsigned int version) const {
-      //std::cout << "EECHist3D::save, version " << version << std::endl;
       ar & boost::serialization::base_object<EECHistBase<EECHist3D<Tr0, Tr1, Tr2>>>(*this);
-      //std::cout << "EECHist3D::save, done" << std::endl;
     }
 
     template<class Archive>
     void load(Archive & ar, const unsigned int version) {
-      //std::cout << "EECHist3D::load, version " << version << std::endl;
       if (version == 0) {
         std::array<double, 3> axis_mins, axis_maxs;
         ar & this->nbins_ & axis_mins & axis_maxs;
@@ -126,7 +123,6 @@ private:
       }
 
       ar & boost::serialization::base_object<EECHistBase<EECHist3D<Tr0, Tr1, Tr2>>>(*this);
-      //std::cout << "EECHist3D::load, done" << std::endl;
     }
   #endif // EEC_SERIALIZATION
 

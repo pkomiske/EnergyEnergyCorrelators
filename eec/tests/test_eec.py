@@ -756,8 +756,10 @@ def test_pickling_longestside(N, axis, num_threads, weight_powers, charge_powers
         f.seek(0)
         e_loaded = pickle.load(f)
 
+    assert e == e_loaded, 'EECs did not match'
+
     for i in range(2):
-        assert np.all(e_loaded.get_hist_vars()[i] == e.get_hist_vars()[i])
+        assert np.all(e_loaded.get_hist_vars()[i] == e.get_hist_vars()[i]), 'hists did not match'
 
 @pytest.mark.triangleope
 @pytest.mark.pickle
@@ -792,5 +794,7 @@ def test_pickling_triangleope(axes, num_threads, weight_powers, charge_powers, n
         f.seek(0)
         e_loaded = pickle.load(f)
 
+    assert e == e_loaded, 'EECs did not match'
+
     for i in range(2):
-        assert np.all(e_loaded.get_hist_vars()[i] == e.get_hist_vars()[i])
+        assert np.all(e_loaded.get_hist_vars()[i] == e.get_hist_vars()[i]), 'hists did not match'

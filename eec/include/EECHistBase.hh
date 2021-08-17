@@ -574,12 +574,12 @@ protected:
 
     // create histograms
     for (int thread = 0; thread < num_threads(); thread++) {
-      hists_[thread].resize(nhists, static_cast<EECHist &>(*this).make_hist());
-      per_event_hists_[thread].resize(nhists, static_cast<EECHist &>(*this).make_simple_hist());
+      hists_[thread].resize(nhists, make_hist());
+      per_event_hists_[thread].resize(nhists, make_simple_hist());
       if (track_covariance())
-        covariance_hists_[thread].resize(nhists, static_cast<EECHist &>(*this).make_covariance_hist());
+        covariance_hists_[thread].resize(nhists, make_covariance_hist());
       if (variance_bound())
-        variance_bound_hists_[thread].resize(nhists, static_cast<EECHist &>(*this).make_simple_hist());
+        variance_bound_hists_[thread].resize(nhists, make_simple_hist());
     }
   }
 
@@ -763,57 +763,53 @@ private:
     }
   }
 
-#ifdef BOOST_SERIALIZATION_ACCESS_HPP
-  friend class boost::serialization::access;
-  BOOST_SERIALIZATION_SPLIT_MEMBER()
-#endif
+  #ifdef BOOST_SERIALIZATION_ACCESS_HPP
+    friend class boost::serialization::access;
+    BOOST_SERIALIZATION_SPLIT_MEMBER()
+  #endif
 
-  template<class Archive>
-  void save(Archive & ar, const unsigned int version) const {
-    std::cout << "EECHistBase::save, version " << version << std::endl;
-    ar & num_threads_ & nhists() & event_counters_
-       & track_covariance_
-       & variance_bound_  & variance_bound_includes_overflows_;
+  #ifdef EEC_SERIALIZATION
+    template<class Archive>
+    void save(Archive & ar, const unsigned int version) const {
+      ar & num_threads_ & nhists() & event_counters_
+         & track_covariance_
+         & variance_bound_  & variance_bound_includes_overflows_;
 
-    if (version > 0)
-      ar & nbins_ & axes_range_;
+      if (version > 0)
+        ar & nbins_ & axes_range_;
 
-    for (unsigned hist_i = 0; hist_i < nhists(); hist_i++) {
-      ar & combined_hist(hist_i);
-      if (track_covariance())
-        ar & combined_covariance(hist_i);
-      if (variance_bound())
-        ar & combined_variance_bound(hist_i);
+      for (unsigned hist_i = 0; hist_i < nhists(); hist_i++) {
+        ar & combined_hist(hist_i);
+        if (track_covariance())
+          ar & combined_covariance(hist_i);
+        if (variance_bound())
+          ar & combined_variance_bound(hist_i);
+      }
     }
 
-    std::cout << "EECHistBase::save, done" << std::endl;
-  }
+    template<class Archive>
+    void load(Archive & ar, const unsigned int version) {
+      std::size_t nh;
+      ar & num_threads_ & nh & event_counters_
+         & track_covariance_
+         & variance_bound_ & variance_bound_includes_overflows_;
 
-  template<class Archive>
-  void load(Archive & ar, const unsigned int version) {
-    //std::cout << "EECHistBase::load, version " << version << std::endl;
-    std::size_t nh;
-    ar & num_threads_ & nh & event_counters_
-       & track_covariance_
-       & variance_bound_ & variance_bound_includes_overflows_;
+      if (version > 0)
+        ar & nbins_ & axes_range_;
 
-    if (version > 0)
-      ar & nbins_ & axes_range_;
+      // initialize with a specific number of histograms
+      init(nh);
 
-    // initialize with a specific number of histograms
-    init(nh);
-
-    // for each hist, load it into thread 0
-    for (unsigned hist_i = 0; hist_i < nh; hist_i++) {
-      ar & hists_[0][hist_i];
-      if (track_covariance())
-        ar & covariance_hists_[0][hist_i];
-      if (variance_bound())
-        ar & variance_bound_hists_[0][hist_i];
+      // for each hist, load it into thread 0
+      for (unsigned hist_i = 0; hist_i < nh; hist_i++) {
+        ar & hists_[0][hist_i];
+        if (track_covariance())
+          ar & covariance_hists_[0][hist_i];
+        if (variance_bound())
+          ar & variance_bound_hists_[0][hist_i];
+      }
     }
-
-    //std::cout << "EECHistBase::load, done" << std::endl;
-  }
+  #endif // EEC_SERIALIZATION
 
 }; // EECHistBase
 

@@ -187,6 +187,11 @@ public:
     EECBase::save<Self>(os);
   }
 
+  bool operator!=(const EECTriangleOPE & rhs) const { return !operator==(rhs); }
+  bool operator==(const EECTriangleOPE & rhs) const {
+    return EECBase::operator==(rhs) && (compute_eec_func_ptr_ == rhs.compute_eec_func_ptr_);
+  }
+
   EECTriangleOPE & operator+=(const EECTriangleOPE & rhs) {
     EECBase::operator+=(rhs);
     EECHist3D::operator+=(rhs);
@@ -440,7 +445,7 @@ private:
     template<class Archive>
     void serialize(Archive & ar, const unsigned int /* file_version */) {
       ar & boost::serialization::base_object<EECBase>(*this);
-      ar & boost::serialization::base_object<EECHist3D>(*this);
+      //ar & boost::serialization::base_object<EECHist3D>(*this);
 
       init_subclass();
     }
