@@ -17,14 +17,11 @@
 // along with this program.  If not, see <https://www.gnu.org/licenses/>.
 
 %module("threads"=1) eec
+%feature("autodoc", "1");
 %nothreadallow;
-
-#define EECNAMESPACE eec
 
 // this can be used to ensure that swig parses classes correctly
 #define SWIG_PREPROCESSOR
-
-%feature("autodoc", "1");
 
 // C++ standard library wrappers
 %include <exception.i>
@@ -32,19 +29,31 @@
 %include <std_string.i>
 %include <std_vector.i>
 
-// this makes SWIG aware of the types contained in the main fastjet library
-// but does not generate new wrappers for them here
-#ifdef SWIG_FASTJET
-%import FASTJET_PREFIX/share/fastjet/pyinterface/fastjet.i
-
-// turn off exception handling for now, since fastjet::Error is not thrown here
-%exception;
+// ensure FASTJET_PREFIX is always defined even if not used
+#ifndef FASTJET_PREFIX
+# define FASTJET_PREFIX /usr/local
 #endif
+
+// import either pyfjcore or fastjet
+#ifdef EEC_USE_PYFJCORE
+  %import pyfjcore/swig/pyfjcore.i
+  %pythoncode %{
+    from pyfjcore import FastJetError
+  %}
+#else
+  %import FASTJET_PREFIX/share/fastjet/pyinterface/fastjet.i
+  %pythoncode %{
+    from fastjet import FastJetError
+  %}
+#endif
+
+// converts fastjet::Error into a FastJetError Python exception
+FASTJET_ERRORS_AS_PYTHON_EXCEPTIONS(eec)
 
 %{
 // include these to avoid needing to define them at compile time 
 #ifndef SWIG
-#define SWIG
+# define SWIG
 #endif
 
 // needed to ensure bytes are returned 
@@ -56,30 +65,31 @@
 typedef boost::histogram::algorithm::reduce_command reduce_command;
 
 // using namespaces
-using namespace eec;
-using namespace eec::hist;
+using namespace fastjet::contrib::eec;
+using namespace fastjet::contrib::eec::hist;
+%}
+
+// this needs to be early so that the symbols are loaded from the dynamic library
+%pythonbegin %{
+  import pyfjcore
 %}
 
 // include numpy support
+#define EEC_INT std::ptrdiff_t
 %include numpy_helpers.i
 
 // additional numpy typemaps
-%apply (double* IN_ARRAY2, EEC_INT DIM1, EEC_INT DIM2) {(double* particles, EEC_INT mult, EEC_INT nfeatures)}
-%apply (double* INPLACE_ARRAY2, EEC_INT DIM1, EEC_INT DIM2) {(const double* event_ptr, unsigned mult, unsigned nfeatures)}
-
-// vector templates
-%template(vectorDouble) std::vector<double>;
-%template(vectorUnsigned) std::vector<unsigned>;
-
-// array templates
-%template(arrayUnsigned13) std::array<unsigned, 13>;
-
-// allow threads in PairwiseEMD computation
-%threadallow EECNAMESPACE::EECBase::_batch_compute;
-%threadallow EECNAMESPACE::hist::EECHistBase::reduce;
+%apply (double* INPLACE_ARRAY1, EEC_INT DIM1) {
+  (const double* raw_weights, unsigned weights_mult),
+  (const double* charges, unsigned charges_mult)
+}
+%apply (double* INPLACE_ARRAY2, EEC_INT DIM1, EEC_INT DIM2) {
+  (const double* event_ptr, unsigned mult, unsigned nfeatures),
+  (const double* dists, unsigned d0, unsigned d1)
+}
 
 // makes python class printable from a description method
-%define ADD_REPR_FROM_DESCRIPTION
+%define ADD_REPR_FROM_DECODED_DESCRIPTION
 %pythoncode %{
   def __repr__(self):
       return self.description().decode('utf-8')
@@ -112,6 +122,9 @@ using namespace eec::hist;
 
   void __setstate_internal__(const std::string & state) {
     std::istringstream iss(state);
+    if (!iss.good())
+      throw std::runtime_error("problem creating istringstream from provided state");
+
     $self->load(iss);
   }
 
@@ -120,55 +133,53 @@ using namespace eec::hist;
   }
 %enddef
 
+%define GET_HIST_TWO_QUANTITIES(cppfunc)
+  try {
+    $self->cppfunc(*arr_out0, *arr_out1, hist_i, overflows);
+  }
+  catch (...) {
+    free(*arr_out0);
+    free(*arr_out1);
+    throw;
+  }
+%enddef
+
+%define GET_HIST_ONE_QUANTITY(cppfunc)
+  try {
+    $self->cppfunc(*arr_out0, hist_i, overflows);
+  }
+  catch (...) {
+    free(*arr_out0);
+    throw;
+  }
+%enddef
+
 // basic exception handling for all functions
 %exception {
   try { $action }
   SWIG_CATCH_STDEXCEPT
+  catch (...) {
+    SWIG_exception_fail(SWIG_UnknownError, "unknown exception");
+  }
 }
 
-namespace EECNAMESPACE {
+// array templates
+%template(arrayDouble2) std::array<double, 2>;
+%template(arrayUnsigned3) std::array<unsigned, 3>;
+%template(arrayUnsigned13) std::array<unsigned, 13>;
+%template(arrayPairDoubleDouble) std::array<std::array<double, 2>, 3>;
 
-// ignore EECUtils functions
-%ignore get_coverage;
-%ignore get_thread_num;
+// vector templates
+%template(vectorDouble) std::vector<double>;
+%template(vectorUnsigned) std::vector<unsigned>;
+%template(vectorArrayDouble2) std::vector<std::array<double, 2>>;
 
-// ignore/rename EECHist functions
-namespace hist {
-  %ignore EECHistBase::combined_hist;
-  %ignore EECHistBase::combined_covariance;
-  %ignore EECHistBase::combined_variance_bound;
-  %ignore EECHistBase::get_hist_vars;
-  %ignore EECHistBase::get_covariance;
-  %ignore EECHistBase::get_variance_bound;
-  %ignore EECHistBase::operator+=;
-  %ignore EECHistBase::operator*=;
-  %rename(bin_centers_vec) EECHistBase::bin_centers;
-  %rename(bin_edges_vec) EECHistBase::bin_edges;
-  %rename(bin_centers) EECHistBase::npy_bin_centers;
-  %rename(bin_edges) EECHistBase::npy_bin_edges;
-  %rename(get_hist_vars) EECHist1D::npy_get_hist_vars;
-  %rename(get_hist_vars) EECHist3D::npy_get_hist_vars;
-  %rename(get_covariance) EECHist1D::npy_get_covariance;
-  %rename(get_covariance) EECHist3D::npy_get_covariance;
-  %rename(get_variance_bound) EECHist1D::npy_get_variance_bound;
-  %rename(get_variance_bound) EECHist3D::npy_get_variance_bound;
-}
+// include EECUtils so that namespace is defined
+%include "EECUtils.hh"
 
-// ignore/rename Multinomial functions
-%ignore FACTORIALS_LONG;
-%ignore multinomial;
-%rename(multinomial) multinomial_vector;
-
-// ignore EEC functions
-%ignore argsort3;
-%ignore EECEvents::set_pseudojet_charge_func;
-%ignore EECBase::batch_compute;
-%ignore EECBase::compute;
-%ignore EECBase::operator+=;
-%ignore EECBase::set_pseudojet_charge_func;
-%rename(compute) EECBase::npy_compute;
-
-} // namespace EECNAMESPACE
+// allow threads in PairwiseEMD computation
+%threadallow EEC_NAMESPACE::EECBase::batch_compute;
+%threadallow EEC_NAMESPACE::hist::EECHistBase::reduce;
 
 // custom declaration of this struct because swig can't handle nested unions
 namespace boost {
@@ -192,34 +203,39 @@ namespace boost {
 
 %template(vectorReduceCommand) std::vector<boost::histogram::algorithm::reduce_command>;
 
+namespace EEC_NAMESPACE {
+
+  // ignore/rename EECHist functions
+  namespace hist {
+    %ignore get_coverage;
+    %ignore EECHistBase::EECHistBase;
+    %ignore EECHistBase::combined_hist;
+    %ignore EECHistBase::combined_covariance;
+    %ignore EECHistBase::combined_variance_bound;
+    %ignore EECHistBase::get_hist_vars;
+    %ignore EECHistBase::get_covariance;
+    %ignore EECHistBase::get_variance_bound;
+    %ignore EECHistBase::operator+=;
+    %ignore EECHistBase::operator*=;
+    %rename(bin_centers_vec) EECHistBase::bin_centers;
+    %rename(bin_edges_vec) EECHistBase::bin_edges;
+    %rename(bin_centers) EECHistBase::npy_bin_centers;
+    %rename(bin_edges) EECHistBase::npy_bin_edges;
+    %rename(get_hist_vars) EECHist1D::npy_get_hist_vars;
+    %rename(get_hist_vars) EECHist3D::npy_get_hist_vars;
+    %rename(get_covariance) EECHist1D::npy_get_covariance;
+    %rename(get_covariance) EECHist3D::npy_get_covariance;
+    %rename(get_variance_bound) EECHist1D::npy_get_variance_bound;
+    %rename(get_variance_bound) EECHist3D::npy_get_variance_bound;
+  }
+} // namespace EEC_NAMESPACE
+
 // include EECHist and declare templates
-%include "EECUtils.hh"
 %include "EECHistBase.hh"
 %include "EECHist1D.hh"
 %include "EECHist3D.hh"
 
-%define GET_HIST_TWO_QUANTITIES(cppfunc)
-  try {
-    $self->cppfunc(*arr_out0, *arr_out1, hist_i, overflows);
-  }
-  catch (...) {
-    free(*arr_out0);
-    free(*arr_out1);
-    throw;
-  }
-%enddef
-
-%define GET_HIST_ONE_QUANTITY(cppfunc)
-  try {
-    $self->cppfunc(*arr_out0, hist_i, overflows);
-  }
-  catch (...) {
-    free(*arr_out0);
-    throw;
-  }
-%enddef
-
-namespace EECNAMESPACE {
+namespace EEC_NAMESPACE {
   namespace hist {
 
     // extend EECHistBase
@@ -239,10 +255,10 @@ namespace EECNAMESPACE {
       %pythoncode {
         def get_hist_errs(self, hist_i=0, overflows=True):
             hist, vars = self.get_hist_vars(hist_i, overflows)
-            return hist, _np.sqrt(vars)
+            return hist, np.sqrt(vars)
 
         def get_error_bound(self, hist_i=0, overflows=True):
-            return _np.sqrt(self.get_variance_bound(hist_i, overflows))
+            return np.sqrt(self.get_variance_bound(hist_i, overflows))
       }
     }
 
@@ -321,16 +337,45 @@ namespace EECNAMESPACE {
     %template(EECHist3DLogLogId) EECHist3D<axis::log, axis::log, axis::id>;
 
   } // namespace hist
-} // namespace EECNAMESPACE
+} // namespace EEC_NAMESPACE
+
+namespace EEC_NAMESPACE {
+
+  // ignore/rename Multinomial functions
+  %ignore FACTORIALS_LONG;
+  %ignore multinomial;
+  %rename(multinomial) multinomial_vector;
+
+  // ignore EEC functions
+  %ignore argsort3;
+  %ignore EECBase::operator+=;
+  %ignore EECBase::operator();
+  %ignore EECLongestSide::load;
+  %ignore EECLongestSide::save;
+  %ignore EECTriangleOPE::load;
+  %ignore EECTriangleOPE::save;
+  %rename(_compute) EECBase::compute;
+  %rename(_push_back) EECBase::push_back;
+
+} // namespace EEC_NAMESPACE
 
 // include EEC code and declare templates
-%include "EECEvents.hh"
+%include "EECEvent.hh"
 %include "EECBase.hh"
 %include "EECMultinomial.hh"
 %include "EECLongestSide.hh"
 %include "EECTriangleOPE.hh"
 
-namespace EECNAMESPACE {
+%inline %{
+  EEC_NAMESPACE::EECEvent _event_from_pjc(const EEC_NAMESPACE::EECConfig & config,
+                                          double event_weight,
+                                          const fastjet::PseudoJetContainer & pjc,
+                                          const std::vector<double> & charges) {
+    return EEC_NAMESPACE::EECEvent(config, event_weight, pjc, charges);
+  }
+%}
+
+namespace EEC_NAMESPACE {
 
   %extend Multinomial {
 
@@ -343,59 +388,85 @@ namespace EECNAMESPACE {
   }
 
   %extend EECBase {
-    ADD_REPR_FROM_DESCRIPTION
+    ADD_REPR_FROM_DECODED_DESCRIPTION
     PYTHON_PICKLE_FUNCTIONS
-
-    void npy_compute(double* particles, int mult, int nfeatures, double weight = 1.0, int thread_i = 0) {
-      if (nfeatures != (int) $self->nfeatures()) {
-        std::ostringstream oss;
-        oss << "Got array with " << nfeatures << " features per particle, expected "
-            << $self->nfeatures() << " features per particle";
-        throw std::runtime_error(oss.str());
-        return;
-      }
-      $self->compute(particles, mult, weight, thread_i);
-    }
-
-    // this is needed because we've hidden batch_compute
-    void _batch_compute(const EECEvents & evs) {
-      $self->batch_compute(evs);
-    }
 
     %pythoncode %{
 
-      def __call__(self, events, weights=None):
+      def _create_eec_event(self, event, charges, dists, event_weight):
+          if not len(event):
+              return EECEvent()
 
-          if weights is None:
-              weights = _np.ones(len(events), order='C', dtype=_np.double)
-          elif len(weights) != len(events):
-              raise ValueError('events and weights have different length')
+          if charges is None:
+              charges = []
 
-          ncol = 4 if self.use_charges() else 3
-          eecevents = EECEvents(len(events), self.nfeatures())
-          events_arr = []
-          for event,weight in zip(events, weights):
-              event = _np.asarray(_np.atleast_2d(event)[:,:ncol], dtype=_np.double, order='C')
-              eecevents.append(event, weight)
-              events_arr.append(event)
+          if isinstance(event, pyfjcore.PseudoJetContainer):
+              eec_event = _event_from_pjc(self.config(), event_weight, event, charges)
 
-          self._batch_compute(eecevents)
+          elif isinstance(event[0], pyfjcore.PseudoJet):
+              eec_event = EECEvent(self.config(), event_weight, event, charges)
+
+          elif dists is None:
+              event = np.asarray(np.atleast_2d(event)[:,:self.nfeatures()], dtype=np.double, order='C')
+
+              eec_event = EECEvent(self.use_charges(), event_weight, event)
+              eec_event._numpy_arrays = (event,)
+
+          else:
+              raw_weights = np.asarray(event, dtype=np.double, order='C')
+              charges = np.asarray(charges, dtype=np.double, order='C')
+              dists = np.asarray(dists, dtype=np.double, order='C')
+
+              eec_event = EECEvent(self.use_charges(), event_weight, raw_weights, charges, dists)
+              eec_event._numpy_arrays = (raw_weights, dists, charges)
+
+          return eec_event
+
+      def compute(self, event, event_weight=1.0, charges=None, dists=None, thread=0):
+          eec_event = self._create_eec_event(event, charges, dists, event_weight)
+          self._compute(eec_event, thread)
+
+      def __call__(self, events, event_weights=None, charges=None, dists=None):
+
+          if event_weights is None:
+              event_weights = np.ones(len(events), order='C', dtype=np.double)
+          elif len(event_weights) != len(events):
+              raise ValueError('`events` and `event_weights` have different lengths')
+
+          if charges is None:
+              charges = len(events)*[None]
+          elif len(charges) != len(events):
+              raise ValueError('`events` and `charges` have different lengths')
+
+          if dists is None:
+              dists = len(events)*[None]
+          elif len(dists) != len(events):
+              raise ValueError('`events` and `dists` have different lengths')
+
+          stored_events = []
+          for event, chs, ds, event_weight in zip(events, charges, dists, event_weights):
+              eec_event = self._create_eec_event(event, chs, ds, event_weight)
+              self._push_back(eec_event)
+              stored_events.append(getattr(eec_event, '_numpy_arrays', None))
+
+          self.batch_compute()
+          self.clear_events()
     %}
   }
 
   %extend EECLongestSide {
     CPP_EECCOMP_FUNCTIONS(EECLongestSide)
-    ADD_REPR_FROM_DESCRIPTION
+    ADD_REPR_FROM_DECODED_DESCRIPTION
     %pythoncode %{
-      _default_args = (2, 1, 0.1, 1.0)
+      _default_args = (2, 1, (1e-5, 1))
     %}
   }
 
   %extend EECTriangleOPE {
     CPP_EECCOMP_FUNCTIONS(EECTriangleOPE)
-    ADD_REPR_FROM_DESCRIPTION
+    ADD_REPR_FROM_DECODED_DESCRIPTION
     %pythoncode %{
-      _default_args = (1, 0.1, 1.0, 1, 0.1, 1.0, 1, 0., 1.5)
+      _default_args = ((1, 1, 1), ((1e-5, 1), (1e-5, 1), (0, np.pi/2)))
     %}
   }
 
@@ -417,4 +488,4 @@ namespace EECNAMESPACE {
   %template(EECTriangleOPEIdLogId) EECTriangleOPE<axis::id, axis::log, axis::id>;
   %template(EECTriangleOPELogLogId) EECTriangleOPE<axis::log, axis::log, axis::id>;
 
-} // namespace EECNAMESPACE
+} // namespace EEC_NAMESPACE

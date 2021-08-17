@@ -36,38 +36,52 @@
 BEGIN_EEC_NAMESPACE
 namespace hist {
 
-#ifndef SWIG_PREPROCESSOR
-
 // EECHistTraits for EECHist3D
-template<class T0, class T1, class T2>
-struct EECHistTraits<EECHist3D<T0, T1, T2>> {
-  typedef T0 Transform0;
-  typedef T1 Transform1;
-  typedef T2 Transform2;
+template<class Transform0, class Transform1, class Transform2>
+struct EECHistTraits<EECHist3D<Transform0, Transform1, Transform2>> {
+
+  static constexpr unsigned rank = 3;
+
   typedef bh::axis::regular<double, Transform0> Axis0;
   typedef bh::axis::regular<double, Transform1> Axis1;
   typedef bh::axis::regular<double, Transform2> Axis2;
 
-  static constexpr unsigned rank = 3;
+  typedef std::array<unsigned, rank> NBins;
+  typedef std::array<std::array<double, 2>, rank> AxesRange;
 
-  typedef struct HistFactory {
-    static auto make_hist(const Axis0 & axis0, const Axis1 & axis1, const Axis2 & axis2) {
-      return bh::make_histogram_with(bh::weight_storage(), axis0, axis1, axis2);
-    }
-    static auto make_simple_hist(const Axis0 & axis0, const Axis1 & axis1, const Axis2 & axis2) {
-      return bh::make_histogram_with(simple_weight_storage(), axis0, axis1, axis2);
-    }
-    static auto make_covariance_hist(const Axis0 & axis0, const Axis1 & axis1, const Axis2 & axis2) {
-      return bh::make_histogram_with(simple_weight_storage(), axis0, axis1, axis2, axis0, axis1, axis2);
-    }
-  } HistFactory;
+#ifndef SWIG_PREPROCESSOR
+  static auto make_hist(const NBins & nbins, const AxesRange & axes_range) {
+    return bh::make_histogram_with(bh::weight_storage(),
+                                   Axis0(nbins[0], axes_range[0][0], axes_range[0][1]),
+                                   Axis1(nbins[1], axes_range[1][0], axes_range[1][1]),
+                                   Axis2(nbins[2], axes_range[2][0], axes_range[2][1]));
+  }
+  static auto make_simple_hist(const NBins & nbins, const AxesRange & axes_range) {
+    return bh::make_histogram_with(simple_weight_storage(),
+                                   Axis0(nbins[0], axes_range[0][0], axes_range[0][1]),
+                                   Axis1(nbins[1], axes_range[1][0], axes_range[1][1]),
+                                   Axis2(nbins[2], axes_range[2][0], axes_range[2][1]));
+  }
+  static auto make_covariance_hist(const NBins & nbins, const AxesRange & axes_range) {
+    return bh::make_histogram_with(simple_weight_storage(),
+                                   Axis0(nbins[0], axes_range[0][0], axes_range[0][1]),
+                                   Axis1(nbins[1], axes_range[1][0], axes_range[1][1]),
+                                   Axis2(nbins[2], axes_range[2][0], axes_range[2][1]),
+                                   Axis0(nbins[0], axes_range[0][0], axes_range[0][1]),
+                                   Axis1(nbins[1], axes_range[1][0], axes_range[1][1]),
+                                   Axis2(nbins[2], axes_range[2][0], axes_range[2][1]));
+  }
+#endif // !SWIG_PREPROCESSOR
 
-  typedef decltype(HistFactory::make_hist(Axis0(), Axis1(), Axis2())) WeightedHist;
-  typedef decltype(HistFactory::make_simple_hist(Axis0(), Axis1(), Axis2())) SimpleWeightedHist;
-  typedef decltype(HistFactory::make_covariance_hist(Axis0(), Axis1(), Axis2())) CovarianceHist;
+  static std::string axes_description() {
+    std::ostringstream oss;
+    oss << name_transform<Transform0>() << ", "
+        << name_transform<Transform1>() << ", "
+        << name_transform<Transform2>();
+    return oss.str();
+  }
+
 };
-
-#endif // SWIG_PREPROCESSOR
 
 //-----------------------------------------------------------------------------
 // 3D histogram class
@@ -76,80 +90,66 @@ struct EECHistTraits<EECHist3D<T0, T1, T2>> {
 template<class Tr0, class Tr1, class Tr2>
 class EECHist3D : public EECHistBase<EECHist3D<Tr0, Tr1, Tr2>> {
 public:
-  typedef EECHist3D<Tr0, Tr1, Tr2> Self;
-  typedef EECHistBase<Self> Base;
-  typedef EECHistTraits<Self> Traits;
-  typedef typename Traits::Axis0 Axis0;
-  typedef typename Traits::Axis1 Axis1;
-  typedef typename Traits::Axis2 Axis2;
-
-private:
-  
-  std::array<unsigned, 3> nbins_;
-  std::array<double, 3> axis_mins_;
-  std::array<double, 3> axis_maxs_;
-
-public:
-
-  EECHist3D(unsigned nbins0, double axis0_min, double axis0_max,
-            unsigned nbins1, double axis1_min, double axis1_max,
-            unsigned nbins2, double axis2_min, double axis2_max,
-            int num_threads = 1,
-            bool track_covariance = false,
-            bool variance_bound = true,
-            bool variance_bound_includes_overflows = true) :
-    Base(num_threads, track_covariance, variance_bound, variance_bound_includes_overflows),
-    nbins_({nbins0, nbins1, nbins2}),
-    axis_mins_({axis0_min, axis1_min, axis2_min}),
-    axis_maxs_({axis0_max, axis1_max, axis2_max})
-  {
-    this->init(1);
-  }
-  virtual ~EECHist3D() = default;
 
 #ifndef SWIG_PREPROCESSOR
-  void reset_axes() {
-    for (unsigned i = 0; i < 3; i++) {
-      nbins_[i] = this->nbins(i);
-      axis_mins_[i] = this->axis(i).value(0);
-      axis_maxs_[i] = this->axis(i).value(nbins_[i]);
-    }
-  }
 
-  auto make_hist() const { return Traits::HistFactory::make_hist(axis0(), axis1(), axis2()); }
-  auto make_simple_hist() const { return Traits::HistFactory::make_simple_hist(axis0(), axis1(), axis2()); }
-  auto make_covariance_hist() const { return Traits::HistFactory::make_covariance_hist(axis0(), axis1(), axis2()); }
+  // inherited constructor
+  using EECHistBase<EECHist3D<Tr0, Tr1, Tr2>>::EECHistBase;
+
 #endif
 
-protected:
-
-  std::string axes_description() const {
-    std::ostringstream os;
-    os << name_transform<Tr0>() << ", "
-       << name_transform<Tr1>() << ", "
-       << name_transform<Tr2>();
-    return os.str();
-  }
+  virtual ~EECHist3D() = default;
 
 private:
 
-  Axis0 axis0() const { return Axis0(nbins_[0], axis_mins_[0], axis_maxs_[0]); }
-  Axis1 axis1() const { return Axis1(nbins_[1], axis_mins_[1], axis_maxs_[1]); }
-  Axis2 axis2() const { return Axis2(nbins_[2], axis_mins_[2], axis_maxs_[2]); }
+  #ifdef BOOST_SERIALIZATION_ACCESS_HPP
+    friend class boost::serialization::access;
+    BOOST_SERIALIZATION_SPLIT_MEMBER()
+  #endif
 
-#ifdef BOOST_SERIALIZATION_ACCESS_HPP
-  friend class boost::serialization::access;
-#endif
+  #ifdef EEC_SERIALIZATION
+    template<class Archive>
+    void save(Archive & ar, const unsigned int version) const {
+      std::cout << "EECHist3D::save, version " << version << std::endl;
+      ar & boost::serialization::base_object<EECHistBase<EECHist3D<Tr0, Tr1, Tr2>>>(*this);
+      std::cout << "EECHist3D::save, done" << std::endl;
+    }
 
-  template<class Archive>
-  void serialize(Archive & ar, const unsigned int /* file_version */) {
-    ar & nbins_ & axis_mins_ & axis_maxs_;
-    ar & boost::serialization::base_object<Base>(*this);
-  }
+    template<class Archive>
+    void load(Archive & ar, const unsigned int version) {
+      std::cout << "EECHist3D::load, version " << version << std::endl;
+      if (version == 0) {
+        std::array<double, 3> axis_mins, axis_maxs;
+        ar & this->nbins_ & axis_mins & axis_maxs;
+        for (unsigned i = 0; i < 3; i++)
+          this->axes_range_[i] = {axis_mins[i], axis_maxs[i]};
+      }
+
+      ar & boost::serialization::base_object<EECHistBase<EECHist3D<Tr0, Tr1, Tr2>>>(*this);
+      std::cout << "EECHist3D::load, done" << std::endl;
+    }
+  #endif // EEC_SERIALIZATION
 
 }; // EECHist3D
 
+// aliases
+using EECHist3DIdIdId = EECHist3D<axis::id, axis::id, axis::id>;
+using EECHist3DLogIdId = EECHist3D<axis::log, axis::id, axis::id>;
+using EECHist3DIdLogId = EECHist3D<axis::id, axis::log, axis::id>;
+using EECHist3DLogLogId = EECHist3D<axis::log, axis::log, axis::id>;
+
 } // namespace hist
 END_EEC_NAMESPACE
+
+#if !defined(SWIG_PREPROCESSOR) && defined(EEC_SERIALIZATION)
+  BOOST_CLASS_VERSION(EEC_NAMESPACE::hist::EECHist3DIdIdId, 1)
+  BOOST_CLASS_VERSION(EEC_NAMESPACE::hist::EECHist3DLogIdId, 1)
+  BOOST_CLASS_VERSION(EEC_NAMESPACE::hist::EECHist3DIdLogId, 1)
+  BOOST_CLASS_VERSION(EEC_NAMESPACE::hist::EECHist3DLogLogId, 1)
+  EEC_HISTBASE_SERIALIZATION(EEC_NAMESPACE::hist::EECHist3DIdIdId)
+  EEC_HISTBASE_SERIALIZATION(EEC_NAMESPACE::hist::EECHist3DLogIdId)
+  EEC_HISTBASE_SERIALIZATION(EEC_NAMESPACE::hist::EECHist3DIdLogId)
+  EEC_HISTBASE_SERIALIZATION(EEC_NAMESPACE::hist::EECHist3DLogLogId)
+#endif
 
 #endif // EEC_HIST3D_HH

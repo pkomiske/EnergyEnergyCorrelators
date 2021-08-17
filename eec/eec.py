@@ -4,6 +4,11 @@
 # Do not make changes to this file unless you know what you are doing--modify
 # the SWIG interface file instead.
 
+
+import pyfjcore
+
+
+
 from sys import version_info as _swig_python_version_info
 if _swig_python_version_info < (2, 7, 0):
     raise RuntimeError("Python 2.7 or later required")
@@ -95,8 +100,168 @@ class SwigPyIterator(object):
 # Register SwigPyIterator in _eec:
 _eec.SwigPyIterator_swigregister(SwigPyIterator)
 
+import pyfjcore
 
-import numpy as _np
+from pyfjcore import FastJetError
+
+
+import numpy as np
+
+class arrayDouble2(object):
+    r"""Proxy of C++ std::array< double,2 > class."""
+
+    thisown = property(lambda x: x.this.own(), lambda x, v: x.this.own(v), doc="The membership flag")
+    __repr__ = _swig_repr
+    iterator = _swig_new_instance_method(_eec.arrayDouble2_iterator)
+    def __iter__(self):
+        return self.iterator()
+    __nonzero__ = _swig_new_instance_method(_eec.arrayDouble2___nonzero__)
+    __bool__ = _swig_new_instance_method(_eec.arrayDouble2___bool__)
+    __len__ = _swig_new_instance_method(_eec.arrayDouble2___len__)
+    __getslice__ = _swig_new_instance_method(_eec.arrayDouble2___getslice__)
+    __setslice__ = _swig_new_instance_method(_eec.arrayDouble2___setslice__)
+    __delslice__ = _swig_new_instance_method(_eec.arrayDouble2___delslice__)
+    __delitem__ = _swig_new_instance_method(_eec.arrayDouble2___delitem__)
+    __getitem__ = _swig_new_instance_method(_eec.arrayDouble2___getitem__)
+    __setitem__ = _swig_new_instance_method(_eec.arrayDouble2___setitem__)
+
+    def __init__(self, *args):
+        r"""
+        __init__(arrayDouble2 self) -> arrayDouble2
+        __init__(arrayDouble2 self, arrayDouble2 other) -> arrayDouble2
+        """
+        _eec.arrayDouble2_swiginit(self, _eec.new_arrayDouble2(*args))
+    empty = _swig_new_instance_method(_eec.arrayDouble2_empty)
+    size = _swig_new_instance_method(_eec.arrayDouble2_size)
+    swap = _swig_new_instance_method(_eec.arrayDouble2_swap)
+    begin = _swig_new_instance_method(_eec.arrayDouble2_begin)
+    end = _swig_new_instance_method(_eec.arrayDouble2_end)
+    rbegin = _swig_new_instance_method(_eec.arrayDouble2_rbegin)
+    rend = _swig_new_instance_method(_eec.arrayDouble2_rend)
+    front = _swig_new_instance_method(_eec.arrayDouble2_front)
+    back = _swig_new_instance_method(_eec.arrayDouble2_back)
+    fill = _swig_new_instance_method(_eec.arrayDouble2_fill)
+    __swig_destroy__ = _eec.delete_arrayDouble2
+
+# Register arrayDouble2 in _eec:
+_eec.arrayDouble2_swigregister(arrayDouble2)
+
+class arrayUnsigned3(object):
+    r"""Proxy of C++ std::array< unsigned int,3 > class."""
+
+    thisown = property(lambda x: x.this.own(), lambda x, v: x.this.own(v), doc="The membership flag")
+    __repr__ = _swig_repr
+    iterator = _swig_new_instance_method(_eec.arrayUnsigned3_iterator)
+    def __iter__(self):
+        return self.iterator()
+    __nonzero__ = _swig_new_instance_method(_eec.arrayUnsigned3___nonzero__)
+    __bool__ = _swig_new_instance_method(_eec.arrayUnsigned3___bool__)
+    __len__ = _swig_new_instance_method(_eec.arrayUnsigned3___len__)
+    __getslice__ = _swig_new_instance_method(_eec.arrayUnsigned3___getslice__)
+    __setslice__ = _swig_new_instance_method(_eec.arrayUnsigned3___setslice__)
+    __delslice__ = _swig_new_instance_method(_eec.arrayUnsigned3___delslice__)
+    __delitem__ = _swig_new_instance_method(_eec.arrayUnsigned3___delitem__)
+    __getitem__ = _swig_new_instance_method(_eec.arrayUnsigned3___getitem__)
+    __setitem__ = _swig_new_instance_method(_eec.arrayUnsigned3___setitem__)
+
+    def __init__(self, *args):
+        r"""
+        __init__(arrayUnsigned3 self) -> arrayUnsigned3
+        __init__(arrayUnsigned3 self, arrayUnsigned3 other) -> arrayUnsigned3
+        """
+        _eec.arrayUnsigned3_swiginit(self, _eec.new_arrayUnsigned3(*args))
+    empty = _swig_new_instance_method(_eec.arrayUnsigned3_empty)
+    size = _swig_new_instance_method(_eec.arrayUnsigned3_size)
+    swap = _swig_new_instance_method(_eec.arrayUnsigned3_swap)
+    begin = _swig_new_instance_method(_eec.arrayUnsigned3_begin)
+    end = _swig_new_instance_method(_eec.arrayUnsigned3_end)
+    rbegin = _swig_new_instance_method(_eec.arrayUnsigned3_rbegin)
+    rend = _swig_new_instance_method(_eec.arrayUnsigned3_rend)
+    front = _swig_new_instance_method(_eec.arrayUnsigned3_front)
+    back = _swig_new_instance_method(_eec.arrayUnsigned3_back)
+    fill = _swig_new_instance_method(_eec.arrayUnsigned3_fill)
+    __swig_destroy__ = _eec.delete_arrayUnsigned3
+
+# Register arrayUnsigned3 in _eec:
+_eec.arrayUnsigned3_swigregister(arrayUnsigned3)
+
+class arrayUnsigned13(object):
+    r"""Proxy of C++ std::array< unsigned int,13 > class."""
+
+    thisown = property(lambda x: x.this.own(), lambda x, v: x.this.own(v), doc="The membership flag")
+    __repr__ = _swig_repr
+    iterator = _swig_new_instance_method(_eec.arrayUnsigned13_iterator)
+    def __iter__(self):
+        return self.iterator()
+    __nonzero__ = _swig_new_instance_method(_eec.arrayUnsigned13___nonzero__)
+    __bool__ = _swig_new_instance_method(_eec.arrayUnsigned13___bool__)
+    __len__ = _swig_new_instance_method(_eec.arrayUnsigned13___len__)
+    __getslice__ = _swig_new_instance_method(_eec.arrayUnsigned13___getslice__)
+    __setslice__ = _swig_new_instance_method(_eec.arrayUnsigned13___setslice__)
+    __delslice__ = _swig_new_instance_method(_eec.arrayUnsigned13___delslice__)
+    __delitem__ = _swig_new_instance_method(_eec.arrayUnsigned13___delitem__)
+    __getitem__ = _swig_new_instance_method(_eec.arrayUnsigned13___getitem__)
+    __setitem__ = _swig_new_instance_method(_eec.arrayUnsigned13___setitem__)
+
+    def __init__(self, *args):
+        r"""
+        __init__(arrayUnsigned13 self) -> arrayUnsigned13
+        __init__(arrayUnsigned13 self, arrayUnsigned13 other) -> arrayUnsigned13
+        """
+        _eec.arrayUnsigned13_swiginit(self, _eec.new_arrayUnsigned13(*args))
+    empty = _swig_new_instance_method(_eec.arrayUnsigned13_empty)
+    size = _swig_new_instance_method(_eec.arrayUnsigned13_size)
+    swap = _swig_new_instance_method(_eec.arrayUnsigned13_swap)
+    begin = _swig_new_instance_method(_eec.arrayUnsigned13_begin)
+    end = _swig_new_instance_method(_eec.arrayUnsigned13_end)
+    rbegin = _swig_new_instance_method(_eec.arrayUnsigned13_rbegin)
+    rend = _swig_new_instance_method(_eec.arrayUnsigned13_rend)
+    front = _swig_new_instance_method(_eec.arrayUnsigned13_front)
+    back = _swig_new_instance_method(_eec.arrayUnsigned13_back)
+    fill = _swig_new_instance_method(_eec.arrayUnsigned13_fill)
+    __swig_destroy__ = _eec.delete_arrayUnsigned13
+
+# Register arrayUnsigned13 in _eec:
+_eec.arrayUnsigned13_swigregister(arrayUnsigned13)
+
+class arrayPairDoubleDouble(object):
+    r"""Proxy of C++ std::array< std::array< double,2 >,3 > class."""
+
+    thisown = property(lambda x: x.this.own(), lambda x, v: x.this.own(v), doc="The membership flag")
+    __repr__ = _swig_repr
+    iterator = _swig_new_instance_method(_eec.arrayPairDoubleDouble_iterator)
+    def __iter__(self):
+        return self.iterator()
+    __nonzero__ = _swig_new_instance_method(_eec.arrayPairDoubleDouble___nonzero__)
+    __bool__ = _swig_new_instance_method(_eec.arrayPairDoubleDouble___bool__)
+    __len__ = _swig_new_instance_method(_eec.arrayPairDoubleDouble___len__)
+    __getslice__ = _swig_new_instance_method(_eec.arrayPairDoubleDouble___getslice__)
+    __setslice__ = _swig_new_instance_method(_eec.arrayPairDoubleDouble___setslice__)
+    __delslice__ = _swig_new_instance_method(_eec.arrayPairDoubleDouble___delslice__)
+    __delitem__ = _swig_new_instance_method(_eec.arrayPairDoubleDouble___delitem__)
+    __getitem__ = _swig_new_instance_method(_eec.arrayPairDoubleDouble___getitem__)
+    __setitem__ = _swig_new_instance_method(_eec.arrayPairDoubleDouble___setitem__)
+
+    def __init__(self, *args):
+        r"""
+        __init__(arrayPairDoubleDouble self) -> arrayPairDoubleDouble
+        __init__(arrayPairDoubleDouble self, arrayPairDoubleDouble other) -> arrayPairDoubleDouble
+        """
+        _eec.arrayPairDoubleDouble_swiginit(self, _eec.new_arrayPairDoubleDouble(*args))
+    empty = _swig_new_instance_method(_eec.arrayPairDoubleDouble_empty)
+    size = _swig_new_instance_method(_eec.arrayPairDoubleDouble_size)
+    swap = _swig_new_instance_method(_eec.arrayPairDoubleDouble_swap)
+    begin = _swig_new_instance_method(_eec.arrayPairDoubleDouble_begin)
+    end = _swig_new_instance_method(_eec.arrayPairDoubleDouble_end)
+    rbegin = _swig_new_instance_method(_eec.arrayPairDoubleDouble_rbegin)
+    rend = _swig_new_instance_method(_eec.arrayPairDoubleDouble_rend)
+    front = _swig_new_instance_method(_eec.arrayPairDoubleDouble_front)
+    back = _swig_new_instance_method(_eec.arrayPairDoubleDouble_back)
+    fill = _swig_new_instance_method(_eec.arrayPairDoubleDouble_fill)
+    __swig_destroy__ = _eec.delete_arrayPairDoubleDouble
+
+# Register arrayPairDoubleDouble in _eec:
+_eec.arrayPairDoubleDouble_swigregister(arrayPairDoubleDouble)
 
 class vectorDouble(object):
     r"""Proxy of C++ std::vector< double > class."""
@@ -202,45 +367,105 @@ class vectorUnsigned(object):
 # Register vectorUnsigned in _eec:
 _eec.vectorUnsigned_swigregister(vectorUnsigned)
 
-class arrayUnsigned13(object):
-    r"""Proxy of C++ std::array< unsigned int,13 > class."""
+class vectorArrayDouble2(object):
+    r"""Proxy of C++ std::vector< std::array< double,2 > > class."""
 
     thisown = property(lambda x: x.this.own(), lambda x, v: x.this.own(v), doc="The membership flag")
     __repr__ = _swig_repr
-    iterator = _swig_new_instance_method(_eec.arrayUnsigned13_iterator)
+    iterator = _swig_new_instance_method(_eec.vectorArrayDouble2_iterator)
     def __iter__(self):
         return self.iterator()
-    __nonzero__ = _swig_new_instance_method(_eec.arrayUnsigned13___nonzero__)
-    __bool__ = _swig_new_instance_method(_eec.arrayUnsigned13___bool__)
-    __len__ = _swig_new_instance_method(_eec.arrayUnsigned13___len__)
-    __getslice__ = _swig_new_instance_method(_eec.arrayUnsigned13___getslice__)
-    __setslice__ = _swig_new_instance_method(_eec.arrayUnsigned13___setslice__)
-    __delslice__ = _swig_new_instance_method(_eec.arrayUnsigned13___delslice__)
-    __delitem__ = _swig_new_instance_method(_eec.arrayUnsigned13___delitem__)
-    __getitem__ = _swig_new_instance_method(_eec.arrayUnsigned13___getitem__)
-    __setitem__ = _swig_new_instance_method(_eec.arrayUnsigned13___setitem__)
+    __nonzero__ = _swig_new_instance_method(_eec.vectorArrayDouble2___nonzero__)
+    __bool__ = _swig_new_instance_method(_eec.vectorArrayDouble2___bool__)
+    __len__ = _swig_new_instance_method(_eec.vectorArrayDouble2___len__)
+    __getslice__ = _swig_new_instance_method(_eec.vectorArrayDouble2___getslice__)
+    __setslice__ = _swig_new_instance_method(_eec.vectorArrayDouble2___setslice__)
+    __delslice__ = _swig_new_instance_method(_eec.vectorArrayDouble2___delslice__)
+    __delitem__ = _swig_new_instance_method(_eec.vectorArrayDouble2___delitem__)
+    __getitem__ = _swig_new_instance_method(_eec.vectorArrayDouble2___getitem__)
+    __setitem__ = _swig_new_instance_method(_eec.vectorArrayDouble2___setitem__)
+    pop = _swig_new_instance_method(_eec.vectorArrayDouble2_pop)
+    append = _swig_new_instance_method(_eec.vectorArrayDouble2_append)
+    empty = _swig_new_instance_method(_eec.vectorArrayDouble2_empty)
+    size = _swig_new_instance_method(_eec.vectorArrayDouble2_size)
+    swap = _swig_new_instance_method(_eec.vectorArrayDouble2_swap)
+    begin = _swig_new_instance_method(_eec.vectorArrayDouble2_begin)
+    end = _swig_new_instance_method(_eec.vectorArrayDouble2_end)
+    rbegin = _swig_new_instance_method(_eec.vectorArrayDouble2_rbegin)
+    rend = _swig_new_instance_method(_eec.vectorArrayDouble2_rend)
+    clear = _swig_new_instance_method(_eec.vectorArrayDouble2_clear)
+    get_allocator = _swig_new_instance_method(_eec.vectorArrayDouble2_get_allocator)
+    pop_back = _swig_new_instance_method(_eec.vectorArrayDouble2_pop_back)
+    erase = _swig_new_instance_method(_eec.vectorArrayDouble2_erase)
 
     def __init__(self, *args):
         r"""
-        __init__(arrayUnsigned13 self) -> arrayUnsigned13
-        __init__(arrayUnsigned13 self, arrayUnsigned13 other) -> arrayUnsigned13
+        __init__(vectorArrayDouble2 self) -> vectorArrayDouble2
+        __init__(vectorArrayDouble2 self, vectorArrayDouble2 other) -> vectorArrayDouble2
+        __init__(vectorArrayDouble2 self, std::vector< std::array< double,2 > >::size_type size) -> vectorArrayDouble2
+        __init__(vectorArrayDouble2 self, std::vector< std::array< double,2 > >::size_type size, arrayDouble2 value) -> vectorArrayDouble2
         """
-        _eec.arrayUnsigned13_swiginit(self, _eec.new_arrayUnsigned13(*args))
-    empty = _swig_new_instance_method(_eec.arrayUnsigned13_empty)
-    size = _swig_new_instance_method(_eec.arrayUnsigned13_size)
-    swap = _swig_new_instance_method(_eec.arrayUnsigned13_swap)
-    begin = _swig_new_instance_method(_eec.arrayUnsigned13_begin)
-    end = _swig_new_instance_method(_eec.arrayUnsigned13_end)
-    rbegin = _swig_new_instance_method(_eec.arrayUnsigned13_rbegin)
-    rend = _swig_new_instance_method(_eec.arrayUnsigned13_rend)
-    front = _swig_new_instance_method(_eec.arrayUnsigned13_front)
-    back = _swig_new_instance_method(_eec.arrayUnsigned13_back)
-    fill = _swig_new_instance_method(_eec.arrayUnsigned13_fill)
-    __swig_destroy__ = _eec.delete_arrayUnsigned13
+        _eec.vectorArrayDouble2_swiginit(self, _eec.new_vectorArrayDouble2(*args))
+    push_back = _swig_new_instance_method(_eec.vectorArrayDouble2_push_back)
+    front = _swig_new_instance_method(_eec.vectorArrayDouble2_front)
+    back = _swig_new_instance_method(_eec.vectorArrayDouble2_back)
+    assign = _swig_new_instance_method(_eec.vectorArrayDouble2_assign)
+    resize = _swig_new_instance_method(_eec.vectorArrayDouble2_resize)
+    insert = _swig_new_instance_method(_eec.vectorArrayDouble2_insert)
+    reserve = _swig_new_instance_method(_eec.vectorArrayDouble2_reserve)
+    capacity = _swig_new_instance_method(_eec.vectorArrayDouble2_capacity)
+    __swig_destroy__ = _eec.delete_vectorArrayDouble2
 
-# Register arrayUnsigned13 in _eec:
-_eec.arrayUnsigned13_swigregister(arrayUnsigned13)
+# Register vectorArrayDouble2 in _eec:
+_eec.vectorArrayDouble2_swigregister(vectorArrayDouble2)
 
+ParticleWeight_Default = _eec.ParticleWeight_Default
+
+ParticleWeight_TransverseMomentum = _eec.ParticleWeight_TransverseMomentum
+
+ParticleWeight_Energy = _eec.ParticleWeight_Energy
+
+ParticleWeight_TransverseEnergy = _eec.ParticleWeight_TransverseEnergy
+
+ParticleWeight_Momentum = _eec.ParticleWeight_Momentum
+
+PairwiseDistance_Default = _eec.PairwiseDistance_Default
+
+PairwiseDistance_DeltaR = _eec.PairwiseDistance_DeltaR
+
+PairwiseDistance_HadronicDot = _eec.PairwiseDistance_HadronicDot
+
+PairwiseDistance_EEDot = _eec.PairwiseDistance_EEDot
+
+PairwiseDistance_HadronicDotMassive = _eec.PairwiseDistance_HadronicDotMassive
+
+PairwiseDistance_EEDotMassless = _eec.PairwiseDistance_EEDotMassless
+
+PairwiseDistance_EEArcLength = _eec.PairwiseDistance_EEArcLength
+
+PairwiseDistance_EEArcLengthMassive = _eec.PairwiseDistance_EEArcLengthMassive
+
+PairwiseDistance_EECosTheta = _eec.PairwiseDistance_EECosTheta
+
+PairwiseDistance_EECosThetaMassive = _eec.PairwiseDistance_EECosThetaMassive
+
+ArchiveFormat_Text = _eec.ArchiveFormat_Text
+
+ArchiveFormat_Binary = _eec.ArchiveFormat_Binary
+
+CompressionMode_Auto = _eec.CompressionMode_Auto
+
+CompressionMode_Plain = _eec.CompressionMode_Plain
+
+CompressionMode_Zlib = _eec.CompressionMode_Zlib
+
+get_archive_format = _eec.get_archive_format
+get_compression_mode = _eec.get_compression_mode
+set_archive_format = _eec.set_archive_format
+set_compression_mode = _eec.set_compression_mode
+determine_num_threads = _eec.determine_num_threads
+particle_weight_name = _eec.particle_weight_name
+pairwise_distance_name = _eec.pairwise_distance_name
 class reduce_command(object):
     r"""Proxy of C++ boost::histogram::algorithm::reduce_command class."""
 
@@ -254,6 +479,11 @@ class reduce_command(object):
 
 # Register reduce_command in _eec:
 _eec.reduce_command_swigregister(reduce_command)
+cvar = _eec.cvar
+REG = cvar.REG
+PI = cvar.PI
+TWOPI = cvar.TWOPI
+HAS_PICKLE_SUPPORT = cvar.HAS_PICKLE_SUPPORT
 
 rebin = _eec.rebin
 shrink = _eec.shrink
@@ -312,30 +542,17 @@ class vectorReduceCommand(object):
 # Register vectorReduceCommand in _eec:
 _eec.vectorReduceCommand_swigregister(vectorReduceCommand)
 
-ArchiveFormat_Text = _eec.ArchiveFormat_Text
+EECHISTBASE_VERSION = _eec.EECHISTBASE_VERSION
 
-ArchiveFormat_Binary = _eec.ArchiveFormat_Binary
-
-CompressionMode_Auto = _eec.CompressionMode_Auto
-
-CompressionMode_Plain = _eec.CompressionMode_Plain
-
-CompressionMode_Zlib = _eec.CompressionMode_Zlib
-
-get_archive_format = _eec.get_archive_format
-get_compression_mode = _eec.get_compression_mode
-set_archive_format = _eec.set_archive_format
-set_compression_mode = _eec.set_compression_mode
-determine_num_threads = _eec.determine_num_threads
 class EECHistBase1DId(object):
-    r"""Proxy of C++ eec::hist::EECHistBase< eec::hist::EECHist1D< axis::id > > class."""
+    r"""Proxy of C++ fastjet::contrib::eec::hist::EECHistBase< fastjet::contrib::eec::hist::EECHist1D< axis::id > > class."""
 
     thisown = property(lambda x: x.this.own(), lambda x, v: x.this.own(v), doc="The membership flag")
-    __repr__ = _swig_repr
 
-    def __init__(self, num_threads, track_covariance, variance_bound, variance_bound_includes_overflows):
-        r"""__init__(EECHistBase1DId self, int num_threads, bool track_covariance, bool variance_bound, bool variance_bound_includes_overflows) -> EECHistBase1DId"""
-        _eec.EECHistBase1DId_swiginit(self, _eec.new_EECHistBase1DId(num_threads, track_covariance, variance_bound, variance_bound_includes_overflows))
+    def __init__(self, *args, **kwargs):
+        raise AttributeError("No constructor defined")
+    __repr__ = _swig_repr
+    rank = _swig_new_static_method(_eec.EECHistBase1DId_rank)
     __swig_destroy__ = _eec.delete_EECHistBase1DId
     num_threads = _swig_new_instance_method(_eec.EECHistBase1DId_num_threads)
     track_covariance = _swig_new_instance_method(_eec.EECHistBase1DId_track_covariance)
@@ -343,14 +560,23 @@ class EECHistBase1DId(object):
     variance_bound_includes_overflows = _swig_new_instance_method(_eec.EECHistBase1DId_variance_bound_includes_overflows)
     nhists = _swig_new_instance_method(_eec.EECHistBase1DId_nhists)
     nbins = _swig_new_instance_method(_eec.EECHistBase1DId_nbins)
-    rank = _swig_new_static_method(_eec.EECHistBase1DId_rank)
+    axis_range = _swig_new_instance_method(_eec.EECHistBase1DId_axis_range)
+    axis_min = _swig_new_instance_method(_eec.EECHistBase1DId_axis_min)
+    axis_max = _swig_new_instance_method(_eec.EECHistBase1DId_axis_max)
+    set_num_threads = _swig_new_instance_method(_eec.EECHistBase1DId_set_num_threads)
+    set_track_coveriance = _swig_new_instance_method(_eec.EECHistBase1DId_set_track_coveriance)
+    set_variance_bound = _swig_new_instance_method(_eec.EECHistBase1DId_set_variance_bound)
+    set_variance_bound_includes_overflows = _swig_new_instance_method(_eec.EECHistBase1DId_set_variance_bound_includes_overflows)
+    set_nbins = _swig_new_instance_method(_eec.EECHistBase1DId_set_nbins)
+    set_axis_range = _swig_new_instance_method(_eec.EECHistBase1DId_set_axis_range)
+    set_axes_range = _swig_new_instance_method(_eec.EECHistBase1DId_set_axes_range)
+    bin_centers_vec = _swig_new_instance_method(_eec.EECHistBase1DId_bin_centers_vec)
+    bin_edges_vec = _swig_new_instance_method(_eec.EECHistBase1DId_bin_edges_vec)
     hist_size = _swig_new_instance_method(_eec.EECHistBase1DId_hist_size)
     covariance_size = _swig_new_instance_method(_eec.EECHistBase1DId_covariance_size)
     event_counter = _swig_new_instance_method(_eec.EECHistBase1DId_event_counter)
     reduce = _swig_new_instance_method(_eec.EECHistBase1DId_reduce)
     sum = _swig_new_instance_method(_eec.EECHistBase1DId_sum)
-    bin_centers_vec = _swig_new_instance_method(_eec.EECHistBase1DId_bin_centers_vec)
-    bin_edges_vec = _swig_new_instance_method(_eec.EECHistBase1DId_bin_edges_vec)
     hists_as_text = _swig_new_instance_method(_eec.EECHistBase1DId_hists_as_text)
     bin_centers = _swig_new_instance_method(_eec.EECHistBase1DId_bin_centers)
     bin_edges = _swig_new_instance_method(_eec.EECHistBase1DId_bin_edges)
@@ -358,30 +584,25 @@ class EECHistBase1DId(object):
 
     def get_hist_errs(self, hist_i=0, overflows=True):
         hist, vars = self.get_hist_vars(hist_i, overflows)
-        return hist, _np.sqrt(vars)
+        return hist, np.sqrt(vars)
 
     def get_error_bound(self, hist_i=0, overflows=True):
-        return _np.sqrt(self.get_variance_bound(hist_i, overflows))
+        return np.sqrt(self.get_variance_bound(hist_i, overflows))
 
 
 # Register EECHistBase1DId in _eec:
 _eec.EECHistBase1DId_swigregister(EECHistBase1DId)
-cvar = _eec.cvar
-REG = cvar.REG
-PI = cvar.PI
-TWOPI = cvar.TWOPI
-HAS_PICKLE_SUPPORT = cvar.HAS_PICKLE_SUPPORT
 EECHistBase1DId_rank = _eec.EECHistBase1DId_rank
 
 class EECHistBase1DLog(object):
-    r"""Proxy of C++ eec::hist::EECHistBase< eec::hist::EECHist1D< axis::log > > class."""
+    r"""Proxy of C++ fastjet::contrib::eec::hist::EECHistBase< fastjet::contrib::eec::hist::EECHist1D< axis::log > > class."""
 
     thisown = property(lambda x: x.this.own(), lambda x, v: x.this.own(v), doc="The membership flag")
-    __repr__ = _swig_repr
 
-    def __init__(self, num_threads, track_covariance, variance_bound, variance_bound_includes_overflows):
-        r"""__init__(EECHistBase1DLog self, int num_threads, bool track_covariance, bool variance_bound, bool variance_bound_includes_overflows) -> EECHistBase1DLog"""
-        _eec.EECHistBase1DLog_swiginit(self, _eec.new_EECHistBase1DLog(num_threads, track_covariance, variance_bound, variance_bound_includes_overflows))
+    def __init__(self, *args, **kwargs):
+        raise AttributeError("No constructor defined")
+    __repr__ = _swig_repr
+    rank = _swig_new_static_method(_eec.EECHistBase1DLog_rank)
     __swig_destroy__ = _eec.delete_EECHistBase1DLog
     num_threads = _swig_new_instance_method(_eec.EECHistBase1DLog_num_threads)
     track_covariance = _swig_new_instance_method(_eec.EECHistBase1DLog_track_covariance)
@@ -389,14 +610,23 @@ class EECHistBase1DLog(object):
     variance_bound_includes_overflows = _swig_new_instance_method(_eec.EECHistBase1DLog_variance_bound_includes_overflows)
     nhists = _swig_new_instance_method(_eec.EECHistBase1DLog_nhists)
     nbins = _swig_new_instance_method(_eec.EECHistBase1DLog_nbins)
-    rank = _swig_new_static_method(_eec.EECHistBase1DLog_rank)
+    axis_range = _swig_new_instance_method(_eec.EECHistBase1DLog_axis_range)
+    axis_min = _swig_new_instance_method(_eec.EECHistBase1DLog_axis_min)
+    axis_max = _swig_new_instance_method(_eec.EECHistBase1DLog_axis_max)
+    set_num_threads = _swig_new_instance_method(_eec.EECHistBase1DLog_set_num_threads)
+    set_track_coveriance = _swig_new_instance_method(_eec.EECHistBase1DLog_set_track_coveriance)
+    set_variance_bound = _swig_new_instance_method(_eec.EECHistBase1DLog_set_variance_bound)
+    set_variance_bound_includes_overflows = _swig_new_instance_method(_eec.EECHistBase1DLog_set_variance_bound_includes_overflows)
+    set_nbins = _swig_new_instance_method(_eec.EECHistBase1DLog_set_nbins)
+    set_axis_range = _swig_new_instance_method(_eec.EECHistBase1DLog_set_axis_range)
+    set_axes_range = _swig_new_instance_method(_eec.EECHistBase1DLog_set_axes_range)
+    bin_centers_vec = _swig_new_instance_method(_eec.EECHistBase1DLog_bin_centers_vec)
+    bin_edges_vec = _swig_new_instance_method(_eec.EECHistBase1DLog_bin_edges_vec)
     hist_size = _swig_new_instance_method(_eec.EECHistBase1DLog_hist_size)
     covariance_size = _swig_new_instance_method(_eec.EECHistBase1DLog_covariance_size)
     event_counter = _swig_new_instance_method(_eec.EECHistBase1DLog_event_counter)
     reduce = _swig_new_instance_method(_eec.EECHistBase1DLog_reduce)
     sum = _swig_new_instance_method(_eec.EECHistBase1DLog_sum)
-    bin_centers_vec = _swig_new_instance_method(_eec.EECHistBase1DLog_bin_centers_vec)
-    bin_edges_vec = _swig_new_instance_method(_eec.EECHistBase1DLog_bin_edges_vec)
     hists_as_text = _swig_new_instance_method(_eec.EECHistBase1DLog_hists_as_text)
     bin_centers = _swig_new_instance_method(_eec.EECHistBase1DLog_bin_centers)
     bin_edges = _swig_new_instance_method(_eec.EECHistBase1DLog_bin_edges)
@@ -404,10 +634,10 @@ class EECHistBase1DLog(object):
 
     def get_hist_errs(self, hist_i=0, overflows=True):
         hist, vars = self.get_hist_vars(hist_i, overflows)
-        return hist, _np.sqrt(vars)
+        return hist, np.sqrt(vars)
 
     def get_error_bound(self, hist_i=0, overflows=True):
-        return _np.sqrt(self.get_variance_bound(hist_i, overflows))
+        return np.sqrt(self.get_variance_bound(hist_i, overflows))
 
 
 # Register EECHistBase1DLog in _eec:
@@ -415,14 +645,14 @@ _eec.EECHistBase1DLog_swigregister(EECHistBase1DLog)
 EECHistBase1DLog_rank = _eec.EECHistBase1DLog_rank
 
 class EECHistBaseIdIdId(object):
-    r"""Proxy of C++ eec::hist::EECHistBase< eec::hist::EECHist3D< axis::id,axis::id,axis::id > > class."""
+    r"""Proxy of C++ fastjet::contrib::eec::hist::EECHistBase< fastjet::contrib::eec::hist::EECHist3D< axis::id,axis::id,axis::id > > class."""
 
     thisown = property(lambda x: x.this.own(), lambda x, v: x.this.own(v), doc="The membership flag")
-    __repr__ = _swig_repr
 
-    def __init__(self, num_threads, track_covariance, variance_bound, variance_bound_includes_overflows):
-        r"""__init__(EECHistBaseIdIdId self, int num_threads, bool track_covariance, bool variance_bound, bool variance_bound_includes_overflows) -> EECHistBaseIdIdId"""
-        _eec.EECHistBaseIdIdId_swiginit(self, _eec.new_EECHistBaseIdIdId(num_threads, track_covariance, variance_bound, variance_bound_includes_overflows))
+    def __init__(self, *args, **kwargs):
+        raise AttributeError("No constructor defined")
+    __repr__ = _swig_repr
+    rank = _swig_new_static_method(_eec.EECHistBaseIdIdId_rank)
     __swig_destroy__ = _eec.delete_EECHistBaseIdIdId
     num_threads = _swig_new_instance_method(_eec.EECHistBaseIdIdId_num_threads)
     track_covariance = _swig_new_instance_method(_eec.EECHistBaseIdIdId_track_covariance)
@@ -430,14 +660,23 @@ class EECHistBaseIdIdId(object):
     variance_bound_includes_overflows = _swig_new_instance_method(_eec.EECHistBaseIdIdId_variance_bound_includes_overflows)
     nhists = _swig_new_instance_method(_eec.EECHistBaseIdIdId_nhists)
     nbins = _swig_new_instance_method(_eec.EECHistBaseIdIdId_nbins)
-    rank = _swig_new_static_method(_eec.EECHistBaseIdIdId_rank)
+    axis_range = _swig_new_instance_method(_eec.EECHistBaseIdIdId_axis_range)
+    axis_min = _swig_new_instance_method(_eec.EECHistBaseIdIdId_axis_min)
+    axis_max = _swig_new_instance_method(_eec.EECHistBaseIdIdId_axis_max)
+    set_num_threads = _swig_new_instance_method(_eec.EECHistBaseIdIdId_set_num_threads)
+    set_track_coveriance = _swig_new_instance_method(_eec.EECHistBaseIdIdId_set_track_coveriance)
+    set_variance_bound = _swig_new_instance_method(_eec.EECHistBaseIdIdId_set_variance_bound)
+    set_variance_bound_includes_overflows = _swig_new_instance_method(_eec.EECHistBaseIdIdId_set_variance_bound_includes_overflows)
+    set_nbins = _swig_new_instance_method(_eec.EECHistBaseIdIdId_set_nbins)
+    set_axis_range = _swig_new_instance_method(_eec.EECHistBaseIdIdId_set_axis_range)
+    set_axes_range = _swig_new_instance_method(_eec.EECHistBaseIdIdId_set_axes_range)
+    bin_centers_vec = _swig_new_instance_method(_eec.EECHistBaseIdIdId_bin_centers_vec)
+    bin_edges_vec = _swig_new_instance_method(_eec.EECHistBaseIdIdId_bin_edges_vec)
     hist_size = _swig_new_instance_method(_eec.EECHistBaseIdIdId_hist_size)
     covariance_size = _swig_new_instance_method(_eec.EECHistBaseIdIdId_covariance_size)
     event_counter = _swig_new_instance_method(_eec.EECHistBaseIdIdId_event_counter)
     reduce = _swig_new_instance_method(_eec.EECHistBaseIdIdId_reduce)
     sum = _swig_new_instance_method(_eec.EECHistBaseIdIdId_sum)
-    bin_centers_vec = _swig_new_instance_method(_eec.EECHistBaseIdIdId_bin_centers_vec)
-    bin_edges_vec = _swig_new_instance_method(_eec.EECHistBaseIdIdId_bin_edges_vec)
     hists_as_text = _swig_new_instance_method(_eec.EECHistBaseIdIdId_hists_as_text)
     bin_centers = _swig_new_instance_method(_eec.EECHistBaseIdIdId_bin_centers)
     bin_edges = _swig_new_instance_method(_eec.EECHistBaseIdIdId_bin_edges)
@@ -445,10 +684,10 @@ class EECHistBaseIdIdId(object):
 
     def get_hist_errs(self, hist_i=0, overflows=True):
         hist, vars = self.get_hist_vars(hist_i, overflows)
-        return hist, _np.sqrt(vars)
+        return hist, np.sqrt(vars)
 
     def get_error_bound(self, hist_i=0, overflows=True):
-        return _np.sqrt(self.get_variance_bound(hist_i, overflows))
+        return np.sqrt(self.get_variance_bound(hist_i, overflows))
 
 
 # Register EECHistBaseIdIdId in _eec:
@@ -456,14 +695,14 @@ _eec.EECHistBaseIdIdId_swigregister(EECHistBaseIdIdId)
 EECHistBaseIdIdId_rank = _eec.EECHistBaseIdIdId_rank
 
 class EECHistBaseLogIdId(object):
-    r"""Proxy of C++ eec::hist::EECHistBase< eec::hist::EECHist3D< axis::log,axis::id,axis::id > > class."""
+    r"""Proxy of C++ fastjet::contrib::eec::hist::EECHistBase< fastjet::contrib::eec::hist::EECHist3D< axis::log,axis::id,axis::id > > class."""
 
     thisown = property(lambda x: x.this.own(), lambda x, v: x.this.own(v), doc="The membership flag")
-    __repr__ = _swig_repr
 
-    def __init__(self, num_threads, track_covariance, variance_bound, variance_bound_includes_overflows):
-        r"""__init__(EECHistBaseLogIdId self, int num_threads, bool track_covariance, bool variance_bound, bool variance_bound_includes_overflows) -> EECHistBaseLogIdId"""
-        _eec.EECHistBaseLogIdId_swiginit(self, _eec.new_EECHistBaseLogIdId(num_threads, track_covariance, variance_bound, variance_bound_includes_overflows))
+    def __init__(self, *args, **kwargs):
+        raise AttributeError("No constructor defined")
+    __repr__ = _swig_repr
+    rank = _swig_new_static_method(_eec.EECHistBaseLogIdId_rank)
     __swig_destroy__ = _eec.delete_EECHistBaseLogIdId
     num_threads = _swig_new_instance_method(_eec.EECHistBaseLogIdId_num_threads)
     track_covariance = _swig_new_instance_method(_eec.EECHistBaseLogIdId_track_covariance)
@@ -471,14 +710,23 @@ class EECHistBaseLogIdId(object):
     variance_bound_includes_overflows = _swig_new_instance_method(_eec.EECHistBaseLogIdId_variance_bound_includes_overflows)
     nhists = _swig_new_instance_method(_eec.EECHistBaseLogIdId_nhists)
     nbins = _swig_new_instance_method(_eec.EECHistBaseLogIdId_nbins)
-    rank = _swig_new_static_method(_eec.EECHistBaseLogIdId_rank)
+    axis_range = _swig_new_instance_method(_eec.EECHistBaseLogIdId_axis_range)
+    axis_min = _swig_new_instance_method(_eec.EECHistBaseLogIdId_axis_min)
+    axis_max = _swig_new_instance_method(_eec.EECHistBaseLogIdId_axis_max)
+    set_num_threads = _swig_new_instance_method(_eec.EECHistBaseLogIdId_set_num_threads)
+    set_track_coveriance = _swig_new_instance_method(_eec.EECHistBaseLogIdId_set_track_coveriance)
+    set_variance_bound = _swig_new_instance_method(_eec.EECHistBaseLogIdId_set_variance_bound)
+    set_variance_bound_includes_overflows = _swig_new_instance_method(_eec.EECHistBaseLogIdId_set_variance_bound_includes_overflows)
+    set_nbins = _swig_new_instance_method(_eec.EECHistBaseLogIdId_set_nbins)
+    set_axis_range = _swig_new_instance_method(_eec.EECHistBaseLogIdId_set_axis_range)
+    set_axes_range = _swig_new_instance_method(_eec.EECHistBaseLogIdId_set_axes_range)
+    bin_centers_vec = _swig_new_instance_method(_eec.EECHistBaseLogIdId_bin_centers_vec)
+    bin_edges_vec = _swig_new_instance_method(_eec.EECHistBaseLogIdId_bin_edges_vec)
     hist_size = _swig_new_instance_method(_eec.EECHistBaseLogIdId_hist_size)
     covariance_size = _swig_new_instance_method(_eec.EECHistBaseLogIdId_covariance_size)
     event_counter = _swig_new_instance_method(_eec.EECHistBaseLogIdId_event_counter)
     reduce = _swig_new_instance_method(_eec.EECHistBaseLogIdId_reduce)
     sum = _swig_new_instance_method(_eec.EECHistBaseLogIdId_sum)
-    bin_centers_vec = _swig_new_instance_method(_eec.EECHistBaseLogIdId_bin_centers_vec)
-    bin_edges_vec = _swig_new_instance_method(_eec.EECHistBaseLogIdId_bin_edges_vec)
     hists_as_text = _swig_new_instance_method(_eec.EECHistBaseLogIdId_hists_as_text)
     bin_centers = _swig_new_instance_method(_eec.EECHistBaseLogIdId_bin_centers)
     bin_edges = _swig_new_instance_method(_eec.EECHistBaseLogIdId_bin_edges)
@@ -486,10 +734,10 @@ class EECHistBaseLogIdId(object):
 
     def get_hist_errs(self, hist_i=0, overflows=True):
         hist, vars = self.get_hist_vars(hist_i, overflows)
-        return hist, _np.sqrt(vars)
+        return hist, np.sqrt(vars)
 
     def get_error_bound(self, hist_i=0, overflows=True):
-        return _np.sqrt(self.get_variance_bound(hist_i, overflows))
+        return np.sqrt(self.get_variance_bound(hist_i, overflows))
 
 
 # Register EECHistBaseLogIdId in _eec:
@@ -497,14 +745,14 @@ _eec.EECHistBaseLogIdId_swigregister(EECHistBaseLogIdId)
 EECHistBaseLogIdId_rank = _eec.EECHistBaseLogIdId_rank
 
 class EECHistBaseIdLogId(object):
-    r"""Proxy of C++ eec::hist::EECHistBase< eec::hist::EECHist3D< axis::id,axis::log,axis::id > > class."""
+    r"""Proxy of C++ fastjet::contrib::eec::hist::EECHistBase< fastjet::contrib::eec::hist::EECHist3D< axis::id,axis::log,axis::id > > class."""
 
     thisown = property(lambda x: x.this.own(), lambda x, v: x.this.own(v), doc="The membership flag")
-    __repr__ = _swig_repr
 
-    def __init__(self, num_threads, track_covariance, variance_bound, variance_bound_includes_overflows):
-        r"""__init__(EECHistBaseIdLogId self, int num_threads, bool track_covariance, bool variance_bound, bool variance_bound_includes_overflows) -> EECHistBaseIdLogId"""
-        _eec.EECHistBaseIdLogId_swiginit(self, _eec.new_EECHistBaseIdLogId(num_threads, track_covariance, variance_bound, variance_bound_includes_overflows))
+    def __init__(self, *args, **kwargs):
+        raise AttributeError("No constructor defined")
+    __repr__ = _swig_repr
+    rank = _swig_new_static_method(_eec.EECHistBaseIdLogId_rank)
     __swig_destroy__ = _eec.delete_EECHistBaseIdLogId
     num_threads = _swig_new_instance_method(_eec.EECHistBaseIdLogId_num_threads)
     track_covariance = _swig_new_instance_method(_eec.EECHistBaseIdLogId_track_covariance)
@@ -512,14 +760,23 @@ class EECHistBaseIdLogId(object):
     variance_bound_includes_overflows = _swig_new_instance_method(_eec.EECHistBaseIdLogId_variance_bound_includes_overflows)
     nhists = _swig_new_instance_method(_eec.EECHistBaseIdLogId_nhists)
     nbins = _swig_new_instance_method(_eec.EECHistBaseIdLogId_nbins)
-    rank = _swig_new_static_method(_eec.EECHistBaseIdLogId_rank)
+    axis_range = _swig_new_instance_method(_eec.EECHistBaseIdLogId_axis_range)
+    axis_min = _swig_new_instance_method(_eec.EECHistBaseIdLogId_axis_min)
+    axis_max = _swig_new_instance_method(_eec.EECHistBaseIdLogId_axis_max)
+    set_num_threads = _swig_new_instance_method(_eec.EECHistBaseIdLogId_set_num_threads)
+    set_track_coveriance = _swig_new_instance_method(_eec.EECHistBaseIdLogId_set_track_coveriance)
+    set_variance_bound = _swig_new_instance_method(_eec.EECHistBaseIdLogId_set_variance_bound)
+    set_variance_bound_includes_overflows = _swig_new_instance_method(_eec.EECHistBaseIdLogId_set_variance_bound_includes_overflows)
+    set_nbins = _swig_new_instance_method(_eec.EECHistBaseIdLogId_set_nbins)
+    set_axis_range = _swig_new_instance_method(_eec.EECHistBaseIdLogId_set_axis_range)
+    set_axes_range = _swig_new_instance_method(_eec.EECHistBaseIdLogId_set_axes_range)
+    bin_centers_vec = _swig_new_instance_method(_eec.EECHistBaseIdLogId_bin_centers_vec)
+    bin_edges_vec = _swig_new_instance_method(_eec.EECHistBaseIdLogId_bin_edges_vec)
     hist_size = _swig_new_instance_method(_eec.EECHistBaseIdLogId_hist_size)
     covariance_size = _swig_new_instance_method(_eec.EECHistBaseIdLogId_covariance_size)
     event_counter = _swig_new_instance_method(_eec.EECHistBaseIdLogId_event_counter)
     reduce = _swig_new_instance_method(_eec.EECHistBaseIdLogId_reduce)
     sum = _swig_new_instance_method(_eec.EECHistBaseIdLogId_sum)
-    bin_centers_vec = _swig_new_instance_method(_eec.EECHistBaseIdLogId_bin_centers_vec)
-    bin_edges_vec = _swig_new_instance_method(_eec.EECHistBaseIdLogId_bin_edges_vec)
     hists_as_text = _swig_new_instance_method(_eec.EECHistBaseIdLogId_hists_as_text)
     bin_centers = _swig_new_instance_method(_eec.EECHistBaseIdLogId_bin_centers)
     bin_edges = _swig_new_instance_method(_eec.EECHistBaseIdLogId_bin_edges)
@@ -527,10 +784,10 @@ class EECHistBaseIdLogId(object):
 
     def get_hist_errs(self, hist_i=0, overflows=True):
         hist, vars = self.get_hist_vars(hist_i, overflows)
-        return hist, _np.sqrt(vars)
+        return hist, np.sqrt(vars)
 
     def get_error_bound(self, hist_i=0, overflows=True):
-        return _np.sqrt(self.get_variance_bound(hist_i, overflows))
+        return np.sqrt(self.get_variance_bound(hist_i, overflows))
 
 
 # Register EECHistBaseIdLogId in _eec:
@@ -538,14 +795,14 @@ _eec.EECHistBaseIdLogId_swigregister(EECHistBaseIdLogId)
 EECHistBaseIdLogId_rank = _eec.EECHistBaseIdLogId_rank
 
 class EECHistBaseLogLogId(object):
-    r"""Proxy of C++ eec::hist::EECHistBase< eec::hist::EECHist3D< axis::log,axis::log,axis::id > > class."""
+    r"""Proxy of C++ fastjet::contrib::eec::hist::EECHistBase< fastjet::contrib::eec::hist::EECHist3D< axis::log,axis::log,axis::id > > class."""
 
     thisown = property(lambda x: x.this.own(), lambda x, v: x.this.own(v), doc="The membership flag")
-    __repr__ = _swig_repr
 
-    def __init__(self, num_threads, track_covariance, variance_bound, variance_bound_includes_overflows):
-        r"""__init__(EECHistBaseLogLogId self, int num_threads, bool track_covariance, bool variance_bound, bool variance_bound_includes_overflows) -> EECHistBaseLogLogId"""
-        _eec.EECHistBaseLogLogId_swiginit(self, _eec.new_EECHistBaseLogLogId(num_threads, track_covariance, variance_bound, variance_bound_includes_overflows))
+    def __init__(self, *args, **kwargs):
+        raise AttributeError("No constructor defined")
+    __repr__ = _swig_repr
+    rank = _swig_new_static_method(_eec.EECHistBaseLogLogId_rank)
     __swig_destroy__ = _eec.delete_EECHistBaseLogLogId
     num_threads = _swig_new_instance_method(_eec.EECHistBaseLogLogId_num_threads)
     track_covariance = _swig_new_instance_method(_eec.EECHistBaseLogLogId_track_covariance)
@@ -553,14 +810,23 @@ class EECHistBaseLogLogId(object):
     variance_bound_includes_overflows = _swig_new_instance_method(_eec.EECHistBaseLogLogId_variance_bound_includes_overflows)
     nhists = _swig_new_instance_method(_eec.EECHistBaseLogLogId_nhists)
     nbins = _swig_new_instance_method(_eec.EECHistBaseLogLogId_nbins)
-    rank = _swig_new_static_method(_eec.EECHistBaseLogLogId_rank)
+    axis_range = _swig_new_instance_method(_eec.EECHistBaseLogLogId_axis_range)
+    axis_min = _swig_new_instance_method(_eec.EECHistBaseLogLogId_axis_min)
+    axis_max = _swig_new_instance_method(_eec.EECHistBaseLogLogId_axis_max)
+    set_num_threads = _swig_new_instance_method(_eec.EECHistBaseLogLogId_set_num_threads)
+    set_track_coveriance = _swig_new_instance_method(_eec.EECHistBaseLogLogId_set_track_coveriance)
+    set_variance_bound = _swig_new_instance_method(_eec.EECHistBaseLogLogId_set_variance_bound)
+    set_variance_bound_includes_overflows = _swig_new_instance_method(_eec.EECHistBaseLogLogId_set_variance_bound_includes_overflows)
+    set_nbins = _swig_new_instance_method(_eec.EECHistBaseLogLogId_set_nbins)
+    set_axis_range = _swig_new_instance_method(_eec.EECHistBaseLogLogId_set_axis_range)
+    set_axes_range = _swig_new_instance_method(_eec.EECHistBaseLogLogId_set_axes_range)
+    bin_centers_vec = _swig_new_instance_method(_eec.EECHistBaseLogLogId_bin_centers_vec)
+    bin_edges_vec = _swig_new_instance_method(_eec.EECHistBaseLogLogId_bin_edges_vec)
     hist_size = _swig_new_instance_method(_eec.EECHistBaseLogLogId_hist_size)
     covariance_size = _swig_new_instance_method(_eec.EECHistBaseLogLogId_covariance_size)
     event_counter = _swig_new_instance_method(_eec.EECHistBaseLogLogId_event_counter)
     reduce = _swig_new_instance_method(_eec.EECHistBaseLogLogId_reduce)
     sum = _swig_new_instance_method(_eec.EECHistBaseLogLogId_sum)
-    bin_centers_vec = _swig_new_instance_method(_eec.EECHistBaseLogLogId_bin_centers_vec)
-    bin_edges_vec = _swig_new_instance_method(_eec.EECHistBaseLogLogId_bin_edges_vec)
     hists_as_text = _swig_new_instance_method(_eec.EECHistBaseLogLogId_hists_as_text)
     bin_centers = _swig_new_instance_method(_eec.EECHistBaseLogLogId_bin_centers)
     bin_edges = _swig_new_instance_method(_eec.EECHistBaseLogLogId_bin_edges)
@@ -568,10 +834,10 @@ class EECHistBaseLogLogId(object):
 
     def get_hist_errs(self, hist_i=0, overflows=True):
         hist, vars = self.get_hist_vars(hist_i, overflows)
-        return hist, _np.sqrt(vars)
+        return hist, np.sqrt(vars)
 
     def get_error_bound(self, hist_i=0, overflows=True):
-        return _np.sqrt(self.get_variance_bound(hist_i, overflows))
+        return np.sqrt(self.get_variance_bound(hist_i, overflows))
 
 
 # Register EECHistBaseLogLogId in _eec:
@@ -579,14 +845,13 @@ _eec.EECHistBaseLogLogId_swigregister(EECHistBaseLogLogId)
 EECHistBaseLogLogId_rank = _eec.EECHistBaseLogLogId_rank
 
 class EECHist1DId(EECHistBase1DId):
-    r"""Proxy of C++ eec::hist::EECHist1D< axis::id > class."""
+    r"""Proxy of C++ fastjet::contrib::eec::hist::EECHist1D< axis::id > class."""
 
     thisown = property(lambda x: x.this.own(), lambda x, v: x.this.own(v), doc="The membership flag")
-    __repr__ = _swig_repr
 
-    def __init__(self, nbins, axis_min, axis_max, num_threads=1, track_covariance=True, variance_bound=True, variance_bound_includes_overflows=True):
-        r"""__init__(EECHist1DId self, unsigned int nbins, double axis_min, double axis_max, int num_threads=1, bool track_covariance=True, bool variance_bound=True, bool variance_bound_includes_overflows=True) -> EECHist1DId"""
-        _eec.EECHist1DId_swiginit(self, _eec.new_EECHist1DId(nbins, axis_min, axis_max, num_threads, track_covariance, variance_bound, variance_bound_includes_overflows))
+    def __init__(self, *args, **kwargs):
+        raise AttributeError("No constructor defined")
+    __repr__ = _swig_repr
     __swig_destroy__ = _eec.delete_EECHist1DId
     get_hist_vars = _swig_new_instance_method(_eec.EECHist1DId_get_hist_vars)
     get_covariance = _swig_new_instance_method(_eec.EECHist1DId_get_covariance)
@@ -596,14 +861,13 @@ class EECHist1DId(EECHistBase1DId):
 _eec.EECHist1DId_swigregister(EECHist1DId)
 
 class EECHist1DLog(EECHistBase1DLog):
-    r"""Proxy of C++ eec::hist::EECHist1D< axis::log > class."""
+    r"""Proxy of C++ fastjet::contrib::eec::hist::EECHist1D< axis::log > class."""
 
     thisown = property(lambda x: x.this.own(), lambda x, v: x.this.own(v), doc="The membership flag")
-    __repr__ = _swig_repr
 
-    def __init__(self, nbins, axis_min, axis_max, num_threads=1, track_covariance=True, variance_bound=True, variance_bound_includes_overflows=True):
-        r"""__init__(EECHist1DLog self, unsigned int nbins, double axis_min, double axis_max, int num_threads=1, bool track_covariance=True, bool variance_bound=True, bool variance_bound_includes_overflows=True) -> EECHist1DLog"""
-        _eec.EECHist1DLog_swiginit(self, _eec.new_EECHist1DLog(nbins, axis_min, axis_max, num_threads, track_covariance, variance_bound, variance_bound_includes_overflows))
+    def __init__(self, *args, **kwargs):
+        raise AttributeError("No constructor defined")
+    __repr__ = _swig_repr
     __swig_destroy__ = _eec.delete_EECHist1DLog
     get_hist_vars = _swig_new_instance_method(_eec.EECHist1DLog_get_hist_vars)
     get_covariance = _swig_new_instance_method(_eec.EECHist1DLog_get_covariance)
@@ -613,14 +877,13 @@ class EECHist1DLog(EECHistBase1DLog):
 _eec.EECHist1DLog_swigregister(EECHist1DLog)
 
 class EECHist3DIdIdId(EECHistBaseIdIdId):
-    r"""Proxy of C++ eec::hist::EECHist3D< axis::id,axis::id,axis::id > class."""
+    r"""Proxy of C++ fastjet::contrib::eec::hist::EECHist3D< axis::id,axis::id,axis::id > class."""
 
     thisown = property(lambda x: x.this.own(), lambda x, v: x.this.own(v), doc="The membership flag")
-    __repr__ = _swig_repr
 
-    def __init__(self, nbins0, axis0_min, axis0_max, nbins1, axis1_min, axis1_max, nbins2, axis2_min, axis2_max, num_threads=1, track_covariance=False, variance_bound=True, variance_bound_includes_overflows=True):
-        r"""__init__(EECHist3DIdIdId self, unsigned int nbins0, double axis0_min, double axis0_max, unsigned int nbins1, double axis1_min, double axis1_max, unsigned int nbins2, double axis2_min, double axis2_max, int num_threads=1, bool track_covariance=False, bool variance_bound=True, bool variance_bound_includes_overflows=True) -> EECHist3DIdIdId"""
-        _eec.EECHist3DIdIdId_swiginit(self, _eec.new_EECHist3DIdIdId(nbins0, axis0_min, axis0_max, nbins1, axis1_min, axis1_max, nbins2, axis2_min, axis2_max, num_threads, track_covariance, variance_bound, variance_bound_includes_overflows))
+    def __init__(self, *args, **kwargs):
+        raise AttributeError("No constructor defined")
+    __repr__ = _swig_repr
     __swig_destroy__ = _eec.delete_EECHist3DIdIdId
     get_hist_vars = _swig_new_instance_method(_eec.EECHist3DIdIdId_get_hist_vars)
     get_covariance = _swig_new_instance_method(_eec.EECHist3DIdIdId_get_covariance)
@@ -630,14 +893,13 @@ class EECHist3DIdIdId(EECHistBaseIdIdId):
 _eec.EECHist3DIdIdId_swigregister(EECHist3DIdIdId)
 
 class EECHist3DLogIdId(EECHistBaseLogIdId):
-    r"""Proxy of C++ eec::hist::EECHist3D< axis::log,axis::id,axis::id > class."""
+    r"""Proxy of C++ fastjet::contrib::eec::hist::EECHist3D< axis::log,axis::id,axis::id > class."""
 
     thisown = property(lambda x: x.this.own(), lambda x, v: x.this.own(v), doc="The membership flag")
-    __repr__ = _swig_repr
 
-    def __init__(self, nbins0, axis0_min, axis0_max, nbins1, axis1_min, axis1_max, nbins2, axis2_min, axis2_max, num_threads=1, track_covariance=False, variance_bound=True, variance_bound_includes_overflows=True):
-        r"""__init__(EECHist3DLogIdId self, unsigned int nbins0, double axis0_min, double axis0_max, unsigned int nbins1, double axis1_min, double axis1_max, unsigned int nbins2, double axis2_min, double axis2_max, int num_threads=1, bool track_covariance=False, bool variance_bound=True, bool variance_bound_includes_overflows=True) -> EECHist3DLogIdId"""
-        _eec.EECHist3DLogIdId_swiginit(self, _eec.new_EECHist3DLogIdId(nbins0, axis0_min, axis0_max, nbins1, axis1_min, axis1_max, nbins2, axis2_min, axis2_max, num_threads, track_covariance, variance_bound, variance_bound_includes_overflows))
+    def __init__(self, *args, **kwargs):
+        raise AttributeError("No constructor defined")
+    __repr__ = _swig_repr
     __swig_destroy__ = _eec.delete_EECHist3DLogIdId
     get_hist_vars = _swig_new_instance_method(_eec.EECHist3DLogIdId_get_hist_vars)
     get_covariance = _swig_new_instance_method(_eec.EECHist3DLogIdId_get_covariance)
@@ -647,14 +909,13 @@ class EECHist3DLogIdId(EECHistBaseLogIdId):
 _eec.EECHist3DLogIdId_swigregister(EECHist3DLogIdId)
 
 class EECHist3DIdLogId(EECHistBaseIdLogId):
-    r"""Proxy of C++ eec::hist::EECHist3D< axis::id,axis::log,axis::id > class."""
+    r"""Proxy of C++ fastjet::contrib::eec::hist::EECHist3D< axis::id,axis::log,axis::id > class."""
 
     thisown = property(lambda x: x.this.own(), lambda x, v: x.this.own(v), doc="The membership flag")
-    __repr__ = _swig_repr
 
-    def __init__(self, nbins0, axis0_min, axis0_max, nbins1, axis1_min, axis1_max, nbins2, axis2_min, axis2_max, num_threads=1, track_covariance=False, variance_bound=True, variance_bound_includes_overflows=True):
-        r"""__init__(EECHist3DIdLogId self, unsigned int nbins0, double axis0_min, double axis0_max, unsigned int nbins1, double axis1_min, double axis1_max, unsigned int nbins2, double axis2_min, double axis2_max, int num_threads=1, bool track_covariance=False, bool variance_bound=True, bool variance_bound_includes_overflows=True) -> EECHist3DIdLogId"""
-        _eec.EECHist3DIdLogId_swiginit(self, _eec.new_EECHist3DIdLogId(nbins0, axis0_min, axis0_max, nbins1, axis1_min, axis1_max, nbins2, axis2_min, axis2_max, num_threads, track_covariance, variance_bound, variance_bound_includes_overflows))
+    def __init__(self, *args, **kwargs):
+        raise AttributeError("No constructor defined")
+    __repr__ = _swig_repr
     __swig_destroy__ = _eec.delete_EECHist3DIdLogId
     get_hist_vars = _swig_new_instance_method(_eec.EECHist3DIdLogId_get_hist_vars)
     get_covariance = _swig_new_instance_method(_eec.EECHist3DIdLogId_get_covariance)
@@ -664,14 +925,13 @@ class EECHist3DIdLogId(EECHistBaseIdLogId):
 _eec.EECHist3DIdLogId_swigregister(EECHist3DIdLogId)
 
 class EECHist3DLogLogId(EECHistBaseLogLogId):
-    r"""Proxy of C++ eec::hist::EECHist3D< axis::log,axis::log,axis::id > class."""
+    r"""Proxy of C++ fastjet::contrib::eec::hist::EECHist3D< axis::log,axis::log,axis::id > class."""
 
     thisown = property(lambda x: x.this.own(), lambda x, v: x.this.own(v), doc="The membership flag")
-    __repr__ = _swig_repr
 
-    def __init__(self, nbins0, axis0_min, axis0_max, nbins1, axis1_min, axis1_max, nbins2, axis2_min, axis2_max, num_threads=1, track_covariance=False, variance_bound=True, variance_bound_includes_overflows=True):
-        r"""__init__(EECHist3DLogLogId self, unsigned int nbins0, double axis0_min, double axis0_max, unsigned int nbins1, double axis1_min, double axis1_max, unsigned int nbins2, double axis2_min, double axis2_max, int num_threads=1, bool track_covariance=False, bool variance_bound=True, bool variance_bound_includes_overflows=True) -> EECHist3DLogLogId"""
-        _eec.EECHist3DLogLogId_swiginit(self, _eec.new_EECHist3DLogLogId(nbins0, axis0_min, axis0_max, nbins1, axis1_min, axis1_max, nbins2, axis2_min, axis2_max, num_threads, track_covariance, variance_bound, variance_bound_includes_overflows))
+    def __init__(self, *args, **kwargs):
+        raise AttributeError("No constructor defined")
+    __repr__ = _swig_repr
     __swig_destroy__ = _eec.delete_EECHist3DLogLogId
     get_hist_vars = _swig_new_instance_method(_eec.EECHist3DLogLogId_get_hist_vars)
     get_covariance = _swig_new_instance_method(_eec.EECHist3DLogLogId_get_covariance)
@@ -680,28 +940,31 @@ class EECHist3DLogLogId(EECHistBaseLogLogId):
 # Register EECHist3DLogLogId in _eec:
 _eec.EECHist3DLogLogId_swigregister(EECHist3DLogLogId)
 
-EEC_IGNORED_WEIGHT = _eec.EEC_IGNORED_WEIGHT
-
-class EECEvents(object):
-    r"""Proxy of C++ eec::EECEvents class."""
+class EECEvent(object):
+    r"""Proxy of C++ fastjet::contrib::eec::EECEvent class."""
 
     thisown = property(lambda x: x.this.own(), lambda x, v: x.this.own(v), doc="The membership flag")
     __repr__ = _swig_repr
 
-    def __init__(self, nev, nfeatures, pj_charge=None):
-        r"""__init__(EECEvents self, std::size_t nev, unsigned int nfeatures, double (*)(eec::EECEvents::pj_charge_t const &) pj_charge=None) -> EECEvents"""
-        _eec.EECEvents_swiginit(self, _eec.new_EECEvents(nev, nfeatures, pj_charge))
-    events = _swig_new_instance_method(_eec.EECEvents_events)
-    mults = _swig_new_instance_method(_eec.EECEvents_mults)
-    weights = _swig_new_instance_method(_eec.EECEvents_weights)
-    append = _swig_new_instance_method(_eec.EECEvents_append)
-    __swig_destroy__ = _eec.delete_EECEvents
+    def __init__(self, *args):
+        r"""
+        __init__(EECEvent self) -> EECEvent
+        __init__(EECEvent self, EECConfig const & config, double event_weight, vectorPseudoJet pjs, vectorDouble charges) -> EECEvent
+        __init__(EECEvent self, bool use_charges, double event_weight, double const * event_ptr) -> EECEvent
+        __init__(EECEvent self, bool use_charges, double event_weight, double const * raw_weights, double const * charges, double const * dists) -> EECEvent
+        """
+        _eec.EECEvent_swiginit(self, _eec.new_EECEvent(*args))
+    __swig_destroy__ = _eec.delete_EECEvent
+    weights = _swig_new_instance_method(_eec.EECEvent_weights)
+    dists = _swig_new_instance_method(_eec.EECEvent_dists)
+    event_weight = _swig_new_instance_method(_eec.EECEvent_event_weight)
+    mult = _swig_new_instance_method(_eec.EECEvent_mult)
 
-# Register EECEvents in _eec:
-_eec.EECEvents_swigregister(EECEvents)
+# Register EECEvent in _eec:
+_eec.EECEvent_swigregister(EECEvent)
 
 class EECBase(object):
-    r"""Proxy of C++ eec::EECBase class."""
+    r"""Proxy of C++ fastjet::contrib::eec::EECBase class."""
 
     thisown = property(lambda x: x.this.own(), lambda x, v: x.this.own(v), doc="The membership flag")
 
@@ -709,20 +972,41 @@ class EECBase(object):
         raise AttributeError("No constructor defined - class is abstract")
     __repr__ = _swig_repr
     __swig_destroy__ = _eec.delete_EECBase
+    _compute = _swig_new_instance_method(_eec.EECBase__compute)
+    _push_back = _swig_new_instance_method(_eec.EECBase__push_back)
+    clear_events = _swig_new_instance_method(_eec.EECBase_clear_events)
+    batch_compute = _swig_new_instance_method(_eec.EECBase_batch_compute)
+    config = _swig_new_instance_method(_eec.EECBase_config)
     N = _swig_new_instance_method(_eec.EECBase_N)
-    nsym = _swig_new_instance_method(_eec.EECBase_nsym)
     nfeatures = _swig_new_instance_method(_eec.EECBase_nfeatures)
+    nsym = _swig_new_instance_method(_eec.EECBase_nsym)
+    weight_powers = _swig_new_instance_method(_eec.EECBase_weight_powers)
+    charge_powers = _swig_new_instance_method(_eec.EECBase_charge_powers)
     norm = _swig_new_instance_method(_eec.EECBase_norm)
     use_charges = _swig_new_instance_method(_eec.EECBase_use_charges)
     check_degen = _swig_new_instance_method(_eec.EECBase_check_degen)
     average_verts = _swig_new_instance_method(_eec.EECBase_average_verts)
     num_threads = _swig_new_instance_method(_eec.EECBase_num_threads)
+    omp_chunksize = _swig_new_instance_method(_eec.EECBase_omp_chunksize)
     print_every = _swig_new_instance_method(_eec.EECBase_print_every)
+    R = _swig_new_instance_method(_eec.EECBase_R)
+    beta = _swig_new_instance_method(_eec.EECBase_beta)
     total_weight = _swig_new_instance_method(_eec.EECBase_total_weight)
-    get_omp_chunksize = _swig_new_instance_method(_eec.EECBase_get_omp_chunksize)
+    particle_weight = _swig_new_instance_method(_eec.EECBase_particle_weight)
+    pairwise_distance = _swig_new_instance_method(_eec.EECBase_pairwise_distance)
+    set_weight_powers = _swig_new_instance_method(_eec.EECBase_set_weight_powers)
+    set_charge_powers = _swig_new_instance_method(_eec.EECBase_set_charge_powers)
+    set_norm = _swig_new_instance_method(_eec.EECBase_set_norm)
+    set_check_degen = _swig_new_instance_method(_eec.EECBase_set_check_degen)
+    set_average_verts = _swig_new_instance_method(_eec.EECBase_set_average_verts)
+    set_num_threads = _swig_new_instance_method(_eec.EECBase_set_num_threads)
     set_omp_chunksize = _swig_new_instance_method(_eec.EECBase_set_omp_chunksize)
+    set_print_every = _swig_new_instance_method(_eec.EECBase_set_print_every)
+    set_R = _swig_new_instance_method(_eec.EECBase_set_R)
+    set_beta = _swig_new_instance_method(_eec.EECBase_set_beta)
+    set_particle_weight = _swig_new_instance_method(_eec.EECBase_set_particle_weight)
+    set_pairwise_distance = _swig_new_instance_method(_eec.EECBase_set_pairwise_distance)
     set_print_stream = _swig_new_instance_method(_eec.EECBase_set_print_stream)
-    description = _swig_new_instance_method(_eec.EECBase_description)
 
     def __repr__(self):
         return self.description().decode('utf-8')
@@ -740,26 +1024,66 @@ class EECBase(object):
                                ' and `eec.get_compression_mode()`',
                                repr(e))
 
-    compute = _swig_new_instance_method(_eec.EECBase_compute)
-    _batch_compute = _swig_new_instance_method(_eec.EECBase__batch_compute)
 
 
-    def __call__(self, events, weights=None):
+    def _create_eec_event(self, event, charges, dists, event_weight):
+        if not len(event):
+            return EECEvent()
 
-        if weights is None:
-            weights = _np.ones(len(events), order='C', dtype=_np.double)
-        elif len(weights) != len(events):
-            raise ValueError('events and weights have different length')
+        if charges is None:
+            charges = []
 
-        ncol = 4 if self.use_charges() else 3
-        eecevents = EECEvents(len(events), self.nfeatures())
-        events_arr = []
-        for event,weight in zip(events, weights):
-            event = _np.asarray(_np.atleast_2d(event)[:,:ncol], dtype=_np.double, order='C')
-            eecevents.append(event, weight)
-            events_arr.append(event)
+        if isinstance(event, pyfjcore.PseudoJetContainer):
+            eec_event = _event_from_pjc(self.config(), event_weight, event, charges)
 
-        self._batch_compute(eecevents)
+        elif isinstance(event[0], pyfjcore.PseudoJet):
+            eec_event = EECEvent(self.config(), event_weight, event, charges)
+
+        elif dists is None:
+            event = np.asarray(np.atleast_2d(event)[:,:self.nfeatures()], dtype=np.double, order='C')
+
+            eec_event = EECEvent(self.use_charges(), event_weight, event)
+            eec_event._numpy_arrays = (event,)
+
+        else:
+            raw_weights = np.asarray(event, dtype=np.double, order='C')
+            charges = np.asarray(charges, dtype=np.double, order='C')
+            dists = np.asarray(dists, dtype=np.double, order='C')
+
+            eec_event = EECEvent(self.use_charges(), event_weight, raw_weights, charges, dists)
+            eec_event._numpy_arrays = (raw_weights, dists, charges)
+
+        return eec_event
+
+    def compute(self, event, event_weight=1.0, charges=None, dists=None, thread=0):
+        eec_event = self._create_eec_event(event, charges, dists, event_weight)
+        self._compute(eec_event, thread)
+
+    def __call__(self, events, event_weights=None, charges=None, dists=None):
+
+        if event_weights is None:
+            event_weights = np.ones(len(events), order='C', dtype=np.double)
+        elif len(event_weights) != len(events):
+            raise ValueError('`events` and `event_weights` have different lengths')
+
+        if charges is None:
+            charges = len(events)*[None]
+        elif len(charges) != len(events):
+            raise ValueError('`events` and `charges` have different lengths')
+
+        if dists is None:
+            dists = len(events)*[None]
+        elif len(dists) != len(events):
+            raise ValueError('`events` and `dists` have different lengths')
+
+        stored_events = []
+        for event, chs, ds, event_weight in zip(events, charges, dists, event_weights):
+            eec_event = self._create_eec_event(event, chs, ds, event_weight)
+            self._push_back(eec_event)
+            stored_events.append(getattr(eec_event, '_numpy_arrays', None))
+
+        self.batch_compute()
+        self.clear_events()
 
 
 # Register EECBase in _eec:
@@ -767,12 +1091,12 @@ _eec.EECBase_swigregister(EECBase)
 
 multinomial = _eec.multinomial
 class DynamicMultinomial(object):
-    r"""Proxy of C++ eec::DynamicMultinomial class."""
+    r"""Proxy of C++ fastjet::contrib::eec::DynamicMultinomial class."""
 
     thisown = property(lambda x: x.this.own(), lambda x, v: x.this.own(v), doc="The membership flag")
     __repr__ = _swig_repr
 
-    def __init__(self, N):
+    def __init__(self, N: "unsigned int"):
         r"""__init__(DynamicMultinomial self, unsigned int N) -> DynamicMultinomial"""
         _eec.DynamicMultinomial_swiginit(self, _eec.new_DynamicMultinomial(N))
     N = _swig_new_instance_method(_eec.DynamicMultinomial_N)
@@ -784,8 +1108,9 @@ class DynamicMultinomial(object):
 _eec.DynamicMultinomial_swigregister(DynamicMultinomial)
 FACTORIALS = cvar.FACTORIALS
 
+_event_from_pjc = _eec._event_from_pjc
 class Multinomial2(object):
-    r"""Proxy of C++ eec::Multinomial< 2 > class."""
+    r"""Proxy of C++ fastjet::contrib::eec::Multinomial< 2 > class."""
 
     thisown = property(lambda x: x.this.own(), lambda x, v: x.this.own(v), doc="The membership flag")
     __repr__ = _swig_repr
@@ -808,7 +1133,7 @@ _eec.Multinomial2_swigregister(Multinomial2)
 Multinomial2_N = _eec.Multinomial2_N
 
 class Multinomial3(object):
-    r"""Proxy of C++ eec::Multinomial< 3 > class."""
+    r"""Proxy of C++ fastjet::contrib::eec::Multinomial< 3 > class."""
 
     thisown = property(lambda x: x.this.own(), lambda x, v: x.this.own(v), doc="The membership flag")
     __repr__ = _swig_repr
@@ -831,7 +1156,7 @@ _eec.Multinomial3_swigregister(Multinomial3)
 Multinomial3_N = _eec.Multinomial3_N
 
 class Multinomial4(object):
-    r"""Proxy of C++ eec::Multinomial< 4 > class."""
+    r"""Proxy of C++ fastjet::contrib::eec::Multinomial< 4 > class."""
 
     thisown = property(lambda x: x.this.own(), lambda x, v: x.this.own(v), doc="The membership flag")
     __repr__ = _swig_repr
@@ -854,7 +1179,7 @@ _eec.Multinomial4_swigregister(Multinomial4)
 Multinomial4_N = _eec.Multinomial4_N
 
 class Multinomial5(object):
-    r"""Proxy of C++ eec::Multinomial< 5 > class."""
+    r"""Proxy of C++ fastjet::contrib::eec::Multinomial< 5 > class."""
 
     thisown = property(lambda x: x.this.own(), lambda x, v: x.this.own(v), doc="The membership flag")
     __repr__ = _swig_repr
@@ -877,7 +1202,7 @@ _eec.Multinomial5_swigregister(Multinomial5)
 Multinomial5_N = _eec.Multinomial5_N
 
 class Multinomial6(object):
-    r"""Proxy of C++ eec::Multinomial< 6 > class."""
+    r"""Proxy of C++ fastjet::contrib::eec::Multinomial< 6 > class."""
 
     thisown = property(lambda x: x.this.own(), lambda x, v: x.this.own(v), doc="The membership flag")
     __repr__ = _swig_repr
@@ -900,18 +1225,19 @@ _eec.Multinomial6_swigregister(Multinomial6)
 Multinomial6_N = _eec.Multinomial6_N
 
 class EECLongestSideId(EECBase, EECHist1DId):
-    r"""Proxy of C++ eec::EECLongestSide< axis::id > class."""
+    r"""Proxy of C++ fastjet::contrib::eec::EECLongestSide< axis::id > class."""
 
     thisown = property(lambda x: x.this.own(), lambda x, v: x.this.own(v), doc="The membership flag")
     __repr__ = _swig_repr
 
     def __init__(self, *args, **kwargs):
-        r"""__init__(EECLongestSideId self, unsigned int N, unsigned int nbins, double axis_min, double axis_max, bool norm=True, vectorDouble pt_powers={1}, vectorUnsigned ch_powers={0}, int num_threads=-1, long print_every=-10, bool check_degen=False, bool average_verts=False, bool track_covariance=True, bool variance_bound=True, bool variance_bound_includes_overflows=True, bool use_general_eNc=False) -> EECLongestSideId"""
+        r"""__init__(EECLongestSideId self, unsigned int N, unsigned int nbins, arrayDouble2 axis_range, bool norm=True, vectorDouble weight_powers={1}, vectorUnsigned charge_powers={0}, fastjet::contrib::eec::ParticleWeight particle_weight=Default, fastjet::contrib::eec::PairwiseDistance pairwise_distance=Default, int num_threads=-1, int omp_chunksize=10, long print_every=-10, bool check_degen=False, bool average_verts=False, bool track_covariance=True, bool variance_bound=True, bool variance_bound_includes_overflows=True, double R=1, double beta=1, bool use_general_eNc=False) -> EECLongestSideId"""
         _eec.EECLongestSideId_swiginit(self, _eec.new_EECLongestSideId(*args, **kwargs))
     __swig_destroy__ = _eec.delete_EECLongestSideId
+    use_general_eNc = _swig_new_instance_method(_eec.EECLongestSideId_use_general_eNc)
+    set_use_general_eNc = _swig_new_instance_method(_eec.EECLongestSideId_set_use_general_eNc)
+    set_num_threads = _swig_new_instance_method(_eec.EECLongestSideId_set_num_threads)
     description = _swig_new_instance_method(_eec.EECLongestSideId_description)
-    load = _swig_new_instance_method(_eec.EECLongestSideId_load)
-    save = _swig_new_instance_method(_eec.EECLongestSideId_save)
     __getstate_internal__ = _swig_new_instance_method(_eec.EECLongestSideId___getstate_internal__)
     __setstate_internal__ = _swig_new_instance_method(_eec.EECLongestSideId___setstate_internal__)
     add = _swig_new_instance_method(_eec.EECLongestSideId_add)
@@ -920,25 +1246,26 @@ class EECLongestSideId(EECBase, EECHist1DId):
         return self.description().decode('utf-8')
 
 
-    _default_args = (2, 1, 0.1, 1.0)
+    _default_args = (2, 1, (1e-5, 1))
 
 
 # Register EECLongestSideId in _eec:
 _eec.EECLongestSideId_swigregister(EECLongestSideId)
 
 class EECLongestSideLog(EECBase, EECHist1DLog):
-    r"""Proxy of C++ eec::EECLongestSide< axis::log > class."""
+    r"""Proxy of C++ fastjet::contrib::eec::EECLongestSide< axis::log > class."""
 
     thisown = property(lambda x: x.this.own(), lambda x, v: x.this.own(v), doc="The membership flag")
     __repr__ = _swig_repr
 
     def __init__(self, *args, **kwargs):
-        r"""__init__(EECLongestSideLog self, unsigned int N, unsigned int nbins, double axis_min, double axis_max, bool norm=True, vectorDouble pt_powers={1}, vectorUnsigned ch_powers={0}, int num_threads=-1, long print_every=-10, bool check_degen=False, bool average_verts=False, bool track_covariance=True, bool variance_bound=True, bool variance_bound_includes_overflows=True, bool use_general_eNc=False) -> EECLongestSideLog"""
+        r"""__init__(EECLongestSideLog self, unsigned int N, unsigned int nbins, arrayDouble2 axis_range, bool norm=True, vectorDouble weight_powers={1}, vectorUnsigned charge_powers={0}, fastjet::contrib::eec::ParticleWeight particle_weight=Default, fastjet::contrib::eec::PairwiseDistance pairwise_distance=Default, int num_threads=-1, int omp_chunksize=10, long print_every=-10, bool check_degen=False, bool average_verts=False, bool track_covariance=True, bool variance_bound=True, bool variance_bound_includes_overflows=True, double R=1, double beta=1, bool use_general_eNc=False) -> EECLongestSideLog"""
         _eec.EECLongestSideLog_swiginit(self, _eec.new_EECLongestSideLog(*args, **kwargs))
     __swig_destroy__ = _eec.delete_EECLongestSideLog
+    use_general_eNc = _swig_new_instance_method(_eec.EECLongestSideLog_use_general_eNc)
+    set_use_general_eNc = _swig_new_instance_method(_eec.EECLongestSideLog_set_use_general_eNc)
+    set_num_threads = _swig_new_instance_method(_eec.EECLongestSideLog_set_num_threads)
     description = _swig_new_instance_method(_eec.EECLongestSideLog_description)
-    load = _swig_new_instance_method(_eec.EECLongestSideLog_load)
-    save = _swig_new_instance_method(_eec.EECLongestSideLog_save)
     __getstate_internal__ = _swig_new_instance_method(_eec.EECLongestSideLog___getstate_internal__)
     __setstate_internal__ = _swig_new_instance_method(_eec.EECLongestSideLog___setstate_internal__)
     add = _swig_new_instance_method(_eec.EECLongestSideLog_add)
@@ -947,25 +1274,24 @@ class EECLongestSideLog(EECBase, EECHist1DLog):
         return self.description().decode('utf-8')
 
 
-    _default_args = (2, 1, 0.1, 1.0)
+    _default_args = (2, 1, (1e-5, 1))
 
 
 # Register EECLongestSideLog in _eec:
 _eec.EECLongestSideLog_swigregister(EECLongestSideLog)
 
 class EECTriangleOPEIdIdId(EECBase, EECHist3DIdIdId):
-    r"""Proxy of C++ eec::EECTriangleOPE< axis::id,axis::id,axis::id > class."""
+    r"""Proxy of C++ fastjet::contrib::eec::EECTriangleOPE< axis::id,axis::id,axis::id > class."""
 
     thisown = property(lambda x: x.this.own(), lambda x, v: x.this.own(v), doc="The membership flag")
     __repr__ = _swig_repr
 
     def __init__(self, *args, **kwargs):
-        r"""__init__(EECTriangleOPEIdIdId self, unsigned int nbins0, double axis0_min, double axis0_max, unsigned int nbins1, double axis1_min, double axis1_max, unsigned int nbins2, double axis2_min, double axis2_max, bool norm=True, vectorDouble pt_powers={1}, vectorUnsigned ch_powers={0}, int num_threads=-1, long print_every=-10, bool check_degen=False, bool average_verts=False, bool track_covariance=False, bool variance_bound=True, bool variance_bound_includes_overflows=True) -> EECTriangleOPEIdIdId"""
+        r"""__init__(EECTriangleOPEIdIdId self, arrayUnsigned3 nbins, arrayPairDoubleDouble axes_range, bool norm=True, vectorDouble weight_powers={1}, vectorUnsigned charge_powers={0}, fastjet::contrib::eec::ParticleWeight particle_weight=Default, fastjet::contrib::eec::PairwiseDistance pairwise_distance=Default, int num_threads=-1, int omp_chunksize=10, long print_every=-10, bool check_degen=False, bool average_verts=False, bool track_covariance=False, bool variance_bound=True, bool variance_bound_includes_overflows=True, double R=1, double beta=1) -> EECTriangleOPEIdIdId"""
         _eec.EECTriangleOPEIdIdId_swiginit(self, _eec.new_EECTriangleOPEIdIdId(*args, **kwargs))
     __swig_destroy__ = _eec.delete_EECTriangleOPEIdIdId
+    set_num_threads = _swig_new_instance_method(_eec.EECTriangleOPEIdIdId_set_num_threads)
     description = _swig_new_instance_method(_eec.EECTriangleOPEIdIdId_description)
-    load = _swig_new_instance_method(_eec.EECTriangleOPEIdIdId_load)
-    save = _swig_new_instance_method(_eec.EECTriangleOPEIdIdId_save)
     __getstate_internal__ = _swig_new_instance_method(_eec.EECTriangleOPEIdIdId___getstate_internal__)
     __setstate_internal__ = _swig_new_instance_method(_eec.EECTriangleOPEIdIdId___setstate_internal__)
     add = _swig_new_instance_method(_eec.EECTriangleOPEIdIdId_add)
@@ -974,25 +1300,24 @@ class EECTriangleOPEIdIdId(EECBase, EECHist3DIdIdId):
         return self.description().decode('utf-8')
 
 
-    _default_args = (1, 0.1, 1.0, 1, 0.1, 1.0, 1, 0., 1.5)
+    _default_args = ((1, 1, 1), ((1e-5, 1), (1e-5, 1), (0, np.pi/2)))
 
 
 # Register EECTriangleOPEIdIdId in _eec:
 _eec.EECTriangleOPEIdIdId_swigregister(EECTriangleOPEIdIdId)
 
 class EECTriangleOPELogIdId(EECBase, EECHist3DLogIdId):
-    r"""Proxy of C++ eec::EECTriangleOPE< axis::log,axis::id,axis::id > class."""
+    r"""Proxy of C++ fastjet::contrib::eec::EECTriangleOPE< axis::log,axis::id,axis::id > class."""
 
     thisown = property(lambda x: x.this.own(), lambda x, v: x.this.own(v), doc="The membership flag")
     __repr__ = _swig_repr
 
     def __init__(self, *args, **kwargs):
-        r"""__init__(EECTriangleOPELogIdId self, unsigned int nbins0, double axis0_min, double axis0_max, unsigned int nbins1, double axis1_min, double axis1_max, unsigned int nbins2, double axis2_min, double axis2_max, bool norm=True, vectorDouble pt_powers={1}, vectorUnsigned ch_powers={0}, int num_threads=-1, long print_every=-10, bool check_degen=False, bool average_verts=False, bool track_covariance=False, bool variance_bound=True, bool variance_bound_includes_overflows=True) -> EECTriangleOPELogIdId"""
+        r"""__init__(EECTriangleOPELogIdId self, arrayUnsigned3 nbins, arrayPairDoubleDouble axes_range, bool norm=True, vectorDouble weight_powers={1}, vectorUnsigned charge_powers={0}, fastjet::contrib::eec::ParticleWeight particle_weight=Default, fastjet::contrib::eec::PairwiseDistance pairwise_distance=Default, int num_threads=-1, int omp_chunksize=10, long print_every=-10, bool check_degen=False, bool average_verts=False, bool track_covariance=False, bool variance_bound=True, bool variance_bound_includes_overflows=True, double R=1, double beta=1) -> EECTriangleOPELogIdId"""
         _eec.EECTriangleOPELogIdId_swiginit(self, _eec.new_EECTriangleOPELogIdId(*args, **kwargs))
     __swig_destroy__ = _eec.delete_EECTriangleOPELogIdId
+    set_num_threads = _swig_new_instance_method(_eec.EECTriangleOPELogIdId_set_num_threads)
     description = _swig_new_instance_method(_eec.EECTriangleOPELogIdId_description)
-    load = _swig_new_instance_method(_eec.EECTriangleOPELogIdId_load)
-    save = _swig_new_instance_method(_eec.EECTriangleOPELogIdId_save)
     __getstate_internal__ = _swig_new_instance_method(_eec.EECTriangleOPELogIdId___getstate_internal__)
     __setstate_internal__ = _swig_new_instance_method(_eec.EECTriangleOPELogIdId___setstate_internal__)
     add = _swig_new_instance_method(_eec.EECTriangleOPELogIdId_add)
@@ -1001,25 +1326,24 @@ class EECTriangleOPELogIdId(EECBase, EECHist3DLogIdId):
         return self.description().decode('utf-8')
 
 
-    _default_args = (1, 0.1, 1.0, 1, 0.1, 1.0, 1, 0., 1.5)
+    _default_args = ((1, 1, 1), ((1e-5, 1), (1e-5, 1), (0, np.pi/2)))
 
 
 # Register EECTriangleOPELogIdId in _eec:
 _eec.EECTriangleOPELogIdId_swigregister(EECTriangleOPELogIdId)
 
 class EECTriangleOPEIdLogId(EECBase, EECHist3DIdLogId):
-    r"""Proxy of C++ eec::EECTriangleOPE< axis::id,axis::log,axis::id > class."""
+    r"""Proxy of C++ fastjet::contrib::eec::EECTriangleOPE< axis::id,axis::log,axis::id > class."""
 
     thisown = property(lambda x: x.this.own(), lambda x, v: x.this.own(v), doc="The membership flag")
     __repr__ = _swig_repr
 
     def __init__(self, *args, **kwargs):
-        r"""__init__(EECTriangleOPEIdLogId self, unsigned int nbins0, double axis0_min, double axis0_max, unsigned int nbins1, double axis1_min, double axis1_max, unsigned int nbins2, double axis2_min, double axis2_max, bool norm=True, vectorDouble pt_powers={1}, vectorUnsigned ch_powers={0}, int num_threads=-1, long print_every=-10, bool check_degen=False, bool average_verts=False, bool track_covariance=False, bool variance_bound=True, bool variance_bound_includes_overflows=True) -> EECTriangleOPEIdLogId"""
+        r"""__init__(EECTriangleOPEIdLogId self, arrayUnsigned3 nbins, arrayPairDoubleDouble axes_range, bool norm=True, vectorDouble weight_powers={1}, vectorUnsigned charge_powers={0}, fastjet::contrib::eec::ParticleWeight particle_weight=Default, fastjet::contrib::eec::PairwiseDistance pairwise_distance=Default, int num_threads=-1, int omp_chunksize=10, long print_every=-10, bool check_degen=False, bool average_verts=False, bool track_covariance=False, bool variance_bound=True, bool variance_bound_includes_overflows=True, double R=1, double beta=1) -> EECTriangleOPEIdLogId"""
         _eec.EECTriangleOPEIdLogId_swiginit(self, _eec.new_EECTriangleOPEIdLogId(*args, **kwargs))
     __swig_destroy__ = _eec.delete_EECTriangleOPEIdLogId
+    set_num_threads = _swig_new_instance_method(_eec.EECTriangleOPEIdLogId_set_num_threads)
     description = _swig_new_instance_method(_eec.EECTriangleOPEIdLogId_description)
-    load = _swig_new_instance_method(_eec.EECTriangleOPEIdLogId_load)
-    save = _swig_new_instance_method(_eec.EECTriangleOPEIdLogId_save)
     __getstate_internal__ = _swig_new_instance_method(_eec.EECTriangleOPEIdLogId___getstate_internal__)
     __setstate_internal__ = _swig_new_instance_method(_eec.EECTriangleOPEIdLogId___setstate_internal__)
     add = _swig_new_instance_method(_eec.EECTriangleOPEIdLogId_add)
@@ -1028,25 +1352,24 @@ class EECTriangleOPEIdLogId(EECBase, EECHist3DIdLogId):
         return self.description().decode('utf-8')
 
 
-    _default_args = (1, 0.1, 1.0, 1, 0.1, 1.0, 1, 0., 1.5)
+    _default_args = ((1, 1, 1), ((1e-5, 1), (1e-5, 1), (0, np.pi/2)))
 
 
 # Register EECTriangleOPEIdLogId in _eec:
 _eec.EECTriangleOPEIdLogId_swigregister(EECTriangleOPEIdLogId)
 
 class EECTriangleOPELogLogId(EECBase, EECHist3DLogLogId):
-    r"""Proxy of C++ eec::EECTriangleOPE< axis::log,axis::log,axis::id > class."""
+    r"""Proxy of C++ fastjet::contrib::eec::EECTriangleOPE< axis::log,axis::log,axis::id > class."""
 
     thisown = property(lambda x: x.this.own(), lambda x, v: x.this.own(v), doc="The membership flag")
     __repr__ = _swig_repr
 
     def __init__(self, *args, **kwargs):
-        r"""__init__(EECTriangleOPELogLogId self, unsigned int nbins0, double axis0_min, double axis0_max, unsigned int nbins1, double axis1_min, double axis1_max, unsigned int nbins2, double axis2_min, double axis2_max, bool norm=True, vectorDouble pt_powers={1}, vectorUnsigned ch_powers={0}, int num_threads=-1, long print_every=-10, bool check_degen=False, bool average_verts=False, bool track_covariance=False, bool variance_bound=True, bool variance_bound_includes_overflows=True) -> EECTriangleOPELogLogId"""
+        r"""__init__(EECTriangleOPELogLogId self, arrayUnsigned3 nbins, arrayPairDoubleDouble axes_range, bool norm=True, vectorDouble weight_powers={1}, vectorUnsigned charge_powers={0}, fastjet::contrib::eec::ParticleWeight particle_weight=Default, fastjet::contrib::eec::PairwiseDistance pairwise_distance=Default, int num_threads=-1, int omp_chunksize=10, long print_every=-10, bool check_degen=False, bool average_verts=False, bool track_covariance=False, bool variance_bound=True, bool variance_bound_includes_overflows=True, double R=1, double beta=1) -> EECTriangleOPELogLogId"""
         _eec.EECTriangleOPELogLogId_swiginit(self, _eec.new_EECTriangleOPELogLogId(*args, **kwargs))
     __swig_destroy__ = _eec.delete_EECTriangleOPELogLogId
+    set_num_threads = _swig_new_instance_method(_eec.EECTriangleOPELogLogId_set_num_threads)
     description = _swig_new_instance_method(_eec.EECTriangleOPELogLogId_description)
-    load = _swig_new_instance_method(_eec.EECTriangleOPELogLogId_load)
-    save = _swig_new_instance_method(_eec.EECTriangleOPELogLogId_save)
     __getstate_internal__ = _swig_new_instance_method(_eec.EECTriangleOPELogLogId___getstate_internal__)
     __setstate_internal__ = _swig_new_instance_method(_eec.EECTriangleOPELogLogId___setstate_internal__)
     add = _swig_new_instance_method(_eec.EECTriangleOPELogLogId_add)
@@ -1055,7 +1378,7 @@ class EECTriangleOPELogLogId(EECBase, EECHist3DLogLogId):
         return self.description().decode('utf-8')
 
 
-    _default_args = (1, 0.1, 1.0, 1, 0.1, 1.0, 1, 0., 1.5)
+    _default_args = ((1, 1, 1), ((1e-5, 1), (1e-5, 1), (0, np.pi/2)))
 
 
 # Register EECTriangleOPELogLogId in _eec:

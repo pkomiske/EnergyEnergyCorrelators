@@ -20,85 +20,126 @@ import re
 import subprocess
 import sys
 
-from setuptools import setup
-from setuptools.extension import Extension
+################################################################################
 
-import numpy as np
+# Package name, with capitalization
+name = 'EEC'
+lname = name.lower()
 
-use_fastjet = False
+# using PyFJCore or not
+use_pyfjcore = True
 
-with open(os.path.join('eec', '__init__.py'), 'r') as f:
-    __version__ = re.search(r'__version__\s*=\s*[\'"]([^\'"]*)[\'"]', f.read()).group(1)
+################################################################################
 
-# function to query a config binary and get the result
-fastjet_config = os.environ.get('FASTJET_CONFIG', 'fastjet-config')
-def query_config(query):
-    return subprocess.check_output([fastjet_config, query]).decode('utf-8').strip()
+# use main fastjet library
+if not use_pyfjcore:
 
-# get fastjet info
-fj_prefix = query_config('--prefix') if use_fastjet else ''
-fj_cxxflags = query_config('--cxxflags') if use_fastjet else ''
-fj_ldflags = query_config('--libs') if use_fastjet else ''
+    # function to query a config binary and get the result
+    fastjet_config = os.environ.get('FASTJET_CONFIG', 'fastjet-config')
+    def query_config(query):
+        if not use_pyfjcore:
+            return subprocess.check_output([fastjet_config, query]).decode('utf-8').strip()
+        return ''
 
-# run swig to generate eec.py and eec.cpp from eec.i
+    # get fastjet info
+    fj_prefix = query_config('--prefix')
+    fj_cxxflags = query_config('--cxxflags')
+    fj_ldflags = query_config('--libs')
+
 if sys.argv[1] == 'swig':
-    swig_opts = ['-fastproxy', '-w509,511', '-keyword', '-Ieec/include']
-    if len(sys.argv) >= 3 and sys.argv[2] == '-py3':
-        swig_opts.append('-py3')
-    if use_fastjet:
-        swig_opts += ['-DSWIG_FASTJET', '-DFASTJET_PREFIX={}'.format(fj_prefix)] + fj_cxxflags.split()
-    command = 'swig -python -c++ {} -o eec/eec.cpp eec/swig/eec.i'.format(' '.join(swig_opts))
+
+    # form swig options
+    if use_pyfjcore:
+        opts = '-DEEC_USE_PYFJCORE -IEventGeometry/PyFJCore'
+    else:
+        opts = '-DFASTJET_PREFIX=' + fj_prefix + ' ' + fj_cxxflags
+
+    command = ('swig -python -c++ -fastproxy -keyword -py3 -w325,402,509,511 -Ieec/include {opts} '
+               '-o {lname}/{lname}.cpp {lname}/swig/{lname}.i').format(opts=opts, lname=lname)
     print(command)
     subprocess.run(command.split())
 
-# build extension
 else:
 
-    # compiler flags, libraries, etc
-    cxxflags = ['-fopenmp', '-std=c++14', '-ffast-math', '-g0'] + fj_cxxflags.split()
-    ldflags = ['-fopenmp']
-    libs = []
-    include_dirs = [np.get_include(), os.path.join('eec', 'include')]
-    if platform.system() == 'Darwin':
-        cxxflags.insert(0, '-Xpreprocessor')
-        del ldflags[0]
-        libs.append('omp')
-    elif platform.system() == 'Windows':
-        assert not use_fastjet, 'fastjet not yet supported on windows'
-        cxxflags = ['/openmp', '/std:c++14', '/fp:fast']
-        include_dirs.append('.')
+    import numpy as np
+    from setuptools import setup
+    from setuptools.extension import Extension
 
-    # we only serialize on non-windows platforms
-    serialization = (platform.system() != 'Windows')
-    if serialization:
-        cxxflags.extend(['-DEEC_SERIALIZATION', '-DEEC_COMPRESSION'])
-        libs.extend(['boost_serialization', 'boost_iostreams', 'z'])
+    # get contrib version
+    with open(os.path.join(lname, '__init__.py'), 'r') as f:
+        __version__ = re.search(r'__version__\s*=\s*[\'"]([^\'"]*)[\'"]', f.read()).group(1)
 
-    # determine fastjet library paths and names for Python
-    fj_libdirs = []
-    for x in fj_ldflags.split():
-        if x.startswith('-L'):
-            fj_libdirs.append(x[2:])
-        elif x.startswith('-l'):
-            libs.append(x[2:])
-        else:
-            ldflags.append(x)
+    # define containers of extension options
+    sources = [os.path.join(lname, lname + '.cpp')]
+    cxxflags = ['-fopenmp', '-ffast-math'] + os.environ.get('CXXFLAGS', '').split()
+    macros = []
+    include_dirs = [np.get_include(), 'EventGeometry',
+                    os.path.join('EventGeometry', 'Wasserstein'),
+                    os.path.join('eec', 'include')]
+    ldflags = []
+    library_dirs = []
+    libraries = []
 
-    if use_fastjet:
-        include_dirs.append(os.path.join(fj_prefix, 'share', 'fastjet', 'pyinterface'))
-        cxxflags += ['-DSWIG_FASTJET', '-DSWIG_TYPE_TABLE=fastjet']
+    # using main fastjet library
+    if not use_pyfjcore:
+        cxxflags += fj_cxxflags.split()
+        macros.append(('SWIG_TYPE_TABLE', 'fastjet'))
+        for ldflag in fj_ldflags.split():
+            if ldflag.startswith('-L'):
+                library_dirs.append(ldflag[2:])
+            elif ldflag.startswith('-l'):
+                libraries.append(ldflag[2:])
+            else:
+                ldflags.append(ldflag)
+
+    # using pyfjcore
     else:
-        cxxflags.append('-DSWIG_TYPE_TABLE=eec')
+        cxxflags.append('-std=c++14')
+        macros.append(('EEC_USE_PYFJCORE', None))
+        macros.append(('SWIG_TYPE_TABLE', 'fjcore'))
+        include_dirs.append(os.path.join('EventGeometry', 'PyFJCore'))
 
-    eec = Extension('eec._eec',
-                    sources=[os.path.join('eec', 'eec.cpp')],
-                    include_dirs=include_dirs,
-                    library_dirs=fj_libdirs,
-                    extra_compile_args=cxxflags,
-                    extra_link_args=ldflags,
-                    libraries=libs)
+        # need to compile pyfjcore from scratch for windows
+        if platform.system() == 'Windows':
+            sources.append(os.path.join('PyFJCore', 'pyfjcore', 'fjcore.cc'))
+            cxxflags = ['/openmp', '/std:c++14', '/fp:fast']
+            ldflags = ['/openmp']
+
+    # if not windows, further modification needed for multithreading
+    if platform.system() != 'Windows':
+
+        # serialization flags
+        macros.extend([('EEC_SERIALIZATION', None), ('EEC_COMPRESSION', None)])
+        libraries.extend(['boost_serialization', 'boost_iostreams', 'z'])
+
+        # no debugging
+        cxxflags.append('-g0')
+
+        # EEC library
+        #library_dirs.append('.')
+        #libraries.append(name)
+
+        # handle multithreading with OpenMP
+        if platform.system() == 'Darwin':
+            cxxflags.insert(0, '-Xpreprocessor')
+            libraries.append('omp')
+
+        # linux wants this flag
+        else:
+            ldflags.append('-fopenmp')
+            #ldflags.append('-Wl,-rpath,$ORIGIN/..')
+
+    module = Extension('{0}._{0}'.format(lname),
+                       sources=sources,
+                       define_macros=macros,
+                       include_dirs=include_dirs,
+                       library_dirs=library_dirs,
+                       libraries=libraries,
+                       extra_compile_args=cxxflags,
+                       extra_link_args=ldflags
+                      )
 
     setup(
-        ext_modules=[eec],
+        ext_modules=[module],
         version=__version__
     )

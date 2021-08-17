@@ -28,14 +28,12 @@
 // include numpy typemaps
 %include numpy.i
 %init %{
-  import_array();
+import_array();
 %}
 
 %pythoncode %{
-import numpy as _np
+import numpy as np
 %}
-
-#define EEC_INT std::ptrdiff_t
 
 %define %additional_numpy_typemaps(DATA_TYPE, DATA_TYPECODE, DIM_TYPE)
 
@@ -150,7 +148,7 @@ import numpy as _np
 %enddef
 
 %define RETURN_1DNUMPY_FROM_VECTOR(pyname, cppname, size)
-void pyname(double** arr_out0, EEC_INT* n0) {
-  COPY_1DARRAY_TO_NUMPY(arr_out0, n0, size, nbytes, $self->cppname().data())
-}
+  void pyname(double** arr_out0, EEC_INT* n0) {
+    COPY_1DARRAY_TO_NUMPY(arr_out0, n0, size, nbytes, $self->cppname().data())
+  }
 %enddef

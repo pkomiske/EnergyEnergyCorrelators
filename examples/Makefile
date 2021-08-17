@@ -1,10 +1,13 @@
-SRCS = cnpy.cpp basic_example.cpp
-CXXFLAGS = -O3 -Wall -std=c++14 -g
+CXX = g++
+SRCS = basic_example.cpp
+CXXFLAGS = -O3 -Wall -std=c++14 -g -ffast-math
 
 FASTJETINC = $(shell fastjet-config --cxxflags)
 FASTJETLIB = $(shell fastjet-config --libs)
-INCLUDES  += $(FASTJETINC) -I../eec/include
+INCLUDES  += $(FASTJETINC) -I../eec/include -I../EventGeometry -I../EventGeometry/Wasserstein
 LIBRARIES += $(FASTJETLIB) -lz
+
+CNPY = ../Wasserstein/examples/src/cnpy.o
 
 # http://make.mad-scientist.net/papers/advanced-auto-dependency-generation/#combine
 DEPDIR = .deps
@@ -17,11 +20,14 @@ COMPILE.cpp = $(CXX) $(DEPFLAGS) $(CXXFLAGS) $(INCLUDES) -c
 .PHONY: all clean
 all: $(SRCS:.cpp=.o) basic_example
 
-basic_example: basic_example.o cnpy.o
+basic_example: basic_example.o $(CNPY)
 	$(CXX) -o $@ $^ $(LIBRARIES)
 
+$(CNPY):
+	make -C ../EventGeometry/Wasserstein/examples src/cnpy.o
+
 clean:
-	rm -fv *.o
+	rm -rfv *.o *_example $(DEPDIR)
 
 $(DEPDIR): ; @mkdir -p $@
 DEPFILES := $(SRCS:%.cpp=$(DEPDIR)/%.d)

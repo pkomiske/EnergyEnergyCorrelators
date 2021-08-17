@@ -36,99 +36,88 @@
 BEGIN_EEC_NAMESPACE
 namespace hist {
 
-#ifndef SWIG_PREPROCESSOR
+
 
 // EECHistTraits for EECHist1D
-template<class T>
-struct EECHistTraits<EECHist1D<T>> {
-  typedef T Transform;
-  typedef bh::axis::regular<double, Transform> Axis;
+template<class Transform>
+struct EECHistTraits<EECHist1D<Transform>> {
 
   static constexpr unsigned rank = 1;
 
-  typedef struct HistFactory {
-    static auto make_hist(const Axis & axis) {
-      return bh::make_histogram_with(bh::weight_storage(), axis);
-    }
-    static auto make_simple_hist(const Axis & axis) {
-      return bh::make_histogram_with(simple_weight_storage(), axis);
-    }
-    static auto make_covariance_hist(const Axis & axis) {
-      return bh::make_histogram_with(simple_weight_storage(), axis, axis);
-    }
-  } HistFactory;
+  typedef bh::axis::regular<double, Transform> Axis;
 
-  typedef decltype(HistFactory::make_hist(Axis())) WeightedHist;
-  typedef decltype(HistFactory::make_simple_hist(Axis())) SimpleWeightedHist;
-  typedef decltype(HistFactory::make_covariance_hist(Axis())) CovarianceHist;
+  typedef std::array<unsigned, rank> NBins;
+  typedef std::array<std::array<double, 2>, rank> AxesRange;
+
+#ifndef SWIG_PREPROCESSOR
+  static auto make_hist(const NBins & nbins, const AxesRange & axes_range) {
+    return bh::make_histogram_with(bh::weight_storage(),
+                                   Axis(nbins[0], axes_range[0][0], axes_range[0][1]));
+  }
+  static auto make_simple_hist(const NBins & nbins, const AxesRange & axes_range) {
+    return bh::make_histogram_with(simple_weight_storage(),
+                                   Axis(nbins[0], axes_range[0][0], axes_range[0][1]));
+  }
+  static auto make_covariance_hist(const NBins & nbins, const AxesRange & axes_range) {
+    return bh::make_histogram_with(simple_weight_storage(),
+                                   Axis(nbins[0], axes_range[0][0], axes_range[0][1]),
+                                   Axis(nbins[0], axes_range[0][0], axes_range[0][1]));
+  }
+#endif // !SWIG_PREPROCESSOR
+
+  static std::string axes_description() { return name_transform<Transform>(); }
+
 };
-
-#endif // SWIG_PREPROCESSOR
 
 //-----------------------------------------------------------------------------
 // 1D histogram class
 //-----------------------------------------------------------------------------
 
-template<class Tr>
-class EECHist1D : public EECHistBase<EECHist1D<Tr>> {
+template<class Transform>
+class EECHist1D : public EECHistBase<EECHist1D<Transform>> {
 public:
-  typedef EECHist1D<Tr> Self;
-  typedef EECHistBase<Self> Base;
-  typedef EECHistTraits<Self> Traits;
-  typedef typename Traits::Axis Axis;
-
-private:
-  
-  unsigned nbins_;
-  double axis_min_, axis_max_;
-
-public:
-
-  EECHist1D(unsigned nbins, double axis_min, double axis_max,
-            int num_threads = 1,
-            bool track_covariance = true,
-            bool variance_bound = true, 
-            bool variance_bound_includes_overflows = true) :
-    Base(num_threads, track_covariance, variance_bound, variance_bound_includes_overflows),
-    nbins_(nbins), axis_min_(axis_min), axis_max_(axis_max)
-  {
-    this->init(1);
-  }
-  virtual ~EECHist1D() = default;
 
 #ifndef SWIG_PREPROCESSOR
-  void reset_axes() {
-    nbins_ = this->nbins();
-    axis_min_ = this->axis().value(0);
-    axis_max_ = this->axis().value(nbins_);
-  }
 
-  auto make_hist() const { return Traits::HistFactory::make_hist(axis0()); }
-  auto make_simple_hist() const { return Traits::HistFactory::make_simple_hist(axis0()); }
-  auto make_covariance_hist() const { return Traits::HistFactory::make_covariance_hist(axis0()); }
+  // inherited constructor
+  using EECHistBase<EECHist1D<Transform>>::EECHistBase;
+
 #endif
 
-protected:
-
-  std::string axes_description() const { return name_transform<Tr>(); }
+  virtual ~EECHist1D() = default;
 
 private:
 
-  Axis axis0() const { return Axis(nbins_, axis_min_, axis_max_); }
+  #ifdef BOOST_SERIALIZATION_ACCESS_HPP
+    friend class boost::serialization::access;
+  #endif
 
-#ifdef BOOST_SERIALIZATION_ACCESS_HPP
-  friend class boost::serialization::access;
-#endif
-
-  template<class Archive>
-  void serialize(Archive & ar, const unsigned int /* file_version */) {
-    ar & nbins_ & axis_min_ & axis_max_;
-    ar & boost::serialization::base_object<Base>(*this);
-  }
+  #ifdef EEC_SERIALIZATION
+    template<class Archive>
+    void serialize(Archive & ar, const unsigned int version) {
+      std::cout << "EECHist1D::serialize, version " << version << std::endl;
+      if (version == 0)
+        ar & this->nbins_[0] & this->axes_range_[0][0] & this->axes_range_[0][1];
+      
+      ar & boost::serialization::base_object<EECHistBase<EECHist1D<Transform>>>(*this);
+      std::cout << "EECHist1D::done" << std::endl;
+    }
+  #endif
 
 }; // EECHist1D
 
+// aliases
+using EECHist1DId = EECHist1D<axis::id>;
+using EECHist1DLog = EECHist1D<axis::log>;
+
 } // namespace hist
 END_EEC_NAMESPACE
+
+#if !defined(SWIG_PREPROCESSOR) && defined(EEC_SERIALIZATION)
+  BOOST_CLASS_VERSION(EEC_NAMESPACE::hist::EECHist1DId, 1)
+  BOOST_CLASS_VERSION(EEC_NAMESPACE::hist::EECHist1DLog, 1)
+  EEC_HISTBASE_SERIALIZATION(EEC_NAMESPACE::hist::EECHist1DId)
+  EEC_HISTBASE_SERIALIZATION(EEC_NAMESPACE::hist::EECHist1DLog)
+#endif
 
 #endif // EEC_HIST1D_HH

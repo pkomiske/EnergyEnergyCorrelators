@@ -14,17 +14,17 @@
 // You should have received a copy of the GNU General Public License
 // along with this program.  If not, see <https://www.gnu.org/licenses/>.
 
-/*   ______ ______ _____ 
+/*   ______ ______ _____
  *  |  ____|  ____/ ____|
- *  | |__  | |__ | |     
- *  |  __| |  __|| |     
- *  | |____| |___| |____ 
+ *  | |__  | |__ | |
+ *  |  __| |  __|| |
+ *  | |____| |___| |____
  *  |______|______\_____|
- *   _      ____  _   _  _____ ______  _____ _______    _____ _____ _____  ______ 
+ *   _      ____  _   _  _____ ______  _____ _______    _____ _____ _____  ______
  *  | |    / __ \| \ | |/ ____|  ____|/ ____|__   __|  / ____|_   _|  __ \|  ____|
- *  | |   | |  | |  \| | |  __| |__  | (___    | |    | (___   | | | |  | | |__   
- *  | |   | |  | | . ` | | |_ |  __|  \___ \   | |     \___ \  | | | |  | |  __|  
- *  | |___| |__| | |\  | |__| | |____ ____) |  | |     ____) |_| |_| |__| | |____ 
+ *  | |   | |  | |  \| | |  __| |__  | (___    | |    | (___   | | | |  | | |__
+ *  | |   | |  | | . ` | | |_ |  __|  \___ \   | |     \___ \  | | | |  | |  __|
+ *  | |___| |__| | |\  | |__| | |____ ____) |  | |     ____) |_| |_| |__| | |____
  *  |______\____/|_| \_|\_____|______|_____/   |_|    |_____/|_____|_____/|______|
  */
 
@@ -51,139 +51,89 @@ BEGIN_EEC_NAMESPACE
 template<class Transform>
 class EECLongestSide : public EECBase, public hist::EECHist1D<Transform> {
 
-  bool use_general_eNc_;
-  unsigned N_choose_2_;
-
   typedef EECLongestSide<Transform> Self;
   typedef hist::EECHist1D<Transform> EECHist1D;
   typedef typename EECHist1D::SimpleWeightedHist SimpleWeightedHist;
 
-  // function pointer to the actual computation that will be run
-  void (EECLongestSide::*compute_eec_ptr_)(int);
-
-#ifdef BOOST_SERIALIZATION_ACCESS_HPP
-  friend class boost::serialization::access;
-#endif
-
-  template<class Archive>
-  void serialize(Archive & ar, const unsigned int /* file_version */) {
-    ar & boost::serialization::base_object<EECBase>(*this)
-       & boost::serialization::base_object<EECHist1D>(*this);
-    ar & use_general_eNc_ & N_choose_2_;
-
-    select_eec_function();
-  }
-
-  void select_eec_function() {
-
-    // default is general computation
-    compute_eec_ptr_ = &EECLongestSide::eNc_sym;
-
-    // set pointer to function that will do the computation
-    switch (N()) {
-      case 2:
-        if (nsym() == 2) {
-          if (!use_general_eNc_)
-            compute_eec_ptr_ = &EECLongestSide::eec_ij_sym;
-        }
-        else
-          compute_eec_ptr_ = &EECLongestSide::eec_no_sym;
-        break;
-
-      case 3:
-        switch (nsym()) {
-          case 3:
-            if (!use_general_eNc_)
-              compute_eec_ptr_ = &EECLongestSide::eeec_ijk_sym;
-            break;
-
-          case 2:
-            compute_eec_ptr_ = &EECLongestSide::eeec_ij_sym;
-            if (!this->average_verts()) this->resize_internal_hists(2);
-            break;
-
-          case 0:
-            compute_eec_ptr_ = &EECLongestSide::eeec_no_sym;
-            if (!this->average_verts()) this->resize_internal_hists(3);
-            break;
-
-          default:
-            throw std::runtime_error("Invalid number of symmetries " + std::to_string(nsym()));
-        }
-        break;
-
-      case 4:
-        assert(nsym() == 4);
-        if (!use_general_eNc_)
-          compute_eec_ptr_ = &EECLongestSide::eeeec_ijkl_sym;
-        break;
-
-      case 5:
-        assert(nsym() == 5);
-        if (!use_general_eNc_)
-          compute_eec_ptr_ = &EECLongestSide::eeeeec_ijklm_sym;
-        break;
-
-      case 6:
-        assert(nsym() == 6);
-        if (!use_general_eNc_)
-          compute_eec_ptr_ = &EECLongestSide::eeeeeec_ijklmn_sym;
-        break;
-
-      case 7:
-        assert(nsym() == 7);
-        if (!use_general_eNc_)
-          compute_eec_ptr_ = &EECLongestSide::eeeeeeec_ijklmno_sym;
-        break;
-
-      case 8:
-        assert(nsym() == 8);
-        if (!use_general_eNc_)
-          compute_eec_ptr_ = &EECLongestSide::eeeeeeeec_ijklmnop_sym;
-        break;
-
-      default:
-        if (N() >= FACTORIALS_LONG.size()) {
-          std::ostringstream m;
-          m << "N must be less than " << FACTORIALS_LONG.size()
-            << " due to the use of " << sizeof(std::size_t) << "-bit integers";
-          throw std::invalid_argument(m.str());
-        }
-    }
-  }
-
 public:
 
+#ifndef SWIG_PREPROCESSOR
+
+  // default constructor
+  EECLongestSide() : EECLongestSide(EECConfig(), 1, 0, 1) {}
+
+  // constructor taking EECConfig and Hist1D arguments
+  EECLongestSide(const EECConfig & config,
+                 unsigned nbins, const std::array<double, 2> & axis_range,
+                 bool track_covariance = true,
+                 bool variance_bound = true,
+                 bool variance_bound_includes_overflows = true,
+                 bool use_general_eNc = false) :
+
+    // construct EECBase from provided EECConfig
+    EECBase(config),
+
+    // construct EECHist1D
+    EECHist1D({nbins}, {axis_range}, num_threads(),
+              track_covariance, variance_bound, variance_bound_includes_overflows),
+
+    // variables local to this class
+    use_general_eNc_(use_general_eNc),
+    N_choose_2_(N()*(N() - 1)/2)
+  {
+    init_subclass();
+  }
+
+#endif // !SWIG_PREPROCESSOR
+
+  // constructor with all options (mostly useful for Python)
   EECLongestSide(unsigned N,
-                 unsigned nbins, double axis_min, double axis_max,
+                 unsigned nbins, const std::array<double, 2> & axis_range,
                  bool norm = true,
-                 const std::vector<double> & pt_powers = {1},
-                 const std::vector<unsigned> & ch_powers = {0},
+                 const std::vector<double> & weight_powers = {1},
+                 const std::vector<unsigned> & charge_powers = {0},
+                 ParticleWeight particle_weight = ParticleWeight::Default,
+                 PairwiseDistance pairwise_distance = PairwiseDistance::Default,
                  int num_threads = -1,
+                 int omp_chunksize = 10,
                  long print_every = -10,
                  bool check_degen = false,
                  bool average_verts = false,
                  bool track_covariance = true,
                  bool variance_bound = true,
                  bool variance_bound_includes_overflows = true,
+                 double R = 1,
+                 double beta = 1,
                  bool use_general_eNc = false) :
-    EECBase(N, norm, pt_powers, ch_powers, num_threads, print_every, check_degen, average_verts),
-    EECHist1D(nbins, axis_min, axis_max, num_threads,
-              track_covariance, variance_bound, variance_bound_includes_overflows),
-    use_general_eNc_(use_general_eNc),
-    N_choose_2_(this->N()*(this->N()-1)/2)
-  {
-    select_eec_function();
-  }
+    EECLongestSide(EECConfig(N, norm, weight_powers, charge_powers,
+                             particle_weight, pairwise_distance,
+                             num_threads, omp_chunksize, print_every,
+                             check_degen, average_verts,
+                             R, beta),
+                   nbins, axis_range,
+                   track_covariance,
+                   variance_bound,
+                   variance_bound_includes_overflows,
+                   use_general_eNc)
+  {}
 
   virtual ~EECLongestSide() = default;
+
+  // getter/setter options
+  bool use_general_eNc() const { return use_general_eNc_; }
+  void set_use_general_eNc(bool general) { use_general_eNc_ = general; init_subclass(); }
+  void set_num_threads(int threads) {
+    EECBase::set_num_threads(threads);
+    EECHist1D::set_num_threads(threads);
+  }
 
   std::string description(int hist_level = 1) const {
     unsigned nh(this->nhists());
 
     std::ostringstream oss;
     oss << std::boolalpha
-        << "EECLongestSide<" << this->axes_description() << ">::" << EECBase::description(hist_level) << '\n'
+        << "EECLongestSide<" << EECHist1D::HistTraits::axes_description()
+        << ">::" << EECBase::description() << '\n'
         << "  using eNc_sym - " << use_general_eNc_ << '\n'
         << "  there " << (nh == 1 ? "is " : "are ") << nh << " histogram";
 
@@ -228,18 +178,109 @@ public:
   }
 
 private:
+
+  // data members local to this class
+  bool use_general_eNc_;
+  unsigned N_choose_2_;
+
+  // function pointer to the actual computation that will be run
+  void (EECLongestSide::*compute_eec_func_ptr_)(const EECEvent &, int);
+
+  // provides initialization of this subclass from configuration
+  void init_subclass() {
+
+    // default is general computation
+    compute_eec_func_ptr_ = &EECLongestSide::eNc_sym;
+
+    // set pointer to function that will do the computation
+    switch (N()) {
+      case 2:
+        if (nsym() == 2) {
+          if (!use_general_eNc_)
+            compute_eec_func_ptr_ = &EECLongestSide::eec_ij_sym;
+        }
+        else
+          compute_eec_func_ptr_ = &EECLongestSide::eec_no_sym;
+        break;
+
+      case 3:
+        switch (nsym()) {
+          case 3:
+            if (!use_general_eNc_)
+              compute_eec_func_ptr_ = &EECLongestSide::eeec_ijk_sym;
+            break;
+
+          case 2:
+            compute_eec_func_ptr_ = &EECLongestSide::eeec_ij_sym;
+            if (!this->average_verts()) this->duplicate_histograms(2);
+            break;
+
+          case 0:
+            compute_eec_func_ptr_ = &EECLongestSide::eeec_no_sym;
+            if (!this->average_verts()) this->duplicate_histograms(3);
+            break;
+
+          default:
+            throw std::runtime_error("Invalid number of symmetries " + std::to_string(nsym()));
+        }
+        break;
+
+      case 4:
+        assert(nsym() == 4);
+        if (!use_general_eNc_)
+          compute_eec_func_ptr_ = &EECLongestSide::eeeec_ijkl_sym;
+        break;
+
+      case 5:
+        assert(nsym() == 5);
+        if (!use_general_eNc_)
+          compute_eec_func_ptr_ = &EECLongestSide::eeeeec_ijklm_sym;
+        break;
+
+      case 6:
+        assert(nsym() == 6);
+        if (!use_general_eNc_)
+          compute_eec_func_ptr_ = &EECLongestSide::eeeeeec_ijklmn_sym;
+        break;
+
+      case 7:
+        assert(nsym() == 7);
+        if (!use_general_eNc_)
+          compute_eec_func_ptr_ = &EECLongestSide::eeeeeeec_ijklmno_sym;
+        break;
+
+      case 8:
+        assert(nsym() == 8);
+        if (!use_general_eNc_)
+          compute_eec_func_ptr_ = &EECLongestSide::eeeeeeeec_ijklmnop_sym;
+        break;
+
+      default:
+        if (N() >= FACTORIALS_LONG.size()) {
+          std::ostringstream m;
+          m << "N must be less than " << FACTORIALS_LONG.size()
+            << " due to the use of " << sizeof(std::size_t) << "-bit integers";
+          throw std::invalid_argument(m.str());
+        }
+    }
+  }
   
-  void compute_eec(int thread_i) {
-    (this->*compute_eec_ptr_)(thread_i);
-    this->fill_from_single_event(thread_i);
+  // implements pure virtual method from base class
+  void compute_eec_internal(const EECEvent & event, int thread) {
+    (this->*compute_eec_func_ptr_)(event, thread);
+    this->fill_from_single_event(thread);
   }
 
-  void eec_ij_sym(int thread_i) {
-    const std::vector<double> & ws0(this->weights(thread_i)[0]),
-                              & dists(this->dists(thread_i));
-    double event_weight(this->event_weight(thread_i));
-    unsigned mult(this->mult(thread_i));
-    SimpleWeightedHist & hist(this->per_event_hists(thread_i)[0]);
+  void eec_ij_sym(const EECEvent & event, int thread) {
+    
+    // references to event data
+    const std::vector<double> & ws0(event.weights()[0]),
+                              & dists(event.dists());
+    double event_weight(event.event_weight());
+    unsigned mult(event.mult());
+
+    // reference to event hists
+    SimpleWeightedHist & hist(this->per_event_hists(thread)[0]);
 
     // loop over symmetric pairs of particles
     for (unsigned i = 0; i < mult; i++) {
@@ -256,13 +297,17 @@ private:
     }
   }
 
-  void eec_no_sym(int thread_i) {
-    const std::vector<double> & ws0(this->weights(thread_i)[0]),
-                              & ws1(this->weights(thread_i)[1]),
-                              & dists(this->dists(thread_i));
-    double event_weight(this->event_weight(thread_i));
-    unsigned mult(this->mult(thread_i));
-    SimpleWeightedHist & hist(this->per_event_hists(thread_i)[0]);
+  void eec_no_sym(const EECEvent & event, int thread) {
+    
+    // references to event data
+    const std::vector<double> & ws0(event.weights()[0]),
+                              & ws1(event.weights()[1]),
+                              & dists(event.dists());
+    double event_weight(event.event_weight());
+    unsigned mult(event.mult());
+
+    // reference to event hists
+    SimpleWeightedHist & hist(this->per_event_hists(thread)[0]);
 
     // loop over all pairs of particles
     for (unsigned i = 0; i < mult; i++) {
@@ -275,12 +320,16 @@ private:
     }
   }
 
-  void eeec_ijk_sym(int thread_i) {
-    const std::vector<double> & ws0(this->weights(thread_i)[0]),
-                              & dists(this->dists(thread_i));
-    double event_weight(this->event_weight(thread_i));
-    unsigned mult(this->mult(thread_i));
-    SimpleWeightedHist & hist(this->per_event_hists(thread_i)[0]);
+  void eeec_ijk_sym(const EECEvent & event, int thread) {
+    
+    // references to event data
+    const std::vector<double> & ws0(event.weights()[0]),
+                              & dists(event.dists());
+    double event_weight(event.event_weight());
+    unsigned mult(event.mult());
+
+    // reference to event hists
+    SimpleWeightedHist & hist(this->per_event_hists(thread)[0]);
 
     // loop over triplets of particles
     for (unsigned i = 0; i < mult; i++) {
@@ -313,13 +362,17 @@ private:
     }
   }
 
-  void eeec_ij_sym(int thread_i) {
-    const std::vector<double> & ws0(this->weights(thread_i)[0]),
-                              & ws1(this->weights(thread_i)[1]),
-                              & dists(this->dists(thread_i));
-    double event_weight(this->event_weight(thread_i));
-    unsigned mult(this->mult(thread_i));
-    std::vector<SimpleWeightedHist> & hists(this->per_event_hists(thread_i));
+  void eeec_ij_sym(const EECEvent & event, int thread) {
+    
+    // references to event data
+    const std::vector<double> & ws0(event.weights()[0]),
+                              & ws1(event.weights()[1]),
+                              & dists(event.dists());
+    double event_weight(event.event_weight());
+    unsigned mult(event.mult());
+
+    // reference to event hists
+    std::vector<SimpleWeightedHist> & hists(this->per_event_hists(thread));
 
     // loop over triplets of particles
     for (unsigned i = 0; i < mult; i++) {
@@ -366,14 +419,18 @@ private:
     }
   }
 
-  void eeec_no_sym(int thread_i) {
-    const std::vector<double> & ws0(this->weights(thread_i)[0]),
-                              & ws1(this->weights(thread_i)[1]),
-                              & ws2(this->weights(thread_i)[2]),
-                              & dists(this->dists(thread_i));
-    double event_weight(this->event_weight(thread_i));
-    unsigned mult(this->mult(thread_i));
-    std::vector<SimpleWeightedHist> & hists(this->per_event_hists(thread_i));
+  void eeec_no_sym(const EECEvent & event, int thread) {
+    
+    // references to event data
+    const std::vector<double> & ws0(event.weights()[0]),
+                              & ws1(event.weights()[1]),
+                              & ws2(event.weights()[2]),
+                              & dists(event.dists());
+    double event_weight(event.event_weight());
+    unsigned mult(event.mult());
+
+    // reference to event hists
+    std::vector<SimpleWeightedHist> & hists(this->per_event_hists(thread));
 
     // loop over unique triplets of particles
     for (unsigned i = 0; i < mult; i++) {
@@ -450,12 +507,16 @@ private:
     }
   }
 
-  void eeeec_ijkl_sym(int thread_i) {
-    const std::vector<double> & ws0(this->weights(thread_i)[0]),
-                              & dists(this->dists(thread_i));
-    double event_weight(this->event_weight(thread_i));
-    unsigned mult(this->mult(thread_i));
-    SimpleWeightedHist & hist(this->per_event_hists(thread_i)[0]);
+  void eeeec_ijkl_sym(const EECEvent & event, int thread) {
+    
+    // references to event data
+    const std::vector<double> & ws0(event.weights()[0]),
+                              & dists(event.dists());
+    double event_weight(event.event_weight());
+    unsigned mult(event.mult());
+
+    // reference to event hists
+    SimpleWeightedHist & hist(this->per_event_hists(thread)[0]);
 
     // loop over quadruplets of particles
     std::array<double, 6> dists_arr;
@@ -495,12 +556,16 @@ private:
     }
   }
 
-  void eeeeec_ijklm_sym(int thread_i) {
-    const std::vector<double> & ws0(this->weights(thread_i)[0]),
-                              & dists(this->dists(thread_i));
-    double event_weight(this->event_weight(thread_i));
-    unsigned mult(this->mult(thread_i));
-    SimpleWeightedHist & hist(this->per_event_hists(thread_i)[0]);
+  void eeeeec_ijklm_sym(const EECEvent & event, int thread) {
+    
+    // references to event data
+    const std::vector<double> & ws0(event.weights()[0]),
+                              & dists(event.dists());
+    double event_weight(event.event_weight());
+    unsigned mult(event.mult());
+
+    // reference to event hists
+    SimpleWeightedHist & hist(this->per_event_hists(thread)[0]);
 
     // loop over quintuplets of particles
     std::array<double, 10> dists_arr;
@@ -551,12 +616,16 @@ private:
     }
   }
 
-  void eeeeeec_ijklmn_sym(int thread_i) {
-    const std::vector<double> & ws0(this->weights(thread_i)[0]),
-                              & dists(this->dists(thread_i));
-    double event_weight(this->event_weight(thread_i));
-    unsigned mult(this->mult(thread_i));
-    SimpleWeightedHist & hist(this->per_event_hists(thread_i)[0]);
+  void eeeeeec_ijklmn_sym(const EECEvent & event, int thread) {
+    
+    // references to event data
+    const std::vector<double> & ws0(event.weights()[0]),
+                              & dists(event.dists());
+    double event_weight(event.event_weight());
+    unsigned mult(event.mult());
+
+    // reference to event hists
+    SimpleWeightedHist & hist(this->per_event_hists(thread)[0]);
 
     // loop over quintuplets of particles
     std::array<double, 15> dists_arr;
@@ -619,12 +688,16 @@ private:
     }
   }
 
-  void eeeeeeec_ijklmno_sym(int thread_i) {
-    const std::vector<double> & ws0(this->weights(thread_i)[0]),
-                              & dists(this->dists(thread_i));
-    double event_weight(this->event_weight(thread_i));
-    unsigned mult(this->mult(thread_i));
-    SimpleWeightedHist & hist(this->per_event_hists(thread_i)[0]);
+  void eeeeeeec_ijklmno_sym(const EECEvent & event, int thread) {
+    
+    // references to event data
+    const std::vector<double> & ws0(event.weights()[0]),
+                              & dists(event.dists());
+    double event_weight(event.event_weight());
+    unsigned mult(event.mult());
+
+    // reference to event hists
+    SimpleWeightedHist & hist(this->per_event_hists(thread)[0]);
 
     // loop over quintuplets of particles
     std::array<double, 21> dists_arr;
@@ -700,12 +773,16 @@ private:
     }
   }
 
-  void eeeeeeeec_ijklmnop_sym(int thread_i) {
-    const std::vector<double> & ws0(this->weights(thread_i)[0]),
-                              & dists(this->dists(thread_i));
-    double event_weight(this->event_weight(thread_i));
-    unsigned mult(this->mult(thread_i));
-    SimpleWeightedHist & hist(this->per_event_hists(thread_i)[0]);
+  void eeeeeeeec_ijklmnop_sym(const EECEvent & event, int thread) {
+    
+    // references to event data
+    const std::vector<double> & ws0(event.weights()[0]),
+                              & dists(event.dists());
+    double event_weight(event.event_weight());
+    unsigned mult(event.mult());
+
+    // reference to event hists
+    SimpleWeightedHist & hist(this->per_event_hists(thread)[0]);
 
     // loop over quintuplets of particles
     std::array<double, 28> dists_arr;
@@ -795,12 +872,16 @@ private:
     }
   }
 
-  void eNc_sym(int thread_i) {
-    const std::vector<double> & ws0(this->weights(thread_i)[0]),
-                              & dists(this->dists(thread_i));
-    double event_weight(this->event_weight(thread_i));
-    unsigned mult(this->mult(thread_i));
-    SimpleWeightedHist & hist(this->per_event_hists(thread_i)[0]);
+  void eNc_sym(const EECEvent & event, int thread) {
+    
+    // references to event data
+    const std::vector<double> & ws0(event.weights()[0]),
+                              & dists(event.dists());
+    double event_weight(event.event_weight());
+    unsigned mult(event.mult());
+
+    // reference to event hists
+    SimpleWeightedHist & hist(this->per_event_hists(thread)[0]);
 
     // nothing to do for empty events
     if (mult == 0) return;
@@ -871,6 +952,21 @@ private:
       if (w == 0) break;
     }
   }
+
+  #ifdef BOOST_SERIALIZATION_ACCESS_HPP
+    friend class boost::serialization::access;
+  #endif
+
+  #ifdef EEC_SERIALIZATION
+    template<class Archive>
+    void serialize(Archive & ar, const unsigned int /* file_version */) {
+      ar & boost::serialization::base_object<EECBase>(*this)
+         & boost::serialization::base_object<EECHist1D>(*this);
+      ar & use_general_eNc_ & N_choose_2_;
+
+      init_subclass();
+    }
+  #endif
 
 }; // EECLongestSide
 

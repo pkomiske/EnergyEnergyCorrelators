@@ -33,6 +33,7 @@
 
 #include <algorithm>
 #include <array>
+#include <cmath>
 #include <vector>
 
 #include "EECBase.hh"
@@ -78,74 +79,75 @@ class EECTriangleOPE : public EECBase, public hist::EECHist3D<Transform0, Transf
   typedef hist::EECHist3D<Transform0, Transform1, Transform2> EECHist3D;
   typedef typename EECHist3D::SimpleWeightedHist SimpleWeightedHist;
 
-  // function pointer to the actual computation that will be run
-  void (EECTriangleOPE::*compute_eec_ptr_)(int);
-
-#ifdef BOOST_SERIALIZATION_ACCESS_HPP
-  friend class boost::serialization::access;
-#endif
-
-  template<class Archive>
-  void serialize(Archive & ar, const unsigned int /* file_version */) {
-    ar & boost::serialization::base_object<EECBase>(*this);
-    ar & boost::serialization::base_object<EECHist3D>(*this);
-
-    select_eec_function();
-  }
-
-  void select_eec_function() {
-    switch (nsym()) {
-      case 3:
-        compute_eec_ptr_ = &EECTriangleOPE::eeec_ijk_sym;
-        break;
-
-      case 2:
-        compute_eec_ptr_ = &EECTriangleOPE::eeec_ij_sym;
-        if (!this->average_verts()) this->resize_internal_hists(3);
-        break;
-
-      case 0:
-        compute_eec_ptr_ = &EECTriangleOPE::eeec_no_sym;
-        if (!this->average_verts()) this->resize_internal_hists(6);
-        break;
-
-      default:
-        throw std::runtime_error("Invalid number of symmetries " + std::to_string(nsym()));
-    }
-  }
-
 public:
 
-  EECTriangleOPE(unsigned nbins0, double axis0_min, double axis0_max,
-                 unsigned nbins1, double axis1_min, double axis1_max,
-                 unsigned nbins2, double axis2_min, double axis2_max,
+#ifndef SWIG_PREPROCESSOR
+
+  // default constructor
+  EECTriangleOPE() : EECTriangleOPE(EECConfig(3), 1, 0, 1, 1, 0, 1, 1, 0, 1) {}
+
+  // constructor taking EECConfig and Hist3D arguments
+  EECTriangleOPE(const EECConfig & config,
+                 const std::array<unsigned, 3> & nbins,
+                 const std::array<std::array<double, 2>, 3> & axes_range,
+                 bool track_covariance = false,
+                 bool variance_bound = true,
+                 bool variance_bound_includes_overflows = true) :
+
+    // construct EECBase from provided EECConfig
+    EECBase(config),
+
+    // construct EECHist3D from EECConfig of options
+    EECHist3D(nbins, axes_range, num_threads(),
+              track_covariance, variance_bound, variance_bound_includes_overflows)
+  {
+    init_subclass();
+  }
+
+#endif // !SWIG_PREPROCESSOR
+
+  // constructor with all options (mostly useful for Python)
+  EECTriangleOPE(const std::array<unsigned, 3> & nbins,
+                 const std::array<std::array<double, 2>, 3> & axes_range,
                  bool norm = true,
-                 const std::vector<double> & pt_powers = {1},
-                 const std::vector<unsigned> & ch_powers = {0},
+                 const std::vector<double> & weight_powers = {1},
+                 const std::vector<unsigned> & charge_powers = {0},
+                 ParticleWeight particle_weight = ParticleWeight::Default,
+                 PairwiseDistance pairwise_distance = PairwiseDistance::Default,
                  int num_threads = -1,
+                 int omp_chunksize = 10,
                  long print_every = -10,
                  bool check_degen = false,
                  bool average_verts = false,
                  bool track_covariance = false,
                  bool variance_bound = true,
-                 bool variance_bound_includes_overflows = true) :
-    EECBase(3, norm, pt_powers, ch_powers, num_threads, print_every, check_degen, average_verts),
-    EECHist3D(nbins0, axis0_min, axis0_max,
-              nbins1, axis1_min, axis1_max,
-              nbins2, axis2_min, axis2_max,
-              num_threads,
-              track_covariance, variance_bound, variance_bound_includes_overflows)
-  {
-    select_eec_function();
-  }
+                 bool variance_bound_includes_overflows = true,
+                 double R = 1,
+                 double beta = 1) :
+    EECTriangleOPE(EECConfig(3, norm, weight_powers, charge_powers,
+                             particle_weight, pairwise_distance,
+                             num_threads, omp_chunksize, print_every,
+                             check_degen, average_verts,
+                             R, beta),
+                   nbins, axes_range,
+                   track_covariance,
+                   variance_bound,
+                   variance_bound_includes_overflows)
+  {}
 
   virtual ~EECTriangleOPE() = default;
+
+  void set_num_threads(int threads) {
+    EECBase::set_num_threads(threads);
+    EECHist3D::set_num_threads(threads);
+  }
 
   std::string description(int hist_level = 1) const {
     unsigned nh(this->nhists());
 
     std::ostringstream oss;
-    oss << "EECTriangleOPE<" << this->axes_description() << ">::" << EECBase::description(hist_level) << '\n'
+    oss << "EECTriangleOPE<" << EECHist3D::HistTraits::axes_description()
+        << ">::" << EECBase::description() << '\n'
         << "  there " << (nh == 1 ? "is " : "are ") << nh << " histogram";
 
     if (nh == 1) 
@@ -194,17 +196,47 @@ public:
 
 private:
 
-  void compute_eec(int thread_i) {
-    (this->*compute_eec_ptr_)(thread_i);
-    this->fill_from_single_event(thread_i);
+  // function pointer to the actual computation that will be run
+  void (EECTriangleOPE::*compute_eec_func_ptr_)(const EECEvent &, int);
+
+  // provides initialization of this subclass from configuration
+  void init_subclass() {
+    switch (nsym()) {
+      case 3:
+        compute_eec_func_ptr_ = &EECTriangleOPE::eeec_ijk_sym;
+        break;
+
+      case 2:
+        compute_eec_func_ptr_ = &EECTriangleOPE::eeec_ij_sym;
+        if (!this->average_verts()) this->duplicate_histograms(3);
+        break;
+
+      case 0:
+        compute_eec_func_ptr_ = &EECTriangleOPE::eeec_no_sym;
+        if (!this->average_verts()) this->duplicate_histograms(6);
+        break;
+
+      default:
+        throw std::runtime_error("Invalid number of symmetries " + std::to_string(nsym()));
+    }
   }
 
-  void eeec_ijk_sym(int thread_i) {
-    const std::vector<double> & ws0(this->weights(thread_i)[0]),
-                              & dists(this->dists(thread_i));
-    double event_weight(this->event_weight(thread_i));
-    unsigned mult(this->mult(thread_i));
-    SimpleWeightedHist & simple_hist(this->per_event_hists(thread_i)[0]);
+  // implements pure virtual method from base class
+  void compute_eec_internal(const EECEvent & event, int thread) {
+    (this->*compute_eec_func_ptr_)(event, thread);
+    this->fill_from_single_event(thread);
+  }
+
+  void eeec_ijk_sym(const EECEvent & event, int thread) {
+
+    // references to event data
+    const std::vector<double> & ws0(event.weights()[0]),
+                              & dists(event.dists());
+    double event_weight(event.event_weight());
+    unsigned mult(event.mult());
+
+    // reference to event hists
+    SimpleWeightedHist & simple_hist(this->per_event_hists(thread)[0]);
 
     // loop over symmetric triplets of particles
     std::array<double, 3> dists_arr;
@@ -232,13 +264,17 @@ private:
     }
   }
 
-  void eeec_ij_sym(int thread_i) {
-    const std::vector<double> & ws0(this->weights(thread_i)[0]),
-                              & ws1(this->weights(thread_i)[1]),
-                              & dists(this->dists(thread_i));
-    double event_weight(this->event_weight(thread_i));
-    unsigned mult(this->mult(thread_i));
-    std::vector<SimpleWeightedHist> & hists(this->per_event_hists(thread_i));
+  void eeec_ij_sym(const EECEvent & event, int thread) {
+
+    // references to event data
+    const std::vector<double> & ws0(event.weights()[0]),
+                              & ws1(event.weights()[1]),
+                              & dists(event.dists());
+    double event_weight(event.event_weight());
+    unsigned mult(event.mult());
+
+    // reference to event hists
+    std::vector<SimpleWeightedHist> & hists(this->per_event_hists(thread));
 
     // first index is special, second is symmetric
     std::array<std::pair<double, int>, 3> dists_inds;
@@ -291,14 +327,18 @@ private:
     }
   }
 
-  void eeec_no_sym(int thread_i) {
-    const std::vector<double> & ws0(this->weights(thread_i)[0]),
-                              & ws1(this->weights(thread_i)[1]),
-                              & ws2(this->weights(thread_i)[2]),
-                              & dists(this->dists(thread_i));
-    double event_weight(this->event_weight(thread_i));
-    unsigned mult(this->mult(thread_i));
-    std::vector<SimpleWeightedHist> & hists(this->per_event_hists(thread_i));
+  void eeec_no_sym(const EECEvent & event, int thread) {
+
+    // references to event data
+    const std::vector<double> & ws0(event.weights()[0]),
+                              & ws1(event.weights()[1]),
+                              & ws2(event.weights()[2]),
+                              & dists(event.dists());
+    double event_weight(event.event_weight());
+    unsigned mult(event.mult());
+
+    // reference to event hists
+    std::vector<SimpleWeightedHist> & hists(this->per_event_hists(thread));
 
     // all indices are different
     std::array<std::pair<double, int>, 3> dists_inds;
@@ -391,6 +431,20 @@ private:
       }
     }
   }
+
+  #ifdef BOOST_SERIALIZATION_ACCESS_HPP
+    friend class boost::serialization::access;
+  #endif
+
+  #ifdef EEC_SERIALIZATION
+    template<class Archive>
+    void serialize(Archive & ar, const unsigned int /* file_version */) {
+      ar & boost::serialization::base_object<EECBase>(*this);
+      ar & boost::serialization::base_object<EECHist3D>(*this);
+
+      init_subclass();
+    }
+  #endif
 
 }; // EECTriangleOPE
 

@@ -1,0 +1,3 @@
+[submodule "EventGeometry"]
+	path = EventGeometry
+	url = git@github.com:pkomiske/EventGeometry.git

@@ -8,6 +8,11 @@
 
 #include "EEC.hh"
 
+// without these lines, `eec::` should be prefixed with `fastjet::contrib`
+using namespace fastjet;
+using namespace fastjet::contrib;
+
+
 template<class T>
 void run_eec_comp(T & eec, EventProducer * evp) {
 
@@ -72,11 +77,11 @@ int main(int argc, char** argv) {
     return 1;
 
   // specify EECs
-  eec::EECLongestSide_log eec_longestside(75, 1e-5, 1, 6, true);
-  eec::EECTriangleOPE_log_log_id eec_triangleope(50, 1e-4, 1,
-                                                 50, 1e-4, 1,
-                                                 25, 0, eec::PI/2,
-                                                 true);
+  eec::EECLongestSideLog eec_longestside(75, 1e-5, 1, 6, true);
+  eec::EECTriangleOPELogLogId eec_triangleope(50, 1e-4, 1,
+                                              50, 1e-4, 1,
+                                              25, 0, eec::PI/2,
+                                              true);
   run_eec_comp(eec_longestside, evp);
   run_eec_comp(eec_triangleope, evp);
 

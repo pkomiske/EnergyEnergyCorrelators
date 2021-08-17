@@ -53,11 +53,11 @@ def calc_eec_hist_on_event(vals, bins, weights):
 
 class SlowEECBase(object):
 
-    def __init__(self, N, nbins, bin_ranges, axes, norm, pt_powers, ch_powers, overflows=True):
+    def __init__(self, N, nbins, bin_ranges, axes, norm, weight_powers, charge_powers, overflows=True):
         self.N = N
         self.norm = norm
-        self.pt_powers = N*[pt_powers] if isinstance(pt_powers, (int, float)) else pt_powers
-        self.ch_powers = N*[ch_powers] if isinstance(ch_powers, (int, float)) else ch_powers
+        self.weight_powers = N*[weight_powers] if isinstance(weight_powers, (int, float)) else weight_powers
+        self.charge_powers = N*[charge_powers] if isinstance(charge_powers, (int, float)) else charge_powers
 
         self.bins = []
         assert len(nbins) == len(bin_ranges)
@@ -137,7 +137,7 @@ class SlowEECLongestSideSym(SlowEECBase):
             return 0., 0.
 
         # handle charges
-        weights = pts**self.pt_powers[0] * charges**self.ch_powers[0]
+        weights = pts**self.weight_powers[0] * charges**self.charge_powers[0]
         
         # form weights
         weights = weight * self.factors[self.N][mult] * np.prod(weights[self.combs[self.N][mult]], axis=1)
@@ -162,8 +162,8 @@ class SuperSlowEECLongestSideSym(SlowEECBase):
             raise ValueError('Invalid N')
 
     def _compute_eec(self, pts, dists, charges, weight):
-        weights0 = pts**self.pt_powers[0] * charges**self.ch_powers[0]
-        weights1 = pts**self.pt_powers[1] * charges**self.ch_powers[1]
+        weights0 = pts**self.weight_powers[0] * charges**self.charge_powers[0]
+        weights1 = pts**self.weight_powers[1] * charges**self.charge_powers[1]
 
         hist_vals, hist_weights = [], []
         for i in range(len(pts)):
@@ -174,9 +174,9 @@ class SuperSlowEECLongestSideSym(SlowEECBase):
         return calc_eec_hist_on_event(np.asarray(hist_vals), self.bins[0], np.asarray(hist_weights))
 
     def _compute_eeec(self, pts, dists, charges, weight):
-        weights0 = pts**self.pt_powers[0] * charges**self.ch_powers[0]
-        weights1 = pts**self.pt_powers[1] * charges**self.ch_powers[1]
-        weights2 = pts**self.pt_powers[2] * charges**self.ch_powers[2]
+        weights0 = pts**self.weight_powers[0] * charges**self.charge_powers[0]
+        weights1 = pts**self.weight_powers[1] * charges**self.charge_powers[1]
+        weights2 = pts**self.weight_powers[2] * charges**self.charge_powers[2]
 
         hist_vals, hist_weights = [], []
         for i in range(len(pts)):
@@ -192,10 +192,10 @@ class SuperSlowEECLongestSideSym(SlowEECBase):
         return calc_eec_hist_on_event(np.asarray(hist_vals), self.bins[0], np.asarray(hist_weights))
 
     def _compute_eeeec(self, pts, dists, charges, weight):
-        weights0 = pts**self.pt_powers[0] * charges**self.ch_powers[0]
-        weights1 = pts**self.pt_powers[1] * charges**self.ch_powers[1]
-        weights2 = pts**self.pt_powers[2] * charges**self.ch_powers[2]
-        weights3 = pts**self.pt_powers[3] * charges**self.ch_powers[3]
+        weights0 = pts**self.weight_powers[0] * charges**self.charge_powers[0]
+        weights1 = pts**self.weight_powers[1] * charges**self.charge_powers[1]
+        weights2 = pts**self.weight_powers[2] * charges**self.charge_powers[2]
+        weights3 = pts**self.weight_powers[3] * charges**self.charge_powers[3]
 
         hist_vals, hist_weights = [], []
         for i in range(len(pts)):
@@ -226,8 +226,8 @@ class SuperSlowEECLongestSide(SlowEECBase):
             raise ValueError('Invalid N')
 
     def _compute_eec(self, pts, dists, charges, weight):
-        weights0 = pts**self.pt_powers[0] * charges**self.ch_powers[0]
-        weights1 = pts**self.pt_powers[1] * charges**self.ch_powers[1]
+        weights0 = pts**self.weight_powers[0] * charges**self.charge_powers[0]
+        weights1 = pts**self.weight_powers[1] * charges**self.charge_powers[1]
 
         mult = len(pts)
         hist_vals = [dists[i,j] for i in range(mult) for j in range(mult)]
@@ -236,9 +236,9 @@ class SuperSlowEECLongestSide(SlowEECBase):
         return calc_eec_hist_on_event(np.asarray(hist_vals), self.bins[0], weight * np.asarray(hist_weights))
 
     def _compute_eeec(self, pts, dists, charges, weight):
-        weights0 = pts**self.pt_powers[0] * charges**self.ch_powers[0]
-        weights1 = pts**self.pt_powers[1] * charges**self.ch_powers[1]
-        weights2 = pts**self.pt_powers[2] * charges**self.ch_powers[2]
+        weights0 = pts**self.weight_powers[0] * charges**self.charge_powers[0]
+        weights1 = pts**self.weight_powers[1] * charges**self.charge_powers[1]
+        weights2 = pts**self.weight_powers[2] * charges**self.charge_powers[2]
 
         mult = len(pts)
         hist_vals = [max(dists[i,j], dists[i,k], dists[j,k]) for i in range(mult) for j in range(mult) for k in range(mult)]
@@ -252,20 +252,20 @@ class SuperSlowEECLongestSideAsymN3(SlowEECBase):
         super().__init__(*args, **kwargs)
         assert self.N == 3
 
-        match01 = (self.pt_powers[0] == self.pt_powers[1]) and (self.ch_powers[0] == self.ch_powers[1])
-        match02 = (self.pt_powers[0] == self.pt_powers[2]) and (self.ch_powers[0] == self.ch_powers[2])
-        match12 = (self.pt_powers[1] == self.pt_powers[2]) and (self.ch_powers[1] == self.ch_powers[2])
+        match01 = (self.weight_powers[0] == self.weight_powers[1]) and (self.charge_powers[0] == self.charge_powers[1])
+        match02 = (self.weight_powers[0] == self.weight_powers[2]) and (self.charge_powers[0] == self.charge_powers[2])
+        match12 = (self.weight_powers[1] == self.weight_powers[2]) and (self.charge_powers[1] == self.charge_powers[2])
         assert not (match01 and match02), 'This EEC is for asymmetric computation'
         self._compute_func = self._compute_eeec_ij_sym
         nh = 2
         if match01:
             pass
         elif match02:
-            self.pt_powers = [self.pt_powers[0], self.pt_powers[2], self.pt_powers[1]]
-            self.ch_powers = [self.ch_powers[0], self.ch_powers[2], self.ch_powers[1]]
+            self.weight_powers = [self.weight_powers[0], self.weight_powers[2], self.weight_powers[1]]
+            self.charge_powers = [self.charge_powers[0], self.charge_powers[2], self.charge_powers[1]]
         elif match12:
-            self.pt_powers = [self.pt_powers[1], self.pt_powers[2], self.pt_powers[0]]
-            self.ch_powers = [self.ch_powers[1], self.ch_powers[2], self.ch_powers[0]]
+            self.weight_powers = [self.weight_powers[1], self.weight_powers[2], self.weight_powers[0]]
+            self.charge_powers = [self.charge_powers[1], self.charge_powers[2], self.charge_powers[0]]
         else:
             self._compute_func = self._compute_eeec_no_sym
             nh = 3
@@ -274,9 +274,9 @@ class SuperSlowEECLongestSideAsymN3(SlowEECBase):
         self.errs2 = np.zeros(((nh,) + self.errs2.shape))
 
     def _compute_eeec_ij_sym(self, pts, dists, charges, weight):
-        weights0 = pts**self.pt_powers[0] * charges**self.ch_powers[0]
-        weights1 = pts**self.pt_powers[1] * charges**self.ch_powers[1]
-        weights2 = pts**self.pt_powers[2] * charges**self.ch_powers[2]
+        weights0 = pts**self.weight_powers[0] * charges**self.charge_powers[0]
+        weights1 = pts**self.weight_powers[1] * charges**self.charge_powers[1]
+        weights2 = pts**self.weight_powers[2] * charges**self.charge_powers[2]
 
         mult = len(pts)
         hist_vals, hist_weights = [[], []], [[], []]
@@ -307,9 +307,9 @@ class SuperSlowEECLongestSideAsymN3(SlowEECBase):
         return [hist0, hist1], [errs0, errs1]
 
     def _compute_eeec_no_sym(self, pts, dists, charges, weight):
-        weights0 = pts**self.pt_powers[0] * charges**self.ch_powers[0]
-        weights1 = pts**self.pt_powers[1] * charges**self.ch_powers[1]
-        weights2 = pts**self.pt_powers[2] * charges**self.ch_powers[2]
+        weights0 = pts**self.weight_powers[0] * charges**self.charge_powers[0]
+        weights1 = pts**self.weight_powers[1] * charges**self.charge_powers[1]
+        weights2 = pts**self.weight_powers[2] * charges**self.charge_powers[2]
 
         mult = len(pts)
         hist_vals, hist_weights = [[], [], []], [[], [], []]
@@ -375,9 +375,9 @@ class SuperSlowEECTriangleOPE(SlowEECBase):
         super().__init__(*args, **kwargs)
         assert self.N == 3
 
-        match01 = (self.pt_powers[0] == self.pt_powers[1]) and (self.ch_powers[0] == self.ch_powers[1])
-        match02 = (self.pt_powers[0] == self.pt_powers[2]) and (self.ch_powers[0] == self.ch_powers[2])
-        match12 = (self.pt_powers[1] == self.pt_powers[2]) and (self.ch_powers[1] == self.ch_powers[2])
+        match01 = (self.weight_powers[0] == self.weight_powers[1]) and (self.charge_powers[0] == self.charge_powers[1])
+        match02 = (self.weight_powers[0] == self.weight_powers[2]) and (self.charge_powers[0] == self.charge_powers[2])
+        match12 = (self.weight_powers[1] == self.weight_powers[2]) and (self.charge_powers[1] == self.charge_powers[2])
         if (match01 and match02) or average_verts:
             self._compute_func = self._compute_eeec_ijk_sym
             nh = 1
@@ -385,13 +385,13 @@ class SuperSlowEECTriangleOPE(SlowEECBase):
             self._compute_func = self._compute_eeec_ij_sym
             nh = 3
         elif match02:
-            self.pt_powers = [self.pt_powers[0], self.pt_powers[2], self.pt_powers[1]]
-            self.ch_powers = [self.ch_powers[0], self.ch_powers[2], self.ch_powers[1]]
+            self.weight_powers = [self.weight_powers[0], self.weight_powers[2], self.weight_powers[1]]
+            self.charge_powers = [self.charge_powers[0], self.charge_powers[2], self.charge_powers[1]]
             self._compute_func = self._compute_eeec_ij_sym
             nh = 3
         elif match12:
-            self.pt_powers = [self.pt_powers[1], self.pt_powers[2], self.pt_powers[0]]
-            self.ch_powers = [self.ch_powers[1], self.ch_powers[2], self.ch_powers[0]]
+            self.weight_powers = [self.weight_powers[1], self.weight_powers[2], self.weight_powers[0]]
+            self.charge_powers = [self.charge_powers[1], self.charge_powers[2], self.charge_powers[0]]
             self._compute_func = self._compute_eeec_ij_sym
             nh = 3
         else:
@@ -412,9 +412,9 @@ class SuperSlowEECTriangleOPE(SlowEECBase):
         return hist, errs2
 
     def _compute_eeec_ijk_sym(self, pts, dists, charges, weight):
-        weights0 = pts**self.pt_powers[0] * charges**self.ch_powers[0]
-        weights1 = pts**self.pt_powers[1] * charges**self.ch_powers[1]
-        weights2 = pts**self.pt_powers[2] * charges**self.ch_powers[2]
+        weights0 = pts**self.weight_powers[0] * charges**self.charge_powers[0]
+        weights1 = pts**self.weight_powers[1] * charges**self.charge_powers[1]
+        weights2 = pts**self.weight_powers[2] * charges**self.charge_powers[2]
 
         mult = len(pts)
         hist_vals, hist_weights = [], []
@@ -430,9 +430,9 @@ class SuperSlowEECTriangleOPE(SlowEECBase):
         return self.calc_eec_hist(np.asarray(hist_vals), weight * np.asarray(hist_weights))
 
     def _compute_eeec_ij_sym(self, pts, dists, charges, weight):
-        weights0 = pts**self.pt_powers[0] * charges**self.ch_powers[0]
-        weights1 = pts**self.pt_powers[1] * charges**self.ch_powers[1]
-        weights2 = pts**self.pt_powers[2] * charges**self.ch_powers[2]
+        weights0 = pts**self.weight_powers[0] * charges**self.charge_powers[0]
+        weights1 = pts**self.weight_powers[1] * charges**self.charge_powers[1]
+        weights2 = pts**self.weight_powers[2] * charges**self.charge_powers[2]
 
         mult = len(pts)
         hist_vals, hist_weights = [[], [], []], [[], [], []]
@@ -475,9 +475,9 @@ class SuperSlowEECTriangleOPE(SlowEECBase):
         return [hist0, hist1, hist2], [errs0, errs1, errs2]
 
     def _compute_eeec_no_sym(self, pts, dists, charges, weight):
-        weights0 = pts**self.pt_powers[0] * charges**self.ch_powers[0]
-        weights1 = pts**self.pt_powers[1] * charges**self.ch_powers[1]
-        weights2 = pts**self.pt_powers[2] * charges**self.ch_powers[2]
+        weights0 = pts**self.weight_powers[0] * charges**self.charge_powers[0]
+        weights1 = pts**self.weight_powers[1] * charges**self.charge_powers[1]
+        weights2 = pts**self.weight_powers[2] * charges**self.charge_powers[2]
 
         mult = len(pts)
         hist_vals, hist_weights = [[], [], [], [], [], []], [[], [], [], [], [], []]
@@ -590,19 +590,19 @@ def test_multinomial(N, nparticles):
 
 @pytest.mark.pycompare
 @pytest.mark.parametrize('nparticles', [0, 1, 2, 4, 8])
-@pytest.mark.parametrize('ch_powers', [0, 1, 2][:1])
-@pytest.mark.parametrize('pt_powers', [1, 2][:1])
+@pytest.mark.parametrize('charge_powers', [0, 1, 2])
+@pytest.mark.parametrize('weight_powers', [1, 2])
 @pytest.mark.parametrize('nbins', [1, 15])
 @pytest.mark.parametrize('axis', ['log', 'id'])
 @pytest.mark.parametrize('N', [2, 3, 4])
-def test_pycompare_longestside(N, axis, nbins, pt_powers, ch_powers, nparticles):
+def test_pycompare_longestside(N, axis, nbins, weight_powers, charge_powers, nparticles):
 
-    super_slow_eec = SuperSlowEECLongestSideSym(N, (nbins,), ((1e-5, 1),), (axis,), True, pt_powers, ch_powers)
-    slow_eec = SlowEECLongestSideSym(N, (nbins,), ((1e-5, 1),), (axis,), True, pt_powers, ch_powers)
+    super_slow_eec = SuperSlowEECLongestSideSym(N, (nbins,), ((1e-5, 1),), (axis,), True, weight_powers, charge_powers)
+    slow_eec = SlowEECLongestSideSym(N, (nbins,), ((1e-5, 1),), (axis,), True, weight_powers, charge_powers)
     slow_eec.construct_inds_factors(nparticles, N)
 
     local_events = [event[:nparticles] for event in events[:200]]
-    weights = 2*np.random.rand(len(events))
+    weights = 2*np.random.rand(len(local_events))
 
     super_slow_eec(local_events, weights)
     slow_eec(local_events, weights)
@@ -613,26 +613,26 @@ def test_pycompare_longestside(N, axis, nbins, pt_powers, ch_powers, nparticles)
 @pytest.mark.longestside
 @pytest.mark.sym
 @pytest.mark.parametrize('nparticles', [0, 1, 2, 4, 8, 16])
-@pytest.mark.parametrize('ch_powers', [0, 1, 2])
-@pytest.mark.parametrize('pt_powers', [1, 2])
+@pytest.mark.parametrize('charge_powers', [0, 1, 2])
+@pytest.mark.parametrize('weight_powers', [1, 2])
 @pytest.mark.parametrize('num_threads', [1, -1])
 @pytest.mark.parametrize('use_general_eNc', [False, True])
 @pytest.mark.parametrize('axis', ['log', 'id'])
 @pytest.mark.parametrize('N', [2, 3, 4, 5, 6])
-def test_longestside_sym(N, axis, use_general_eNc, num_threads, pt_powers, ch_powers, nparticles):
+def test_longestside_sym(N, axis, use_general_eNc, num_threads, weight_powers, charge_powers, nparticles):
     if nparticles > 8 and N >= 5:
         pytest.skip()
 
     nbins = 15
-    eec = EECLongestSide(N, nbins, axis=axis, axis_range=(1e-5, 1), pt_powers=(pt_powers,), ch_powers=(ch_powers,),
+    eec = EECLongestSide(N, nbins, axis=axis, axis_range=(1e-5, 1.0), weight_powers=(weight_powers,), charge_powers=(charge_powers,),
                          print_every=0, num_threads=num_threads, use_general_eNc=use_general_eNc)
-    slow_eec = SlowEECLongestSideSym(N, (nbins,), ((1e-5, 1),), (axis,), True, pt_powers, ch_powers)
+    slow_eec = SlowEECLongestSideSym(N, (nbins,), ((1e-5, 1),), (axis,), True, weight_powers, charge_powers)
     slow_eec.construct_inds_factors(nparticles, N)
 
     local_events = [event[:nparticles] for event in events]
-    weights = 2*np.random.rand(len(events))
+    weights = 2*np.random.rand(len(local_events))
 
-    eec(local_events, weights)
+    eec(local_events, event_weights=weights)
     slow_eec(local_events, weights)
 
     hist, errs = eec.get_hist_errs()
@@ -642,20 +642,20 @@ def test_longestside_sym(N, axis, use_general_eNc, num_threads, pt_powers, ch_po
 @pytest.mark.longestside
 @pytest.mark.asym
 @pytest.mark.parametrize('nparticles', [1, 2, 5, 10])
-@pytest.mark.parametrize('ch_powers', [(0,0), (1,1), (2,2), (0,1), (1,0), (2,0), (0,2)])
-@pytest.mark.parametrize('pt_powers', [(1,1), (1,2), (2,1), (2,2), (0,1), (1,0)])
+@pytest.mark.parametrize('charge_powers', [(0,0), (1,1), (2,2), (0,1), (1,0), (2,0), (0,2)])
+@pytest.mark.parametrize('weight_powers', [(1,1), (1,2), (2,1), (2,2), (0,1), (1,0)])
 @pytest.mark.parametrize('num_threads', [1, -1])
 @pytest.mark.parametrize('axis', ['log', 'id'])
-def test_longestside_asym_N2_average_verts(axis, num_threads, pt_powers, ch_powers, nparticles):
+def test_longestside_asym_N2_average_verts(axis, num_threads, weight_powers, charge_powers, nparticles):
 
-    eec = EECLongestSide(2, 15, axis=axis, axis_range=(1e-5, 1), pt_powers=pt_powers, ch_powers=ch_powers,
+    eec = EECLongestSide(2, 15, axis=axis, axis_range=(1e-5, 1), weight_powers=weight_powers, charge_powers=charge_powers,
                          print_every=0, num_threads=num_threads)
-    super_slow_eec = SuperSlowEECLongestSide(2, (15,), ((1e-5, 1),), (axis,), True, pt_powers, ch_powers)
+    super_slow_eec = SuperSlowEECLongestSide(2, (15,), ((1e-5, 1),), (axis,), True, weight_powers, charge_powers)
 
     local_events = [event[-nparticles:] for event in events]
-    weights = 2*np.random.rand(len(events))
+    weights = 2*np.random.rand(len(local_events))
 
-    eec(local_events, weights)
+    eec(local_events, event_weights=weights)
     super_slow_eec(local_events, weights)
 
     hist, errs = eec.get_hist_errs()
@@ -666,23 +666,23 @@ def test_longestside_asym_N2_average_verts(axis, num_threads, pt_powers, ch_powe
 @pytest.mark.asym
 @pytest.mark.parametrize('nparticles', [1, 2, 10])
 @pytest.mark.parametrize('average_verts', [True, False])
-@pytest.mark.parametrize('ch_powers', [(0,0,0), (1,1,1), (0,0,1), (0,1,0), (1,0,0)])
-@pytest.mark.parametrize('pt_powers', [(1,1,1), (1,1,2), (1,2,1), (2,1,1)])
+@pytest.mark.parametrize('charge_powers', [(0,0,0), (1,1,1), (0,0,1), (0,1,0), (1,0,0)])
+@pytest.mark.parametrize('weight_powers', [(1,1,1), (1,1,2), (1,2,1), (2,1,1)])
 @pytest.mark.parametrize('num_threads', [1, -1])
 @pytest.mark.parametrize('axis', ['log', 'id'])
-def test_longestside_asym_N3(axis, num_threads, pt_powers, ch_powers, average_verts, nparticles):
+def test_longestside_asym_N3(axis, num_threads, weight_powers, charge_powers, average_verts, nparticles):
 
-    eec = EECLongestSide(3, 15, axis=axis, axis_range=(1e-5, 1), pt_powers=pt_powers, ch_powers=ch_powers,
+    eec = EECLongestSide(3, 15, axis=axis, axis_range=(1e-5, 1), weight_powers=weight_powers, charge_powers=charge_powers,
                          print_every=0, num_threads=num_threads, average_verts=average_verts)
-    super_slow_eec = (SuperSlowEECLongestSide(3, (15,), ((1e-5, 1),), (axis,), True, pt_powers, ch_powers)
-                      if average_verts or (len(set(pt_powers)) == 1 and len(set(ch_powers)) == 1) else
-                      SuperSlowEECLongestSideAsymN3(3, (15,), ((1e-5, 1),), (axis,), True, pt_powers, ch_powers))
+    super_slow_eec = (SuperSlowEECLongestSide(3, (15,), ((1e-5, 1),), (axis,), True, weight_powers, charge_powers)
+                      if average_verts or (len(set(weight_powers)) == 1 and len(set(charge_powers)) == 1) else
+                      SuperSlowEECLongestSideAsymN3(3, (15,), ((1e-5, 1),), (axis,), True, weight_powers, charge_powers))
 
     nev = 100
     local_events = [event[-nparticles:] for event in events[:nev]]
-    weights = 2*np.random.rand(len(events))[:nev]
+    weights = 2*np.random.rand(len(local_events))
 
-    eec(local_events, weights)
+    eec(local_events, event_weights=weights)
     super_slow_eec(local_events, weights)
 
     if average_verts or len(super_slow_eec.hist.shape) == 1:
@@ -698,24 +698,24 @@ def test_longestside_asym_N3(axis, num_threads, pt_powers, ch_powers, average_ve
 @pytest.mark.triangleope
 @pytest.mark.parametrize('nparticles', [1, 4, 10])
 @pytest.mark.parametrize('average_verts', [True, False])
-@pytest.mark.parametrize('ch_powers', [(0,0,0), (1,1,1), (0,0,1), (0,1,0), (1,0,0)])
-@pytest.mark.parametrize('pt_powers', [(1,1,1), (1,1,2), (1,2,1), (2,1,1)])
+@pytest.mark.parametrize('charge_powers', [(0,0,0), (1,1,1), (0,0,1), (0,1,0), (1,0,0)])
+@pytest.mark.parametrize('weight_powers', [(1,1,1), (1,1,2), (1,2,1), (2,1,1)])
 @pytest.mark.parametrize('num_threads', [1, -1])
 @pytest.mark.parametrize('axes', [('log', 'log', 'id'), ('id', 'id', 'id'), ('log', 'id', 'id'), ('id', 'log', 'id')])
-def test_triangleope(axes, num_threads, pt_powers, ch_powers, average_verts, nparticles):
+def test_triangleope(axes, num_threads, weight_powers, charge_powers, average_verts, nparticles):
 
     bin_ranges = [(1e-5, 1), (1e-5, 1), (0, np.pi/2)]
     eec = EECTriangleOPE(nbins=(15, 15, 15), axes=axes, axes_range=bin_ranges,
-                         pt_powers=pt_powers, ch_powers=ch_powers,
+                         weight_powers=weight_powers, charge_powers=charge_powers,
                          print_every=0, num_threads=num_threads, average_verts=average_verts)
-    super_slow_eec = SuperSlowEECTriangleOPE(3, (15, 15, 15), bin_ranges, axes, True, pt_powers, ch_powers,
+    super_slow_eec = SuperSlowEECTriangleOPE(3, (15, 15, 15), bin_ranges, axes, True, weight_powers, charge_powers,
                                              average_verts=average_verts)
 
     nev = 100
     local_events = [event[-nparticles:] for event in events[:nev]]
-    weights = 2*np.random.rand(len(events))[:nev]
+    weights = 2*np.random.rand(len(local_events))
 
-    eec(local_events, weights)
+    eec(local_events, event_weights=weights)
     super_slow_eec(local_events, weights)
 
     for hist_i in range(super_slow_eec.hist.shape[0]):
@@ -729,12 +729,12 @@ def test_triangleope(axes, num_threads, pt_powers, ch_powers, average_verts, npa
 @pytest.mark.parametrize('compmode', [eec.CompressionMode_Auto, eec.CompressionMode_Plain, eec.CompressionMode_Zlib])
 @pytest.mark.parametrize('archform', [eec.ArchiveFormat_Text, eec.ArchiveFormat_Binary])
 @pytest.mark.parametrize('nparticles', [2, 4, 8])
-@pytest.mark.parametrize('ch_powers', [0, 1, 2])
-@pytest.mark.parametrize('pt_powers', [1, 2])
+@pytest.mark.parametrize('charge_powers', [0, 1, 2])
+@pytest.mark.parametrize('weight_powers', [1, 2])
 @pytest.mark.parametrize('num_threads', [1, -1])
 @pytest.mark.parametrize('axis', ['log', 'id'])
 @pytest.mark.parametrize('N', [2, 3, 4])
-def test_pickling_longestside(N, axis, num_threads, pt_powers, ch_powers, nparticles, archform, compmode):
+def test_pickling_longestside(N, axis, num_threads, weight_powers, charge_powers, nparticles, archform, compmode):
 
     if not eec.HAS_PICKLE_SUPPORT:
         pytest.skip()
@@ -743,13 +743,13 @@ def test_pickling_longestside(N, axis, num_threads, pt_powers, ch_powers, nparti
     eec.set_compression_mode(compmode)
 
     nbins = 15
-    e = EECLongestSide(N, nbins, axis=axis, axis_range=(1e-5, 1), pt_powers=(pt_powers,), ch_powers=(ch_powers,),
+    e = EECLongestSide(N, nbins, axis=axis, axis_range=(1e-5, 1), weight_powers=(weight_powers,), charge_powers=(charge_powers,),
                          print_every=0, num_threads=num_threads)
 
     local_events = [event[:nparticles] for event in events]
-    weights = 2*np.random.rand(len(events))
+    weights = 2*np.random.rand(len(local_events))
 
-    e(local_events, weights)
+    e(local_events, event_weights=weights)
 
     with tempfile.TemporaryFile() as f:
         pickle.dump(e, f)
@@ -764,11 +764,11 @@ def test_pickling_longestside(N, axis, num_threads, pt_powers, ch_powers, nparti
 @pytest.mark.parametrize('compmode', [eec.CompressionMode_Auto, eec.CompressionMode_Plain, eec.CompressionMode_Zlib])
 @pytest.mark.parametrize('archform', [eec.ArchiveFormat_Text, eec.ArchiveFormat_Binary])
 @pytest.mark.parametrize('nparticles', [2, 4, 8])
-@pytest.mark.parametrize('ch_powers', [(0,0,0), (1,1,1), (0,0,1), (0,1,0), (1,0,0)])
-@pytest.mark.parametrize('pt_powers', [(1,1,1), (1,1,2), (1,2,1), (2,1,1)])
+@pytest.mark.parametrize('charge_powers', [(0,0,0), (1,1,1), (0,0,1), (0,1,0), (1,0,0)])
+@pytest.mark.parametrize('weight_powers', [(1,1,1), (1,1,2), (1,2,1), (2,1,1)])
 @pytest.mark.parametrize('num_threads', [1, -1])
 @pytest.mark.parametrize('axes', [('log', 'log', 'id'), ('id', 'id', 'id'), ('log', 'id', 'id'), ('id', 'log', 'id')])
-def test_pickling_triangleope(axes, num_threads, pt_powers, ch_powers, nparticles, archform, compmode):
+def test_pickling_triangleope(axes, num_threads, weight_powers, charge_powers, nparticles, archform, compmode):
 
     if not eec.HAS_PICKLE_SUPPORT:
         pytest.skip()
@@ -778,14 +778,14 @@ def test_pickling_triangleope(axes, num_threads, pt_powers, ch_powers, nparticle
     
     bin_ranges = [(1e-5, 1), (1e-5, 1), (0, np.pi/2)]
     e = EECTriangleOPE(nbins=(15, 15, 15), axes=axes, axes_range=bin_ranges,
-                         pt_powers=pt_powers, ch_powers=ch_powers,
+                         weight_powers=weight_powers, charge_powers=charge_powers,
                          print_every=0, num_threads=num_threads)
 
     nev = 100
     local_events = [event[-nparticles:] for event in events[:nev]]
-    weights = 2*np.random.rand(len(events))[:nev]
+    weights = 2*np.random.rand(len(local_events))
 
-    e(local_events, weights)
+    e(local_events, event_weights=weights)
 
     with tempfile.TemporaryFile() as f:
         pickle.dump(e, f)

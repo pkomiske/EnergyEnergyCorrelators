@@ -208,7 +208,7 @@ private:
   std::vector<unsigned> inds_, counts_;
   std::vector<std::size_t> denoms_;
 
-  void _set_index(unsigned i, unsigned ind) {
+  void _set_index(unsigned i, unsigned ind) noexcept {
     unsigned im1(i-1);
     inds_[i] = ind;
     counts_[i] = counts_[im1];

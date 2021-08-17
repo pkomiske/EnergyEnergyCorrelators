@@ -31,16 +31,25 @@
 #ifndef EEC_UTILS_HH
 #define EEC_UTILS_HH
 
+#include <string>
+
+// OpenMP for multithreading
+#ifdef _OPENMP
+# include <omp.h>
+#endif
+
 // serialization code based on boost serialization
 #ifdef EEC_SERIALIZATION
 # include <boost/archive/binary_iarchive.hpp>
 # include <boost/archive/binary_oarchive.hpp>
 # include <boost/archive/text_iarchive.hpp>
 # include <boost/archive/text_oarchive.hpp>
+# include <boost/serialization/base_object.hpp>
 # include <boost/serialization/array.hpp>
 # include <boost/serialization/map.hpp>
 # include <boost/serialization/string.hpp>
 # include <boost/serialization/vector.hpp>
+# include <boost/serialization/version.hpp>
 
 // compression based on boost iostreams
 # ifdef EEC_COMPRESSION
@@ -49,32 +58,56 @@
 # endif
 #endif // EEC_SERIALIZATION
 
-// OpenMP for multithreading
-#ifdef _OPENMP
-# include <omp.h>
+// FastJet PseudoJet
+#ifdef EEC_USE_PYFJCORE
+# ifndef EVENTGEOMETRY_USE_PYFJCORE
+#  define EVENTGEOMETRY_USE_PYFJCORE
+# endif
+#else
+# include "fastjet/PseudoJet.hh"
 #endif
 
-// handle using PyFJCore for PseudoJet
-#ifdef EEC_USE_PYFJCORE
-# include "pyfjcore/fjcore.hh"
-# define EEC_FASTJET
-#elif defined(SWIG_FASTJET)
-# include "fastjet/PseudoJet.hh"
-# define EEC_FASTJET
-#endif
+// EventGeometry (for events and pairwise distances)
+#include "EventGeometry.hh"
 
 // include Wasserstein package in the proper namespace
 #ifndef BEGIN_EEC_NAMESPACE
-# define EECNAMESPACE eec
-# define BEGIN_EEC_NAMESPACE namespace EECNAMESPACE {
-# define END_EEC_NAMESPACE }
+# define BEGIN_EEC_NAMESPACE namespace fastjet { namespace contrib { namespace eec {
+# define END_EEC_NAMESPACE } } }
+# define EEC_NAMESPACE fastjet::contrib::eec
 #endif
 
 BEGIN_EEC_NAMESPACE
 
+// forward declarations
+class EECBase;
+
 //-----------------------------------------------------------------------------
 // enums
 //-----------------------------------------------------------------------------
+
+// a standardized enum to select a ParticleWeight
+enum class ParticleWeight : int {
+  Default=-1, // TransverseMomentum in this package
+  TransverseMomentum=0,
+  Energy=1,
+  TransverseEnergy=2,
+  Momentum=3
+};
+
+// a standardized enum to select a PairwiseDistance
+enum class PairwiseDistance : int {
+  Default=-1, // DeltaR in this package
+  DeltaR=0,
+  HadronicDot=1,
+  EEDot=2,
+  HadronicDotMassive=3,
+  EEDotMassless=4,
+  EEArcLength=5,
+  EEArcLengthMassive=6,
+  EECosTheta=7,
+  EECosThetaMassive=8
+};
 
 enum class ArchiveFormat { Text=0, Binary=1 };
 enum class CompressionMode { Auto=0, Plain=1, Zlib=2 };
@@ -85,8 +118,8 @@ enum class CompressionMode { Auto=0, Plain=1, Zlib=2 };
 
 // these should be accessed using the below functions
 #ifndef SWIG_PREPROCESSOR
-static ArchiveFormat archform_ = ArchiveFormat::Text;
-static CompressionMode compmode_ = CompressionMode::Auto;
+  static ArchiveFormat archform_ = ArchiveFormat::Text;
+  static CompressionMode compmode_ = CompressionMode::Auto;
 #endif
 
 const double REG = 1e-100;
@@ -101,6 +134,44 @@ constexpr bool HAS_PICKLE_SUPPORT =
     false;
   #endif
 #endif
+
+//-----------------------------------------------------------------------------
+// Pairwise distances not found in EventGeometry
+//-----------------------------------------------------------------------------
+
+// EventGeometry-style pairwise distance yielding (cos(theta)/R)^beta
+// note: this doesn't usually satisfy the triangle inequality
+template<typename Value>
+class EECosTheta : public eventgeometry::PairwiseDistanceBaseNonReduced<EECosTheta<Value>, std::vector<PseudoJet>, Value> {
+public:
+  typedef PseudoJet Particle;
+  typedef std::vector<PseudoJet>::const_iterator ParticleIterator;
+
+  EECosTheta(Value R, Value beta) :
+    eventgeometry::PairwiseDistanceBaseNonReduced<EECosTheta, std::vector<PseudoJet>, Value>(R, beta)
+  {}
+  static std::string name() { return "EECosTheta"; }
+  static Value plain_distance(const PseudoJet & p0, const PseudoJet & p1) {
+    return fastjet::cos_theta(p0, p1);
+  }
+}; // EECosTheta
+
+// EventGeometry-style pairwise distance yielding (cos(theta)/R)^beta
+// note: this doesn't usually satisfy the triangle inequality
+template<typename Value>
+class EECosThetaMassive : public eventgeometry::PairwiseDistanceBaseNonReduced<EECosThetaMassive<Value>, std::vector<PseudoJet>, Value> {
+public:
+  typedef PseudoJet Particle;
+  typedef std::vector<PseudoJet>::const_iterator ParticleIterator;
+
+  EECosThetaMassive(Value R, Value beta) :
+    eventgeometry::PairwiseDistanceBaseNonReduced<EECosThetaMassive, std::vector<PseudoJet>, Value>(R, beta)
+  {}
+  static std::string name() { return "EECosThetaMassive"; }
+  static Value plain_distance(const PseudoJet & p0, const PseudoJet & p1) {
+    return std::min(1.0, std::max(-1.0, (p0.px()*p1.px() + p0.py()*p1.py() + p0.pz()*p1.pz())/(p0.E()*p1.E())));
+  }
+}; // EECosTheta
 
 //-----------------------------------------------------------------------------
 // Helper functions
@@ -119,14 +190,14 @@ inline CompressionMode get_compression_mode() {
   return compmode_;
 }
 inline void set_archive_format(ArchiveFormat a) {
-  if (int(a) < 0 || int(a) >= 2)
+  if (int(a) < 0 || int(a) > 1)
     throw std::invalid_argument("invalid archive format");
 
   archform_ = a;
 }
 inline void set_compression_mode(CompressionMode c) {
 
-  if (int(c) < 0 || int(c) >= 3)
+  if (int(c) < 0 || int(c) > 2)
     throw std::invalid_argument("invalid compression mode");
 
   // error if compression specifically requested and not available
@@ -150,13 +221,85 @@ inline int determine_num_threads(int num_threads) {
 #endif
 }
 
-// gets thread num if OpenMP is enabled, otherwise returns 0
-inline int get_thread_num() {
-#ifdef _OPENMP
-  return omp_get_thread_num();
-#else
-  return 0;
-#endif
+#ifndef SWIG_PREPROCESSOR
+
+  // gets thread num if OpenMP is enabled, otherwise returns 0
+  inline int get_thread_num() {
+  #ifdef _OPENMP
+    return omp_get_thread_num();
+  #else
+    return 0;
+  #endif
+  }
+
+#endif // SWIG_PREPROCESSOR
+
+inline std::string particle_weight_name(ParticleWeight pw) {
+  switch (pw) {
+    case ParticleWeight::Default:
+    case ParticleWeight::TransverseMomentum:
+      return "TransverseMomentum";
+      break;
+
+    case ParticleWeight::Energy:
+      return "Energy";
+      break;
+
+    case ParticleWeight::TransverseEnergy:
+      return "TransverseEnergy";
+      break;
+
+    case ParticleWeight::Momentum:
+      return "Momentum";
+      break;
+
+    default:
+      return "Unknown";
+  }
+}
+
+inline std::string pairwise_distance_name(PairwiseDistance pd) {
+  switch (pd) {
+    case PairwiseDistance::Default:
+    case PairwiseDistance::DeltaR:
+      return "DeltaR";
+      break;
+
+    case PairwiseDistance::HadronicDot:
+      return "HadronicDot";
+      break;
+
+    case PairwiseDistance::EEDot:
+      return "EEDot";
+      break;
+
+    case PairwiseDistance::HadronicDotMassive:
+      return "HadronicDotMassive";
+      break;
+
+    case PairwiseDistance::EEDotMassless:
+      return "EEDotMassless";
+      break;
+
+    case PairwiseDistance::EEArcLength:
+      return "EEArcLength";
+      break;
+
+    case PairwiseDistance::EEArcLengthMassive:
+      return "EEArcLengthMassive";
+      break;
+
+    case PairwiseDistance::EECosTheta:
+      return "EECosTheta";
+      break;
+
+    case PairwiseDistance::EECosThetaMassive:
+      return "EECosThetaMassive";
+      break;
+
+    default:
+      return "Unknown";
+  }
 }
 
 END_EEC_NAMESPACE

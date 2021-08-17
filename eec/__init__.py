@@ -26,8 +26,6 @@ You should have received a copy of the GNU General Public License
 along with this program.  If not, see <https://www.gnu.org/licenses/>.
 """
 
-import numpy as _np
-
 from . import eec
 from .eec import *
 
@@ -49,16 +47,16 @@ def EECLongestSide(*args, axis='log', **kwargs):
 
     if axes_range is not None:
         assert len(axes_range) == 1, '`axes_range` must be length 1'
-        axis_range = axes_range[0]
+        kwargs['axis_range'] = axes_range[0]
 
     if axis_range is not None:
         assert len(axis_range) == 2, '`axis_range` must be length 2'
-        kwargs['axis_min'] = axis_range[0]
-        kwargs['axis_max'] = axis_range[1]
+        kwargs['axis_range'] = axis_range
 
     # validate axis options
     axes = kwargs.pop('axes', None)
     if axes is not None:
+        assert 'axis' not in kwargs, '`axis` and `axes` cannot both be given'
         assert len(axes) == 1, '`axes` must be length 1'
         axis = axes[0]
 
@@ -72,19 +70,6 @@ def EECLongestSide(*args, axis='log', **kwargs):
 # this accepts `axes` as a tuple/list of three strings and `axes_range`
 # as a tuple/list of 3 pairs of values
 def EECTriangleOPE(*args, axes=('log', 'log', 'id'), **kwargs):
-
-    nbins = kwargs.pop('nbins', None)
-    if nbins is not None:
-        assert len(nbins) == 3, '`nbins` must be length 3'
-        kwargs['nbins0'], kwargs['nbins1'], kwargs['nbins2'] = nbins
-
-    axes_range = kwargs.pop('axes_range', None)
-    if axes_range is not None:
-        assert len(axes_range) == 3, '`axes_range` must be length 3'
-        for i,axis_range in enumerate(axes_range):
-            assert len(axis_range) == 2, 'axis_range ' + str(axis_range) + ' not length 2'
-            kwargs['axis{}_min'.format(i)] = axis_range[0]
-            kwargs['axis{}_max'.format(i)] = axis_range[1]
 
     axes = tuple(map(lambda x: x.lower(), axes))
     if axes == ('log', 'log', 'id'):
