@@ -6,12 +6,19 @@
 #include <iostream>
 #include <vector>
 
-#include "fastjet/PseudoJet.hh"
-
 #include <boost/format.hpp>
 
 // enum for selecting which events to include
 enum EventType { Gluon, Quark, All };
+
+// holds the kinematic info of one particle
+struct Particle {
+  double pt, y, phi;
+
+  Particle(double pt_, double y_, double phi_) :
+    pt(pt_), y(y_), phi(phi_)
+  {}
+};
 
 // base class for producing events
 class EventProducer {
@@ -22,8 +29,7 @@ protected:
   EventType event_type_;
   std::chrono::steady_clock::time_point start_;
 
-  fastjet::PseudoJet jet_;
-  std::vector<fastjet::PseudoJet> particles_;
+  std::vector<Particle> particles_;
   double weight_;
 
 public:
@@ -45,24 +51,24 @@ public:
 
   void print_progress(bool exact = false) const {
     if (exact)
-      std::cout << boost::format("%i / %i / %i - %4.2fs\n") 
-                                 % iAccept_ % iEvent_ % tot_num_events_
-                                 % duration();
+      std::cout << iAccept_ << " / " << iEvent_ << " / " << tot_num_events_
+                << " - " << duration() << "s\n";
     else
-      std::cout << boost::format("%ik / %ik / %ik - %4.2fs\n") 
-                                 % (iAccept_/1000) % (iEvent_/1000) % (tot_num_events_/1000)
-                                 % duration();
+      std::cout << iAccept_/1000 << "k / " << iEvent_/1000 << "k / " << tot_num_events_/1000
+                << "k - " << duration() << "s\n";
+
     std::cout << std::flush;
   }
 
   // advances the internals to the next event
   virtual bool next() = 0;
-  void reset() { iEvent_ = 0; }
+  void reset() { iEvent_ = 0; iAccept_ = 0; }
   
   // accessor functions
-  const fastjet::PseudoJet & jet() const { return jet_; }
-  const std::vector<fastjet::PseudoJet> & particles() const { return particles_; }
+  const std::vector<Particle> & particles() const { return particles_; }
   double weight() const { return weight_; }
+  long num_events() const { return num_events_; }
+  unsigned num_accepted() const { return iAccept_; }
 
 private:
 

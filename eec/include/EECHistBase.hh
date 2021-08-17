@@ -496,7 +496,7 @@ public:
   //   2 - more output, suitable for printing to file, includes axes but not hists
   //   3 - all output, includes all hist contents
   std::string hists_as_text(int hist_level = 3, bool overflows = true,
-                            int precision = 16, std::ostringstream * os = nullptr) const {
+                            int precision = 16, std::ostream * os = nullptr) const {
 
     if (hist_level <= 0) return "";
 
@@ -535,7 +535,7 @@ public:
     }
 
     if (os_null) {
-      std::string s(os->str());
+      std::string s(dynamic_cast<std::ostringstream *>(os)->str());
       delete os;
       return s;
     }
@@ -902,9 +902,15 @@ private:
 
 // this allows histograms to be fully output with the << operator
 #ifndef SWIG_PREPROCESSOR
-  template<class Hist, typename = typename std::enable_if<std::is_base_of<EECHistBase<Hist>, Hist>::value>::type>
-  std::ostream & operator<<(std::ostream & os, const Hist & hist) {
-    hist.hists_as_text(3, true, 16, &os);
+  template<class EEC,
+           typename = typename std::enable_if<
+                                std::is_base_of<EECHistBase<typename EEC::EECHist>,
+                                                typename EEC::EECHist
+                                               >::value
+                                             >::type
+          >
+  std::ostream & operator<<(std::ostream & os, const EEC & eec) {
+    eec.hists_as_text(3, true, 16, &os);
     return os;
   }
 #endif

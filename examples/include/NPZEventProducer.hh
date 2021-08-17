@@ -17,27 +17,23 @@ class NPZEventProducer : public EventProducer {
 
   // arguments to class constructor
   std::string filepath_;
-  double jet_pt2_min_, jet_pt2_max_, jet_absrap_max_, particle_pt_min_;
+  double particle_pt_min_;
 
   // npyarray object
   cnpy::NpyArray X_, y_;
   double * X_data_, * y_data_;
-  size_t num_particles_in_event_, particle_size_, event_size_;
+  std::size_t num_particles_in_event_, particle_size_, event_size_;
 
 public:
 
   NPZEventProducer(const std::string & filepath, long num_events = -1,
                    EventType event_type = All,
-                   double jet_pt_min = 0, double jet_pt_max = -1,
-                   double jet_absrap_max = 1000, double particle_pt_min = 0,
+                   double particle_pt_min = 0,
                    unsigned print_every = 10000) :
     EventProducer(num_events, print_every, event_type),
 
     // arguments
     filepath_(filepath),
-    jet_pt2_min_(jet_pt_min*jet_pt_min),
-    jet_pt2_max_(jet_pt_max == -1 ? std::numeric_limits<double>::max() : jet_pt_max*jet_pt_max),
-    jet_absrap_max_(jet_absrap_max),
     particle_pt_min_(particle_pt_min)
   {
     // load npz
@@ -80,13 +76,7 @@ public:
         break;
       }
 
-      // compute jet four-vector
-      size_t event_start(iEvent_ * event_size_);
-      jet_ = fastjet::PtYPhiM(0, 0, 0, 0);
-      for (unsigned i = 0; i < num_particles_in_event_; i++) {
-        size_t particle_start(event_start + i * particle_size_);
-        jet_ += fastjet::PtYPhiM(X_data_[particle_start], X_data_[particle_start + 1], X_data_[particle_start + 2]);
-      }
+      std::size_t event_start(iEvent_ * event_size_);
 
       // make sure to increment iEvent_ before we could possibly continue
       iEvent_++;
@@ -96,40 +86,26 @@ public:
       // check flavor
       if ((event_type_ == Gluon && flavor != 21) || (event_type_ == Quark && (flavor == 21 || flavor == 0)))
         good_event = false;
-      jet_.set_user_index(flavor);
 
-      // get jet pt
-      if (jet_.pt2() < jet_pt2_min_ || jet_pt2_max_ <= jet_.pt2())
-        good_event = false;
-
-      // get jet rapidity
-      if (fabs(jet_.rap()) > jet_absrap_max_)
-        good_event = false;
-
-      // check for 
-      if (good_event) {
-        iAccept_++;
-        if (iEvent_ % print_every_ == 0)
-          print_progress(true);  
-      }
-      else {
-        if (iEvent_ % print_every_ == 0)
+      // print update
+      if (iEvent_ % print_every_ == 0)
           print_progress(true);
-        continue;
-      }
+
+      // check for bad event
+      if (!good_event) continue;
+
+      // update number of accepted events
+      iAccept_++;
 
       // fill up vector of particles
       particles_.clear();
       for (unsigned i = 0; i < num_particles_in_event_; i++) {
-        size_t particle_start(event_start + i * particle_size_);
+        std::size_t particle_start(event_start + i * particle_size_);
         double pt(X_data_[particle_start]);
 
         // append non-zero particles
-        if (pt > particle_pt_min_) {
-          particles_.push_back(fastjet::PtYPhiM(pt, X_data_[particle_start + 1], X_data_[particle_start + 2]));
-          particles_.back().set_user_index(X_data_[particle_start + 3]);
-        }
-
+        if (pt > particle_pt_min_)
+          particles_.emplace_back(pt, X_data_[particle_start + 1], X_data_[particle_start + 2]);
       }
 
       return true;
@@ -137,6 +113,7 @@ public:
 
     return false;
   }
+
 }; // NPZEventProducer
 
 #endif // NPZ_EVENT_PRODUCER_HH

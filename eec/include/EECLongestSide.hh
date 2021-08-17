@@ -50,12 +50,11 @@ BEGIN_EEC_NAMESPACE
 
 template<class Transform>
 class EECLongestSide : public EECBase, public hist::EECHist1D<Transform> {
+public:
 
   typedef EECLongestSide<Transform> Self;
-  typedef hist::EECHist1D<Transform> EECHist1D;
-  typedef typename EECHist1D::SimpleWeightedHist SimpleWeightedHist;
-
-public:
+  typedef hist::EECHist1D<Transform> EECHist;
+  typedef typename EECHist::SimpleWeightedHist SimpleWeightedHist;
 
 #ifndef SWIG_PREPROCESSOR
 
@@ -74,7 +73,7 @@ public:
     EECBase(config),
 
     // construct EECHist1D
-    EECHist1D({nbins}, {axis_range}, num_threads(),
+    EECHist({nbins}, {axis_range}, num_threads(),
               track_covariance, variance_bound, variance_bound_includes_overflows),
 
     // variables local to this class
@@ -124,7 +123,7 @@ public:
   void set_use_general_eNc(bool general) { use_general_eNc_ = general; init_subclass(); }
   void set_num_threads(int threads) {
     EECBase::set_num_threads(threads);
-    EECHist1D::set_num_threads(threads);
+    EECHist::set_num_threads(threads);
   }
 
   std::string description(int hist_level = 1) const {
@@ -132,11 +131,11 @@ public:
 
     std::ostringstream oss;
     oss << std::boolalpha
-        << "EECLongestSide<" << EECHist1D::axes_description()
+        << "EECLongestSide<" << EECHist::axes_description()
         << ">::" << EECBase::description() << '\n'
         << "  using eNc_sym - " << use_general_eNc_ << '\n'
         << "\n"
-        << "  " << EECHist1D::hist_name() << " -  there " << (nh == 1 ? "is " : "are ") << nh << " histogram";
+        << "  " << EECHist::hist_name() << " -  there " << (nh == 1 ? "is " : "are ") << nh << " histogram";
 
     if (nh == 1) 
       oss << '\n';
@@ -171,7 +170,7 @@ public:
   bool operator!=(const EECLongestSide & rhs) const { return !operator==(rhs); }
   bool operator==(const EECLongestSide & rhs) const {
     return EECBase::operator==(rhs)                       &&
-           EECHist1D::operator==(rhs)                     &&
+           EECHist::operator==(rhs)                     &&
            use_general_eNc()     == rhs.use_general_eNc() &&
            N_choose_2_           == rhs.N_choose_2_       &&
            compute_eec_func_ptr_ == rhs.compute_eec_func_ptr_;
@@ -179,7 +178,7 @@ public:
 
   EECLongestSide & operator+=(const EECLongestSide & rhs) {
     EECBase::operator+=(rhs);
-    EECHist1D::operator+=(rhs);
+    EECHist::operator+=(rhs);
 
     return *this;
   }
@@ -970,7 +969,7 @@ private:
     template<class Archive>
     void serialize(Archive & ar, const unsigned int /* file_version */) {
       ar & boost::serialization::base_object<EECBase>(*this)
-         & boost::serialization::base_object<EECHist1D>(*this)
+         & boost::serialization::base_object<EECHist>(*this)
          & use_general_eNc_ & N_choose_2_;
 
       init_subclass(true);

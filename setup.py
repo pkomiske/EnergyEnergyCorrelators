@@ -99,6 +99,7 @@ else:
 
         # need to compile pyfjcore from scratch for windows
         if platform.system() == 'Windows':
+            include_dirs.append('.')
             sources.append(os.path.join('PyFJCore', 'pyfjcore', 'fjcore.cc'))
             cxxflags = ['/openmp', '/std:c++14', '/fp:fast']
             ldflags = ['/openmp']

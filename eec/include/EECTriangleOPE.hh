@@ -74,12 +74,11 @@ void fill_hist(Hist & hist, double weight, double xS, double xM, double xL) {
 
 template<class Transform0, class Transform1, class Transform2>
 class EECTriangleOPE : public EECBase, public hist::EECHist3D<Transform0, Transform1, Transform2> {
+public:
 
   typedef EECTriangleOPE<Transform0, Transform1, Transform2> Self;
-  typedef hist::EECHist3D<Transform0, Transform1, Transform2> EECHist3D;
-  typedef typename EECHist3D::SimpleWeightedHist SimpleWeightedHist;
-
-public:
+  typedef hist::EECHist3D<Transform0, Transform1, Transform2> EECHist;
+  typedef typename EECHist::SimpleWeightedHist SimpleWeightedHist;
 
 #ifndef SWIG_PREPROCESSOR
 
@@ -98,7 +97,7 @@ public:
     EECBase(config),
 
     // construct EECHist3D from EECConfig of options
-    EECHist3D(nbins, axes_range, num_threads(),
+    EECHist(nbins, axes_range, num_threads(),
               track_covariance, variance_bound, variance_bound_includes_overflows)
   {
     init_subclass();
@@ -139,16 +138,16 @@ public:
 
   void set_num_threads(int threads) {
     EECBase::set_num_threads(threads);
-    EECHist3D::set_num_threads(threads);
+    EECHist::set_num_threads(threads);
   }
 
   std::string description(int hist_level = 1) const {
     unsigned nh(this->nhists());
 
     std::ostringstream oss;
-    oss << "EECTriangleOPE<" << EECHist3D::axes_description()
+    oss << "EECTriangleOPE<" << EECHist::axes_description()
         << ">::" << EECBase::description() << '\n'
-        << "  " << EECHist3D::hist_name() << " -  there " << (nh == 1 ? "is " : "are ") << nh << " histogram";
+        << "  " << EECHist::hist_name() << " -  there " << (nh == 1 ? "is " : "are ") << nh << " histogram";
 
     if (nh == 1) 
       oss << '\n';
@@ -187,13 +186,13 @@ public:
   bool operator!=(const EECTriangleOPE & rhs) const { return !operator==(rhs); }
   bool operator==(const EECTriangleOPE & rhs) const {
     return EECBase::operator==(rhs)   &&
-           EECHist3D::operator==(rhs) &&
+           EECHist::operator==(rhs) &&
            compute_eec_func_ptr_ == rhs.compute_eec_func_ptr_;
   }
 
   EECTriangleOPE & operator+=(const EECTriangleOPE & rhs) {
     EECBase::operator+=(rhs);
-    EECHist3D::operator+=(rhs);
+    EECHist::operator+=(rhs);
 
     return *this;
   }
@@ -447,7 +446,7 @@ private:
     template<class Archive>
     void serialize(Archive & ar, const unsigned int /* file_version */) {
       ar & boost::serialization::base_object<EECBase>(*this)
-         & boost::serialization::base_object<EECHist3D>(*this);
+         & boost::serialization::base_object<EECHist>(*this);
 
       init_subclass(true);
     }
