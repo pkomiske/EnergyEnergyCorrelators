@@ -595,7 +595,6 @@ class EECHistBase1DId(object):
 
 # Register EECHistBase1DId in _eec:
 _eec.EECHistBase1DId_swigregister(EECHistBase1DId)
-EEC_BOOST_VERSION = cvar.EEC_BOOST_VERSION
 EECHistBase1DId_rank = _eec.EECHistBase1DId_rank
 
 class EECHistBase1DLog(object):

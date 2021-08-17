@@ -53,8 +53,6 @@
 BEGIN_EEC_NAMESPACE
 namespace hist {
 
-const std::string EEC_BOOST_VERSION = BOOST_LIB_VERSION;
-
 //------------------------------------------------------------------------------
 // EECHistTraits - helps with histogram types
 //------------------------------------------------------------------------------

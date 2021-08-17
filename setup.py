@@ -50,7 +50,7 @@ if sys.argv[1] == 'swig':
 
     # form swig options
     if use_pyfjcore:
-        opts = '-DEEC_USE_PYFJCORE -IEventGeometry/PyFJCore'
+        opts = '-DEEC_USE_PYFJCORE -IPyFJCore'
     else:
         opts = '-DFASTJET_PREFIX=' + fj_prefix + ' ' + fj_cxxflags
 
@@ -73,9 +73,7 @@ else:
     sources = [os.path.join(lname, lname + '.cpp')]
     cxxflags = ['-fopenmp', '-ffast-math'] + os.environ.get('CXXFLAGS', '').split()
     macros = []
-    include_dirs = [np.get_include(), 'EventGeometry',
-                    os.path.join('EventGeometry', 'Wasserstein'),
-                    os.path.join('eec', 'include')]
+    include_dirs = [np.get_include(), os.path.join('eec', 'include')]
     ldflags = []
     library_dirs = []
     libraries = []
@@ -97,7 +95,7 @@ else:
         cxxflags.append('-std=c++14')
         macros.append(('EEC_USE_PYFJCORE', None))
         macros.append(('SWIG_TYPE_TABLE', 'fjcore'))
-        include_dirs.append(os.path.join('EventGeometry', 'PyFJCore'))
+        include_dirs.append('PyFJCore')
 
         # need to compile pyfjcore from scratch for windows
         if platform.system() == 'Windows':
@@ -114,10 +112,6 @@ else:
 
         # no debugging
         cxxflags.append('-g0')
-
-        # EEC library
-        #library_dirs.append('.')
-        #libraries.append(name)
 
         # handle multithreading with OpenMP
         if platform.system() == 'Darwin':

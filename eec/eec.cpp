@@ -28072,20 +28072,6 @@ SWIGINTERN PyObject *vectorReduceCommand_swiginit(PyObject *SWIGUNUSEDPARM(self)
   return SWIG_Python_InitShadowInstance(args);
 }
 
-SWIGINTERN int Swig_var_EEC_BOOST_VERSION_set(PyObject *) {
-  SWIG_Error(SWIG_AttributeError,"Variable EEC_BOOST_VERSION is read-only.");
-  return 1;
-}
-
-
-SWIGINTERN PyObject *Swig_var_EEC_BOOST_VERSION_get(void) {
-  PyObject *pyobj = 0;
-  
-  pyobj = SWIG_From_std_string(static_cast< std::string >(fastjet::contrib::eec::hist::EEC_BOOST_VERSION));
-  return pyobj;
-}
-
-
 SWIGINTERN PyObject *_wrap_EECHistBase1DId_rank(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
   PyObject *resultobj = 0;
   unsigned int result;
@@ -58369,7 +58355,6 @@ SWIG_init(void) {
   SWIG_addvarlink(globals, "PI", Swig_var_PI_get, Swig_var_PI_set);
   SWIG_addvarlink(globals, "TWOPI", Swig_var_TWOPI_get, Swig_var_TWOPI_set);
   SWIG_addvarlink(globals, "HAS_PICKLE_SUPPORT", Swig_var_HAS_PICKLE_SUPPORT_get, Swig_var_HAS_PICKLE_SUPPORT_set);
-  SWIG_addvarlink(globals, "EEC_BOOST_VERSION", Swig_var_EEC_BOOST_VERSION_get, Swig_var_EEC_BOOST_VERSION_set);
   SWIG_addvarlink(globals, "FACTORIALS", Swig_var_FACTORIALS_get, Swig_var_FACTORIALS_set);
   
   /* Initialize threading */

@@ -58,17 +58,12 @@
 # endif
 #endif // EEC_SERIALIZATION
 
-// FastJet PseudoJet
+// handle using PyFJCore for PseudoJet
 #ifdef EEC_USE_PYFJCORE
-# ifndef EVENTGEOMETRY_USE_PYFJCORE
-#  define EVENTGEOMETRY_USE_PYFJCORE
-# endif
-#else
+# include "pyfjcore/fjcore.hh"
+#elif !defined(__FASTJET_PSEUDOJET_HH__) && !defined(__FJCORE__)
 # include "fastjet/PseudoJet.hh"
 #endif
-
-// EventGeometry (for events and pairwise distances)
-#include "EventGeometry.hh"
 
 // include Wasserstein package in the proper namespace
 #ifndef BEGIN_EEC_NAMESPACE
@@ -134,44 +129,6 @@ constexpr bool HAS_PICKLE_SUPPORT =
     false;
   #endif
 #endif
-
-//-----------------------------------------------------------------------------
-// Pairwise distances not found in EventGeometry
-//-----------------------------------------------------------------------------
-
-// EventGeometry-style pairwise distance yielding (cos(theta)/R)^beta
-// note: this doesn't usually satisfy the triangle inequality
-template<typename Value>
-class EECosTheta : public eventgeometry::PairwiseDistanceBaseNonReduced<EECosTheta<Value>, std::vector<PseudoJet>, Value> {
-public:
-  typedef PseudoJet Particle;
-  typedef std::vector<PseudoJet>::const_iterator ParticleIterator;
-
-  EECosTheta(Value R, Value beta) :
-    eventgeometry::PairwiseDistanceBaseNonReduced<EECosTheta, std::vector<PseudoJet>, Value>(R, beta)
-  {}
-  static std::string name() { return "EECosTheta"; }
-  static Value plain_distance(const PseudoJet & p0, const PseudoJet & p1) {
-    return fastjet::cos_theta(p0, p1);
-  }
-}; // EECosTheta
-
-// EventGeometry-style pairwise distance yielding (cos(theta)/R)^beta
-// note: this doesn't usually satisfy the triangle inequality
-template<typename Value>
-class EECosThetaMassive : public eventgeometry::PairwiseDistanceBaseNonReduced<EECosThetaMassive<Value>, std::vector<PseudoJet>, Value> {
-public:
-  typedef PseudoJet Particle;
-  typedef std::vector<PseudoJet>::const_iterator ParticleIterator;
-
-  EECosThetaMassive(Value R, Value beta) :
-    eventgeometry::PairwiseDistanceBaseNonReduced<EECosThetaMassive, std::vector<PseudoJet>, Value>(R, beta)
-  {}
-  static std::string name() { return "EECosThetaMassive"; }
-  static Value plain_distance(const PseudoJet & p0, const PseudoJet & p1) {
-    return std::min(1.0, std::max(-1.0, (p0.px()*p1.px() + p0.py()*p1.py() + p0.pz()*p1.pz())/(p0.E()*p1.E())));
-  }
-}; // EECosTheta
 
 //-----------------------------------------------------------------------------
 // Helper functions

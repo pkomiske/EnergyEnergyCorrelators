@@ -10,8 +10,8 @@ env:
   PYPITEST: 0
   CIBW_MANYLINUX_X86_64_IMAGE: ghcr.io/pkomiske/eec_manylinux2010_x86_64:latest
   CIBW_MANYLINUX_I686_IMAGE: ghcr.io/pkomiske/eec_manylinux2010_i686:latest
-  CIBW_SKIP: pp* cp310* cp36-macosx_x86_64
-  CIBW_TEST_COMMAND: pytest {package}/eec
+  CIBW_SKIP: pp* cp310* cp36-macosx_x86_64 cp37-macosx_x86_64
+  CIBW_TEST_COMMAND: pytest -m longestside {package}/eec
   CIBW_TEST_REQUIRES: pytest numpy scipy energyflow
   CIBW_TEST_SKIP: "*i686 *win32"
   GHCR_TOKEN: ${{ secrets.GHCR_TOKEN }}

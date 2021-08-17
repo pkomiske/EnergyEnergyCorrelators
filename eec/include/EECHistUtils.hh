@@ -38,6 +38,7 @@
 
 // boost histogram
 #include <boost/histogram.hpp>
+#include <boost/version.hpp>
 
 #include "EECUtils.hh"
 
@@ -45,6 +46,8 @@ BEGIN_EEC_NAMESPACE
 namespace hist {
 
 namespace bh = boost::histogram;
+
+const std::string EEC_BOOST_VERSION = BOOST_LIB_VERSION;
 
 #ifndef SWIG_PREPROCESSOR  
   using bh::weight;

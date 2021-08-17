@@ -46,6 +46,105 @@
 BEGIN_EEC_NAMESPACE
 
 //-----------------------------------------------------------------------------
+// Particle weights (similar to EventGeometry)
+//-----------------------------------------------------------------------------
+
+#ifndef SWIG_PREPROCESSOR
+
+struct TransverseMomentum {
+  static double weight(const PseudoJet & pj) { return pj.pt(); }
+};
+struct TransverseEnergy {
+  static double weight(const PseudoJet & pj) { return pj.Et(); }
+};
+struct Energy {
+  static double weight(const PseudoJet & pj) { return pj.E(); }
+};
+struct Momentum {
+  static double weight(const PseudoJet & pj) { return pj.modp(); }
+};
+
+//-----------------------------------------------------------------------------
+// Pairwise distances (similar to EventGeometry)
+//-----------------------------------------------------------------------------
+
+// Hadronic Delta_R measure with proper checking for phi
+struct DeltaR {
+  static constexpr bool needs_reduction = true;
+  static double plain_distance(const PseudoJet & p0, const PseudoJet & p1) {
+    double dphiabs(std::fabs(p0.phi() - p1.phi()));
+    double dy(p0.rap() - p1.rap()), dphi(dphiabs > PI ? TWOPI - dphiabs : dphiabs);
+    return dy*dy + dphi*dphi;
+  }
+};
+
+// Dot product measure normalized with transverse momenta
+struct HadronicDot {
+  static constexpr bool needs_reduction = true;
+  static double plain_distance(const PseudoJet & p0, const PseudoJet & p1) {
+    return std::max(2*fastjet::dot_product(p0, p1) / std::sqrt(p0.pt2()*p1.pt2()), 0.0);
+  }  
+};
+
+// Dot product measure normalized by energy
+struct EEDot {
+  static constexpr bool needs_reduction = true;
+  static double plain_distance(const PseudoJet & p0, const PseudoJet & p1) {
+    return std::max(2*fastjet::dot_product(p0, p1) / (p0.E()*p1.E()), 0.0);
+  }
+};
+
+// Massive dot product measure normalized with transverse energies
+struct HadronicDotMassive {
+  static constexpr bool needs_reduction = true;
+  static double plain_distance(const PseudoJet & p0, const PseudoJet & p1) {
+    return std::max(2*fastjet::dot_product(p0, p1) / std::sqrt(p0.Et2()*p1.Et2()), 0.0);
+  }
+};
+
+// Massive dot product measure normalized with energies
+struct EEDotMassless {
+  static constexpr bool needs_reduction = true;
+  static double plain_distance(const PseudoJet & p0, const PseudoJet & p1) {
+    return std::max(2*fastjet::dot_product(p0, p1) / std::sqrt(p0.modp2()*p1.modp2()), 0.0);
+  }
+};
+
+// Arc length between momentum vectors
+struct EEArcLength {
+  static constexpr bool needs_reduction = false;
+  static double plain_distance(const PseudoJet & p0, const PseudoJet & p1) {
+    return fastjet::theta(p0, p1);
+  }
+};
+
+// Arc length between momentum vectors, normalized by the energy
+struct EEArcLengthMassive {
+  static constexpr bool needs_reduction = false;
+  static double plain_distance(const PseudoJet & p0, const PseudoJet & p1) {
+    return std::acos(std::min(1.0, std::max(-1.0, (p0.px()*p1.px() + p0.py()*p1.py() + p0.pz()*p1.pz())/(p0.E()*p1.E()))));
+  }
+};
+
+// note: this doesn't usually satisfy the triangle inequality
+struct EECosTheta {
+  static constexpr bool needs_reduction = false;
+  static double plain_distance(const PseudoJet & p0, const PseudoJet & p1) {
+    return fastjet::cos_theta(p0, p1);
+  }
+};
+
+// note: this doesn't usually satisfy the triangle inequality
+struct EECosThetaMassive {
+  static constexpr bool needs_reduction = false;
+  static double plain_distance(const PseudoJet & p0, const PseudoJet & p1) {
+    return std::min(1.0, std::max(-1.0, (p0.px()*p1.px() + p0.py()*p1.py() + p0.pz()*p1.pz())/(p0.E()*p1.E())));
+  }
+};
+
+#endif // !SWIG_PREPROCESSOR
+
+//-----------------------------------------------------------------------------
 // Class for representing an event to the EEC computation
 //-----------------------------------------------------------------------------
 
@@ -83,19 +182,19 @@ public:
     switch (config.particle_weight) {
       case ParticleWeight::Default:
       case ParticleWeight::TransverseMomentum:
-        raw_weights = get_raw_weights<eventgeometry::TransverseMomentum<double>>(pjs);
+        raw_weights = get_raw_weights<TransverseMomentum>(pjs);
         break;
 
       case ParticleWeight::Energy:
-        raw_weights = get_raw_weights<eventgeometry::Energy<double>>(pjs);
+        raw_weights = get_raw_weights<Energy>(pjs);
         break;
 
       case ParticleWeight::TransverseEnergy:
-        raw_weights = get_raw_weights<eventgeometry::TransverseEnergy<double>>(pjs);
+        raw_weights = get_raw_weights<TransverseEnergy>(pjs);
         break;
 
       case ParticleWeight::Momentum:
-        raw_weights = get_raw_weights<eventgeometry::Momentum<double>>(pjs);
+        raw_weights = get_raw_weights<Momentum>(pjs);
         break;
 
       default:
@@ -116,39 +215,39 @@ public:
     switch (config.pairwise_distance) {
       case PairwiseDistance::Default:
       case PairwiseDistance::DeltaR:
-        eventgeometry::DeltaR<double>(config.R, config.beta).fill_distances_symmetric(pjs, dists_);
+        fill_distances<DeltaR>(pjs, config);
         break;
 
       case PairwiseDistance::HadronicDot:
-        eventgeometry::HadronicDot<double>(config.R, config.beta).fill_distances_symmetric(pjs, dists_);
+        fill_distances<HadronicDot>(pjs, config);
         break;
 
       case PairwiseDistance::EEDot:
-        eventgeometry::EEDot<double>(config.R, config.beta).fill_distances_symmetric(pjs, dists_);
+        fill_distances<EEDot>(pjs, config);
         break;
 
       case PairwiseDistance::HadronicDotMassive:
-        eventgeometry::HadronicDotMassive<double>(config.R, config.beta).fill_distances_symmetric(pjs, dists_);
+        fill_distances<HadronicDotMassive>(pjs, config);
         break;
 
       case PairwiseDistance::EEDotMassless:
-        eventgeometry::EEDotMassless<double>(config.R, config.beta).fill_distances_symmetric(pjs, dists_);
+        fill_distances<EEDotMassless>(pjs, config);
         break;
 
       case PairwiseDistance::EEArcLength:
-        eventgeometry::EEArcLength<double>(config.R, config.beta).fill_distances_symmetric(pjs, dists_);
+        fill_distances<EEArcLength>(pjs, config);
         break;
 
       case PairwiseDistance::EEArcLengthMassive:
-        eventgeometry::EEArcLengthMassive<double>(config.R, config.beta).fill_distances_symmetric(pjs, dists_);
+        fill_distances<EEArcLengthMassive>(pjs, config);
         break;
 
       case PairwiseDistance::EECosTheta:
-        EECosTheta<double>(config.R, config.beta).fill_distances_symmetric(pjs, dists_);
+        fill_distances<EECosTheta>(pjs, config);
         break;
 
       case PairwiseDistance::EECosThetaMassive:
-        EECosThetaMassive<double>(config.R, config.beta).fill_distances_symmetric(pjs, dists_);
+        fill_distances<EECosThetaMassive>(pjs, config);
         break;
 
       default:
@@ -260,21 +359,14 @@ private:
     weights_.resize(config.weight_powers.size());
     for (unsigned i = 0; i < config.weight_powers.size(); i++) {
       weights_[i].resize(mult());
-      double weight_power(config.weight_powers[i]);
 
       // set weights[i][j] to weight[j]^weight_power[i]
-      if (weight_power == 1)
+      if (config.weight_powers[i] == 1)
         for (unsigned j = 0; j < mult(); j++)
           weights_[i][j] = raw_weights[j];
-      else if (weight_power == 2)
-        for (unsigned j = 0; j < mult(); j++)
-          weights_[i][j] = raw_weights[j]*raw_weights[j];
-      else if (weight_power == 0.5)
-        for (unsigned j = 0; j < mult(); j++)
-          weights_[i][j] = std::sqrt(raw_weights[j]);
       else
         for (unsigned j = 0; j < mult(); j++)
-          weights_[i][j] = std::pow(raw_weights[j], weight_power);
+          weights_[i][j] = std::pow(raw_weights[j], config.weight_powers[i]);
     }
   }
 
@@ -282,19 +374,41 @@ private:
   void process_charges(const EECConfig & config, const double * charges) {
     if (config.use_charges) {
       for (unsigned i = 0; i < config.charge_powers.size(); i++) {
-        double ch_power(config.charge_powers[i]);
-
-        if (ch_power == 0) {}
-        else if (ch_power == 1)
-          for (unsigned j = 0; j < mult(); j++)
-            weights_[i][j] *= charges[j];
-        else if (ch_power == 2)
-          for (unsigned j = 0; j < mult(); j++)
-            weights_[i][j] *= charges[j]*charges[j];
+        if (config.charge_powers[i] == 0) {}
         else
           for (unsigned j = 0; j < mult(); j++)
-            weights_[i][j] *= std::pow(charges[j], ch_power);
+            weights_[i][j] *= std::pow(charges[j], config.charge_powers[i]);
       }
+    }
+  }
+
+  // fill distances from vector of pseudojets
+  template<class PairwiseDistance>
+  void fill_distances(const std::vector<PseudoJet> & pjs, const EECConfig & config) {
+    dists_.resize(mult()*mult());
+    for (unsigned i = 0; i < mult(); i++) {
+      unsigned ixm(i*mult());
+      dists_[ixm + i] = 0;
+
+      const PseudoJet & pj_i(pjs[i]);
+      for (unsigned j = 0; j < i; j++)
+        dists_[ixm + j] = dists_[j*mult() + i] = PairwiseDistance::plain_distance(pj_i, pjs[j]);
+    }
+
+    // turn reduced distances into distances
+    if (config.R == 1 && config.beta == 1 && PairwiseDistance::needs_reduction) {
+      for (double & d : dists_)
+        d = std::sqrt(d);
+    }
+    else {
+      if (PairwiseDistance::needs_reduction) {
+        const double R2(config.R*config.R), halfbeta(config.beta/2);
+        for (double & d : dists_)
+          d = std::pow(d/R2, halfbeta);
+      }
+      else
+        for (double & d : dists_)
+          d = std::pow(d/config.R, config.beta);
     }
   }
 
