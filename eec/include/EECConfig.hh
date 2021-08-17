@@ -71,7 +71,9 @@ struct EECConfig {
             bool check_degen = false,
             bool average_verts = false,
             double R = 1,
-            double beta = 1) {
+            double beta = 1) :
+    nfeatures(3), use_charges(false)
+  {
     this->N = N;
     this->norm = norm;
     this->weight_powers = weight_powers;

@@ -968,9 +968,9 @@ private:
   #ifdef EEC_SERIALIZATION
     template<class Archive>
     void serialize(Archive & ar, const unsigned int /* file_version */) {
-      ar & boost::serialization::base_object<EECBase>(*this);
-         //& boost::serialization::base_object<EECHist1D>(*this);
-      ar & use_general_eNc_ & N_choose_2_;
+      ar & boost::serialization::base_object<EECBase>(*this)
+         & boost::serialization::base_object<EECHist1D>(*this)
+         & use_general_eNc_ & N_choose_2_;
 
       init_subclass();
     }

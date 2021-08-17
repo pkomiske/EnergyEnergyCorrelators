@@ -605,6 +605,7 @@ private:
     }
 
     // check for using charges at all
+    config_.use_charges = false;
     for (int ch_power : charge_powers())
       if (ch_power != 0)
         config_.use_charges = true;
