@@ -186,10 +186,10 @@ public:
       unsigned nevents_width(std::to_string(nevents).size());
       oss.str("  ");
       oss << std::setw(nevents_width) << counter << " / "
-           << std::setw(nevents_width) << nevents << "  EECs computed  - "
-           << std::setprecision(2) << std::setw(6) << double(counter)/nevents*100
-           << "% completed - "
-           << std::setprecision(3) << duration << 's';
+          << std::setw(nevents_width) << nevents << "  EECs computed  - "
+          << std::setprecision(2) << std::setw(6) << double(counter)/nevents*100
+          << "% completed - "
+          << std::setprecision(3) << duration << 's';
 
       // acquire Python GIL if in SWIG in order to check for signals and print message
       #ifdef SWIG

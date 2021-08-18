@@ -417,7 +417,7 @@ namespace EEC_NAMESPACE {
               charges = _np.asarray(charges, dtype=_np.double, order='C')
               dists = _np.asarray(dists, dtype=_np.double, order='C')
 
-              eec_event = EECEvent(self.use_charges(), event_weight, raw_weights, charges, dists)
+              eec_event = EECEvent(self.use_charges(), event_weight, raw_weights, dists, charges)
               eec_event._numpy_arrays = (raw_weights, dists, charges)
 
           return eec_event

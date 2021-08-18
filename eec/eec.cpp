@@ -44626,8 +44626,8 @@ SWIGINTERN PyObject *_wrap_new_EECEvent__SWIG_3(PyObject *SWIGUNUSEDPARM(self), 
   unsigned int arg4 ;
   double *arg5 = (double *) 0 ;
   unsigned int arg6 ;
-  double *arg7 = (double *) 0 ;
-  unsigned int arg8 ;
+  unsigned int arg7 ;
+  double *arg8 = (double *) 0 ;
   unsigned int arg9 ;
   bool val1 ;
   int ecode1 = 0 ;
@@ -44636,8 +44636,8 @@ SWIGINTERN PyObject *_wrap_new_EECEvent__SWIG_3(PyObject *SWIGUNUSEDPARM(self), 
   PyArrayObject *array3 = NULL ;
   int i3 = 1 ;
   PyArrayObject *array5 = NULL ;
-  int i5 = 1 ;
-  PyArrayObject *array7 = NULL ;
+  PyArrayObject *array8 = NULL ;
+  int i8 = 1 ;
   fastjet::contrib::eec::EECEvent *result = 0 ;
   
   if ((nobjs < 5) || (nobjs > 5)) SWIG_fail;
@@ -44661,23 +44661,23 @@ SWIGINTERN PyObject *_wrap_new_EECEvent__SWIG_3(PyObject *SWIGUNUSEDPARM(self), 
   }
   {
     array5 = obj_to_array_no_conversion(swig_obj[3], NPY_DOUBLE);
-    if (!array5 || !require_dimensions(array5,1) || !require_contiguous(array5)
+    if (!array5 || !require_dimensions(array5,2) || !require_contiguous(array5)
       || !require_native(array5)) SWIG_fail;
     arg5 = (double*) array_data(array5);
-    arg6 = 1;
-    for (i5=0; i5 < array_numdims(array5); ++i5) arg6 *= array_size(array5,i5);
+    arg6 = (std::ptrdiff_t) array_size(array5,0);
+    arg7 = (std::ptrdiff_t) array_size(array5,1);
   }
   {
-    array7 = obj_to_array_no_conversion(swig_obj[4], NPY_DOUBLE);
-    if (!array7 || !require_dimensions(array7,2) || !require_contiguous(array7)
-      || !require_native(array7)) SWIG_fail;
-    arg7 = (double*) array_data(array7);
-    arg8 = (std::ptrdiff_t) array_size(array7,0);
-    arg9 = (std::ptrdiff_t) array_size(array7,1);
+    array8 = obj_to_array_no_conversion(swig_obj[4], NPY_DOUBLE);
+    if (!array8 || !require_dimensions(array8,1) || !require_contiguous(array8)
+      || !require_native(array8)) SWIG_fail;
+    arg8 = (double*) array_data(array8);
+    arg9 = 1;
+    for (i8=0; i8 < array_numdims(array8); ++i8) arg9 *= array_size(array8,i8);
   }
   {
     try {
-      result = (fastjet::contrib::eec::EECEvent *)new fastjet::contrib::eec::EECEvent(arg1,arg2,(double const *)arg3,arg4,(double const *)arg5,arg6,(double const *)arg7,arg8,arg9); 
+      result = (fastjet::contrib::eec::EECEvent *)new fastjet::contrib::eec::EECEvent(arg1,arg2,(double const *)arg3,arg4,(double const *)arg5,arg6,arg7,(double const *)arg8,arg9); 
     }
     /*@SWIG:/usr/local/Cellar/swig/4.0.2/share/swig/4.0.2/typemaps/exception.swg,58,SWIG_CATCH_STDEXCEPT@*/  /* catching std::exception  */
     catch (std::invalid_argument& e) {
@@ -44798,9 +44798,6 @@ SWIGINTERN PyObject *_wrap_new_EECEvent(PyObject *self, PyObject *args) {
               if (argc <= 5) {
                 return _wrap_new_EECEvent__SWIG_3(self, argc, argv);
               }
-              if (argc <= 6) {
-                return _wrap_new_EECEvent__SWIG_3(self, argc, argv);
-              }
               return _wrap_new_EECEvent__SWIG_3(self, argc, argv);
             }
           }
@@ -44815,7 +44812,7 @@ fail:
     "    fastjet::contrib::eec::EECEvent::EECEvent()\n"
     "    fastjet::contrib::eec::EECEvent::EECEvent(EECConfig const &,double,std::vector< fastjet::PseudoJet,std::allocator< fastjet::PseudoJet > > const &,std::vector< double,std::allocator< double > > const &)\n"
     "    fastjet::contrib::eec::EECEvent::EECEvent(bool,double,double const *,unsigned int,unsigned int)\n"
-    "    fastjet::contrib::eec::EECEvent::EECEvent(bool,double,double const *,unsigned int,double const *,unsigned int,double const *,unsigned int,unsigned int)\n");
+    "    fastjet::contrib::eec::EECEvent::EECEvent(bool,double,double const *,unsigned int,double const *,unsigned int,unsigned int,double const *,unsigned int)\n");
   return 0;
 }
 
@@ -55176,7 +55173,7 @@ static PyMethodDef SwigMethods[] = {
 		"EECEvent()\n"
 		"EECEvent(EECConfig const & config, double event_weight, vectorPseudoJet pjs, vectorDouble charges)\n"
 		"EECEvent(bool use_charges, double event_weight, double const * event_ptr)\n"
-		"new_EECEvent(bool use_charges, double event_weight, double const * raw_weights, double const * charges, double const * dists) -> EECEvent\n"
+		"new_EECEvent(bool use_charges, double event_weight, double const * raw_weights, double const * dists, double const * charges) -> EECEvent\n"
 		""},
 	 { "delete_EECEvent", _wrap_delete_EECEvent, METH_O, "delete_EECEvent(EECEvent self)"},
 	 { "EECEvent_weights", _wrap_EECEvent_weights, METH_O, "EECEvent_weights(EECEvent self) -> std::vector< std::vector< double,std::allocator< double > >,std::allocator< std::vector< double,std::allocator< double > > > > const &"},
@@ -56105,7 +56102,7 @@ static PyMethodDef SwigMethods_proxydocs[] = {
 		"EECEvent()\n"
 		"EECEvent(EECConfig const & config, double event_weight, vectorPseudoJet pjs, vectorDouble charges)\n"
 		"EECEvent(bool use_charges, double event_weight, double const * event_ptr)\n"
-		"new_EECEvent(bool use_charges, double event_weight, double const * raw_weights, double const * charges, double const * dists) -> EECEvent\n"
+		"new_EECEvent(bool use_charges, double event_weight, double const * raw_weights, double const * dists, double const * charges) -> EECEvent\n"
 		""},
 	 { "delete_EECEvent", _wrap_delete_EECEvent, METH_O, "delete_EECEvent(EECEvent self)"},
 	 { "EECEvent_weights", _wrap_EECEvent_weights, METH_O, "weights(EECEvent self) -> std::vector< std::vector< double,std::allocator< double > >,std::allocator< std::vector< double,std::allocator< double > > > > const &"},

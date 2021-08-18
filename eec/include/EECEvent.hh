@@ -142,7 +142,7 @@ struct EECosThetaMassive {
 class EECEvent {
 private:
 
-  enum LazyInitType { None, Array, Custom };
+  enum LazyInitType { Default, None, Array, Custom };
 
   // actual event data
   std::vector<std::vector<double>> weights_;
@@ -157,7 +157,7 @@ private:
 public:
 
   // default constructor
-  EECEvent() : event_weight_(0), mult_(0), lazy_init_type_(None) {}
+  EECEvent() : event_weight_(0), mult_(0), lazy_init_type_(Default) {}
 
   // construct from vector of pseudojets and vector of charges
   EECEvent(const EECConfig & config,
@@ -288,8 +288,8 @@ public:
   // construct from explicit raw weights, distances, and charges (as pointers)
   EECEvent(bool use_charges, double event_weight,
            const double * raw_weights, unsigned weights_mult,
-           const double * charges, unsigned charges_mult,
-           const double * dists, unsigned d0, unsigned d1) :
+           const double * dists, unsigned d0, unsigned d1,
+           const double * charges, unsigned charges_mult) :
     event_weight_(event_weight),
     mult_(weights_mult),
     lazy_init_type_(Custom),
@@ -334,7 +334,7 @@ private:
   void process_weights(const EECConfig & config,
                        std::vector<double> & raw_weights) {
 
-    std::cout << "process_weights start" << std::endl;
+    //std::cout << "process_weights start" << std::endl;
 
     // normalize weights if requested
     if (config.norm) {
@@ -346,7 +346,7 @@ private:
         w /= weight_total;
     }
 
-    std::cout << "process_weights normalized" << std::endl;
+    //std::cout << "process_weights normalized" << std::endl;
 
     // set internal weights according to raw weights and weight_powers
     weights_.resize(config.weight_powers.size());
@@ -365,13 +365,13 @@ private:
 
   // multiply weights[i][j] by charge[j]^charge_power[i]
   void process_charges(const EECConfig & config, const double * charges) {
-    std::cout << "process_charges start" << std::endl;
+    //std::cout << "process_charges start" << std::endl;
     if (config.use_charges)
       for (unsigned i = 0; i < config.charge_powers.size(); i++)
         if (config.charge_powers[i] != 0)
           for (unsigned j = 0; j < mult(); j++)
             weights_[i][j] *= std::pow(charges[j], config.charge_powers[i]);
-    std::cout << "process_charges done" << std::endl;
+    //std::cout << "process_charges done" << std::endl;
   }
 
   // fill distances from vector of pseudojets
@@ -438,10 +438,18 @@ private:
   // lazy initialization for some of the construction methods
   void lazy_init(const EECConfig & config) {
 
-    // vector means already initialized
+    // None means already initialized
     if (lazy_init_type_ == None) return;
 
-    if (lazy_init_type_ == Custom)
+    // Default means we need to resize weights vector
+    else if (lazy_init_type_ == Default) {
+      std::cout << "In lazy_init default" << std::endl;
+      std::vector<double> raw_weights;
+      process_weights(config, raw_weights);
+    }
+
+    // we have three arrays to initialize from
+    else if (lazy_init_type_ == Custom)
       array_init(config, ptrs_[0], ptrs_[1], ptrs_[2]);
 
     // lazy_init_type_ == Array
@@ -471,7 +479,7 @@ private:
         }
       }
 
-      std::cout << "lazy_init gotten distances" << std::endl;
+      //std::cout << "lazy_init gotten distances" << std::endl;
 
       std::vector<double> charges;
       if (config.use_charges) {
@@ -480,7 +488,7 @@ private:
           charges[i] = arr[i*config.nfeatures + 3];
       }
 
-      std::cout << "lazy_init gotten charges" << std::endl;
+      //std::cout << "lazy_init gotten charges" << std::endl;
 
       // process weights and charges
       process_weights(config, raw_weights);

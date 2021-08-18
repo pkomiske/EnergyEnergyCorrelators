@@ -987,7 +987,7 @@ class EECEvent(object):
         __init__(EECEvent self) -> EECEvent
         __init__(EECEvent self, EECConfig const & config, double event_weight, vectorPseudoJet pjs, vectorDouble charges) -> EECEvent
         __init__(EECEvent self, bool use_charges, double event_weight, double const * event_ptr) -> EECEvent
-        __init__(EECEvent self, bool use_charges, double event_weight, double const * raw_weights, double const * charges, double const * dists) -> EECEvent
+        __init__(EECEvent self, bool use_charges, double event_weight, double const * raw_weights, double const * dists, double const * charges) -> EECEvent
         """
         _eec.EECEvent_swiginit(self, _eec.new_EECEvent(*args))
     __swig_destroy__ = _eec.delete_EECEvent
@@ -1084,7 +1084,7 @@ class EECBase(object):
             charges = _np.asarray(charges, dtype=_np.double, order='C')
             dists = _np.asarray(dists, dtype=_np.double, order='C')
 
-            eec_event = EECEvent(self.use_charges(), event_weight, raw_weights, charges, dists)
+            eec_event = EECEvent(self.use_charges(), event_weight, raw_weights, dists, charges)
             eec_event._numpy_arrays = (raw_weights, dists, charges)
 
         return eec_event

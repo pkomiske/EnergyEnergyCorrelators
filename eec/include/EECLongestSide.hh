@@ -305,7 +305,7 @@ private:
         hist(hist::weight(weight_i * ws0[j]), dists[ixm + j]);
     }
 
-    std::cout << "eec_ij_sym done" << std::endl;
+    //std::cout << "eec_ij_sym done" << std::endl;
   }
 
   void eec_no_sym(const EECEvent & event, int thread) {
