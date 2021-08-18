@@ -29,6 +29,9 @@ lname = name.lower()
 # using PyFJCore or not
 use_pyfjcore = True
 
+# whether to compile with serialization from boost libraries
+use_serialization = False
+
 ################################################################################
 
 # use main fastjet library
@@ -108,8 +111,9 @@ else:
     if platform.system() != 'Windows':
 
         # serialization flags
-        macros.extend([('EEC_SERIALIZATION', None), ('EEC_COMPRESSION', None)])
-        libraries.extend(['boost_serialization', 'boost_iostreams', 'z'])
+        if use_serialization:
+            macros.extend([('EEC_SERIALIZATION', None), ('EEC_COMPRESSION', None)])
+            libraries.extend(['boost_serialization', 'boost_iostreams', 'z'])
 
         # no debugging
         cxxflags.append('-g0')

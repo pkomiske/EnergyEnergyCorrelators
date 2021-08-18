@@ -102,15 +102,17 @@ enum class PairwiseDistance : int {
   EECosThetaMassive=8
 };
 
-enum class ArchiveFormat { Text=0, Binary=1 };
-enum class CompressionMode { Auto=0, Plain=1, Zlib=2 };
+#ifdef EEC_SERIALIZATION
+  enum class ArchiveFormat { Text=0, Binary=1 };
+  enum class CompressionMode { Auto=0, Plain=1, Zlib=2 };
+#endif
 
 //-----------------------------------------------------------------------------
 // Global variables
 //-----------------------------------------------------------------------------
 
 // these should be accessed using the below functions
-#ifndef SWIG_PREPROCESSOR
+#if !defined(SWIG_PREPROCESSOR) && defined(EEC_SERIALIZATION)
   static ArchiveFormat archform_ = ArchiveFormat::Text;
   static CompressionMode compmode_ = CompressionMode::Auto;
 #endif
@@ -132,37 +134,41 @@ constexpr bool HAS_PICKLE_SUPPORT =
 // Helper functions
 //-----------------------------------------------------------------------------
 
-// get/set some serialization options
-inline ArchiveFormat get_archive_format() { return archform_; }
-inline CompressionMode get_compression_mode() {
-  if (compmode_ == CompressionMode::Auto) {
-    #ifdef EEC_COMPRESSION
-      return CompressionMode::Zlib;
-    #else
-      return CompressionMode::Plain;
-    #endif
+#ifdef EEC_SERIALIZATION
+
+  // get/set some serialization options
+  inline ArchiveFormat get_archive_format() { return archform_; }
+  inline CompressionMode get_compression_mode() {
+    if (compmode_ == CompressionMode::Auto) {
+      #ifdef EEC_COMPRESSION
+        return CompressionMode::Zlib;
+      #else
+        return CompressionMode::Plain;
+      #endif
+    }
+    return compmode_;
   }
-  return compmode_;
-}
-inline void set_archive_format(ArchiveFormat a) {
-  if (int(a) < 0 || int(a) > 1)
-    throw std::invalid_argument("invalid archive format");
+  inline void set_archive_format(ArchiveFormat a) {
+    if (int(a) < 0 || int(a) > 1)
+      throw std::invalid_argument("invalid archive format");
 
-  archform_ = a;
-}
-inline void set_compression_mode(CompressionMode c) {
+    archform_ = a;
+  }
+  inline void set_compression_mode(CompressionMode c) {
 
-  if (int(c) < 0 || int(c) > 2)
-    throw std::invalid_argument("invalid compression mode");
+    if (int(c) < 0 || int(c) > 2)
+      throw std::invalid_argument("invalid compression mode");
 
-  // error if compression specifically requested and not available
-  #ifndef EEC_COMPRESSION
-    if (c != CompressionMode::Auto && c != CompressionMode::Plain)
-      throw std::invalid_argument("compression not available with this build");
-  #endif
+    // error if compression specifically requested and not available
+    #ifndef EEC_COMPRESSION
+      if (c != CompressionMode::Auto && c != CompressionMode::Plain)
+        throw std::invalid_argument("compression not available with this build");
+    #endif
 
-  compmode_ = c;
-}
+    compmode_ = c;
+  }
+
+#endif // EEC_SERIALIZATION
 
 // it's annoying to ignore these in eec.i since we haven't even wrapped this file yet
 #ifndef SWIG_PREPROCESSOR

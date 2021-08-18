@@ -52,7 +52,7 @@ jobs:
       - name: Install Boost
         run: brew install boost
       - name: Compile and install OpenMP
-        run: ./scripts/install-openmp-macos.sh
+        run: ./scripts/install-libomp-macos.sh
       - name: Build wheels and upload to PyPI
         run: ./scripts/build-wheels-and-upload.sh
 

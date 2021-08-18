@@ -172,13 +172,14 @@ public:
     return oss.str();
   }
 
+#ifdef EEC_SERIALIZATION
   void load(std::istream & is) {
     EECBase::load<Self>(is);
   }
-
   void save(std::ostream & os) {
     EECBase::save<Self>(os);
   }
+#endif
 
   bool operator!=(const EECTriangleOPE & rhs) const { return !operator==(rhs); }
   bool operator==(const EECTriangleOPE & rhs) const {

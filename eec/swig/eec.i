@@ -50,14 +50,31 @@
 // converts fastjet::Error into a FastJetError Python exception
 FASTJET_ERRORS_AS_PYTHON_EXCEPTIONS(eec)
 
+#ifdef EEC_SERIALIZATION
+%{
+// needed to ensure bytes are returned 
+#define SWIG_PYTHON_STRICT_BYTE_CHAR}
+%}
+%define ADD_REPR_FROM_DECODED_DESCRIPTION
+  %pythoncode %{
+    def __repr__(self):
+        return self.description().decode('utf-8')
+  %}
+%enddef
+#else
+%define ADD_REPR_FROM_DECODED_DESCRIPTION
+  %pythoncode %{
+    def __repr__(self):
+        return self.description()
+  %}
+%enddef
+#endif
+
 %{
 // include these to avoid needing to define them at compile time 
 #ifndef SWIG
 # define SWIG
 #endif
-
-// needed to ensure bytes are returned 
-#define SWIG_PYTHON_STRICT_BYTE_CHAR
 
 // EEC library headers
 #include "EEC.hh"
@@ -88,32 +105,7 @@ using namespace fastjet::contrib::eec::hist;
   (const double* dists, unsigned d0, unsigned d1)
 }
 
-// makes python class printable from a description method
-%define ADD_REPR_FROM_DECODED_DESCRIPTION
-%pythoncode %{
-  def __repr__(self):
-      return self.description().decode('utf-8')
-%}
-%enddef
-
-// for pickling
-%define PYTHON_PICKLE_FUNCTIONS
-  %pythoncode %{
-    def __getstate__(self):
-        return (self.__getstate_internal__(),)
-
-    def __setstate__(self, state):
-        self.__init__(*self._default_args)
-        try:
-            self.__setstate_internal__(state[0])
-        except Exception as e:
-            raise RuntimeError('issue loading eec - check `eec.get_archive_format()`'
-                               ' and `eec.get_compression_mode()`',
-                               repr(e))
-  %}
-%enddef
-
-%define CPP_EECCOMP_FUNCTIONS(EECComp)
+%define CPP_SERIALIZATION_FUNCTIONS
   std::string __getstate_internal__() {
     std::ostringstream oss;
     $self->save(oss);
@@ -127,7 +119,9 @@ using namespace fastjet::contrib::eec::hist;
 
     $self->load(iss);
   }
+%enddef
 
+%define CPP_EECCOMP_FUNCTIONS(EECComp)
   void add(const EECComp & rhs) {
     $self->operator+=(rhs);
   }
@@ -405,7 +399,77 @@ namespace EEC_NAMESPACE {
 
   %extend EECBase {
     ADD_REPR_FROM_DECODED_DESCRIPTION
-    PYTHON_PICKLE_FUNCTIONS
+
+    // for pickling
+    #ifdef EEC_SERIALIZATION
+      %pythoncode %{
+        def __getstate__(self):
+            return (self.__getstate_internal__(),)
+
+        def __setstate__(self, state):
+            self.__init__(*self._default_args)
+            try:
+                self.__setstate_internal__(state[0])
+            except Exception as e:
+                raise RuntimeError('issue loading eec - check `eec.get_archive_format()`'
+                                   ' and `eec.get_compression_mode()`',
+                                   repr(e))
+      %}
+    #else
+      %pythoncode %{
+        def save(self):
+            hist_vars = [self.get_hist_vars(i) for i in range(self.nhists())]
+            d = {
+                'name': self.__class__.__name__,
+                'description': repr(self),
+                'config': {
+                    'N': self.N(),
+                    'norm': self.norm(),
+                    'use_charges': self.use_charges(),
+                    'check_degen': self.check_degen(),
+                    'average_verts': self.average_verts(),
+                    'weight_powers': self.weight_powers(),
+                    'charge_powers': self.charge_powers(),
+                    'particle_weight': particle_weight_name(self.particle_weight()),
+                    'pairwise_distance': pairwise_distance_name(self.pairwise_distance()),
+                    'num_threads': self.num_threads(),
+                    'nfeatures': self.nfeatures(),
+                },
+                'compname': self.compname(),
+                'nsym': self.nsym(),
+                'total_weight': self.total_weight(),
+
+                'nbins': tuple(self.nbins(i) for i in range(self.rank())),
+                'axes_range': tuple(self.axis_range(i) for i in range(self.rank())),
+                'rank': self.rank(),
+                'nhists': self.nhists(),
+                'event_count': self.event_counter(),
+
+                'track_covariance': self.track_covariance(),
+                'variance_bound': self.variance_bound(),
+                'variance_bound_includes_overflows': self.variance_bound_includes_overflows(),
+                
+                'bin_edges': tuple(self.bin_edges(i) for i in range(self.rank())),
+                'bin_centers': tuple(self.bin_centers(i) for i in range(self.rank())),
+
+                'hist_sums': tuple(self.sum(i) for i in range(self.nhists())),
+                'hists': tuple(hist_vars[i][0] for i in range(self.nhists())),
+                'hist_vars': tuple(hist_vars[i][1] for i in range(self.nhists())),
+            }
+
+            if self.track_covariance():
+                d['covariances'] = tuple(self.get_covariance(i) for i in range(self.nhists()))
+            else:
+                d['covariances'] = self.nhists()*[None]
+
+            if self.variance_bound():
+                d['variance_bounds'] = tuple(self.get_variance_bound(i) for i in range(self.nhists()))
+            else:
+                d['variance_bounds'] = self.nhists()*[None]
+
+            return d
+      %}
+    #endif
 
     %pythoncode %{
 
@@ -441,17 +505,25 @@ namespace EEC_NAMESPACE {
   %extend EECLongestSide {
     CPP_EECCOMP_FUNCTIONS(EECLongestSide)
     ADD_REPR_FROM_DECODED_DESCRIPTION
-    %pythoncode %{
-      _default_args = (2, 1)
-    %}
+
+    #ifdef EEC_SERIALIZATION
+      CPP_SERIALIZATION_FUNCTIONS
+      %pythoncode %{
+        _default_args = (2, 1)
+      %}
+    #endif
   }
 
   %extend EECTriangleOPE {
     CPP_EECCOMP_FUNCTIONS(EECTriangleOPE)
     ADD_REPR_FROM_DECODED_DESCRIPTION
-    %pythoncode %{
-      _default_args = ((1, 1, 1),)
-    %}
+
+    #ifdef EEC_SERIALIZATION
+      CPP_SERIALIZATION_FUNCTIONS
+      %pythoncode %{
+        _default_args = ((1, 1, 1),)
+      %}
+    #endif
   }
 
   // instantiate EEC templates

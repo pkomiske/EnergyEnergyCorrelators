@@ -415,81 +415,78 @@ protected:
   // SERIALIZATION METHODS
   ///////////////////////////////
 
+#ifdef EEC_SERIALIZATION
+
   template <class EEC>
   void save(std::ostream & os) {
-    #ifdef EEC_SERIALIZATION
-      #ifdef EEC_COMPRESSION
+    #ifdef EEC_COMPRESSION
 
-        // we want to use compression
-        if (get_compression_mode() == CompressionMode::Zlib) {
-          boost::iostreams::filtering_ostream fos;
-          fos.push(boost::iostreams::zlib_compressor(boost::iostreams::zlib::best_compression));
-          fos.push(os);
-          if (get_archive_format() == ArchiveFormat::Binary) {
-            boost::archive::binary_oarchive ar(fos);
-            ar << dynamic_cast<EEC &>(*this);
-          }
-          else {
-            boost::archive::text_oarchive ar(fos);
-            ar << dynamic_cast<EEC &>(*this);
-          }
-          return;
+      // we want to use compression
+      if (get_compression_mode() == CompressionMode::Zlib) {
+        boost::iostreams::filtering_ostream fos;
+        fos.push(boost::iostreams::zlib_compressor(boost::iostreams::zlib::best_compression));
+        fos.push(os);
+        if (get_archive_format() == ArchiveFormat::Binary) {
+          boost::archive::binary_oarchive ar(fos);
+          ar << dynamic_cast<EEC &>(*this);
         }
-
-      #endif // EEC_COMPRESSION
-
-      // no compression, binary
-      if (get_archive_format() == ArchiveFormat::Binary) {
-        boost::archive::binary_oarchive ar(os);
-        ar << dynamic_cast<EEC &>(*this);
+        else {
+          boost::archive::text_oarchive ar(fos);
+          ar << dynamic_cast<EEC &>(*this);
+        }
+        return;
       }
 
-      // no compression, text
-      else {
-        boost::archive::text_oarchive ar(os);
-        ar << dynamic_cast<EEC &>(*this);
-      }
+    #endif // EEC_COMPRESSION
 
-    #endif // EEC_SERIALIZATION
+    // no compression, binary
+    if (get_archive_format() == ArchiveFormat::Binary) {
+      boost::archive::binary_oarchive ar(os);
+      ar << dynamic_cast<EEC &>(*this);
+    }
+
+    // no compression, text
+    else {
+      boost::archive::text_oarchive ar(os);
+      ar << dynamic_cast<EEC &>(*this);
+    }
   }
 
   template <class EEC>
   void load(std::istream & is) {
-    #ifdef EEC_SERIALIZATION
-      #ifdef EEC_COMPRESSION
+    #ifdef EEC_COMPRESSION
 
-        // we want to use compression
-        if (get_compression_mode() == CompressionMode::Zlib) {
-          boost::iostreams::filtering_istream fis;
-          fis.push(boost::iostreams::zlib_decompressor());
-          fis.push(is);
-          if (get_archive_format() == ArchiveFormat::Binary) {
-            boost::archive::binary_iarchive ar(fis);
-            ar >> dynamic_cast<EEC &>(*this);
-          }
-          else {
-            boost::archive::text_iarchive ar(fis);
-            ar >> dynamic_cast<EEC &>(*this);
-          }
-          return;
+      // we want to use compression
+      if (get_compression_mode() == CompressionMode::Zlib) {
+        boost::iostreams::filtering_istream fis;
+        fis.push(boost::iostreams::zlib_decompressor());
+        fis.push(is);
+        if (get_archive_format() == ArchiveFormat::Binary) {
+          boost::archive::binary_iarchive ar(fis);
+          ar >> dynamic_cast<EEC &>(*this);
         }
-
-      #endif // EEC_COMPRESSION
-
-      // no compression, binary
-      if (get_archive_format() == ArchiveFormat::Binary) {
-        boost::archive::binary_iarchive ar(is);
-        ar >> dynamic_cast<EEC &>(*this);
+        else {
+          boost::archive::text_iarchive ar(fis);
+          ar >> dynamic_cast<EEC &>(*this);
+        }
+        return;
       }
 
-      // no compression, text
-      else {
-        boost::archive::text_iarchive ar(is);
-        ar >> dynamic_cast<EEC &>(*this);
-      }
+    #endif // EEC_COMPRESSION
 
-    #endif // EEC_SERIALIZATION
+    // no compression, binary
+    if (get_archive_format() == ArchiveFormat::Binary) {
+      boost::archive::binary_iarchive ar(is);
+      ar >> dynamic_cast<EEC &>(*this);
+    }
+
+    // no compression, text
+    else {
+      boost::archive::text_iarchive ar(is);
+      ar >> dynamic_cast<EEC &>(*this);
+    } 
   }
+#endif // EEC_SERIALIZATION
 
 private:
 

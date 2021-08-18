@@ -17,7 +17,6 @@
 from eec import *
 
 from collections import Counter
-import faulthandler
 import itertools
 import math
 from operator import itemgetter
@@ -28,10 +27,6 @@ import energyflow as ef
 import numpy as np
 import pytest
 from scipy.spatial.distance import cdist
-
-
-
-faulthandler.enable()
 
 # load some reasonable test data
 events, y = ef.qg_jets.load(num_data=500, pad=False)
@@ -741,11 +736,9 @@ def test_triangleope(axes, num_threads, weight_powers, charge_powers, average_ve
 @pytest.mark.parametrize('N', [2, 3, 4])
 def test_pickling_longestside(N, axis, num_threads, weight_powers, charge_powers, nparticles, archform, compmode):
 
-    if not eec.HAS_PICKLE_SUPPORT:
-        pytest.skip()
-
-    eec.set_archive_format(archform)
-    eec.set_compression_mode(compmode)
+    if eec.HAS_PICKLE_SUPPORT:
+        eec.set_archive_format(archform)
+        eec.set_compression_mode(compmode)
 
     nbins = 15
     e = EECLongestSide(N, nbins, axis=axis, axis_range=(1e-5, 1), weight_powers=(weight_powers,), charge_powers=(charge_powers,),
@@ -756,15 +749,18 @@ def test_pickling_longestside(N, axis, num_threads, weight_powers, charge_powers
 
     e(local_events, event_weights=weights)
 
-    with tempfile.TemporaryFile() as f:
-        pickle.dump(e, f)
-        f.seek(0)
-        e_loaded = pickle.load(f)
+    if not eec.HAS_PICKLE_SUPPORT:
+        d = e.save()
+    else:
+        with tempfile.TemporaryFile() as f:
+            pickle.dump(e, f)
+            f.seek(0)
+            e_loaded = pickle.load(f)
 
-    assert e == e_loaded, 'EECs did not match'
+        assert e == e_loaded, 'EECs did not match'
 
-    for i in range(2):
-        assert np.all(e_loaded.get_hist_vars()[i] == e.get_hist_vars()[i]), 'hists did not match'
+        for i in range(2):
+            assert np.all(e_loaded.get_hist_vars()[i] == e.get_hist_vars()[i]), 'hists did not match'
 
 @pytest.mark.triangleope
 @pytest.mark.pickle
@@ -777,11 +773,9 @@ def test_pickling_longestside(N, axis, num_threads, weight_powers, charge_powers
 @pytest.mark.parametrize('axes', [('log', 'log', 'id'), ('id', 'id', 'id'), ('log', 'id', 'id'), ('id', 'log', 'id')])
 def test_pickling_triangleope(axes, num_threads, weight_powers, charge_powers, nparticles, archform, compmode):
 
-    if not eec.HAS_PICKLE_SUPPORT:
-        pytest.skip()
-
-    eec.set_archive_format(archform)
-    eec.set_compression_mode(compmode)
+    if eec.HAS_PICKLE_SUPPORT:
+        eec.set_archive_format(archform)
+        eec.set_compression_mode(compmode)
     
     bin_ranges = [(1e-5, 1), (1e-5, 1), (0, np.pi/2)]
     e = EECTriangleOPE(nbins=(15, 15, 15), axes=axes, axes_range=bin_ranges,
@@ -794,12 +788,15 @@ def test_pickling_triangleope(axes, num_threads, weight_powers, charge_powers, n
 
     e(local_events, event_weights=weights)
 
-    with tempfile.TemporaryFile() as f:
-        pickle.dump(e, f)
-        f.seek(0)
-        e_loaded = pickle.load(f)
+    if not eec.HAS_PICKLE_SUPPORT:
+        d = e.save()
+    else:
+        with tempfile.TemporaryFile() as f:
+            pickle.dump(e, f)
+            f.seek(0)
+            e_loaded = pickle.load(f)
 
-    assert e == e_loaded, 'EECs did not match'
+        assert e == e_loaded, 'EECs did not match'
 
-    for i in range(2):
-        assert np.all(e_loaded.get_hist_vars()[i] == e.get_hist_vars()[i]), 'hists did not match'
+        for i in range(2):
+            assert np.all(e_loaded.get_hist_vars()[i] == e.get_hist_vars()[i]), 'hists did not match'

@@ -3375,9 +3375,6 @@ static PyObject * FastJetError_;
 # define SWIG
 #endif
 
-// needed to ensure bytes are returned 
-#define SWIG_PYTHON_STRICT_BYTE_CHAR
-
 // EEC library headers
 #include "EEC.hh"
 
@@ -5902,7 +5899,7 @@ SWIGINTERN void fastjet_contrib_eec_hist_EECHist1D_Sl_axis_id_Sg__npy_get_hist_v
   if (*arr_out1 == NULL)
     throw std::runtime_error("failed to allocate " + std::to_string(nbytes1) + " bytes");
 /*@SWIG@*/
-        /*@SWIG:eec/swig/eec.i,136,GET_HIST_TWO_QUANTITIES@*/
+        /*@SWIG:eec/swig/eec.i,130,GET_HIST_TWO_QUANTITIES@*/
   try {
     self->get_hist_vars(*arr_out0, *arr_out1, hist_i, overflows);
   }
@@ -5923,7 +5920,7 @@ SWIGINTERN void fastjet_contrib_eec_hist_EECHist1D_Sl_axis_id_Sg__npy_get_covari
   if (*arr_out0 == NULL)
     throw std::runtime_error("failed to allocate " + std::to_string(nbytes0) + " bytes");
 /*@SWIG@*/
-        /*@SWIG:eec/swig/eec.i,147,GET_HIST_ONE_QUANTITY@*/
+        /*@SWIG:eec/swig/eec.i,141,GET_HIST_ONE_QUANTITY@*/
   try {
     self->get_covariance(*arr_out0, hist_i, overflows);
   }
@@ -5941,7 +5938,7 @@ SWIGINTERN void fastjet_contrib_eec_hist_EECHist1D_Sl_axis_id_Sg__npy_get_varian
   if (*arr_out0 == NULL)
     throw std::runtime_error("failed to allocate " + std::to_string(nbytes0) + " bytes");
 /*@SWIG@*/
-        /*@SWIG:eec/swig/eec.i,147,GET_HIST_ONE_QUANTITY@*/
+        /*@SWIG:eec/swig/eec.i,141,GET_HIST_ONE_QUANTITY@*/
   try {
     self->get_variance_bound(*arr_out0, hist_i, overflows);
   }
@@ -5966,7 +5963,7 @@ SWIGINTERN void fastjet_contrib_eec_hist_EECHist1D_Sl_axis_log_Sg__npy_get_hist_
   if (*arr_out1 == NULL)
     throw std::runtime_error("failed to allocate " + std::to_string(nbytes1) + " bytes");
 /*@SWIG@*/
-        /*@SWIG:eec/swig/eec.i,136,GET_HIST_TWO_QUANTITIES@*/
+        /*@SWIG:eec/swig/eec.i,130,GET_HIST_TWO_QUANTITIES@*/
   try {
     self->get_hist_vars(*arr_out0, *arr_out1, hist_i, overflows);
   }
@@ -5987,7 +5984,7 @@ SWIGINTERN void fastjet_contrib_eec_hist_EECHist1D_Sl_axis_log_Sg__npy_get_covar
   if (*arr_out0 == NULL)
     throw std::runtime_error("failed to allocate " + std::to_string(nbytes0) + " bytes");
 /*@SWIG@*/
-        /*@SWIG:eec/swig/eec.i,147,GET_HIST_ONE_QUANTITY@*/
+        /*@SWIG:eec/swig/eec.i,141,GET_HIST_ONE_QUANTITY@*/
   try {
     self->get_covariance(*arr_out0, hist_i, overflows);
   }
@@ -6005,7 +6002,7 @@ SWIGINTERN void fastjet_contrib_eec_hist_EECHist1D_Sl_axis_log_Sg__npy_get_varia
   if (*arr_out0 == NULL)
     throw std::runtime_error("failed to allocate " + std::to_string(nbytes0) + " bytes");
 /*@SWIG@*/
-        /*@SWIG:eec/swig/eec.i,147,GET_HIST_ONE_QUANTITY@*/
+        /*@SWIG:eec/swig/eec.i,141,GET_HIST_ONE_QUANTITY@*/
   try {
     self->get_variance_bound(*arr_out0, hist_i, overflows);
   }
@@ -6038,7 +6035,7 @@ SWIGINTERN void fastjet_contrib_eec_hist_EECHist3D_Sl_axis_id_Sc_axis_id_Sc_axis
 /*@SWIG@*/
 
 
-        /*@SWIG:eec/swig/eec.i,136,GET_HIST_TWO_QUANTITIES@*/
+        /*@SWIG:eec/swig/eec.i,130,GET_HIST_TWO_QUANTITIES@*/
   try {
     self->get_hist_vars(*arr_out0, *arr_out1, hist_i, overflows);
   }
@@ -6069,7 +6066,7 @@ SWIGINTERN void fastjet_contrib_eec_hist_EECHist3D_Sl_axis_id_Sc_axis_id_Sc_axis
 
 
 
-        /*@SWIG:eec/swig/eec.i,147,GET_HIST_ONE_QUANTITY@*/
+        /*@SWIG:eec/swig/eec.i,141,GET_HIST_ONE_QUANTITY@*/
   try {
     self->get_covariance(*arr_out0, hist_i, overflows);
   }
@@ -6091,7 +6088,7 @@ SWIGINTERN void fastjet_contrib_eec_hist_EECHist3D_Sl_axis_id_Sc_axis_id_Sc_axis
 /*@SWIG@*/
 
 
-        /*@SWIG:eec/swig/eec.i,147,GET_HIST_ONE_QUANTITY@*/
+        /*@SWIG:eec/swig/eec.i,141,GET_HIST_ONE_QUANTITY@*/
   try {
     self->get_variance_bound(*arr_out0, hist_i, overflows);
   }
@@ -6124,7 +6121,7 @@ SWIGINTERN void fastjet_contrib_eec_hist_EECHist3D_Sl_axis_log_Sc_axis_id_Sc_axi
 /*@SWIG@*/
 
 
-        /*@SWIG:eec/swig/eec.i,136,GET_HIST_TWO_QUANTITIES@*/
+        /*@SWIG:eec/swig/eec.i,130,GET_HIST_TWO_QUANTITIES@*/
   try {
     self->get_hist_vars(*arr_out0, *arr_out1, hist_i, overflows);
   }
@@ -6155,7 +6152,7 @@ SWIGINTERN void fastjet_contrib_eec_hist_EECHist3D_Sl_axis_log_Sc_axis_id_Sc_axi
 
 
 
-        /*@SWIG:eec/swig/eec.i,147,GET_HIST_ONE_QUANTITY@*/
+        /*@SWIG:eec/swig/eec.i,141,GET_HIST_ONE_QUANTITY@*/
   try {
     self->get_covariance(*arr_out0, hist_i, overflows);
   }
@@ -6177,7 +6174,7 @@ SWIGINTERN void fastjet_contrib_eec_hist_EECHist3D_Sl_axis_log_Sc_axis_id_Sc_axi
 /*@SWIG@*/
 
 
-        /*@SWIG:eec/swig/eec.i,147,GET_HIST_ONE_QUANTITY@*/
+        /*@SWIG:eec/swig/eec.i,141,GET_HIST_ONE_QUANTITY@*/
   try {
     self->get_variance_bound(*arr_out0, hist_i, overflows);
   }
@@ -6210,7 +6207,7 @@ SWIGINTERN void fastjet_contrib_eec_hist_EECHist3D_Sl_axis_id_Sc_axis_log_Sc_axi
 /*@SWIG@*/
 
 
-        /*@SWIG:eec/swig/eec.i,136,GET_HIST_TWO_QUANTITIES@*/
+        /*@SWIG:eec/swig/eec.i,130,GET_HIST_TWO_QUANTITIES@*/
   try {
     self->get_hist_vars(*arr_out0, *arr_out1, hist_i, overflows);
   }
@@ -6241,7 +6238,7 @@ SWIGINTERN void fastjet_contrib_eec_hist_EECHist3D_Sl_axis_id_Sc_axis_log_Sc_axi
 
 
 
-        /*@SWIG:eec/swig/eec.i,147,GET_HIST_ONE_QUANTITY@*/
+        /*@SWIG:eec/swig/eec.i,141,GET_HIST_ONE_QUANTITY@*/
   try {
     self->get_covariance(*arr_out0, hist_i, overflows);
   }
@@ -6263,7 +6260,7 @@ SWIGINTERN void fastjet_contrib_eec_hist_EECHist3D_Sl_axis_id_Sc_axis_log_Sc_axi
 /*@SWIG@*/
 
 
-        /*@SWIG:eec/swig/eec.i,147,GET_HIST_ONE_QUANTITY@*/
+        /*@SWIG:eec/swig/eec.i,141,GET_HIST_ONE_QUANTITY@*/
   try {
     self->get_variance_bound(*arr_out0, hist_i, overflows);
   }
@@ -6296,7 +6293,7 @@ SWIGINTERN void fastjet_contrib_eec_hist_EECHist3D_Sl_axis_log_Sc_axis_log_Sc_ax
 /*@SWIG@*/
 
 
-        /*@SWIG:eec/swig/eec.i,136,GET_HIST_TWO_QUANTITIES@*/
+        /*@SWIG:eec/swig/eec.i,130,GET_HIST_TWO_QUANTITIES@*/
   try {
     self->get_hist_vars(*arr_out0, *arr_out1, hist_i, overflows);
   }
@@ -6327,7 +6324,7 @@ SWIGINTERN void fastjet_contrib_eec_hist_EECHist3D_Sl_axis_log_Sc_axis_log_Sc_ax
 
 
 
-        /*@SWIG:eec/swig/eec.i,147,GET_HIST_ONE_QUANTITY@*/
+        /*@SWIG:eec/swig/eec.i,141,GET_HIST_ONE_QUANTITY@*/
   try {
     self->get_covariance(*arr_out0, hist_i, overflows);
   }
@@ -6349,7 +6346,7 @@ SWIGINTERN void fastjet_contrib_eec_hist_EECHist3D_Sl_axis_log_Sc_axis_log_Sc_ax
 /*@SWIG@*/
 
 
-        /*@SWIG:eec/swig/eec.i,147,GET_HIST_ONE_QUANTITY@*/
+        /*@SWIG:eec/swig/eec.i,141,GET_HIST_ONE_QUANTITY@*/
   try {
     self->get_variance_bound(*arr_out0, hist_i, overflows);
   }
@@ -6874,232 +6871,20 @@ SWIGINTERN void fastjet_contrib_eec_Multinomial_Sl_6_Sg__py_set_index_Sl_4_Sg_(f
         throw std::out_of_range("trying to set invalid index");
       self->set_index<4>(ind);
     }
-SWIGINTERN std::string fastjet_contrib_eec_EECLongestSide_Sl_axis_id_Sg____getstate_internal__(fastjet::contrib::eec::EECLongestSide< axis::id > *self){
-    std::ostringstream oss;
-    self->save(oss);
-    return oss.str();
-  }
-
-SWIGINTERN int
-SWIG_AsCharPtrAndSize(PyObject *obj, char** cptr, size_t* psize, int *alloc)
-{
-#if PY_VERSION_HEX>=0x03000000
-#if defined(SWIG_PYTHON_STRICT_BYTE_CHAR)
-  if (PyBytes_Check(obj))
-#else
-  if (PyUnicode_Check(obj))
-#endif
-#else  
-  if (PyString_Check(obj))
-#endif
-  {
-    char *cstr; Py_ssize_t len;
-    int ret = SWIG_OK;
-#if PY_VERSION_HEX>=0x03000000
-#if !defined(SWIG_PYTHON_STRICT_BYTE_CHAR)
-    if (!alloc && cptr) {
-        /* We can't allow converting without allocation, since the internal
-           representation of string in Python 3 is UCS-2/UCS-4 but we require
-           a UTF-8 representation.
-           TODO(bhy) More detailed explanation */
-        return SWIG_RuntimeError;
-    }
-    obj = PyUnicode_AsUTF8String(obj);
-    if (!obj)
-      return SWIG_TypeError;
-    if (alloc)
-      *alloc = SWIG_NEWOBJ;
-#endif
-    if (PyBytes_AsStringAndSize(obj, &cstr, &len) == -1)
-      return SWIG_TypeError;
-#else
-    if (PyString_AsStringAndSize(obj, &cstr, &len) == -1)
-      return SWIG_TypeError;
-#endif
-    if (cptr) {
-      if (alloc) {
-	if (*alloc == SWIG_NEWOBJ) {
-	  *cptr = reinterpret_cast< char* >(memcpy(new char[len + 1], cstr, sizeof(char)*(len + 1)));
-	  *alloc = SWIG_NEWOBJ;
-	} else {
-	  *cptr = cstr;
-	  *alloc = SWIG_OLDOBJ;
-	}
-      } else {
-#if PY_VERSION_HEX>=0x03000000
-#if defined(SWIG_PYTHON_STRICT_BYTE_CHAR)
-	*cptr = PyBytes_AsString(obj);
-#else
-	assert(0); /* Should never reach here with Unicode strings in Python 3 */
-#endif
-#else
-	*cptr = SWIG_Python_str_AsChar(obj);
-        if (!*cptr)
-          ret = SWIG_TypeError;
-#endif
-      }
-    }
-    if (psize) *psize = len + 1;
-#if PY_VERSION_HEX>=0x03000000 && !defined(SWIG_PYTHON_STRICT_BYTE_CHAR)
-    Py_XDECREF(obj);
-#endif
-    return ret;
-  } else {
-#if defined(SWIG_PYTHON_2_UNICODE)
-#if defined(SWIG_PYTHON_STRICT_BYTE_CHAR)
-#error "Cannot use both SWIG_PYTHON_2_UNICODE and SWIG_PYTHON_STRICT_BYTE_CHAR at once"
-#endif
-#if PY_VERSION_HEX<0x03000000
-    if (PyUnicode_Check(obj)) {
-      char *cstr; Py_ssize_t len;
-      if (!alloc && cptr) {
-        return SWIG_RuntimeError;
-      }
-      obj = PyUnicode_AsUTF8String(obj);
-      if (!obj)
-        return SWIG_TypeError;
-      if (PyString_AsStringAndSize(obj, &cstr, &len) != -1) {
-        if (cptr) {
-          if (alloc) *alloc = SWIG_NEWOBJ;
-          *cptr = reinterpret_cast< char* >(memcpy(new char[len + 1], cstr, sizeof(char)*(len + 1)));
-        }
-        if (psize) *psize = len + 1;
-
-        Py_XDECREF(obj);
-        return SWIG_OK;
-      } else {
-        Py_XDECREF(obj);
-      }
-    }
-#endif
-#endif
-
-    swig_type_info* pchar_descriptor = SWIG_pchar_descriptor();
-    if (pchar_descriptor) {
-      void* vptr = 0;
-      if (SWIG_ConvertPtr(obj, &vptr, pchar_descriptor, 0) == SWIG_OK) {
-	if (cptr) *cptr = (char *) vptr;
-	if (psize) *psize = vptr ? (strlen((char *)vptr) + 1) : 0;
-	if (alloc) *alloc = SWIG_OLDOBJ;
-	return SWIG_OK;
-      }
-    }
-  }
-  return SWIG_TypeError;
-}
-
-
-SWIGINTERN int
-SWIG_AsPtr_std_string (PyObject * obj, std::string **val) 
-{
-  char* buf = 0 ; size_t size = 0; int alloc = SWIG_OLDOBJ;
-  if (SWIG_IsOK((SWIG_AsCharPtrAndSize(obj, &buf, &size, &alloc)))) {
-    if (buf) {
-      if (val) *val = new std::string(buf, size - 1);
-      if (alloc == SWIG_NEWOBJ) delete[] buf;
-      return SWIG_NEWOBJ;
-    } else {
-      if (val) *val = 0;
-      return SWIG_OLDOBJ;
-    }
-  } else {
-    static int init = 0;
-    static swig_type_info* descriptor = 0;
-    if (!init) {
-      descriptor = SWIG_TypeQuery("std::string" " *");
-      init = 1;
-    }
-    if (descriptor) {
-      std::string *vptr;
-      int res = SWIG_ConvertPtr(obj, (void**)&vptr, descriptor, 0);
-      if (SWIG_IsOK(res) && val) *val = vptr;
-      return res;
-    }
-  }
-  return SWIG_ERROR;
-}
-
-SWIGINTERN void fastjet_contrib_eec_EECLongestSide_Sl_axis_id_Sg____setstate_internal__(fastjet::contrib::eec::EECLongestSide< axis::id > *self,std::string const &state){
-    std::istringstream iss(state);
-    if (!iss.good())
-      throw std::runtime_error("problem creating istringstream from provided state");
-
-    self->load(iss);
-  }
 SWIGINTERN void fastjet_contrib_eec_EECLongestSide_Sl_axis_id_Sg__add(fastjet::contrib::eec::EECLongestSide< axis::id > *self,fastjet::contrib::eec::EECLongestSide< axis::id > const &rhs){
     self->operator+=(rhs);
-  }
-SWIGINTERN std::string fastjet_contrib_eec_EECLongestSide_Sl_axis_log_Sg____getstate_internal__(fastjet::contrib::eec::EECLongestSide< axis::log > *self){
-    std::ostringstream oss;
-    self->save(oss);
-    return oss.str();
-  }
-SWIGINTERN void fastjet_contrib_eec_EECLongestSide_Sl_axis_log_Sg____setstate_internal__(fastjet::contrib::eec::EECLongestSide< axis::log > *self,std::string const &state){
-    std::istringstream iss(state);
-    if (!iss.good())
-      throw std::runtime_error("problem creating istringstream from provided state");
-
-    self->load(iss);
   }
 SWIGINTERN void fastjet_contrib_eec_EECLongestSide_Sl_axis_log_Sg__add(fastjet::contrib::eec::EECLongestSide< axis::log > *self,fastjet::contrib::eec::EECLongestSide< axis::log > const &rhs){
     self->operator+=(rhs);
   }
-SWIGINTERN std::string fastjet_contrib_eec_EECTriangleOPE_Sl_axis_id_Sc_axis_id_Sc_axis_id_Sg____getstate_internal__(fastjet::contrib::eec::EECTriangleOPE< axis::id,axis::id,axis::id > *self){
-    std::ostringstream oss;
-    self->save(oss);
-    return oss.str();
-  }
-SWIGINTERN void fastjet_contrib_eec_EECTriangleOPE_Sl_axis_id_Sc_axis_id_Sc_axis_id_Sg____setstate_internal__(fastjet::contrib::eec::EECTriangleOPE< axis::id,axis::id,axis::id > *self,std::string const &state){
-    std::istringstream iss(state);
-    if (!iss.good())
-      throw std::runtime_error("problem creating istringstream from provided state");
-
-    self->load(iss);
-  }
 SWIGINTERN void fastjet_contrib_eec_EECTriangleOPE_Sl_axis_id_Sc_axis_id_Sc_axis_id_Sg__add(fastjet::contrib::eec::EECTriangleOPE< axis::id,axis::id,axis::id > *self,fastjet::contrib::eec::EECTriangleOPE< axis::id,axis::id,axis::id > const &rhs){
     self->operator+=(rhs);
-  }
-SWIGINTERN std::string fastjet_contrib_eec_EECTriangleOPE_Sl_axis_log_Sc_axis_id_Sc_axis_id_Sg____getstate_internal__(fastjet::contrib::eec::EECTriangleOPE< axis::log,axis::id,axis::id > *self){
-    std::ostringstream oss;
-    self->save(oss);
-    return oss.str();
-  }
-SWIGINTERN void fastjet_contrib_eec_EECTriangleOPE_Sl_axis_log_Sc_axis_id_Sc_axis_id_Sg____setstate_internal__(fastjet::contrib::eec::EECTriangleOPE< axis::log,axis::id,axis::id > *self,std::string const &state){
-    std::istringstream iss(state);
-    if (!iss.good())
-      throw std::runtime_error("problem creating istringstream from provided state");
-
-    self->load(iss);
   }
 SWIGINTERN void fastjet_contrib_eec_EECTriangleOPE_Sl_axis_log_Sc_axis_id_Sc_axis_id_Sg__add(fastjet::contrib::eec::EECTriangleOPE< axis::log,axis::id,axis::id > *self,fastjet::contrib::eec::EECTriangleOPE< axis::log,axis::id,axis::id > const &rhs){
     self->operator+=(rhs);
   }
-SWIGINTERN std::string fastjet_contrib_eec_EECTriangleOPE_Sl_axis_id_Sc_axis_log_Sc_axis_id_Sg____getstate_internal__(fastjet::contrib::eec::EECTriangleOPE< axis::id,axis::log,axis::id > *self){
-    std::ostringstream oss;
-    self->save(oss);
-    return oss.str();
-  }
-SWIGINTERN void fastjet_contrib_eec_EECTriangleOPE_Sl_axis_id_Sc_axis_log_Sc_axis_id_Sg____setstate_internal__(fastjet::contrib::eec::EECTriangleOPE< axis::id,axis::log,axis::id > *self,std::string const &state){
-    std::istringstream iss(state);
-    if (!iss.good())
-      throw std::runtime_error("problem creating istringstream from provided state");
-
-    self->load(iss);
-  }
 SWIGINTERN void fastjet_contrib_eec_EECTriangleOPE_Sl_axis_id_Sc_axis_log_Sc_axis_id_Sg__add(fastjet::contrib::eec::EECTriangleOPE< axis::id,axis::log,axis::id > *self,fastjet::contrib::eec::EECTriangleOPE< axis::id,axis::log,axis::id > const &rhs){
     self->operator+=(rhs);
-  }
-SWIGINTERN std::string fastjet_contrib_eec_EECTriangleOPE_Sl_axis_log_Sc_axis_log_Sc_axis_id_Sg____getstate_internal__(fastjet::contrib::eec::EECTriangleOPE< axis::log,axis::log,axis::id > *self){
-    std::ostringstream oss;
-    self->save(oss);
-    return oss.str();
-  }
-SWIGINTERN void fastjet_contrib_eec_EECTriangleOPE_Sl_axis_log_Sc_axis_log_Sc_axis_id_Sg____setstate_internal__(fastjet::contrib::eec::EECTriangleOPE< axis::log,axis::log,axis::id > *self,std::string const &state){
-    std::istringstream iss(state);
-    if (!iss.good())
-      throw std::runtime_error("problem creating istringstream from provided state");
-
-    self->load(iss);
   }
 SWIGINTERN void fastjet_contrib_eec_EECTriangleOPE_Sl_axis_log_Sc_axis_log_Sc_axis_id_Sg__add(fastjet::contrib::eec::EECTriangleOPE< axis::log,axis::log,axis::id > *self,fastjet::contrib::eec::EECTriangleOPE< axis::log,axis::log,axis::id > const &rhs){
     self->operator+=(rhs);
@@ -23861,176 +23646,6 @@ SWIGINTERN PyObject *Swig_var_HAS_PICKLE_SUPPORT_get(void) {
   
   pyobj = SWIG_From_bool(static_cast< bool >(fastjet::contrib::eec::HAS_PICKLE_SUPPORT));
   return pyobj;
-}
-
-
-SWIGINTERN PyObject *_wrap_get_archive_format(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
-  PyObject *resultobj = 0;
-  fastjet::contrib::eec::ArchiveFormat result;
-  
-  if (!SWIG_Python_UnpackTuple(args, "get_archive_format", 0, 0, 0)) SWIG_fail;
-  {
-    try {
-      result = (fastjet::contrib::eec::ArchiveFormat)fastjet::contrib::eec::get_archive_format(); 
-    }
-    /*@SWIG:/usr/local/Cellar/swig/4.0.2/share/swig/4.0.2/typemaps/exception.swg,58,SWIG_CATCH_STDEXCEPT@*/  /* catching std::exception  */
-    catch (std::invalid_argument& e) {
-      SWIG_exception_fail(SWIG_ValueError, e.what() );
-    } catch (std::domain_error& e) {
-      SWIG_exception_fail(SWIG_ValueError, e.what() );
-    } catch (std::overflow_error& e) {
-      SWIG_exception_fail(SWIG_OverflowError, e.what() );
-    } catch (std::out_of_range& e) {
-      SWIG_exception_fail(SWIG_IndexError, e.what() );
-    } catch (std::length_error& e) {
-      SWIG_exception_fail(SWIG_IndexError, e.what() );
-    } catch (std::runtime_error& e) {
-      SWIG_exception_fail(SWIG_RuntimeError, e.what() );
-    } catch (std::exception& e) {
-      SWIG_exception_fail(SWIG_SystemError, e.what() );
-    }
-    /*@SWIG@*/
-    catch (...) {
-      SWIG_exception_fail(SWIG_UnknownError, "unknown exception");
-    }
-  }
-  resultobj = SWIG_From_int(static_cast< int >(result));
-  return resultobj;
-fail:
-  return NULL;
-}
-
-
-SWIGINTERN PyObject *_wrap_get_compression_mode(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
-  PyObject *resultobj = 0;
-  fastjet::contrib::eec::CompressionMode result;
-  
-  if (!SWIG_Python_UnpackTuple(args, "get_compression_mode", 0, 0, 0)) SWIG_fail;
-  {
-    try {
-      result = (fastjet::contrib::eec::CompressionMode)fastjet::contrib::eec::get_compression_mode(); 
-    }
-    /*@SWIG:/usr/local/Cellar/swig/4.0.2/share/swig/4.0.2/typemaps/exception.swg,58,SWIG_CATCH_STDEXCEPT@*/  /* catching std::exception  */
-    catch (std::invalid_argument& e) {
-      SWIG_exception_fail(SWIG_ValueError, e.what() );
-    } catch (std::domain_error& e) {
-      SWIG_exception_fail(SWIG_ValueError, e.what() );
-    } catch (std::overflow_error& e) {
-      SWIG_exception_fail(SWIG_OverflowError, e.what() );
-    } catch (std::out_of_range& e) {
-      SWIG_exception_fail(SWIG_IndexError, e.what() );
-    } catch (std::length_error& e) {
-      SWIG_exception_fail(SWIG_IndexError, e.what() );
-    } catch (std::runtime_error& e) {
-      SWIG_exception_fail(SWIG_RuntimeError, e.what() );
-    } catch (std::exception& e) {
-      SWIG_exception_fail(SWIG_SystemError, e.what() );
-    }
-    /*@SWIG@*/
-    catch (...) {
-      SWIG_exception_fail(SWIG_UnknownError, "unknown exception");
-    }
-  }
-  resultobj = SWIG_From_int(static_cast< int >(result));
-  return resultobj;
-fail:
-  return NULL;
-}
-
-
-SWIGINTERN PyObject *_wrap_set_archive_format(PyObject *SWIGUNUSEDPARM(self), PyObject *args, PyObject *kwargs) {
-  PyObject *resultobj = 0;
-  fastjet::contrib::eec::ArchiveFormat arg1 ;
-  int val1 ;
-  int ecode1 = 0 ;
-  PyObject * obj0 = 0 ;
-  char * kwnames[] = {
-    (char *)"a",  NULL 
-  };
-  
-  if (!PyArg_ParseTupleAndKeywords(args, kwargs, "O:set_archive_format", kwnames, &obj0)) SWIG_fail;
-  ecode1 = SWIG_AsVal_int(obj0, &val1);
-  if (!SWIG_IsOK(ecode1)) {
-    SWIG_exception_fail(SWIG_ArgError(ecode1), "in method '" "set_archive_format" "', argument " "1"" of type '" "fastjet::contrib::eec::ArchiveFormat""'");
-  } 
-  arg1 = static_cast< fastjet::contrib::eec::ArchiveFormat >(val1);
-  {
-    try {
-      fastjet::contrib::eec::set_archive_format(arg1); 
-    }
-    /*@SWIG:/usr/local/Cellar/swig/4.0.2/share/swig/4.0.2/typemaps/exception.swg,58,SWIG_CATCH_STDEXCEPT@*/  /* catching std::exception  */
-    catch (std::invalid_argument& e) {
-      SWIG_exception_fail(SWIG_ValueError, e.what() );
-    } catch (std::domain_error& e) {
-      SWIG_exception_fail(SWIG_ValueError, e.what() );
-    } catch (std::overflow_error& e) {
-      SWIG_exception_fail(SWIG_OverflowError, e.what() );
-    } catch (std::out_of_range& e) {
-      SWIG_exception_fail(SWIG_IndexError, e.what() );
-    } catch (std::length_error& e) {
-      SWIG_exception_fail(SWIG_IndexError, e.what() );
-    } catch (std::runtime_error& e) {
-      SWIG_exception_fail(SWIG_RuntimeError, e.what() );
-    } catch (std::exception& e) {
-      SWIG_exception_fail(SWIG_SystemError, e.what() );
-    }
-    /*@SWIG@*/
-    catch (...) {
-      SWIG_exception_fail(SWIG_UnknownError, "unknown exception");
-    }
-  }
-  resultobj = SWIG_Py_Void();
-  return resultobj;
-fail:
-  return NULL;
-}
-
-
-SWIGINTERN PyObject *_wrap_set_compression_mode(PyObject *SWIGUNUSEDPARM(self), PyObject *args, PyObject *kwargs) {
-  PyObject *resultobj = 0;
-  fastjet::contrib::eec::CompressionMode arg1 ;
-  int val1 ;
-  int ecode1 = 0 ;
-  PyObject * obj0 = 0 ;
-  char * kwnames[] = {
-    (char *)"c",  NULL 
-  };
-  
-  if (!PyArg_ParseTupleAndKeywords(args, kwargs, "O:set_compression_mode", kwnames, &obj0)) SWIG_fail;
-  ecode1 = SWIG_AsVal_int(obj0, &val1);
-  if (!SWIG_IsOK(ecode1)) {
-    SWIG_exception_fail(SWIG_ArgError(ecode1), "in method '" "set_compression_mode" "', argument " "1"" of type '" "fastjet::contrib::eec::CompressionMode""'");
-  } 
-  arg1 = static_cast< fastjet::contrib::eec::CompressionMode >(val1);
-  {
-    try {
-      fastjet::contrib::eec::set_compression_mode(arg1); 
-    }
-    /*@SWIG:/usr/local/Cellar/swig/4.0.2/share/swig/4.0.2/typemaps/exception.swg,58,SWIG_CATCH_STDEXCEPT@*/  /* catching std::exception  */
-    catch (std::invalid_argument& e) {
-      SWIG_exception_fail(SWIG_ValueError, e.what() );
-    } catch (std::domain_error& e) {
-      SWIG_exception_fail(SWIG_ValueError, e.what() );
-    } catch (std::overflow_error& e) {
-      SWIG_exception_fail(SWIG_OverflowError, e.what() );
-    } catch (std::out_of_range& e) {
-      SWIG_exception_fail(SWIG_IndexError, e.what() );
-    } catch (std::length_error& e) {
-      SWIG_exception_fail(SWIG_IndexError, e.what() );
-    } catch (std::runtime_error& e) {
-      SWIG_exception_fail(SWIG_RuntimeError, e.what() );
-    } catch (std::exception& e) {
-      SWIG_exception_fail(SWIG_SystemError, e.what() );
-    }
-    /*@SWIG@*/
-    catch (...) {
-      SWIG_exception_fail(SWIG_UnknownError, "unknown exception");
-    }
-  }
-  resultobj = SWIG_Py_Void();
-  return resultobj;
-fail:
-  return NULL;
 }
 
 
@@ -50518,117 +50133,6 @@ fail:
 }
 
 
-SWIGINTERN PyObject *_wrap_EECLongestSideId___getstate_internal__(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
-  PyObject *resultobj = 0;
-  fastjet::contrib::eec::EECLongestSide< axis::id > *arg1 = (fastjet::contrib::eec::EECLongestSide< axis::id > *) 0 ;
-  void *argp1 = 0 ;
-  int res1 = 0 ;
-  PyObject *swig_obj[1] ;
-  std::string result;
-  
-  if (!args) SWIG_fail;
-  swig_obj[0] = args;
-  res1 = SWIG_ConvertPtr(swig_obj[0], &argp1,SWIGTYPE_p_fastjet__contrib__eec__EECLongestSideT_axis__id_t, 0 |  0 );
-  if (!SWIG_IsOK(res1)) {
-    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "EECLongestSideId___getstate_internal__" "', argument " "1"" of type '" "fastjet::contrib::eec::EECLongestSide< axis::id > *""'"); 
-  }
-  arg1 = reinterpret_cast< fastjet::contrib::eec::EECLongestSide< axis::id > * >(argp1);
-  {
-    try {
-      result = fastjet_contrib_eec_EECLongestSide_Sl_axis_id_Sg____getstate_internal__(arg1); 
-    }
-    /*@SWIG:/usr/local/Cellar/swig/4.0.2/share/swig/4.0.2/typemaps/exception.swg,58,SWIG_CATCH_STDEXCEPT@*/  /* catching std::exception  */
-    catch (std::invalid_argument& e) {
-      SWIG_exception_fail(SWIG_ValueError, e.what() );
-    } catch (std::domain_error& e) {
-      SWIG_exception_fail(SWIG_ValueError, e.what() );
-    } catch (std::overflow_error& e) {
-      SWIG_exception_fail(SWIG_OverflowError, e.what() );
-    } catch (std::out_of_range& e) {
-      SWIG_exception_fail(SWIG_IndexError, e.what() );
-    } catch (std::length_error& e) {
-      SWIG_exception_fail(SWIG_IndexError, e.what() );
-    } catch (std::runtime_error& e) {
-      SWIG_exception_fail(SWIG_RuntimeError, e.what() );
-    } catch (std::exception& e) {
-      SWIG_exception_fail(SWIG_SystemError, e.what() );
-    }
-    /*@SWIG@*/
-    catch (...) {
-      SWIG_exception_fail(SWIG_UnknownError, "unknown exception");
-    }
-  }
-  resultobj = SWIG_From_std_string(static_cast< std::string >(result));
-  return resultobj;
-fail:
-  return NULL;
-}
-
-
-SWIGINTERN PyObject *_wrap_EECLongestSideId___setstate_internal__(PyObject *SWIGUNUSEDPARM(self), PyObject *args, PyObject *kwargs) {
-  PyObject *resultobj = 0;
-  fastjet::contrib::eec::EECLongestSide< axis::id > *arg1 = (fastjet::contrib::eec::EECLongestSide< axis::id > *) 0 ;
-  std::string *arg2 = 0 ;
-  void *argp1 = 0 ;
-  int res1 = 0 ;
-  int res2 = SWIG_OLDOBJ ;
-  PyObject * obj0 = 0 ;
-  PyObject * obj1 = 0 ;
-  char * kwnames[] = {
-    (char *)"self",  (char *)"state",  NULL 
-  };
-  
-  if (!PyArg_ParseTupleAndKeywords(args, kwargs, "OO:EECLongestSideId___setstate_internal__", kwnames, &obj0, &obj1)) SWIG_fail;
-  res1 = SWIG_ConvertPtr(obj0, &argp1,SWIGTYPE_p_fastjet__contrib__eec__EECLongestSideT_axis__id_t, 0 |  0 );
-  if (!SWIG_IsOK(res1)) {
-    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "EECLongestSideId___setstate_internal__" "', argument " "1"" of type '" "fastjet::contrib::eec::EECLongestSide< axis::id > *""'"); 
-  }
-  arg1 = reinterpret_cast< fastjet::contrib::eec::EECLongestSide< axis::id > * >(argp1);
-  {
-    std::string *ptr = (std::string *)0;
-    res2 = SWIG_AsPtr_std_string(obj1, &ptr);
-    if (!SWIG_IsOK(res2)) {
-      SWIG_exception_fail(SWIG_ArgError(res2), "in method '" "EECLongestSideId___setstate_internal__" "', argument " "2"" of type '" "std::string const &""'"); 
-    }
-    if (!ptr) {
-      SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in method '" "EECLongestSideId___setstate_internal__" "', argument " "2"" of type '" "std::string const &""'"); 
-    }
-    arg2 = ptr;
-  }
-  {
-    try {
-      fastjet_contrib_eec_EECLongestSide_Sl_axis_id_Sg____setstate_internal__(arg1,(std::string const &)*arg2); 
-    }
-    /*@SWIG:/usr/local/Cellar/swig/4.0.2/share/swig/4.0.2/typemaps/exception.swg,58,SWIG_CATCH_STDEXCEPT@*/  /* catching std::exception  */
-    catch (std::invalid_argument& e) {
-      SWIG_exception_fail(SWIG_ValueError, e.what() );
-    } catch (std::domain_error& e) {
-      SWIG_exception_fail(SWIG_ValueError, e.what() );
-    } catch (std::overflow_error& e) {
-      SWIG_exception_fail(SWIG_OverflowError, e.what() );
-    } catch (std::out_of_range& e) {
-      SWIG_exception_fail(SWIG_IndexError, e.what() );
-    } catch (std::length_error& e) {
-      SWIG_exception_fail(SWIG_IndexError, e.what() );
-    } catch (std::runtime_error& e) {
-      SWIG_exception_fail(SWIG_RuntimeError, e.what() );
-    } catch (std::exception& e) {
-      SWIG_exception_fail(SWIG_SystemError, e.what() );
-    }
-    /*@SWIG@*/
-    catch (...) {
-      SWIG_exception_fail(SWIG_UnknownError, "unknown exception");
-    }
-  }
-  resultobj = SWIG_Py_Void();
-  if (SWIG_IsNewObj(res2)) delete arg2;
-  return resultobj;
-fail:
-  if (SWIG_IsNewObj(res2)) delete arg2;
-  return NULL;
-}
-
-
 SWIGINTERN PyObject *_wrap_EECLongestSideId_add(PyObject *SWIGUNUSEDPARM(self), PyObject *args, PyObject *kwargs) {
   PyObject *resultobj = 0;
   fastjet::contrib::eec::EECLongestSide< axis::id > *arg1 = (fastjet::contrib::eec::EECLongestSide< axis::id > *) 0 ;
@@ -51346,117 +50850,6 @@ fail:
 }
 
 
-SWIGINTERN PyObject *_wrap_EECLongestSideLog___getstate_internal__(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
-  PyObject *resultobj = 0;
-  fastjet::contrib::eec::EECLongestSide< axis::log > *arg1 = (fastjet::contrib::eec::EECLongestSide< axis::log > *) 0 ;
-  void *argp1 = 0 ;
-  int res1 = 0 ;
-  PyObject *swig_obj[1] ;
-  std::string result;
-  
-  if (!args) SWIG_fail;
-  swig_obj[0] = args;
-  res1 = SWIG_ConvertPtr(swig_obj[0], &argp1,SWIGTYPE_p_fastjet__contrib__eec__EECLongestSideT_axis__log_t, 0 |  0 );
-  if (!SWIG_IsOK(res1)) {
-    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "EECLongestSideLog___getstate_internal__" "', argument " "1"" of type '" "fastjet::contrib::eec::EECLongestSide< axis::log > *""'"); 
-  }
-  arg1 = reinterpret_cast< fastjet::contrib::eec::EECLongestSide< axis::log > * >(argp1);
-  {
-    try {
-      result = fastjet_contrib_eec_EECLongestSide_Sl_axis_log_Sg____getstate_internal__(arg1); 
-    }
-    /*@SWIG:/usr/local/Cellar/swig/4.0.2/share/swig/4.0.2/typemaps/exception.swg,58,SWIG_CATCH_STDEXCEPT@*/  /* catching std::exception  */
-    catch (std::invalid_argument& e) {
-      SWIG_exception_fail(SWIG_ValueError, e.what() );
-    } catch (std::domain_error& e) {
-      SWIG_exception_fail(SWIG_ValueError, e.what() );
-    } catch (std::overflow_error& e) {
-      SWIG_exception_fail(SWIG_OverflowError, e.what() );
-    } catch (std::out_of_range& e) {
-      SWIG_exception_fail(SWIG_IndexError, e.what() );
-    } catch (std::length_error& e) {
-      SWIG_exception_fail(SWIG_IndexError, e.what() );
-    } catch (std::runtime_error& e) {
-      SWIG_exception_fail(SWIG_RuntimeError, e.what() );
-    } catch (std::exception& e) {
-      SWIG_exception_fail(SWIG_SystemError, e.what() );
-    }
-    /*@SWIG@*/
-    catch (...) {
-      SWIG_exception_fail(SWIG_UnknownError, "unknown exception");
-    }
-  }
-  resultobj = SWIG_From_std_string(static_cast< std::string >(result));
-  return resultobj;
-fail:
-  return NULL;
-}
-
-
-SWIGINTERN PyObject *_wrap_EECLongestSideLog___setstate_internal__(PyObject *SWIGUNUSEDPARM(self), PyObject *args, PyObject *kwargs) {
-  PyObject *resultobj = 0;
-  fastjet::contrib::eec::EECLongestSide< axis::log > *arg1 = (fastjet::contrib::eec::EECLongestSide< axis::log > *) 0 ;
-  std::string *arg2 = 0 ;
-  void *argp1 = 0 ;
-  int res1 = 0 ;
-  int res2 = SWIG_OLDOBJ ;
-  PyObject * obj0 = 0 ;
-  PyObject * obj1 = 0 ;
-  char * kwnames[] = {
-    (char *)"self",  (char *)"state",  NULL 
-  };
-  
-  if (!PyArg_ParseTupleAndKeywords(args, kwargs, "OO:EECLongestSideLog___setstate_internal__", kwnames, &obj0, &obj1)) SWIG_fail;
-  res1 = SWIG_ConvertPtr(obj0, &argp1,SWIGTYPE_p_fastjet__contrib__eec__EECLongestSideT_axis__log_t, 0 |  0 );
-  if (!SWIG_IsOK(res1)) {
-    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "EECLongestSideLog___setstate_internal__" "', argument " "1"" of type '" "fastjet::contrib::eec::EECLongestSide< axis::log > *""'"); 
-  }
-  arg1 = reinterpret_cast< fastjet::contrib::eec::EECLongestSide< axis::log > * >(argp1);
-  {
-    std::string *ptr = (std::string *)0;
-    res2 = SWIG_AsPtr_std_string(obj1, &ptr);
-    if (!SWIG_IsOK(res2)) {
-      SWIG_exception_fail(SWIG_ArgError(res2), "in method '" "EECLongestSideLog___setstate_internal__" "', argument " "2"" of type '" "std::string const &""'"); 
-    }
-    if (!ptr) {
-      SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in method '" "EECLongestSideLog___setstate_internal__" "', argument " "2"" of type '" "std::string const &""'"); 
-    }
-    arg2 = ptr;
-  }
-  {
-    try {
-      fastjet_contrib_eec_EECLongestSide_Sl_axis_log_Sg____setstate_internal__(arg1,(std::string const &)*arg2); 
-    }
-    /*@SWIG:/usr/local/Cellar/swig/4.0.2/share/swig/4.0.2/typemaps/exception.swg,58,SWIG_CATCH_STDEXCEPT@*/  /* catching std::exception  */
-    catch (std::invalid_argument& e) {
-      SWIG_exception_fail(SWIG_ValueError, e.what() );
-    } catch (std::domain_error& e) {
-      SWIG_exception_fail(SWIG_ValueError, e.what() );
-    } catch (std::overflow_error& e) {
-      SWIG_exception_fail(SWIG_OverflowError, e.what() );
-    } catch (std::out_of_range& e) {
-      SWIG_exception_fail(SWIG_IndexError, e.what() );
-    } catch (std::length_error& e) {
-      SWIG_exception_fail(SWIG_IndexError, e.what() );
-    } catch (std::runtime_error& e) {
-      SWIG_exception_fail(SWIG_RuntimeError, e.what() );
-    } catch (std::exception& e) {
-      SWIG_exception_fail(SWIG_SystemError, e.what() );
-    }
-    /*@SWIG@*/
-    catch (...) {
-      SWIG_exception_fail(SWIG_UnknownError, "unknown exception");
-    }
-  }
-  resultobj = SWIG_Py_Void();
-  if (SWIG_IsNewObj(res2)) delete arg2;
-  return resultobj;
-fail:
-  if (SWIG_IsNewObj(res2)) delete arg2;
-  return NULL;
-}
-
-
 SWIGINTERN PyObject *_wrap_EECLongestSideLog_add(PyObject *SWIGUNUSEDPARM(self), PyObject *args, PyObject *kwargs) {
   PyObject *resultobj = 0;
   fastjet::contrib::eec::EECLongestSide< axis::log > *arg1 = (fastjet::contrib::eec::EECLongestSide< axis::log > *) 0 ;
@@ -52062,117 +51455,6 @@ fail:
   PyErr_Clear();
   Py_INCREF(Py_NotImplemented);
   return Py_NotImplemented;
-}
-
-
-SWIGINTERN PyObject *_wrap_EECTriangleOPEIdIdId___getstate_internal__(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
-  PyObject *resultobj = 0;
-  fastjet::contrib::eec::EECTriangleOPE< axis::id,axis::id,axis::id > *arg1 = (fastjet::contrib::eec::EECTriangleOPE< axis::id,axis::id,axis::id > *) 0 ;
-  void *argp1 = 0 ;
-  int res1 = 0 ;
-  PyObject *swig_obj[1] ;
-  std::string result;
-  
-  if (!args) SWIG_fail;
-  swig_obj[0] = args;
-  res1 = SWIG_ConvertPtr(swig_obj[0], &argp1,SWIGTYPE_p_fastjet__contrib__eec__EECTriangleOPET_axis__id_axis__id_axis__id_t, 0 |  0 );
-  if (!SWIG_IsOK(res1)) {
-    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "EECTriangleOPEIdIdId___getstate_internal__" "', argument " "1"" of type '" "fastjet::contrib::eec::EECTriangleOPE< axis::id,axis::id,axis::id > *""'"); 
-  }
-  arg1 = reinterpret_cast< fastjet::contrib::eec::EECTriangleOPE< axis::id,axis::id,axis::id > * >(argp1);
-  {
-    try {
-      result = fastjet_contrib_eec_EECTriangleOPE_Sl_axis_id_Sc_axis_id_Sc_axis_id_Sg____getstate_internal__(arg1); 
-    }
-    /*@SWIG:/usr/local/Cellar/swig/4.0.2/share/swig/4.0.2/typemaps/exception.swg,58,SWIG_CATCH_STDEXCEPT@*/  /* catching std::exception  */
-    catch (std::invalid_argument& e) {
-      SWIG_exception_fail(SWIG_ValueError, e.what() );
-    } catch (std::domain_error& e) {
-      SWIG_exception_fail(SWIG_ValueError, e.what() );
-    } catch (std::overflow_error& e) {
-      SWIG_exception_fail(SWIG_OverflowError, e.what() );
-    } catch (std::out_of_range& e) {
-      SWIG_exception_fail(SWIG_IndexError, e.what() );
-    } catch (std::length_error& e) {
-      SWIG_exception_fail(SWIG_IndexError, e.what() );
-    } catch (std::runtime_error& e) {
-      SWIG_exception_fail(SWIG_RuntimeError, e.what() );
-    } catch (std::exception& e) {
-      SWIG_exception_fail(SWIG_SystemError, e.what() );
-    }
-    /*@SWIG@*/
-    catch (...) {
-      SWIG_exception_fail(SWIG_UnknownError, "unknown exception");
-    }
-  }
-  resultobj = SWIG_From_std_string(static_cast< std::string >(result));
-  return resultobj;
-fail:
-  return NULL;
-}
-
-
-SWIGINTERN PyObject *_wrap_EECTriangleOPEIdIdId___setstate_internal__(PyObject *SWIGUNUSEDPARM(self), PyObject *args, PyObject *kwargs) {
-  PyObject *resultobj = 0;
-  fastjet::contrib::eec::EECTriangleOPE< axis::id,axis::id,axis::id > *arg1 = (fastjet::contrib::eec::EECTriangleOPE< axis::id,axis::id,axis::id > *) 0 ;
-  std::string *arg2 = 0 ;
-  void *argp1 = 0 ;
-  int res1 = 0 ;
-  int res2 = SWIG_OLDOBJ ;
-  PyObject * obj0 = 0 ;
-  PyObject * obj1 = 0 ;
-  char * kwnames[] = {
-    (char *)"self",  (char *)"state",  NULL 
-  };
-  
-  if (!PyArg_ParseTupleAndKeywords(args, kwargs, "OO:EECTriangleOPEIdIdId___setstate_internal__", kwnames, &obj0, &obj1)) SWIG_fail;
-  res1 = SWIG_ConvertPtr(obj0, &argp1,SWIGTYPE_p_fastjet__contrib__eec__EECTriangleOPET_axis__id_axis__id_axis__id_t, 0 |  0 );
-  if (!SWIG_IsOK(res1)) {
-    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "EECTriangleOPEIdIdId___setstate_internal__" "', argument " "1"" of type '" "fastjet::contrib::eec::EECTriangleOPE< axis::id,axis::id,axis::id > *""'"); 
-  }
-  arg1 = reinterpret_cast< fastjet::contrib::eec::EECTriangleOPE< axis::id,axis::id,axis::id > * >(argp1);
-  {
-    std::string *ptr = (std::string *)0;
-    res2 = SWIG_AsPtr_std_string(obj1, &ptr);
-    if (!SWIG_IsOK(res2)) {
-      SWIG_exception_fail(SWIG_ArgError(res2), "in method '" "EECTriangleOPEIdIdId___setstate_internal__" "', argument " "2"" of type '" "std::string const &""'"); 
-    }
-    if (!ptr) {
-      SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in method '" "EECTriangleOPEIdIdId___setstate_internal__" "', argument " "2"" of type '" "std::string const &""'"); 
-    }
-    arg2 = ptr;
-  }
-  {
-    try {
-      fastjet_contrib_eec_EECTriangleOPE_Sl_axis_id_Sc_axis_id_Sc_axis_id_Sg____setstate_internal__(arg1,(std::string const &)*arg2); 
-    }
-    /*@SWIG:/usr/local/Cellar/swig/4.0.2/share/swig/4.0.2/typemaps/exception.swg,58,SWIG_CATCH_STDEXCEPT@*/  /* catching std::exception  */
-    catch (std::invalid_argument& e) {
-      SWIG_exception_fail(SWIG_ValueError, e.what() );
-    } catch (std::domain_error& e) {
-      SWIG_exception_fail(SWIG_ValueError, e.what() );
-    } catch (std::overflow_error& e) {
-      SWIG_exception_fail(SWIG_OverflowError, e.what() );
-    } catch (std::out_of_range& e) {
-      SWIG_exception_fail(SWIG_IndexError, e.what() );
-    } catch (std::length_error& e) {
-      SWIG_exception_fail(SWIG_IndexError, e.what() );
-    } catch (std::runtime_error& e) {
-      SWIG_exception_fail(SWIG_RuntimeError, e.what() );
-    } catch (std::exception& e) {
-      SWIG_exception_fail(SWIG_SystemError, e.what() );
-    }
-    /*@SWIG@*/
-    catch (...) {
-      SWIG_exception_fail(SWIG_UnknownError, "unknown exception");
-    }
-  }
-  resultobj = SWIG_Py_Void();
-  if (SWIG_IsNewObj(res2)) delete arg2;
-  return resultobj;
-fail:
-  if (SWIG_IsNewObj(res2)) delete arg2;
-  return NULL;
 }
 
 
@@ -52784,117 +52066,6 @@ fail:
 }
 
 
-SWIGINTERN PyObject *_wrap_EECTriangleOPELogIdId___getstate_internal__(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
-  PyObject *resultobj = 0;
-  fastjet::contrib::eec::EECTriangleOPE< axis::log,axis::id,axis::id > *arg1 = (fastjet::contrib::eec::EECTriangleOPE< axis::log,axis::id,axis::id > *) 0 ;
-  void *argp1 = 0 ;
-  int res1 = 0 ;
-  PyObject *swig_obj[1] ;
-  std::string result;
-  
-  if (!args) SWIG_fail;
-  swig_obj[0] = args;
-  res1 = SWIG_ConvertPtr(swig_obj[0], &argp1,SWIGTYPE_p_fastjet__contrib__eec__EECTriangleOPET_axis__log_axis__id_axis__id_t, 0 |  0 );
-  if (!SWIG_IsOK(res1)) {
-    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "EECTriangleOPELogIdId___getstate_internal__" "', argument " "1"" of type '" "fastjet::contrib::eec::EECTriangleOPE< axis::log,axis::id,axis::id > *""'"); 
-  }
-  arg1 = reinterpret_cast< fastjet::contrib::eec::EECTriangleOPE< axis::log,axis::id,axis::id > * >(argp1);
-  {
-    try {
-      result = fastjet_contrib_eec_EECTriangleOPE_Sl_axis_log_Sc_axis_id_Sc_axis_id_Sg____getstate_internal__(arg1); 
-    }
-    /*@SWIG:/usr/local/Cellar/swig/4.0.2/share/swig/4.0.2/typemaps/exception.swg,58,SWIG_CATCH_STDEXCEPT@*/  /* catching std::exception  */
-    catch (std::invalid_argument& e) {
-      SWIG_exception_fail(SWIG_ValueError, e.what() );
-    } catch (std::domain_error& e) {
-      SWIG_exception_fail(SWIG_ValueError, e.what() );
-    } catch (std::overflow_error& e) {
-      SWIG_exception_fail(SWIG_OverflowError, e.what() );
-    } catch (std::out_of_range& e) {
-      SWIG_exception_fail(SWIG_IndexError, e.what() );
-    } catch (std::length_error& e) {
-      SWIG_exception_fail(SWIG_IndexError, e.what() );
-    } catch (std::runtime_error& e) {
-      SWIG_exception_fail(SWIG_RuntimeError, e.what() );
-    } catch (std::exception& e) {
-      SWIG_exception_fail(SWIG_SystemError, e.what() );
-    }
-    /*@SWIG@*/
-    catch (...) {
-      SWIG_exception_fail(SWIG_UnknownError, "unknown exception");
-    }
-  }
-  resultobj = SWIG_From_std_string(static_cast< std::string >(result));
-  return resultobj;
-fail:
-  return NULL;
-}
-
-
-SWIGINTERN PyObject *_wrap_EECTriangleOPELogIdId___setstate_internal__(PyObject *SWIGUNUSEDPARM(self), PyObject *args, PyObject *kwargs) {
-  PyObject *resultobj = 0;
-  fastjet::contrib::eec::EECTriangleOPE< axis::log,axis::id,axis::id > *arg1 = (fastjet::contrib::eec::EECTriangleOPE< axis::log,axis::id,axis::id > *) 0 ;
-  std::string *arg2 = 0 ;
-  void *argp1 = 0 ;
-  int res1 = 0 ;
-  int res2 = SWIG_OLDOBJ ;
-  PyObject * obj0 = 0 ;
-  PyObject * obj1 = 0 ;
-  char * kwnames[] = {
-    (char *)"self",  (char *)"state",  NULL 
-  };
-  
-  if (!PyArg_ParseTupleAndKeywords(args, kwargs, "OO:EECTriangleOPELogIdId___setstate_internal__", kwnames, &obj0, &obj1)) SWIG_fail;
-  res1 = SWIG_ConvertPtr(obj0, &argp1,SWIGTYPE_p_fastjet__contrib__eec__EECTriangleOPET_axis__log_axis__id_axis__id_t, 0 |  0 );
-  if (!SWIG_IsOK(res1)) {
-    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "EECTriangleOPELogIdId___setstate_internal__" "', argument " "1"" of type '" "fastjet::contrib::eec::EECTriangleOPE< axis::log,axis::id,axis::id > *""'"); 
-  }
-  arg1 = reinterpret_cast< fastjet::contrib::eec::EECTriangleOPE< axis::log,axis::id,axis::id > * >(argp1);
-  {
-    std::string *ptr = (std::string *)0;
-    res2 = SWIG_AsPtr_std_string(obj1, &ptr);
-    if (!SWIG_IsOK(res2)) {
-      SWIG_exception_fail(SWIG_ArgError(res2), "in method '" "EECTriangleOPELogIdId___setstate_internal__" "', argument " "2"" of type '" "std::string const &""'"); 
-    }
-    if (!ptr) {
-      SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in method '" "EECTriangleOPELogIdId___setstate_internal__" "', argument " "2"" of type '" "std::string const &""'"); 
-    }
-    arg2 = ptr;
-  }
-  {
-    try {
-      fastjet_contrib_eec_EECTriangleOPE_Sl_axis_log_Sc_axis_id_Sc_axis_id_Sg____setstate_internal__(arg1,(std::string const &)*arg2); 
-    }
-    /*@SWIG:/usr/local/Cellar/swig/4.0.2/share/swig/4.0.2/typemaps/exception.swg,58,SWIG_CATCH_STDEXCEPT@*/  /* catching std::exception  */
-    catch (std::invalid_argument& e) {
-      SWIG_exception_fail(SWIG_ValueError, e.what() );
-    } catch (std::domain_error& e) {
-      SWIG_exception_fail(SWIG_ValueError, e.what() );
-    } catch (std::overflow_error& e) {
-      SWIG_exception_fail(SWIG_OverflowError, e.what() );
-    } catch (std::out_of_range& e) {
-      SWIG_exception_fail(SWIG_IndexError, e.what() );
-    } catch (std::length_error& e) {
-      SWIG_exception_fail(SWIG_IndexError, e.what() );
-    } catch (std::runtime_error& e) {
-      SWIG_exception_fail(SWIG_RuntimeError, e.what() );
-    } catch (std::exception& e) {
-      SWIG_exception_fail(SWIG_SystemError, e.what() );
-    }
-    /*@SWIG@*/
-    catch (...) {
-      SWIG_exception_fail(SWIG_UnknownError, "unknown exception");
-    }
-  }
-  resultobj = SWIG_Py_Void();
-  if (SWIG_IsNewObj(res2)) delete arg2;
-  return resultobj;
-fail:
-  if (SWIG_IsNewObj(res2)) delete arg2;
-  return NULL;
-}
-
-
 SWIGINTERN PyObject *_wrap_EECTriangleOPELogIdId_add(PyObject *SWIGUNUSEDPARM(self), PyObject *args, PyObject *kwargs) {
   PyObject *resultobj = 0;
   fastjet::contrib::eec::EECTriangleOPE< axis::log,axis::id,axis::id > *arg1 = (fastjet::contrib::eec::EECTriangleOPE< axis::log,axis::id,axis::id > *) 0 ;
@@ -53500,117 +52671,6 @@ fail:
   PyErr_Clear();
   Py_INCREF(Py_NotImplemented);
   return Py_NotImplemented;
-}
-
-
-SWIGINTERN PyObject *_wrap_EECTriangleOPEIdLogId___getstate_internal__(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
-  PyObject *resultobj = 0;
-  fastjet::contrib::eec::EECTriangleOPE< axis::id,axis::log,axis::id > *arg1 = (fastjet::contrib::eec::EECTriangleOPE< axis::id,axis::log,axis::id > *) 0 ;
-  void *argp1 = 0 ;
-  int res1 = 0 ;
-  PyObject *swig_obj[1] ;
-  std::string result;
-  
-  if (!args) SWIG_fail;
-  swig_obj[0] = args;
-  res1 = SWIG_ConvertPtr(swig_obj[0], &argp1,SWIGTYPE_p_fastjet__contrib__eec__EECTriangleOPET_axis__id_axis__log_axis__id_t, 0 |  0 );
-  if (!SWIG_IsOK(res1)) {
-    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "EECTriangleOPEIdLogId___getstate_internal__" "', argument " "1"" of type '" "fastjet::contrib::eec::EECTriangleOPE< axis::id,axis::log,axis::id > *""'"); 
-  }
-  arg1 = reinterpret_cast< fastjet::contrib::eec::EECTriangleOPE< axis::id,axis::log,axis::id > * >(argp1);
-  {
-    try {
-      result = fastjet_contrib_eec_EECTriangleOPE_Sl_axis_id_Sc_axis_log_Sc_axis_id_Sg____getstate_internal__(arg1); 
-    }
-    /*@SWIG:/usr/local/Cellar/swig/4.0.2/share/swig/4.0.2/typemaps/exception.swg,58,SWIG_CATCH_STDEXCEPT@*/  /* catching std::exception  */
-    catch (std::invalid_argument& e) {
-      SWIG_exception_fail(SWIG_ValueError, e.what() );
-    } catch (std::domain_error& e) {
-      SWIG_exception_fail(SWIG_ValueError, e.what() );
-    } catch (std::overflow_error& e) {
-      SWIG_exception_fail(SWIG_OverflowError, e.what() );
-    } catch (std::out_of_range& e) {
-      SWIG_exception_fail(SWIG_IndexError, e.what() );
-    } catch (std::length_error& e) {
-      SWIG_exception_fail(SWIG_IndexError, e.what() );
-    } catch (std::runtime_error& e) {
-      SWIG_exception_fail(SWIG_RuntimeError, e.what() );
-    } catch (std::exception& e) {
-      SWIG_exception_fail(SWIG_SystemError, e.what() );
-    }
-    /*@SWIG@*/
-    catch (...) {
-      SWIG_exception_fail(SWIG_UnknownError, "unknown exception");
-    }
-  }
-  resultobj = SWIG_From_std_string(static_cast< std::string >(result));
-  return resultobj;
-fail:
-  return NULL;
-}
-
-
-SWIGINTERN PyObject *_wrap_EECTriangleOPEIdLogId___setstate_internal__(PyObject *SWIGUNUSEDPARM(self), PyObject *args, PyObject *kwargs) {
-  PyObject *resultobj = 0;
-  fastjet::contrib::eec::EECTriangleOPE< axis::id,axis::log,axis::id > *arg1 = (fastjet::contrib::eec::EECTriangleOPE< axis::id,axis::log,axis::id > *) 0 ;
-  std::string *arg2 = 0 ;
-  void *argp1 = 0 ;
-  int res1 = 0 ;
-  int res2 = SWIG_OLDOBJ ;
-  PyObject * obj0 = 0 ;
-  PyObject * obj1 = 0 ;
-  char * kwnames[] = {
-    (char *)"self",  (char *)"state",  NULL 
-  };
-  
-  if (!PyArg_ParseTupleAndKeywords(args, kwargs, "OO:EECTriangleOPEIdLogId___setstate_internal__", kwnames, &obj0, &obj1)) SWIG_fail;
-  res1 = SWIG_ConvertPtr(obj0, &argp1,SWIGTYPE_p_fastjet__contrib__eec__EECTriangleOPET_axis__id_axis__log_axis__id_t, 0 |  0 );
-  if (!SWIG_IsOK(res1)) {
-    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "EECTriangleOPEIdLogId___setstate_internal__" "', argument " "1"" of type '" "fastjet::contrib::eec::EECTriangleOPE< axis::id,axis::log,axis::id > *""'"); 
-  }
-  arg1 = reinterpret_cast< fastjet::contrib::eec::EECTriangleOPE< axis::id,axis::log,axis::id > * >(argp1);
-  {
-    std::string *ptr = (std::string *)0;
-    res2 = SWIG_AsPtr_std_string(obj1, &ptr);
-    if (!SWIG_IsOK(res2)) {
-      SWIG_exception_fail(SWIG_ArgError(res2), "in method '" "EECTriangleOPEIdLogId___setstate_internal__" "', argument " "2"" of type '" "std::string const &""'"); 
-    }
-    if (!ptr) {
-      SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in method '" "EECTriangleOPEIdLogId___setstate_internal__" "', argument " "2"" of type '" "std::string const &""'"); 
-    }
-    arg2 = ptr;
-  }
-  {
-    try {
-      fastjet_contrib_eec_EECTriangleOPE_Sl_axis_id_Sc_axis_log_Sc_axis_id_Sg____setstate_internal__(arg1,(std::string const &)*arg2); 
-    }
-    /*@SWIG:/usr/local/Cellar/swig/4.0.2/share/swig/4.0.2/typemaps/exception.swg,58,SWIG_CATCH_STDEXCEPT@*/  /* catching std::exception  */
-    catch (std::invalid_argument& e) {
-      SWIG_exception_fail(SWIG_ValueError, e.what() );
-    } catch (std::domain_error& e) {
-      SWIG_exception_fail(SWIG_ValueError, e.what() );
-    } catch (std::overflow_error& e) {
-      SWIG_exception_fail(SWIG_OverflowError, e.what() );
-    } catch (std::out_of_range& e) {
-      SWIG_exception_fail(SWIG_IndexError, e.what() );
-    } catch (std::length_error& e) {
-      SWIG_exception_fail(SWIG_IndexError, e.what() );
-    } catch (std::runtime_error& e) {
-      SWIG_exception_fail(SWIG_RuntimeError, e.what() );
-    } catch (std::exception& e) {
-      SWIG_exception_fail(SWIG_SystemError, e.what() );
-    }
-    /*@SWIG@*/
-    catch (...) {
-      SWIG_exception_fail(SWIG_UnknownError, "unknown exception");
-    }
-  }
-  resultobj = SWIG_Py_Void();
-  if (SWIG_IsNewObj(res2)) delete arg2;
-  return resultobj;
-fail:
-  if (SWIG_IsNewObj(res2)) delete arg2;
-  return NULL;
 }
 
 
@@ -54222,117 +53282,6 @@ fail:
 }
 
 
-SWIGINTERN PyObject *_wrap_EECTriangleOPELogLogId___getstate_internal__(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
-  PyObject *resultobj = 0;
-  fastjet::contrib::eec::EECTriangleOPE< axis::log,axis::log,axis::id > *arg1 = (fastjet::contrib::eec::EECTriangleOPE< axis::log,axis::log,axis::id > *) 0 ;
-  void *argp1 = 0 ;
-  int res1 = 0 ;
-  PyObject *swig_obj[1] ;
-  std::string result;
-  
-  if (!args) SWIG_fail;
-  swig_obj[0] = args;
-  res1 = SWIG_ConvertPtr(swig_obj[0], &argp1,SWIGTYPE_p_fastjet__contrib__eec__EECTriangleOPET_axis__log_axis__log_axis__id_t, 0 |  0 );
-  if (!SWIG_IsOK(res1)) {
-    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "EECTriangleOPELogLogId___getstate_internal__" "', argument " "1"" of type '" "fastjet::contrib::eec::EECTriangleOPE< axis::log,axis::log,axis::id > *""'"); 
-  }
-  arg1 = reinterpret_cast< fastjet::contrib::eec::EECTriangleOPE< axis::log,axis::log,axis::id > * >(argp1);
-  {
-    try {
-      result = fastjet_contrib_eec_EECTriangleOPE_Sl_axis_log_Sc_axis_log_Sc_axis_id_Sg____getstate_internal__(arg1); 
-    }
-    /*@SWIG:/usr/local/Cellar/swig/4.0.2/share/swig/4.0.2/typemaps/exception.swg,58,SWIG_CATCH_STDEXCEPT@*/  /* catching std::exception  */
-    catch (std::invalid_argument& e) {
-      SWIG_exception_fail(SWIG_ValueError, e.what() );
-    } catch (std::domain_error& e) {
-      SWIG_exception_fail(SWIG_ValueError, e.what() );
-    } catch (std::overflow_error& e) {
-      SWIG_exception_fail(SWIG_OverflowError, e.what() );
-    } catch (std::out_of_range& e) {
-      SWIG_exception_fail(SWIG_IndexError, e.what() );
-    } catch (std::length_error& e) {
-      SWIG_exception_fail(SWIG_IndexError, e.what() );
-    } catch (std::runtime_error& e) {
-      SWIG_exception_fail(SWIG_RuntimeError, e.what() );
-    } catch (std::exception& e) {
-      SWIG_exception_fail(SWIG_SystemError, e.what() );
-    }
-    /*@SWIG@*/
-    catch (...) {
-      SWIG_exception_fail(SWIG_UnknownError, "unknown exception");
-    }
-  }
-  resultobj = SWIG_From_std_string(static_cast< std::string >(result));
-  return resultobj;
-fail:
-  return NULL;
-}
-
-
-SWIGINTERN PyObject *_wrap_EECTriangleOPELogLogId___setstate_internal__(PyObject *SWIGUNUSEDPARM(self), PyObject *args, PyObject *kwargs) {
-  PyObject *resultobj = 0;
-  fastjet::contrib::eec::EECTriangleOPE< axis::log,axis::log,axis::id > *arg1 = (fastjet::contrib::eec::EECTriangleOPE< axis::log,axis::log,axis::id > *) 0 ;
-  std::string *arg2 = 0 ;
-  void *argp1 = 0 ;
-  int res1 = 0 ;
-  int res2 = SWIG_OLDOBJ ;
-  PyObject * obj0 = 0 ;
-  PyObject * obj1 = 0 ;
-  char * kwnames[] = {
-    (char *)"self",  (char *)"state",  NULL 
-  };
-  
-  if (!PyArg_ParseTupleAndKeywords(args, kwargs, "OO:EECTriangleOPELogLogId___setstate_internal__", kwnames, &obj0, &obj1)) SWIG_fail;
-  res1 = SWIG_ConvertPtr(obj0, &argp1,SWIGTYPE_p_fastjet__contrib__eec__EECTriangleOPET_axis__log_axis__log_axis__id_t, 0 |  0 );
-  if (!SWIG_IsOK(res1)) {
-    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "EECTriangleOPELogLogId___setstate_internal__" "', argument " "1"" of type '" "fastjet::contrib::eec::EECTriangleOPE< axis::log,axis::log,axis::id > *""'"); 
-  }
-  arg1 = reinterpret_cast< fastjet::contrib::eec::EECTriangleOPE< axis::log,axis::log,axis::id > * >(argp1);
-  {
-    std::string *ptr = (std::string *)0;
-    res2 = SWIG_AsPtr_std_string(obj1, &ptr);
-    if (!SWIG_IsOK(res2)) {
-      SWIG_exception_fail(SWIG_ArgError(res2), "in method '" "EECTriangleOPELogLogId___setstate_internal__" "', argument " "2"" of type '" "std::string const &""'"); 
-    }
-    if (!ptr) {
-      SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in method '" "EECTriangleOPELogLogId___setstate_internal__" "', argument " "2"" of type '" "std::string const &""'"); 
-    }
-    arg2 = ptr;
-  }
-  {
-    try {
-      fastjet_contrib_eec_EECTriangleOPE_Sl_axis_log_Sc_axis_log_Sc_axis_id_Sg____setstate_internal__(arg1,(std::string const &)*arg2); 
-    }
-    /*@SWIG:/usr/local/Cellar/swig/4.0.2/share/swig/4.0.2/typemaps/exception.swg,58,SWIG_CATCH_STDEXCEPT@*/  /* catching std::exception  */
-    catch (std::invalid_argument& e) {
-      SWIG_exception_fail(SWIG_ValueError, e.what() );
-    } catch (std::domain_error& e) {
-      SWIG_exception_fail(SWIG_ValueError, e.what() );
-    } catch (std::overflow_error& e) {
-      SWIG_exception_fail(SWIG_OverflowError, e.what() );
-    } catch (std::out_of_range& e) {
-      SWIG_exception_fail(SWIG_IndexError, e.what() );
-    } catch (std::length_error& e) {
-      SWIG_exception_fail(SWIG_IndexError, e.what() );
-    } catch (std::runtime_error& e) {
-      SWIG_exception_fail(SWIG_RuntimeError, e.what() );
-    } catch (std::exception& e) {
-      SWIG_exception_fail(SWIG_SystemError, e.what() );
-    }
-    /*@SWIG@*/
-    catch (...) {
-      SWIG_exception_fail(SWIG_UnknownError, "unknown exception");
-    }
-  }
-  resultobj = SWIG_Py_Void();
-  if (SWIG_IsNewObj(res2)) delete arg2;
-  return resultobj;
-fail:
-  if (SWIG_IsNewObj(res2)) delete arg2;
-  return NULL;
-}
-
-
 SWIGINTERN PyObject *_wrap_EECTriangleOPELogLogId_add(PyObject *SWIGUNUSEDPARM(self), PyObject *args, PyObject *kwargs) {
   PyObject *resultobj = 0;
   fastjet::contrib::eec::EECTriangleOPE< axis::log,axis::log,axis::id > *arg1 = (fastjet::contrib::eec::EECTriangleOPE< axis::log,axis::log,axis::id > *) 0 ;
@@ -54774,10 +53723,6 @@ static PyMethodDef SwigMethods[] = {
 	 { "delete_vectorArrayDouble2", _wrap_delete_vectorArrayDouble2, METH_O, "delete_vectorArrayDouble2(vectorArrayDouble2 self)"},
 	 { "vectorArrayDouble2_swigregister", vectorArrayDouble2_swigregister, METH_O, NULL},
 	 { "vectorArrayDouble2_swiginit", vectorArrayDouble2_swiginit, METH_VARARGS, NULL},
-	 { "get_archive_format", _wrap_get_archive_format, METH_NOARGS, "get_archive_format() -> fastjet::contrib::eec::ArchiveFormat"},
-	 { "get_compression_mode", _wrap_get_compression_mode, METH_NOARGS, "get_compression_mode() -> fastjet::contrib::eec::CompressionMode"},
-	 { "set_archive_format", (PyCFunction)(void(*)(void))_wrap_set_archive_format, METH_VARARGS|METH_KEYWORDS, "set_archive_format(fastjet::contrib::eec::ArchiveFormat a)"},
-	 { "set_compression_mode", (PyCFunction)(void(*)(void))_wrap_set_compression_mode, METH_VARARGS|METH_KEYWORDS, "set_compression_mode(fastjet::contrib::eec::CompressionMode c)"},
 	 { "particle_weight_name", (PyCFunction)(void(*)(void))_wrap_particle_weight_name, METH_VARARGS|METH_KEYWORDS, "particle_weight_name(fastjet::contrib::eec::ParticleWeight pw) -> std::string"},
 	 { "pairwise_distance_name", (PyCFunction)(void(*)(void))_wrap_pairwise_distance_name, METH_VARARGS|METH_KEYWORDS, "pairwise_distance_name(fastjet::contrib::eec::PairwiseDistance pd) -> std::string"},
 	 { "new_reduce_command", _wrap_new_reduce_command, METH_NOARGS, "new_reduce_command() -> reduce_command"},
@@ -55261,8 +54206,6 @@ static PyMethodDef SwigMethods[] = {
 	 { "EECLongestSideId_description", (PyCFunction)(void(*)(void))_wrap_EECLongestSideId_description, METH_VARARGS|METH_KEYWORDS, "EECLongestSideId_description(EECLongestSideId self, int hist_level=1) -> std::string"},
 	 { "EECLongestSideId___ne__", (PyCFunction)(void(*)(void))_wrap_EECLongestSideId___ne__, METH_VARARGS|METH_KEYWORDS, "EECLongestSideId___ne__(EECLongestSideId self, EECLongestSideId rhs) -> bool"},
 	 { "EECLongestSideId___eq__", (PyCFunction)(void(*)(void))_wrap_EECLongestSideId___eq__, METH_VARARGS|METH_KEYWORDS, "EECLongestSideId___eq__(EECLongestSideId self, EECLongestSideId rhs) -> bool"},
-	 { "EECLongestSideId___getstate_internal__", _wrap_EECLongestSideId___getstate_internal__, METH_O, "EECLongestSideId___getstate_internal__(EECLongestSideId self) -> std::string"},
-	 { "EECLongestSideId___setstate_internal__", (PyCFunction)(void(*)(void))_wrap_EECLongestSideId___setstate_internal__, METH_VARARGS|METH_KEYWORDS, "EECLongestSideId___setstate_internal__(EECLongestSideId self, std::string const & state)"},
 	 { "EECLongestSideId_add", (PyCFunction)(void(*)(void))_wrap_EECLongestSideId_add, METH_VARARGS|METH_KEYWORDS, "EECLongestSideId_add(EECLongestSideId self, EECLongestSideId rhs)"},
 	 { "EECLongestSideId_swigregister", EECLongestSideId_swigregister, METH_O, NULL},
 	 { "EECLongestSideId_swiginit", EECLongestSideId_swiginit, METH_VARARGS, NULL},
@@ -55274,8 +54217,6 @@ static PyMethodDef SwigMethods[] = {
 	 { "EECLongestSideLog_description", (PyCFunction)(void(*)(void))_wrap_EECLongestSideLog_description, METH_VARARGS|METH_KEYWORDS, "EECLongestSideLog_description(EECLongestSideLog self, int hist_level=1) -> std::string"},
 	 { "EECLongestSideLog___ne__", (PyCFunction)(void(*)(void))_wrap_EECLongestSideLog___ne__, METH_VARARGS|METH_KEYWORDS, "EECLongestSideLog___ne__(EECLongestSideLog self, EECLongestSideLog rhs) -> bool"},
 	 { "EECLongestSideLog___eq__", (PyCFunction)(void(*)(void))_wrap_EECLongestSideLog___eq__, METH_VARARGS|METH_KEYWORDS, "EECLongestSideLog___eq__(EECLongestSideLog self, EECLongestSideLog rhs) -> bool"},
-	 { "EECLongestSideLog___getstate_internal__", _wrap_EECLongestSideLog___getstate_internal__, METH_O, "EECLongestSideLog___getstate_internal__(EECLongestSideLog self) -> std::string"},
-	 { "EECLongestSideLog___setstate_internal__", (PyCFunction)(void(*)(void))_wrap_EECLongestSideLog___setstate_internal__, METH_VARARGS|METH_KEYWORDS, "EECLongestSideLog___setstate_internal__(EECLongestSideLog self, std::string const & state)"},
 	 { "EECLongestSideLog_add", (PyCFunction)(void(*)(void))_wrap_EECLongestSideLog_add, METH_VARARGS|METH_KEYWORDS, "EECLongestSideLog_add(EECLongestSideLog self, EECLongestSideLog rhs)"},
 	 { "EECLongestSideLog_swigregister", EECLongestSideLog_swigregister, METH_O, NULL},
 	 { "EECLongestSideLog_swiginit", EECLongestSideLog_swiginit, METH_VARARGS, NULL},
@@ -55285,8 +54226,6 @@ static PyMethodDef SwigMethods[] = {
 	 { "EECTriangleOPEIdIdId_description", (PyCFunction)(void(*)(void))_wrap_EECTriangleOPEIdIdId_description, METH_VARARGS|METH_KEYWORDS, "EECTriangleOPEIdIdId_description(EECTriangleOPEIdIdId self, int hist_level=1) -> std::string"},
 	 { "EECTriangleOPEIdIdId___ne__", (PyCFunction)(void(*)(void))_wrap_EECTriangleOPEIdIdId___ne__, METH_VARARGS|METH_KEYWORDS, "EECTriangleOPEIdIdId___ne__(EECTriangleOPEIdIdId self, EECTriangleOPEIdIdId rhs) -> bool"},
 	 { "EECTriangleOPEIdIdId___eq__", (PyCFunction)(void(*)(void))_wrap_EECTriangleOPEIdIdId___eq__, METH_VARARGS|METH_KEYWORDS, "EECTriangleOPEIdIdId___eq__(EECTriangleOPEIdIdId self, EECTriangleOPEIdIdId rhs) -> bool"},
-	 { "EECTriangleOPEIdIdId___getstate_internal__", _wrap_EECTriangleOPEIdIdId___getstate_internal__, METH_O, "EECTriangleOPEIdIdId___getstate_internal__(EECTriangleOPEIdIdId self) -> std::string"},
-	 { "EECTriangleOPEIdIdId___setstate_internal__", (PyCFunction)(void(*)(void))_wrap_EECTriangleOPEIdIdId___setstate_internal__, METH_VARARGS|METH_KEYWORDS, "EECTriangleOPEIdIdId___setstate_internal__(EECTriangleOPEIdIdId self, std::string const & state)"},
 	 { "EECTriangleOPEIdIdId_add", (PyCFunction)(void(*)(void))_wrap_EECTriangleOPEIdIdId_add, METH_VARARGS|METH_KEYWORDS, "EECTriangleOPEIdIdId_add(EECTriangleOPEIdIdId self, EECTriangleOPEIdIdId rhs)"},
 	 { "EECTriangleOPEIdIdId_swigregister", EECTriangleOPEIdIdId_swigregister, METH_O, NULL},
 	 { "EECTriangleOPEIdIdId_swiginit", EECTriangleOPEIdIdId_swiginit, METH_VARARGS, NULL},
@@ -55296,8 +54235,6 @@ static PyMethodDef SwigMethods[] = {
 	 { "EECTriangleOPELogIdId_description", (PyCFunction)(void(*)(void))_wrap_EECTriangleOPELogIdId_description, METH_VARARGS|METH_KEYWORDS, "EECTriangleOPELogIdId_description(EECTriangleOPELogIdId self, int hist_level=1) -> std::string"},
 	 { "EECTriangleOPELogIdId___ne__", (PyCFunction)(void(*)(void))_wrap_EECTriangleOPELogIdId___ne__, METH_VARARGS|METH_KEYWORDS, "EECTriangleOPELogIdId___ne__(EECTriangleOPELogIdId self, EECTriangleOPELogIdId rhs) -> bool"},
 	 { "EECTriangleOPELogIdId___eq__", (PyCFunction)(void(*)(void))_wrap_EECTriangleOPELogIdId___eq__, METH_VARARGS|METH_KEYWORDS, "EECTriangleOPELogIdId___eq__(EECTriangleOPELogIdId self, EECTriangleOPELogIdId rhs) -> bool"},
-	 { "EECTriangleOPELogIdId___getstate_internal__", _wrap_EECTriangleOPELogIdId___getstate_internal__, METH_O, "EECTriangleOPELogIdId___getstate_internal__(EECTriangleOPELogIdId self) -> std::string"},
-	 { "EECTriangleOPELogIdId___setstate_internal__", (PyCFunction)(void(*)(void))_wrap_EECTriangleOPELogIdId___setstate_internal__, METH_VARARGS|METH_KEYWORDS, "EECTriangleOPELogIdId___setstate_internal__(EECTriangleOPELogIdId self, std::string const & state)"},
 	 { "EECTriangleOPELogIdId_add", (PyCFunction)(void(*)(void))_wrap_EECTriangleOPELogIdId_add, METH_VARARGS|METH_KEYWORDS, "EECTriangleOPELogIdId_add(EECTriangleOPELogIdId self, EECTriangleOPELogIdId rhs)"},
 	 { "EECTriangleOPELogIdId_swigregister", EECTriangleOPELogIdId_swigregister, METH_O, NULL},
 	 { "EECTriangleOPELogIdId_swiginit", EECTriangleOPELogIdId_swiginit, METH_VARARGS, NULL},
@@ -55307,8 +54244,6 @@ static PyMethodDef SwigMethods[] = {
 	 { "EECTriangleOPEIdLogId_description", (PyCFunction)(void(*)(void))_wrap_EECTriangleOPEIdLogId_description, METH_VARARGS|METH_KEYWORDS, "EECTriangleOPEIdLogId_description(EECTriangleOPEIdLogId self, int hist_level=1) -> std::string"},
 	 { "EECTriangleOPEIdLogId___ne__", (PyCFunction)(void(*)(void))_wrap_EECTriangleOPEIdLogId___ne__, METH_VARARGS|METH_KEYWORDS, "EECTriangleOPEIdLogId___ne__(EECTriangleOPEIdLogId self, EECTriangleOPEIdLogId rhs) -> bool"},
 	 { "EECTriangleOPEIdLogId___eq__", (PyCFunction)(void(*)(void))_wrap_EECTriangleOPEIdLogId___eq__, METH_VARARGS|METH_KEYWORDS, "EECTriangleOPEIdLogId___eq__(EECTriangleOPEIdLogId self, EECTriangleOPEIdLogId rhs) -> bool"},
-	 { "EECTriangleOPEIdLogId___getstate_internal__", _wrap_EECTriangleOPEIdLogId___getstate_internal__, METH_O, "EECTriangleOPEIdLogId___getstate_internal__(EECTriangleOPEIdLogId self) -> std::string"},
-	 { "EECTriangleOPEIdLogId___setstate_internal__", (PyCFunction)(void(*)(void))_wrap_EECTriangleOPEIdLogId___setstate_internal__, METH_VARARGS|METH_KEYWORDS, "EECTriangleOPEIdLogId___setstate_internal__(EECTriangleOPEIdLogId self, std::string const & state)"},
 	 { "EECTriangleOPEIdLogId_add", (PyCFunction)(void(*)(void))_wrap_EECTriangleOPEIdLogId_add, METH_VARARGS|METH_KEYWORDS, "EECTriangleOPEIdLogId_add(EECTriangleOPEIdLogId self, EECTriangleOPEIdLogId rhs)"},
 	 { "EECTriangleOPEIdLogId_swigregister", EECTriangleOPEIdLogId_swigregister, METH_O, NULL},
 	 { "EECTriangleOPEIdLogId_swiginit", EECTriangleOPEIdLogId_swiginit, METH_VARARGS, NULL},
@@ -55318,8 +54253,6 @@ static PyMethodDef SwigMethods[] = {
 	 { "EECTriangleOPELogLogId_description", (PyCFunction)(void(*)(void))_wrap_EECTriangleOPELogLogId_description, METH_VARARGS|METH_KEYWORDS, "EECTriangleOPELogLogId_description(EECTriangleOPELogLogId self, int hist_level=1) -> std::string"},
 	 { "EECTriangleOPELogLogId___ne__", (PyCFunction)(void(*)(void))_wrap_EECTriangleOPELogLogId___ne__, METH_VARARGS|METH_KEYWORDS, "EECTriangleOPELogLogId___ne__(EECTriangleOPELogLogId self, EECTriangleOPELogLogId rhs) -> bool"},
 	 { "EECTriangleOPELogLogId___eq__", (PyCFunction)(void(*)(void))_wrap_EECTriangleOPELogLogId___eq__, METH_VARARGS|METH_KEYWORDS, "EECTriangleOPELogLogId___eq__(EECTriangleOPELogLogId self, EECTriangleOPELogLogId rhs) -> bool"},
-	 { "EECTriangleOPELogLogId___getstate_internal__", _wrap_EECTriangleOPELogLogId___getstate_internal__, METH_O, "EECTriangleOPELogLogId___getstate_internal__(EECTriangleOPELogLogId self) -> std::string"},
-	 { "EECTriangleOPELogLogId___setstate_internal__", (PyCFunction)(void(*)(void))_wrap_EECTriangleOPELogLogId___setstate_internal__, METH_VARARGS|METH_KEYWORDS, "EECTriangleOPELogLogId___setstate_internal__(EECTriangleOPELogLogId self, std::string const & state)"},
 	 { "EECTriangleOPELogLogId_add", (PyCFunction)(void(*)(void))_wrap_EECTriangleOPELogLogId_add, METH_VARARGS|METH_KEYWORDS, "EECTriangleOPELogLogId_add(EECTriangleOPELogLogId self, EECTriangleOPELogLogId rhs)"},
 	 { "EECTriangleOPELogLogId_swigregister", EECTriangleOPELogLogId_swigregister, METH_O, NULL},
 	 { "EECTriangleOPELogLogId_swiginit", EECTriangleOPELogLogId_swiginit, METH_VARARGS, NULL},
@@ -55696,10 +54629,6 @@ static PyMethodDef SwigMethods_proxydocs[] = {
 	 { "delete_vectorArrayDouble2", _wrap_delete_vectorArrayDouble2, METH_O, "delete_vectorArrayDouble2(vectorArrayDouble2 self)"},
 	 { "vectorArrayDouble2_swigregister", vectorArrayDouble2_swigregister, METH_O, NULL},
 	 { "vectorArrayDouble2_swiginit", vectorArrayDouble2_swiginit, METH_VARARGS, NULL},
-	 { "get_archive_format", _wrap_get_archive_format, METH_NOARGS, "get_archive_format() -> fastjet::contrib::eec::ArchiveFormat"},
-	 { "get_compression_mode", _wrap_get_compression_mode, METH_NOARGS, "get_compression_mode() -> fastjet::contrib::eec::CompressionMode"},
-	 { "set_archive_format", (PyCFunction)(void(*)(void))_wrap_set_archive_format, METH_VARARGS|METH_KEYWORDS, "set_archive_format(fastjet::contrib::eec::ArchiveFormat a)"},
-	 { "set_compression_mode", (PyCFunction)(void(*)(void))_wrap_set_compression_mode, METH_VARARGS|METH_KEYWORDS, "set_compression_mode(fastjet::contrib::eec::CompressionMode c)"},
 	 { "particle_weight_name", (PyCFunction)(void(*)(void))_wrap_particle_weight_name, METH_VARARGS|METH_KEYWORDS, "particle_weight_name(fastjet::contrib::eec::ParticleWeight pw) -> std::string"},
 	 { "pairwise_distance_name", (PyCFunction)(void(*)(void))_wrap_pairwise_distance_name, METH_VARARGS|METH_KEYWORDS, "pairwise_distance_name(fastjet::contrib::eec::PairwiseDistance pd) -> std::string"},
 	 { "new_reduce_command", _wrap_new_reduce_command, METH_NOARGS, "new_reduce_command() -> reduce_command"},
@@ -56183,8 +55112,6 @@ static PyMethodDef SwigMethods_proxydocs[] = {
 	 { "EECLongestSideId_description", (PyCFunction)(void(*)(void))_wrap_EECLongestSideId_description, METH_VARARGS|METH_KEYWORDS, "description(EECLongestSideId self, int hist_level=1) -> std::string"},
 	 { "EECLongestSideId___ne__", (PyCFunction)(void(*)(void))_wrap_EECLongestSideId___ne__, METH_VARARGS|METH_KEYWORDS, "__ne__(EECLongestSideId self, EECLongestSideId rhs) -> bool"},
 	 { "EECLongestSideId___eq__", (PyCFunction)(void(*)(void))_wrap_EECLongestSideId___eq__, METH_VARARGS|METH_KEYWORDS, "__eq__(EECLongestSideId self, EECLongestSideId rhs) -> bool"},
-	 { "EECLongestSideId___getstate_internal__", _wrap_EECLongestSideId___getstate_internal__, METH_O, "__getstate_internal__(EECLongestSideId self) -> std::string"},
-	 { "EECLongestSideId___setstate_internal__", (PyCFunction)(void(*)(void))_wrap_EECLongestSideId___setstate_internal__, METH_VARARGS|METH_KEYWORDS, "__setstate_internal__(EECLongestSideId self, std::string const & state)"},
 	 { "EECLongestSideId_add", (PyCFunction)(void(*)(void))_wrap_EECLongestSideId_add, METH_VARARGS|METH_KEYWORDS, "add(EECLongestSideId self, EECLongestSideId rhs)"},
 	 { "EECLongestSideId_swigregister", EECLongestSideId_swigregister, METH_O, NULL},
 	 { "EECLongestSideId_swiginit", EECLongestSideId_swiginit, METH_VARARGS, NULL},
@@ -56196,8 +55123,6 @@ static PyMethodDef SwigMethods_proxydocs[] = {
 	 { "EECLongestSideLog_description", (PyCFunction)(void(*)(void))_wrap_EECLongestSideLog_description, METH_VARARGS|METH_KEYWORDS, "description(EECLongestSideLog self, int hist_level=1) -> std::string"},
 	 { "EECLongestSideLog___ne__", (PyCFunction)(void(*)(void))_wrap_EECLongestSideLog___ne__, METH_VARARGS|METH_KEYWORDS, "__ne__(EECLongestSideLog self, EECLongestSideLog rhs) -> bool"},
 	 { "EECLongestSideLog___eq__", (PyCFunction)(void(*)(void))_wrap_EECLongestSideLog___eq__, METH_VARARGS|METH_KEYWORDS, "__eq__(EECLongestSideLog self, EECLongestSideLog rhs) -> bool"},
-	 { "EECLongestSideLog___getstate_internal__", _wrap_EECLongestSideLog___getstate_internal__, METH_O, "__getstate_internal__(EECLongestSideLog self) -> std::string"},
-	 { "EECLongestSideLog___setstate_internal__", (PyCFunction)(void(*)(void))_wrap_EECLongestSideLog___setstate_internal__, METH_VARARGS|METH_KEYWORDS, "__setstate_internal__(EECLongestSideLog self, std::string const & state)"},
 	 { "EECLongestSideLog_add", (PyCFunction)(void(*)(void))_wrap_EECLongestSideLog_add, METH_VARARGS|METH_KEYWORDS, "add(EECLongestSideLog self, EECLongestSideLog rhs)"},
 	 { "EECLongestSideLog_swigregister", EECLongestSideLog_swigregister, METH_O, NULL},
 	 { "EECLongestSideLog_swiginit", EECLongestSideLog_swiginit, METH_VARARGS, NULL},
@@ -56207,8 +55132,6 @@ static PyMethodDef SwigMethods_proxydocs[] = {
 	 { "EECTriangleOPEIdIdId_description", (PyCFunction)(void(*)(void))_wrap_EECTriangleOPEIdIdId_description, METH_VARARGS|METH_KEYWORDS, "description(EECTriangleOPEIdIdId self, int hist_level=1) -> std::string"},
 	 { "EECTriangleOPEIdIdId___ne__", (PyCFunction)(void(*)(void))_wrap_EECTriangleOPEIdIdId___ne__, METH_VARARGS|METH_KEYWORDS, "__ne__(EECTriangleOPEIdIdId self, EECTriangleOPEIdIdId rhs) -> bool"},
 	 { "EECTriangleOPEIdIdId___eq__", (PyCFunction)(void(*)(void))_wrap_EECTriangleOPEIdIdId___eq__, METH_VARARGS|METH_KEYWORDS, "__eq__(EECTriangleOPEIdIdId self, EECTriangleOPEIdIdId rhs) -> bool"},
-	 { "EECTriangleOPEIdIdId___getstate_internal__", _wrap_EECTriangleOPEIdIdId___getstate_internal__, METH_O, "__getstate_internal__(EECTriangleOPEIdIdId self) -> std::string"},
-	 { "EECTriangleOPEIdIdId___setstate_internal__", (PyCFunction)(void(*)(void))_wrap_EECTriangleOPEIdIdId___setstate_internal__, METH_VARARGS|METH_KEYWORDS, "__setstate_internal__(EECTriangleOPEIdIdId self, std::string const & state)"},
 	 { "EECTriangleOPEIdIdId_add", (PyCFunction)(void(*)(void))_wrap_EECTriangleOPEIdIdId_add, METH_VARARGS|METH_KEYWORDS, "add(EECTriangleOPEIdIdId self, EECTriangleOPEIdIdId rhs)"},
 	 { "EECTriangleOPEIdIdId_swigregister", EECTriangleOPEIdIdId_swigregister, METH_O, NULL},
 	 { "EECTriangleOPEIdIdId_swiginit", EECTriangleOPEIdIdId_swiginit, METH_VARARGS, NULL},
@@ -56218,8 +55141,6 @@ static PyMethodDef SwigMethods_proxydocs[] = {
 	 { "EECTriangleOPELogIdId_description", (PyCFunction)(void(*)(void))_wrap_EECTriangleOPELogIdId_description, METH_VARARGS|METH_KEYWORDS, "description(EECTriangleOPELogIdId self, int hist_level=1) -> std::string"},
 	 { "EECTriangleOPELogIdId___ne__", (PyCFunction)(void(*)(void))_wrap_EECTriangleOPELogIdId___ne__, METH_VARARGS|METH_KEYWORDS, "__ne__(EECTriangleOPELogIdId self, EECTriangleOPELogIdId rhs) -> bool"},
 	 { "EECTriangleOPELogIdId___eq__", (PyCFunction)(void(*)(void))_wrap_EECTriangleOPELogIdId___eq__, METH_VARARGS|METH_KEYWORDS, "__eq__(EECTriangleOPELogIdId self, EECTriangleOPELogIdId rhs) -> bool"},
-	 { "EECTriangleOPELogIdId___getstate_internal__", _wrap_EECTriangleOPELogIdId___getstate_internal__, METH_O, "__getstate_internal__(EECTriangleOPELogIdId self) -> std::string"},
-	 { "EECTriangleOPELogIdId___setstate_internal__", (PyCFunction)(void(*)(void))_wrap_EECTriangleOPELogIdId___setstate_internal__, METH_VARARGS|METH_KEYWORDS, "__setstate_internal__(EECTriangleOPELogIdId self, std::string const & state)"},
 	 { "EECTriangleOPELogIdId_add", (PyCFunction)(void(*)(void))_wrap_EECTriangleOPELogIdId_add, METH_VARARGS|METH_KEYWORDS, "add(EECTriangleOPELogIdId self, EECTriangleOPELogIdId rhs)"},
 	 { "EECTriangleOPELogIdId_swigregister", EECTriangleOPELogIdId_swigregister, METH_O, NULL},
 	 { "EECTriangleOPELogIdId_swiginit", EECTriangleOPELogIdId_swiginit, METH_VARARGS, NULL},
@@ -56229,8 +55150,6 @@ static PyMethodDef SwigMethods_proxydocs[] = {
 	 { "EECTriangleOPEIdLogId_description", (PyCFunction)(void(*)(void))_wrap_EECTriangleOPEIdLogId_description, METH_VARARGS|METH_KEYWORDS, "description(EECTriangleOPEIdLogId self, int hist_level=1) -> std::string"},
 	 { "EECTriangleOPEIdLogId___ne__", (PyCFunction)(void(*)(void))_wrap_EECTriangleOPEIdLogId___ne__, METH_VARARGS|METH_KEYWORDS, "__ne__(EECTriangleOPEIdLogId self, EECTriangleOPEIdLogId rhs) -> bool"},
 	 { "EECTriangleOPEIdLogId___eq__", (PyCFunction)(void(*)(void))_wrap_EECTriangleOPEIdLogId___eq__, METH_VARARGS|METH_KEYWORDS, "__eq__(EECTriangleOPEIdLogId self, EECTriangleOPEIdLogId rhs) -> bool"},
-	 { "EECTriangleOPEIdLogId___getstate_internal__", _wrap_EECTriangleOPEIdLogId___getstate_internal__, METH_O, "__getstate_internal__(EECTriangleOPEIdLogId self) -> std::string"},
-	 { "EECTriangleOPEIdLogId___setstate_internal__", (PyCFunction)(void(*)(void))_wrap_EECTriangleOPEIdLogId___setstate_internal__, METH_VARARGS|METH_KEYWORDS, "__setstate_internal__(EECTriangleOPEIdLogId self, std::string const & state)"},
 	 { "EECTriangleOPEIdLogId_add", (PyCFunction)(void(*)(void))_wrap_EECTriangleOPEIdLogId_add, METH_VARARGS|METH_KEYWORDS, "add(EECTriangleOPEIdLogId self, EECTriangleOPEIdLogId rhs)"},
 	 { "EECTriangleOPEIdLogId_swigregister", EECTriangleOPEIdLogId_swigregister, METH_O, NULL},
 	 { "EECTriangleOPEIdLogId_swiginit", EECTriangleOPEIdLogId_swiginit, METH_VARARGS, NULL},
@@ -56240,8 +55159,6 @@ static PyMethodDef SwigMethods_proxydocs[] = {
 	 { "EECTriangleOPELogLogId_description", (PyCFunction)(void(*)(void))_wrap_EECTriangleOPELogLogId_description, METH_VARARGS|METH_KEYWORDS, "description(EECTriangleOPELogLogId self, int hist_level=1) -> std::string"},
 	 { "EECTriangleOPELogLogId___ne__", (PyCFunction)(void(*)(void))_wrap_EECTriangleOPELogLogId___ne__, METH_VARARGS|METH_KEYWORDS, "__ne__(EECTriangleOPELogLogId self, EECTriangleOPELogLogId rhs) -> bool"},
 	 { "EECTriangleOPELogLogId___eq__", (PyCFunction)(void(*)(void))_wrap_EECTriangleOPELogLogId___eq__, METH_VARARGS|METH_KEYWORDS, "__eq__(EECTriangleOPELogLogId self, EECTriangleOPELogLogId rhs) -> bool"},
-	 { "EECTriangleOPELogLogId___getstate_internal__", _wrap_EECTriangleOPELogLogId___getstate_internal__, METH_O, "__getstate_internal__(EECTriangleOPELogLogId self) -> std::string"},
-	 { "EECTriangleOPELogLogId___setstate_internal__", (PyCFunction)(void(*)(void))_wrap_EECTriangleOPELogLogId___setstate_internal__, METH_VARARGS|METH_KEYWORDS, "__setstate_internal__(EECTriangleOPELogLogId self, std::string const & state)"},
 	 { "EECTriangleOPELogLogId_add", (PyCFunction)(void(*)(void))_wrap_EECTriangleOPELogLogId_add, METH_VARARGS|METH_KEYWORDS, "add(EECTriangleOPELogLogId self, EECTriangleOPELogLogId rhs)"},
 	 { "EECTriangleOPELogLogId_swigregister", EECTriangleOPELogLogId_swigregister, METH_O, NULL},
 	 { "EECTriangleOPELogLogId_swiginit", EECTriangleOPELogLogId_swiginit, METH_VARARGS, NULL},
@@ -57337,11 +56254,6 @@ SWIG_init(void) {
   SWIG_Python_SetConstant(d, "PairwiseDistance_EEArcLengthMassive",SWIG_From_int(static_cast< int >(fastjet::contrib::eec::PairwiseDistance::EEArcLengthMassive)));
   SWIG_Python_SetConstant(d, "PairwiseDistance_EECosTheta",SWIG_From_int(static_cast< int >(fastjet::contrib::eec::PairwiseDistance::EECosTheta)));
   SWIG_Python_SetConstant(d, "PairwiseDistance_EECosThetaMassive",SWIG_From_int(static_cast< int >(fastjet::contrib::eec::PairwiseDistance::EECosThetaMassive)));
-  SWIG_Python_SetConstant(d, "ArchiveFormat_Text",SWIG_From_int(static_cast< int >(fastjet::contrib::eec::ArchiveFormat::Text)));
-  SWIG_Python_SetConstant(d, "ArchiveFormat_Binary",SWIG_From_int(static_cast< int >(fastjet::contrib::eec::ArchiveFormat::Binary)));
-  SWIG_Python_SetConstant(d, "CompressionMode_Auto",SWIG_From_int(static_cast< int >(fastjet::contrib::eec::CompressionMode::Auto)));
-  SWIG_Python_SetConstant(d, "CompressionMode_Plain",SWIG_From_int(static_cast< int >(fastjet::contrib::eec::CompressionMode::Plain)));
-  SWIG_Python_SetConstant(d, "CompressionMode_Zlib",SWIG_From_int(static_cast< int >(fastjet::contrib::eec::CompressionMode::Zlib)));
   globals = SWIG_globals();
   if (!globals) {
     PyErr_SetString(PyExc_TypeError, "Failure to create SWIG globals.");
