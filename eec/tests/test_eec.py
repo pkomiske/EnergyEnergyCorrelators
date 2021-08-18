@@ -15,6 +15,7 @@
 # along with this program.  If not, see <https://www.gnu.org/licenses/>.
 
 from collections import Counter
+import faulthandler
 import itertools
 import math
 from operator import itemgetter
@@ -27,6 +28,8 @@ import pytest
 from scipy.spatial.distance import cdist
 
 from eec import *
+
+faulthandler.enable()
 
 # load some reasonable test data
 events, y = ef.qg_jets.load(num_data=500, pad=False)
