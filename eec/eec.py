@@ -445,6 +445,24 @@ PairwiseDistance_EECosTheta = _eec.PairwiseDistance_EECosTheta
 
 PairwiseDistance_EECosThetaMassive = _eec.PairwiseDistance_EECosThetaMassive
 
+ArchiveFormat_Text = _eec.ArchiveFormat_Text
+
+ArchiveFormat_Binary = _eec.ArchiveFormat_Binary
+
+ArchiveFormat_NotSupported = _eec.ArchiveFormat_NotSupported
+
+CompressionMode_Auto = _eec.CompressionMode_Auto
+
+CompressionMode_Plain = _eec.CompressionMode_Plain
+
+CompressionMode_Zlib = _eec.CompressionMode_Zlib
+
+CompressionMode_NotSupported = _eec.CompressionMode_NotSupported
+
+get_archive_format = _eec.get_archive_format
+get_compression_mode = _eec.get_compression_mode
+set_archive_format = _eec.set_archive_format
+set_compression_mode = _eec.set_compression_mode
 particle_weight_name = _eec.particle_weight_name
 pairwise_distance_name = _eec.pairwise_distance_name
 class reduce_command(object):

@@ -8,6 +8,7 @@ on:
 env:
   PYPI: 0
   PYPITEST: 0
+  CIBW_ENVIRONMENT_MACOS: DYLD_LIBRARY_PATH=$DYLD_LIBRARY_PATH:/usr/local/lib
   CIBW_MANYLINUX_X86_64_IMAGE: ghcr.io/pkomiske/eec_manylinux2010_x86_64:latest
   CIBW_MANYLINUX_I686_IMAGE: ghcr.io/pkomiske/eec_manylinux2010_i686:latest
   CIBW_SKIP: pp* cp310*

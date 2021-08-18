@@ -23649,6 +23649,176 @@ SWIGINTERN PyObject *Swig_var_HAS_PICKLE_SUPPORT_get(void) {
 }
 
 
+SWIGINTERN PyObject *_wrap_get_archive_format(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
+  PyObject *resultobj = 0;
+  fastjet::contrib::eec::ArchiveFormat result;
+  
+  if (!SWIG_Python_UnpackTuple(args, "get_archive_format", 0, 0, 0)) SWIG_fail;
+  {
+    try {
+      result = (fastjet::contrib::eec::ArchiveFormat)fastjet::contrib::eec::get_archive_format(); 
+    }
+    /*@SWIG:/usr/local/Cellar/swig/4.0.2/share/swig/4.0.2/typemaps/exception.swg,58,SWIG_CATCH_STDEXCEPT@*/  /* catching std::exception  */
+    catch (std::invalid_argument& e) {
+      SWIG_exception_fail(SWIG_ValueError, e.what() );
+    } catch (std::domain_error& e) {
+      SWIG_exception_fail(SWIG_ValueError, e.what() );
+    } catch (std::overflow_error& e) {
+      SWIG_exception_fail(SWIG_OverflowError, e.what() );
+    } catch (std::out_of_range& e) {
+      SWIG_exception_fail(SWIG_IndexError, e.what() );
+    } catch (std::length_error& e) {
+      SWIG_exception_fail(SWIG_IndexError, e.what() );
+    } catch (std::runtime_error& e) {
+      SWIG_exception_fail(SWIG_RuntimeError, e.what() );
+    } catch (std::exception& e) {
+      SWIG_exception_fail(SWIG_SystemError, e.what() );
+    }
+    /*@SWIG@*/
+    catch (...) {
+      SWIG_exception_fail(SWIG_UnknownError, "unknown exception");
+    }
+  }
+  resultobj = SWIG_From_int(static_cast< int >(result));
+  return resultobj;
+fail:
+  return NULL;
+}
+
+
+SWIGINTERN PyObject *_wrap_get_compression_mode(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
+  PyObject *resultobj = 0;
+  fastjet::contrib::eec::CompressionMode result;
+  
+  if (!SWIG_Python_UnpackTuple(args, "get_compression_mode", 0, 0, 0)) SWIG_fail;
+  {
+    try {
+      result = (fastjet::contrib::eec::CompressionMode)fastjet::contrib::eec::get_compression_mode(); 
+    }
+    /*@SWIG:/usr/local/Cellar/swig/4.0.2/share/swig/4.0.2/typemaps/exception.swg,58,SWIG_CATCH_STDEXCEPT@*/  /* catching std::exception  */
+    catch (std::invalid_argument& e) {
+      SWIG_exception_fail(SWIG_ValueError, e.what() );
+    } catch (std::domain_error& e) {
+      SWIG_exception_fail(SWIG_ValueError, e.what() );
+    } catch (std::overflow_error& e) {
+      SWIG_exception_fail(SWIG_OverflowError, e.what() );
+    } catch (std::out_of_range& e) {
+      SWIG_exception_fail(SWIG_IndexError, e.what() );
+    } catch (std::length_error& e) {
+      SWIG_exception_fail(SWIG_IndexError, e.what() );
+    } catch (std::runtime_error& e) {
+      SWIG_exception_fail(SWIG_RuntimeError, e.what() );
+    } catch (std::exception& e) {
+      SWIG_exception_fail(SWIG_SystemError, e.what() );
+    }
+    /*@SWIG@*/
+    catch (...) {
+      SWIG_exception_fail(SWIG_UnknownError, "unknown exception");
+    }
+  }
+  resultobj = SWIG_From_int(static_cast< int >(result));
+  return resultobj;
+fail:
+  return NULL;
+}
+
+
+SWIGINTERN PyObject *_wrap_set_archive_format(PyObject *SWIGUNUSEDPARM(self), PyObject *args, PyObject *kwargs) {
+  PyObject *resultobj = 0;
+  fastjet::contrib::eec::ArchiveFormat arg1 ;
+  int val1 ;
+  int ecode1 = 0 ;
+  PyObject * obj0 = 0 ;
+  char * kwnames[] = {
+    (char *)"a",  NULL 
+  };
+  
+  if (!PyArg_ParseTupleAndKeywords(args, kwargs, "O:set_archive_format", kwnames, &obj0)) SWIG_fail;
+  ecode1 = SWIG_AsVal_int(obj0, &val1);
+  if (!SWIG_IsOK(ecode1)) {
+    SWIG_exception_fail(SWIG_ArgError(ecode1), "in method '" "set_archive_format" "', argument " "1"" of type '" "fastjet::contrib::eec::ArchiveFormat""'");
+  } 
+  arg1 = static_cast< fastjet::contrib::eec::ArchiveFormat >(val1);
+  {
+    try {
+      fastjet::contrib::eec::set_archive_format(arg1); 
+    }
+    /*@SWIG:/usr/local/Cellar/swig/4.0.2/share/swig/4.0.2/typemaps/exception.swg,58,SWIG_CATCH_STDEXCEPT@*/  /* catching std::exception  */
+    catch (std::invalid_argument& e) {
+      SWIG_exception_fail(SWIG_ValueError, e.what() );
+    } catch (std::domain_error& e) {
+      SWIG_exception_fail(SWIG_ValueError, e.what() );
+    } catch (std::overflow_error& e) {
+      SWIG_exception_fail(SWIG_OverflowError, e.what() );
+    } catch (std::out_of_range& e) {
+      SWIG_exception_fail(SWIG_IndexError, e.what() );
+    } catch (std::length_error& e) {
+      SWIG_exception_fail(SWIG_IndexError, e.what() );
+    } catch (std::runtime_error& e) {
+      SWIG_exception_fail(SWIG_RuntimeError, e.what() );
+    } catch (std::exception& e) {
+      SWIG_exception_fail(SWIG_SystemError, e.what() );
+    }
+    /*@SWIG@*/
+    catch (...) {
+      SWIG_exception_fail(SWIG_UnknownError, "unknown exception");
+    }
+  }
+  resultobj = SWIG_Py_Void();
+  return resultobj;
+fail:
+  return NULL;
+}
+
+
+SWIGINTERN PyObject *_wrap_set_compression_mode(PyObject *SWIGUNUSEDPARM(self), PyObject *args, PyObject *kwargs) {
+  PyObject *resultobj = 0;
+  fastjet::contrib::eec::CompressionMode arg1 ;
+  int val1 ;
+  int ecode1 = 0 ;
+  PyObject * obj0 = 0 ;
+  char * kwnames[] = {
+    (char *)"c",  NULL 
+  };
+  
+  if (!PyArg_ParseTupleAndKeywords(args, kwargs, "O:set_compression_mode", kwnames, &obj0)) SWIG_fail;
+  ecode1 = SWIG_AsVal_int(obj0, &val1);
+  if (!SWIG_IsOK(ecode1)) {
+    SWIG_exception_fail(SWIG_ArgError(ecode1), "in method '" "set_compression_mode" "', argument " "1"" of type '" "fastjet::contrib::eec::CompressionMode""'");
+  } 
+  arg1 = static_cast< fastjet::contrib::eec::CompressionMode >(val1);
+  {
+    try {
+      fastjet::contrib::eec::set_compression_mode(arg1); 
+    }
+    /*@SWIG:/usr/local/Cellar/swig/4.0.2/share/swig/4.0.2/typemaps/exception.swg,58,SWIG_CATCH_STDEXCEPT@*/  /* catching std::exception  */
+    catch (std::invalid_argument& e) {
+      SWIG_exception_fail(SWIG_ValueError, e.what() );
+    } catch (std::domain_error& e) {
+      SWIG_exception_fail(SWIG_ValueError, e.what() );
+    } catch (std::overflow_error& e) {
+      SWIG_exception_fail(SWIG_OverflowError, e.what() );
+    } catch (std::out_of_range& e) {
+      SWIG_exception_fail(SWIG_IndexError, e.what() );
+    } catch (std::length_error& e) {
+      SWIG_exception_fail(SWIG_IndexError, e.what() );
+    } catch (std::runtime_error& e) {
+      SWIG_exception_fail(SWIG_RuntimeError, e.what() );
+    } catch (std::exception& e) {
+      SWIG_exception_fail(SWIG_SystemError, e.what() );
+    }
+    /*@SWIG@*/
+    catch (...) {
+      SWIG_exception_fail(SWIG_UnknownError, "unknown exception");
+    }
+  }
+  resultobj = SWIG_Py_Void();
+  return resultobj;
+fail:
+  return NULL;
+}
+
+
 SWIGINTERN PyObject *_wrap_particle_weight_name(PyObject *SWIGUNUSEDPARM(self), PyObject *args, PyObject *kwargs) {
   PyObject *resultobj = 0;
   fastjet::contrib::eec::ParticleWeight arg1 ;
@@ -53723,6 +53893,10 @@ static PyMethodDef SwigMethods[] = {
 	 { "delete_vectorArrayDouble2", _wrap_delete_vectorArrayDouble2, METH_O, "delete_vectorArrayDouble2(vectorArrayDouble2 self)"},
 	 { "vectorArrayDouble2_swigregister", vectorArrayDouble2_swigregister, METH_O, NULL},
 	 { "vectorArrayDouble2_swiginit", vectorArrayDouble2_swiginit, METH_VARARGS, NULL},
+	 { "get_archive_format", _wrap_get_archive_format, METH_NOARGS, "get_archive_format() -> fastjet::contrib::eec::ArchiveFormat"},
+	 { "get_compression_mode", _wrap_get_compression_mode, METH_NOARGS, "get_compression_mode() -> fastjet::contrib::eec::CompressionMode"},
+	 { "set_archive_format", (PyCFunction)(void(*)(void))_wrap_set_archive_format, METH_VARARGS|METH_KEYWORDS, "set_archive_format(fastjet::contrib::eec::ArchiveFormat a)"},
+	 { "set_compression_mode", (PyCFunction)(void(*)(void))_wrap_set_compression_mode, METH_VARARGS|METH_KEYWORDS, "set_compression_mode(fastjet::contrib::eec::CompressionMode c)"},
 	 { "particle_weight_name", (PyCFunction)(void(*)(void))_wrap_particle_weight_name, METH_VARARGS|METH_KEYWORDS, "particle_weight_name(fastjet::contrib::eec::ParticleWeight pw) -> std::string"},
 	 { "pairwise_distance_name", (PyCFunction)(void(*)(void))_wrap_pairwise_distance_name, METH_VARARGS|METH_KEYWORDS, "pairwise_distance_name(fastjet::contrib::eec::PairwiseDistance pd) -> std::string"},
 	 { "new_reduce_command", _wrap_new_reduce_command, METH_NOARGS, "new_reduce_command() -> reduce_command"},
@@ -54629,6 +54803,10 @@ static PyMethodDef SwigMethods_proxydocs[] = {
 	 { "delete_vectorArrayDouble2", _wrap_delete_vectorArrayDouble2, METH_O, "delete_vectorArrayDouble2(vectorArrayDouble2 self)"},
 	 { "vectorArrayDouble2_swigregister", vectorArrayDouble2_swigregister, METH_O, NULL},
 	 { "vectorArrayDouble2_swiginit", vectorArrayDouble2_swiginit, METH_VARARGS, NULL},
+	 { "get_archive_format", _wrap_get_archive_format, METH_NOARGS, "get_archive_format() -> fastjet::contrib::eec::ArchiveFormat"},
+	 { "get_compression_mode", _wrap_get_compression_mode, METH_NOARGS, "get_compression_mode() -> fastjet::contrib::eec::CompressionMode"},
+	 { "set_archive_format", (PyCFunction)(void(*)(void))_wrap_set_archive_format, METH_VARARGS|METH_KEYWORDS, "set_archive_format(fastjet::contrib::eec::ArchiveFormat a)"},
+	 { "set_compression_mode", (PyCFunction)(void(*)(void))_wrap_set_compression_mode, METH_VARARGS|METH_KEYWORDS, "set_compression_mode(fastjet::contrib::eec::CompressionMode c)"},
 	 { "particle_weight_name", (PyCFunction)(void(*)(void))_wrap_particle_weight_name, METH_VARARGS|METH_KEYWORDS, "particle_weight_name(fastjet::contrib::eec::ParticleWeight pw) -> std::string"},
 	 { "pairwise_distance_name", (PyCFunction)(void(*)(void))_wrap_pairwise_distance_name, METH_VARARGS|METH_KEYWORDS, "pairwise_distance_name(fastjet::contrib::eec::PairwiseDistance pd) -> std::string"},
 	 { "new_reduce_command", _wrap_new_reduce_command, METH_NOARGS, "new_reduce_command() -> reduce_command"},
@@ -56254,6 +56432,13 @@ SWIG_init(void) {
   SWIG_Python_SetConstant(d, "PairwiseDistance_EEArcLengthMassive",SWIG_From_int(static_cast< int >(fastjet::contrib::eec::PairwiseDistance::EEArcLengthMassive)));
   SWIG_Python_SetConstant(d, "PairwiseDistance_EECosTheta",SWIG_From_int(static_cast< int >(fastjet::contrib::eec::PairwiseDistance::EECosTheta)));
   SWIG_Python_SetConstant(d, "PairwiseDistance_EECosThetaMassive",SWIG_From_int(static_cast< int >(fastjet::contrib::eec::PairwiseDistance::EECosThetaMassive)));
+  SWIG_Python_SetConstant(d, "ArchiveFormat_Text",SWIG_From_int(static_cast< int >(fastjet::contrib::eec::ArchiveFormat::Text)));
+  SWIG_Python_SetConstant(d, "ArchiveFormat_Binary",SWIG_From_int(static_cast< int >(fastjet::contrib::eec::ArchiveFormat::Binary)));
+  SWIG_Python_SetConstant(d, "ArchiveFormat_NotSupported",SWIG_From_int(static_cast< int >(fastjet::contrib::eec::ArchiveFormat::NotSupported)));
+  SWIG_Python_SetConstant(d, "CompressionMode_Auto",SWIG_From_int(static_cast< int >(fastjet::contrib::eec::CompressionMode::Auto)));
+  SWIG_Python_SetConstant(d, "CompressionMode_Plain",SWIG_From_int(static_cast< int >(fastjet::contrib::eec::CompressionMode::Plain)));
+  SWIG_Python_SetConstant(d, "CompressionMode_Zlib",SWIG_From_int(static_cast< int >(fastjet::contrib::eec::CompressionMode::Zlib)));
+  SWIG_Python_SetConstant(d, "CompressionMode_NotSupported",SWIG_From_int(static_cast< int >(fastjet::contrib::eec::CompressionMode::NotSupported)));
   globals = SWIG_globals();
   if (!globals) {
     PyErr_SetString(PyExc_TypeError, "Failure to create SWIG globals.");
