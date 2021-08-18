@@ -516,20 +516,19 @@ public:
     // loop over hists
     for (unsigned hist_i = 0; hist_i < nhists(); hist_i++)
       output_hist(*os, combined_hist(hist_i), hist_level, hist_i, overflows, "hist");
-    if (hist_level < 3) *os << start << "\n";
 
     // loop over covariance hists
     if (track_covariance()) {
+      if (hist_level < 3) *os << start << "\n";
       for (unsigned hist_i = 0; hist_i < nhists(); hist_i++)
         output_hist(*os, combined_covariance(hist_i), hist_level, hist_i, overflows, "covariance_hist");
-      if (hist_level < 3) *os << start << "\n";
     }
 
     // loop over variance bound hists
     if (variance_bound()) {
+      if (hist_level < 3) *os << start << "\n";
       for (unsigned hist_i = 0; hist_i < nhists(); hist_i++)
         output_hist(*os, combined_variance_bound(hist_i), hist_level, hist_i, overflows, "variance_bound_hist");
-      if (hist_level < 3) *os << start << "\n";
     }
 
     if (os_null) {

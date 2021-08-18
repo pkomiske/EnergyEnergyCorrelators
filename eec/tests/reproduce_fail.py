@@ -19,6 +19,7 @@ def test_longestside_sym(N, axis, use_general_eNc, num_threads, weight_powers, c
     sys.stdout.flush()
 
     print(eec)
+    sys.stdout.flush()
 
     slow_eec = SlowEECLongestSideSym(N, (nbins,), ((1e-5, 1),), (axis,), True, weight_powers, charge_powers)
     slow_eec.construct_inds_factors(nparticles, N)
@@ -34,10 +35,12 @@ def test_longestside_sym(N, axis, use_general_eNc, num_threads, weight_powers, c
         eec.compute(event, event_weight, thread=0)
 
     print('Done computing individually')
+    sys.stdout.flush()
 
     eec(local_events[len(weights)//2:], weights[len(weights)//2:])
 
     print('Done computing collectively')
+    sys.stdout.flush()
 
     slow_eec(local_events, weights)
 
