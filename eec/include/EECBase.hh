@@ -63,12 +63,11 @@ public:
     total_weight_(0)
   {
     // this runs through error checking and sets orig_weight_powers and orig_charge_powers
-    set_weight_powers(weight_powers(), false);
-    set_charge_powers(charge_powers(), false);
+    set_weight_powers(weight_powers(), true);
+    set_charge_powers(charge_powers(), true);
 
     // performs some error checking
     set_num_threads(num_threads());
-    set_print_stream(std::cout);
 
     // ensure base starts in an initialized state
     init_base();
@@ -191,12 +190,12 @@ public:
       // acquire Python GIL if in SWIG in order to check for signals and print message
       #ifdef SWIG
         SWIG_PYTHON_THREAD_BEGIN_BLOCK;
-        if (this->print_every() != 0) *print_stream_ << oss.str() << std::endl;
+        if (this->print_every() != 0) std::cout << oss.str() << std::endl;
         if (PyErr_CheckSignals() != 0)
           throw std::runtime_error("KeyboardInterrupt received in EECBase::batch_compute");
         SWIG_PYTHON_THREAD_END_BLOCK;
       #else
-        if (this->print_every() != 0) *print_stream_ << oss.str() << std::endl;
+        if (this->print_every() != 0) std::cout << oss.str() << std::endl;
       #endif
     }
   }
@@ -206,6 +205,7 @@ public:
   ///////////////////
 
   const EECConfig & config() const { return config_; }
+  const std::string & compname() const { return compname_; }
 
   unsigned N() const { return config().N; }
   unsigned nfeatures() const { return config().nfeatures; }
@@ -232,7 +232,7 @@ public:
   // SETTER FUNCTIONS
   ///////////////////
 
-  void set_weight_powers(const std::vector<double> & wps, bool _leave_valid = true) {
+  void set_weight_powers(const std::vector<double> & wps, bool _in_constructor = false) {
     ensure_no_events();
 
     if (wps.size() == 1)
@@ -242,10 +242,10 @@ public:
     else orig_weight_powers_ = wps;
 
     // need to reinitialize after changes to weight_powers
-    if (_leave_valid) init_all();
+    if (!_in_constructor) init_all();
   }
 
-  void set_charge_powers(const std::vector<unsigned> & cps, bool _leave_valid = true) {
+  void set_charge_powers(const std::vector<unsigned> & cps, bool _in_constructor = false) {
     ensure_no_events();
 
     if (cps.size() == 1)
@@ -255,21 +255,19 @@ public:
     else orig_charge_powers_ = cps;
 
     // need to reinitialize after changes to charge_powers
-    if (_leave_valid) init_all();
+    if (!_in_constructor) init_all();
   }
 
-  void set_norm(bool n) { config_.norm = n; ensure_no_events(); }
-  void set_check_degen(bool check) { config_.check_degen = check; ensure_no_events(); }
-  void set_average_verts(bool averts) { config_.average_verts = averts; init_subclass(); }
+  void set_norm(bool n) { ensure_no_events(); config_.norm = n; }
+  void set_check_degen(bool check) { ensure_no_events(); config_.check_degen = check; }
+  void set_average_verts(bool averts) { ensure_no_events(); config_.average_verts = averts; init_subclass(); }
   
   void set_num_threads(int nthreads) { config_.num_threads = determine_num_threads(nthreads); }
   void set_omp_chunksize(int chunksize) { config_.omp_chunksize = std::abs(chunksize); }
   void set_print_every(long print_every) { config_.print_every = print_every; }
 
-  void set_particle_weight(ParticleWeight pw) { config_.particle_weight = pw; ensure_no_events(); }
-  void set_pairwise_distance(PairwiseDistance pd) { config_.pairwise_distance = pd; ensure_no_events(); }
-
-  void set_print_stream(std::ostream & os) { print_stream_ = &os; }
+  void set_particle_weight(ParticleWeight pw) { ensure_no_events(); config_.particle_weight = pw; }
+  void set_pairwise_distance(PairwiseDistance pd) { ensure_no_events(); config_.pairwise_distance = pd; }
 
   //////////////////////////////////
   // Allow EECs to be added together
@@ -347,7 +345,7 @@ protected:
 
     std::ostringstream oss;
     oss << std::boolalpha
-        << compname_ << '\n'
+        << compname() << '\n'
         << "  N - " << N() << '\n'
         << "  norm - " << norm() << '\n'
         << "  use_charges - " << use_charges() << '\n'
@@ -474,9 +472,6 @@ private:
   unsigned nsym_;
   std::string compname_;
   double total_weight_;
-
-  // printing/tracking variables
-  std::ostream * print_stream_;
 
   // vector of events
   std::vector<EECEvent> events_;
@@ -635,7 +630,6 @@ private:
 
     // reset num threads in case maximum number is different on new machine
     set_num_threads(num_threads());
-    set_print_stream(std::cout);
   }
 
 }; // EECBase

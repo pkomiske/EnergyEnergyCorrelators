@@ -23,7 +23,8 @@ def test_longestside_sym(N, axis, use_general_eNc, num_threads, weight_powers, c
 for N in [2, 3, 4]:
 	for axis in ['log', 'id']:
 		for use_general_eNc in [False, True]:
-			for weight_powers in [1, 2]:
-				for charge_powers in [0, 1, 2]:
-					for nparticles in [0, 1, 2, 4, 8, 16]:
-						test_longestside_sym(N, axis, use_general_eNc, weight_powers, charge_powers, nparticles)
+            for num_threads in [1, -1]:
+    			for weight_powers in [1, 2]:
+    				for charge_powers in [0, 1, 2]:
+    					for nparticles in [0, 1, 2, 4, 8, 16]:
+    						test_longestside_sym(N, axis, use_general_eNc, num_threads, weight_powers, charge_powers, nparticles)
