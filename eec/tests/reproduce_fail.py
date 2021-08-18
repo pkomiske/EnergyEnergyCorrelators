@@ -1,3 +1,5 @@
+import sys
+
 from test_eec import *
 
 def test_longestside_sym(N, axis, use_general_eNc, num_threads, weight_powers, charge_powers, nparticles):
@@ -5,13 +7,20 @@ def test_longestside_sym(N, axis, use_general_eNc, num_threads, weight_powers, c
         pytest.skip()
 
     nbins = 15
+    print('Creating EECLongestSide')
     eec = EECLongestSide(N, nbins, axis=axis, axis_range=(1e-5, 1.0), weight_powers=(weight_powers,), charge_powers=(charge_powers,),
                          print_every=0, num_threads=num_threads, use_general_eNc=use_general_eNc)
+    print('Created EECLongestSide')
+    sys.stdout.flush()
+
     slow_eec = SlowEECLongestSideSym(N, (nbins,), ((1e-5, 1),), (axis,), True, weight_powers, charge_powers)
     slow_eec.construct_inds_factors(nparticles, N)
 
     local_events = [event[:nparticles] for event in events]
     weights = 2*np.random.rand(len(local_events))
+
+    print('Computing on events')
+    sys.stdout.flush()
 
     eec(local_events, event_weights=weights)
     slow_eec(local_events, weights)

@@ -206,39 +206,39 @@ public:
     switch (config.pairwise_distance) {
       case PairwiseDistance::Default:
       case PairwiseDistance::DeltaR:
-        fill_distances<DeltaR>(pjs, config);
+        fill_distances<DeltaR>(config, pjs);
         break;
 
       case PairwiseDistance::HadronicDot:
-        fill_distances<HadronicDot>(pjs, config);
+        fill_distances<HadronicDot>(config, pjs);
         break;
 
       case PairwiseDistance::EEDot:
-        fill_distances<EEDot>(pjs, config);
+        fill_distances<EEDot>(config, pjs);
         break;
 
       case PairwiseDistance::HadronicDotMassive:
-        fill_distances<HadronicDotMassive>(pjs, config);
+        fill_distances<HadronicDotMassive>(config, pjs);
         break;
 
       case PairwiseDistance::EEDotMassless:
-        fill_distances<EEDotMassless>(pjs, config);
+        fill_distances<EEDotMassless>(config, pjs);
         break;
 
       case PairwiseDistance::EEArcLength:
-        fill_distances<EEArcLength>(pjs, config);
+        fill_distances<EEArcLength>(config, pjs);
         break;
 
       case PairwiseDistance::EEArcLengthMassive:
-        fill_distances<EEArcLengthMassive>(pjs, config);
+        fill_distances<EEArcLengthMassive>(config, pjs);
         break;
 
       case PairwiseDistance::EECosTheta:
-        fill_distances<EECosTheta>(pjs, config);
+        fill_distances<EECosTheta>(config, pjs);
         break;
 
       case PairwiseDistance::EECosThetaMassive:
-        fill_distances<EECosThetaMassive>(pjs, config);
+        fill_distances<EECosThetaMassive>(config, pjs);
         break;
 
       default:
@@ -371,7 +371,7 @@ private:
 
   // fill distances from vector of pseudojets
   template<class PairwiseDistance>
-  void fill_distances(const std::vector<PseudoJet> & pjs, const EECConfig & config) {
+  void fill_distances(const EECConfig & config, const std::vector<PseudoJet> & pjs) {
     dists_.resize(mult()*mult());
 
     for (unsigned i = 0; i < mult(); i++) {

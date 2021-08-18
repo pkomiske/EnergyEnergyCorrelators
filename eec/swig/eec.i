@@ -458,7 +458,7 @@ namespace EEC_NAMESPACE {
     CPP_EECCOMP_FUNCTIONS(EECLongestSide)
     ADD_REPR_FROM_DECODED_DESCRIPTION
     %pythoncode %{
-      _default_args = (2, 1, (1e-5, 1))
+      _default_args = (2, 1)
     %}
   }
 
@@ -466,7 +466,7 @@ namespace EEC_NAMESPACE {
     CPP_EECCOMP_FUNCTIONS(EECTriangleOPE)
     ADD_REPR_FROM_DECODED_DESCRIPTION
     %pythoncode %{
-      _default_args = ((1, 1, 1), ((1e-5, 1), (1e-5, 1), (0, _np.pi/2)))
+      _default_args = ((1, 1, 1),)
     %}
   }
 

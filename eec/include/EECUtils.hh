@@ -83,7 +83,6 @@ class EECBase;
 
 // a standardized enum to select a ParticleWeight
 enum class ParticleWeight : int {
-  Default=-1, // TransverseMomentum in this package
   TransverseMomentum=0,
   Energy=1,
   TransverseEnergy=2,
@@ -92,7 +91,6 @@ enum class ParticleWeight : int {
 
 // a standardized enum to select a PairwiseDistance
 enum class PairwiseDistance : int {
-  Default=-1, // DeltaR in this package
   DeltaR=0,
   HadronicDot=1,
   EEDot=2,
@@ -196,20 +194,12 @@ inline std::string particle_weight_name(ParticleWeight pw) {
     case ParticleWeight::Default:
     case ParticleWeight::TransverseMomentum:
       return "TransverseMomentum";
-      break;
-
     case ParticleWeight::Energy:
       return "Energy";
-      break;
-
     case ParticleWeight::TransverseEnergy:
       return "TransverseEnergy";
-      break;
-
     case ParticleWeight::Momentum:
       return "Momentum";
-      break;
-
     default:
       return "Unknown";
   }
@@ -220,40 +210,22 @@ inline std::string pairwise_distance_name(PairwiseDistance pd) {
     case PairwiseDistance::Default:
     case PairwiseDistance::DeltaR:
       return "DeltaR";
-      break;
-
     case PairwiseDistance::HadronicDot:
       return "HadronicDot";
-      break;
-
     case PairwiseDistance::EEDot:
       return "EEDot";
-      break;
-
     case PairwiseDistance::HadronicDotMassive:
       return "HadronicDotMassive";
-      break;
-
     case PairwiseDistance::EEDotMassless:
       return "EEDotMassless";
-      break;
-
     case PairwiseDistance::EEArcLength:
       return "EEArcLength";
-      break;
-
     case PairwiseDistance::EEArcLengthMassive:
       return "EEArcLengthMassive";
-      break;
-
     case PairwiseDistance::EECosTheta:
       return "EECosTheta";
-      break;
-
     case PairwiseDistance::EECosThetaMassive:
       return "EECosThetaMassive";
-      break;
-
     default:
       return "Unknown";
   }
