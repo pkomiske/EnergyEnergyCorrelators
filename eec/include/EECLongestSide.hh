@@ -279,8 +279,6 @@ private:
   }
 
   void eec_ij_sym(const EECEvent & event, int thread) {
-
-    std::cout << "eec_ij_sym start" << std::endl;
     
     // references to event data
     const std::vector<double> & ws0(event.weights()[0]),
@@ -304,8 +302,6 @@ private:
       for (unsigned j = 0; j < i; j++)
         hist(hist::weight(weight_i * ws0[j]), dists[ixm + j]);
     }
-
-    //std::cout << "eec_ij_sym done" << std::endl;
   }
 
   void eec_no_sym(const EECEvent & event, int thread) {
@@ -884,8 +880,6 @@ private:
   }
 
   void eNc_sym(const EECEvent & event, int thread) {
-
-    std::cout << "eNc_sym begin" << std::endl;
     
     // references to event data
     const std::vector<double> & ws0(event.weights()[0]),
@@ -919,8 +913,6 @@ private:
       multinom.set_index(i, 0);
       inds[++i] = 0;
     }
-
-    std::cout << "eNc_sym comp" << std::endl;
 
     // infinite loop
     double & max_dist(dists_local[N_choose_2_ - 1]), & weight(weights[N()]);
@@ -966,8 +958,6 @@ private:
       // if w hit 0 then we're done
       if (w == 0) break;
     }
-
-    std::cout << "eNc_sym done" << std::endl;
   }
 
   #ifdef BOOST_SERIALIZATION_ACCESS_HPP

@@ -1,6 +1,8 @@
 import random
 import sys
 
+import sklearn
+
 from test_eec import *
 
 event_count = 0

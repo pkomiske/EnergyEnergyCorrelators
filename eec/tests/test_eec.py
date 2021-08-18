@@ -14,6 +14,8 @@
 # You should have received a copy of the GNU General Public License
 # along with this program.  If not, see <https://www.gnu.org/licenses/>.
 
+from eec import *
+
 from collections import Counter
 import faulthandler
 import itertools
@@ -27,7 +29,7 @@ import numpy as np
 import pytest
 from scipy.spatial.distance import cdist
 
-from eec import *
+
 
 faulthandler.enable()
 
@@ -618,7 +620,7 @@ def test_pycompare_longestside(N, axis, nbins, weight_powers, charge_powers, npa
 @pytest.mark.parametrize('nparticles', [0, 1, 2, 4, 8, 16])
 @pytest.mark.parametrize('charge_powers', [0, 1, 2])
 @pytest.mark.parametrize('weight_powers', [1, 2])
-@pytest.mark.parametrize('num_threads', [1, -1])
+@pytest.mark.parametrize('num_threads', [1, 3])
 @pytest.mark.parametrize('use_general_eNc', [False, True])
 @pytest.mark.parametrize('axis', ['log', 'id'])
 @pytest.mark.parametrize('N', [2, 3, 4, 5, 6])
@@ -647,7 +649,7 @@ def test_longestside_sym(N, axis, use_general_eNc, num_threads, weight_powers, c
 @pytest.mark.parametrize('nparticles', [1, 2, 5, 10])
 @pytest.mark.parametrize('charge_powers', [(0,0), (1,1), (2,2), (0,1), (1,0), (2,0), (0,2)])
 @pytest.mark.parametrize('weight_powers', [(1,1), (1,2), (2,1), (2,2), (0,1), (1,0)])
-@pytest.mark.parametrize('num_threads', [1, -1])
+@pytest.mark.parametrize('num_threads', [1, 3])
 @pytest.mark.parametrize('axis', ['log', 'id'])
 def test_longestside_asym_N2_average_verts(axis, num_threads, weight_powers, charge_powers, nparticles):
 
@@ -671,7 +673,7 @@ def test_longestside_asym_N2_average_verts(axis, num_threads, weight_powers, cha
 @pytest.mark.parametrize('average_verts', [True, False])
 @pytest.mark.parametrize('charge_powers', [(0,0,0), (1,1,1), (0,0,1), (0,1,0), (1,0,0)])
 @pytest.mark.parametrize('weight_powers', [(1,1,1), (1,1,2), (1,2,1), (2,1,1)])
-@pytest.mark.parametrize('num_threads', [1, -1])
+@pytest.mark.parametrize('num_threads', [1, 3])
 @pytest.mark.parametrize('axis', ['log', 'id'])
 def test_longestside_asym_N3(axis, num_threads, weight_powers, charge_powers, average_verts, nparticles):
 
@@ -703,7 +705,7 @@ def test_longestside_asym_N3(axis, num_threads, weight_powers, charge_powers, av
 @pytest.mark.parametrize('average_verts', [True, False])
 @pytest.mark.parametrize('charge_powers', [(0,0,0), (1,1,1), (0,0,1), (0,1,0), (1,0,0)])
 @pytest.mark.parametrize('weight_powers', [(1,1,1), (1,1,2), (1,2,1), (2,1,1)])
-@pytest.mark.parametrize('num_threads', [1, -1])
+@pytest.mark.parametrize('num_threads', [1, 3])
 @pytest.mark.parametrize('axes', [('log', 'log', 'id'), ('id', 'id', 'id'), ('log', 'id', 'id'), ('id', 'log', 'id')])
 def test_triangleope(axes, num_threads, weight_powers, charge_powers, average_verts, nparticles):
 
@@ -734,7 +736,7 @@ def test_triangleope(axes, num_threads, weight_powers, charge_powers, average_ve
 @pytest.mark.parametrize('nparticles', [2, 4, 8])
 @pytest.mark.parametrize('charge_powers', [0, 1, 2])
 @pytest.mark.parametrize('weight_powers', [1, 2])
-@pytest.mark.parametrize('num_threads', [1, -1])
+@pytest.mark.parametrize('num_threads', [1, 3])
 @pytest.mark.parametrize('axis', ['log', 'id'])
 @pytest.mark.parametrize('N', [2, 3, 4])
 def test_pickling_longestside(N, axis, num_threads, weight_powers, charge_powers, nparticles, archform, compmode):
@@ -771,7 +773,7 @@ def test_pickling_longestside(N, axis, num_threads, weight_powers, charge_powers
 @pytest.mark.parametrize('nparticles', [2, 4, 8])
 @pytest.mark.parametrize('charge_powers', [(0,0,0), (1,1,1), (0,0,1), (0,1,0), (1,0,0)])
 @pytest.mark.parametrize('weight_powers', [(1,1,1), (1,1,2), (1,2,1), (2,1,1)])
-@pytest.mark.parametrize('num_threads', [1, -1])
+@pytest.mark.parametrize('num_threads', [1, 3])
 @pytest.mark.parametrize('axes', [('log', 'log', 'id'), ('id', 'id', 'id'), ('log', 'id', 'id'), ('id', 'log', 'id')])
 def test_pickling_triangleope(axes, num_threads, weight_powers, charge_powers, nparticles, archform, compmode):
 

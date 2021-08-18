@@ -194,16 +194,12 @@ public:
     std::ostringstream oss(std::ios_base::ate);
     oss.setf(std::ios_base::fixed, std::ios_base::floatfield);
 
-    std::cout << "In batch compute" << std::endl;
-
     // set up multithreaded loop over events
     long start(0), counter(0);
     auto start_time(std::chrono::steady_clock::now());
     while (counter < nevents) {
       counter += print_every;
       if (counter > nevents) counter = nevents;
-
-      std::cout << "  start, counter = " << start << ", " << counter << std::endl;
 
       #pragma omp parallel for num_threads(num_threads()) default(shared) schedule(dynamic, omp_chunksize())
       for (long i = start; i < counter; i++) {
