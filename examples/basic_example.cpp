@@ -70,8 +70,7 @@ int main(int argc, char** argv) {
 
   // specify EECs
   eec::EECLongestSideLog eec_longestside(2, 75, {1e-5, 1});
-  std::array<std::array<double, 2>, 3> axes_range{{{1e-5, 1.}, {1e-5, 1.}, {0., eec::PI/2}}};
-  eec::EECTriangleOPELogLogId eec_triangleope({10, 10, 5}, axes_range);
+  eec::EECTriangleOPELogLogId eec_triangleope({10, 10, 5}, {{{1e-5, 1.}, {1e-5, 1.}, {0., eec::PI/2}}});
 
   run_eec_comp(eec_longestside, evp);
   run_eec_comp(eec_triangleope, evp);
