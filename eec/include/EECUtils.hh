@@ -191,7 +191,6 @@ inline int determine_num_threads(int num_threads) {
 
 inline std::string particle_weight_name(ParticleWeight pw) {
   switch (pw) {
-    case ParticleWeight::Default:
     case ParticleWeight::TransverseMomentum:
       return "TransverseMomentum";
     case ParticleWeight::Energy:
@@ -207,7 +206,6 @@ inline std::string particle_weight_name(ParticleWeight pw) {
 
 inline std::string pairwise_distance_name(PairwiseDistance pd) {
   switch (pd) {
-    case PairwiseDistance::Default:
     case PairwiseDistance::DeltaR:
       return "DeltaR";
     case PairwiseDistance::HadronicDot:

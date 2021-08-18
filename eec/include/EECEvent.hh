@@ -171,7 +171,6 @@ public:
     // process weights
     std::vector<double> raw_weights;
     switch (config.particle_weight) {
-      case ParticleWeight::Default:
       case ParticleWeight::TransverseMomentum:
         raw_weights = get_raw_weights<TransverseMomentum>(pjs);
         break;
@@ -204,7 +203,6 @@ public:
 
     // process distances
     switch (config.pairwise_distance) {
-      case PairwiseDistance::Default:
       case PairwiseDistance::DeltaR:
         fill_distances<DeltaR>(config, pjs);
         break;

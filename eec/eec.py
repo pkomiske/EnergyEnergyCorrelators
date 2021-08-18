@@ -419,8 +419,6 @@ class vectorArrayDouble2(object):
 # Register vectorArrayDouble2 in _eec:
 _eec.vectorArrayDouble2_swigregister(vectorArrayDouble2)
 
-ParticleWeight_Default = _eec.ParticleWeight_Default
-
 ParticleWeight_TransverseMomentum = _eec.ParticleWeight_TransverseMomentum
 
 ParticleWeight_Energy = _eec.ParticleWeight_Energy
@@ -428,8 +426,6 @@ ParticleWeight_Energy = _eec.ParticleWeight_Energy
 ParticleWeight_TransverseEnergy = _eec.ParticleWeight_TransverseEnergy
 
 ParticleWeight_Momentum = _eec.ParticleWeight_Momentum
-
-PairwiseDistance_Default = _eec.PairwiseDistance_Default
 
 PairwiseDistance_DeltaR = _eec.PairwiseDistance_DeltaR
 
@@ -1269,7 +1265,7 @@ class EECLongestSideId(EECBase, EECHist1DId):
     __repr__ = _swig_repr
 
     def __init__(self, *args, **kwargs):
-        r"""__init__(EECLongestSideId self, unsigned int N, unsigned int nbins, arrayDouble2 axis_range={1e-5, 1}, bool norm=True, vectorDouble weight_powers={1}, vectorUnsigned charge_powers={0}, fastjet::contrib::eec::ParticleWeight particle_weight=Default, fastjet::contrib::eec::PairwiseDistance pairwise_distance=Default, int num_threads=-1, int omp_chunksize=10, long print_every=-10, bool check_degen=False, bool average_verts=False, bool track_covariance=True, bool variance_bound=True, bool variance_bound_includes_overflows=True, bool use_general_eNc=False) -> EECLongestSideId"""
+        r"""__init__(EECLongestSideId self, unsigned int N, unsigned int nbins, arrayDouble2 axis_range={1e-5, 1}, bool norm=True, vectorDouble weight_powers={1}, vectorUnsigned charge_powers={0}, fastjet::contrib::eec::ParticleWeight particle_weight=TransverseMomentum, fastjet::contrib::eec::PairwiseDistance pairwise_distance=DeltaR, int num_threads=-1, int omp_chunksize=10, long print_every=-10, bool check_degen=False, bool average_verts=False, bool track_covariance=True, bool variance_bound=True, bool variance_bound_includes_overflows=True, bool use_general_eNc=False) -> EECLongestSideId"""
         _eec.EECLongestSideId_swiginit(self, _eec.new_EECLongestSideId(*args, **kwargs))
     __swig_destroy__ = _eec.delete_EECLongestSideId
     use_general_eNc = _swig_new_instance_method(_eec.EECLongestSideId_use_general_eNc)
@@ -1286,7 +1282,7 @@ class EECLongestSideId(EECBase, EECHist1DId):
         return self.description().decode('utf-8')
 
 
-    _default_args = (2, 1, (1e-5, 1))
+    _default_args = (2, 1)
 
 
 # Register EECLongestSideId in _eec:
@@ -1299,7 +1295,7 @@ class EECLongestSideLog(EECBase, EECHist1DLog):
     __repr__ = _swig_repr
 
     def __init__(self, *args, **kwargs):
-        r"""__init__(EECLongestSideLog self, unsigned int N, unsigned int nbins, arrayDouble2 axis_range={1e-5, 1}, bool norm=True, vectorDouble weight_powers={1}, vectorUnsigned charge_powers={0}, fastjet::contrib::eec::ParticleWeight particle_weight=Default, fastjet::contrib::eec::PairwiseDistance pairwise_distance=Default, int num_threads=-1, int omp_chunksize=10, long print_every=-10, bool check_degen=False, bool average_verts=False, bool track_covariance=True, bool variance_bound=True, bool variance_bound_includes_overflows=True, bool use_general_eNc=False) -> EECLongestSideLog"""
+        r"""__init__(EECLongestSideLog self, unsigned int N, unsigned int nbins, arrayDouble2 axis_range={1e-5, 1}, bool norm=True, vectorDouble weight_powers={1}, vectorUnsigned charge_powers={0}, fastjet::contrib::eec::ParticleWeight particle_weight=TransverseMomentum, fastjet::contrib::eec::PairwiseDistance pairwise_distance=DeltaR, int num_threads=-1, int omp_chunksize=10, long print_every=-10, bool check_degen=False, bool average_verts=False, bool track_covariance=True, bool variance_bound=True, bool variance_bound_includes_overflows=True, bool use_general_eNc=False) -> EECLongestSideLog"""
         _eec.EECLongestSideLog_swiginit(self, _eec.new_EECLongestSideLog(*args, **kwargs))
     __swig_destroy__ = _eec.delete_EECLongestSideLog
     use_general_eNc = _swig_new_instance_method(_eec.EECLongestSideLog_use_general_eNc)
@@ -1316,7 +1312,7 @@ class EECLongestSideLog(EECBase, EECHist1DLog):
         return self.description().decode('utf-8')
 
 
-    _default_args = (2, 1, (1e-5, 1))
+    _default_args = (2, 1)
 
 
 # Register EECLongestSideLog in _eec:
@@ -1329,7 +1325,7 @@ class EECTriangleOPEIdIdId(EECBase, EECHist3DIdIdId):
     __repr__ = _swig_repr
 
     def __init__(self, *args, **kwargs):
-        r"""__init__(EECTriangleOPEIdIdId self, arrayUnsigned3 nbins, arrayPairDoubleDouble axes_range={{{1e-5, 1}, {1e-5, 1}, {0, PI/2}}}, bool norm=True, vectorDouble weight_powers={1}, vectorUnsigned charge_powers={0}, fastjet::contrib::eec::ParticleWeight particle_weight=Default, fastjet::contrib::eec::PairwiseDistance pairwise_distance=Default, int num_threads=-1, int omp_chunksize=10, long print_every=-10, bool check_degen=False, bool average_verts=False, bool track_covariance=False, bool variance_bound=True, bool variance_bound_includes_overflows=True) -> EECTriangleOPEIdIdId"""
+        r"""__init__(EECTriangleOPEIdIdId self, arrayUnsigned3 nbins, arrayPairDoubleDouble axes_range={{{1e-5, 1}, {1e-5, 1}, {0, PI/2}}}, bool norm=True, vectorDouble weight_powers={1}, vectorUnsigned charge_powers={0}, fastjet::contrib::eec::ParticleWeight particle_weight=TransverseMomentum, fastjet::contrib::eec::PairwiseDistance pairwise_distance=DeltaR, int num_threads=-1, int omp_chunksize=10, long print_every=-10, bool check_degen=False, bool average_verts=False, bool track_covariance=False, bool variance_bound=True, bool variance_bound_includes_overflows=True) -> EECTriangleOPEIdIdId"""
         _eec.EECTriangleOPEIdIdId_swiginit(self, _eec.new_EECTriangleOPEIdIdId(*args, **kwargs))
     __swig_destroy__ = _eec.delete_EECTriangleOPEIdIdId
     set_num_threads = _swig_new_instance_method(_eec.EECTriangleOPEIdIdId_set_num_threads)
@@ -1344,7 +1340,7 @@ class EECTriangleOPEIdIdId(EECBase, EECHist3DIdIdId):
         return self.description().decode('utf-8')
 
 
-    _default_args = ((1, 1, 1), ((1e-5, 1), (1e-5, 1), (0, _np.pi/2)))
+    _default_args = ((1, 1, 1),)
 
 
 # Register EECTriangleOPEIdIdId in _eec:
@@ -1357,7 +1353,7 @@ class EECTriangleOPELogIdId(EECBase, EECHist3DLogIdId):
     __repr__ = _swig_repr
 
     def __init__(self, *args, **kwargs):
-        r"""__init__(EECTriangleOPELogIdId self, arrayUnsigned3 nbins, arrayPairDoubleDouble axes_range={{{1e-5, 1}, {1e-5, 1}, {0, PI/2}}}, bool norm=True, vectorDouble weight_powers={1}, vectorUnsigned charge_powers={0}, fastjet::contrib::eec::ParticleWeight particle_weight=Default, fastjet::contrib::eec::PairwiseDistance pairwise_distance=Default, int num_threads=-1, int omp_chunksize=10, long print_every=-10, bool check_degen=False, bool average_verts=False, bool track_covariance=False, bool variance_bound=True, bool variance_bound_includes_overflows=True) -> EECTriangleOPELogIdId"""
+        r"""__init__(EECTriangleOPELogIdId self, arrayUnsigned3 nbins, arrayPairDoubleDouble axes_range={{{1e-5, 1}, {1e-5, 1}, {0, PI/2}}}, bool norm=True, vectorDouble weight_powers={1}, vectorUnsigned charge_powers={0}, fastjet::contrib::eec::ParticleWeight particle_weight=TransverseMomentum, fastjet::contrib::eec::PairwiseDistance pairwise_distance=DeltaR, int num_threads=-1, int omp_chunksize=10, long print_every=-10, bool check_degen=False, bool average_verts=False, bool track_covariance=False, bool variance_bound=True, bool variance_bound_includes_overflows=True) -> EECTriangleOPELogIdId"""
         _eec.EECTriangleOPELogIdId_swiginit(self, _eec.new_EECTriangleOPELogIdId(*args, **kwargs))
     __swig_destroy__ = _eec.delete_EECTriangleOPELogIdId
     set_num_threads = _swig_new_instance_method(_eec.EECTriangleOPELogIdId_set_num_threads)
@@ -1372,7 +1368,7 @@ class EECTriangleOPELogIdId(EECBase, EECHist3DLogIdId):
         return self.description().decode('utf-8')
 
 
-    _default_args = ((1, 1, 1), ((1e-5, 1), (1e-5, 1), (0, _np.pi/2)))
+    _default_args = ((1, 1, 1),)
 
 
 # Register EECTriangleOPELogIdId in _eec:
@@ -1385,7 +1381,7 @@ class EECTriangleOPEIdLogId(EECBase, EECHist3DIdLogId):
     __repr__ = _swig_repr
 
     def __init__(self, *args, **kwargs):
-        r"""__init__(EECTriangleOPEIdLogId self, arrayUnsigned3 nbins, arrayPairDoubleDouble axes_range={{{1e-5, 1}, {1e-5, 1}, {0, PI/2}}}, bool norm=True, vectorDouble weight_powers={1}, vectorUnsigned charge_powers={0}, fastjet::contrib::eec::ParticleWeight particle_weight=Default, fastjet::contrib::eec::PairwiseDistance pairwise_distance=Default, int num_threads=-1, int omp_chunksize=10, long print_every=-10, bool check_degen=False, bool average_verts=False, bool track_covariance=False, bool variance_bound=True, bool variance_bound_includes_overflows=True) -> EECTriangleOPEIdLogId"""
+        r"""__init__(EECTriangleOPEIdLogId self, arrayUnsigned3 nbins, arrayPairDoubleDouble axes_range={{{1e-5, 1}, {1e-5, 1}, {0, PI/2}}}, bool norm=True, vectorDouble weight_powers={1}, vectorUnsigned charge_powers={0}, fastjet::contrib::eec::ParticleWeight particle_weight=TransverseMomentum, fastjet::contrib::eec::PairwiseDistance pairwise_distance=DeltaR, int num_threads=-1, int omp_chunksize=10, long print_every=-10, bool check_degen=False, bool average_verts=False, bool track_covariance=False, bool variance_bound=True, bool variance_bound_includes_overflows=True) -> EECTriangleOPEIdLogId"""
         _eec.EECTriangleOPEIdLogId_swiginit(self, _eec.new_EECTriangleOPEIdLogId(*args, **kwargs))
     __swig_destroy__ = _eec.delete_EECTriangleOPEIdLogId
     set_num_threads = _swig_new_instance_method(_eec.EECTriangleOPEIdLogId_set_num_threads)
@@ -1400,7 +1396,7 @@ class EECTriangleOPEIdLogId(EECBase, EECHist3DIdLogId):
         return self.description().decode('utf-8')
 
 
-    _default_args = ((1, 1, 1), ((1e-5, 1), (1e-5, 1), (0, _np.pi/2)))
+    _default_args = ((1, 1, 1),)
 
 
 # Register EECTriangleOPEIdLogId in _eec:
@@ -1413,7 +1409,7 @@ class EECTriangleOPELogLogId(EECBase, EECHist3DLogLogId):
     __repr__ = _swig_repr
 
     def __init__(self, *args, **kwargs):
-        r"""__init__(EECTriangleOPELogLogId self, arrayUnsigned3 nbins, arrayPairDoubleDouble axes_range={{{1e-5, 1}, {1e-5, 1}, {0, PI/2}}}, bool norm=True, vectorDouble weight_powers={1}, vectorUnsigned charge_powers={0}, fastjet::contrib::eec::ParticleWeight particle_weight=Default, fastjet::contrib::eec::PairwiseDistance pairwise_distance=Default, int num_threads=-1, int omp_chunksize=10, long print_every=-10, bool check_degen=False, bool average_verts=False, bool track_covariance=False, bool variance_bound=True, bool variance_bound_includes_overflows=True) -> EECTriangleOPELogLogId"""
+        r"""__init__(EECTriangleOPELogLogId self, arrayUnsigned3 nbins, arrayPairDoubleDouble axes_range={{{1e-5, 1}, {1e-5, 1}, {0, PI/2}}}, bool norm=True, vectorDouble weight_powers={1}, vectorUnsigned charge_powers={0}, fastjet::contrib::eec::ParticleWeight particle_weight=TransverseMomentum, fastjet::contrib::eec::PairwiseDistance pairwise_distance=DeltaR, int num_threads=-1, int omp_chunksize=10, long print_every=-10, bool check_degen=False, bool average_verts=False, bool track_covariance=False, bool variance_bound=True, bool variance_bound_includes_overflows=True) -> EECTriangleOPELogLogId"""
         _eec.EECTriangleOPELogLogId_swiginit(self, _eec.new_EECTriangleOPELogLogId(*args, **kwargs))
     __swig_destroy__ = _eec.delete_EECTriangleOPELogLogId
     set_num_threads = _swig_new_instance_method(_eec.EECTriangleOPELogLogId_set_num_threads)
@@ -1428,7 +1424,7 @@ class EECTriangleOPELogLogId(EECBase, EECHist3DLogLogId):
         return self.description().decode('utf-8')
 
 
-    _default_args = ((1, 1, 1), ((1e-5, 1), (1e-5, 1), (0, _np.pi/2)))
+    _default_args = ((1, 1, 1),)
 
 
 # Register EECTriangleOPELogLogId in _eec:
