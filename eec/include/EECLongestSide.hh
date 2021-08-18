@@ -279,6 +279,8 @@ private:
   }
 
   void eec_ij_sym(const EECEvent & event, int thread) {
+
+    std::cout << "eec_ij_sym start" << std::endl;
     
     // references to event data
     const std::vector<double> & ws0(event.weights()[0]),
@@ -302,6 +304,8 @@ private:
       for (unsigned j = 0; j < i; j++)
         hist(hist::weight(weight_i * ws0[j]), dists[ixm + j]);
     }
+
+    std::cout << "eec_ij_sym done" << std::endl;
   }
 
   void eec_no_sym(const EECEvent & event, int thread) {

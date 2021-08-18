@@ -334,6 +334,8 @@ private:
   void process_weights(const EECConfig & config,
                        std::vector<double> & raw_weights) {
 
+    std::cout << "process_weights start" << std::endl;
+
     // normalize weights if requested
     if (config.norm) {
       double weight_total(0);
@@ -343,6 +345,8 @@ private:
       for (double & w : raw_weights)
         w /= weight_total;
     }
+
+    std::cout << "process_weights normalized" << std::endl;
 
     // set internal weights according to raw weights and weight_powers
     weights_.resize(config.weight_powers.size());
@@ -356,15 +360,18 @@ private:
         for (unsigned j = 0; j < mult(); j++)
           weights_[i][j] = std::pow(raw_weights[j], config.weight_powers[i]);
     }
+    std::cout << "process_weights done" << std::endl;
   }
 
   // multiply weights[i][j] by charge[j]^charge_power[i]
   void process_charges(const EECConfig & config, const double * charges) {
+    std::cout << "process_charges start" << std::endl;
     if (config.use_charges)
       for (unsigned i = 0; i < config.charge_powers.size(); i++)
         if (config.charge_powers[i] != 0)
           for (unsigned j = 0; j < mult(); j++)
             weights_[i][j] *= std::pow(charges[j], config.charge_powers[i]);
+    std::cout << "process_charges done" << std::endl;
   }
 
   // fill distances from vector of pseudojets
@@ -441,6 +448,8 @@ private:
     else {
       const double * arr(ptrs_[0]);
 
+      std::cout << "In lazy_init array" << std::endl;
+
       std::vector<double> raw_weights(mult());
       dists_.resize(mult()*mult());
       for (unsigned i = 0; i < mult(); i++) {
@@ -462,12 +471,16 @@ private:
         }
       }
 
+      std::cout << "lazy_init gotten distances" << std::endl;
+
       std::vector<double> charges;
       if (config.use_charges) {
         charges.resize(mult());
         for (unsigned i = 0; i < mult(); i++)
           charges[i] = arr[i*config.nfeatures + 3];
       }
+
+      std::cout << "lazy_init gotten charges" << std::endl;
 
       // process weights and charges
       process_weights(config, raw_weights);
