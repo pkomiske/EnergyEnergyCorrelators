@@ -552,7 +552,6 @@ class EECHistBase1DId(object):
     __repr__ = _swig_repr
     rank = _swig_new_static_method(_eec.EECHistBase1DId_rank)
     __swig_destroy__ = _eec.delete_EECHistBase1DId
-    num_threads = _swig_new_instance_method(_eec.EECHistBase1DId_num_threads)
     track_covariance = _swig_new_instance_method(_eec.EECHistBase1DId_track_covariance)
     variance_bound = _swig_new_instance_method(_eec.EECHistBase1DId_variance_bound)
     variance_bound_includes_overflows = _swig_new_instance_method(_eec.EECHistBase1DId_variance_bound_includes_overflows)
@@ -561,7 +560,6 @@ class EECHistBase1DId(object):
     axis_range = _swig_new_instance_method(_eec.EECHistBase1DId_axis_range)
     axis_min = _swig_new_instance_method(_eec.EECHistBase1DId_axis_min)
     axis_max = _swig_new_instance_method(_eec.EECHistBase1DId_axis_max)
-    set_num_threads = _swig_new_instance_method(_eec.EECHistBase1DId_set_num_threads)
     set_track_coveriance = _swig_new_instance_method(_eec.EECHistBase1DId_set_track_coveriance)
     set_variance_bound = _swig_new_instance_method(_eec.EECHistBase1DId_set_variance_bound)
     set_variance_bound_includes_overflows = _swig_new_instance_method(_eec.EECHistBase1DId_set_variance_bound_includes_overflows)
@@ -607,7 +605,6 @@ class EECHistBase1DLog(object):
     __repr__ = _swig_repr
     rank = _swig_new_static_method(_eec.EECHistBase1DLog_rank)
     __swig_destroy__ = _eec.delete_EECHistBase1DLog
-    num_threads = _swig_new_instance_method(_eec.EECHistBase1DLog_num_threads)
     track_covariance = _swig_new_instance_method(_eec.EECHistBase1DLog_track_covariance)
     variance_bound = _swig_new_instance_method(_eec.EECHistBase1DLog_variance_bound)
     variance_bound_includes_overflows = _swig_new_instance_method(_eec.EECHistBase1DLog_variance_bound_includes_overflows)
@@ -616,7 +613,6 @@ class EECHistBase1DLog(object):
     axis_range = _swig_new_instance_method(_eec.EECHistBase1DLog_axis_range)
     axis_min = _swig_new_instance_method(_eec.EECHistBase1DLog_axis_min)
     axis_max = _swig_new_instance_method(_eec.EECHistBase1DLog_axis_max)
-    set_num_threads = _swig_new_instance_method(_eec.EECHistBase1DLog_set_num_threads)
     set_track_coveriance = _swig_new_instance_method(_eec.EECHistBase1DLog_set_track_coveriance)
     set_variance_bound = _swig_new_instance_method(_eec.EECHistBase1DLog_set_variance_bound)
     set_variance_bound_includes_overflows = _swig_new_instance_method(_eec.EECHistBase1DLog_set_variance_bound_includes_overflows)
@@ -662,7 +658,6 @@ class EECHistBaseIdIdId(object):
     __repr__ = _swig_repr
     rank = _swig_new_static_method(_eec.EECHistBaseIdIdId_rank)
     __swig_destroy__ = _eec.delete_EECHistBaseIdIdId
-    num_threads = _swig_new_instance_method(_eec.EECHistBaseIdIdId_num_threads)
     track_covariance = _swig_new_instance_method(_eec.EECHistBaseIdIdId_track_covariance)
     variance_bound = _swig_new_instance_method(_eec.EECHistBaseIdIdId_variance_bound)
     variance_bound_includes_overflows = _swig_new_instance_method(_eec.EECHistBaseIdIdId_variance_bound_includes_overflows)
@@ -671,7 +666,6 @@ class EECHistBaseIdIdId(object):
     axis_range = _swig_new_instance_method(_eec.EECHistBaseIdIdId_axis_range)
     axis_min = _swig_new_instance_method(_eec.EECHistBaseIdIdId_axis_min)
     axis_max = _swig_new_instance_method(_eec.EECHistBaseIdIdId_axis_max)
-    set_num_threads = _swig_new_instance_method(_eec.EECHistBaseIdIdId_set_num_threads)
     set_track_coveriance = _swig_new_instance_method(_eec.EECHistBaseIdIdId_set_track_coveriance)
     set_variance_bound = _swig_new_instance_method(_eec.EECHistBaseIdIdId_set_variance_bound)
     set_variance_bound_includes_overflows = _swig_new_instance_method(_eec.EECHistBaseIdIdId_set_variance_bound_includes_overflows)
@@ -717,7 +711,6 @@ class EECHistBaseLogIdId(object):
     __repr__ = _swig_repr
     rank = _swig_new_static_method(_eec.EECHistBaseLogIdId_rank)
     __swig_destroy__ = _eec.delete_EECHistBaseLogIdId
-    num_threads = _swig_new_instance_method(_eec.EECHistBaseLogIdId_num_threads)
     track_covariance = _swig_new_instance_method(_eec.EECHistBaseLogIdId_track_covariance)
     variance_bound = _swig_new_instance_method(_eec.EECHistBaseLogIdId_variance_bound)
     variance_bound_includes_overflows = _swig_new_instance_method(_eec.EECHistBaseLogIdId_variance_bound_includes_overflows)
@@ -726,7 +719,6 @@ class EECHistBaseLogIdId(object):
     axis_range = _swig_new_instance_method(_eec.EECHistBaseLogIdId_axis_range)
     axis_min = _swig_new_instance_method(_eec.EECHistBaseLogIdId_axis_min)
     axis_max = _swig_new_instance_method(_eec.EECHistBaseLogIdId_axis_max)
-    set_num_threads = _swig_new_instance_method(_eec.EECHistBaseLogIdId_set_num_threads)
     set_track_coveriance = _swig_new_instance_method(_eec.EECHistBaseLogIdId_set_track_coveriance)
     set_variance_bound = _swig_new_instance_method(_eec.EECHistBaseLogIdId_set_variance_bound)
     set_variance_bound_includes_overflows = _swig_new_instance_method(_eec.EECHistBaseLogIdId_set_variance_bound_includes_overflows)
@@ -772,7 +764,6 @@ class EECHistBaseIdLogId(object):
     __repr__ = _swig_repr
     rank = _swig_new_static_method(_eec.EECHistBaseIdLogId_rank)
     __swig_destroy__ = _eec.delete_EECHistBaseIdLogId
-    num_threads = _swig_new_instance_method(_eec.EECHistBaseIdLogId_num_threads)
     track_covariance = _swig_new_instance_method(_eec.EECHistBaseIdLogId_track_covariance)
     variance_bound = _swig_new_instance_method(_eec.EECHistBaseIdLogId_variance_bound)
     variance_bound_includes_overflows = _swig_new_instance_method(_eec.EECHistBaseIdLogId_variance_bound_includes_overflows)
@@ -781,7 +772,6 @@ class EECHistBaseIdLogId(object):
     axis_range = _swig_new_instance_method(_eec.EECHistBaseIdLogId_axis_range)
     axis_min = _swig_new_instance_method(_eec.EECHistBaseIdLogId_axis_min)
     axis_max = _swig_new_instance_method(_eec.EECHistBaseIdLogId_axis_max)
-    set_num_threads = _swig_new_instance_method(_eec.EECHistBaseIdLogId_set_num_threads)
     set_track_coveriance = _swig_new_instance_method(_eec.EECHistBaseIdLogId_set_track_coveriance)
     set_variance_bound = _swig_new_instance_method(_eec.EECHistBaseIdLogId_set_variance_bound)
     set_variance_bound_includes_overflows = _swig_new_instance_method(_eec.EECHistBaseIdLogId_set_variance_bound_includes_overflows)
@@ -827,7 +817,6 @@ class EECHistBaseLogLogId(object):
     __repr__ = _swig_repr
     rank = _swig_new_static_method(_eec.EECHistBaseLogLogId_rank)
     __swig_destroy__ = _eec.delete_EECHistBaseLogLogId
-    num_threads = _swig_new_instance_method(_eec.EECHistBaseLogLogId_num_threads)
     track_covariance = _swig_new_instance_method(_eec.EECHistBaseLogLogId_track_covariance)
     variance_bound = _swig_new_instance_method(_eec.EECHistBaseLogLogId_variance_bound)
     variance_bound_includes_overflows = _swig_new_instance_method(_eec.EECHistBaseLogLogId_variance_bound_includes_overflows)
@@ -836,7 +825,6 @@ class EECHistBaseLogLogId(object):
     axis_range = _swig_new_instance_method(_eec.EECHistBaseLogLogId_axis_range)
     axis_min = _swig_new_instance_method(_eec.EECHistBaseLogLogId_axis_min)
     axis_max = _swig_new_instance_method(_eec.EECHistBaseLogLogId_axis_max)
-    set_num_threads = _swig_new_instance_method(_eec.EECHistBaseLogLogId_set_num_threads)
     set_track_coveriance = _swig_new_instance_method(_eec.EECHistBaseLogLogId_set_track_coveriance)
     set_variance_bound = _swig_new_instance_method(_eec.EECHistBaseLogLogId_set_variance_bound)
     set_variance_bound_includes_overflows = _swig_new_instance_method(_eec.EECHistBaseLogLogId_set_variance_bound_includes_overflows)

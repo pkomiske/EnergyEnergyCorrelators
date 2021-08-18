@@ -97,8 +97,8 @@ public:
     EECBase(config),
 
     // construct EECHist3D from EECConfig of options
-    EECHist(nbins, axes_range, num_threads(),
-              track_covariance, variance_bound, variance_bound_includes_overflows)
+    EECHist(nbins, axes_range, EECBase::num_threads(),
+            track_covariance, variance_bound, variance_bound_includes_overflows)
   {
     init_subclass();
   }

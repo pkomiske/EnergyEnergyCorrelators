@@ -10,7 +10,7 @@ env:
   PYPITEST: 0
   CIBW_MANYLINUX_X86_64_IMAGE: ghcr.io/pkomiske/eec_manylinux2010_x86_64:latest
   CIBW_MANYLINUX_I686_IMAGE: ghcr.io/pkomiske/eec_manylinux2010_i686:latest
-  CIBW_SKIP: pp* cp310* cp36-macosx_x86_64 cp37-macosx_x86_64 cp38-macosx_x86_64
+  CIBW_SKIP: pp* cp310*
   CIBW_TEST_COMMAND: pytest -m longestside {package}/eec
   CIBW_TEST_REQUIRES: pytest numpy scipy energyflow
   CIBW_TEST_SKIP: "*i686 *win32"
@@ -31,7 +31,7 @@ jobs:
       - name: Setup Python
         uses: actions/setup-python@v2
         with:
-          python-version: '3.8'
+          python-version: '3.9'
       - name: Login to ghcr
         run: echo $GHCR_TOKEN | docker login ghcr.io -u pkomiske --password-stdin
       - name: Remove spurious boost
@@ -49,7 +49,7 @@ jobs:
       - name: Setup Python
         uses: actions/setup-python@v2
         with:
-          python-version: '3.8'
+          python-version: '3.9'
       - name: Install Boost and OpenMP
         run: brew install boost libomp
       - name: Remove spurious boost
@@ -67,7 +67,7 @@ jobs:
       - name: Setup Python
         uses: actions/setup-python@v2
         with:
-          python-version: '3.8'
+          python-version: '3.9'
       - name: Build wheels and upload to PyPI
         shell: bash
         run: ./scripts/build-wheels-and-upload.sh

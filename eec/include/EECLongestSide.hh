@@ -73,7 +73,7 @@ public:
     EECBase(config),
 
     // construct EECHist1D
-    EECHist({nbins}, {axis_range}, num_threads(),
+    EECHist({nbins}, {axis_range}, EECBase::num_threads(),
               track_covariance, variance_bound, variance_bound_includes_overflows),
 
     // variables local to this class

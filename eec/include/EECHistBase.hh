@@ -108,7 +108,6 @@ public:
   // GETTER METHODS
   /////////////////
 
-  int num_threads() const { return num_threads_; }
   bool track_covariance() const { return track_covariance_; }
   bool variance_bound() const { return variance_bound_; }
   bool variance_bound_includes_overflows() const { return variance_bound_includes_overflows_; }
@@ -123,7 +122,6 @@ public:
   // SETTER METHODS
   /////////////////
 
-  void set_num_threads(int threads) { num_threads_ = determine_num_threads(threads); }
   void set_track_coveriance(bool track) {
     track_covariance_ = track;
     init(nhists());
@@ -674,6 +672,9 @@ protected:
 
   typename HistTraits::NBins nbins_;
   typename HistTraits::AxesRange axes_range_;
+
+  int num_threads() const { return num_threads_; }
+  void set_num_threads(int threads) { num_threads_ = determine_num_threads(threads); }
 
   void duplicate_histograms(unsigned nhists) {
 
