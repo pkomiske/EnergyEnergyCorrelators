@@ -6,6 +6,8 @@ from test_eec import *
 event_count = 0
 
 def test_longestside_sym(N, axis, use_general_eNc, num_threads, weight_powers, charge_powers, nparticles):
+    global event_count
+
     if nparticles > 8 and N >= 5:
         pytest.skip()
 
@@ -26,12 +28,12 @@ def test_longestside_sym(N, axis, use_general_eNc, num_threads, weight_powers, c
     sys.stdout.flush()
 
     #eec(local_events, event_weights=weights)
-    for event,event_weight in zip(local_events, weights):
+    for event,event_weight in zip(local_events[:len(weights)//2], weights[:len(weights)//2]):
         eec.compute(event, event_weight, thread=random.randint(0, eec.num_threads()-1))
 
     print('Done computing individually')
 
-    eec(local_events, weights)
+    eec(local_events[len(weights)//2:], weights[len(weights)//2:])
 
     print('Done computing collectively')
 
