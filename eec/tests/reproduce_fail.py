@@ -27,7 +27,7 @@ def test_longestside_sym(N, axis, use_general_eNc, num_threads, weight_powers, c
 
     #eec(local_events, event_weights=weights)
     for event,event_weight in zip(local_events, weights):
-        eec.compute(event, event_weight, thread=random.randint(0, eec.num_threads-1))
+        eec.compute(event, event_weight, thread=random.randint(0, eec.num_threads()-1))
 
     print('Done computing individually')
 
