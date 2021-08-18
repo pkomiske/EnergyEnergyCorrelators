@@ -52,7 +52,6 @@ struct EECConfig {
   int num_threads, omp_chunksize;
   long print_every;
   bool norm, use_charges, check_degen, average_verts;
-  double R, beta;
 
   // in case of FastJet events
   ParticleWeight particle_weight;
@@ -69,9 +68,7 @@ struct EECConfig {
             int omp_chunksize = 10,
             long print_every = -10,
             bool check_degen = false,
-            bool average_verts = false,
-            double R = 1,
-            double beta = 1) :
+            bool average_verts = false) :
     nfeatures(3), use_charges(false)
   {
     this->N = N;
@@ -85,8 +82,6 @@ struct EECConfig {
     this->print_every = print_every;
     this->check_degen = check_degen;
     this->average_verts = average_verts;
-    this->R = R;
-    this->beta = beta;
   }
 
 private:
@@ -104,7 +99,6 @@ private:
     ar & weight_powers & charge_powers
        & N & nfeatures & num_threads & omp_chunksize & print_every
        & norm & use_charges & check_degen & average_verts
-       & R & beta
        & particle_weight & pairwise_distance;
   }
 

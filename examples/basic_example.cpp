@@ -37,27 +37,22 @@
 using namespace fastjet;
 using namespace fastjet::contrib;
 
-std::vector<PseudoJet> convert2pjs(const std::vector<Particle> & particles) {
-  std::vector<PseudoJet> pjs;
-  pjs.reserve(particles.size());
-
-  for (const Particle & particle : particles)
-    pjs.push_back(PtYPhiM(particle.pt, particle.y, particle.phi));
-
-  return pjs;
-}
-
 template<class T>
 void run_eec_comp(T & eec, EventProducer * evp) {
+
+  eec.set_track_covariance(false);
+  eec.set_variance_bound(false);
 
   std::cout << eec.description() << std::endl;
 
   // loop over events
   evp->reset();
   while (evp->next())
-    eec.compute(convert2pjs(evp->particles()));
 
-  // uncomment to output axis and histogram
+    // evp->particles() is just a vector of PseudoJets representing the particles
+    eec.compute(evp->particles());
+
+  // outputs histogram(s)
   std::cout << eec;
 }
 

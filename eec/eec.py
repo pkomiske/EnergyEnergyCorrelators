@@ -560,7 +560,7 @@ class EECHistBase1DId(object):
     axis_range = _swig_new_instance_method(_eec.EECHistBase1DId_axis_range)
     axis_min = _swig_new_instance_method(_eec.EECHistBase1DId_axis_min)
     axis_max = _swig_new_instance_method(_eec.EECHistBase1DId_axis_max)
-    set_track_coveriance = _swig_new_instance_method(_eec.EECHistBase1DId_set_track_coveriance)
+    set_track_covariance = _swig_new_instance_method(_eec.EECHistBase1DId_set_track_covariance)
     set_variance_bound = _swig_new_instance_method(_eec.EECHistBase1DId_set_variance_bound)
     set_variance_bound_includes_overflows = _swig_new_instance_method(_eec.EECHistBase1DId_set_variance_bound_includes_overflows)
     set_nbins = _swig_new_instance_method(_eec.EECHistBase1DId_set_nbins)
@@ -613,7 +613,7 @@ class EECHistBase1DLog(object):
     axis_range = _swig_new_instance_method(_eec.EECHistBase1DLog_axis_range)
     axis_min = _swig_new_instance_method(_eec.EECHistBase1DLog_axis_min)
     axis_max = _swig_new_instance_method(_eec.EECHistBase1DLog_axis_max)
-    set_track_coveriance = _swig_new_instance_method(_eec.EECHistBase1DLog_set_track_coveriance)
+    set_track_covariance = _swig_new_instance_method(_eec.EECHistBase1DLog_set_track_covariance)
     set_variance_bound = _swig_new_instance_method(_eec.EECHistBase1DLog_set_variance_bound)
     set_variance_bound_includes_overflows = _swig_new_instance_method(_eec.EECHistBase1DLog_set_variance_bound_includes_overflows)
     set_nbins = _swig_new_instance_method(_eec.EECHistBase1DLog_set_nbins)
@@ -666,7 +666,7 @@ class EECHistBaseIdIdId(object):
     axis_range = _swig_new_instance_method(_eec.EECHistBaseIdIdId_axis_range)
     axis_min = _swig_new_instance_method(_eec.EECHistBaseIdIdId_axis_min)
     axis_max = _swig_new_instance_method(_eec.EECHistBaseIdIdId_axis_max)
-    set_track_coveriance = _swig_new_instance_method(_eec.EECHistBaseIdIdId_set_track_coveriance)
+    set_track_covariance = _swig_new_instance_method(_eec.EECHistBaseIdIdId_set_track_covariance)
     set_variance_bound = _swig_new_instance_method(_eec.EECHistBaseIdIdId_set_variance_bound)
     set_variance_bound_includes_overflows = _swig_new_instance_method(_eec.EECHistBaseIdIdId_set_variance_bound_includes_overflows)
     set_nbins = _swig_new_instance_method(_eec.EECHistBaseIdIdId_set_nbins)
@@ -719,7 +719,7 @@ class EECHistBaseLogIdId(object):
     axis_range = _swig_new_instance_method(_eec.EECHistBaseLogIdId_axis_range)
     axis_min = _swig_new_instance_method(_eec.EECHistBaseLogIdId_axis_min)
     axis_max = _swig_new_instance_method(_eec.EECHistBaseLogIdId_axis_max)
-    set_track_coveriance = _swig_new_instance_method(_eec.EECHistBaseLogIdId_set_track_coveriance)
+    set_track_covariance = _swig_new_instance_method(_eec.EECHistBaseLogIdId_set_track_covariance)
     set_variance_bound = _swig_new_instance_method(_eec.EECHistBaseLogIdId_set_variance_bound)
     set_variance_bound_includes_overflows = _swig_new_instance_method(_eec.EECHistBaseLogIdId_set_variance_bound_includes_overflows)
     set_nbins = _swig_new_instance_method(_eec.EECHistBaseLogIdId_set_nbins)
@@ -772,7 +772,7 @@ class EECHistBaseIdLogId(object):
     axis_range = _swig_new_instance_method(_eec.EECHistBaseIdLogId_axis_range)
     axis_min = _swig_new_instance_method(_eec.EECHistBaseIdLogId_axis_min)
     axis_max = _swig_new_instance_method(_eec.EECHistBaseIdLogId_axis_max)
-    set_track_coveriance = _swig_new_instance_method(_eec.EECHistBaseIdLogId_set_track_coveriance)
+    set_track_covariance = _swig_new_instance_method(_eec.EECHistBaseIdLogId_set_track_covariance)
     set_variance_bound = _swig_new_instance_method(_eec.EECHistBaseIdLogId_set_variance_bound)
     set_variance_bound_includes_overflows = _swig_new_instance_method(_eec.EECHistBaseIdLogId_set_variance_bound_includes_overflows)
     set_nbins = _swig_new_instance_method(_eec.EECHistBaseIdLogId_set_nbins)
@@ -825,7 +825,7 @@ class EECHistBaseLogLogId(object):
     axis_range = _swig_new_instance_method(_eec.EECHistBaseLogLogId_axis_range)
     axis_min = _swig_new_instance_method(_eec.EECHistBaseLogLogId_axis_min)
     axis_max = _swig_new_instance_method(_eec.EECHistBaseLogLogId_axis_max)
-    set_track_coveriance = _swig_new_instance_method(_eec.EECHistBaseLogLogId_set_track_coveriance)
+    set_track_covariance = _swig_new_instance_method(_eec.EECHistBaseLogLogId_set_track_covariance)
     set_variance_bound = _swig_new_instance_method(_eec.EECHistBaseLogLogId_set_variance_bound)
     set_variance_bound_includes_overflows = _swig_new_instance_method(_eec.EECHistBaseLogLogId_set_variance_bound_includes_overflows)
     set_nbins = _swig_new_instance_method(_eec.EECHistBaseLogLogId_set_nbins)
@@ -1029,8 +1029,6 @@ class EECBase(object):
     num_threads = _swig_new_instance_method(_eec.EECBase_num_threads)
     omp_chunksize = _swig_new_instance_method(_eec.EECBase_omp_chunksize)
     print_every = _swig_new_instance_method(_eec.EECBase_print_every)
-    R = _swig_new_instance_method(_eec.EECBase_R)
-    beta = _swig_new_instance_method(_eec.EECBase_beta)
     total_weight = _swig_new_instance_method(_eec.EECBase_total_weight)
     particle_weight = _swig_new_instance_method(_eec.EECBase_particle_weight)
     pairwise_distance = _swig_new_instance_method(_eec.EECBase_pairwise_distance)
@@ -1042,8 +1040,6 @@ class EECBase(object):
     set_num_threads = _swig_new_instance_method(_eec.EECBase_set_num_threads)
     set_omp_chunksize = _swig_new_instance_method(_eec.EECBase_set_omp_chunksize)
     set_print_every = _swig_new_instance_method(_eec.EECBase_set_print_every)
-    set_R = _swig_new_instance_method(_eec.EECBase_set_R)
-    set_beta = _swig_new_instance_method(_eec.EECBase_set_beta)
     set_particle_weight = _swig_new_instance_method(_eec.EECBase_set_particle_weight)
     set_pairwise_distance = _swig_new_instance_method(_eec.EECBase_set_pairwise_distance)
     set_print_stream = _swig_new_instance_method(_eec.EECBase_set_print_stream)
@@ -1273,7 +1269,7 @@ class EECLongestSideId(EECBase, EECHist1DId):
     __repr__ = _swig_repr
 
     def __init__(self, *args, **kwargs):
-        r"""__init__(EECLongestSideId self, unsigned int N, unsigned int nbins, arrayDouble2 axis_range, bool norm=True, vectorDouble weight_powers={1}, vectorUnsigned charge_powers={0}, fastjet::contrib::eec::ParticleWeight particle_weight=Default, fastjet::contrib::eec::PairwiseDistance pairwise_distance=Default, int num_threads=-1, int omp_chunksize=10, long print_every=-10, bool check_degen=False, bool average_verts=False, bool track_covariance=True, bool variance_bound=True, bool variance_bound_includes_overflows=True, double R=1, double beta=1, bool use_general_eNc=False) -> EECLongestSideId"""
+        r"""__init__(EECLongestSideId self, unsigned int N, unsigned int nbins, arrayDouble2 axis_range={1e-5, 1}, bool norm=True, vectorDouble weight_powers={1}, vectorUnsigned charge_powers={0}, fastjet::contrib::eec::ParticleWeight particle_weight=Default, fastjet::contrib::eec::PairwiseDistance pairwise_distance=Default, int num_threads=-1, int omp_chunksize=10, long print_every=-10, bool check_degen=False, bool average_verts=False, bool track_covariance=True, bool variance_bound=True, bool variance_bound_includes_overflows=True, bool use_general_eNc=False) -> EECLongestSideId"""
         _eec.EECLongestSideId_swiginit(self, _eec.new_EECLongestSideId(*args, **kwargs))
     __swig_destroy__ = _eec.delete_EECLongestSideId
     use_general_eNc = _swig_new_instance_method(_eec.EECLongestSideId_use_general_eNc)
@@ -1303,7 +1299,7 @@ class EECLongestSideLog(EECBase, EECHist1DLog):
     __repr__ = _swig_repr
 
     def __init__(self, *args, **kwargs):
-        r"""__init__(EECLongestSideLog self, unsigned int N, unsigned int nbins, arrayDouble2 axis_range, bool norm=True, vectorDouble weight_powers={1}, vectorUnsigned charge_powers={0}, fastjet::contrib::eec::ParticleWeight particle_weight=Default, fastjet::contrib::eec::PairwiseDistance pairwise_distance=Default, int num_threads=-1, int omp_chunksize=10, long print_every=-10, bool check_degen=False, bool average_verts=False, bool track_covariance=True, bool variance_bound=True, bool variance_bound_includes_overflows=True, double R=1, double beta=1, bool use_general_eNc=False) -> EECLongestSideLog"""
+        r"""__init__(EECLongestSideLog self, unsigned int N, unsigned int nbins, arrayDouble2 axis_range={1e-5, 1}, bool norm=True, vectorDouble weight_powers={1}, vectorUnsigned charge_powers={0}, fastjet::contrib::eec::ParticleWeight particle_weight=Default, fastjet::contrib::eec::PairwiseDistance pairwise_distance=Default, int num_threads=-1, int omp_chunksize=10, long print_every=-10, bool check_degen=False, bool average_verts=False, bool track_covariance=True, bool variance_bound=True, bool variance_bound_includes_overflows=True, bool use_general_eNc=False) -> EECLongestSideLog"""
         _eec.EECLongestSideLog_swiginit(self, _eec.new_EECLongestSideLog(*args, **kwargs))
     __swig_destroy__ = _eec.delete_EECLongestSideLog
     use_general_eNc = _swig_new_instance_method(_eec.EECLongestSideLog_use_general_eNc)
@@ -1333,7 +1329,7 @@ class EECTriangleOPEIdIdId(EECBase, EECHist3DIdIdId):
     __repr__ = _swig_repr
 
     def __init__(self, *args, **kwargs):
-        r"""__init__(EECTriangleOPEIdIdId self, arrayUnsigned3 nbins, arrayPairDoubleDouble axes_range, bool norm=True, vectorDouble weight_powers={1}, vectorUnsigned charge_powers={0}, fastjet::contrib::eec::ParticleWeight particle_weight=Default, fastjet::contrib::eec::PairwiseDistance pairwise_distance=Default, int num_threads=-1, int omp_chunksize=10, long print_every=-10, bool check_degen=False, bool average_verts=False, bool track_covariance=False, bool variance_bound=True, bool variance_bound_includes_overflows=True, double R=1, double beta=1) -> EECTriangleOPEIdIdId"""
+        r"""__init__(EECTriangleOPEIdIdId self, arrayUnsigned3 nbins, arrayPairDoubleDouble axes_range={{{1e-5, 1}, {1e-5, 1}, {0, PI/2}}}, bool norm=True, vectorDouble weight_powers={1}, vectorUnsigned charge_powers={0}, fastjet::contrib::eec::ParticleWeight particle_weight=Default, fastjet::contrib::eec::PairwiseDistance pairwise_distance=Default, int num_threads=-1, int omp_chunksize=10, long print_every=-10, bool check_degen=False, bool average_verts=False, bool track_covariance=False, bool variance_bound=True, bool variance_bound_includes_overflows=True) -> EECTriangleOPEIdIdId"""
         _eec.EECTriangleOPEIdIdId_swiginit(self, _eec.new_EECTriangleOPEIdIdId(*args, **kwargs))
     __swig_destroy__ = _eec.delete_EECTriangleOPEIdIdId
     set_num_threads = _swig_new_instance_method(_eec.EECTriangleOPEIdIdId_set_num_threads)
@@ -1361,7 +1357,7 @@ class EECTriangleOPELogIdId(EECBase, EECHist3DLogIdId):
     __repr__ = _swig_repr
 
     def __init__(self, *args, **kwargs):
-        r"""__init__(EECTriangleOPELogIdId self, arrayUnsigned3 nbins, arrayPairDoubleDouble axes_range, bool norm=True, vectorDouble weight_powers={1}, vectorUnsigned charge_powers={0}, fastjet::contrib::eec::ParticleWeight particle_weight=Default, fastjet::contrib::eec::PairwiseDistance pairwise_distance=Default, int num_threads=-1, int omp_chunksize=10, long print_every=-10, bool check_degen=False, bool average_verts=False, bool track_covariance=False, bool variance_bound=True, bool variance_bound_includes_overflows=True, double R=1, double beta=1) -> EECTriangleOPELogIdId"""
+        r"""__init__(EECTriangleOPELogIdId self, arrayUnsigned3 nbins, arrayPairDoubleDouble axes_range={{{1e-5, 1}, {1e-5, 1}, {0, PI/2}}}, bool norm=True, vectorDouble weight_powers={1}, vectorUnsigned charge_powers={0}, fastjet::contrib::eec::ParticleWeight particle_weight=Default, fastjet::contrib::eec::PairwiseDistance pairwise_distance=Default, int num_threads=-1, int omp_chunksize=10, long print_every=-10, bool check_degen=False, bool average_verts=False, bool track_covariance=False, bool variance_bound=True, bool variance_bound_includes_overflows=True) -> EECTriangleOPELogIdId"""
         _eec.EECTriangleOPELogIdId_swiginit(self, _eec.new_EECTriangleOPELogIdId(*args, **kwargs))
     __swig_destroy__ = _eec.delete_EECTriangleOPELogIdId
     set_num_threads = _swig_new_instance_method(_eec.EECTriangleOPELogIdId_set_num_threads)
@@ -1389,7 +1385,7 @@ class EECTriangleOPEIdLogId(EECBase, EECHist3DIdLogId):
     __repr__ = _swig_repr
 
     def __init__(self, *args, **kwargs):
-        r"""__init__(EECTriangleOPEIdLogId self, arrayUnsigned3 nbins, arrayPairDoubleDouble axes_range, bool norm=True, vectorDouble weight_powers={1}, vectorUnsigned charge_powers={0}, fastjet::contrib::eec::ParticleWeight particle_weight=Default, fastjet::contrib::eec::PairwiseDistance pairwise_distance=Default, int num_threads=-1, int omp_chunksize=10, long print_every=-10, bool check_degen=False, bool average_verts=False, bool track_covariance=False, bool variance_bound=True, bool variance_bound_includes_overflows=True, double R=1, double beta=1) -> EECTriangleOPEIdLogId"""
+        r"""__init__(EECTriangleOPEIdLogId self, arrayUnsigned3 nbins, arrayPairDoubleDouble axes_range={{{1e-5, 1}, {1e-5, 1}, {0, PI/2}}}, bool norm=True, vectorDouble weight_powers={1}, vectorUnsigned charge_powers={0}, fastjet::contrib::eec::ParticleWeight particle_weight=Default, fastjet::contrib::eec::PairwiseDistance pairwise_distance=Default, int num_threads=-1, int omp_chunksize=10, long print_every=-10, bool check_degen=False, bool average_verts=False, bool track_covariance=False, bool variance_bound=True, bool variance_bound_includes_overflows=True) -> EECTriangleOPEIdLogId"""
         _eec.EECTriangleOPEIdLogId_swiginit(self, _eec.new_EECTriangleOPEIdLogId(*args, **kwargs))
     __swig_destroy__ = _eec.delete_EECTriangleOPEIdLogId
     set_num_threads = _swig_new_instance_method(_eec.EECTriangleOPEIdLogId_set_num_threads)
@@ -1417,7 +1413,7 @@ class EECTriangleOPELogLogId(EECBase, EECHist3DLogLogId):
     __repr__ = _swig_repr
 
     def __init__(self, *args, **kwargs):
-        r"""__init__(EECTriangleOPELogLogId self, arrayUnsigned3 nbins, arrayPairDoubleDouble axes_range, bool norm=True, vectorDouble weight_powers={1}, vectorUnsigned charge_powers={0}, fastjet::contrib::eec::ParticleWeight particle_weight=Default, fastjet::contrib::eec::PairwiseDistance pairwise_distance=Default, int num_threads=-1, int omp_chunksize=10, long print_every=-10, bool check_degen=False, bool average_verts=False, bool track_covariance=False, bool variance_bound=True, bool variance_bound_includes_overflows=True, double R=1, double beta=1) -> EECTriangleOPELogLogId"""
+        r"""__init__(EECTriangleOPELogLogId self, arrayUnsigned3 nbins, arrayPairDoubleDouble axes_range={{{1e-5, 1}, {1e-5, 1}, {0, PI/2}}}, bool norm=True, vectorDouble weight_powers={1}, vectorUnsigned charge_powers={0}, fastjet::contrib::eec::ParticleWeight particle_weight=Default, fastjet::contrib::eec::PairwiseDistance pairwise_distance=Default, int num_threads=-1, int omp_chunksize=10, long print_every=-10, bool check_degen=False, bool average_verts=False, bool track_covariance=False, bool variance_bound=True, bool variance_bound_includes_overflows=True) -> EECTriangleOPELogLogId"""
         _eec.EECTriangleOPELogLogId_swiginit(self, _eec.new_EECTriangleOPELogLogId(*args, **kwargs))
     __swig_destroy__ = _eec.delete_EECTriangleOPELogLogId
     set_num_threads = _swig_new_instance_method(_eec.EECTriangleOPELogLogId_set_num_threads)

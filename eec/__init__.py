@@ -45,10 +45,6 @@ def EECLongestSide(N, nbins, axis='log', **kwargs):
     if axis_range is not None and axes_range is not None:
         raise ValueError('`axis_range` and `axes_range` cannot both be given')
 
-    # provide a default axis_range
-    elif axis_range is None and axes_range is None:
-        axis_range = (1e-5, 1)
-
     if axes_range is not None:
         assert len(axes_range) == 1, '`axes_range` must be length 1'
         kwargs['axis_range'] = axes_range[0]
@@ -80,7 +76,6 @@ def EECLongestSide(N, nbins, axis='log', **kwargs):
 # as a tuple/list of 3 pairs of values
 def EECTriangleOPE(nbins,
                    axes=('log', 'log', 'id'),
-                   axes_range=[(1e-5, 1), (1e-5, 1), (0, eec._np.pi/2)],
                    **kwargs):
 
     # allow integers for _powers arguments
@@ -88,7 +83,6 @@ def EECTriangleOPE(nbins,
         if key in kwargs and isinstance(kwargs[key], (int, float)):
             kwargs[key] = (kwargs[key],)
 
-    kwargs['axes_range'] = axes_range
     axes = tuple(map(lambda x: x.lower(), axes))
     if axes == ('log', 'log', 'id'):
         return EECTriangleOPELogLogId(nbins, **kwargs)

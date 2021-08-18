@@ -28585,7 +28585,7 @@ fail:
 }
 
 
-SWIGINTERN PyObject *_wrap_EECHistBase1DId_set_track_coveriance(PyObject *SWIGUNUSEDPARM(self), PyObject *args, PyObject *kwargs) {
+SWIGINTERN PyObject *_wrap_EECHistBase1DId_set_track_covariance(PyObject *SWIGUNUSEDPARM(self), PyObject *args, PyObject *kwargs) {
   PyObject *resultobj = 0;
   fastjet::contrib::eec::hist::EECHistBase< fastjet::contrib::eec::hist::EECHist1D< axis::id > > *arg1 = (fastjet::contrib::eec::hist::EECHistBase< fastjet::contrib::eec::hist::EECHist1D< axis::id > > *) 0 ;
   bool arg2 ;
@@ -28599,20 +28599,20 @@ SWIGINTERN PyObject *_wrap_EECHistBase1DId_set_track_coveriance(PyObject *SWIGUN
     (char *)"self",  (char *)"track",  NULL 
   };
   
-  if (!PyArg_ParseTupleAndKeywords(args, kwargs, "OO:EECHistBase1DId_set_track_coveriance", kwnames, &obj0, &obj1)) SWIG_fail;
+  if (!PyArg_ParseTupleAndKeywords(args, kwargs, "OO:EECHistBase1DId_set_track_covariance", kwnames, &obj0, &obj1)) SWIG_fail;
   res1 = SWIG_ConvertPtr(obj0, &argp1,SWIGTYPE_p_fastjet__contrib__eec__hist__EECHistBaseT_fastjet__contrib__eec__hist__EECHist1DT_axis__id_t_t, 0 |  0 );
   if (!SWIG_IsOK(res1)) {
-    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "EECHistBase1DId_set_track_coveriance" "', argument " "1"" of type '" "fastjet::contrib::eec::hist::EECHistBase< fastjet::contrib::eec::hist::EECHist1D< axis::id > > *""'"); 
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "EECHistBase1DId_set_track_covariance" "', argument " "1"" of type '" "fastjet::contrib::eec::hist::EECHistBase< fastjet::contrib::eec::hist::EECHist1D< axis::id > > *""'"); 
   }
   arg1 = reinterpret_cast< fastjet::contrib::eec::hist::EECHistBase< fastjet::contrib::eec::hist::EECHist1D< axis::id > > * >(argp1);
   ecode2 = SWIG_AsVal_bool(obj1, &val2);
   if (!SWIG_IsOK(ecode2)) {
-    SWIG_exception_fail(SWIG_ArgError(ecode2), "in method '" "EECHistBase1DId_set_track_coveriance" "', argument " "2"" of type '" "bool""'");
+    SWIG_exception_fail(SWIG_ArgError(ecode2), "in method '" "EECHistBase1DId_set_track_covariance" "', argument " "2"" of type '" "bool""'");
   } 
   arg2 = static_cast< bool >(val2);
   {
     try {
-      (arg1)->set_track_coveriance(arg2); 
+      (arg1)->set_track_covariance(arg2); 
     }
     /*@SWIG:/usr/local/Cellar/swig/4.0.2/share/swig/4.0.2/typemaps/exception.swg,58,SWIG_CATCH_STDEXCEPT@*/  /* catching std::exception  */
     catch (std::invalid_argument& e) {
@@ -30827,7 +30827,7 @@ fail:
 }
 
 
-SWIGINTERN PyObject *_wrap_EECHistBase1DLog_set_track_coveriance(PyObject *SWIGUNUSEDPARM(self), PyObject *args, PyObject *kwargs) {
+SWIGINTERN PyObject *_wrap_EECHistBase1DLog_set_track_covariance(PyObject *SWIGUNUSEDPARM(self), PyObject *args, PyObject *kwargs) {
   PyObject *resultobj = 0;
   fastjet::contrib::eec::hist::EECHistBase< fastjet::contrib::eec::hist::EECHist1D< axis::log > > *arg1 = (fastjet::contrib::eec::hist::EECHistBase< fastjet::contrib::eec::hist::EECHist1D< axis::log > > *) 0 ;
   bool arg2 ;
@@ -30841,20 +30841,20 @@ SWIGINTERN PyObject *_wrap_EECHistBase1DLog_set_track_coveriance(PyObject *SWIGU
     (char *)"self",  (char *)"track",  NULL 
   };
   
-  if (!PyArg_ParseTupleAndKeywords(args, kwargs, "OO:EECHistBase1DLog_set_track_coveriance", kwnames, &obj0, &obj1)) SWIG_fail;
+  if (!PyArg_ParseTupleAndKeywords(args, kwargs, "OO:EECHistBase1DLog_set_track_covariance", kwnames, &obj0, &obj1)) SWIG_fail;
   res1 = SWIG_ConvertPtr(obj0, &argp1,SWIGTYPE_p_fastjet__contrib__eec__hist__EECHistBaseT_fastjet__contrib__eec__hist__EECHist1DT_axis__log_t_t, 0 |  0 );
   if (!SWIG_IsOK(res1)) {
-    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "EECHistBase1DLog_set_track_coveriance" "', argument " "1"" of type '" "fastjet::contrib::eec::hist::EECHistBase< fastjet::contrib::eec::hist::EECHist1D< axis::log > > *""'"); 
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "EECHistBase1DLog_set_track_covariance" "', argument " "1"" of type '" "fastjet::contrib::eec::hist::EECHistBase< fastjet::contrib::eec::hist::EECHist1D< axis::log > > *""'"); 
   }
   arg1 = reinterpret_cast< fastjet::contrib::eec::hist::EECHistBase< fastjet::contrib::eec::hist::EECHist1D< axis::log > > * >(argp1);
   ecode2 = SWIG_AsVal_bool(obj1, &val2);
   if (!SWIG_IsOK(ecode2)) {
-    SWIG_exception_fail(SWIG_ArgError(ecode2), "in method '" "EECHistBase1DLog_set_track_coveriance" "', argument " "2"" of type '" "bool""'");
+    SWIG_exception_fail(SWIG_ArgError(ecode2), "in method '" "EECHistBase1DLog_set_track_covariance" "', argument " "2"" of type '" "bool""'");
   } 
   arg2 = static_cast< bool >(val2);
   {
     try {
-      (arg1)->set_track_coveriance(arg2); 
+      (arg1)->set_track_covariance(arg2); 
     }
     /*@SWIG:/usr/local/Cellar/swig/4.0.2/share/swig/4.0.2/typemaps/exception.swg,58,SWIG_CATCH_STDEXCEPT@*/  /* catching std::exception  */
     catch (std::invalid_argument& e) {
@@ -33069,7 +33069,7 @@ fail:
 }
 
 
-SWIGINTERN PyObject *_wrap_EECHistBaseIdIdId_set_track_coveriance(PyObject *SWIGUNUSEDPARM(self), PyObject *args, PyObject *kwargs) {
+SWIGINTERN PyObject *_wrap_EECHistBaseIdIdId_set_track_covariance(PyObject *SWIGUNUSEDPARM(self), PyObject *args, PyObject *kwargs) {
   PyObject *resultobj = 0;
   fastjet::contrib::eec::hist::EECHistBase< fastjet::contrib::eec::hist::EECHist3D< axis::id,axis::id,axis::id > > *arg1 = (fastjet::contrib::eec::hist::EECHistBase< fastjet::contrib::eec::hist::EECHist3D< axis::id,axis::id,axis::id > > *) 0 ;
   bool arg2 ;
@@ -33083,20 +33083,20 @@ SWIGINTERN PyObject *_wrap_EECHistBaseIdIdId_set_track_coveriance(PyObject *SWIG
     (char *)"self",  (char *)"track",  NULL 
   };
   
-  if (!PyArg_ParseTupleAndKeywords(args, kwargs, "OO:EECHistBaseIdIdId_set_track_coveriance", kwnames, &obj0, &obj1)) SWIG_fail;
+  if (!PyArg_ParseTupleAndKeywords(args, kwargs, "OO:EECHistBaseIdIdId_set_track_covariance", kwnames, &obj0, &obj1)) SWIG_fail;
   res1 = SWIG_ConvertPtr(obj0, &argp1,SWIGTYPE_p_fastjet__contrib__eec__hist__EECHistBaseT_fastjet__contrib__eec__hist__EECHist3DT_axis__id_axis__id_axis__id_t_t, 0 |  0 );
   if (!SWIG_IsOK(res1)) {
-    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "EECHistBaseIdIdId_set_track_coveriance" "', argument " "1"" of type '" "fastjet::contrib::eec::hist::EECHistBase< fastjet::contrib::eec::hist::EECHist3D< axis::id,axis::id,axis::id > > *""'"); 
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "EECHistBaseIdIdId_set_track_covariance" "', argument " "1"" of type '" "fastjet::contrib::eec::hist::EECHistBase< fastjet::contrib::eec::hist::EECHist3D< axis::id,axis::id,axis::id > > *""'"); 
   }
   arg1 = reinterpret_cast< fastjet::contrib::eec::hist::EECHistBase< fastjet::contrib::eec::hist::EECHist3D< axis::id,axis::id,axis::id > > * >(argp1);
   ecode2 = SWIG_AsVal_bool(obj1, &val2);
   if (!SWIG_IsOK(ecode2)) {
-    SWIG_exception_fail(SWIG_ArgError(ecode2), "in method '" "EECHistBaseIdIdId_set_track_coveriance" "', argument " "2"" of type '" "bool""'");
+    SWIG_exception_fail(SWIG_ArgError(ecode2), "in method '" "EECHistBaseIdIdId_set_track_covariance" "', argument " "2"" of type '" "bool""'");
   } 
   arg2 = static_cast< bool >(val2);
   {
     try {
-      (arg1)->set_track_coveriance(arg2); 
+      (arg1)->set_track_covariance(arg2); 
     }
     /*@SWIG:/usr/local/Cellar/swig/4.0.2/share/swig/4.0.2/typemaps/exception.swg,58,SWIG_CATCH_STDEXCEPT@*/  /* catching std::exception  */
     catch (std::invalid_argument& e) {
@@ -35311,7 +35311,7 @@ fail:
 }
 
 
-SWIGINTERN PyObject *_wrap_EECHistBaseLogIdId_set_track_coveriance(PyObject *SWIGUNUSEDPARM(self), PyObject *args, PyObject *kwargs) {
+SWIGINTERN PyObject *_wrap_EECHistBaseLogIdId_set_track_covariance(PyObject *SWIGUNUSEDPARM(self), PyObject *args, PyObject *kwargs) {
   PyObject *resultobj = 0;
   fastjet::contrib::eec::hist::EECHistBase< fastjet::contrib::eec::hist::EECHist3D< axis::log,axis::id,axis::id > > *arg1 = (fastjet::contrib::eec::hist::EECHistBase< fastjet::contrib::eec::hist::EECHist3D< axis::log,axis::id,axis::id > > *) 0 ;
   bool arg2 ;
@@ -35325,20 +35325,20 @@ SWIGINTERN PyObject *_wrap_EECHistBaseLogIdId_set_track_coveriance(PyObject *SWI
     (char *)"self",  (char *)"track",  NULL 
   };
   
-  if (!PyArg_ParseTupleAndKeywords(args, kwargs, "OO:EECHistBaseLogIdId_set_track_coveriance", kwnames, &obj0, &obj1)) SWIG_fail;
+  if (!PyArg_ParseTupleAndKeywords(args, kwargs, "OO:EECHistBaseLogIdId_set_track_covariance", kwnames, &obj0, &obj1)) SWIG_fail;
   res1 = SWIG_ConvertPtr(obj0, &argp1,SWIGTYPE_p_fastjet__contrib__eec__hist__EECHistBaseT_fastjet__contrib__eec__hist__EECHist3DT_axis__log_axis__id_axis__id_t_t, 0 |  0 );
   if (!SWIG_IsOK(res1)) {
-    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "EECHistBaseLogIdId_set_track_coveriance" "', argument " "1"" of type '" "fastjet::contrib::eec::hist::EECHistBase< fastjet::contrib::eec::hist::EECHist3D< axis::log,axis::id,axis::id > > *""'"); 
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "EECHistBaseLogIdId_set_track_covariance" "', argument " "1"" of type '" "fastjet::contrib::eec::hist::EECHistBase< fastjet::contrib::eec::hist::EECHist3D< axis::log,axis::id,axis::id > > *""'"); 
   }
   arg1 = reinterpret_cast< fastjet::contrib::eec::hist::EECHistBase< fastjet::contrib::eec::hist::EECHist3D< axis::log,axis::id,axis::id > > * >(argp1);
   ecode2 = SWIG_AsVal_bool(obj1, &val2);
   if (!SWIG_IsOK(ecode2)) {
-    SWIG_exception_fail(SWIG_ArgError(ecode2), "in method '" "EECHistBaseLogIdId_set_track_coveriance" "', argument " "2"" of type '" "bool""'");
+    SWIG_exception_fail(SWIG_ArgError(ecode2), "in method '" "EECHistBaseLogIdId_set_track_covariance" "', argument " "2"" of type '" "bool""'");
   } 
   arg2 = static_cast< bool >(val2);
   {
     try {
-      (arg1)->set_track_coveriance(arg2); 
+      (arg1)->set_track_covariance(arg2); 
     }
     /*@SWIG:/usr/local/Cellar/swig/4.0.2/share/swig/4.0.2/typemaps/exception.swg,58,SWIG_CATCH_STDEXCEPT@*/  /* catching std::exception  */
     catch (std::invalid_argument& e) {
@@ -37553,7 +37553,7 @@ fail:
 }
 
 
-SWIGINTERN PyObject *_wrap_EECHistBaseIdLogId_set_track_coveriance(PyObject *SWIGUNUSEDPARM(self), PyObject *args, PyObject *kwargs) {
+SWIGINTERN PyObject *_wrap_EECHistBaseIdLogId_set_track_covariance(PyObject *SWIGUNUSEDPARM(self), PyObject *args, PyObject *kwargs) {
   PyObject *resultobj = 0;
   fastjet::contrib::eec::hist::EECHistBase< fastjet::contrib::eec::hist::EECHist3D< axis::id,axis::log,axis::id > > *arg1 = (fastjet::contrib::eec::hist::EECHistBase< fastjet::contrib::eec::hist::EECHist3D< axis::id,axis::log,axis::id > > *) 0 ;
   bool arg2 ;
@@ -37567,20 +37567,20 @@ SWIGINTERN PyObject *_wrap_EECHistBaseIdLogId_set_track_coveriance(PyObject *SWI
     (char *)"self",  (char *)"track",  NULL 
   };
   
-  if (!PyArg_ParseTupleAndKeywords(args, kwargs, "OO:EECHistBaseIdLogId_set_track_coveriance", kwnames, &obj0, &obj1)) SWIG_fail;
+  if (!PyArg_ParseTupleAndKeywords(args, kwargs, "OO:EECHistBaseIdLogId_set_track_covariance", kwnames, &obj0, &obj1)) SWIG_fail;
   res1 = SWIG_ConvertPtr(obj0, &argp1,SWIGTYPE_p_fastjet__contrib__eec__hist__EECHistBaseT_fastjet__contrib__eec__hist__EECHist3DT_axis__id_axis__log_axis__id_t_t, 0 |  0 );
   if (!SWIG_IsOK(res1)) {
-    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "EECHistBaseIdLogId_set_track_coveriance" "', argument " "1"" of type '" "fastjet::contrib::eec::hist::EECHistBase< fastjet::contrib::eec::hist::EECHist3D< axis::id,axis::log,axis::id > > *""'"); 
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "EECHistBaseIdLogId_set_track_covariance" "', argument " "1"" of type '" "fastjet::contrib::eec::hist::EECHistBase< fastjet::contrib::eec::hist::EECHist3D< axis::id,axis::log,axis::id > > *""'"); 
   }
   arg1 = reinterpret_cast< fastjet::contrib::eec::hist::EECHistBase< fastjet::contrib::eec::hist::EECHist3D< axis::id,axis::log,axis::id > > * >(argp1);
   ecode2 = SWIG_AsVal_bool(obj1, &val2);
   if (!SWIG_IsOK(ecode2)) {
-    SWIG_exception_fail(SWIG_ArgError(ecode2), "in method '" "EECHistBaseIdLogId_set_track_coveriance" "', argument " "2"" of type '" "bool""'");
+    SWIG_exception_fail(SWIG_ArgError(ecode2), "in method '" "EECHistBaseIdLogId_set_track_covariance" "', argument " "2"" of type '" "bool""'");
   } 
   arg2 = static_cast< bool >(val2);
   {
     try {
-      (arg1)->set_track_coveriance(arg2); 
+      (arg1)->set_track_covariance(arg2); 
     }
     /*@SWIG:/usr/local/Cellar/swig/4.0.2/share/swig/4.0.2/typemaps/exception.swg,58,SWIG_CATCH_STDEXCEPT@*/  /* catching std::exception  */
     catch (std::invalid_argument& e) {
@@ -39795,7 +39795,7 @@ fail:
 }
 
 
-SWIGINTERN PyObject *_wrap_EECHistBaseLogLogId_set_track_coveriance(PyObject *SWIGUNUSEDPARM(self), PyObject *args, PyObject *kwargs) {
+SWIGINTERN PyObject *_wrap_EECHistBaseLogLogId_set_track_covariance(PyObject *SWIGUNUSEDPARM(self), PyObject *args, PyObject *kwargs) {
   PyObject *resultobj = 0;
   fastjet::contrib::eec::hist::EECHistBase< fastjet::contrib::eec::hist::EECHist3D< axis::log,axis::log,axis::id > > *arg1 = (fastjet::contrib::eec::hist::EECHistBase< fastjet::contrib::eec::hist::EECHist3D< axis::log,axis::log,axis::id > > *) 0 ;
   bool arg2 ;
@@ -39809,20 +39809,20 @@ SWIGINTERN PyObject *_wrap_EECHistBaseLogLogId_set_track_coveriance(PyObject *SW
     (char *)"self",  (char *)"track",  NULL 
   };
   
-  if (!PyArg_ParseTupleAndKeywords(args, kwargs, "OO:EECHistBaseLogLogId_set_track_coveriance", kwnames, &obj0, &obj1)) SWIG_fail;
+  if (!PyArg_ParseTupleAndKeywords(args, kwargs, "OO:EECHistBaseLogLogId_set_track_covariance", kwnames, &obj0, &obj1)) SWIG_fail;
   res1 = SWIG_ConvertPtr(obj0, &argp1,SWIGTYPE_p_fastjet__contrib__eec__hist__EECHistBaseT_fastjet__contrib__eec__hist__EECHist3DT_axis__log_axis__log_axis__id_t_t, 0 |  0 );
   if (!SWIG_IsOK(res1)) {
-    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "EECHistBaseLogLogId_set_track_coveriance" "', argument " "1"" of type '" "fastjet::contrib::eec::hist::EECHistBase< fastjet::contrib::eec::hist::EECHist3D< axis::log,axis::log,axis::id > > *""'"); 
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "EECHistBaseLogLogId_set_track_covariance" "', argument " "1"" of type '" "fastjet::contrib::eec::hist::EECHistBase< fastjet::contrib::eec::hist::EECHist3D< axis::log,axis::log,axis::id > > *""'"); 
   }
   arg1 = reinterpret_cast< fastjet::contrib::eec::hist::EECHistBase< fastjet::contrib::eec::hist::EECHist3D< axis::log,axis::log,axis::id > > * >(argp1);
   ecode2 = SWIG_AsVal_bool(obj1, &val2);
   if (!SWIG_IsOK(ecode2)) {
-    SWIG_exception_fail(SWIG_ArgError(ecode2), "in method '" "EECHistBaseLogLogId_set_track_coveriance" "', argument " "2"" of type '" "bool""'");
+    SWIG_exception_fail(SWIG_ArgError(ecode2), "in method '" "EECHistBaseLogLogId_set_track_covariance" "', argument " "2"" of type '" "bool""'");
   } 
   arg2 = static_cast< bool >(val2);
   {
     try {
-      (arg1)->set_track_coveriance(arg2); 
+      (arg1)->set_track_covariance(arg2); 
     }
     /*@SWIG:/usr/local/Cellar/swig/4.0.2/share/swig/4.0.2/typemaps/exception.swg,58,SWIG_CATCH_STDEXCEPT@*/  /* catching std::exception  */
     catch (std::invalid_argument& e) {
@@ -45949,100 +45949,6 @@ fail:
 }
 
 
-SWIGINTERN PyObject *_wrap_EECBase_R(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
-  PyObject *resultobj = 0;
-  fastjet::contrib::eec::EECBase *arg1 = (fastjet::contrib::eec::EECBase *) 0 ;
-  void *argp1 = 0 ;
-  int res1 = 0 ;
-  PyObject *swig_obj[1] ;
-  double result;
-  
-  if (!args) SWIG_fail;
-  swig_obj[0] = args;
-  res1 = SWIG_ConvertPtr(swig_obj[0], &argp1,SWIGTYPE_p_fastjet__contrib__eec__EECBase, 0 |  0 );
-  if (!SWIG_IsOK(res1)) {
-    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "EECBase_R" "', argument " "1"" of type '" "fastjet::contrib::eec::EECBase const *""'"); 
-  }
-  arg1 = reinterpret_cast< fastjet::contrib::eec::EECBase * >(argp1);
-  {
-    try {
-      result = (double)((fastjet::contrib::eec::EECBase const *)arg1)->R(); 
-    }
-    /*@SWIG:/usr/local/Cellar/swig/4.0.2/share/swig/4.0.2/typemaps/exception.swg,58,SWIG_CATCH_STDEXCEPT@*/  /* catching std::exception  */
-    catch (std::invalid_argument& e) {
-      SWIG_exception_fail(SWIG_ValueError, e.what() );
-    } catch (std::domain_error& e) {
-      SWIG_exception_fail(SWIG_ValueError, e.what() );
-    } catch (std::overflow_error& e) {
-      SWIG_exception_fail(SWIG_OverflowError, e.what() );
-    } catch (std::out_of_range& e) {
-      SWIG_exception_fail(SWIG_IndexError, e.what() );
-    } catch (std::length_error& e) {
-      SWIG_exception_fail(SWIG_IndexError, e.what() );
-    } catch (std::runtime_error& e) {
-      SWIG_exception_fail(SWIG_RuntimeError, e.what() );
-    } catch (std::exception& e) {
-      SWIG_exception_fail(SWIG_SystemError, e.what() );
-    }
-    /*@SWIG@*/
-    catch (...) {
-      SWIG_exception_fail(SWIG_UnknownError, "unknown exception");
-    }
-  }
-  resultobj = SWIG_From_double(static_cast< double >(result));
-  return resultobj;
-fail:
-  return NULL;
-}
-
-
-SWIGINTERN PyObject *_wrap_EECBase_beta(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
-  PyObject *resultobj = 0;
-  fastjet::contrib::eec::EECBase *arg1 = (fastjet::contrib::eec::EECBase *) 0 ;
-  void *argp1 = 0 ;
-  int res1 = 0 ;
-  PyObject *swig_obj[1] ;
-  double result;
-  
-  if (!args) SWIG_fail;
-  swig_obj[0] = args;
-  res1 = SWIG_ConvertPtr(swig_obj[0], &argp1,SWIGTYPE_p_fastjet__contrib__eec__EECBase, 0 |  0 );
-  if (!SWIG_IsOK(res1)) {
-    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "EECBase_beta" "', argument " "1"" of type '" "fastjet::contrib::eec::EECBase const *""'"); 
-  }
-  arg1 = reinterpret_cast< fastjet::contrib::eec::EECBase * >(argp1);
-  {
-    try {
-      result = (double)((fastjet::contrib::eec::EECBase const *)arg1)->beta(); 
-    }
-    /*@SWIG:/usr/local/Cellar/swig/4.0.2/share/swig/4.0.2/typemaps/exception.swg,58,SWIG_CATCH_STDEXCEPT@*/  /* catching std::exception  */
-    catch (std::invalid_argument& e) {
-      SWIG_exception_fail(SWIG_ValueError, e.what() );
-    } catch (std::domain_error& e) {
-      SWIG_exception_fail(SWIG_ValueError, e.what() );
-    } catch (std::overflow_error& e) {
-      SWIG_exception_fail(SWIG_OverflowError, e.what() );
-    } catch (std::out_of_range& e) {
-      SWIG_exception_fail(SWIG_IndexError, e.what() );
-    } catch (std::length_error& e) {
-      SWIG_exception_fail(SWIG_IndexError, e.what() );
-    } catch (std::runtime_error& e) {
-      SWIG_exception_fail(SWIG_RuntimeError, e.what() );
-    } catch (std::exception& e) {
-      SWIG_exception_fail(SWIG_SystemError, e.what() );
-    }
-    /*@SWIG@*/
-    catch (...) {
-      SWIG_exception_fail(SWIG_UnknownError, "unknown exception");
-    }
-  }
-  resultobj = SWIG_From_double(static_cast< double >(result));
-  return resultobj;
-fail:
-  return NULL;
-}
-
-
 SWIGINTERN PyObject *_wrap_EECBase_total_weight(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
   PyObject *resultobj = 0;
   fastjet::contrib::eec::EECBase *arg1 = (fastjet::contrib::eec::EECBase *) 0 ;
@@ -46647,120 +46553,6 @@ SWIGINTERN PyObject *_wrap_EECBase_set_print_every(PyObject *SWIGUNUSEDPARM(self
   {
     try {
       (arg1)->set_print_every(arg2); 
-    }
-    /*@SWIG:/usr/local/Cellar/swig/4.0.2/share/swig/4.0.2/typemaps/exception.swg,58,SWIG_CATCH_STDEXCEPT@*/  /* catching std::exception  */
-    catch (std::invalid_argument& e) {
-      SWIG_exception_fail(SWIG_ValueError, e.what() );
-    } catch (std::domain_error& e) {
-      SWIG_exception_fail(SWIG_ValueError, e.what() );
-    } catch (std::overflow_error& e) {
-      SWIG_exception_fail(SWIG_OverflowError, e.what() );
-    } catch (std::out_of_range& e) {
-      SWIG_exception_fail(SWIG_IndexError, e.what() );
-    } catch (std::length_error& e) {
-      SWIG_exception_fail(SWIG_IndexError, e.what() );
-    } catch (std::runtime_error& e) {
-      SWIG_exception_fail(SWIG_RuntimeError, e.what() );
-    } catch (std::exception& e) {
-      SWIG_exception_fail(SWIG_SystemError, e.what() );
-    }
-    /*@SWIG@*/
-    catch (...) {
-      SWIG_exception_fail(SWIG_UnknownError, "unknown exception");
-    }
-  }
-  resultobj = SWIG_Py_Void();
-  return resultobj;
-fail:
-  return NULL;
-}
-
-
-SWIGINTERN PyObject *_wrap_EECBase_set_R(PyObject *SWIGUNUSEDPARM(self), PyObject *args, PyObject *kwargs) {
-  PyObject *resultobj = 0;
-  fastjet::contrib::eec::EECBase *arg1 = (fastjet::contrib::eec::EECBase *) 0 ;
-  double arg2 ;
-  void *argp1 = 0 ;
-  int res1 = 0 ;
-  double val2 ;
-  int ecode2 = 0 ;
-  PyObject * obj0 = 0 ;
-  PyObject * obj1 = 0 ;
-  char * kwnames[] = {
-    (char *)"self",  (char *)"R",  NULL 
-  };
-  
-  if (!PyArg_ParseTupleAndKeywords(args, kwargs, "OO:EECBase_set_R", kwnames, &obj0, &obj1)) SWIG_fail;
-  res1 = SWIG_ConvertPtr(obj0, &argp1,SWIGTYPE_p_fastjet__contrib__eec__EECBase, 0 |  0 );
-  if (!SWIG_IsOK(res1)) {
-    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "EECBase_set_R" "', argument " "1"" of type '" "fastjet::contrib::eec::EECBase *""'"); 
-  }
-  arg1 = reinterpret_cast< fastjet::contrib::eec::EECBase * >(argp1);
-  ecode2 = SWIG_AsVal_double(obj1, &val2);
-  if (!SWIG_IsOK(ecode2)) {
-    SWIG_exception_fail(SWIG_ArgError(ecode2), "in method '" "EECBase_set_R" "', argument " "2"" of type '" "double""'");
-  } 
-  arg2 = static_cast< double >(val2);
-  {
-    try {
-      (arg1)->set_R(arg2); 
-    }
-    /*@SWIG:/usr/local/Cellar/swig/4.0.2/share/swig/4.0.2/typemaps/exception.swg,58,SWIG_CATCH_STDEXCEPT@*/  /* catching std::exception  */
-    catch (std::invalid_argument& e) {
-      SWIG_exception_fail(SWIG_ValueError, e.what() );
-    } catch (std::domain_error& e) {
-      SWIG_exception_fail(SWIG_ValueError, e.what() );
-    } catch (std::overflow_error& e) {
-      SWIG_exception_fail(SWIG_OverflowError, e.what() );
-    } catch (std::out_of_range& e) {
-      SWIG_exception_fail(SWIG_IndexError, e.what() );
-    } catch (std::length_error& e) {
-      SWIG_exception_fail(SWIG_IndexError, e.what() );
-    } catch (std::runtime_error& e) {
-      SWIG_exception_fail(SWIG_RuntimeError, e.what() );
-    } catch (std::exception& e) {
-      SWIG_exception_fail(SWIG_SystemError, e.what() );
-    }
-    /*@SWIG@*/
-    catch (...) {
-      SWIG_exception_fail(SWIG_UnknownError, "unknown exception");
-    }
-  }
-  resultobj = SWIG_Py_Void();
-  return resultobj;
-fail:
-  return NULL;
-}
-
-
-SWIGINTERN PyObject *_wrap_EECBase_set_beta(PyObject *SWIGUNUSEDPARM(self), PyObject *args, PyObject *kwargs) {
-  PyObject *resultobj = 0;
-  fastjet::contrib::eec::EECBase *arg1 = (fastjet::contrib::eec::EECBase *) 0 ;
-  double arg2 ;
-  void *argp1 = 0 ;
-  int res1 = 0 ;
-  double val2 ;
-  int ecode2 = 0 ;
-  PyObject * obj0 = 0 ;
-  PyObject * obj1 = 0 ;
-  char * kwnames[] = {
-    (char *)"self",  (char *)"beta",  NULL 
-  };
-  
-  if (!PyArg_ParseTupleAndKeywords(args, kwargs, "OO:EECBase_set_beta", kwnames, &obj0, &obj1)) SWIG_fail;
-  res1 = SWIG_ConvertPtr(obj0, &argp1,SWIGTYPE_p_fastjet__contrib__eec__EECBase, 0 |  0 );
-  if (!SWIG_IsOK(res1)) {
-    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "EECBase_set_beta" "', argument " "1"" of type '" "fastjet::contrib::eec::EECBase *""'"); 
-  }
-  arg1 = reinterpret_cast< fastjet::contrib::eec::EECBase * >(argp1);
-  ecode2 = SWIG_AsVal_double(obj1, &val2);
-  if (!SWIG_IsOK(ecode2)) {
-    SWIG_exception_fail(SWIG_ArgError(ecode2), "in method '" "EECBase_set_beta" "', argument " "2"" of type '" "double""'");
-  } 
-  arg2 = static_cast< double >(val2);
-  {
-    try {
-      (arg1)->set_beta(arg2); 
     }
     /*@SWIG:/usr/local/Cellar/swig/4.0.2/share/swig/4.0.2/typemaps/exception.swg,58,SWIG_CATCH_STDEXCEPT@*/  /* catching std::exception  */
     catch (std::invalid_argument& e) {
@@ -50126,7 +49918,10 @@ SWIGINTERN PyObject *_wrap_new_EECLongestSideId(PyObject *SWIGUNUSEDPARM(self), 
   PyObject *resultobj = 0;
   unsigned int arg1 ;
   unsigned int arg2 ;
-  std::array< double,2 > *arg3 = 0 ;
+  std::array< double,2 > const &arg3_defvalue = {
+    1e-5, 1
+  } ;
+  std::array< double,2 > *arg3 = (std::array< double,2 > *) &arg3_defvalue ;
   bool arg4 = (bool) true ;
   std::vector< double,std::allocator< double > > const &arg5_defvalue = {
     1
@@ -50146,9 +49941,7 @@ SWIGINTERN PyObject *_wrap_new_EECLongestSideId(PyObject *SWIGUNUSEDPARM(self), 
   bool arg14 = (bool) true ;
   bool arg15 = (bool) true ;
   bool arg16 = (bool) true ;
-  double arg17 = (double) 1 ;
-  double arg18 = (double) 1 ;
-  bool arg19 = (bool) false ;
+  bool arg17 = (bool) false ;
   unsigned int val1 ;
   int ecode1 = 0 ;
   unsigned int val2 ;
@@ -50178,12 +49971,8 @@ SWIGINTERN PyObject *_wrap_new_EECLongestSideId(PyObject *SWIGUNUSEDPARM(self), 
   int ecode15 = 0 ;
   bool val16 ;
   int ecode16 = 0 ;
-  double val17 ;
+  bool val17 ;
   int ecode17 = 0 ;
-  double val18 ;
-  int ecode18 = 0 ;
-  bool val19 ;
-  int ecode19 = 0 ;
   PyObject * obj0 = 0 ;
   PyObject * obj1 = 0 ;
   PyObject * obj2 = 0 ;
@@ -50201,14 +49990,12 @@ SWIGINTERN PyObject *_wrap_new_EECLongestSideId(PyObject *SWIGUNUSEDPARM(self), 
   PyObject * obj14 = 0 ;
   PyObject * obj15 = 0 ;
   PyObject * obj16 = 0 ;
-  PyObject * obj17 = 0 ;
-  PyObject * obj18 = 0 ;
   char * kwnames[] = {
-    (char *)"N",  (char *)"nbins",  (char *)"axis_range",  (char *)"norm",  (char *)"weight_powers",  (char *)"charge_powers",  (char *)"particle_weight",  (char *)"pairwise_distance",  (char *)"num_threads",  (char *)"omp_chunksize",  (char *)"print_every",  (char *)"check_degen",  (char *)"average_verts",  (char *)"track_covariance",  (char *)"variance_bound",  (char *)"variance_bound_includes_overflows",  (char *)"R",  (char *)"beta",  (char *)"use_general_eNc",  NULL 
+    (char *)"N",  (char *)"nbins",  (char *)"axis_range",  (char *)"norm",  (char *)"weight_powers",  (char *)"charge_powers",  (char *)"particle_weight",  (char *)"pairwise_distance",  (char *)"num_threads",  (char *)"omp_chunksize",  (char *)"print_every",  (char *)"check_degen",  (char *)"average_verts",  (char *)"track_covariance",  (char *)"variance_bound",  (char *)"variance_bound_includes_overflows",  (char *)"use_general_eNc",  NULL 
   };
   fastjet::contrib::eec::EECLongestSide< axis::id > *result = 0 ;
   
-  if (!PyArg_ParseTupleAndKeywords(args, kwargs, "OOO|OOOOOOOOOOOOOOOO:new_EECLongestSideId", kwnames, &obj0, &obj1, &obj2, &obj3, &obj4, &obj5, &obj6, &obj7, &obj8, &obj9, &obj10, &obj11, &obj12, &obj13, &obj14, &obj15, &obj16, &obj17, &obj18)) SWIG_fail;
+  if (!PyArg_ParseTupleAndKeywords(args, kwargs, "OO|OOOOOOOOOOOOOOO:new_EECLongestSideId", kwnames, &obj0, &obj1, &obj2, &obj3, &obj4, &obj5, &obj6, &obj7, &obj8, &obj9, &obj10, &obj11, &obj12, &obj13, &obj14, &obj15, &obj16)) SWIG_fail;
   ecode1 = SWIG_AsVal_unsigned_SS_int(obj0, &val1);
   if (!SWIG_IsOK(ecode1)) {
     SWIG_exception_fail(SWIG_ArgError(ecode1), "in method '" "new_EECLongestSideId" "', argument " "1"" of type '" "unsigned int""'");
@@ -50219,16 +50006,18 @@ SWIGINTERN PyObject *_wrap_new_EECLongestSideId(PyObject *SWIGUNUSEDPARM(self), 
     SWIG_exception_fail(SWIG_ArgError(ecode2), "in method '" "new_EECLongestSideId" "', argument " "2"" of type '" "unsigned int""'");
   } 
   arg2 = static_cast< unsigned int >(val2);
-  {
-    std::array< double,2 > *ptr = (std::array< double,2 > *)0;
-    res3 = swig::asptr(obj2, &ptr);
-    if (!SWIG_IsOK(res3)) {
-      SWIG_exception_fail(SWIG_ArgError(res3), "in method '" "new_EECLongestSideId" "', argument " "3"" of type '" "std::array< double,2 > const &""'"); 
+  if (obj2) {
+    {
+      std::array< double,2 > *ptr = (std::array< double,2 > *)0;
+      res3 = swig::asptr(obj2, &ptr);
+      if (!SWIG_IsOK(res3)) {
+        SWIG_exception_fail(SWIG_ArgError(res3), "in method '" "new_EECLongestSideId" "', argument " "3"" of type '" "std::array< double,2 > const &""'"); 
+      }
+      if (!ptr) {
+        SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in method '" "new_EECLongestSideId" "', argument " "3"" of type '" "std::array< double,2 > const &""'"); 
+      }
+      arg3 = ptr;
     }
-    if (!ptr) {
-      SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in method '" "new_EECLongestSideId" "', argument " "3"" of type '" "std::array< double,2 > const &""'"); 
-    }
-    arg3 = ptr;
   }
   if (obj3) {
     ecode4 = SWIG_AsVal_bool(obj3, &val4);
@@ -50334,29 +50123,15 @@ SWIGINTERN PyObject *_wrap_new_EECLongestSideId(PyObject *SWIGUNUSEDPARM(self), 
     arg16 = static_cast< bool >(val16);
   }
   if (obj16) {
-    ecode17 = SWIG_AsVal_double(obj16, &val17);
+    ecode17 = SWIG_AsVal_bool(obj16, &val17);
     if (!SWIG_IsOK(ecode17)) {
-      SWIG_exception_fail(SWIG_ArgError(ecode17), "in method '" "new_EECLongestSideId" "', argument " "17"" of type '" "double""'");
+      SWIG_exception_fail(SWIG_ArgError(ecode17), "in method '" "new_EECLongestSideId" "', argument " "17"" of type '" "bool""'");
     } 
-    arg17 = static_cast< double >(val17);
-  }
-  if (obj17) {
-    ecode18 = SWIG_AsVal_double(obj17, &val18);
-    if (!SWIG_IsOK(ecode18)) {
-      SWIG_exception_fail(SWIG_ArgError(ecode18), "in method '" "new_EECLongestSideId" "', argument " "18"" of type '" "double""'");
-    } 
-    arg18 = static_cast< double >(val18);
-  }
-  if (obj18) {
-    ecode19 = SWIG_AsVal_bool(obj18, &val19);
-    if (!SWIG_IsOK(ecode19)) {
-      SWIG_exception_fail(SWIG_ArgError(ecode19), "in method '" "new_EECLongestSideId" "', argument " "19"" of type '" "bool""'");
-    } 
-    arg19 = static_cast< bool >(val19);
+    arg17 = static_cast< bool >(val17);
   }
   {
     try {
-      result = (fastjet::contrib::eec::EECLongestSide< axis::id > *)new fastjet::contrib::eec::EECLongestSide< axis::id >(arg1,arg2,(std::array< double,2 > const &)*arg3,arg4,(std::vector< double,std::allocator< double > > const &)*arg5,(std::vector< unsigned int,std::allocator< unsigned int > > const &)*arg6,arg7,arg8,arg9,arg10,arg11,arg12,arg13,arg14,arg15,arg16,arg17,arg18,arg19); 
+      result = (fastjet::contrib::eec::EECLongestSide< axis::id > *)new fastjet::contrib::eec::EECLongestSide< axis::id >(arg1,arg2,(std::array< double,2 > const &)*arg3,arg4,(std::vector< double,std::allocator< double > > const &)*arg5,(std::vector< unsigned int,std::allocator< unsigned int > > const &)*arg6,arg7,arg8,arg9,arg10,arg11,arg12,arg13,arg14,arg15,arg16,arg17); 
     }
     /*@SWIG:/usr/local/Cellar/swig/4.0.2/share/swig/4.0.2/typemaps/exception.swg,58,SWIG_CATCH_STDEXCEPT@*/  /* catching std::exception  */
     catch (std::invalid_argument& e) {
@@ -50971,7 +50746,10 @@ SWIGINTERN PyObject *_wrap_new_EECLongestSideLog(PyObject *SWIGUNUSEDPARM(self),
   PyObject *resultobj = 0;
   unsigned int arg1 ;
   unsigned int arg2 ;
-  std::array< double,2 > *arg3 = 0 ;
+  std::array< double,2 > const &arg3_defvalue = {
+    1e-5, 1
+  } ;
+  std::array< double,2 > *arg3 = (std::array< double,2 > *) &arg3_defvalue ;
   bool arg4 = (bool) true ;
   std::vector< double,std::allocator< double > > const &arg5_defvalue = {
     1
@@ -50991,9 +50769,7 @@ SWIGINTERN PyObject *_wrap_new_EECLongestSideLog(PyObject *SWIGUNUSEDPARM(self),
   bool arg14 = (bool) true ;
   bool arg15 = (bool) true ;
   bool arg16 = (bool) true ;
-  double arg17 = (double) 1 ;
-  double arg18 = (double) 1 ;
-  bool arg19 = (bool) false ;
+  bool arg17 = (bool) false ;
   unsigned int val1 ;
   int ecode1 = 0 ;
   unsigned int val2 ;
@@ -51023,12 +50799,8 @@ SWIGINTERN PyObject *_wrap_new_EECLongestSideLog(PyObject *SWIGUNUSEDPARM(self),
   int ecode15 = 0 ;
   bool val16 ;
   int ecode16 = 0 ;
-  double val17 ;
+  bool val17 ;
   int ecode17 = 0 ;
-  double val18 ;
-  int ecode18 = 0 ;
-  bool val19 ;
-  int ecode19 = 0 ;
   PyObject * obj0 = 0 ;
   PyObject * obj1 = 0 ;
   PyObject * obj2 = 0 ;
@@ -51046,14 +50818,12 @@ SWIGINTERN PyObject *_wrap_new_EECLongestSideLog(PyObject *SWIGUNUSEDPARM(self),
   PyObject * obj14 = 0 ;
   PyObject * obj15 = 0 ;
   PyObject * obj16 = 0 ;
-  PyObject * obj17 = 0 ;
-  PyObject * obj18 = 0 ;
   char * kwnames[] = {
-    (char *)"N",  (char *)"nbins",  (char *)"axis_range",  (char *)"norm",  (char *)"weight_powers",  (char *)"charge_powers",  (char *)"particle_weight",  (char *)"pairwise_distance",  (char *)"num_threads",  (char *)"omp_chunksize",  (char *)"print_every",  (char *)"check_degen",  (char *)"average_verts",  (char *)"track_covariance",  (char *)"variance_bound",  (char *)"variance_bound_includes_overflows",  (char *)"R",  (char *)"beta",  (char *)"use_general_eNc",  NULL 
+    (char *)"N",  (char *)"nbins",  (char *)"axis_range",  (char *)"norm",  (char *)"weight_powers",  (char *)"charge_powers",  (char *)"particle_weight",  (char *)"pairwise_distance",  (char *)"num_threads",  (char *)"omp_chunksize",  (char *)"print_every",  (char *)"check_degen",  (char *)"average_verts",  (char *)"track_covariance",  (char *)"variance_bound",  (char *)"variance_bound_includes_overflows",  (char *)"use_general_eNc",  NULL 
   };
   fastjet::contrib::eec::EECLongestSide< axis::log > *result = 0 ;
   
-  if (!PyArg_ParseTupleAndKeywords(args, kwargs, "OOO|OOOOOOOOOOOOOOOO:new_EECLongestSideLog", kwnames, &obj0, &obj1, &obj2, &obj3, &obj4, &obj5, &obj6, &obj7, &obj8, &obj9, &obj10, &obj11, &obj12, &obj13, &obj14, &obj15, &obj16, &obj17, &obj18)) SWIG_fail;
+  if (!PyArg_ParseTupleAndKeywords(args, kwargs, "OO|OOOOOOOOOOOOOOO:new_EECLongestSideLog", kwnames, &obj0, &obj1, &obj2, &obj3, &obj4, &obj5, &obj6, &obj7, &obj8, &obj9, &obj10, &obj11, &obj12, &obj13, &obj14, &obj15, &obj16)) SWIG_fail;
   ecode1 = SWIG_AsVal_unsigned_SS_int(obj0, &val1);
   if (!SWIG_IsOK(ecode1)) {
     SWIG_exception_fail(SWIG_ArgError(ecode1), "in method '" "new_EECLongestSideLog" "', argument " "1"" of type '" "unsigned int""'");
@@ -51064,16 +50834,18 @@ SWIGINTERN PyObject *_wrap_new_EECLongestSideLog(PyObject *SWIGUNUSEDPARM(self),
     SWIG_exception_fail(SWIG_ArgError(ecode2), "in method '" "new_EECLongestSideLog" "', argument " "2"" of type '" "unsigned int""'");
   } 
   arg2 = static_cast< unsigned int >(val2);
-  {
-    std::array< double,2 > *ptr = (std::array< double,2 > *)0;
-    res3 = swig::asptr(obj2, &ptr);
-    if (!SWIG_IsOK(res3)) {
-      SWIG_exception_fail(SWIG_ArgError(res3), "in method '" "new_EECLongestSideLog" "', argument " "3"" of type '" "std::array< double,2 > const &""'"); 
+  if (obj2) {
+    {
+      std::array< double,2 > *ptr = (std::array< double,2 > *)0;
+      res3 = swig::asptr(obj2, &ptr);
+      if (!SWIG_IsOK(res3)) {
+        SWIG_exception_fail(SWIG_ArgError(res3), "in method '" "new_EECLongestSideLog" "', argument " "3"" of type '" "std::array< double,2 > const &""'"); 
+      }
+      if (!ptr) {
+        SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in method '" "new_EECLongestSideLog" "', argument " "3"" of type '" "std::array< double,2 > const &""'"); 
+      }
+      arg3 = ptr;
     }
-    if (!ptr) {
-      SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in method '" "new_EECLongestSideLog" "', argument " "3"" of type '" "std::array< double,2 > const &""'"); 
-    }
-    arg3 = ptr;
   }
   if (obj3) {
     ecode4 = SWIG_AsVal_bool(obj3, &val4);
@@ -51179,29 +50951,15 @@ SWIGINTERN PyObject *_wrap_new_EECLongestSideLog(PyObject *SWIGUNUSEDPARM(self),
     arg16 = static_cast< bool >(val16);
   }
   if (obj16) {
-    ecode17 = SWIG_AsVal_double(obj16, &val17);
+    ecode17 = SWIG_AsVal_bool(obj16, &val17);
     if (!SWIG_IsOK(ecode17)) {
-      SWIG_exception_fail(SWIG_ArgError(ecode17), "in method '" "new_EECLongestSideLog" "', argument " "17"" of type '" "double""'");
+      SWIG_exception_fail(SWIG_ArgError(ecode17), "in method '" "new_EECLongestSideLog" "', argument " "17"" of type '" "bool""'");
     } 
-    arg17 = static_cast< double >(val17);
-  }
-  if (obj17) {
-    ecode18 = SWIG_AsVal_double(obj17, &val18);
-    if (!SWIG_IsOK(ecode18)) {
-      SWIG_exception_fail(SWIG_ArgError(ecode18), "in method '" "new_EECLongestSideLog" "', argument " "18"" of type '" "double""'");
-    } 
-    arg18 = static_cast< double >(val18);
-  }
-  if (obj18) {
-    ecode19 = SWIG_AsVal_bool(obj18, &val19);
-    if (!SWIG_IsOK(ecode19)) {
-      SWIG_exception_fail(SWIG_ArgError(ecode19), "in method '" "new_EECLongestSideLog" "', argument " "19"" of type '" "bool""'");
-    } 
-    arg19 = static_cast< bool >(val19);
+    arg17 = static_cast< bool >(val17);
   }
   {
     try {
-      result = (fastjet::contrib::eec::EECLongestSide< axis::log > *)new fastjet::contrib::eec::EECLongestSide< axis::log >(arg1,arg2,(std::array< double,2 > const &)*arg3,arg4,(std::vector< double,std::allocator< double > > const &)*arg5,(std::vector< unsigned int,std::allocator< unsigned int > > const &)*arg6,arg7,arg8,arg9,arg10,arg11,arg12,arg13,arg14,arg15,arg16,arg17,arg18,arg19); 
+      result = (fastjet::contrib::eec::EECLongestSide< axis::log > *)new fastjet::contrib::eec::EECLongestSide< axis::log >(arg1,arg2,(std::array< double,2 > const &)*arg3,arg4,(std::vector< double,std::allocator< double > > const &)*arg5,(std::vector< unsigned int,std::allocator< unsigned int > > const &)*arg6,arg7,arg8,arg9,arg10,arg11,arg12,arg13,arg14,arg15,arg16,arg17); 
     }
     /*@SWIG:/usr/local/Cellar/swig/4.0.2/share/swig/4.0.2/typemaps/exception.swg,58,SWIG_CATCH_STDEXCEPT@*/  /* catching std::exception  */
     catch (std::invalid_argument& e) {
@@ -51815,7 +51573,18 @@ SWIGINTERN PyObject *EECLongestSideLog_swiginit(PyObject *SWIGUNUSEDPARM(self), 
 SWIGINTERN PyObject *_wrap_new_EECTriangleOPEIdIdId(PyObject *SWIGUNUSEDPARM(self), PyObject *args, PyObject *kwargs) {
   PyObject *resultobj = 0;
   std::array< unsigned int,3 > *arg1 = 0 ;
-  std::array< std::array< double,2 >,3 > *arg2 = 0 ;
+  std::array< std::array< double,2 >,3 > const &arg2_defvalue = {
+    {
+      {
+        1e-5, 1
+      }, {
+        1e-5, 1
+      }, {
+        0, PI/2
+      }
+    }
+  } ;
+  std::array< std::array< double,2 >,3 > *arg2 = (std::array< std::array< double,2 >,3 > *) &arg2_defvalue ;
   bool arg3 = (bool) true ;
   std::vector< double,std::allocator< double > > const &arg4_defvalue = {
     1
@@ -51835,8 +51604,6 @@ SWIGINTERN PyObject *_wrap_new_EECTriangleOPEIdIdId(PyObject *SWIGUNUSEDPARM(sel
   bool arg13 = (bool) false ;
   bool arg14 = (bool) true ;
   bool arg15 = (bool) true ;
-  double arg16 = (double) 1 ;
-  double arg17 = (double) 1 ;
   int res1 = SWIG_OLDOBJ ;
   int res2 = SWIG_OLDOBJ ;
   bool val3 ;
@@ -51863,10 +51630,6 @@ SWIGINTERN PyObject *_wrap_new_EECTriangleOPEIdIdId(PyObject *SWIGUNUSEDPARM(sel
   int ecode14 = 0 ;
   bool val15 ;
   int ecode15 = 0 ;
-  double val16 ;
-  int ecode16 = 0 ;
-  double val17 ;
-  int ecode17 = 0 ;
   PyObject * obj0 = 0 ;
   PyObject * obj1 = 0 ;
   PyObject * obj2 = 0 ;
@@ -51882,14 +51645,12 @@ SWIGINTERN PyObject *_wrap_new_EECTriangleOPEIdIdId(PyObject *SWIGUNUSEDPARM(sel
   PyObject * obj12 = 0 ;
   PyObject * obj13 = 0 ;
   PyObject * obj14 = 0 ;
-  PyObject * obj15 = 0 ;
-  PyObject * obj16 = 0 ;
   char * kwnames[] = {
-    (char *)"nbins",  (char *)"axes_range",  (char *)"norm",  (char *)"weight_powers",  (char *)"charge_powers",  (char *)"particle_weight",  (char *)"pairwise_distance",  (char *)"num_threads",  (char *)"omp_chunksize",  (char *)"print_every",  (char *)"check_degen",  (char *)"average_verts",  (char *)"track_covariance",  (char *)"variance_bound",  (char *)"variance_bound_includes_overflows",  (char *)"R",  (char *)"beta",  NULL 
+    (char *)"nbins",  (char *)"axes_range",  (char *)"norm",  (char *)"weight_powers",  (char *)"charge_powers",  (char *)"particle_weight",  (char *)"pairwise_distance",  (char *)"num_threads",  (char *)"omp_chunksize",  (char *)"print_every",  (char *)"check_degen",  (char *)"average_verts",  (char *)"track_covariance",  (char *)"variance_bound",  (char *)"variance_bound_includes_overflows",  NULL 
   };
   fastjet::contrib::eec::EECTriangleOPE< axis::id,axis::id,axis::id > *result = 0 ;
   
-  if (!PyArg_ParseTupleAndKeywords(args, kwargs, "OO|OOOOOOOOOOOOOOO:new_EECTriangleOPEIdIdId", kwnames, &obj0, &obj1, &obj2, &obj3, &obj4, &obj5, &obj6, &obj7, &obj8, &obj9, &obj10, &obj11, &obj12, &obj13, &obj14, &obj15, &obj16)) SWIG_fail;
+  if (!PyArg_ParseTupleAndKeywords(args, kwargs, "O|OOOOOOOOOOOOOO:new_EECTriangleOPEIdIdId", kwnames, &obj0, &obj1, &obj2, &obj3, &obj4, &obj5, &obj6, &obj7, &obj8, &obj9, &obj10, &obj11, &obj12, &obj13, &obj14)) SWIG_fail;
   {
     std::array< unsigned int,3 > *ptr = (std::array< unsigned int,3 > *)0;
     res1 = swig::asptr(obj0, &ptr);
@@ -51901,16 +51662,18 @@ SWIGINTERN PyObject *_wrap_new_EECTriangleOPEIdIdId(PyObject *SWIGUNUSEDPARM(sel
     }
     arg1 = ptr;
   }
-  {
-    std::array< std::array< double,2 >,3 > *ptr = (std::array< std::array< double,2 >,3 > *)0;
-    res2 = swig::asptr(obj1, &ptr);
-    if (!SWIG_IsOK(res2)) {
-      SWIG_exception_fail(SWIG_ArgError(res2), "in method '" "new_EECTriangleOPEIdIdId" "', argument " "2"" of type '" "std::array< std::array< double,2 >,3 > const &""'"); 
+  if (obj1) {
+    {
+      std::array< std::array< double,2 >,3 > *ptr = (std::array< std::array< double,2 >,3 > *)0;
+      res2 = swig::asptr(obj1, &ptr);
+      if (!SWIG_IsOK(res2)) {
+        SWIG_exception_fail(SWIG_ArgError(res2), "in method '" "new_EECTriangleOPEIdIdId" "', argument " "2"" of type '" "std::array< std::array< double,2 >,3 > const &""'"); 
+      }
+      if (!ptr) {
+        SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in method '" "new_EECTriangleOPEIdIdId" "', argument " "2"" of type '" "std::array< std::array< double,2 >,3 > const &""'"); 
+      }
+      arg2 = ptr;
     }
-    if (!ptr) {
-      SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in method '" "new_EECTriangleOPEIdIdId" "', argument " "2"" of type '" "std::array< std::array< double,2 >,3 > const &""'"); 
-    }
-    arg2 = ptr;
   }
   if (obj2) {
     ecode3 = SWIG_AsVal_bool(obj2, &val3);
@@ -52015,23 +51778,9 @@ SWIGINTERN PyObject *_wrap_new_EECTriangleOPEIdIdId(PyObject *SWIGUNUSEDPARM(sel
     } 
     arg15 = static_cast< bool >(val15);
   }
-  if (obj15) {
-    ecode16 = SWIG_AsVal_double(obj15, &val16);
-    if (!SWIG_IsOK(ecode16)) {
-      SWIG_exception_fail(SWIG_ArgError(ecode16), "in method '" "new_EECTriangleOPEIdIdId" "', argument " "16"" of type '" "double""'");
-    } 
-    arg16 = static_cast< double >(val16);
-  }
-  if (obj16) {
-    ecode17 = SWIG_AsVal_double(obj16, &val17);
-    if (!SWIG_IsOK(ecode17)) {
-      SWIG_exception_fail(SWIG_ArgError(ecode17), "in method '" "new_EECTriangleOPEIdIdId" "', argument " "17"" of type '" "double""'");
-    } 
-    arg17 = static_cast< double >(val17);
-  }
   {
     try {
-      result = (fastjet::contrib::eec::EECTriangleOPE< axis::id,axis::id,axis::id > *)new fastjet::contrib::eec::EECTriangleOPE< axis::id,axis::id,axis::id >((std::array< unsigned int,3 > const &)*arg1,(std::array< std::array< double,2 >,3 > const &)*arg2,arg3,(std::vector< double,std::allocator< double > > const &)*arg4,(std::vector< unsigned int,std::allocator< unsigned int > > const &)*arg5,arg6,arg7,arg8,arg9,arg10,arg11,arg12,arg13,arg14,arg15,arg16,arg17); 
+      result = (fastjet::contrib::eec::EECTriangleOPE< axis::id,axis::id,axis::id > *)new fastjet::contrib::eec::EECTriangleOPE< axis::id,axis::id,axis::id >((std::array< unsigned int,3 > const &)*arg1,(std::array< std::array< double,2 >,3 > const &)*arg2,arg3,(std::vector< double,std::allocator< double > > const &)*arg4,(std::vector< unsigned int,std::allocator< unsigned int > > const &)*arg5,arg6,arg7,arg8,arg9,arg10,arg11,arg12,arg13,arg14,arg15); 
     }
     /*@SWIG:/usr/local/Cellar/swig/4.0.2/share/swig/4.0.2/typemaps/exception.swg,58,SWIG_CATCH_STDEXCEPT@*/  /* catching std::exception  */
     catch (std::invalid_argument& e) {
@@ -52543,7 +52292,18 @@ SWIGINTERN PyObject *EECTriangleOPEIdIdId_swiginit(PyObject *SWIGUNUSEDPARM(self
 SWIGINTERN PyObject *_wrap_new_EECTriangleOPELogIdId(PyObject *SWIGUNUSEDPARM(self), PyObject *args, PyObject *kwargs) {
   PyObject *resultobj = 0;
   std::array< unsigned int,3 > *arg1 = 0 ;
-  std::array< std::array< double,2 >,3 > *arg2 = 0 ;
+  std::array< std::array< double,2 >,3 > const &arg2_defvalue = {
+    {
+      {
+        1e-5, 1
+      }, {
+        1e-5, 1
+      }, {
+        0, PI/2
+      }
+    }
+  } ;
+  std::array< std::array< double,2 >,3 > *arg2 = (std::array< std::array< double,2 >,3 > *) &arg2_defvalue ;
   bool arg3 = (bool) true ;
   std::vector< double,std::allocator< double > > const &arg4_defvalue = {
     1
@@ -52563,8 +52323,6 @@ SWIGINTERN PyObject *_wrap_new_EECTriangleOPELogIdId(PyObject *SWIGUNUSEDPARM(se
   bool arg13 = (bool) false ;
   bool arg14 = (bool) true ;
   bool arg15 = (bool) true ;
-  double arg16 = (double) 1 ;
-  double arg17 = (double) 1 ;
   int res1 = SWIG_OLDOBJ ;
   int res2 = SWIG_OLDOBJ ;
   bool val3 ;
@@ -52591,10 +52349,6 @@ SWIGINTERN PyObject *_wrap_new_EECTriangleOPELogIdId(PyObject *SWIGUNUSEDPARM(se
   int ecode14 = 0 ;
   bool val15 ;
   int ecode15 = 0 ;
-  double val16 ;
-  int ecode16 = 0 ;
-  double val17 ;
-  int ecode17 = 0 ;
   PyObject * obj0 = 0 ;
   PyObject * obj1 = 0 ;
   PyObject * obj2 = 0 ;
@@ -52610,14 +52364,12 @@ SWIGINTERN PyObject *_wrap_new_EECTriangleOPELogIdId(PyObject *SWIGUNUSEDPARM(se
   PyObject * obj12 = 0 ;
   PyObject * obj13 = 0 ;
   PyObject * obj14 = 0 ;
-  PyObject * obj15 = 0 ;
-  PyObject * obj16 = 0 ;
   char * kwnames[] = {
-    (char *)"nbins",  (char *)"axes_range",  (char *)"norm",  (char *)"weight_powers",  (char *)"charge_powers",  (char *)"particle_weight",  (char *)"pairwise_distance",  (char *)"num_threads",  (char *)"omp_chunksize",  (char *)"print_every",  (char *)"check_degen",  (char *)"average_verts",  (char *)"track_covariance",  (char *)"variance_bound",  (char *)"variance_bound_includes_overflows",  (char *)"R",  (char *)"beta",  NULL 
+    (char *)"nbins",  (char *)"axes_range",  (char *)"norm",  (char *)"weight_powers",  (char *)"charge_powers",  (char *)"particle_weight",  (char *)"pairwise_distance",  (char *)"num_threads",  (char *)"omp_chunksize",  (char *)"print_every",  (char *)"check_degen",  (char *)"average_verts",  (char *)"track_covariance",  (char *)"variance_bound",  (char *)"variance_bound_includes_overflows",  NULL 
   };
   fastjet::contrib::eec::EECTriangleOPE< axis::log,axis::id,axis::id > *result = 0 ;
   
-  if (!PyArg_ParseTupleAndKeywords(args, kwargs, "OO|OOOOOOOOOOOOOOO:new_EECTriangleOPELogIdId", kwnames, &obj0, &obj1, &obj2, &obj3, &obj4, &obj5, &obj6, &obj7, &obj8, &obj9, &obj10, &obj11, &obj12, &obj13, &obj14, &obj15, &obj16)) SWIG_fail;
+  if (!PyArg_ParseTupleAndKeywords(args, kwargs, "O|OOOOOOOOOOOOOO:new_EECTriangleOPELogIdId", kwnames, &obj0, &obj1, &obj2, &obj3, &obj4, &obj5, &obj6, &obj7, &obj8, &obj9, &obj10, &obj11, &obj12, &obj13, &obj14)) SWIG_fail;
   {
     std::array< unsigned int,3 > *ptr = (std::array< unsigned int,3 > *)0;
     res1 = swig::asptr(obj0, &ptr);
@@ -52629,16 +52381,18 @@ SWIGINTERN PyObject *_wrap_new_EECTriangleOPELogIdId(PyObject *SWIGUNUSEDPARM(se
     }
     arg1 = ptr;
   }
-  {
-    std::array< std::array< double,2 >,3 > *ptr = (std::array< std::array< double,2 >,3 > *)0;
-    res2 = swig::asptr(obj1, &ptr);
-    if (!SWIG_IsOK(res2)) {
-      SWIG_exception_fail(SWIG_ArgError(res2), "in method '" "new_EECTriangleOPELogIdId" "', argument " "2"" of type '" "std::array< std::array< double,2 >,3 > const &""'"); 
+  if (obj1) {
+    {
+      std::array< std::array< double,2 >,3 > *ptr = (std::array< std::array< double,2 >,3 > *)0;
+      res2 = swig::asptr(obj1, &ptr);
+      if (!SWIG_IsOK(res2)) {
+        SWIG_exception_fail(SWIG_ArgError(res2), "in method '" "new_EECTriangleOPELogIdId" "', argument " "2"" of type '" "std::array< std::array< double,2 >,3 > const &""'"); 
+      }
+      if (!ptr) {
+        SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in method '" "new_EECTriangleOPELogIdId" "', argument " "2"" of type '" "std::array< std::array< double,2 >,3 > const &""'"); 
+      }
+      arg2 = ptr;
     }
-    if (!ptr) {
-      SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in method '" "new_EECTriangleOPELogIdId" "', argument " "2"" of type '" "std::array< std::array< double,2 >,3 > const &""'"); 
-    }
-    arg2 = ptr;
   }
   if (obj2) {
     ecode3 = SWIG_AsVal_bool(obj2, &val3);
@@ -52743,23 +52497,9 @@ SWIGINTERN PyObject *_wrap_new_EECTriangleOPELogIdId(PyObject *SWIGUNUSEDPARM(se
     } 
     arg15 = static_cast< bool >(val15);
   }
-  if (obj15) {
-    ecode16 = SWIG_AsVal_double(obj15, &val16);
-    if (!SWIG_IsOK(ecode16)) {
-      SWIG_exception_fail(SWIG_ArgError(ecode16), "in method '" "new_EECTriangleOPELogIdId" "', argument " "16"" of type '" "double""'");
-    } 
-    arg16 = static_cast< double >(val16);
-  }
-  if (obj16) {
-    ecode17 = SWIG_AsVal_double(obj16, &val17);
-    if (!SWIG_IsOK(ecode17)) {
-      SWIG_exception_fail(SWIG_ArgError(ecode17), "in method '" "new_EECTriangleOPELogIdId" "', argument " "17"" of type '" "double""'");
-    } 
-    arg17 = static_cast< double >(val17);
-  }
   {
     try {
-      result = (fastjet::contrib::eec::EECTriangleOPE< axis::log,axis::id,axis::id > *)new fastjet::contrib::eec::EECTriangleOPE< axis::log,axis::id,axis::id >((std::array< unsigned int,3 > const &)*arg1,(std::array< std::array< double,2 >,3 > const &)*arg2,arg3,(std::vector< double,std::allocator< double > > const &)*arg4,(std::vector< unsigned int,std::allocator< unsigned int > > const &)*arg5,arg6,arg7,arg8,arg9,arg10,arg11,arg12,arg13,arg14,arg15,arg16,arg17); 
+      result = (fastjet::contrib::eec::EECTriangleOPE< axis::log,axis::id,axis::id > *)new fastjet::contrib::eec::EECTriangleOPE< axis::log,axis::id,axis::id >((std::array< unsigned int,3 > const &)*arg1,(std::array< std::array< double,2 >,3 > const &)*arg2,arg3,(std::vector< double,std::allocator< double > > const &)*arg4,(std::vector< unsigned int,std::allocator< unsigned int > > const &)*arg5,arg6,arg7,arg8,arg9,arg10,arg11,arg12,arg13,arg14,arg15); 
     }
     /*@SWIG:/usr/local/Cellar/swig/4.0.2/share/swig/4.0.2/typemaps/exception.swg,58,SWIG_CATCH_STDEXCEPT@*/  /* catching std::exception  */
     catch (std::invalid_argument& e) {
@@ -53271,7 +53011,18 @@ SWIGINTERN PyObject *EECTriangleOPELogIdId_swiginit(PyObject *SWIGUNUSEDPARM(sel
 SWIGINTERN PyObject *_wrap_new_EECTriangleOPEIdLogId(PyObject *SWIGUNUSEDPARM(self), PyObject *args, PyObject *kwargs) {
   PyObject *resultobj = 0;
   std::array< unsigned int,3 > *arg1 = 0 ;
-  std::array< std::array< double,2 >,3 > *arg2 = 0 ;
+  std::array< std::array< double,2 >,3 > const &arg2_defvalue = {
+    {
+      {
+        1e-5, 1
+      }, {
+        1e-5, 1
+      }, {
+        0, PI/2
+      }
+    }
+  } ;
+  std::array< std::array< double,2 >,3 > *arg2 = (std::array< std::array< double,2 >,3 > *) &arg2_defvalue ;
   bool arg3 = (bool) true ;
   std::vector< double,std::allocator< double > > const &arg4_defvalue = {
     1
@@ -53291,8 +53042,6 @@ SWIGINTERN PyObject *_wrap_new_EECTriangleOPEIdLogId(PyObject *SWIGUNUSEDPARM(se
   bool arg13 = (bool) false ;
   bool arg14 = (bool) true ;
   bool arg15 = (bool) true ;
-  double arg16 = (double) 1 ;
-  double arg17 = (double) 1 ;
   int res1 = SWIG_OLDOBJ ;
   int res2 = SWIG_OLDOBJ ;
   bool val3 ;
@@ -53319,10 +53068,6 @@ SWIGINTERN PyObject *_wrap_new_EECTriangleOPEIdLogId(PyObject *SWIGUNUSEDPARM(se
   int ecode14 = 0 ;
   bool val15 ;
   int ecode15 = 0 ;
-  double val16 ;
-  int ecode16 = 0 ;
-  double val17 ;
-  int ecode17 = 0 ;
   PyObject * obj0 = 0 ;
   PyObject * obj1 = 0 ;
   PyObject * obj2 = 0 ;
@@ -53338,14 +53083,12 @@ SWIGINTERN PyObject *_wrap_new_EECTriangleOPEIdLogId(PyObject *SWIGUNUSEDPARM(se
   PyObject * obj12 = 0 ;
   PyObject * obj13 = 0 ;
   PyObject * obj14 = 0 ;
-  PyObject * obj15 = 0 ;
-  PyObject * obj16 = 0 ;
   char * kwnames[] = {
-    (char *)"nbins",  (char *)"axes_range",  (char *)"norm",  (char *)"weight_powers",  (char *)"charge_powers",  (char *)"particle_weight",  (char *)"pairwise_distance",  (char *)"num_threads",  (char *)"omp_chunksize",  (char *)"print_every",  (char *)"check_degen",  (char *)"average_verts",  (char *)"track_covariance",  (char *)"variance_bound",  (char *)"variance_bound_includes_overflows",  (char *)"R",  (char *)"beta",  NULL 
+    (char *)"nbins",  (char *)"axes_range",  (char *)"norm",  (char *)"weight_powers",  (char *)"charge_powers",  (char *)"particle_weight",  (char *)"pairwise_distance",  (char *)"num_threads",  (char *)"omp_chunksize",  (char *)"print_every",  (char *)"check_degen",  (char *)"average_verts",  (char *)"track_covariance",  (char *)"variance_bound",  (char *)"variance_bound_includes_overflows",  NULL 
   };
   fastjet::contrib::eec::EECTriangleOPE< axis::id,axis::log,axis::id > *result = 0 ;
   
-  if (!PyArg_ParseTupleAndKeywords(args, kwargs, "OO|OOOOOOOOOOOOOOO:new_EECTriangleOPEIdLogId", kwnames, &obj0, &obj1, &obj2, &obj3, &obj4, &obj5, &obj6, &obj7, &obj8, &obj9, &obj10, &obj11, &obj12, &obj13, &obj14, &obj15, &obj16)) SWIG_fail;
+  if (!PyArg_ParseTupleAndKeywords(args, kwargs, "O|OOOOOOOOOOOOOO:new_EECTriangleOPEIdLogId", kwnames, &obj0, &obj1, &obj2, &obj3, &obj4, &obj5, &obj6, &obj7, &obj8, &obj9, &obj10, &obj11, &obj12, &obj13, &obj14)) SWIG_fail;
   {
     std::array< unsigned int,3 > *ptr = (std::array< unsigned int,3 > *)0;
     res1 = swig::asptr(obj0, &ptr);
@@ -53357,16 +53100,18 @@ SWIGINTERN PyObject *_wrap_new_EECTriangleOPEIdLogId(PyObject *SWIGUNUSEDPARM(se
     }
     arg1 = ptr;
   }
-  {
-    std::array< std::array< double,2 >,3 > *ptr = (std::array< std::array< double,2 >,3 > *)0;
-    res2 = swig::asptr(obj1, &ptr);
-    if (!SWIG_IsOK(res2)) {
-      SWIG_exception_fail(SWIG_ArgError(res2), "in method '" "new_EECTriangleOPEIdLogId" "', argument " "2"" of type '" "std::array< std::array< double,2 >,3 > const &""'"); 
+  if (obj1) {
+    {
+      std::array< std::array< double,2 >,3 > *ptr = (std::array< std::array< double,2 >,3 > *)0;
+      res2 = swig::asptr(obj1, &ptr);
+      if (!SWIG_IsOK(res2)) {
+        SWIG_exception_fail(SWIG_ArgError(res2), "in method '" "new_EECTriangleOPEIdLogId" "', argument " "2"" of type '" "std::array< std::array< double,2 >,3 > const &""'"); 
+      }
+      if (!ptr) {
+        SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in method '" "new_EECTriangleOPEIdLogId" "', argument " "2"" of type '" "std::array< std::array< double,2 >,3 > const &""'"); 
+      }
+      arg2 = ptr;
     }
-    if (!ptr) {
-      SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in method '" "new_EECTriangleOPEIdLogId" "', argument " "2"" of type '" "std::array< std::array< double,2 >,3 > const &""'"); 
-    }
-    arg2 = ptr;
   }
   if (obj2) {
     ecode3 = SWIG_AsVal_bool(obj2, &val3);
@@ -53471,23 +53216,9 @@ SWIGINTERN PyObject *_wrap_new_EECTriangleOPEIdLogId(PyObject *SWIGUNUSEDPARM(se
     } 
     arg15 = static_cast< bool >(val15);
   }
-  if (obj15) {
-    ecode16 = SWIG_AsVal_double(obj15, &val16);
-    if (!SWIG_IsOK(ecode16)) {
-      SWIG_exception_fail(SWIG_ArgError(ecode16), "in method '" "new_EECTriangleOPEIdLogId" "', argument " "16"" of type '" "double""'");
-    } 
-    arg16 = static_cast< double >(val16);
-  }
-  if (obj16) {
-    ecode17 = SWIG_AsVal_double(obj16, &val17);
-    if (!SWIG_IsOK(ecode17)) {
-      SWIG_exception_fail(SWIG_ArgError(ecode17), "in method '" "new_EECTriangleOPEIdLogId" "', argument " "17"" of type '" "double""'");
-    } 
-    arg17 = static_cast< double >(val17);
-  }
   {
     try {
-      result = (fastjet::contrib::eec::EECTriangleOPE< axis::id,axis::log,axis::id > *)new fastjet::contrib::eec::EECTriangleOPE< axis::id,axis::log,axis::id >((std::array< unsigned int,3 > const &)*arg1,(std::array< std::array< double,2 >,3 > const &)*arg2,arg3,(std::vector< double,std::allocator< double > > const &)*arg4,(std::vector< unsigned int,std::allocator< unsigned int > > const &)*arg5,arg6,arg7,arg8,arg9,arg10,arg11,arg12,arg13,arg14,arg15,arg16,arg17); 
+      result = (fastjet::contrib::eec::EECTriangleOPE< axis::id,axis::log,axis::id > *)new fastjet::contrib::eec::EECTriangleOPE< axis::id,axis::log,axis::id >((std::array< unsigned int,3 > const &)*arg1,(std::array< std::array< double,2 >,3 > const &)*arg2,arg3,(std::vector< double,std::allocator< double > > const &)*arg4,(std::vector< unsigned int,std::allocator< unsigned int > > const &)*arg5,arg6,arg7,arg8,arg9,arg10,arg11,arg12,arg13,arg14,arg15); 
     }
     /*@SWIG:/usr/local/Cellar/swig/4.0.2/share/swig/4.0.2/typemaps/exception.swg,58,SWIG_CATCH_STDEXCEPT@*/  /* catching std::exception  */
     catch (std::invalid_argument& e) {
@@ -53999,7 +53730,18 @@ SWIGINTERN PyObject *EECTriangleOPEIdLogId_swiginit(PyObject *SWIGUNUSEDPARM(sel
 SWIGINTERN PyObject *_wrap_new_EECTriangleOPELogLogId(PyObject *SWIGUNUSEDPARM(self), PyObject *args, PyObject *kwargs) {
   PyObject *resultobj = 0;
   std::array< unsigned int,3 > *arg1 = 0 ;
-  std::array< std::array< double,2 >,3 > *arg2 = 0 ;
+  std::array< std::array< double,2 >,3 > const &arg2_defvalue = {
+    {
+      {
+        1e-5, 1
+      }, {
+        1e-5, 1
+      }, {
+        0, PI/2
+      }
+    }
+  } ;
+  std::array< std::array< double,2 >,3 > *arg2 = (std::array< std::array< double,2 >,3 > *) &arg2_defvalue ;
   bool arg3 = (bool) true ;
   std::vector< double,std::allocator< double > > const &arg4_defvalue = {
     1
@@ -54019,8 +53761,6 @@ SWIGINTERN PyObject *_wrap_new_EECTriangleOPELogLogId(PyObject *SWIGUNUSEDPARM(s
   bool arg13 = (bool) false ;
   bool arg14 = (bool) true ;
   bool arg15 = (bool) true ;
-  double arg16 = (double) 1 ;
-  double arg17 = (double) 1 ;
   int res1 = SWIG_OLDOBJ ;
   int res2 = SWIG_OLDOBJ ;
   bool val3 ;
@@ -54047,10 +53787,6 @@ SWIGINTERN PyObject *_wrap_new_EECTriangleOPELogLogId(PyObject *SWIGUNUSEDPARM(s
   int ecode14 = 0 ;
   bool val15 ;
   int ecode15 = 0 ;
-  double val16 ;
-  int ecode16 = 0 ;
-  double val17 ;
-  int ecode17 = 0 ;
   PyObject * obj0 = 0 ;
   PyObject * obj1 = 0 ;
   PyObject * obj2 = 0 ;
@@ -54066,14 +53802,12 @@ SWIGINTERN PyObject *_wrap_new_EECTriangleOPELogLogId(PyObject *SWIGUNUSEDPARM(s
   PyObject * obj12 = 0 ;
   PyObject * obj13 = 0 ;
   PyObject * obj14 = 0 ;
-  PyObject * obj15 = 0 ;
-  PyObject * obj16 = 0 ;
   char * kwnames[] = {
-    (char *)"nbins",  (char *)"axes_range",  (char *)"norm",  (char *)"weight_powers",  (char *)"charge_powers",  (char *)"particle_weight",  (char *)"pairwise_distance",  (char *)"num_threads",  (char *)"omp_chunksize",  (char *)"print_every",  (char *)"check_degen",  (char *)"average_verts",  (char *)"track_covariance",  (char *)"variance_bound",  (char *)"variance_bound_includes_overflows",  (char *)"R",  (char *)"beta",  NULL 
+    (char *)"nbins",  (char *)"axes_range",  (char *)"norm",  (char *)"weight_powers",  (char *)"charge_powers",  (char *)"particle_weight",  (char *)"pairwise_distance",  (char *)"num_threads",  (char *)"omp_chunksize",  (char *)"print_every",  (char *)"check_degen",  (char *)"average_verts",  (char *)"track_covariance",  (char *)"variance_bound",  (char *)"variance_bound_includes_overflows",  NULL 
   };
   fastjet::contrib::eec::EECTriangleOPE< axis::log,axis::log,axis::id > *result = 0 ;
   
-  if (!PyArg_ParseTupleAndKeywords(args, kwargs, "OO|OOOOOOOOOOOOOOO:new_EECTriangleOPELogLogId", kwnames, &obj0, &obj1, &obj2, &obj3, &obj4, &obj5, &obj6, &obj7, &obj8, &obj9, &obj10, &obj11, &obj12, &obj13, &obj14, &obj15, &obj16)) SWIG_fail;
+  if (!PyArg_ParseTupleAndKeywords(args, kwargs, "O|OOOOOOOOOOOOOO:new_EECTriangleOPELogLogId", kwnames, &obj0, &obj1, &obj2, &obj3, &obj4, &obj5, &obj6, &obj7, &obj8, &obj9, &obj10, &obj11, &obj12, &obj13, &obj14)) SWIG_fail;
   {
     std::array< unsigned int,3 > *ptr = (std::array< unsigned int,3 > *)0;
     res1 = swig::asptr(obj0, &ptr);
@@ -54085,16 +53819,18 @@ SWIGINTERN PyObject *_wrap_new_EECTriangleOPELogLogId(PyObject *SWIGUNUSEDPARM(s
     }
     arg1 = ptr;
   }
-  {
-    std::array< std::array< double,2 >,3 > *ptr = (std::array< std::array< double,2 >,3 > *)0;
-    res2 = swig::asptr(obj1, &ptr);
-    if (!SWIG_IsOK(res2)) {
-      SWIG_exception_fail(SWIG_ArgError(res2), "in method '" "new_EECTriangleOPELogLogId" "', argument " "2"" of type '" "std::array< std::array< double,2 >,3 > const &""'"); 
+  if (obj1) {
+    {
+      std::array< std::array< double,2 >,3 > *ptr = (std::array< std::array< double,2 >,3 > *)0;
+      res2 = swig::asptr(obj1, &ptr);
+      if (!SWIG_IsOK(res2)) {
+        SWIG_exception_fail(SWIG_ArgError(res2), "in method '" "new_EECTriangleOPELogLogId" "', argument " "2"" of type '" "std::array< std::array< double,2 >,3 > const &""'"); 
+      }
+      if (!ptr) {
+        SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in method '" "new_EECTriangleOPELogLogId" "', argument " "2"" of type '" "std::array< std::array< double,2 >,3 > const &""'"); 
+      }
+      arg2 = ptr;
     }
-    if (!ptr) {
-      SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in method '" "new_EECTriangleOPELogLogId" "', argument " "2"" of type '" "std::array< std::array< double,2 >,3 > const &""'"); 
-    }
-    arg2 = ptr;
   }
   if (obj2) {
     ecode3 = SWIG_AsVal_bool(obj2, &val3);
@@ -54199,23 +53935,9 @@ SWIGINTERN PyObject *_wrap_new_EECTriangleOPELogLogId(PyObject *SWIGUNUSEDPARM(s
     } 
     arg15 = static_cast< bool >(val15);
   }
-  if (obj15) {
-    ecode16 = SWIG_AsVal_double(obj15, &val16);
-    if (!SWIG_IsOK(ecode16)) {
-      SWIG_exception_fail(SWIG_ArgError(ecode16), "in method '" "new_EECTriangleOPELogLogId" "', argument " "16"" of type '" "double""'");
-    } 
-    arg16 = static_cast< double >(val16);
-  }
-  if (obj16) {
-    ecode17 = SWIG_AsVal_double(obj16, &val17);
-    if (!SWIG_IsOK(ecode17)) {
-      SWIG_exception_fail(SWIG_ArgError(ecode17), "in method '" "new_EECTriangleOPELogLogId" "', argument " "17"" of type '" "double""'");
-    } 
-    arg17 = static_cast< double >(val17);
-  }
   {
     try {
-      result = (fastjet::contrib::eec::EECTriangleOPE< axis::log,axis::log,axis::id > *)new fastjet::contrib::eec::EECTriangleOPE< axis::log,axis::log,axis::id >((std::array< unsigned int,3 > const &)*arg1,(std::array< std::array< double,2 >,3 > const &)*arg2,arg3,(std::vector< double,std::allocator< double > > const &)*arg4,(std::vector< unsigned int,std::allocator< unsigned int > > const &)*arg5,arg6,arg7,arg8,arg9,arg10,arg11,arg12,arg13,arg14,arg15,arg16,arg17); 
+      result = (fastjet::contrib::eec::EECTriangleOPE< axis::log,axis::log,axis::id > *)new fastjet::contrib::eec::EECTriangleOPE< axis::log,axis::log,axis::id >((std::array< unsigned int,3 > const &)*arg1,(std::array< std::array< double,2 >,3 > const &)*arg2,arg3,(std::vector< double,std::allocator< double > > const &)*arg4,(std::vector< unsigned int,std::allocator< unsigned int > > const &)*arg5,arg6,arg7,arg8,arg9,arg10,arg11,arg12,arg13,arg14,arg15); 
     }
     /*@SWIG:/usr/local/Cellar/swig/4.0.2/share/swig/4.0.2/typemaps/exception.swg,58,SWIG_CATCH_STDEXCEPT@*/  /* catching std::exception  */
     catch (std::invalid_argument& e) {
@@ -55197,7 +54919,7 @@ static PyMethodDef SwigMethods[] = {
 	 { "EECHistBase1DId_axis_range", (PyCFunction)(void(*)(void))_wrap_EECHistBase1DId_axis_range, METH_VARARGS|METH_KEYWORDS, "EECHistBase1DId_axis_range(EECHistBase1DId self, unsigned int axis=0) -> arrayDouble2"},
 	 { "EECHistBase1DId_axis_min", (PyCFunction)(void(*)(void))_wrap_EECHistBase1DId_axis_min, METH_VARARGS|METH_KEYWORDS, "EECHistBase1DId_axis_min(EECHistBase1DId self, unsigned int axis=0) -> double"},
 	 { "EECHistBase1DId_axis_max", (PyCFunction)(void(*)(void))_wrap_EECHistBase1DId_axis_max, METH_VARARGS|METH_KEYWORDS, "EECHistBase1DId_axis_max(EECHistBase1DId self, unsigned int axis=0) -> double"},
-	 { "EECHistBase1DId_set_track_coveriance", (PyCFunction)(void(*)(void))_wrap_EECHistBase1DId_set_track_coveriance, METH_VARARGS|METH_KEYWORDS, "EECHistBase1DId_set_track_coveriance(EECHistBase1DId self, bool track)"},
+	 { "EECHistBase1DId_set_track_covariance", (PyCFunction)(void(*)(void))_wrap_EECHistBase1DId_set_track_covariance, METH_VARARGS|METH_KEYWORDS, "EECHistBase1DId_set_track_covariance(EECHistBase1DId self, bool track)"},
 	 { "EECHistBase1DId_set_variance_bound", (PyCFunction)(void(*)(void))_wrap_EECHistBase1DId_set_variance_bound, METH_VARARGS|METH_KEYWORDS, "EECHistBase1DId_set_variance_bound(EECHistBase1DId self, bool bound)"},
 	 { "EECHistBase1DId_set_variance_bound_includes_overflows", (PyCFunction)(void(*)(void))_wrap_EECHistBase1DId_set_variance_bound_includes_overflows, METH_VARARGS|METH_KEYWORDS, "EECHistBase1DId_set_variance_bound_includes_overflows(EECHistBase1DId self, bool include)"},
 	 { "EECHistBase1DId_set_nbins", _wrap_EECHistBase1DId_set_nbins, METH_VARARGS, "\n"
@@ -55236,7 +54958,7 @@ static PyMethodDef SwigMethods[] = {
 	 { "EECHistBase1DLog_axis_range", (PyCFunction)(void(*)(void))_wrap_EECHistBase1DLog_axis_range, METH_VARARGS|METH_KEYWORDS, "EECHistBase1DLog_axis_range(EECHistBase1DLog self, unsigned int axis=0) -> arrayDouble2"},
 	 { "EECHistBase1DLog_axis_min", (PyCFunction)(void(*)(void))_wrap_EECHistBase1DLog_axis_min, METH_VARARGS|METH_KEYWORDS, "EECHistBase1DLog_axis_min(EECHistBase1DLog self, unsigned int axis=0) -> double"},
 	 { "EECHistBase1DLog_axis_max", (PyCFunction)(void(*)(void))_wrap_EECHistBase1DLog_axis_max, METH_VARARGS|METH_KEYWORDS, "EECHistBase1DLog_axis_max(EECHistBase1DLog self, unsigned int axis=0) -> double"},
-	 { "EECHistBase1DLog_set_track_coveriance", (PyCFunction)(void(*)(void))_wrap_EECHistBase1DLog_set_track_coveriance, METH_VARARGS|METH_KEYWORDS, "EECHistBase1DLog_set_track_coveriance(EECHistBase1DLog self, bool track)"},
+	 { "EECHistBase1DLog_set_track_covariance", (PyCFunction)(void(*)(void))_wrap_EECHistBase1DLog_set_track_covariance, METH_VARARGS|METH_KEYWORDS, "EECHistBase1DLog_set_track_covariance(EECHistBase1DLog self, bool track)"},
 	 { "EECHistBase1DLog_set_variance_bound", (PyCFunction)(void(*)(void))_wrap_EECHistBase1DLog_set_variance_bound, METH_VARARGS|METH_KEYWORDS, "EECHistBase1DLog_set_variance_bound(EECHistBase1DLog self, bool bound)"},
 	 { "EECHistBase1DLog_set_variance_bound_includes_overflows", (PyCFunction)(void(*)(void))_wrap_EECHistBase1DLog_set_variance_bound_includes_overflows, METH_VARARGS|METH_KEYWORDS, "EECHistBase1DLog_set_variance_bound_includes_overflows(EECHistBase1DLog self, bool include)"},
 	 { "EECHistBase1DLog_set_nbins", _wrap_EECHistBase1DLog_set_nbins, METH_VARARGS, "\n"
@@ -55275,7 +54997,7 @@ static PyMethodDef SwigMethods[] = {
 	 { "EECHistBaseIdIdId_axis_range", (PyCFunction)(void(*)(void))_wrap_EECHistBaseIdIdId_axis_range, METH_VARARGS|METH_KEYWORDS, "EECHistBaseIdIdId_axis_range(EECHistBaseIdIdId self, unsigned int axis=0) -> arrayDouble2"},
 	 { "EECHistBaseIdIdId_axis_min", (PyCFunction)(void(*)(void))_wrap_EECHistBaseIdIdId_axis_min, METH_VARARGS|METH_KEYWORDS, "EECHistBaseIdIdId_axis_min(EECHistBaseIdIdId self, unsigned int axis=0) -> double"},
 	 { "EECHistBaseIdIdId_axis_max", (PyCFunction)(void(*)(void))_wrap_EECHistBaseIdIdId_axis_max, METH_VARARGS|METH_KEYWORDS, "EECHistBaseIdIdId_axis_max(EECHistBaseIdIdId self, unsigned int axis=0) -> double"},
-	 { "EECHistBaseIdIdId_set_track_coveriance", (PyCFunction)(void(*)(void))_wrap_EECHistBaseIdIdId_set_track_coveriance, METH_VARARGS|METH_KEYWORDS, "EECHistBaseIdIdId_set_track_coveriance(EECHistBaseIdIdId self, bool track)"},
+	 { "EECHistBaseIdIdId_set_track_covariance", (PyCFunction)(void(*)(void))_wrap_EECHistBaseIdIdId_set_track_covariance, METH_VARARGS|METH_KEYWORDS, "EECHistBaseIdIdId_set_track_covariance(EECHistBaseIdIdId self, bool track)"},
 	 { "EECHistBaseIdIdId_set_variance_bound", (PyCFunction)(void(*)(void))_wrap_EECHistBaseIdIdId_set_variance_bound, METH_VARARGS|METH_KEYWORDS, "EECHistBaseIdIdId_set_variance_bound(EECHistBaseIdIdId self, bool bound)"},
 	 { "EECHistBaseIdIdId_set_variance_bound_includes_overflows", (PyCFunction)(void(*)(void))_wrap_EECHistBaseIdIdId_set_variance_bound_includes_overflows, METH_VARARGS|METH_KEYWORDS, "EECHistBaseIdIdId_set_variance_bound_includes_overflows(EECHistBaseIdIdId self, bool include)"},
 	 { "EECHistBaseIdIdId_set_nbins", _wrap_EECHistBaseIdIdId_set_nbins, METH_VARARGS, "\n"
@@ -55314,7 +55036,7 @@ static PyMethodDef SwigMethods[] = {
 	 { "EECHistBaseLogIdId_axis_range", (PyCFunction)(void(*)(void))_wrap_EECHistBaseLogIdId_axis_range, METH_VARARGS|METH_KEYWORDS, "EECHistBaseLogIdId_axis_range(EECHistBaseLogIdId self, unsigned int axis=0) -> arrayDouble2"},
 	 { "EECHistBaseLogIdId_axis_min", (PyCFunction)(void(*)(void))_wrap_EECHistBaseLogIdId_axis_min, METH_VARARGS|METH_KEYWORDS, "EECHistBaseLogIdId_axis_min(EECHistBaseLogIdId self, unsigned int axis=0) -> double"},
 	 { "EECHistBaseLogIdId_axis_max", (PyCFunction)(void(*)(void))_wrap_EECHistBaseLogIdId_axis_max, METH_VARARGS|METH_KEYWORDS, "EECHistBaseLogIdId_axis_max(EECHistBaseLogIdId self, unsigned int axis=0) -> double"},
-	 { "EECHistBaseLogIdId_set_track_coveriance", (PyCFunction)(void(*)(void))_wrap_EECHistBaseLogIdId_set_track_coveriance, METH_VARARGS|METH_KEYWORDS, "EECHistBaseLogIdId_set_track_coveriance(EECHistBaseLogIdId self, bool track)"},
+	 { "EECHistBaseLogIdId_set_track_covariance", (PyCFunction)(void(*)(void))_wrap_EECHistBaseLogIdId_set_track_covariance, METH_VARARGS|METH_KEYWORDS, "EECHistBaseLogIdId_set_track_covariance(EECHistBaseLogIdId self, bool track)"},
 	 { "EECHistBaseLogIdId_set_variance_bound", (PyCFunction)(void(*)(void))_wrap_EECHistBaseLogIdId_set_variance_bound, METH_VARARGS|METH_KEYWORDS, "EECHistBaseLogIdId_set_variance_bound(EECHistBaseLogIdId self, bool bound)"},
 	 { "EECHistBaseLogIdId_set_variance_bound_includes_overflows", (PyCFunction)(void(*)(void))_wrap_EECHistBaseLogIdId_set_variance_bound_includes_overflows, METH_VARARGS|METH_KEYWORDS, "EECHistBaseLogIdId_set_variance_bound_includes_overflows(EECHistBaseLogIdId self, bool include)"},
 	 { "EECHistBaseLogIdId_set_nbins", _wrap_EECHistBaseLogIdId_set_nbins, METH_VARARGS, "\n"
@@ -55353,7 +55075,7 @@ static PyMethodDef SwigMethods[] = {
 	 { "EECHistBaseIdLogId_axis_range", (PyCFunction)(void(*)(void))_wrap_EECHistBaseIdLogId_axis_range, METH_VARARGS|METH_KEYWORDS, "EECHistBaseIdLogId_axis_range(EECHistBaseIdLogId self, unsigned int axis=0) -> arrayDouble2"},
 	 { "EECHistBaseIdLogId_axis_min", (PyCFunction)(void(*)(void))_wrap_EECHistBaseIdLogId_axis_min, METH_VARARGS|METH_KEYWORDS, "EECHistBaseIdLogId_axis_min(EECHistBaseIdLogId self, unsigned int axis=0) -> double"},
 	 { "EECHistBaseIdLogId_axis_max", (PyCFunction)(void(*)(void))_wrap_EECHistBaseIdLogId_axis_max, METH_VARARGS|METH_KEYWORDS, "EECHistBaseIdLogId_axis_max(EECHistBaseIdLogId self, unsigned int axis=0) -> double"},
-	 { "EECHistBaseIdLogId_set_track_coveriance", (PyCFunction)(void(*)(void))_wrap_EECHistBaseIdLogId_set_track_coveriance, METH_VARARGS|METH_KEYWORDS, "EECHistBaseIdLogId_set_track_coveriance(EECHistBaseIdLogId self, bool track)"},
+	 { "EECHistBaseIdLogId_set_track_covariance", (PyCFunction)(void(*)(void))_wrap_EECHistBaseIdLogId_set_track_covariance, METH_VARARGS|METH_KEYWORDS, "EECHistBaseIdLogId_set_track_covariance(EECHistBaseIdLogId self, bool track)"},
 	 { "EECHistBaseIdLogId_set_variance_bound", (PyCFunction)(void(*)(void))_wrap_EECHistBaseIdLogId_set_variance_bound, METH_VARARGS|METH_KEYWORDS, "EECHistBaseIdLogId_set_variance_bound(EECHistBaseIdLogId self, bool bound)"},
 	 { "EECHistBaseIdLogId_set_variance_bound_includes_overflows", (PyCFunction)(void(*)(void))_wrap_EECHistBaseIdLogId_set_variance_bound_includes_overflows, METH_VARARGS|METH_KEYWORDS, "EECHistBaseIdLogId_set_variance_bound_includes_overflows(EECHistBaseIdLogId self, bool include)"},
 	 { "EECHistBaseIdLogId_set_nbins", _wrap_EECHistBaseIdLogId_set_nbins, METH_VARARGS, "\n"
@@ -55392,7 +55114,7 @@ static PyMethodDef SwigMethods[] = {
 	 { "EECHistBaseLogLogId_axis_range", (PyCFunction)(void(*)(void))_wrap_EECHistBaseLogLogId_axis_range, METH_VARARGS|METH_KEYWORDS, "EECHistBaseLogLogId_axis_range(EECHistBaseLogLogId self, unsigned int axis=0) -> arrayDouble2"},
 	 { "EECHistBaseLogLogId_axis_min", (PyCFunction)(void(*)(void))_wrap_EECHistBaseLogLogId_axis_min, METH_VARARGS|METH_KEYWORDS, "EECHistBaseLogLogId_axis_min(EECHistBaseLogLogId self, unsigned int axis=0) -> double"},
 	 { "EECHistBaseLogLogId_axis_max", (PyCFunction)(void(*)(void))_wrap_EECHistBaseLogLogId_axis_max, METH_VARARGS|METH_KEYWORDS, "EECHistBaseLogLogId_axis_max(EECHistBaseLogLogId self, unsigned int axis=0) -> double"},
-	 { "EECHistBaseLogLogId_set_track_coveriance", (PyCFunction)(void(*)(void))_wrap_EECHistBaseLogLogId_set_track_coveriance, METH_VARARGS|METH_KEYWORDS, "EECHistBaseLogLogId_set_track_coveriance(EECHistBaseLogLogId self, bool track)"},
+	 { "EECHistBaseLogLogId_set_track_covariance", (PyCFunction)(void(*)(void))_wrap_EECHistBaseLogLogId_set_track_covariance, METH_VARARGS|METH_KEYWORDS, "EECHistBaseLogLogId_set_track_covariance(EECHistBaseLogLogId self, bool track)"},
 	 { "EECHistBaseLogLogId_set_variance_bound", (PyCFunction)(void(*)(void))_wrap_EECHistBaseLogLogId_set_variance_bound, METH_VARARGS|METH_KEYWORDS, "EECHistBaseLogLogId_set_variance_bound(EECHistBaseLogLogId self, bool bound)"},
 	 { "EECHistBaseLogLogId_set_variance_bound_includes_overflows", (PyCFunction)(void(*)(void))_wrap_EECHistBaseLogLogId_set_variance_bound_includes_overflows, METH_VARARGS|METH_KEYWORDS, "EECHistBaseLogLogId_set_variance_bound_includes_overflows(EECHistBaseLogLogId self, bool include)"},
 	 { "EECHistBaseLogLogId_set_nbins", _wrap_EECHistBaseLogLogId_set_nbins, METH_VARARGS, "\n"
@@ -55494,8 +55216,6 @@ static PyMethodDef SwigMethods[] = {
 	 { "EECBase_num_threads", _wrap_EECBase_num_threads, METH_O, "EECBase_num_threads(EECBase self) -> int"},
 	 { "EECBase_omp_chunksize", _wrap_EECBase_omp_chunksize, METH_O, "EECBase_omp_chunksize(EECBase self) -> int"},
 	 { "EECBase_print_every", _wrap_EECBase_print_every, METH_O, "EECBase_print_every(EECBase self) -> long"},
-	 { "EECBase_R", _wrap_EECBase_R, METH_O, "EECBase_R(EECBase self) -> double"},
-	 { "EECBase_beta", _wrap_EECBase_beta, METH_O, "EECBase_beta(EECBase self) -> double"},
 	 { "EECBase_total_weight", _wrap_EECBase_total_weight, METH_O, "EECBase_total_weight(EECBase self) -> double"},
 	 { "EECBase_particle_weight", _wrap_EECBase_particle_weight, METH_O, "EECBase_particle_weight(EECBase self) -> fastjet::contrib::eec::ParticleWeight"},
 	 { "EECBase_pairwise_distance", _wrap_EECBase_pairwise_distance, METH_O, "EECBase_pairwise_distance(EECBase self) -> fastjet::contrib::eec::PairwiseDistance"},
@@ -55507,8 +55227,6 @@ static PyMethodDef SwigMethods[] = {
 	 { "EECBase_set_num_threads", (PyCFunction)(void(*)(void))_wrap_EECBase_set_num_threads, METH_VARARGS|METH_KEYWORDS, "EECBase_set_num_threads(EECBase self, int nthreads)"},
 	 { "EECBase_set_omp_chunksize", (PyCFunction)(void(*)(void))_wrap_EECBase_set_omp_chunksize, METH_VARARGS|METH_KEYWORDS, "EECBase_set_omp_chunksize(EECBase self, int chunksize)"},
 	 { "EECBase_set_print_every", (PyCFunction)(void(*)(void))_wrap_EECBase_set_print_every, METH_VARARGS|METH_KEYWORDS, "EECBase_set_print_every(EECBase self, long print_every)"},
-	 { "EECBase_set_R", (PyCFunction)(void(*)(void))_wrap_EECBase_set_R, METH_VARARGS|METH_KEYWORDS, "EECBase_set_R(EECBase self, double R)"},
-	 { "EECBase_set_beta", (PyCFunction)(void(*)(void))_wrap_EECBase_set_beta, METH_VARARGS|METH_KEYWORDS, "EECBase_set_beta(EECBase self, double beta)"},
 	 { "EECBase_set_particle_weight", (PyCFunction)(void(*)(void))_wrap_EECBase_set_particle_weight, METH_VARARGS|METH_KEYWORDS, "EECBase_set_particle_weight(EECBase self, fastjet::contrib::eec::ParticleWeight pw)"},
 	 { "EECBase_set_pairwise_distance", (PyCFunction)(void(*)(void))_wrap_EECBase_set_pairwise_distance, METH_VARARGS|METH_KEYWORDS, "EECBase_set_pairwise_distance(EECBase self, fastjet::contrib::eec::PairwiseDistance pd)"},
 	 { "EECBase_set_print_stream", (PyCFunction)(void(*)(void))_wrap_EECBase_set_print_stream, METH_VARARGS|METH_KEYWORDS, "EECBase_set_print_stream(EECBase self, std::ostream & os)"},
@@ -55584,7 +55302,7 @@ static PyMethodDef SwigMethods[] = {
 	 { "delete_Multinomial6", _wrap_delete_Multinomial6, METH_O, "delete_Multinomial6(Multinomial6 self)"},
 	 { "Multinomial6_swigregister", Multinomial6_swigregister, METH_O, NULL},
 	 { "Multinomial6_swiginit", Multinomial6_swiginit, METH_VARARGS, NULL},
-	 { "new_EECLongestSideId", (PyCFunction)(void(*)(void))_wrap_new_EECLongestSideId, METH_VARARGS|METH_KEYWORDS, "new_EECLongestSideId(unsigned int N, unsigned int nbins, arrayDouble2 axis_range, bool norm=True, vectorDouble weight_powers={1}, vectorUnsigned charge_powers={0}, fastjet::contrib::eec::ParticleWeight particle_weight=Default, fastjet::contrib::eec::PairwiseDistance pairwise_distance=Default, int num_threads=-1, int omp_chunksize=10, long print_every=-10, bool check_degen=False, bool average_verts=False, bool track_covariance=True, bool variance_bound=True, bool variance_bound_includes_overflows=True, double R=1, double beta=1, bool use_general_eNc=False) -> EECLongestSideId"},
+	 { "new_EECLongestSideId", (PyCFunction)(void(*)(void))_wrap_new_EECLongestSideId, METH_VARARGS|METH_KEYWORDS, "new_EECLongestSideId(unsigned int N, unsigned int nbins, arrayDouble2 axis_range={1e-5, 1}, bool norm=True, vectorDouble weight_powers={1}, vectorUnsigned charge_powers={0}, fastjet::contrib::eec::ParticleWeight particle_weight=Default, fastjet::contrib::eec::PairwiseDistance pairwise_distance=Default, int num_threads=-1, int omp_chunksize=10, long print_every=-10, bool check_degen=False, bool average_verts=False, bool track_covariance=True, bool variance_bound=True, bool variance_bound_includes_overflows=True, bool use_general_eNc=False) -> EECLongestSideId"},
 	 { "delete_EECLongestSideId", _wrap_delete_EECLongestSideId, METH_O, "delete_EECLongestSideId(EECLongestSideId self)"},
 	 { "EECLongestSideId_use_general_eNc", _wrap_EECLongestSideId_use_general_eNc, METH_O, "EECLongestSideId_use_general_eNc(EECLongestSideId self) -> bool"},
 	 { "EECLongestSideId_set_use_general_eNc", (PyCFunction)(void(*)(void))_wrap_EECLongestSideId_set_use_general_eNc, METH_VARARGS|METH_KEYWORDS, "EECLongestSideId_set_use_general_eNc(EECLongestSideId self, bool general)"},
@@ -55597,7 +55315,7 @@ static PyMethodDef SwigMethods[] = {
 	 { "EECLongestSideId_add", (PyCFunction)(void(*)(void))_wrap_EECLongestSideId_add, METH_VARARGS|METH_KEYWORDS, "EECLongestSideId_add(EECLongestSideId self, EECLongestSideId rhs)"},
 	 { "EECLongestSideId_swigregister", EECLongestSideId_swigregister, METH_O, NULL},
 	 { "EECLongestSideId_swiginit", EECLongestSideId_swiginit, METH_VARARGS, NULL},
-	 { "new_EECLongestSideLog", (PyCFunction)(void(*)(void))_wrap_new_EECLongestSideLog, METH_VARARGS|METH_KEYWORDS, "new_EECLongestSideLog(unsigned int N, unsigned int nbins, arrayDouble2 axis_range, bool norm=True, vectorDouble weight_powers={1}, vectorUnsigned charge_powers={0}, fastjet::contrib::eec::ParticleWeight particle_weight=Default, fastjet::contrib::eec::PairwiseDistance pairwise_distance=Default, int num_threads=-1, int omp_chunksize=10, long print_every=-10, bool check_degen=False, bool average_verts=False, bool track_covariance=True, bool variance_bound=True, bool variance_bound_includes_overflows=True, double R=1, double beta=1, bool use_general_eNc=False) -> EECLongestSideLog"},
+	 { "new_EECLongestSideLog", (PyCFunction)(void(*)(void))_wrap_new_EECLongestSideLog, METH_VARARGS|METH_KEYWORDS, "new_EECLongestSideLog(unsigned int N, unsigned int nbins, arrayDouble2 axis_range={1e-5, 1}, bool norm=True, vectorDouble weight_powers={1}, vectorUnsigned charge_powers={0}, fastjet::contrib::eec::ParticleWeight particle_weight=Default, fastjet::contrib::eec::PairwiseDistance pairwise_distance=Default, int num_threads=-1, int omp_chunksize=10, long print_every=-10, bool check_degen=False, bool average_verts=False, bool track_covariance=True, bool variance_bound=True, bool variance_bound_includes_overflows=True, bool use_general_eNc=False) -> EECLongestSideLog"},
 	 { "delete_EECLongestSideLog", _wrap_delete_EECLongestSideLog, METH_O, "delete_EECLongestSideLog(EECLongestSideLog self)"},
 	 { "EECLongestSideLog_use_general_eNc", _wrap_EECLongestSideLog_use_general_eNc, METH_O, "EECLongestSideLog_use_general_eNc(EECLongestSideLog self) -> bool"},
 	 { "EECLongestSideLog_set_use_general_eNc", (PyCFunction)(void(*)(void))_wrap_EECLongestSideLog_set_use_general_eNc, METH_VARARGS|METH_KEYWORDS, "EECLongestSideLog_set_use_general_eNc(EECLongestSideLog self, bool general)"},
@@ -55610,7 +55328,7 @@ static PyMethodDef SwigMethods[] = {
 	 { "EECLongestSideLog_add", (PyCFunction)(void(*)(void))_wrap_EECLongestSideLog_add, METH_VARARGS|METH_KEYWORDS, "EECLongestSideLog_add(EECLongestSideLog self, EECLongestSideLog rhs)"},
 	 { "EECLongestSideLog_swigregister", EECLongestSideLog_swigregister, METH_O, NULL},
 	 { "EECLongestSideLog_swiginit", EECLongestSideLog_swiginit, METH_VARARGS, NULL},
-	 { "new_EECTriangleOPEIdIdId", (PyCFunction)(void(*)(void))_wrap_new_EECTriangleOPEIdIdId, METH_VARARGS|METH_KEYWORDS, "new_EECTriangleOPEIdIdId(arrayUnsigned3 nbins, arrayPairDoubleDouble axes_range, bool norm=True, vectorDouble weight_powers={1}, vectorUnsigned charge_powers={0}, fastjet::contrib::eec::ParticleWeight particle_weight=Default, fastjet::contrib::eec::PairwiseDistance pairwise_distance=Default, int num_threads=-1, int omp_chunksize=10, long print_every=-10, bool check_degen=False, bool average_verts=False, bool track_covariance=False, bool variance_bound=True, bool variance_bound_includes_overflows=True, double R=1, double beta=1) -> EECTriangleOPEIdIdId"},
+	 { "new_EECTriangleOPEIdIdId", (PyCFunction)(void(*)(void))_wrap_new_EECTriangleOPEIdIdId, METH_VARARGS|METH_KEYWORDS, "new_EECTriangleOPEIdIdId(arrayUnsigned3 nbins, arrayPairDoubleDouble axes_range={{{1e-5, 1}, {1e-5, 1}, {0, PI/2}}}, bool norm=True, vectorDouble weight_powers={1}, vectorUnsigned charge_powers={0}, fastjet::contrib::eec::ParticleWeight particle_weight=Default, fastjet::contrib::eec::PairwiseDistance pairwise_distance=Default, int num_threads=-1, int omp_chunksize=10, long print_every=-10, bool check_degen=False, bool average_verts=False, bool track_covariance=False, bool variance_bound=True, bool variance_bound_includes_overflows=True) -> EECTriangleOPEIdIdId"},
 	 { "delete_EECTriangleOPEIdIdId", _wrap_delete_EECTriangleOPEIdIdId, METH_O, "delete_EECTriangleOPEIdIdId(EECTriangleOPEIdIdId self)"},
 	 { "EECTriangleOPEIdIdId_set_num_threads", (PyCFunction)(void(*)(void))_wrap_EECTriangleOPEIdIdId_set_num_threads, METH_VARARGS|METH_KEYWORDS, "EECTriangleOPEIdIdId_set_num_threads(EECTriangleOPEIdIdId self, int threads)"},
 	 { "EECTriangleOPEIdIdId_description", (PyCFunction)(void(*)(void))_wrap_EECTriangleOPEIdIdId_description, METH_VARARGS|METH_KEYWORDS, "EECTriangleOPEIdIdId_description(EECTriangleOPEIdIdId self, int hist_level=1) -> std::string"},
@@ -55621,7 +55339,7 @@ static PyMethodDef SwigMethods[] = {
 	 { "EECTriangleOPEIdIdId_add", (PyCFunction)(void(*)(void))_wrap_EECTriangleOPEIdIdId_add, METH_VARARGS|METH_KEYWORDS, "EECTriangleOPEIdIdId_add(EECTriangleOPEIdIdId self, EECTriangleOPEIdIdId rhs)"},
 	 { "EECTriangleOPEIdIdId_swigregister", EECTriangleOPEIdIdId_swigregister, METH_O, NULL},
 	 { "EECTriangleOPEIdIdId_swiginit", EECTriangleOPEIdIdId_swiginit, METH_VARARGS, NULL},
-	 { "new_EECTriangleOPELogIdId", (PyCFunction)(void(*)(void))_wrap_new_EECTriangleOPELogIdId, METH_VARARGS|METH_KEYWORDS, "new_EECTriangleOPELogIdId(arrayUnsigned3 nbins, arrayPairDoubleDouble axes_range, bool norm=True, vectorDouble weight_powers={1}, vectorUnsigned charge_powers={0}, fastjet::contrib::eec::ParticleWeight particle_weight=Default, fastjet::contrib::eec::PairwiseDistance pairwise_distance=Default, int num_threads=-1, int omp_chunksize=10, long print_every=-10, bool check_degen=False, bool average_verts=False, bool track_covariance=False, bool variance_bound=True, bool variance_bound_includes_overflows=True, double R=1, double beta=1) -> EECTriangleOPELogIdId"},
+	 { "new_EECTriangleOPELogIdId", (PyCFunction)(void(*)(void))_wrap_new_EECTriangleOPELogIdId, METH_VARARGS|METH_KEYWORDS, "new_EECTriangleOPELogIdId(arrayUnsigned3 nbins, arrayPairDoubleDouble axes_range={{{1e-5, 1}, {1e-5, 1}, {0, PI/2}}}, bool norm=True, vectorDouble weight_powers={1}, vectorUnsigned charge_powers={0}, fastjet::contrib::eec::ParticleWeight particle_weight=Default, fastjet::contrib::eec::PairwiseDistance pairwise_distance=Default, int num_threads=-1, int omp_chunksize=10, long print_every=-10, bool check_degen=False, bool average_verts=False, bool track_covariance=False, bool variance_bound=True, bool variance_bound_includes_overflows=True) -> EECTriangleOPELogIdId"},
 	 { "delete_EECTriangleOPELogIdId", _wrap_delete_EECTriangleOPELogIdId, METH_O, "delete_EECTriangleOPELogIdId(EECTriangleOPELogIdId self)"},
 	 { "EECTriangleOPELogIdId_set_num_threads", (PyCFunction)(void(*)(void))_wrap_EECTriangleOPELogIdId_set_num_threads, METH_VARARGS|METH_KEYWORDS, "EECTriangleOPELogIdId_set_num_threads(EECTriangleOPELogIdId self, int threads)"},
 	 { "EECTriangleOPELogIdId_description", (PyCFunction)(void(*)(void))_wrap_EECTriangleOPELogIdId_description, METH_VARARGS|METH_KEYWORDS, "EECTriangleOPELogIdId_description(EECTriangleOPELogIdId self, int hist_level=1) -> std::string"},
@@ -55632,7 +55350,7 @@ static PyMethodDef SwigMethods[] = {
 	 { "EECTriangleOPELogIdId_add", (PyCFunction)(void(*)(void))_wrap_EECTriangleOPELogIdId_add, METH_VARARGS|METH_KEYWORDS, "EECTriangleOPELogIdId_add(EECTriangleOPELogIdId self, EECTriangleOPELogIdId rhs)"},
 	 { "EECTriangleOPELogIdId_swigregister", EECTriangleOPELogIdId_swigregister, METH_O, NULL},
 	 { "EECTriangleOPELogIdId_swiginit", EECTriangleOPELogIdId_swiginit, METH_VARARGS, NULL},
-	 { "new_EECTriangleOPEIdLogId", (PyCFunction)(void(*)(void))_wrap_new_EECTriangleOPEIdLogId, METH_VARARGS|METH_KEYWORDS, "new_EECTriangleOPEIdLogId(arrayUnsigned3 nbins, arrayPairDoubleDouble axes_range, bool norm=True, vectorDouble weight_powers={1}, vectorUnsigned charge_powers={0}, fastjet::contrib::eec::ParticleWeight particle_weight=Default, fastjet::contrib::eec::PairwiseDistance pairwise_distance=Default, int num_threads=-1, int omp_chunksize=10, long print_every=-10, bool check_degen=False, bool average_verts=False, bool track_covariance=False, bool variance_bound=True, bool variance_bound_includes_overflows=True, double R=1, double beta=1) -> EECTriangleOPEIdLogId"},
+	 { "new_EECTriangleOPEIdLogId", (PyCFunction)(void(*)(void))_wrap_new_EECTriangleOPEIdLogId, METH_VARARGS|METH_KEYWORDS, "new_EECTriangleOPEIdLogId(arrayUnsigned3 nbins, arrayPairDoubleDouble axes_range={{{1e-5, 1}, {1e-5, 1}, {0, PI/2}}}, bool norm=True, vectorDouble weight_powers={1}, vectorUnsigned charge_powers={0}, fastjet::contrib::eec::ParticleWeight particle_weight=Default, fastjet::contrib::eec::PairwiseDistance pairwise_distance=Default, int num_threads=-1, int omp_chunksize=10, long print_every=-10, bool check_degen=False, bool average_verts=False, bool track_covariance=False, bool variance_bound=True, bool variance_bound_includes_overflows=True) -> EECTriangleOPEIdLogId"},
 	 { "delete_EECTriangleOPEIdLogId", _wrap_delete_EECTriangleOPEIdLogId, METH_O, "delete_EECTriangleOPEIdLogId(EECTriangleOPEIdLogId self)"},
 	 { "EECTriangleOPEIdLogId_set_num_threads", (PyCFunction)(void(*)(void))_wrap_EECTriangleOPEIdLogId_set_num_threads, METH_VARARGS|METH_KEYWORDS, "EECTriangleOPEIdLogId_set_num_threads(EECTriangleOPEIdLogId self, int threads)"},
 	 { "EECTriangleOPEIdLogId_description", (PyCFunction)(void(*)(void))_wrap_EECTriangleOPEIdLogId_description, METH_VARARGS|METH_KEYWORDS, "EECTriangleOPEIdLogId_description(EECTriangleOPEIdLogId self, int hist_level=1) -> std::string"},
@@ -55643,7 +55361,7 @@ static PyMethodDef SwigMethods[] = {
 	 { "EECTriangleOPEIdLogId_add", (PyCFunction)(void(*)(void))_wrap_EECTriangleOPEIdLogId_add, METH_VARARGS|METH_KEYWORDS, "EECTriangleOPEIdLogId_add(EECTriangleOPEIdLogId self, EECTriangleOPEIdLogId rhs)"},
 	 { "EECTriangleOPEIdLogId_swigregister", EECTriangleOPEIdLogId_swigregister, METH_O, NULL},
 	 { "EECTriangleOPEIdLogId_swiginit", EECTriangleOPEIdLogId_swiginit, METH_VARARGS, NULL},
-	 { "new_EECTriangleOPELogLogId", (PyCFunction)(void(*)(void))_wrap_new_EECTriangleOPELogLogId, METH_VARARGS|METH_KEYWORDS, "new_EECTriangleOPELogLogId(arrayUnsigned3 nbins, arrayPairDoubleDouble axes_range, bool norm=True, vectorDouble weight_powers={1}, vectorUnsigned charge_powers={0}, fastjet::contrib::eec::ParticleWeight particle_weight=Default, fastjet::contrib::eec::PairwiseDistance pairwise_distance=Default, int num_threads=-1, int omp_chunksize=10, long print_every=-10, bool check_degen=False, bool average_verts=False, bool track_covariance=False, bool variance_bound=True, bool variance_bound_includes_overflows=True, double R=1, double beta=1) -> EECTriangleOPELogLogId"},
+	 { "new_EECTriangleOPELogLogId", (PyCFunction)(void(*)(void))_wrap_new_EECTriangleOPELogLogId, METH_VARARGS|METH_KEYWORDS, "new_EECTriangleOPELogLogId(arrayUnsigned3 nbins, arrayPairDoubleDouble axes_range={{{1e-5, 1}, {1e-5, 1}, {0, PI/2}}}, bool norm=True, vectorDouble weight_powers={1}, vectorUnsigned charge_powers={0}, fastjet::contrib::eec::ParticleWeight particle_weight=Default, fastjet::contrib::eec::PairwiseDistance pairwise_distance=Default, int num_threads=-1, int omp_chunksize=10, long print_every=-10, bool check_degen=False, bool average_verts=False, bool track_covariance=False, bool variance_bound=True, bool variance_bound_includes_overflows=True) -> EECTriangleOPELogLogId"},
 	 { "delete_EECTriangleOPELogLogId", _wrap_delete_EECTriangleOPELogLogId, METH_O, "delete_EECTriangleOPELogLogId(EECTriangleOPELogLogId self)"},
 	 { "EECTriangleOPELogLogId_set_num_threads", (PyCFunction)(void(*)(void))_wrap_EECTriangleOPELogLogId_set_num_threads, METH_VARARGS|METH_KEYWORDS, "EECTriangleOPELogLogId_set_num_threads(EECTriangleOPELogLogId self, int threads)"},
 	 { "EECTriangleOPELogLogId_description", (PyCFunction)(void(*)(void))_wrap_EECTriangleOPELogLogId_description, METH_VARARGS|METH_KEYWORDS, "EECTriangleOPELogLogId_description(EECTriangleOPELogLogId self, int hist_level=1) -> std::string"},
@@ -56130,7 +55848,7 @@ static PyMethodDef SwigMethods_proxydocs[] = {
 	 { "EECHistBase1DId_axis_range", (PyCFunction)(void(*)(void))_wrap_EECHistBase1DId_axis_range, METH_VARARGS|METH_KEYWORDS, "axis_range(EECHistBase1DId self, unsigned int axis=0) -> arrayDouble2"},
 	 { "EECHistBase1DId_axis_min", (PyCFunction)(void(*)(void))_wrap_EECHistBase1DId_axis_min, METH_VARARGS|METH_KEYWORDS, "axis_min(EECHistBase1DId self, unsigned int axis=0) -> double"},
 	 { "EECHistBase1DId_axis_max", (PyCFunction)(void(*)(void))_wrap_EECHistBase1DId_axis_max, METH_VARARGS|METH_KEYWORDS, "axis_max(EECHistBase1DId self, unsigned int axis=0) -> double"},
-	 { "EECHistBase1DId_set_track_coveriance", (PyCFunction)(void(*)(void))_wrap_EECHistBase1DId_set_track_coveriance, METH_VARARGS|METH_KEYWORDS, "set_track_coveriance(EECHistBase1DId self, bool track)"},
+	 { "EECHistBase1DId_set_track_covariance", (PyCFunction)(void(*)(void))_wrap_EECHistBase1DId_set_track_covariance, METH_VARARGS|METH_KEYWORDS, "set_track_covariance(EECHistBase1DId self, bool track)"},
 	 { "EECHistBase1DId_set_variance_bound", (PyCFunction)(void(*)(void))_wrap_EECHistBase1DId_set_variance_bound, METH_VARARGS|METH_KEYWORDS, "set_variance_bound(EECHistBase1DId self, bool bound)"},
 	 { "EECHistBase1DId_set_variance_bound_includes_overflows", (PyCFunction)(void(*)(void))_wrap_EECHistBase1DId_set_variance_bound_includes_overflows, METH_VARARGS|METH_KEYWORDS, "set_variance_bound_includes_overflows(EECHistBase1DId self, bool include)"},
 	 { "EECHistBase1DId_set_nbins", _wrap_EECHistBase1DId_set_nbins, METH_VARARGS, "\n"
@@ -56169,7 +55887,7 @@ static PyMethodDef SwigMethods_proxydocs[] = {
 	 { "EECHistBase1DLog_axis_range", (PyCFunction)(void(*)(void))_wrap_EECHistBase1DLog_axis_range, METH_VARARGS|METH_KEYWORDS, "axis_range(EECHistBase1DLog self, unsigned int axis=0) -> arrayDouble2"},
 	 { "EECHistBase1DLog_axis_min", (PyCFunction)(void(*)(void))_wrap_EECHistBase1DLog_axis_min, METH_VARARGS|METH_KEYWORDS, "axis_min(EECHistBase1DLog self, unsigned int axis=0) -> double"},
 	 { "EECHistBase1DLog_axis_max", (PyCFunction)(void(*)(void))_wrap_EECHistBase1DLog_axis_max, METH_VARARGS|METH_KEYWORDS, "axis_max(EECHistBase1DLog self, unsigned int axis=0) -> double"},
-	 { "EECHistBase1DLog_set_track_coveriance", (PyCFunction)(void(*)(void))_wrap_EECHistBase1DLog_set_track_coveriance, METH_VARARGS|METH_KEYWORDS, "set_track_coveriance(EECHistBase1DLog self, bool track)"},
+	 { "EECHistBase1DLog_set_track_covariance", (PyCFunction)(void(*)(void))_wrap_EECHistBase1DLog_set_track_covariance, METH_VARARGS|METH_KEYWORDS, "set_track_covariance(EECHistBase1DLog self, bool track)"},
 	 { "EECHistBase1DLog_set_variance_bound", (PyCFunction)(void(*)(void))_wrap_EECHistBase1DLog_set_variance_bound, METH_VARARGS|METH_KEYWORDS, "set_variance_bound(EECHistBase1DLog self, bool bound)"},
 	 { "EECHistBase1DLog_set_variance_bound_includes_overflows", (PyCFunction)(void(*)(void))_wrap_EECHistBase1DLog_set_variance_bound_includes_overflows, METH_VARARGS|METH_KEYWORDS, "set_variance_bound_includes_overflows(EECHistBase1DLog self, bool include)"},
 	 { "EECHistBase1DLog_set_nbins", _wrap_EECHistBase1DLog_set_nbins, METH_VARARGS, "\n"
@@ -56208,7 +55926,7 @@ static PyMethodDef SwigMethods_proxydocs[] = {
 	 { "EECHistBaseIdIdId_axis_range", (PyCFunction)(void(*)(void))_wrap_EECHistBaseIdIdId_axis_range, METH_VARARGS|METH_KEYWORDS, "axis_range(EECHistBaseIdIdId self, unsigned int axis=0) -> arrayDouble2"},
 	 { "EECHistBaseIdIdId_axis_min", (PyCFunction)(void(*)(void))_wrap_EECHistBaseIdIdId_axis_min, METH_VARARGS|METH_KEYWORDS, "axis_min(EECHistBaseIdIdId self, unsigned int axis=0) -> double"},
 	 { "EECHistBaseIdIdId_axis_max", (PyCFunction)(void(*)(void))_wrap_EECHistBaseIdIdId_axis_max, METH_VARARGS|METH_KEYWORDS, "axis_max(EECHistBaseIdIdId self, unsigned int axis=0) -> double"},
-	 { "EECHistBaseIdIdId_set_track_coveriance", (PyCFunction)(void(*)(void))_wrap_EECHistBaseIdIdId_set_track_coveriance, METH_VARARGS|METH_KEYWORDS, "set_track_coveriance(EECHistBaseIdIdId self, bool track)"},
+	 { "EECHistBaseIdIdId_set_track_covariance", (PyCFunction)(void(*)(void))_wrap_EECHistBaseIdIdId_set_track_covariance, METH_VARARGS|METH_KEYWORDS, "set_track_covariance(EECHistBaseIdIdId self, bool track)"},
 	 { "EECHistBaseIdIdId_set_variance_bound", (PyCFunction)(void(*)(void))_wrap_EECHistBaseIdIdId_set_variance_bound, METH_VARARGS|METH_KEYWORDS, "set_variance_bound(EECHistBaseIdIdId self, bool bound)"},
 	 { "EECHistBaseIdIdId_set_variance_bound_includes_overflows", (PyCFunction)(void(*)(void))_wrap_EECHistBaseIdIdId_set_variance_bound_includes_overflows, METH_VARARGS|METH_KEYWORDS, "set_variance_bound_includes_overflows(EECHistBaseIdIdId self, bool include)"},
 	 { "EECHistBaseIdIdId_set_nbins", _wrap_EECHistBaseIdIdId_set_nbins, METH_VARARGS, "\n"
@@ -56247,7 +55965,7 @@ static PyMethodDef SwigMethods_proxydocs[] = {
 	 { "EECHistBaseLogIdId_axis_range", (PyCFunction)(void(*)(void))_wrap_EECHistBaseLogIdId_axis_range, METH_VARARGS|METH_KEYWORDS, "axis_range(EECHistBaseLogIdId self, unsigned int axis=0) -> arrayDouble2"},
 	 { "EECHistBaseLogIdId_axis_min", (PyCFunction)(void(*)(void))_wrap_EECHistBaseLogIdId_axis_min, METH_VARARGS|METH_KEYWORDS, "axis_min(EECHistBaseLogIdId self, unsigned int axis=0) -> double"},
 	 { "EECHistBaseLogIdId_axis_max", (PyCFunction)(void(*)(void))_wrap_EECHistBaseLogIdId_axis_max, METH_VARARGS|METH_KEYWORDS, "axis_max(EECHistBaseLogIdId self, unsigned int axis=0) -> double"},
-	 { "EECHistBaseLogIdId_set_track_coveriance", (PyCFunction)(void(*)(void))_wrap_EECHistBaseLogIdId_set_track_coveriance, METH_VARARGS|METH_KEYWORDS, "set_track_coveriance(EECHistBaseLogIdId self, bool track)"},
+	 { "EECHistBaseLogIdId_set_track_covariance", (PyCFunction)(void(*)(void))_wrap_EECHistBaseLogIdId_set_track_covariance, METH_VARARGS|METH_KEYWORDS, "set_track_covariance(EECHistBaseLogIdId self, bool track)"},
 	 { "EECHistBaseLogIdId_set_variance_bound", (PyCFunction)(void(*)(void))_wrap_EECHistBaseLogIdId_set_variance_bound, METH_VARARGS|METH_KEYWORDS, "set_variance_bound(EECHistBaseLogIdId self, bool bound)"},
 	 { "EECHistBaseLogIdId_set_variance_bound_includes_overflows", (PyCFunction)(void(*)(void))_wrap_EECHistBaseLogIdId_set_variance_bound_includes_overflows, METH_VARARGS|METH_KEYWORDS, "set_variance_bound_includes_overflows(EECHistBaseLogIdId self, bool include)"},
 	 { "EECHistBaseLogIdId_set_nbins", _wrap_EECHistBaseLogIdId_set_nbins, METH_VARARGS, "\n"
@@ -56286,7 +56004,7 @@ static PyMethodDef SwigMethods_proxydocs[] = {
 	 { "EECHistBaseIdLogId_axis_range", (PyCFunction)(void(*)(void))_wrap_EECHistBaseIdLogId_axis_range, METH_VARARGS|METH_KEYWORDS, "axis_range(EECHistBaseIdLogId self, unsigned int axis=0) -> arrayDouble2"},
 	 { "EECHistBaseIdLogId_axis_min", (PyCFunction)(void(*)(void))_wrap_EECHistBaseIdLogId_axis_min, METH_VARARGS|METH_KEYWORDS, "axis_min(EECHistBaseIdLogId self, unsigned int axis=0) -> double"},
 	 { "EECHistBaseIdLogId_axis_max", (PyCFunction)(void(*)(void))_wrap_EECHistBaseIdLogId_axis_max, METH_VARARGS|METH_KEYWORDS, "axis_max(EECHistBaseIdLogId self, unsigned int axis=0) -> double"},
-	 { "EECHistBaseIdLogId_set_track_coveriance", (PyCFunction)(void(*)(void))_wrap_EECHistBaseIdLogId_set_track_coveriance, METH_VARARGS|METH_KEYWORDS, "set_track_coveriance(EECHistBaseIdLogId self, bool track)"},
+	 { "EECHistBaseIdLogId_set_track_covariance", (PyCFunction)(void(*)(void))_wrap_EECHistBaseIdLogId_set_track_covariance, METH_VARARGS|METH_KEYWORDS, "set_track_covariance(EECHistBaseIdLogId self, bool track)"},
 	 { "EECHistBaseIdLogId_set_variance_bound", (PyCFunction)(void(*)(void))_wrap_EECHistBaseIdLogId_set_variance_bound, METH_VARARGS|METH_KEYWORDS, "set_variance_bound(EECHistBaseIdLogId self, bool bound)"},
 	 { "EECHistBaseIdLogId_set_variance_bound_includes_overflows", (PyCFunction)(void(*)(void))_wrap_EECHistBaseIdLogId_set_variance_bound_includes_overflows, METH_VARARGS|METH_KEYWORDS, "set_variance_bound_includes_overflows(EECHistBaseIdLogId self, bool include)"},
 	 { "EECHistBaseIdLogId_set_nbins", _wrap_EECHistBaseIdLogId_set_nbins, METH_VARARGS, "\n"
@@ -56325,7 +56043,7 @@ static PyMethodDef SwigMethods_proxydocs[] = {
 	 { "EECHistBaseLogLogId_axis_range", (PyCFunction)(void(*)(void))_wrap_EECHistBaseLogLogId_axis_range, METH_VARARGS|METH_KEYWORDS, "axis_range(EECHistBaseLogLogId self, unsigned int axis=0) -> arrayDouble2"},
 	 { "EECHistBaseLogLogId_axis_min", (PyCFunction)(void(*)(void))_wrap_EECHistBaseLogLogId_axis_min, METH_VARARGS|METH_KEYWORDS, "axis_min(EECHistBaseLogLogId self, unsigned int axis=0) -> double"},
 	 { "EECHistBaseLogLogId_axis_max", (PyCFunction)(void(*)(void))_wrap_EECHistBaseLogLogId_axis_max, METH_VARARGS|METH_KEYWORDS, "axis_max(EECHistBaseLogLogId self, unsigned int axis=0) -> double"},
-	 { "EECHistBaseLogLogId_set_track_coveriance", (PyCFunction)(void(*)(void))_wrap_EECHistBaseLogLogId_set_track_coveriance, METH_VARARGS|METH_KEYWORDS, "set_track_coveriance(EECHistBaseLogLogId self, bool track)"},
+	 { "EECHistBaseLogLogId_set_track_covariance", (PyCFunction)(void(*)(void))_wrap_EECHistBaseLogLogId_set_track_covariance, METH_VARARGS|METH_KEYWORDS, "set_track_covariance(EECHistBaseLogLogId self, bool track)"},
 	 { "EECHistBaseLogLogId_set_variance_bound", (PyCFunction)(void(*)(void))_wrap_EECHistBaseLogLogId_set_variance_bound, METH_VARARGS|METH_KEYWORDS, "set_variance_bound(EECHistBaseLogLogId self, bool bound)"},
 	 { "EECHistBaseLogLogId_set_variance_bound_includes_overflows", (PyCFunction)(void(*)(void))_wrap_EECHistBaseLogLogId_set_variance_bound_includes_overflows, METH_VARARGS|METH_KEYWORDS, "set_variance_bound_includes_overflows(EECHistBaseLogLogId self, bool include)"},
 	 { "EECHistBaseLogLogId_set_nbins", _wrap_EECHistBaseLogLogId_set_nbins, METH_VARARGS, "\n"
@@ -56427,8 +56145,6 @@ static PyMethodDef SwigMethods_proxydocs[] = {
 	 { "EECBase_num_threads", _wrap_EECBase_num_threads, METH_O, "num_threads(EECBase self) -> int"},
 	 { "EECBase_omp_chunksize", _wrap_EECBase_omp_chunksize, METH_O, "omp_chunksize(EECBase self) -> int"},
 	 { "EECBase_print_every", _wrap_EECBase_print_every, METH_O, "print_every(EECBase self) -> long"},
-	 { "EECBase_R", _wrap_EECBase_R, METH_O, "R(EECBase self) -> double"},
-	 { "EECBase_beta", _wrap_EECBase_beta, METH_O, "beta(EECBase self) -> double"},
 	 { "EECBase_total_weight", _wrap_EECBase_total_weight, METH_O, "total_weight(EECBase self) -> double"},
 	 { "EECBase_particle_weight", _wrap_EECBase_particle_weight, METH_O, "particle_weight(EECBase self) -> fastjet::contrib::eec::ParticleWeight"},
 	 { "EECBase_pairwise_distance", _wrap_EECBase_pairwise_distance, METH_O, "pairwise_distance(EECBase self) -> fastjet::contrib::eec::PairwiseDistance"},
@@ -56440,8 +56156,6 @@ static PyMethodDef SwigMethods_proxydocs[] = {
 	 { "EECBase_set_num_threads", (PyCFunction)(void(*)(void))_wrap_EECBase_set_num_threads, METH_VARARGS|METH_KEYWORDS, "set_num_threads(EECBase self, int nthreads)"},
 	 { "EECBase_set_omp_chunksize", (PyCFunction)(void(*)(void))_wrap_EECBase_set_omp_chunksize, METH_VARARGS|METH_KEYWORDS, "set_omp_chunksize(EECBase self, int chunksize)"},
 	 { "EECBase_set_print_every", (PyCFunction)(void(*)(void))_wrap_EECBase_set_print_every, METH_VARARGS|METH_KEYWORDS, "set_print_every(EECBase self, long print_every)"},
-	 { "EECBase_set_R", (PyCFunction)(void(*)(void))_wrap_EECBase_set_R, METH_VARARGS|METH_KEYWORDS, "set_R(EECBase self, double R)"},
-	 { "EECBase_set_beta", (PyCFunction)(void(*)(void))_wrap_EECBase_set_beta, METH_VARARGS|METH_KEYWORDS, "set_beta(EECBase self, double beta)"},
 	 { "EECBase_set_particle_weight", (PyCFunction)(void(*)(void))_wrap_EECBase_set_particle_weight, METH_VARARGS|METH_KEYWORDS, "set_particle_weight(EECBase self, fastjet::contrib::eec::ParticleWeight pw)"},
 	 { "EECBase_set_pairwise_distance", (PyCFunction)(void(*)(void))_wrap_EECBase_set_pairwise_distance, METH_VARARGS|METH_KEYWORDS, "set_pairwise_distance(EECBase self, fastjet::contrib::eec::PairwiseDistance pd)"},
 	 { "EECBase_set_print_stream", (PyCFunction)(void(*)(void))_wrap_EECBase_set_print_stream, METH_VARARGS|METH_KEYWORDS, "set_print_stream(EECBase self, std::ostream & os)"},
@@ -56517,7 +56231,7 @@ static PyMethodDef SwigMethods_proxydocs[] = {
 	 { "delete_Multinomial6", _wrap_delete_Multinomial6, METH_O, "delete_Multinomial6(Multinomial6 self)"},
 	 { "Multinomial6_swigregister", Multinomial6_swigregister, METH_O, NULL},
 	 { "Multinomial6_swiginit", Multinomial6_swiginit, METH_VARARGS, NULL},
-	 { "new_EECLongestSideId", (PyCFunction)(void(*)(void))_wrap_new_EECLongestSideId, METH_VARARGS|METH_KEYWORDS, "new_EECLongestSideId(unsigned int N, unsigned int nbins, arrayDouble2 axis_range, bool norm=True, vectorDouble weight_powers={1}, vectorUnsigned charge_powers={0}, fastjet::contrib::eec::ParticleWeight particle_weight=Default, fastjet::contrib::eec::PairwiseDistance pairwise_distance=Default, int num_threads=-1, int omp_chunksize=10, long print_every=-10, bool check_degen=False, bool average_verts=False, bool track_covariance=True, bool variance_bound=True, bool variance_bound_includes_overflows=True, double R=1, double beta=1, bool use_general_eNc=False) -> EECLongestSideId"},
+	 { "new_EECLongestSideId", (PyCFunction)(void(*)(void))_wrap_new_EECLongestSideId, METH_VARARGS|METH_KEYWORDS, "new_EECLongestSideId(unsigned int N, unsigned int nbins, arrayDouble2 axis_range={1e-5, 1}, bool norm=True, vectorDouble weight_powers={1}, vectorUnsigned charge_powers={0}, fastjet::contrib::eec::ParticleWeight particle_weight=Default, fastjet::contrib::eec::PairwiseDistance pairwise_distance=Default, int num_threads=-1, int omp_chunksize=10, long print_every=-10, bool check_degen=False, bool average_verts=False, bool track_covariance=True, bool variance_bound=True, bool variance_bound_includes_overflows=True, bool use_general_eNc=False) -> EECLongestSideId"},
 	 { "delete_EECLongestSideId", _wrap_delete_EECLongestSideId, METH_O, "delete_EECLongestSideId(EECLongestSideId self)"},
 	 { "EECLongestSideId_use_general_eNc", _wrap_EECLongestSideId_use_general_eNc, METH_O, "use_general_eNc(EECLongestSideId self) -> bool"},
 	 { "EECLongestSideId_set_use_general_eNc", (PyCFunction)(void(*)(void))_wrap_EECLongestSideId_set_use_general_eNc, METH_VARARGS|METH_KEYWORDS, "set_use_general_eNc(EECLongestSideId self, bool general)"},
@@ -56530,7 +56244,7 @@ static PyMethodDef SwigMethods_proxydocs[] = {
 	 { "EECLongestSideId_add", (PyCFunction)(void(*)(void))_wrap_EECLongestSideId_add, METH_VARARGS|METH_KEYWORDS, "add(EECLongestSideId self, EECLongestSideId rhs)"},
 	 { "EECLongestSideId_swigregister", EECLongestSideId_swigregister, METH_O, NULL},
 	 { "EECLongestSideId_swiginit", EECLongestSideId_swiginit, METH_VARARGS, NULL},
-	 { "new_EECLongestSideLog", (PyCFunction)(void(*)(void))_wrap_new_EECLongestSideLog, METH_VARARGS|METH_KEYWORDS, "new_EECLongestSideLog(unsigned int N, unsigned int nbins, arrayDouble2 axis_range, bool norm=True, vectorDouble weight_powers={1}, vectorUnsigned charge_powers={0}, fastjet::contrib::eec::ParticleWeight particle_weight=Default, fastjet::contrib::eec::PairwiseDistance pairwise_distance=Default, int num_threads=-1, int omp_chunksize=10, long print_every=-10, bool check_degen=False, bool average_verts=False, bool track_covariance=True, bool variance_bound=True, bool variance_bound_includes_overflows=True, double R=1, double beta=1, bool use_general_eNc=False) -> EECLongestSideLog"},
+	 { "new_EECLongestSideLog", (PyCFunction)(void(*)(void))_wrap_new_EECLongestSideLog, METH_VARARGS|METH_KEYWORDS, "new_EECLongestSideLog(unsigned int N, unsigned int nbins, arrayDouble2 axis_range={1e-5, 1}, bool norm=True, vectorDouble weight_powers={1}, vectorUnsigned charge_powers={0}, fastjet::contrib::eec::ParticleWeight particle_weight=Default, fastjet::contrib::eec::PairwiseDistance pairwise_distance=Default, int num_threads=-1, int omp_chunksize=10, long print_every=-10, bool check_degen=False, bool average_verts=False, bool track_covariance=True, bool variance_bound=True, bool variance_bound_includes_overflows=True, bool use_general_eNc=False) -> EECLongestSideLog"},
 	 { "delete_EECLongestSideLog", _wrap_delete_EECLongestSideLog, METH_O, "delete_EECLongestSideLog(EECLongestSideLog self)"},
 	 { "EECLongestSideLog_use_general_eNc", _wrap_EECLongestSideLog_use_general_eNc, METH_O, "use_general_eNc(EECLongestSideLog self) -> bool"},
 	 { "EECLongestSideLog_set_use_general_eNc", (PyCFunction)(void(*)(void))_wrap_EECLongestSideLog_set_use_general_eNc, METH_VARARGS|METH_KEYWORDS, "set_use_general_eNc(EECLongestSideLog self, bool general)"},
@@ -56543,7 +56257,7 @@ static PyMethodDef SwigMethods_proxydocs[] = {
 	 { "EECLongestSideLog_add", (PyCFunction)(void(*)(void))_wrap_EECLongestSideLog_add, METH_VARARGS|METH_KEYWORDS, "add(EECLongestSideLog self, EECLongestSideLog rhs)"},
 	 { "EECLongestSideLog_swigregister", EECLongestSideLog_swigregister, METH_O, NULL},
 	 { "EECLongestSideLog_swiginit", EECLongestSideLog_swiginit, METH_VARARGS, NULL},
-	 { "new_EECTriangleOPEIdIdId", (PyCFunction)(void(*)(void))_wrap_new_EECTriangleOPEIdIdId, METH_VARARGS|METH_KEYWORDS, "new_EECTriangleOPEIdIdId(arrayUnsigned3 nbins, arrayPairDoubleDouble axes_range, bool norm=True, vectorDouble weight_powers={1}, vectorUnsigned charge_powers={0}, fastjet::contrib::eec::ParticleWeight particle_weight=Default, fastjet::contrib::eec::PairwiseDistance pairwise_distance=Default, int num_threads=-1, int omp_chunksize=10, long print_every=-10, bool check_degen=False, bool average_verts=False, bool track_covariance=False, bool variance_bound=True, bool variance_bound_includes_overflows=True, double R=1, double beta=1) -> EECTriangleOPEIdIdId"},
+	 { "new_EECTriangleOPEIdIdId", (PyCFunction)(void(*)(void))_wrap_new_EECTriangleOPEIdIdId, METH_VARARGS|METH_KEYWORDS, "new_EECTriangleOPEIdIdId(arrayUnsigned3 nbins, arrayPairDoubleDouble axes_range={{{1e-5, 1}, {1e-5, 1}, {0, PI/2}}}, bool norm=True, vectorDouble weight_powers={1}, vectorUnsigned charge_powers={0}, fastjet::contrib::eec::ParticleWeight particle_weight=Default, fastjet::contrib::eec::PairwiseDistance pairwise_distance=Default, int num_threads=-1, int omp_chunksize=10, long print_every=-10, bool check_degen=False, bool average_verts=False, bool track_covariance=False, bool variance_bound=True, bool variance_bound_includes_overflows=True) -> EECTriangleOPEIdIdId"},
 	 { "delete_EECTriangleOPEIdIdId", _wrap_delete_EECTriangleOPEIdIdId, METH_O, "delete_EECTriangleOPEIdIdId(EECTriangleOPEIdIdId self)"},
 	 { "EECTriangleOPEIdIdId_set_num_threads", (PyCFunction)(void(*)(void))_wrap_EECTriangleOPEIdIdId_set_num_threads, METH_VARARGS|METH_KEYWORDS, "set_num_threads(EECTriangleOPEIdIdId self, int threads)"},
 	 { "EECTriangleOPEIdIdId_description", (PyCFunction)(void(*)(void))_wrap_EECTriangleOPEIdIdId_description, METH_VARARGS|METH_KEYWORDS, "description(EECTriangleOPEIdIdId self, int hist_level=1) -> std::string"},
@@ -56554,7 +56268,7 @@ static PyMethodDef SwigMethods_proxydocs[] = {
 	 { "EECTriangleOPEIdIdId_add", (PyCFunction)(void(*)(void))_wrap_EECTriangleOPEIdIdId_add, METH_VARARGS|METH_KEYWORDS, "add(EECTriangleOPEIdIdId self, EECTriangleOPEIdIdId rhs)"},
 	 { "EECTriangleOPEIdIdId_swigregister", EECTriangleOPEIdIdId_swigregister, METH_O, NULL},
 	 { "EECTriangleOPEIdIdId_swiginit", EECTriangleOPEIdIdId_swiginit, METH_VARARGS, NULL},
-	 { "new_EECTriangleOPELogIdId", (PyCFunction)(void(*)(void))_wrap_new_EECTriangleOPELogIdId, METH_VARARGS|METH_KEYWORDS, "new_EECTriangleOPELogIdId(arrayUnsigned3 nbins, arrayPairDoubleDouble axes_range, bool norm=True, vectorDouble weight_powers={1}, vectorUnsigned charge_powers={0}, fastjet::contrib::eec::ParticleWeight particle_weight=Default, fastjet::contrib::eec::PairwiseDistance pairwise_distance=Default, int num_threads=-1, int omp_chunksize=10, long print_every=-10, bool check_degen=False, bool average_verts=False, bool track_covariance=False, bool variance_bound=True, bool variance_bound_includes_overflows=True, double R=1, double beta=1) -> EECTriangleOPELogIdId"},
+	 { "new_EECTriangleOPELogIdId", (PyCFunction)(void(*)(void))_wrap_new_EECTriangleOPELogIdId, METH_VARARGS|METH_KEYWORDS, "new_EECTriangleOPELogIdId(arrayUnsigned3 nbins, arrayPairDoubleDouble axes_range={{{1e-5, 1}, {1e-5, 1}, {0, PI/2}}}, bool norm=True, vectorDouble weight_powers={1}, vectorUnsigned charge_powers={0}, fastjet::contrib::eec::ParticleWeight particle_weight=Default, fastjet::contrib::eec::PairwiseDistance pairwise_distance=Default, int num_threads=-1, int omp_chunksize=10, long print_every=-10, bool check_degen=False, bool average_verts=False, bool track_covariance=False, bool variance_bound=True, bool variance_bound_includes_overflows=True) -> EECTriangleOPELogIdId"},
 	 { "delete_EECTriangleOPELogIdId", _wrap_delete_EECTriangleOPELogIdId, METH_O, "delete_EECTriangleOPELogIdId(EECTriangleOPELogIdId self)"},
 	 { "EECTriangleOPELogIdId_set_num_threads", (PyCFunction)(void(*)(void))_wrap_EECTriangleOPELogIdId_set_num_threads, METH_VARARGS|METH_KEYWORDS, "set_num_threads(EECTriangleOPELogIdId self, int threads)"},
 	 { "EECTriangleOPELogIdId_description", (PyCFunction)(void(*)(void))_wrap_EECTriangleOPELogIdId_description, METH_VARARGS|METH_KEYWORDS, "description(EECTriangleOPELogIdId self, int hist_level=1) -> std::string"},
@@ -56565,7 +56279,7 @@ static PyMethodDef SwigMethods_proxydocs[] = {
 	 { "EECTriangleOPELogIdId_add", (PyCFunction)(void(*)(void))_wrap_EECTriangleOPELogIdId_add, METH_VARARGS|METH_KEYWORDS, "add(EECTriangleOPELogIdId self, EECTriangleOPELogIdId rhs)"},
 	 { "EECTriangleOPELogIdId_swigregister", EECTriangleOPELogIdId_swigregister, METH_O, NULL},
 	 { "EECTriangleOPELogIdId_swiginit", EECTriangleOPELogIdId_swiginit, METH_VARARGS, NULL},
-	 { "new_EECTriangleOPEIdLogId", (PyCFunction)(void(*)(void))_wrap_new_EECTriangleOPEIdLogId, METH_VARARGS|METH_KEYWORDS, "new_EECTriangleOPEIdLogId(arrayUnsigned3 nbins, arrayPairDoubleDouble axes_range, bool norm=True, vectorDouble weight_powers={1}, vectorUnsigned charge_powers={0}, fastjet::contrib::eec::ParticleWeight particle_weight=Default, fastjet::contrib::eec::PairwiseDistance pairwise_distance=Default, int num_threads=-1, int omp_chunksize=10, long print_every=-10, bool check_degen=False, bool average_verts=False, bool track_covariance=False, bool variance_bound=True, bool variance_bound_includes_overflows=True, double R=1, double beta=1) -> EECTriangleOPEIdLogId"},
+	 { "new_EECTriangleOPEIdLogId", (PyCFunction)(void(*)(void))_wrap_new_EECTriangleOPEIdLogId, METH_VARARGS|METH_KEYWORDS, "new_EECTriangleOPEIdLogId(arrayUnsigned3 nbins, arrayPairDoubleDouble axes_range={{{1e-5, 1}, {1e-5, 1}, {0, PI/2}}}, bool norm=True, vectorDouble weight_powers={1}, vectorUnsigned charge_powers={0}, fastjet::contrib::eec::ParticleWeight particle_weight=Default, fastjet::contrib::eec::PairwiseDistance pairwise_distance=Default, int num_threads=-1, int omp_chunksize=10, long print_every=-10, bool check_degen=False, bool average_verts=False, bool track_covariance=False, bool variance_bound=True, bool variance_bound_includes_overflows=True) -> EECTriangleOPEIdLogId"},
 	 { "delete_EECTriangleOPEIdLogId", _wrap_delete_EECTriangleOPEIdLogId, METH_O, "delete_EECTriangleOPEIdLogId(EECTriangleOPEIdLogId self)"},
 	 { "EECTriangleOPEIdLogId_set_num_threads", (PyCFunction)(void(*)(void))_wrap_EECTriangleOPEIdLogId_set_num_threads, METH_VARARGS|METH_KEYWORDS, "set_num_threads(EECTriangleOPEIdLogId self, int threads)"},
 	 { "EECTriangleOPEIdLogId_description", (PyCFunction)(void(*)(void))_wrap_EECTriangleOPEIdLogId_description, METH_VARARGS|METH_KEYWORDS, "description(EECTriangleOPEIdLogId self, int hist_level=1) -> std::string"},
@@ -56576,7 +56290,7 @@ static PyMethodDef SwigMethods_proxydocs[] = {
 	 { "EECTriangleOPEIdLogId_add", (PyCFunction)(void(*)(void))_wrap_EECTriangleOPEIdLogId_add, METH_VARARGS|METH_KEYWORDS, "add(EECTriangleOPEIdLogId self, EECTriangleOPEIdLogId rhs)"},
 	 { "EECTriangleOPEIdLogId_swigregister", EECTriangleOPEIdLogId_swigregister, METH_O, NULL},
 	 { "EECTriangleOPEIdLogId_swiginit", EECTriangleOPEIdLogId_swiginit, METH_VARARGS, NULL},
-	 { "new_EECTriangleOPELogLogId", (PyCFunction)(void(*)(void))_wrap_new_EECTriangleOPELogLogId, METH_VARARGS|METH_KEYWORDS, "new_EECTriangleOPELogLogId(arrayUnsigned3 nbins, arrayPairDoubleDouble axes_range, bool norm=True, vectorDouble weight_powers={1}, vectorUnsigned charge_powers={0}, fastjet::contrib::eec::ParticleWeight particle_weight=Default, fastjet::contrib::eec::PairwiseDistance pairwise_distance=Default, int num_threads=-1, int omp_chunksize=10, long print_every=-10, bool check_degen=False, bool average_verts=False, bool track_covariance=False, bool variance_bound=True, bool variance_bound_includes_overflows=True, double R=1, double beta=1) -> EECTriangleOPELogLogId"},
+	 { "new_EECTriangleOPELogLogId", (PyCFunction)(void(*)(void))_wrap_new_EECTriangleOPELogLogId, METH_VARARGS|METH_KEYWORDS, "new_EECTriangleOPELogLogId(arrayUnsigned3 nbins, arrayPairDoubleDouble axes_range={{{1e-5, 1}, {1e-5, 1}, {0, PI/2}}}, bool norm=True, vectorDouble weight_powers={1}, vectorUnsigned charge_powers={0}, fastjet::contrib::eec::ParticleWeight particle_weight=Default, fastjet::contrib::eec::PairwiseDistance pairwise_distance=Default, int num_threads=-1, int omp_chunksize=10, long print_every=-10, bool check_degen=False, bool average_verts=False, bool track_covariance=False, bool variance_bound=True, bool variance_bound_includes_overflows=True) -> EECTriangleOPELogLogId"},
 	 { "delete_EECTriangleOPELogLogId", _wrap_delete_EECTriangleOPELogLogId, METH_O, "delete_EECTriangleOPELogLogId(EECTriangleOPELogLogId self)"},
 	 { "EECTriangleOPELogLogId_set_num_threads", (PyCFunction)(void(*)(void))_wrap_EECTriangleOPELogLogId_set_num_threads, METH_VARARGS|METH_KEYWORDS, "set_num_threads(EECTriangleOPELogLogId self, int threads)"},
 	 { "EECTriangleOPELogLogId_description", (PyCFunction)(void(*)(void))_wrap_EECTriangleOPELogLogId_description, METH_VARARGS|METH_KEYWORDS, "description(EECTriangleOPELogLogId self, int hist_level=1) -> std::string"},

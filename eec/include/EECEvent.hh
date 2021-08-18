@@ -396,19 +396,9 @@ private:
     }
 
     // turn reduced distances into distances
-    if (config.R == 1 && config.beta == 1 && PairwiseDistance::needs_reduction) {
+    if (PairwiseDistance::needs_reduction) {
       for (double & d : dists_)
         d = std::sqrt(d);
-    }
-    else {
-      if (PairwiseDistance::needs_reduction) {
-        const double R2(config.R*config.R), halfbeta(config.beta/2);
-        for (double & d : dists_)
-          d = std::pow(d/R2, halfbeta);
-      }
-      else
-        for (double & d : dists_)
-          d = std::pow(d/config.R, config.beta);
     }
   }
 
@@ -450,11 +440,7 @@ private:
 
     // process dists according to R and beta
     dists_.resize(mult()*mult());
-    if (config.R == 1 && config.beta == 1)
-      std::copy(dists, dists + dists_.size(), dists_.begin());
-    else
-      for (std::size_t k = 0, end = mult()*mult(); k < end; k++)
-        dists_[k] = std::pow(dists[k]/config.R, config.beta);
+    std::copy(dists, dists + dists_.size(), dists_.begin());
 
     // check degen
     check_degeneracy(config);
@@ -498,15 +484,8 @@ private:
       }
 
       // turn reduced distances into distances
-      if (config.R == 1 && config.beta == 1) {
-        for (double & d : dists_)
-          d = std::sqrt(d);
-      }
-      else {
-        double R2(config.R*config.R), halfbeta(config.beta/2);
-        for (double & d : dists_)
-          d = std::pow(d/R2, halfbeta);
-      }
+      for (double & d : dists_)
+        d = std::sqrt(d);
 
       std::vector<double> charges;
       if (config.use_charges) {

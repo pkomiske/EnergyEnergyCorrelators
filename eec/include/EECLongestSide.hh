@@ -59,11 +59,12 @@ public:
 #ifndef SWIG_PREPROCESSOR
 
   // default constructor
-  EECLongestSide() : EECLongestSide(EECConfig(), 1, 0, 1) {}
+  EECLongestSide() : EECLongestSide(EECConfig(), 1) {}
 
   // constructor taking EECConfig and Hist1D arguments
   EECLongestSide(const EECConfig & config,
-                 unsigned nbins, const std::array<double, 2> & axis_range,
+                 unsigned nbins,
+                 const std::array<double, 2> & axis_range = {1e-5, 1},
                  bool track_covariance = true,
                  bool variance_bound = true,
                  bool variance_bound_includes_overflows = true,
@@ -87,7 +88,8 @@ public:
 
   // constructor with all options (mostly useful for Python)
   EECLongestSide(unsigned N,
-                 unsigned nbins, const std::array<double, 2> & axis_range,
+                 unsigned nbins,
+                 const std::array<double, 2> & axis_range = {1e-5, 1},
                  bool norm = true,
                  const std::vector<double> & weight_powers = {1},
                  const std::vector<unsigned> & charge_powers = {0},
@@ -101,14 +103,11 @@ public:
                  bool track_covariance = true,
                  bool variance_bound = true,
                  bool variance_bound_includes_overflows = true,
-                 double R = 1,
-                 double beta = 1,
                  bool use_general_eNc = false) :
     EECLongestSide(EECConfig(N, norm, weight_powers, charge_powers,
                              particle_weight, pairwise_distance,
                              num_threads, omp_chunksize, print_every,
-                             check_degen, average_verts,
-                             R, beta),
+                             check_degen, average_verts),
                    nbins, axis_range,
                    track_covariance,
                    variance_bound,

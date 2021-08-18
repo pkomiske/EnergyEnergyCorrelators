@@ -6,19 +6,11 @@
 #include <iostream>
 #include <vector>
 
-#include <boost/format.hpp>
+// FastJet
+#include "fastjet/PseudoJet.hh"
 
 // enum for selecting which events to include
 enum EventType { Gluon, Quark, All };
-
-// holds the kinematic info of one particle
-struct Particle {
-  double pt, y, phi;
-
-  Particle(double pt_, double y_, double phi_) :
-    pt(pt_), y(y_), phi(phi_)
-  {}
-};
 
 // base class for producing events
 class EventProducer {
@@ -29,7 +21,7 @@ protected:
   EventType event_type_;
   std::chrono::steady_clock::time_point start_;
 
-  std::vector<Particle> particles_;
+  std::vector<fastjet::PseudoJet> particles_;
   double weight_;
 
 public:
@@ -45,7 +37,7 @@ public:
   {}
 
   void print_loaded() {
-    std::cout << boost::format("Loaded dataset in %4.2fs\n") % duration() << std::flush;
+    std::cout << "Loaded dataset in " << duration() << "s\n" << std::flush;
     start_ = std::chrono::steady_clock::now();
   }
 
@@ -65,7 +57,7 @@ public:
   void reset() { iEvent_ = 0; iAccept_ = 0; }
   
   // accessor functions
-  const std::vector<Particle> & particles() const { return particles_; }
+  const std::vector<fastjet::PseudoJet> & particles() const { return particles_; }
   double weight() const { return weight_; }
   long num_events() const { return num_events_; }
   unsigned num_accepted() const { return iAccept_; }

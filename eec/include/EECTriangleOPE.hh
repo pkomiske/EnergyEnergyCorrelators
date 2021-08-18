@@ -83,12 +83,12 @@ public:
 #ifndef SWIG_PREPROCESSOR
 
   // default constructor
-  EECTriangleOPE() : EECTriangleOPE(EECConfig(3), 1, 0, 1, 1, 0, 1, 1, 0, 1) {}
+  EECTriangleOPE() : EECTriangleOPE(EECConfig(3), {1, 1, 1}) {}
 
   // constructor taking EECConfig and Hist3D arguments
   EECTriangleOPE(const EECConfig & config,
                  const std::array<unsigned, 3> & nbins,
-                 const std::array<std::array<double, 2>, 3> & axes_range,
+                 const std::array<std::array<double, 2>, 3> & axes_range = {{{1e-5, 1}, {1e-5, 1}, {0, PI/2}}},
                  bool track_covariance = false,
                  bool variance_bound = true,
                  bool variance_bound_includes_overflows = true) :
@@ -107,7 +107,7 @@ public:
 
   // constructor with all options (mostly useful for Python)
   EECTriangleOPE(const std::array<unsigned, 3> & nbins,
-                 const std::array<std::array<double, 2>, 3> & axes_range,
+                 const std::array<std::array<double, 2>, 3> & axes_range = {{{1e-5, 1}, {1e-5, 1}, {0, PI/2}}},
                  bool norm = true,
                  const std::vector<double> & weight_powers = {1},
                  const std::vector<unsigned> & charge_powers = {0},
@@ -120,14 +120,11 @@ public:
                  bool average_verts = false,
                  bool track_covariance = false,
                  bool variance_bound = true,
-                 bool variance_bound_includes_overflows = true,
-                 double R = 1,
-                 double beta = 1) :
+                 bool variance_bound_includes_overflows = true) :
     EECTriangleOPE(EECConfig(3, norm, weight_powers, charge_powers,
                              particle_weight, pairwise_distance,
                              num_threads, omp_chunksize, print_every,
-                             check_degen, average_verts,
-                             R, beta),
+                             check_degen, average_verts),
                    nbins, axes_range,
                    track_covariance,
                    variance_bound,

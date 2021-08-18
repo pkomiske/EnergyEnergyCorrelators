@@ -101,11 +101,11 @@ public:
       particles_.clear();
       for (unsigned i = 0; i < num_particles_in_event_; i++) {
         std::size_t particle_start(event_start + i * particle_size_);
-        double pt(X_data_[particle_start]);
+        const double pt(X_data_[particle_start]);
 
         // append non-zero particles
         if (pt > particle_pt_min_)
-          particles_.emplace_back(pt, X_data_[particle_start + 1], X_data_[particle_start + 2]);
+          particles_.push_back(fastjet::PtYPhiM(pt, X_data_[particle_start + 1], X_data_[particle_start + 2]));
       }
 
       return true;

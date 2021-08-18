@@ -66,9 +66,7 @@ public:
     set_weight_powers(weight_powers(), false);
     set_charge_powers(charge_powers(), false);
 
-    // performs some error checking on R and beta
-    set_R(R());
-    set_beta(beta());
+    // performs some error checking
     set_num_threads(num_threads());
     set_print_stream(std::cout);
 
@@ -225,8 +223,6 @@ public:
   int omp_chunksize() const { return config().omp_chunksize; }
   long print_every() const { return config().print_every; }
 
-  double R() const { return config().R; }
-  double beta() const { return config().beta; }
   double total_weight() const { return total_weight_; }
 
   ParticleWeight particle_weight() const { return config().particle_weight; }
@@ -270,21 +266,6 @@ public:
   void set_omp_chunksize(int chunksize) { config_.omp_chunksize = std::abs(chunksize); }
   void set_print_every(long print_every) { config_.print_every = print_every; }
 
-  void set_R(double R) {
-    ensure_no_events();
-
-    if (R <= 0)
-      throw std::invalid_argument("R must be positive");
-    config_.R = R;
-  }
-  void set_beta(double beta) {
-    ensure_no_events();
-
-    if (beta <= 0)
-      throw std::invalid_argument("beta must be positive");
-    config_.beta = beta;
-  }
-
   void set_particle_weight(ParticleWeight pw) { config_.particle_weight = pw; ensure_no_events(); }
   void set_pairwise_distance(PairwiseDistance pd) { config_.pairwise_distance = pd; ensure_no_events(); }
 
@@ -306,8 +287,6 @@ public:
         num_threads()              != rhs.num_threads()              ||
         omp_chunksize()            != rhs.omp_chunksize()            ||
         print_every()              != rhs.print_every()              ||
-        R()                        != rhs.R()                        ||
-        beta()                     != rhs.beta()                     ||
         particle_weight()          != rhs.particle_weight()          ||
         pairwise_distance()        != rhs.pairwise_distance()        ||
         weight_powers().size()     != rhs.weight_powers().size()     ||
@@ -372,8 +351,6 @@ protected:
         << "  N - " << N() << '\n'
         << "  norm - " << norm() << '\n'
         << "  use_charges - " << use_charges() << '\n'
-        << "  R - " << R() << '\n'
-        << "  beta - " << beta() << '\n'
         << "\n"
         << "  nfeatures (arrays only) - " << nfeatures() << '\n'
         << "  particle_weight (PseudoJets only) - "

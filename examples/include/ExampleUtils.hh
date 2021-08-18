@@ -64,14 +64,3 @@ inline EventProducer * load_events(int argc, char** argv) {
 
   return npz;
 }
-
-template<class P>
-inline std::vector<P> convert2event(const std::vector<Particle> & particles) {
-  std::vector<P> euclidean_particles;
-  euclidean_particles.reserve(particles.size());
-
-  for (const Particle & particle : particles)
-    euclidean_particles.push_back(P(particle.pt, {particle.y, particle.phi}));
-
-  return euclidean_particles;
-}

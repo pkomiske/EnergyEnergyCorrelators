@@ -122,7 +122,7 @@ public:
   // SETTER METHODS
   /////////////////
 
-  void set_track_coveriance(bool track) {
+  void set_track_covariance(bool track) {
     track_covariance_ = track;
     init(nhists());
   }
