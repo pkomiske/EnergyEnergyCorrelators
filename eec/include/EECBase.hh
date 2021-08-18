@@ -79,50 +79,58 @@ public:
   // METHODS FOR IMMEDIATE COMPUTATION
   //////////////////////////////////////
 
-#ifndef SWIG
-
-  // compute on event from vector of PseudoJets and (optionally) charges
+  // compute immediately on a vector of PseudoJets and (optionally) charges
   void compute(const std::vector<PseudoJet> & pjs,
                const std::vector<double> & charges = {},
                double event_weight = 1,
                int thread = 0) {
-    EECEvent event(config(), event_weight, pjs, charges);
-    compute(event, thread);
+    compute_eec_internal(EECEvent(config(), event_weight, pjs, charges),
+                         thread);
   }
 
-  // compute on event from raw weights, dists, and (optionally) charges (as vectors)
+#ifndef SWIG
+
+  // compute immediately on provided raw weights, dists, and (optionally) charges (as vectors)
   void compute(const std::vector<double> & raw_weights,
                const std::vector<double> & dists,
                const std::vector<double> & charges = {},
                double event_weight = 1,
                int thread = 0) {
-    EECEvent event(config(), event_weight, raw_weights, dists, charges);
-    compute(event, thread);
+    compute_eec_internal(EECEvent(config(), event_weight, raw_weights, dists, charges),
+                         thread);
   }
 
-#endif // !SWIG
+// SWIG is defined
+#else
 
-  // compute on an EECEvent
-  void compute(EECEvent & event, int thread = 0) {
-
-    std::cout << "in compute" << std::endl;
-
-    // ensure event is initialized
-    event.lazy_init(config());
-
-    // tally event weights
-    #pragma omp atomic
-    total_weight_ += event.event_weight();
-
-    // delegate computation to subclass
-    compute_eec_internal(event, thread);
+  // compute immediately on provided raw weights, dists, and (optionally) charges (as pointers)
+  void compute(const double * raw_weights, unsigned weights_mult,
+               const double * dists, unsigned d0, unsigned d1,
+               const double * charges, unsigned charges_mult,
+               double event_weight = 1,
+               int thread = 0) {
+    compute_eec_internal(EECEvent(config(), event_weight,
+                                  raw_weights, weights_mult,
+                                  dists, d0, d1,
+                                  charges, charges_mult),
+                         thread);
   }
+
+  // compute immediately on provided event as a 2d array with columns [weights, xcoord, ycoord, [charge]]
+  // charge is optional, and nfeatures should be how many columns to expect in this array
+  // note that ycoord is assumed to be periodic with period 2pi
+  void compute(const double * event_ptr, unsigned mult, unsigned nfeatures,
+               double event_weight = 1,
+               int thread = 0) {
+    compute_eec_internal(EECEvent(config(), event_weight, event_ptr, mult, nfeatures),
+                         thread);
+  }
+
+#endif // SWIG
 
   //////////////////////////////////////////
   // METHODS FOR MULTITHREADED COMPUTATION
   //////////////////////////////////////////
-
-#ifndef SWIG
 
   // add event from vector of PseudoJets and (optionally) charges
   void push_back(const std::vector<PseudoJet> & pjs,
@@ -130,6 +138,8 @@ public:
                  double event_weight = 1) {
     events_.emplace_back(config(), event_weight, pjs, charges);
   }
+
+#ifndef SWIG
 
   // add event from raw weights, dists, and (optionally) charges (as vectors)
   void push_back(const std::vector<double> & raw_weights,
@@ -139,15 +149,35 @@ public:
     events_.emplace_back(config(), event_weight, raw_weights, dists, charges);
   }
 
-#endif // !SWIG
+// SWIG is defined
+#else
 
-  // add event from EECEvent
-  void push_back(const EECEvent & event) {
-    events_.push_back(event);
+  // add event from raw weights, dists, and (optionally) charges (as pointers)
+  void push_back(const double * raw_weights, unsigned weights_mult,
+                 const double * dists, unsigned d0, unsigned d1,
+                 const double * charges, unsigned charges_mult,
+                 double event_weight = 1) {
+    events_.emplace_back(config(), event_weight,
+                         raw_weights, weights_mult,
+                         dists, d0, d1,
+                         charges, charges_mult);
   }
 
-  // clears internal events
-  void clear_events() { events_.clear(); }
+  // add event from 2d array with columns [weights, xcoord, ycoord, [charge]]
+  // charge is optional, and nfeatures should be how many columns to expect in this array
+  // note that ycoord is assumed to be periodic with period 2pi
+  void push_back(const double * event_ptr, unsigned mult, unsigned nfeatures,
+                 double event_weight = 1) {
+    events_.emplace_back(config(), event_weight, event_ptr, mult, nfeatures);
+  }
+
+#endif // SWIG
+
+  // clears internal events (and frees memory)
+  void clear_events() {
+    events_.clear();
+    std::vector<EECEvent>().swap(events_);
+  }
 
   // run multi-threaded computation on internally stored events
   void batch_compute() {
@@ -175,10 +205,13 @@ public:
 
       std::cout << "  start, counter = " << start << ", " << counter << std::endl;
 
-      const int nt(num_threads()), ompcs(omp_chunksize());
-      #pragma omp parallel for num_threads(nt) shared(events_) schedule(dynamic, ompcs)
-      for (long i = start; i < counter; i++)
-        compute(events_[i], get_thread_num());
+      #pragma omp parallel for num_threads(num_threads()) default(shared) schedule(dynamic, omp_chunksize())
+      for (long i = start; i < counter; i++) {
+        #pragma omp atomic
+        total_weight_ += events_[i].event_weight();
+
+        compute_eec_internal(events_[i], omp_get_thread_num());
+      }
 
       // update counter
       start = counter;
@@ -343,8 +376,8 @@ protected:
 
   // check that we haven't actually computed any events yet
   void ensure_no_events() const {
-    if (total_weight() != 0)
-      throw std::runtime_error("cannot alter settings after computing on some events");
+    if (total_weight() != 0 || !events_.empty())
+      throw std::runtime_error("cannot alter settings after processing events");
   }
 
   // description of the EEC computation

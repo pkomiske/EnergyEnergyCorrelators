@@ -164,30 +164,24 @@ inline void set_compression_mode(CompressionMode c) {
   compmode_ = c;
 }
 
-// determine the number of threads to use
-inline int determine_num_threads(int num_threads) {
-#ifdef _OPENMP
-  if (num_threads == -1 || num_threads > omp_get_max_threads())
-    return omp_get_max_threads();
-  if (num_threads < 1) return 1;
-  return num_threads;
-#else
-  return 1;
-#endif
-}
-
+// it's annoying to ignore these in eec.i since we haven't even wrapped this file yet
 #ifndef SWIG_PREPROCESSOR
 
-  // gets thread num if OpenMP is enabled, otherwise returns 0
-  inline int get_thread_num() {
-  #ifdef _OPENMP
-    return omp_get_thread_num();
-  #else
-    return 0;
+  // handle not having omp support
+  #ifndef _OPENMP
+    inline int omp_get_max_threads() { return 1; }
+    inline int omp_get_thread_num() { return 0; }
   #endif
+
+  // determine the number of threads to use
+  inline int determine_num_threads(int num_threads) {
+    if (num_threads == -1 || num_threads > omp_get_max_threads())
+      return omp_get_max_threads();
+    if (num_threads < 1) return 1;
+    return num_threads;
   }
 
-#endif // SWIG_PREPROCESSOR
+#endif // !SWIG_PREPROCESSOR
 
 inline std::string particle_weight_name(ParticleWeight pw) {
   switch (pw) {

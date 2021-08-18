@@ -79,11 +79,11 @@ using namespace fastjet::contrib::eec::hist;
 %include numpy_helpers.i
 
 // additional numpy typemaps
-%apply (double* INPLACE_ARRAY1, EEC_INT DIM1) {
+%apply (double* IN_ARRAY1, EEC_INT DIM1) {
   (const double* raw_weights, unsigned weights_mult),
   (const double* charges, unsigned charges_mult)
 }
-%apply (double* INPLACE_ARRAY2, EEC_INT DIM1, EEC_INT DIM2) {
+%apply (double* IN_ARRAY2, EEC_INT DIM1, EEC_INT DIM2) {
   (const double* event_ptr, unsigned mult, unsigned nfeatures),
   (const double* dists, unsigned d0, unsigned d1)
 }
@@ -360,19 +360,35 @@ namespace EEC_NAMESPACE {
 } // namespace EEC_NAMESPACE
 
 // include EEC code and declare templates
-%include "EECEvent.hh"
 %include "EECBase.hh"
 %include "EECMultinomial.hh"
 %include "EECLongestSide.hh"
 %include "EECTriangleOPE.hh"
 
-%inline %{
+/*%inline %{
   EEC_NAMESPACE::EECEvent _event_from_pjc(const EEC_NAMESPACE::EECConfig & config,
                                           double event_weight,
                                           const fastjet::PseudoJetContainer & pjc,
                                           const std::vector<double> & charges) {
     return EEC_NAMESPACE::EECEvent(config, event_weight, pjc, charges);
   }
+%}*/
+
+%pythoncode %{
+  def _get_eec_args(event, charges, dists, nfeatures):
+
+      if charges is None:
+          charges = []
+
+      if (len(event) == 0 or
+          isinstance(event, pyfjcore.PseudoJetContainer) or
+          isinstance(event[0], pyfjcore.PseudoJet)):
+          return (event, charges)
+
+      if dists is None:
+          return (_np.atleast_2d(event)[:,:nfeatures],)
+
+      return (event, dists, charges)
 %}
 
 namespace EEC_NAMESPACE {
@@ -393,43 +409,13 @@ namespace EEC_NAMESPACE {
 
     %pythoncode %{
 
-      def _create_eec_event(self, event, charges, dists, event_weight):
-          if not len(event):
-              return EECEvent()
-
-          if charges is None:
-              charges = []
-
-          if isinstance(event, pyfjcore.PseudoJetContainer):
-              eec_event = _event_from_pjc(self.config(), event_weight, event, charges)
-
-          elif isinstance(event[0], pyfjcore.PseudoJet):
-              eec_event = EECEvent(self.config(), event_weight, event, charges)
-
-          elif dists is None:
-              event = _np.asarray(_np.atleast_2d(event)[:,:self.nfeatures()], dtype=_np.double, order='C')
-
-              eec_event = EECEvent(self.use_charges(), event_weight, event)
-              eec_event._numpy_arrays = (event,)
-
-          else:
-              raw_weights = _np.asarray(event, dtype=_np.double, order='C')
-              charges = _np.asarray(charges, dtype=_np.double, order='C')
-              dists = _np.asarray(dists, dtype=_np.double, order='C')
-
-              eec_event = EECEvent(self.use_charges(), event_weight, raw_weights, dists, charges)
-              eec_event._numpy_arrays = (raw_weights, dists, charges)
-
-          return eec_event
-
       def compute(self, event, event_weight=1.0, charges=None, dists=None, thread=0):
-          eec_event = self._create_eec_event(event, charges, dists, event_weight)
-          self._compute(eec_event, thread)
+          self._compute(*_get_eec_args(event, charges, dists, self.nfeatures()), event_weight, thread)
 
       def __call__(self, events, event_weights=None, charges=None, dists=None):
 
           if event_weights is None:
-              event_weights = _np.ones(len(events), order='C', dtype=_np.double)
+              event_weights = _np.ones(len(events), dtype=_np.double)
           elif len(event_weights) != len(events):
               raise ValueError('`events` and `event_weights` have different lengths')
 
@@ -443,11 +429,9 @@ namespace EEC_NAMESPACE {
           elif len(dists) != len(events):
               raise ValueError('`events` and `dists` have different lengths')
 
-          stored_events = []
+          nf = self.nfeatures()
           for event, chs, ds, event_weight in zip(events, charges, dists, event_weights):
-              eec_event = self._create_eec_event(event, chs, ds, event_weight)
-              self._push_back(eec_event)
-              stored_events.append(eec_event)
+              self._push_back(*_get_eec_args(event, chs, ds, nf), event_weight)
 
           self.batch_compute()
           self.clear_events()

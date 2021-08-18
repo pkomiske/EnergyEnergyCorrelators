@@ -459,7 +459,6 @@ get_archive_format = _eec.get_archive_format
 get_compression_mode = _eec.get_compression_mode
 set_archive_format = _eec.set_archive_format
 set_compression_mode = _eec.set_compression_mode
-determine_num_threads = _eec.determine_num_threads
 particle_weight_name = _eec.particle_weight_name
 pairwise_distance_name = _eec.pairwise_distance_name
 class reduce_command(object):
@@ -976,29 +975,6 @@ _eec.EECHist3DLogLogId_swigregister(EECHist3DLogLogId)
 EECHist3DLogLogId_hist_name = _eec.EECHist3DLogLogId_hist_name
 EECHist3DLogLogId_axes_description = _eec.EECHist3DLogLogId_axes_description
 
-class EECEvent(object):
-    r"""Proxy of C++ fastjet::contrib::eec::EECEvent class."""
-
-    thisown = property(lambda x: x.this.own(), lambda x, v: x.this.own(v), doc="The membership flag")
-    __repr__ = _swig_repr
-
-    def __init__(self, *args):
-        r"""
-        __init__(EECEvent self) -> EECEvent
-        __init__(EECEvent self, EECConfig const & config, double event_weight, vectorPseudoJet pjs, vectorDouble charges) -> EECEvent
-        __init__(EECEvent self, bool use_charges, double event_weight, double const * event_ptr) -> EECEvent
-        __init__(EECEvent self, bool use_charges, double event_weight, double const * raw_weights, double const * dists, double const * charges) -> EECEvent
-        """
-        _eec.EECEvent_swiginit(self, _eec.new_EECEvent(*args))
-    __swig_destroy__ = _eec.delete_EECEvent
-    weights = _swig_new_instance_method(_eec.EECEvent_weights)
-    dists = _swig_new_instance_method(_eec.EECEvent_dists)
-    event_weight = _swig_new_instance_method(_eec.EECEvent_event_weight)
-    mult = _swig_new_instance_method(_eec.EECEvent_mult)
-
-# Register EECEvent in _eec:
-_eec.EECEvent_swigregister(EECEvent)
-
 class EECBase(object):
     r"""Proxy of C++ fastjet::contrib::eec::EECBase class."""
 
@@ -1060,43 +1036,13 @@ class EECBase(object):
 
 
 
-    def _create_eec_event(self, event, charges, dists, event_weight):
-        if not len(event):
-            return EECEvent()
-
-        if charges is None:
-            charges = []
-
-        if isinstance(event, pyfjcore.PseudoJetContainer):
-            eec_event = _event_from_pjc(self.config(), event_weight, event, charges)
-
-        elif isinstance(event[0], pyfjcore.PseudoJet):
-            eec_event = EECEvent(self.config(), event_weight, event, charges)
-
-        elif dists is None:
-            event = _np.asarray(_np.atleast_2d(event)[:,:self.nfeatures()], dtype=_np.double, order='C')
-
-            eec_event = EECEvent(self.use_charges(), event_weight, event)
-            eec_event._numpy_arrays = (event,)
-
-        else:
-            raw_weights = _np.asarray(event, dtype=_np.double, order='C')
-            charges = _np.asarray(charges, dtype=_np.double, order='C')
-            dists = _np.asarray(dists, dtype=_np.double, order='C')
-
-            eec_event = EECEvent(self.use_charges(), event_weight, raw_weights, dists, charges)
-            eec_event._numpy_arrays = (raw_weights, dists, charges)
-
-        return eec_event
-
     def compute(self, event, event_weight=1.0, charges=None, dists=None, thread=0):
-        eec_event = self._create_eec_event(event, charges, dists, event_weight)
-        self._compute(eec_event, thread)
+        self._compute(*_get_eec_args(event, charges, dists, self.nfeatures()), event_weight, thread)
 
     def __call__(self, events, event_weights=None, charges=None, dists=None):
 
         if event_weights is None:
-            event_weights = _np.ones(len(events), order='C', dtype=_np.double)
+            event_weights = _np.ones(len(events), dtype=_np.double)
         elif len(event_weights) != len(events):
             raise ValueError('`events` and `event_weights` have different lengths')
 
@@ -1110,11 +1056,9 @@ class EECBase(object):
         elif len(dists) != len(events):
             raise ValueError('`events` and `dists` have different lengths')
 
-        stored_events = []
+        nf = self.nfeatures()
         for event, chs, ds, event_weight in zip(events, charges, dists, event_weights):
-            eec_event = self._create_eec_event(event, chs, ds, event_weight)
-            self._push_back(eec_event)
-            stored_events.append(eec_event)
+            self._push_back(*_get_eec_args(event, chs, ds, nf), event_weight)
 
         self.batch_compute()
         self.clear_events()
@@ -1142,7 +1086,22 @@ class DynamicMultinomial(object):
 _eec.DynamicMultinomial_swigregister(DynamicMultinomial)
 FACTORIALS = cvar.FACTORIALS
 
-_event_from_pjc = _eec._event_from_pjc
+
+def _get_eec_args(event, charges, dists, nfeatures):
+
+    if charges is None:
+        charges = []
+
+    if (len(event) == 0 or
+        isinstance(event, pyfjcore.PseudoJetContainer) or
+        isinstance(event[0], pyfjcore.PseudoJet)):
+        return (event, charges)
+
+    if dists is None:
+        return (_np.atleast_2d(event)[:,:nfeatures],)
+
+    return (event, dists, charges)
+
 class Multinomial2(object):
     r"""Proxy of C++ fastjet::contrib::eec::Multinomial< 2 > class."""
 

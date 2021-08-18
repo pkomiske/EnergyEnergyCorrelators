@@ -2705,60 +2705,56 @@ SWIGINTERN PyObject *SWIG_PyStaticMethod_New(PyObject *SWIGUNUSEDPARM(self), PyO
 #define SWIGTYPE_p_char swig_types[9]
 #define SWIGTYPE_p_difference_type swig_types[10]
 #define SWIGTYPE_p_fastjet__JetAlgorithm swig_types[11]
-#define SWIGTYPE_p_fastjet__PseudoJetContainer swig_types[12]
-#define SWIGTYPE_p_fastjet__contrib__eec__DynamicMultinomial swig_types[13]
-#define SWIGTYPE_p_fastjet__contrib__eec__EECBase swig_types[14]
-#define SWIGTYPE_p_fastjet__contrib__eec__EECConfig swig_types[15]
-#define SWIGTYPE_p_fastjet__contrib__eec__EECEvent swig_types[16]
-#define SWIGTYPE_p_fastjet__contrib__eec__EECLongestSideT_axis__id_t swig_types[17]
-#define SWIGTYPE_p_fastjet__contrib__eec__EECLongestSideT_axis__log_t swig_types[18]
-#define SWIGTYPE_p_fastjet__contrib__eec__EECTriangleOPET_axis__id_axis__id_axis__id_t swig_types[19]
-#define SWIGTYPE_p_fastjet__contrib__eec__EECTriangleOPET_axis__id_axis__log_axis__id_t swig_types[20]
-#define SWIGTYPE_p_fastjet__contrib__eec__EECTriangleOPET_axis__log_axis__id_axis__id_t swig_types[21]
-#define SWIGTYPE_p_fastjet__contrib__eec__EECTriangleOPET_axis__log_axis__log_axis__id_t swig_types[22]
-#define SWIGTYPE_p_fastjet__contrib__eec__MultinomialT_2_t swig_types[23]
-#define SWIGTYPE_p_fastjet__contrib__eec__MultinomialT_3_t swig_types[24]
-#define SWIGTYPE_p_fastjet__contrib__eec__MultinomialT_4_t swig_types[25]
-#define SWIGTYPE_p_fastjet__contrib__eec__MultinomialT_5_t swig_types[26]
-#define SWIGTYPE_p_fastjet__contrib__eec__MultinomialT_6_t swig_types[27]
-#define SWIGTYPE_p_fastjet__contrib__eec__hist__EECHist1DT_axis__id_t swig_types[28]
-#define SWIGTYPE_p_fastjet__contrib__eec__hist__EECHist1DT_axis__log_t swig_types[29]
-#define SWIGTYPE_p_fastjet__contrib__eec__hist__EECHist3DT_axis__id_axis__id_axis__id_t swig_types[30]
-#define SWIGTYPE_p_fastjet__contrib__eec__hist__EECHist3DT_axis__id_axis__log_axis__id_t swig_types[31]
-#define SWIGTYPE_p_fastjet__contrib__eec__hist__EECHist3DT_axis__log_axis__id_axis__id_t swig_types[32]
-#define SWIGTYPE_p_fastjet__contrib__eec__hist__EECHist3DT_axis__log_axis__log_axis__id_t swig_types[33]
-#define SWIGTYPE_p_fastjet__contrib__eec__hist__EECHistBaseT_fastjet__contrib__eec__hist__EECHist1DT_axis__id_t_t swig_types[34]
-#define SWIGTYPE_p_fastjet__contrib__eec__hist__EECHistBaseT_fastjet__contrib__eec__hist__EECHist1DT_axis__log_t_t swig_types[35]
-#define SWIGTYPE_p_fastjet__contrib__eec__hist__EECHistBaseT_fastjet__contrib__eec__hist__EECHist3DT_axis__id_axis__id_axis__id_t_t swig_types[36]
-#define SWIGTYPE_p_fastjet__contrib__eec__hist__EECHistBaseT_fastjet__contrib__eec__hist__EECHist3DT_axis__id_axis__log_axis__id_t_t swig_types[37]
-#define SWIGTYPE_p_fastjet__contrib__eec__hist__EECHistBaseT_fastjet__contrib__eec__hist__EECHist3DT_axis__log_axis__id_axis__id_t_t swig_types[38]
-#define SWIGTYPE_p_fastjet__contrib__eec__hist__EECHistBaseT_fastjet__contrib__eec__hist__EECHist3DT_axis__log_axis__log_axis__id_t_t swig_types[39]
-#define SWIGTYPE_p_fastjet__integral_typeT_bool_false_t swig_types[40]
-#define SWIGTYPE_p_fastjet__integral_typeT_bool_true_t swig_types[41]
-#define SWIGTYPE_p_p_PyObject swig_types[42]
-#define SWIGTYPE_p_p_double swig_types[43]
-#define SWIGTYPE_p_size_type swig_types[44]
-#define SWIGTYPE_p_std__allocatorT_boost__histogram__algorithm__reduce_command_t swig_types[45]
-#define SWIGTYPE_p_std__allocatorT_double_t swig_types[46]
-#define SWIGTYPE_p_std__allocatorT_std__arrayT_double_2_t_t swig_types[47]
-#define SWIGTYPE_p_std__allocatorT_unsigned_int_t swig_types[48]
-#define SWIGTYPE_p_std__arrayT_double_2_t swig_types[49]
-#define SWIGTYPE_p_std__arrayT_std__arrayT_double_2_t_3_t swig_types[50]
-#define SWIGTYPE_p_std__arrayT_unsigned_int_13_t swig_types[51]
-#define SWIGTYPE_p_std__arrayT_unsigned_int_3_t swig_types[52]
-#define SWIGTYPE_p_std__invalid_argument swig_types[53]
-#define SWIGTYPE_p_std__ostream swig_types[54]
-#define SWIGTYPE_p_std__ptrdiff_t swig_types[55]
-#define SWIGTYPE_p_std__vectorT_bh__algorithm__reduce_command_std__allocatorT_bh__algorithm__reduce_command_t_t swig_types[56]
-#define SWIGTYPE_p_std__vectorT_boost__histogram__algorithm__reduce_command_std__allocatorT_boost__histogram__algorithm__reduce_command_t_t swig_types[57]
-#define SWIGTYPE_p_std__vectorT_double_std__allocatorT_double_t_t swig_types[58]
-#define SWIGTYPE_p_std__vectorT_std__arrayT_double_2_t_std__allocatorT_std__arrayT_double_2_t_t_t swig_types[59]
-#define SWIGTYPE_p_std__vectorT_std__vectorT_double_std__allocatorT_double_t_t_std__allocatorT_std__vectorT_double_std__allocatorT_double_t_t_t_t swig_types[60]
-#define SWIGTYPE_p_std__vectorT_unsigned_int_std__allocatorT_unsigned_int_t_t swig_types[61]
-#define SWIGTYPE_p_swig__SwigPyIterator swig_types[62]
-#define SWIGTYPE_p_value_type swig_types[63]
-static swig_type_info *swig_types[65];
-static swig_module_info swig_module = {swig_types, 64, 0, 0, 0, 0};
+#define SWIGTYPE_p_fastjet__contrib__eec__DynamicMultinomial swig_types[12]
+#define SWIGTYPE_p_fastjet__contrib__eec__EECBase swig_types[13]
+#define SWIGTYPE_p_fastjet__contrib__eec__EECLongestSideT_axis__id_t swig_types[14]
+#define SWIGTYPE_p_fastjet__contrib__eec__EECLongestSideT_axis__log_t swig_types[15]
+#define SWIGTYPE_p_fastjet__contrib__eec__EECTriangleOPET_axis__id_axis__id_axis__id_t swig_types[16]
+#define SWIGTYPE_p_fastjet__contrib__eec__EECTriangleOPET_axis__id_axis__log_axis__id_t swig_types[17]
+#define SWIGTYPE_p_fastjet__contrib__eec__EECTriangleOPET_axis__log_axis__id_axis__id_t swig_types[18]
+#define SWIGTYPE_p_fastjet__contrib__eec__EECTriangleOPET_axis__log_axis__log_axis__id_t swig_types[19]
+#define SWIGTYPE_p_fastjet__contrib__eec__MultinomialT_2_t swig_types[20]
+#define SWIGTYPE_p_fastjet__contrib__eec__MultinomialT_3_t swig_types[21]
+#define SWIGTYPE_p_fastjet__contrib__eec__MultinomialT_4_t swig_types[22]
+#define SWIGTYPE_p_fastjet__contrib__eec__MultinomialT_5_t swig_types[23]
+#define SWIGTYPE_p_fastjet__contrib__eec__MultinomialT_6_t swig_types[24]
+#define SWIGTYPE_p_fastjet__contrib__eec__hist__EECHist1DT_axis__id_t swig_types[25]
+#define SWIGTYPE_p_fastjet__contrib__eec__hist__EECHist1DT_axis__log_t swig_types[26]
+#define SWIGTYPE_p_fastjet__contrib__eec__hist__EECHist3DT_axis__id_axis__id_axis__id_t swig_types[27]
+#define SWIGTYPE_p_fastjet__contrib__eec__hist__EECHist3DT_axis__id_axis__log_axis__id_t swig_types[28]
+#define SWIGTYPE_p_fastjet__contrib__eec__hist__EECHist3DT_axis__log_axis__id_axis__id_t swig_types[29]
+#define SWIGTYPE_p_fastjet__contrib__eec__hist__EECHist3DT_axis__log_axis__log_axis__id_t swig_types[30]
+#define SWIGTYPE_p_fastjet__contrib__eec__hist__EECHistBaseT_fastjet__contrib__eec__hist__EECHist1DT_axis__id_t_t swig_types[31]
+#define SWIGTYPE_p_fastjet__contrib__eec__hist__EECHistBaseT_fastjet__contrib__eec__hist__EECHist1DT_axis__log_t_t swig_types[32]
+#define SWIGTYPE_p_fastjet__contrib__eec__hist__EECHistBaseT_fastjet__contrib__eec__hist__EECHist3DT_axis__id_axis__id_axis__id_t_t swig_types[33]
+#define SWIGTYPE_p_fastjet__contrib__eec__hist__EECHistBaseT_fastjet__contrib__eec__hist__EECHist3DT_axis__id_axis__log_axis__id_t_t swig_types[34]
+#define SWIGTYPE_p_fastjet__contrib__eec__hist__EECHistBaseT_fastjet__contrib__eec__hist__EECHist3DT_axis__log_axis__id_axis__id_t_t swig_types[35]
+#define SWIGTYPE_p_fastjet__contrib__eec__hist__EECHistBaseT_fastjet__contrib__eec__hist__EECHist3DT_axis__log_axis__log_axis__id_t_t swig_types[36]
+#define SWIGTYPE_p_fastjet__integral_typeT_bool_false_t swig_types[37]
+#define SWIGTYPE_p_fastjet__integral_typeT_bool_true_t swig_types[38]
+#define SWIGTYPE_p_p_PyObject swig_types[39]
+#define SWIGTYPE_p_p_double swig_types[40]
+#define SWIGTYPE_p_size_type swig_types[41]
+#define SWIGTYPE_p_std__allocatorT_boost__histogram__algorithm__reduce_command_t swig_types[42]
+#define SWIGTYPE_p_std__allocatorT_double_t swig_types[43]
+#define SWIGTYPE_p_std__allocatorT_std__arrayT_double_2_t_t swig_types[44]
+#define SWIGTYPE_p_std__allocatorT_unsigned_int_t swig_types[45]
+#define SWIGTYPE_p_std__arrayT_double_2_t swig_types[46]
+#define SWIGTYPE_p_std__arrayT_std__arrayT_double_2_t_3_t swig_types[47]
+#define SWIGTYPE_p_std__arrayT_unsigned_int_13_t swig_types[48]
+#define SWIGTYPE_p_std__arrayT_unsigned_int_3_t swig_types[49]
+#define SWIGTYPE_p_std__invalid_argument swig_types[50]
+#define SWIGTYPE_p_std__ostream swig_types[51]
+#define SWIGTYPE_p_std__ptrdiff_t swig_types[52]
+#define SWIGTYPE_p_std__vectorT_bh__algorithm__reduce_command_std__allocatorT_bh__algorithm__reduce_command_t_t swig_types[53]
+#define SWIGTYPE_p_std__vectorT_boost__histogram__algorithm__reduce_command_std__allocatorT_boost__histogram__algorithm__reduce_command_t_t swig_types[54]
+#define SWIGTYPE_p_std__vectorT_double_std__allocatorT_double_t_t swig_types[55]
+#define SWIGTYPE_p_std__vectorT_std__arrayT_double_2_t_std__allocatorT_std__arrayT_double_2_t_t_t swig_types[56]
+#define SWIGTYPE_p_std__vectorT_unsigned_int_std__allocatorT_unsigned_int_t_t swig_types[57]
+#define SWIGTYPE_p_swig__SwigPyIterator swig_types[58]
+#define SWIGTYPE_p_value_type swig_types[59]
+static swig_type_info *swig_types[61];
+static swig_module_info swig_module = {swig_types, 60, 0, 0, 0, 0};
 #define SWIG_TypeQuery(name) SWIG_TypeQueryModule(&swig_module, &swig_module, name)
 #define SWIG_MangledTypeQuery(name) SWIG_MangledTypeQueryModule(&swig_module, &swig_module, name)
 
@@ -6777,14 +6773,6 @@ SWIGINTERN void fastjet_contrib_eec_hist_EECHist3D_Sl_axis_log_Sc_axis_log_Sc_ax
   }
 
 
-
-
-  EEC_NAMESPACE::EECEvent _event_from_pjc(const EEC_NAMESPACE::EECConfig & config,
-                                          double event_weight,
-                                          const fastjet::PseudoJetContainer & pjc,
-                                          const std::vector<double> & charges) {
-    return EEC_NAMESPACE::EECEvent(config, event_weight, pjc, charges);
-  }
 
 SWIGINTERN void fastjet_contrib_eec_Multinomial_Sl_2_Sg__py_set_index_Sl_1_Sg_(fastjet::contrib::eec::Multinomial< 2 > *self,unsigned int ind){
       if (1 == 0 || 1 >= self->N() - 1)
@@ -24040,55 +24028,6 @@ SWIGINTERN PyObject *_wrap_set_compression_mode(PyObject *SWIGUNUSEDPARM(self), 
     }
   }
   resultobj = SWIG_Py_Void();
-  return resultobj;
-fail:
-  return NULL;
-}
-
-
-SWIGINTERN PyObject *_wrap_determine_num_threads(PyObject *SWIGUNUSEDPARM(self), PyObject *args, PyObject *kwargs) {
-  PyObject *resultobj = 0;
-  int arg1 ;
-  int val1 ;
-  int ecode1 = 0 ;
-  PyObject * obj0 = 0 ;
-  char * kwnames[] = {
-    (char *)"num_threads",  NULL 
-  };
-  int result;
-  
-  if (!PyArg_ParseTupleAndKeywords(args, kwargs, "O:determine_num_threads", kwnames, &obj0)) SWIG_fail;
-  ecode1 = SWIG_AsVal_int(obj0, &val1);
-  if (!SWIG_IsOK(ecode1)) {
-    SWIG_exception_fail(SWIG_ArgError(ecode1), "in method '" "determine_num_threads" "', argument " "1"" of type '" "int""'");
-  } 
-  arg1 = static_cast< int >(val1);
-  {
-    try {
-      result = (int)fastjet::contrib::eec::determine_num_threads(arg1); 
-    }
-    /*@SWIG:/usr/local/Cellar/swig/4.0.2/share/swig/4.0.2/typemaps/exception.swg,58,SWIG_CATCH_STDEXCEPT@*/  /* catching std::exception  */
-    catch (std::invalid_argument& e) {
-      SWIG_exception_fail(SWIG_ValueError, e.what() );
-    } catch (std::domain_error& e) {
-      SWIG_exception_fail(SWIG_ValueError, e.what() );
-    } catch (std::overflow_error& e) {
-      SWIG_exception_fail(SWIG_OverflowError, e.what() );
-    } catch (std::out_of_range& e) {
-      SWIG_exception_fail(SWIG_IndexError, e.what() );
-    } catch (std::length_error& e) {
-      SWIG_exception_fail(SWIG_IndexError, e.what() );
-    } catch (std::runtime_error& e) {
-      SWIG_exception_fail(SWIG_RuntimeError, e.what() );
-    } catch (std::exception& e) {
-      SWIG_exception_fail(SWIG_SystemError, e.what() );
-    }
-    /*@SWIG@*/
-    catch (...) {
-      SWIG_exception_fail(SWIG_UnknownError, "unknown exception");
-    }
-  }
-  resultobj = SWIG_From_int(static_cast< int >(result));
   return resultobj;
 fail:
   return NULL;
@@ -44430,638 +44369,6 @@ SWIGINTERN PyObject *EECHist3DLogLogId_swigregister(PyObject *SWIGUNUSEDPARM(sel
   return SWIG_Py_Void();
 }
 
-SWIGINTERN PyObject *_wrap_new_EECEvent__SWIG_0(PyObject *SWIGUNUSEDPARM(self), Py_ssize_t nobjs, PyObject **SWIGUNUSEDPARM(swig_obj)) {
-  PyObject *resultobj = 0;
-  fastjet::contrib::eec::EECEvent *result = 0 ;
-  
-  if ((nobjs < 0) || (nobjs > 0)) SWIG_fail;
-  {
-    try {
-      result = (fastjet::contrib::eec::EECEvent *)new fastjet::contrib::eec::EECEvent(); 
-    }
-    /*@SWIG:/usr/local/Cellar/swig/4.0.2/share/swig/4.0.2/typemaps/exception.swg,58,SWIG_CATCH_STDEXCEPT@*/  /* catching std::exception  */
-    catch (std::invalid_argument& e) {
-      SWIG_exception_fail(SWIG_ValueError, e.what() );
-    } catch (std::domain_error& e) {
-      SWIG_exception_fail(SWIG_ValueError, e.what() );
-    } catch (std::overflow_error& e) {
-      SWIG_exception_fail(SWIG_OverflowError, e.what() );
-    } catch (std::out_of_range& e) {
-      SWIG_exception_fail(SWIG_IndexError, e.what() );
-    } catch (std::length_error& e) {
-      SWIG_exception_fail(SWIG_IndexError, e.what() );
-    } catch (std::runtime_error& e) {
-      SWIG_exception_fail(SWIG_RuntimeError, e.what() );
-    } catch (std::exception& e) {
-      SWIG_exception_fail(SWIG_SystemError, e.what() );
-    }
-    /*@SWIG@*/
-    catch (...) {
-      SWIG_exception_fail(SWIG_UnknownError, "unknown exception");
-    }
-  }
-  resultobj = SWIG_NewPointerObj(SWIG_as_voidptr(result), SWIGTYPE_p_fastjet__contrib__eec__EECEvent, SWIG_POINTER_NEW |  0 );
-  return resultobj;
-fail:
-  return NULL;
-}
-
-
-SWIGINTERN PyObject *_wrap_new_EECEvent__SWIG_1(PyObject *SWIGUNUSEDPARM(self), Py_ssize_t nobjs, PyObject **swig_obj) {
-  PyObject *resultobj = 0;
-  EECConfig *arg1 = 0 ;
-  double arg2 ;
-  std::vector< fastjet::PseudoJet,std::allocator< fastjet::PseudoJet > > *arg3 = 0 ;
-  std::vector< double,std::allocator< double > > *arg4 = 0 ;
-  void *argp1 = 0 ;
-  int res1 = 0 ;
-  double val2 ;
-  int ecode2 = 0 ;
-  int res3 = SWIG_OLDOBJ ;
-  int res4 = SWIG_OLDOBJ ;
-  fastjet::contrib::eec::EECEvent *result = 0 ;
-  
-  if ((nobjs < 4) || (nobjs > 4)) SWIG_fail;
-  res1 = SWIG_ConvertPtr(swig_obj[0], &argp1, SWIGTYPE_p_EECConfig,  0  | 0);
-  if (!SWIG_IsOK(res1)) {
-    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "new_EECEvent" "', argument " "1"" of type '" "EECConfig const &""'"); 
-  }
-  if (!argp1) {
-    SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in method '" "new_EECEvent" "', argument " "1"" of type '" "EECConfig const &""'"); 
-  }
-  arg1 = reinterpret_cast< EECConfig * >(argp1);
-  ecode2 = SWIG_AsVal_double(swig_obj[1], &val2);
-  if (!SWIG_IsOK(ecode2)) {
-    SWIG_exception_fail(SWIG_ArgError(ecode2), "in method '" "new_EECEvent" "', argument " "2"" of type '" "double""'");
-  } 
-  arg2 = static_cast< double >(val2);
-  {
-    std::vector< fastjet::PseudoJet,std::allocator< fastjet::PseudoJet > > *ptr = (std::vector< fastjet::PseudoJet,std::allocator< fastjet::PseudoJet > > *)0;
-    res3 = swig::asptr(swig_obj[2], &ptr);
-    if (!SWIG_IsOK(res3)) {
-      SWIG_exception_fail(SWIG_ArgError(res3), "in method '" "new_EECEvent" "', argument " "3"" of type '" "std::vector< fastjet::PseudoJet,std::allocator< fastjet::PseudoJet > > const &""'"); 
-    }
-    if (!ptr) {
-      SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in method '" "new_EECEvent" "', argument " "3"" of type '" "std::vector< fastjet::PseudoJet,std::allocator< fastjet::PseudoJet > > const &""'"); 
-    }
-    arg3 = ptr;
-  }
-  {
-    std::vector< double,std::allocator< double > > *ptr = (std::vector< double,std::allocator< double > > *)0;
-    res4 = swig::asptr(swig_obj[3], &ptr);
-    if (!SWIG_IsOK(res4)) {
-      SWIG_exception_fail(SWIG_ArgError(res4), "in method '" "new_EECEvent" "', argument " "4"" of type '" "std::vector< double,std::allocator< double > > const &""'"); 
-    }
-    if (!ptr) {
-      SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in method '" "new_EECEvent" "', argument " "4"" of type '" "std::vector< double,std::allocator< double > > const &""'"); 
-    }
-    arg4 = ptr;
-  }
-  {
-    try {
-      result = (fastjet::contrib::eec::EECEvent *)new fastjet::contrib::eec::EECEvent((EECConfig const &)*arg1,arg2,(std::vector< fastjet::PseudoJet,std::allocator< fastjet::PseudoJet > > const &)*arg3,(std::vector< double,std::allocator< double > > const &)*arg4); 
-    }
-    /*@SWIG:/usr/local/Cellar/swig/4.0.2/share/swig/4.0.2/typemaps/exception.swg,58,SWIG_CATCH_STDEXCEPT@*/  /* catching std::exception  */
-    catch (std::invalid_argument& e) {
-      SWIG_exception_fail(SWIG_ValueError, e.what() );
-    } catch (std::domain_error& e) {
-      SWIG_exception_fail(SWIG_ValueError, e.what() );
-    } catch (std::overflow_error& e) {
-      SWIG_exception_fail(SWIG_OverflowError, e.what() );
-    } catch (std::out_of_range& e) {
-      SWIG_exception_fail(SWIG_IndexError, e.what() );
-    } catch (std::length_error& e) {
-      SWIG_exception_fail(SWIG_IndexError, e.what() );
-    } catch (std::runtime_error& e) {
-      SWIG_exception_fail(SWIG_RuntimeError, e.what() );
-    } catch (std::exception& e) {
-      SWIG_exception_fail(SWIG_SystemError, e.what() );
-    }
-    /*@SWIG@*/
-    catch (...) {
-      SWIG_exception_fail(SWIG_UnknownError, "unknown exception");
-    }
-  }
-  resultobj = SWIG_NewPointerObj(SWIG_as_voidptr(result), SWIGTYPE_p_fastjet__contrib__eec__EECEvent, SWIG_POINTER_NEW |  0 );
-  if (SWIG_IsNewObj(res3)) delete arg3;
-  if (SWIG_IsNewObj(res4)) delete arg4;
-  return resultobj;
-fail:
-  if (SWIG_IsNewObj(res3)) delete arg3;
-  if (SWIG_IsNewObj(res4)) delete arg4;
-  return NULL;
-}
-
-
-SWIGINTERN PyObject *_wrap_new_EECEvent__SWIG_2(PyObject *SWIGUNUSEDPARM(self), Py_ssize_t nobjs, PyObject **swig_obj) {
-  PyObject *resultobj = 0;
-  bool arg1 ;
-  double arg2 ;
-  double *arg3 = (double *) 0 ;
-  unsigned int arg4 ;
-  unsigned int arg5 ;
-  bool val1 ;
-  int ecode1 = 0 ;
-  double val2 ;
-  int ecode2 = 0 ;
-  PyArrayObject *array3 = NULL ;
-  fastjet::contrib::eec::EECEvent *result = 0 ;
-  
-  if ((nobjs < 3) || (nobjs > 3)) SWIG_fail;
-  ecode1 = SWIG_AsVal_bool(swig_obj[0], &val1);
-  if (!SWIG_IsOK(ecode1)) {
-    SWIG_exception_fail(SWIG_ArgError(ecode1), "in method '" "new_EECEvent" "', argument " "1"" of type '" "bool""'");
-  } 
-  arg1 = static_cast< bool >(val1);
-  ecode2 = SWIG_AsVal_double(swig_obj[1], &val2);
-  if (!SWIG_IsOK(ecode2)) {
-    SWIG_exception_fail(SWIG_ArgError(ecode2), "in method '" "new_EECEvent" "', argument " "2"" of type '" "double""'");
-  } 
-  arg2 = static_cast< double >(val2);
-  {
-    array3 = obj_to_array_no_conversion(swig_obj[2], NPY_DOUBLE);
-    if (!array3 || !require_dimensions(array3,2) || !require_contiguous(array3)
-      || !require_native(array3)) SWIG_fail;
-    arg3 = (double*) array_data(array3);
-    arg4 = (std::ptrdiff_t) array_size(array3,0);
-    arg5 = (std::ptrdiff_t) array_size(array3,1);
-  }
-  {
-    try {
-      result = (fastjet::contrib::eec::EECEvent *)new fastjet::contrib::eec::EECEvent(arg1,arg2,(double const *)arg3,arg4,arg5); 
-    }
-    /*@SWIG:/usr/local/Cellar/swig/4.0.2/share/swig/4.0.2/typemaps/exception.swg,58,SWIG_CATCH_STDEXCEPT@*/  /* catching std::exception  */
-    catch (std::invalid_argument& e) {
-      SWIG_exception_fail(SWIG_ValueError, e.what() );
-    } catch (std::domain_error& e) {
-      SWIG_exception_fail(SWIG_ValueError, e.what() );
-    } catch (std::overflow_error& e) {
-      SWIG_exception_fail(SWIG_OverflowError, e.what() );
-    } catch (std::out_of_range& e) {
-      SWIG_exception_fail(SWIG_IndexError, e.what() );
-    } catch (std::length_error& e) {
-      SWIG_exception_fail(SWIG_IndexError, e.what() );
-    } catch (std::runtime_error& e) {
-      SWIG_exception_fail(SWIG_RuntimeError, e.what() );
-    } catch (std::exception& e) {
-      SWIG_exception_fail(SWIG_SystemError, e.what() );
-    }
-    /*@SWIG@*/
-    catch (...) {
-      SWIG_exception_fail(SWIG_UnknownError, "unknown exception");
-    }
-  }
-  resultobj = SWIG_NewPointerObj(SWIG_as_voidptr(result), SWIGTYPE_p_fastjet__contrib__eec__EECEvent, SWIG_POINTER_NEW |  0 );
-  return resultobj;
-fail:
-  return NULL;
-}
-
-
-SWIGINTERN PyObject *_wrap_new_EECEvent__SWIG_3(PyObject *SWIGUNUSEDPARM(self), Py_ssize_t nobjs, PyObject **swig_obj) {
-  PyObject *resultobj = 0;
-  bool arg1 ;
-  double arg2 ;
-  double *arg3 = (double *) 0 ;
-  unsigned int arg4 ;
-  double *arg5 = (double *) 0 ;
-  unsigned int arg6 ;
-  unsigned int arg7 ;
-  double *arg8 = (double *) 0 ;
-  unsigned int arg9 ;
-  bool val1 ;
-  int ecode1 = 0 ;
-  double val2 ;
-  int ecode2 = 0 ;
-  PyArrayObject *array3 = NULL ;
-  int i3 = 1 ;
-  PyArrayObject *array5 = NULL ;
-  PyArrayObject *array8 = NULL ;
-  int i8 = 1 ;
-  fastjet::contrib::eec::EECEvent *result = 0 ;
-  
-  if ((nobjs < 5) || (nobjs > 5)) SWIG_fail;
-  ecode1 = SWIG_AsVal_bool(swig_obj[0], &val1);
-  if (!SWIG_IsOK(ecode1)) {
-    SWIG_exception_fail(SWIG_ArgError(ecode1), "in method '" "new_EECEvent" "', argument " "1"" of type '" "bool""'");
-  } 
-  arg1 = static_cast< bool >(val1);
-  ecode2 = SWIG_AsVal_double(swig_obj[1], &val2);
-  if (!SWIG_IsOK(ecode2)) {
-    SWIG_exception_fail(SWIG_ArgError(ecode2), "in method '" "new_EECEvent" "', argument " "2"" of type '" "double""'");
-  } 
-  arg2 = static_cast< double >(val2);
-  {
-    array3 = obj_to_array_no_conversion(swig_obj[2], NPY_DOUBLE);
-    if (!array3 || !require_dimensions(array3,1) || !require_contiguous(array3)
-      || !require_native(array3)) SWIG_fail;
-    arg3 = (double*) array_data(array3);
-    arg4 = 1;
-    for (i3=0; i3 < array_numdims(array3); ++i3) arg4 *= array_size(array3,i3);
-  }
-  {
-    array5 = obj_to_array_no_conversion(swig_obj[3], NPY_DOUBLE);
-    if (!array5 || !require_dimensions(array5,2) || !require_contiguous(array5)
-      || !require_native(array5)) SWIG_fail;
-    arg5 = (double*) array_data(array5);
-    arg6 = (std::ptrdiff_t) array_size(array5,0);
-    arg7 = (std::ptrdiff_t) array_size(array5,1);
-  }
-  {
-    array8 = obj_to_array_no_conversion(swig_obj[4], NPY_DOUBLE);
-    if (!array8 || !require_dimensions(array8,1) || !require_contiguous(array8)
-      || !require_native(array8)) SWIG_fail;
-    arg8 = (double*) array_data(array8);
-    arg9 = 1;
-    for (i8=0; i8 < array_numdims(array8); ++i8) arg9 *= array_size(array8,i8);
-  }
-  {
-    try {
-      result = (fastjet::contrib::eec::EECEvent *)new fastjet::contrib::eec::EECEvent(arg1,arg2,(double const *)arg3,arg4,(double const *)arg5,arg6,arg7,(double const *)arg8,arg9); 
-    }
-    /*@SWIG:/usr/local/Cellar/swig/4.0.2/share/swig/4.0.2/typemaps/exception.swg,58,SWIG_CATCH_STDEXCEPT@*/  /* catching std::exception  */
-    catch (std::invalid_argument& e) {
-      SWIG_exception_fail(SWIG_ValueError, e.what() );
-    } catch (std::domain_error& e) {
-      SWIG_exception_fail(SWIG_ValueError, e.what() );
-    } catch (std::overflow_error& e) {
-      SWIG_exception_fail(SWIG_OverflowError, e.what() );
-    } catch (std::out_of_range& e) {
-      SWIG_exception_fail(SWIG_IndexError, e.what() );
-    } catch (std::length_error& e) {
-      SWIG_exception_fail(SWIG_IndexError, e.what() );
-    } catch (std::runtime_error& e) {
-      SWIG_exception_fail(SWIG_RuntimeError, e.what() );
-    } catch (std::exception& e) {
-      SWIG_exception_fail(SWIG_SystemError, e.what() );
-    }
-    /*@SWIG@*/
-    catch (...) {
-      SWIG_exception_fail(SWIG_UnknownError, "unknown exception");
-    }
-  }
-  resultobj = SWIG_NewPointerObj(SWIG_as_voidptr(result), SWIGTYPE_p_fastjet__contrib__eec__EECEvent, SWIG_POINTER_NEW |  0 );
-  return resultobj;
-fail:
-  return NULL;
-}
-
-
-SWIGINTERN PyObject *_wrap_new_EECEvent(PyObject *self, PyObject *args) {
-  Py_ssize_t argc;
-  PyObject *argv[6] = {
-    0
-  };
-  
-  if (!(argc = SWIG_Python_UnpackTuple(args, "new_EECEvent", 0, 5, argv))) SWIG_fail;
-  --argc;
-  if (argc == 0) {
-    return _wrap_new_EECEvent__SWIG_0(self, argc, argv);
-  }
-  if (argc == 3) {
-    int _v;
-    {
-      int res = SWIG_AsVal_bool(argv[0], NULL);
-      _v = SWIG_CheckState(res);
-    }
-    if (_v) {
-      {
-        int res = SWIG_AsVal_double(argv[1], NULL);
-        _v = SWIG_CheckState(res);
-      }
-      if (_v) {
-        {
-          _v = is_array(argv[2]) && PyArray_EquivTypenums(array_type(argv[2]),
-            NPY_DOUBLE);
-        }
-        if (_v) {
-          if (argc <= 3) {
-            return _wrap_new_EECEvent__SWIG_2(self, argc, argv);
-          }
-          if (argc <= 4) {
-            return _wrap_new_EECEvent__SWIG_2(self, argc, argv);
-          }
-          return _wrap_new_EECEvent__SWIG_2(self, argc, argv);
-        }
-      }
-    }
-  }
-  if (argc == 4) {
-    int _v;
-    int res = SWIG_ConvertPtr(argv[0], 0, SWIGTYPE_p_EECConfig, SWIG_POINTER_NO_NULL | 0);
-    _v = SWIG_CheckState(res);
-    if (_v) {
-      {
-        int res = SWIG_AsVal_double(argv[1], NULL);
-        _v = SWIG_CheckState(res);
-      }
-      if (_v) {
-        int res = swig::asptr(argv[2], (std::vector< fastjet::PseudoJet,std::allocator< fastjet::PseudoJet > >**)(0));
-        _v = SWIG_CheckState(res);
-        if (_v) {
-          int res = swig::asptr(argv[3], (std::vector< double,std::allocator< double > >**)(0));
-          _v = SWIG_CheckState(res);
-          if (_v) {
-            return _wrap_new_EECEvent__SWIG_1(self, argc, argv);
-          }
-        }
-      }
-    }
-  }
-  if (argc == 5) {
-    int _v;
-    {
-      int res = SWIG_AsVal_bool(argv[0], NULL);
-      _v = SWIG_CheckState(res);
-    }
-    if (_v) {
-      {
-        int res = SWIG_AsVal_double(argv[1], NULL);
-        _v = SWIG_CheckState(res);
-      }
-      if (_v) {
-        {
-          _v = is_array(argv[2]) && PyArray_EquivTypenums(array_type(argv[2]),
-            NPY_DOUBLE);
-        }
-        if (_v) {
-          {
-            _v = is_array(argv[3]) && PyArray_EquivTypenums(array_type(argv[3]),
-              NPY_DOUBLE);
-          }
-          if (_v) {
-            {
-              _v = is_array(argv[4]) && PyArray_EquivTypenums(array_type(argv[4]),
-                NPY_DOUBLE);
-            }
-            if (_v) {
-              if (argc <= 5) {
-                return _wrap_new_EECEvent__SWIG_3(self, argc, argv);
-              }
-              return _wrap_new_EECEvent__SWIG_3(self, argc, argv);
-            }
-          }
-        }
-      }
-    }
-  }
-  
-fail:
-  SWIG_Python_RaiseOrModifyTypeError("Wrong number or type of arguments for overloaded function 'new_EECEvent'.\n"
-    "  Possible C/C++ prototypes are:\n"
-    "    fastjet::contrib::eec::EECEvent::EECEvent()\n"
-    "    fastjet::contrib::eec::EECEvent::EECEvent(EECConfig const &,double,std::vector< fastjet::PseudoJet,std::allocator< fastjet::PseudoJet > > const &,std::vector< double,std::allocator< double > > const &)\n"
-    "    fastjet::contrib::eec::EECEvent::EECEvent(bool,double,double const *,unsigned int,unsigned int)\n"
-    "    fastjet::contrib::eec::EECEvent::EECEvent(bool,double,double const *,unsigned int,double const *,unsigned int,unsigned int,double const *,unsigned int)\n");
-  return 0;
-}
-
-
-SWIGINTERN PyObject *_wrap_delete_EECEvent(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
-  PyObject *resultobj = 0;
-  fastjet::contrib::eec::EECEvent *arg1 = (fastjet::contrib::eec::EECEvent *) 0 ;
-  void *argp1 = 0 ;
-  int res1 = 0 ;
-  PyObject *swig_obj[1] ;
-  
-  if (!args) SWIG_fail;
-  swig_obj[0] = args;
-  res1 = SWIG_ConvertPtr(swig_obj[0], &argp1,SWIGTYPE_p_fastjet__contrib__eec__EECEvent, SWIG_POINTER_DISOWN |  0 );
-  if (!SWIG_IsOK(res1)) {
-    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "delete_EECEvent" "', argument " "1"" of type '" "fastjet::contrib::eec::EECEvent *""'"); 
-  }
-  arg1 = reinterpret_cast< fastjet::contrib::eec::EECEvent * >(argp1);
-  {
-    try {
-      delete arg1; 
-    }
-    /*@SWIG:/usr/local/Cellar/swig/4.0.2/share/swig/4.0.2/typemaps/exception.swg,58,SWIG_CATCH_STDEXCEPT@*/  /* catching std::exception  */
-    catch (std::invalid_argument& e) {
-      SWIG_exception_fail(SWIG_ValueError, e.what() );
-    } catch (std::domain_error& e) {
-      SWIG_exception_fail(SWIG_ValueError, e.what() );
-    } catch (std::overflow_error& e) {
-      SWIG_exception_fail(SWIG_OverflowError, e.what() );
-    } catch (std::out_of_range& e) {
-      SWIG_exception_fail(SWIG_IndexError, e.what() );
-    } catch (std::length_error& e) {
-      SWIG_exception_fail(SWIG_IndexError, e.what() );
-    } catch (std::runtime_error& e) {
-      SWIG_exception_fail(SWIG_RuntimeError, e.what() );
-    } catch (std::exception& e) {
-      SWIG_exception_fail(SWIG_SystemError, e.what() );
-    }
-    /*@SWIG@*/
-    catch (...) {
-      SWIG_exception_fail(SWIG_UnknownError, "unknown exception");
-    }
-  }
-  resultobj = SWIG_Py_Void();
-  return resultobj;
-fail:
-  return NULL;
-}
-
-
-SWIGINTERN PyObject *_wrap_EECEvent_weights(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
-  PyObject *resultobj = 0;
-  fastjet::contrib::eec::EECEvent *arg1 = (fastjet::contrib::eec::EECEvent *) 0 ;
-  void *argp1 = 0 ;
-  int res1 = 0 ;
-  PyObject *swig_obj[1] ;
-  std::vector< std::vector< double,std::allocator< double > >,std::allocator< std::vector< double,std::allocator< double > > > > *result = 0 ;
-  
-  if (!args) SWIG_fail;
-  swig_obj[0] = args;
-  res1 = SWIG_ConvertPtr(swig_obj[0], &argp1,SWIGTYPE_p_fastjet__contrib__eec__EECEvent, 0 |  0 );
-  if (!SWIG_IsOK(res1)) {
-    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "EECEvent_weights" "', argument " "1"" of type '" "fastjet::contrib::eec::EECEvent const *""'"); 
-  }
-  arg1 = reinterpret_cast< fastjet::contrib::eec::EECEvent * >(argp1);
-  {
-    try {
-      result = (std::vector< std::vector< double,std::allocator< double > >,std::allocator< std::vector< double,std::allocator< double > > > > *) &((fastjet::contrib::eec::EECEvent const *)arg1)->weights(); 
-    }
-    /*@SWIG:/usr/local/Cellar/swig/4.0.2/share/swig/4.0.2/typemaps/exception.swg,58,SWIG_CATCH_STDEXCEPT@*/  /* catching std::exception  */
-    catch (std::invalid_argument& e) {
-      SWIG_exception_fail(SWIG_ValueError, e.what() );
-    } catch (std::domain_error& e) {
-      SWIG_exception_fail(SWIG_ValueError, e.what() );
-    } catch (std::overflow_error& e) {
-      SWIG_exception_fail(SWIG_OverflowError, e.what() );
-    } catch (std::out_of_range& e) {
-      SWIG_exception_fail(SWIG_IndexError, e.what() );
-    } catch (std::length_error& e) {
-      SWIG_exception_fail(SWIG_IndexError, e.what() );
-    } catch (std::runtime_error& e) {
-      SWIG_exception_fail(SWIG_RuntimeError, e.what() );
-    } catch (std::exception& e) {
-      SWIG_exception_fail(SWIG_SystemError, e.what() );
-    }
-    /*@SWIG@*/
-    catch (...) {
-      SWIG_exception_fail(SWIG_UnknownError, "unknown exception");
-    }
-  }
-  resultobj = SWIG_NewPointerObj(SWIG_as_voidptr(result), SWIGTYPE_p_std__vectorT_std__vectorT_double_std__allocatorT_double_t_t_std__allocatorT_std__vectorT_double_std__allocatorT_double_t_t_t_t, 0 |  0 );
-  return resultobj;
-fail:
-  return NULL;
-}
-
-
-SWIGINTERN PyObject *_wrap_EECEvent_dists(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
-  PyObject *resultobj = 0;
-  fastjet::contrib::eec::EECEvent *arg1 = (fastjet::contrib::eec::EECEvent *) 0 ;
-  void *argp1 = 0 ;
-  int res1 = 0 ;
-  PyObject *swig_obj[1] ;
-  std::vector< double,std::allocator< double > > *result = 0 ;
-  
-  if (!args) SWIG_fail;
-  swig_obj[0] = args;
-  res1 = SWIG_ConvertPtr(swig_obj[0], &argp1,SWIGTYPE_p_fastjet__contrib__eec__EECEvent, 0 |  0 );
-  if (!SWIG_IsOK(res1)) {
-    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "EECEvent_dists" "', argument " "1"" of type '" "fastjet::contrib::eec::EECEvent const *""'"); 
-  }
-  arg1 = reinterpret_cast< fastjet::contrib::eec::EECEvent * >(argp1);
-  {
-    try {
-      result = (std::vector< double,std::allocator< double > > *) &((fastjet::contrib::eec::EECEvent const *)arg1)->dists(); 
-    }
-    /*@SWIG:/usr/local/Cellar/swig/4.0.2/share/swig/4.0.2/typemaps/exception.swg,58,SWIG_CATCH_STDEXCEPT@*/  /* catching std::exception  */
-    catch (std::invalid_argument& e) {
-      SWIG_exception_fail(SWIG_ValueError, e.what() );
-    } catch (std::domain_error& e) {
-      SWIG_exception_fail(SWIG_ValueError, e.what() );
-    } catch (std::overflow_error& e) {
-      SWIG_exception_fail(SWIG_OverflowError, e.what() );
-    } catch (std::out_of_range& e) {
-      SWIG_exception_fail(SWIG_IndexError, e.what() );
-    } catch (std::length_error& e) {
-      SWIG_exception_fail(SWIG_IndexError, e.what() );
-    } catch (std::runtime_error& e) {
-      SWIG_exception_fail(SWIG_RuntimeError, e.what() );
-    } catch (std::exception& e) {
-      SWIG_exception_fail(SWIG_SystemError, e.what() );
-    }
-    /*@SWIG@*/
-    catch (...) {
-      SWIG_exception_fail(SWIG_UnknownError, "unknown exception");
-    }
-  }
-  resultobj = swig::from(static_cast< std::vector< double,std::allocator< double > > >(*result));
-  return resultobj;
-fail:
-  return NULL;
-}
-
-
-SWIGINTERN PyObject *_wrap_EECEvent_event_weight(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
-  PyObject *resultobj = 0;
-  fastjet::contrib::eec::EECEvent *arg1 = (fastjet::contrib::eec::EECEvent *) 0 ;
-  void *argp1 = 0 ;
-  int res1 = 0 ;
-  PyObject *swig_obj[1] ;
-  double result;
-  
-  if (!args) SWIG_fail;
-  swig_obj[0] = args;
-  res1 = SWIG_ConvertPtr(swig_obj[0], &argp1,SWIGTYPE_p_fastjet__contrib__eec__EECEvent, 0 |  0 );
-  if (!SWIG_IsOK(res1)) {
-    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "EECEvent_event_weight" "', argument " "1"" of type '" "fastjet::contrib::eec::EECEvent const *""'"); 
-  }
-  arg1 = reinterpret_cast< fastjet::contrib::eec::EECEvent * >(argp1);
-  {
-    try {
-      result = (double)((fastjet::contrib::eec::EECEvent const *)arg1)->event_weight(); 
-    }
-    /*@SWIG:/usr/local/Cellar/swig/4.0.2/share/swig/4.0.2/typemaps/exception.swg,58,SWIG_CATCH_STDEXCEPT@*/  /* catching std::exception  */
-    catch (std::invalid_argument& e) {
-      SWIG_exception_fail(SWIG_ValueError, e.what() );
-    } catch (std::domain_error& e) {
-      SWIG_exception_fail(SWIG_ValueError, e.what() );
-    } catch (std::overflow_error& e) {
-      SWIG_exception_fail(SWIG_OverflowError, e.what() );
-    } catch (std::out_of_range& e) {
-      SWIG_exception_fail(SWIG_IndexError, e.what() );
-    } catch (std::length_error& e) {
-      SWIG_exception_fail(SWIG_IndexError, e.what() );
-    } catch (std::runtime_error& e) {
-      SWIG_exception_fail(SWIG_RuntimeError, e.what() );
-    } catch (std::exception& e) {
-      SWIG_exception_fail(SWIG_SystemError, e.what() );
-    }
-    /*@SWIG@*/
-    catch (...) {
-      SWIG_exception_fail(SWIG_UnknownError, "unknown exception");
-    }
-  }
-  resultobj = SWIG_From_double(static_cast< double >(result));
-  return resultobj;
-fail:
-  return NULL;
-}
-
-
-SWIGINTERN PyObject *_wrap_EECEvent_mult(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
-  PyObject *resultobj = 0;
-  fastjet::contrib::eec::EECEvent *arg1 = (fastjet::contrib::eec::EECEvent *) 0 ;
-  void *argp1 = 0 ;
-  int res1 = 0 ;
-  PyObject *swig_obj[1] ;
-  unsigned int result;
-  
-  if (!args) SWIG_fail;
-  swig_obj[0] = args;
-  res1 = SWIG_ConvertPtr(swig_obj[0], &argp1,SWIGTYPE_p_fastjet__contrib__eec__EECEvent, 0 |  0 );
-  if (!SWIG_IsOK(res1)) {
-    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "EECEvent_mult" "', argument " "1"" of type '" "fastjet::contrib::eec::EECEvent const *""'"); 
-  }
-  arg1 = reinterpret_cast< fastjet::contrib::eec::EECEvent * >(argp1);
-  {
-    try {
-      result = (unsigned int)((fastjet::contrib::eec::EECEvent const *)arg1)->mult(); 
-    }
-    /*@SWIG:/usr/local/Cellar/swig/4.0.2/share/swig/4.0.2/typemaps/exception.swg,58,SWIG_CATCH_STDEXCEPT@*/  /* catching std::exception  */
-    catch (std::invalid_argument& e) {
-      SWIG_exception_fail(SWIG_ValueError, e.what() );
-    } catch (std::domain_error& e) {
-      SWIG_exception_fail(SWIG_ValueError, e.what() );
-    } catch (std::overflow_error& e) {
-      SWIG_exception_fail(SWIG_OverflowError, e.what() );
-    } catch (std::out_of_range& e) {
-      SWIG_exception_fail(SWIG_IndexError, e.what() );
-    } catch (std::length_error& e) {
-      SWIG_exception_fail(SWIG_IndexError, e.what() );
-    } catch (std::runtime_error& e) {
-      SWIG_exception_fail(SWIG_RuntimeError, e.what() );
-    } catch (std::exception& e) {
-      SWIG_exception_fail(SWIG_SystemError, e.what() );
-    }
-    /*@SWIG@*/
-    catch (...) {
-      SWIG_exception_fail(SWIG_UnknownError, "unknown exception");
-    }
-  }
-  resultobj = SWIG_From_unsigned_SS_int(static_cast< unsigned int >(result));
-  return resultobj;
-fail:
-  return NULL;
-}
-
-
-SWIGINTERN PyObject *EECEvent_swigregister(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
-  PyObject *obj;
-  if (!SWIG_Python_UnpackTuple(args, "swigregister", 1, 1, &obj)) return NULL;
-  SWIG_TypeNewClientData(SWIGTYPE_p_fastjet__contrib__eec__EECEvent, SWIG_NewClientData(obj));
-  return SWIG_Py_Void();
-}
-
-SWIGINTERN PyObject *EECEvent_swiginit(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
-  return SWIG_Python_InitShadowInstance(args);
-}
-
 SWIGINTERN PyObject *_wrap_delete_EECBase(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
   PyObject *resultobj = 0;
   fastjet::contrib::eec::EECBase *arg1 = (fastjet::contrib::eec::EECBase *) 0 ;
@@ -45108,48 +44415,72 @@ fail:
 }
 
 
-SWIGINTERN PyObject *_wrap_EECBase__compute(PyObject *SWIGUNUSEDPARM(self), PyObject *args, PyObject *kwargs) {
+SWIGINTERN PyObject *_wrap_EECBase__compute__SWIG_0(PyObject *SWIGUNUSEDPARM(self), Py_ssize_t nobjs, PyObject **swig_obj) {
   PyObject *resultobj = 0;
   fastjet::contrib::eec::EECBase *arg1 = (fastjet::contrib::eec::EECBase *) 0 ;
-  fastjet::contrib::eec::EECEvent *arg2 = 0 ;
-  int arg3 = (int) 0 ;
+  std::vector< fastjet::PseudoJet,std::allocator< fastjet::PseudoJet > > *arg2 = 0 ;
+  std::vector< double,std::allocator< double > > const &arg3_defvalue = {
+    
+  } ;
+  std::vector< double,std::allocator< double > > *arg3 = (std::vector< double,std::allocator< double > > *) &arg3_defvalue ;
+  double arg4 = (double) 1 ;
+  int arg5 = (int) 0 ;
   void *argp1 = 0 ;
   int res1 = 0 ;
-  void *argp2 = 0 ;
-  int res2 = 0 ;
-  int val3 ;
-  int ecode3 = 0 ;
-  PyObject * obj0 = 0 ;
-  PyObject * obj1 = 0 ;
-  PyObject * obj2 = 0 ;
-  char * kwnames[] = {
-    (char *)"self",  (char *)"event",  (char *)"thread",  NULL 
-  };
+  int res2 = SWIG_OLDOBJ ;
+  int res3 = SWIG_OLDOBJ ;
+  double val4 ;
+  int ecode4 = 0 ;
+  int val5 ;
+  int ecode5 = 0 ;
   
-  if (!PyArg_ParseTupleAndKeywords(args, kwargs, "OO|O:EECBase__compute", kwnames, &obj0, &obj1, &obj2)) SWIG_fail;
-  res1 = SWIG_ConvertPtr(obj0, &argp1,SWIGTYPE_p_fastjet__contrib__eec__EECBase, 0 |  0 );
+  if ((nobjs < 2) || (nobjs > 5)) SWIG_fail;
+  res1 = SWIG_ConvertPtr(swig_obj[0], &argp1,SWIGTYPE_p_fastjet__contrib__eec__EECBase, 0 |  0 );
   if (!SWIG_IsOK(res1)) {
     SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "EECBase__compute" "', argument " "1"" of type '" "fastjet::contrib::eec::EECBase *""'"); 
   }
   arg1 = reinterpret_cast< fastjet::contrib::eec::EECBase * >(argp1);
-  res2 = SWIG_ConvertPtr(obj1, &argp2, SWIGTYPE_p_fastjet__contrib__eec__EECEvent,  0 );
-  if (!SWIG_IsOK(res2)) {
-    SWIG_exception_fail(SWIG_ArgError(res2), "in method '" "EECBase__compute" "', argument " "2"" of type '" "fastjet::contrib::eec::EECEvent &""'"); 
+  {
+    std::vector< fastjet::PseudoJet,std::allocator< fastjet::PseudoJet > > *ptr = (std::vector< fastjet::PseudoJet,std::allocator< fastjet::PseudoJet > > *)0;
+    res2 = swig::asptr(swig_obj[1], &ptr);
+    if (!SWIG_IsOK(res2)) {
+      SWIG_exception_fail(SWIG_ArgError(res2), "in method '" "EECBase__compute" "', argument " "2"" of type '" "std::vector< fastjet::PseudoJet,std::allocator< fastjet::PseudoJet > > const &""'"); 
+    }
+    if (!ptr) {
+      SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in method '" "EECBase__compute" "', argument " "2"" of type '" "std::vector< fastjet::PseudoJet,std::allocator< fastjet::PseudoJet > > const &""'"); 
+    }
+    arg2 = ptr;
   }
-  if (!argp2) {
-    SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in method '" "EECBase__compute" "', argument " "2"" of type '" "fastjet::contrib::eec::EECEvent &""'"); 
+  if (swig_obj[2]) {
+    {
+      std::vector< double,std::allocator< double > > *ptr = (std::vector< double,std::allocator< double > > *)0;
+      res3 = swig::asptr(swig_obj[2], &ptr);
+      if (!SWIG_IsOK(res3)) {
+        SWIG_exception_fail(SWIG_ArgError(res3), "in method '" "EECBase__compute" "', argument " "3"" of type '" "std::vector< double,std::allocator< double > > const &""'"); 
+      }
+      if (!ptr) {
+        SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in method '" "EECBase__compute" "', argument " "3"" of type '" "std::vector< double,std::allocator< double > > const &""'"); 
+      }
+      arg3 = ptr;
+    }
   }
-  arg2 = reinterpret_cast< fastjet::contrib::eec::EECEvent * >(argp2);
-  if (obj2) {
-    ecode3 = SWIG_AsVal_int(obj2, &val3);
-    if (!SWIG_IsOK(ecode3)) {
-      SWIG_exception_fail(SWIG_ArgError(ecode3), "in method '" "EECBase__compute" "', argument " "3"" of type '" "int""'");
+  if (swig_obj[3]) {
+    ecode4 = SWIG_AsVal_double(swig_obj[3], &val4);
+    if (!SWIG_IsOK(ecode4)) {
+      SWIG_exception_fail(SWIG_ArgError(ecode4), "in method '" "EECBase__compute" "', argument " "4"" of type '" "double""'");
     } 
-    arg3 = static_cast< int >(val3);
+    arg4 = static_cast< double >(val4);
+  }
+  if (swig_obj[4]) {
+    ecode5 = SWIG_AsVal_int(swig_obj[4], &val5);
+    if (!SWIG_IsOK(ecode5)) {
+      SWIG_exception_fail(SWIG_ArgError(ecode5), "in method '" "EECBase__compute" "', argument " "5"" of type '" "int""'");
+    } 
+    arg5 = static_cast< int >(val5);
   }
   {
     try {
-      (arg1)->compute(*arg2,arg3); 
+      (arg1)->compute((std::vector< fastjet::PseudoJet,std::allocator< fastjet::PseudoJet > > const &)*arg2,(std::vector< double,std::allocator< double > > const &)*arg3,arg4,arg5); 
     }
     /*@SWIG:/usr/local/Cellar/swig/4.0.2/share/swig/4.0.2/typemaps/exception.swg,58,SWIG_CATCH_STDEXCEPT@*/  /* catching std::exception  */
     catch (std::invalid_argument& e) {
@@ -45173,43 +44504,100 @@ SWIGINTERN PyObject *_wrap_EECBase__compute(PyObject *SWIGUNUSEDPARM(self), PyOb
     }
   }
   resultobj = SWIG_Py_Void();
+  if (SWIG_IsNewObj(res2)) delete arg2;
+  if (SWIG_IsNewObj(res3)) delete arg3;
   return resultobj;
 fail:
+  if (SWIG_IsNewObj(res2)) delete arg2;
+  if (SWIG_IsNewObj(res3)) delete arg3;
   return NULL;
 }
 
 
-SWIGINTERN PyObject *_wrap_EECBase__push_back(PyObject *SWIGUNUSEDPARM(self), PyObject *args, PyObject *kwargs) {
+SWIGINTERN PyObject *_wrap_EECBase__compute__SWIG_1(PyObject *SWIGUNUSEDPARM(self), Py_ssize_t nobjs, PyObject **swig_obj) {
   PyObject *resultobj = 0;
   fastjet::contrib::eec::EECBase *arg1 = (fastjet::contrib::eec::EECBase *) 0 ;
-  fastjet::contrib::eec::EECEvent *arg2 = 0 ;
+  double *arg2 = (double *) 0 ;
+  unsigned int arg3 ;
+  double *arg4 = (double *) 0 ;
+  unsigned int arg5 ;
+  unsigned int arg6 ;
+  double *arg7 = (double *) 0 ;
+  unsigned int arg8 ;
+  double arg9 = (double) 1 ;
+  int arg10 = (int) 0 ;
   void *argp1 = 0 ;
   int res1 = 0 ;
-  void *argp2 = 0 ;
-  int res2 = 0 ;
-  PyObject * obj0 = 0 ;
-  PyObject * obj1 = 0 ;
-  char * kwnames[] = {
-    (char *)"self",  (char *)"event",  NULL 
-  };
+  PyArrayObject *array2 = NULL ;
+  int is_new_object2 = 0 ;
+  PyArrayObject *array4 = NULL ;
+  int is_new_object4 = 0 ;
+  PyArrayObject *array7 = NULL ;
+  int is_new_object7 = 0 ;
+  double val9 ;
+  int ecode9 = 0 ;
+  int val10 ;
+  int ecode10 = 0 ;
   
-  if (!PyArg_ParseTupleAndKeywords(args, kwargs, "OO:EECBase__push_back", kwnames, &obj0, &obj1)) SWIG_fail;
-  res1 = SWIG_ConvertPtr(obj0, &argp1,SWIGTYPE_p_fastjet__contrib__eec__EECBase, 0 |  0 );
+  if ((nobjs < 4) || (nobjs > 6)) SWIG_fail;
+  res1 = SWIG_ConvertPtr(swig_obj[0], &argp1,SWIGTYPE_p_fastjet__contrib__eec__EECBase, 0 |  0 );
   if (!SWIG_IsOK(res1)) {
-    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "EECBase__push_back" "', argument " "1"" of type '" "fastjet::contrib::eec::EECBase *""'"); 
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "EECBase__compute" "', argument " "1"" of type '" "fastjet::contrib::eec::EECBase *""'"); 
   }
   arg1 = reinterpret_cast< fastjet::contrib::eec::EECBase * >(argp1);
-  res2 = SWIG_ConvertPtr(obj1, &argp2, SWIGTYPE_p_fastjet__contrib__eec__EECEvent,  0  | 0);
-  if (!SWIG_IsOK(res2)) {
-    SWIG_exception_fail(SWIG_ArgError(res2), "in method '" "EECBase__push_back" "', argument " "2"" of type '" "fastjet::contrib::eec::EECEvent const &""'"); 
+  {
+    npy_intp size[1] = {
+      -1 
+    };
+    array2 = obj_to_array_contiguous_allow_conversion(swig_obj[1],
+      NPY_DOUBLE,
+      &is_new_object2);
+    if (!array2 || !require_dimensions(array2, 1) ||
+      !require_size(array2, size, 1)) SWIG_fail;
+    arg2 = (double*) array_data(array2);
+    arg3 = (std::ptrdiff_t) array_size(array2,0);
   }
-  if (!argp2) {
-    SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in method '" "EECBase__push_back" "', argument " "2"" of type '" "fastjet::contrib::eec::EECEvent const &""'"); 
+  {
+    npy_intp size[2] = {
+      -1, -1 
+    };
+    array4 = obj_to_array_contiguous_allow_conversion(swig_obj[2], NPY_DOUBLE,
+      &is_new_object4);
+    if (!array4 || !require_dimensions(array4, 2) ||
+      !require_size(array4, size, 2)) SWIG_fail;
+    arg4 = (double*) array_data(array4);
+    arg5 = (std::ptrdiff_t) array_size(array4,0);
+    arg6 = (std::ptrdiff_t) array_size(array4,1);
   }
-  arg2 = reinterpret_cast< fastjet::contrib::eec::EECEvent * >(argp2);
+  {
+    npy_intp size[1] = {
+      -1 
+    };
+    array7 = obj_to_array_contiguous_allow_conversion(swig_obj[3],
+      NPY_DOUBLE,
+      &is_new_object7);
+    if (!array7 || !require_dimensions(array7, 1) ||
+      !require_size(array7, size, 1)) SWIG_fail;
+    arg7 = (double*) array_data(array7);
+    arg8 = (std::ptrdiff_t) array_size(array7,0);
+  }
+  if (swig_obj[4]) {
+    ecode9 = SWIG_AsVal_double(swig_obj[4], &val9);
+    if (!SWIG_IsOK(ecode9)) {
+      SWIG_exception_fail(SWIG_ArgError(ecode9), "in method '" "EECBase__compute" "', argument " "9"" of type '" "double""'");
+    } 
+    arg9 = static_cast< double >(val9);
+  }
+  if (swig_obj[5]) {
+    ecode10 = SWIG_AsVal_int(swig_obj[5], &val10);
+    if (!SWIG_IsOK(ecode10)) {
+      SWIG_exception_fail(SWIG_ArgError(ecode10), "in method '" "EECBase__compute" "', argument " "10"" of type '" "int""'");
+    } 
+    arg10 = static_cast< int >(val10);
+  }
   {
     try {
-      (arg1)->push_back((fastjet::contrib::eec::EECEvent const &)*arg2); 
+      (arg1)->compute((double const *)arg2,arg3,(double const *)arg4,arg5,arg6,(double const *)arg7,arg8,arg9,arg10); 
     }
     /*@SWIG:/usr/local/Cellar/swig/4.0.2/share/swig/4.0.2/typemaps/exception.swg,58,SWIG_CATCH_STDEXCEPT@*/  /* catching std::exception  */
     catch (std::invalid_argument& e) {
@@ -45233,9 +44621,684 @@ SWIGINTERN PyObject *_wrap_EECBase__push_back(PyObject *SWIGUNUSEDPARM(self), Py
     }
   }
   resultobj = SWIG_Py_Void();
+  {
+    if (is_new_object2 && array2)
+    {
+      Py_DECREF(array2); 
+    }
+  }
+  {
+    if (is_new_object4 && array4)
+    {
+      Py_DECREF(array4); 
+    }
+  }
+  {
+    if (is_new_object7 && array7)
+    {
+      Py_DECREF(array7); 
+    }
+  }
   return resultobj;
 fail:
+  {
+    if (is_new_object2 && array2)
+    {
+      Py_DECREF(array2); 
+    }
+  }
+  {
+    if (is_new_object4 && array4)
+    {
+      Py_DECREF(array4); 
+    }
+  }
+  {
+    if (is_new_object7 && array7)
+    {
+      Py_DECREF(array7); 
+    }
+  }
   return NULL;
+}
+
+
+SWIGINTERN PyObject *_wrap_EECBase__compute__SWIG_2(PyObject *SWIGUNUSEDPARM(self), Py_ssize_t nobjs, PyObject **swig_obj) {
+  PyObject *resultobj = 0;
+  fastjet::contrib::eec::EECBase *arg1 = (fastjet::contrib::eec::EECBase *) 0 ;
+  double *arg2 = (double *) 0 ;
+  unsigned int arg3 ;
+  unsigned int arg4 ;
+  double arg5 = (double) 1 ;
+  int arg6 = (int) 0 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  PyArrayObject *array2 = NULL ;
+  int is_new_object2 = 0 ;
+  double val5 ;
+  int ecode5 = 0 ;
+  int val6 ;
+  int ecode6 = 0 ;
+  
+  if ((nobjs < 2) || (nobjs > 4)) SWIG_fail;
+  res1 = SWIG_ConvertPtr(swig_obj[0], &argp1,SWIGTYPE_p_fastjet__contrib__eec__EECBase, 0 |  0 );
+  if (!SWIG_IsOK(res1)) {
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "EECBase__compute" "', argument " "1"" of type '" "fastjet::contrib::eec::EECBase *""'"); 
+  }
+  arg1 = reinterpret_cast< fastjet::contrib::eec::EECBase * >(argp1);
+  {
+    npy_intp size[2] = {
+      -1, -1 
+    };
+    array2 = obj_to_array_contiguous_allow_conversion(swig_obj[1], NPY_DOUBLE,
+      &is_new_object2);
+    if (!array2 || !require_dimensions(array2, 2) ||
+      !require_size(array2, size, 2)) SWIG_fail;
+    arg2 = (double*) array_data(array2);
+    arg3 = (std::ptrdiff_t) array_size(array2,0);
+    arg4 = (std::ptrdiff_t) array_size(array2,1);
+  }
+  if (swig_obj[2]) {
+    ecode5 = SWIG_AsVal_double(swig_obj[2], &val5);
+    if (!SWIG_IsOK(ecode5)) {
+      SWIG_exception_fail(SWIG_ArgError(ecode5), "in method '" "EECBase__compute" "', argument " "5"" of type '" "double""'");
+    } 
+    arg5 = static_cast< double >(val5);
+  }
+  if (swig_obj[3]) {
+    ecode6 = SWIG_AsVal_int(swig_obj[3], &val6);
+    if (!SWIG_IsOK(ecode6)) {
+      SWIG_exception_fail(SWIG_ArgError(ecode6), "in method '" "EECBase__compute" "', argument " "6"" of type '" "int""'");
+    } 
+    arg6 = static_cast< int >(val6);
+  }
+  {
+    try {
+      (arg1)->compute((double const *)arg2,arg3,arg4,arg5,arg6); 
+    }
+    /*@SWIG:/usr/local/Cellar/swig/4.0.2/share/swig/4.0.2/typemaps/exception.swg,58,SWIG_CATCH_STDEXCEPT@*/  /* catching std::exception  */
+    catch (std::invalid_argument& e) {
+      SWIG_exception_fail(SWIG_ValueError, e.what() );
+    } catch (std::domain_error& e) {
+      SWIG_exception_fail(SWIG_ValueError, e.what() );
+    } catch (std::overflow_error& e) {
+      SWIG_exception_fail(SWIG_OverflowError, e.what() );
+    } catch (std::out_of_range& e) {
+      SWIG_exception_fail(SWIG_IndexError, e.what() );
+    } catch (std::length_error& e) {
+      SWIG_exception_fail(SWIG_IndexError, e.what() );
+    } catch (std::runtime_error& e) {
+      SWIG_exception_fail(SWIG_RuntimeError, e.what() );
+    } catch (std::exception& e) {
+      SWIG_exception_fail(SWIG_SystemError, e.what() );
+    }
+    /*@SWIG@*/
+    catch (...) {
+      SWIG_exception_fail(SWIG_UnknownError, "unknown exception");
+    }
+  }
+  resultobj = SWIG_Py_Void();
+  {
+    if (is_new_object2 && array2)
+    {
+      Py_DECREF(array2); 
+    }
+  }
+  return resultobj;
+fail:
+  {
+    if (is_new_object2 && array2)
+    {
+      Py_DECREF(array2); 
+    }
+  }
+  return NULL;
+}
+
+
+SWIGINTERN PyObject *_wrap_EECBase__compute(PyObject *self, PyObject *args) {
+  Py_ssize_t argc;
+  PyObject *argv[7] = {
+    0
+  };
+  
+  if (!(argc = SWIG_Python_UnpackTuple(args, "EECBase__compute", 0, 6, argv))) SWIG_fail;
+  --argc;
+  if ((argc >= 2) && (argc <= 5)) {
+    int _v;
+    void *vptr = 0;
+    int res = SWIG_ConvertPtr(argv[0], &vptr, SWIGTYPE_p_fastjet__contrib__eec__EECBase, 0);
+    _v = SWIG_CheckState(res);
+    if (_v) {
+      int res = swig::asptr(argv[1], (std::vector< fastjet::PseudoJet,std::allocator< fastjet::PseudoJet > >**)(0));
+      _v = SWIG_CheckState(res);
+      if (_v) {
+        if (argc <= 2) {
+          return _wrap_EECBase__compute__SWIG_0(self, argc, argv);
+        }
+        int res = swig::asptr(argv[2], (std::vector< double,std::allocator< double > >**)(0));
+        _v = SWIG_CheckState(res);
+        if (_v) {
+          if (argc <= 3) {
+            return _wrap_EECBase__compute__SWIG_0(self, argc, argv);
+          }
+          {
+            int res = SWIG_AsVal_double(argv[3], NULL);
+            _v = SWIG_CheckState(res);
+          }
+          if (_v) {
+            if (argc <= 4) {
+              return _wrap_EECBase__compute__SWIG_0(self, argc, argv);
+            }
+            {
+              int res = SWIG_AsVal_int(argv[4], NULL);
+              _v = SWIG_CheckState(res);
+            }
+            if (_v) {
+              return _wrap_EECBase__compute__SWIG_0(self, argc, argv);
+            }
+          }
+        }
+      }
+    }
+  }
+  if ((argc >= 2) && (argc <= 4)) {
+    int _v;
+    void *vptr = 0;
+    int res = SWIG_ConvertPtr(argv[0], &vptr, SWIGTYPE_p_fastjet__contrib__eec__EECBase, 0);
+    _v = SWIG_CheckState(res);
+    if (_v) {
+      {
+        _v = is_array(argv[1]) || PySequence_Check(argv[1]);
+      }
+      if (_v) {
+        if (argc <= 2) {
+          return _wrap_EECBase__compute__SWIG_2(self, argc, argv);
+        }
+        {
+          int res = SWIG_AsVal_double(argv[2], NULL);
+          _v = SWIG_CheckState(res);
+        }
+        if (_v) {
+          if (argc <= 3) {
+            return _wrap_EECBase__compute__SWIG_2(self, argc, argv);
+          }
+          {
+            int res = SWIG_AsVal_int(argv[3], NULL);
+            _v = SWIG_CheckState(res);
+          }
+          if (_v) {
+            return _wrap_EECBase__compute__SWIG_2(self, argc, argv);
+          }
+        }
+      }
+    }
+  }
+  if ((argc >= 4) && (argc <= 6)) {
+    int _v;
+    void *vptr = 0;
+    int res = SWIG_ConvertPtr(argv[0], &vptr, SWIGTYPE_p_fastjet__contrib__eec__EECBase, 0);
+    _v = SWIG_CheckState(res);
+    if (_v) {
+      {
+        _v = is_array(argv[1]) || PySequence_Check(argv[1]);
+      }
+      if (_v) {
+        {
+          _v = is_array(argv[2]) || PySequence_Check(argv[2]);
+        }
+        if (_v) {
+          {
+            _v = is_array(argv[3]) || PySequence_Check(argv[3]);
+          }
+          if (_v) {
+            if (argc <= 4) {
+              return _wrap_EECBase__compute__SWIG_1(self, argc, argv);
+            }
+            {
+              int res = SWIG_AsVal_double(argv[4], NULL);
+              _v = SWIG_CheckState(res);
+            }
+            if (_v) {
+              if (argc <= 5) {
+                return _wrap_EECBase__compute__SWIG_1(self, argc, argv);
+              }
+              {
+                int res = SWIG_AsVal_int(argv[5], NULL);
+                _v = SWIG_CheckState(res);
+              }
+              if (_v) {
+                return _wrap_EECBase__compute__SWIG_1(self, argc, argv);
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+  
+fail:
+  SWIG_Python_RaiseOrModifyTypeError("Wrong number or type of arguments for overloaded function 'EECBase__compute'.\n"
+    "  Possible C/C++ prototypes are:\n"
+    "    fastjet::contrib::eec::EECBase::compute(std::vector< fastjet::PseudoJet,std::allocator< fastjet::PseudoJet > > const &,std::vector< double,std::allocator< double > > const &,double,int)\n"
+    "    fastjet::contrib::eec::EECBase::compute(double const *,unsigned int,double const *,unsigned int,unsigned int,double const *,unsigned int,double,int)\n"
+    "    fastjet::contrib::eec::EECBase::compute(double const *,unsigned int,unsigned int,double,int)\n");
+  return 0;
+}
+
+
+SWIGINTERN PyObject *_wrap_EECBase__push_back__SWIG_0(PyObject *SWIGUNUSEDPARM(self), Py_ssize_t nobjs, PyObject **swig_obj) {
+  PyObject *resultobj = 0;
+  fastjet::contrib::eec::EECBase *arg1 = (fastjet::contrib::eec::EECBase *) 0 ;
+  std::vector< fastjet::PseudoJet,std::allocator< fastjet::PseudoJet > > *arg2 = 0 ;
+  std::vector< double,std::allocator< double > > const &arg3_defvalue = {
+    
+  } ;
+  std::vector< double,std::allocator< double > > *arg3 = (std::vector< double,std::allocator< double > > *) &arg3_defvalue ;
+  double arg4 = (double) 1 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  int res2 = SWIG_OLDOBJ ;
+  int res3 = SWIG_OLDOBJ ;
+  double val4 ;
+  int ecode4 = 0 ;
+  
+  if ((nobjs < 2) || (nobjs > 4)) SWIG_fail;
+  res1 = SWIG_ConvertPtr(swig_obj[0], &argp1,SWIGTYPE_p_fastjet__contrib__eec__EECBase, 0 |  0 );
+  if (!SWIG_IsOK(res1)) {
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "EECBase__push_back" "', argument " "1"" of type '" "fastjet::contrib::eec::EECBase *""'"); 
+  }
+  arg1 = reinterpret_cast< fastjet::contrib::eec::EECBase * >(argp1);
+  {
+    std::vector< fastjet::PseudoJet,std::allocator< fastjet::PseudoJet > > *ptr = (std::vector< fastjet::PseudoJet,std::allocator< fastjet::PseudoJet > > *)0;
+    res2 = swig::asptr(swig_obj[1], &ptr);
+    if (!SWIG_IsOK(res2)) {
+      SWIG_exception_fail(SWIG_ArgError(res2), "in method '" "EECBase__push_back" "', argument " "2"" of type '" "std::vector< fastjet::PseudoJet,std::allocator< fastjet::PseudoJet > > const &""'"); 
+    }
+    if (!ptr) {
+      SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in method '" "EECBase__push_back" "', argument " "2"" of type '" "std::vector< fastjet::PseudoJet,std::allocator< fastjet::PseudoJet > > const &""'"); 
+    }
+    arg2 = ptr;
+  }
+  if (swig_obj[2]) {
+    {
+      std::vector< double,std::allocator< double > > *ptr = (std::vector< double,std::allocator< double > > *)0;
+      res3 = swig::asptr(swig_obj[2], &ptr);
+      if (!SWIG_IsOK(res3)) {
+        SWIG_exception_fail(SWIG_ArgError(res3), "in method '" "EECBase__push_back" "', argument " "3"" of type '" "std::vector< double,std::allocator< double > > const &""'"); 
+      }
+      if (!ptr) {
+        SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in method '" "EECBase__push_back" "', argument " "3"" of type '" "std::vector< double,std::allocator< double > > const &""'"); 
+      }
+      arg3 = ptr;
+    }
+  }
+  if (swig_obj[3]) {
+    ecode4 = SWIG_AsVal_double(swig_obj[3], &val4);
+    if (!SWIG_IsOK(ecode4)) {
+      SWIG_exception_fail(SWIG_ArgError(ecode4), "in method '" "EECBase__push_back" "', argument " "4"" of type '" "double""'");
+    } 
+    arg4 = static_cast< double >(val4);
+  }
+  {
+    try {
+      (arg1)->push_back((std::vector< fastjet::PseudoJet,std::allocator< fastjet::PseudoJet > > const &)*arg2,(std::vector< double,std::allocator< double > > const &)*arg3,arg4); 
+    }
+    /*@SWIG:/usr/local/Cellar/swig/4.0.2/share/swig/4.0.2/typemaps/exception.swg,58,SWIG_CATCH_STDEXCEPT@*/  /* catching std::exception  */
+    catch (std::invalid_argument& e) {
+      SWIG_exception_fail(SWIG_ValueError, e.what() );
+    } catch (std::domain_error& e) {
+      SWIG_exception_fail(SWIG_ValueError, e.what() );
+    } catch (std::overflow_error& e) {
+      SWIG_exception_fail(SWIG_OverflowError, e.what() );
+    } catch (std::out_of_range& e) {
+      SWIG_exception_fail(SWIG_IndexError, e.what() );
+    } catch (std::length_error& e) {
+      SWIG_exception_fail(SWIG_IndexError, e.what() );
+    } catch (std::runtime_error& e) {
+      SWIG_exception_fail(SWIG_RuntimeError, e.what() );
+    } catch (std::exception& e) {
+      SWIG_exception_fail(SWIG_SystemError, e.what() );
+    }
+    /*@SWIG@*/
+    catch (...) {
+      SWIG_exception_fail(SWIG_UnknownError, "unknown exception");
+    }
+  }
+  resultobj = SWIG_Py_Void();
+  if (SWIG_IsNewObj(res2)) delete arg2;
+  if (SWIG_IsNewObj(res3)) delete arg3;
+  return resultobj;
+fail:
+  if (SWIG_IsNewObj(res2)) delete arg2;
+  if (SWIG_IsNewObj(res3)) delete arg3;
+  return NULL;
+}
+
+
+SWIGINTERN PyObject *_wrap_EECBase__push_back__SWIG_1(PyObject *SWIGUNUSEDPARM(self), Py_ssize_t nobjs, PyObject **swig_obj) {
+  PyObject *resultobj = 0;
+  fastjet::contrib::eec::EECBase *arg1 = (fastjet::contrib::eec::EECBase *) 0 ;
+  double *arg2 = (double *) 0 ;
+  unsigned int arg3 ;
+  double *arg4 = (double *) 0 ;
+  unsigned int arg5 ;
+  unsigned int arg6 ;
+  double *arg7 = (double *) 0 ;
+  unsigned int arg8 ;
+  double arg9 = (double) 1 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  PyArrayObject *array2 = NULL ;
+  int is_new_object2 = 0 ;
+  PyArrayObject *array4 = NULL ;
+  int is_new_object4 = 0 ;
+  PyArrayObject *array7 = NULL ;
+  int is_new_object7 = 0 ;
+  double val9 ;
+  int ecode9 = 0 ;
+  
+  if ((nobjs < 4) || (nobjs > 5)) SWIG_fail;
+  res1 = SWIG_ConvertPtr(swig_obj[0], &argp1,SWIGTYPE_p_fastjet__contrib__eec__EECBase, 0 |  0 );
+  if (!SWIG_IsOK(res1)) {
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "EECBase__push_back" "', argument " "1"" of type '" "fastjet::contrib::eec::EECBase *""'"); 
+  }
+  arg1 = reinterpret_cast< fastjet::contrib::eec::EECBase * >(argp1);
+  {
+    npy_intp size[1] = {
+      -1 
+    };
+    array2 = obj_to_array_contiguous_allow_conversion(swig_obj[1],
+      NPY_DOUBLE,
+      &is_new_object2);
+    if (!array2 || !require_dimensions(array2, 1) ||
+      !require_size(array2, size, 1)) SWIG_fail;
+    arg2 = (double*) array_data(array2);
+    arg3 = (std::ptrdiff_t) array_size(array2,0);
+  }
+  {
+    npy_intp size[2] = {
+      -1, -1 
+    };
+    array4 = obj_to_array_contiguous_allow_conversion(swig_obj[2], NPY_DOUBLE,
+      &is_new_object4);
+    if (!array4 || !require_dimensions(array4, 2) ||
+      !require_size(array4, size, 2)) SWIG_fail;
+    arg4 = (double*) array_data(array4);
+    arg5 = (std::ptrdiff_t) array_size(array4,0);
+    arg6 = (std::ptrdiff_t) array_size(array4,1);
+  }
+  {
+    npy_intp size[1] = {
+      -1 
+    };
+    array7 = obj_to_array_contiguous_allow_conversion(swig_obj[3],
+      NPY_DOUBLE,
+      &is_new_object7);
+    if (!array7 || !require_dimensions(array7, 1) ||
+      !require_size(array7, size, 1)) SWIG_fail;
+    arg7 = (double*) array_data(array7);
+    arg8 = (std::ptrdiff_t) array_size(array7,0);
+  }
+  if (swig_obj[4]) {
+    ecode9 = SWIG_AsVal_double(swig_obj[4], &val9);
+    if (!SWIG_IsOK(ecode9)) {
+      SWIG_exception_fail(SWIG_ArgError(ecode9), "in method '" "EECBase__push_back" "', argument " "9"" of type '" "double""'");
+    } 
+    arg9 = static_cast< double >(val9);
+  }
+  {
+    try {
+      (arg1)->push_back((double const *)arg2,arg3,(double const *)arg4,arg5,arg6,(double const *)arg7,arg8,arg9); 
+    }
+    /*@SWIG:/usr/local/Cellar/swig/4.0.2/share/swig/4.0.2/typemaps/exception.swg,58,SWIG_CATCH_STDEXCEPT@*/  /* catching std::exception  */
+    catch (std::invalid_argument& e) {
+      SWIG_exception_fail(SWIG_ValueError, e.what() );
+    } catch (std::domain_error& e) {
+      SWIG_exception_fail(SWIG_ValueError, e.what() );
+    } catch (std::overflow_error& e) {
+      SWIG_exception_fail(SWIG_OverflowError, e.what() );
+    } catch (std::out_of_range& e) {
+      SWIG_exception_fail(SWIG_IndexError, e.what() );
+    } catch (std::length_error& e) {
+      SWIG_exception_fail(SWIG_IndexError, e.what() );
+    } catch (std::runtime_error& e) {
+      SWIG_exception_fail(SWIG_RuntimeError, e.what() );
+    } catch (std::exception& e) {
+      SWIG_exception_fail(SWIG_SystemError, e.what() );
+    }
+    /*@SWIG@*/
+    catch (...) {
+      SWIG_exception_fail(SWIG_UnknownError, "unknown exception");
+    }
+  }
+  resultobj = SWIG_Py_Void();
+  {
+    if (is_new_object2 && array2)
+    {
+      Py_DECREF(array2); 
+    }
+  }
+  {
+    if (is_new_object4 && array4)
+    {
+      Py_DECREF(array4); 
+    }
+  }
+  {
+    if (is_new_object7 && array7)
+    {
+      Py_DECREF(array7); 
+    }
+  }
+  return resultobj;
+fail:
+  {
+    if (is_new_object2 && array2)
+    {
+      Py_DECREF(array2); 
+    }
+  }
+  {
+    if (is_new_object4 && array4)
+    {
+      Py_DECREF(array4); 
+    }
+  }
+  {
+    if (is_new_object7 && array7)
+    {
+      Py_DECREF(array7); 
+    }
+  }
+  return NULL;
+}
+
+
+SWIGINTERN PyObject *_wrap_EECBase__push_back__SWIG_2(PyObject *SWIGUNUSEDPARM(self), Py_ssize_t nobjs, PyObject **swig_obj) {
+  PyObject *resultobj = 0;
+  fastjet::contrib::eec::EECBase *arg1 = (fastjet::contrib::eec::EECBase *) 0 ;
+  double *arg2 = (double *) 0 ;
+  unsigned int arg3 ;
+  unsigned int arg4 ;
+  double arg5 = (double) 1 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  PyArrayObject *array2 = NULL ;
+  int is_new_object2 = 0 ;
+  double val5 ;
+  int ecode5 = 0 ;
+  
+  if ((nobjs < 2) || (nobjs > 3)) SWIG_fail;
+  res1 = SWIG_ConvertPtr(swig_obj[0], &argp1,SWIGTYPE_p_fastjet__contrib__eec__EECBase, 0 |  0 );
+  if (!SWIG_IsOK(res1)) {
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "EECBase__push_back" "', argument " "1"" of type '" "fastjet::contrib::eec::EECBase *""'"); 
+  }
+  arg1 = reinterpret_cast< fastjet::contrib::eec::EECBase * >(argp1);
+  {
+    npy_intp size[2] = {
+      -1, -1 
+    };
+    array2 = obj_to_array_contiguous_allow_conversion(swig_obj[1], NPY_DOUBLE,
+      &is_new_object2);
+    if (!array2 || !require_dimensions(array2, 2) ||
+      !require_size(array2, size, 2)) SWIG_fail;
+    arg2 = (double*) array_data(array2);
+    arg3 = (std::ptrdiff_t) array_size(array2,0);
+    arg4 = (std::ptrdiff_t) array_size(array2,1);
+  }
+  if (swig_obj[2]) {
+    ecode5 = SWIG_AsVal_double(swig_obj[2], &val5);
+    if (!SWIG_IsOK(ecode5)) {
+      SWIG_exception_fail(SWIG_ArgError(ecode5), "in method '" "EECBase__push_back" "', argument " "5"" of type '" "double""'");
+    } 
+    arg5 = static_cast< double >(val5);
+  }
+  {
+    try {
+      (arg1)->push_back((double const *)arg2,arg3,arg4,arg5); 
+    }
+    /*@SWIG:/usr/local/Cellar/swig/4.0.2/share/swig/4.0.2/typemaps/exception.swg,58,SWIG_CATCH_STDEXCEPT@*/  /* catching std::exception  */
+    catch (std::invalid_argument& e) {
+      SWIG_exception_fail(SWIG_ValueError, e.what() );
+    } catch (std::domain_error& e) {
+      SWIG_exception_fail(SWIG_ValueError, e.what() );
+    } catch (std::overflow_error& e) {
+      SWIG_exception_fail(SWIG_OverflowError, e.what() );
+    } catch (std::out_of_range& e) {
+      SWIG_exception_fail(SWIG_IndexError, e.what() );
+    } catch (std::length_error& e) {
+      SWIG_exception_fail(SWIG_IndexError, e.what() );
+    } catch (std::runtime_error& e) {
+      SWIG_exception_fail(SWIG_RuntimeError, e.what() );
+    } catch (std::exception& e) {
+      SWIG_exception_fail(SWIG_SystemError, e.what() );
+    }
+    /*@SWIG@*/
+    catch (...) {
+      SWIG_exception_fail(SWIG_UnknownError, "unknown exception");
+    }
+  }
+  resultobj = SWIG_Py_Void();
+  {
+    if (is_new_object2 && array2)
+    {
+      Py_DECREF(array2); 
+    }
+  }
+  return resultobj;
+fail:
+  {
+    if (is_new_object2 && array2)
+    {
+      Py_DECREF(array2); 
+    }
+  }
+  return NULL;
+}
+
+
+SWIGINTERN PyObject *_wrap_EECBase__push_back(PyObject *self, PyObject *args) {
+  Py_ssize_t argc;
+  PyObject *argv[6] = {
+    0
+  };
+  
+  if (!(argc = SWIG_Python_UnpackTuple(args, "EECBase__push_back", 0, 5, argv))) SWIG_fail;
+  --argc;
+  if ((argc >= 2) && (argc <= 4)) {
+    int _v;
+    void *vptr = 0;
+    int res = SWIG_ConvertPtr(argv[0], &vptr, SWIGTYPE_p_fastjet__contrib__eec__EECBase, 0);
+    _v = SWIG_CheckState(res);
+    if (_v) {
+      int res = swig::asptr(argv[1], (std::vector< fastjet::PseudoJet,std::allocator< fastjet::PseudoJet > >**)(0));
+      _v = SWIG_CheckState(res);
+      if (_v) {
+        if (argc <= 2) {
+          return _wrap_EECBase__push_back__SWIG_0(self, argc, argv);
+        }
+        int res = swig::asptr(argv[2], (std::vector< double,std::allocator< double > >**)(0));
+        _v = SWIG_CheckState(res);
+        if (_v) {
+          if (argc <= 3) {
+            return _wrap_EECBase__push_back__SWIG_0(self, argc, argv);
+          }
+          {
+            int res = SWIG_AsVal_double(argv[3], NULL);
+            _v = SWIG_CheckState(res);
+          }
+          if (_v) {
+            return _wrap_EECBase__push_back__SWIG_0(self, argc, argv);
+          }
+        }
+      }
+    }
+  }
+  if ((argc >= 2) && (argc <= 3)) {
+    int _v;
+    void *vptr = 0;
+    int res = SWIG_ConvertPtr(argv[0], &vptr, SWIGTYPE_p_fastjet__contrib__eec__EECBase, 0);
+    _v = SWIG_CheckState(res);
+    if (_v) {
+      {
+        _v = is_array(argv[1]) || PySequence_Check(argv[1]);
+      }
+      if (_v) {
+        if (argc <= 2) {
+          return _wrap_EECBase__push_back__SWIG_2(self, argc, argv);
+        }
+        {
+          int res = SWIG_AsVal_double(argv[2], NULL);
+          _v = SWIG_CheckState(res);
+        }
+        if (_v) {
+          return _wrap_EECBase__push_back__SWIG_2(self, argc, argv);
+        }
+      }
+    }
+  }
+  if ((argc >= 4) && (argc <= 5)) {
+    int _v;
+    void *vptr = 0;
+    int res = SWIG_ConvertPtr(argv[0], &vptr, SWIGTYPE_p_fastjet__contrib__eec__EECBase, 0);
+    _v = SWIG_CheckState(res);
+    if (_v) {
+      {
+        _v = is_array(argv[1]) || PySequence_Check(argv[1]);
+      }
+      if (_v) {
+        {
+          _v = is_array(argv[2]) || PySequence_Check(argv[2]);
+        }
+        if (_v) {
+          {
+            _v = is_array(argv[3]) || PySequence_Check(argv[3]);
+          }
+          if (_v) {
+            if (argc <= 4) {
+              return _wrap_EECBase__push_back__SWIG_1(self, argc, argv);
+            }
+            {
+              int res = SWIG_AsVal_double(argv[4], NULL);
+              _v = SWIG_CheckState(res);
+            }
+            if (_v) {
+              return _wrap_EECBase__push_back__SWIG_1(self, argc, argv);
+            }
+          }
+        }
+      }
+    }
+  }
+  
+fail:
+  SWIG_Python_RaiseOrModifyTypeError("Wrong number or type of arguments for overloaded function 'EECBase__push_back'.\n"
+    "  Possible C/C++ prototypes are:\n"
+    "    fastjet::contrib::eec::EECBase::push_back(std::vector< fastjet::PseudoJet,std::allocator< fastjet::PseudoJet > > const &,std::vector< double,std::allocator< double > > const &,double)\n"
+    "    fastjet::contrib::eec::EECBase::push_back(double const *,unsigned int,double const *,unsigned int,unsigned int,double const *,unsigned int,double)\n"
+    "    fastjet::contrib::eec::EECBase::push_back(double const *,unsigned int,unsigned int,double)\n");
+  return 0;
 }
 
 
@@ -47208,95 +47271,6 @@ SWIGINTERN PyObject *DynamicMultinomial_swigregister(PyObject *SWIGUNUSEDPARM(se
 SWIGINTERN PyObject *DynamicMultinomial_swiginit(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
   return SWIG_Python_InitShadowInstance(args);
 }
-
-SWIGINTERN PyObject *_wrap__event_from_pjc(PyObject *SWIGUNUSEDPARM(self), PyObject *args, PyObject *kwargs) {
-  PyObject *resultobj = 0;
-  fastjet::contrib::eec::EECConfig *arg1 = 0 ;
-  double arg2 ;
-  fastjet::PseudoJetContainer *arg3 = 0 ;
-  std::vector< double,std::allocator< double > > *arg4 = 0 ;
-  void *argp1 = 0 ;
-  int res1 = 0 ;
-  double val2 ;
-  int ecode2 = 0 ;
-  void *argp3 = 0 ;
-  int res3 = 0 ;
-  int res4 = SWIG_OLDOBJ ;
-  PyObject * obj0 = 0 ;
-  PyObject * obj1 = 0 ;
-  PyObject * obj2 = 0 ;
-  PyObject * obj3 = 0 ;
-  char * kwnames[] = {
-    (char *)"config",  (char *)"event_weight",  (char *)"pjc",  (char *)"charges",  NULL 
-  };
-  fastjet::contrib::eec::EECEvent result;
-  
-  if (!PyArg_ParseTupleAndKeywords(args, kwargs, "OOOO:_event_from_pjc", kwnames, &obj0, &obj1, &obj2, &obj3)) SWIG_fail;
-  res1 = SWIG_ConvertPtr(obj0, &argp1, SWIGTYPE_p_fastjet__contrib__eec__EECConfig,  0  | 0);
-  if (!SWIG_IsOK(res1)) {
-    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "_event_from_pjc" "', argument " "1"" of type '" "fastjet::contrib::eec::EECConfig const &""'"); 
-  }
-  if (!argp1) {
-    SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in method '" "_event_from_pjc" "', argument " "1"" of type '" "fastjet::contrib::eec::EECConfig const &""'"); 
-  }
-  arg1 = reinterpret_cast< fastjet::contrib::eec::EECConfig * >(argp1);
-  ecode2 = SWIG_AsVal_double(obj1, &val2);
-  if (!SWIG_IsOK(ecode2)) {
-    SWIG_exception_fail(SWIG_ArgError(ecode2), "in method '" "_event_from_pjc" "', argument " "2"" of type '" "double""'");
-  } 
-  arg2 = static_cast< double >(val2);
-  res3 = SWIG_ConvertPtr(obj2, &argp3, SWIGTYPE_p_fastjet__PseudoJetContainer,  0  | 0);
-  if (!SWIG_IsOK(res3)) {
-    SWIG_exception_fail(SWIG_ArgError(res3), "in method '" "_event_from_pjc" "', argument " "3"" of type '" "fastjet::PseudoJetContainer const &""'"); 
-  }
-  if (!argp3) {
-    SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in method '" "_event_from_pjc" "', argument " "3"" of type '" "fastjet::PseudoJetContainer const &""'"); 
-  }
-  arg3 = reinterpret_cast< fastjet::PseudoJetContainer * >(argp3);
-  {
-    std::vector< double,std::allocator< double > > *ptr = (std::vector< double,std::allocator< double > > *)0;
-    res4 = swig::asptr(obj3, &ptr);
-    if (!SWIG_IsOK(res4)) {
-      SWIG_exception_fail(SWIG_ArgError(res4), "in method '" "_event_from_pjc" "', argument " "4"" of type '" "std::vector< double,std::allocator< double > > const &""'"); 
-    }
-    if (!ptr) {
-      SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in method '" "_event_from_pjc" "', argument " "4"" of type '" "std::vector< double,std::allocator< double > > const &""'"); 
-    }
-    arg4 = ptr;
-  }
-  {
-    try {
-      result = _event_from_pjc((fastjet::contrib::eec::EECConfig const &)*arg1,arg2,(fastjet::PseudoJetContainer const &)*arg3,(std::vector< double,std::allocator< double > > const &)*arg4); 
-    }
-    /*@SWIG:/usr/local/Cellar/swig/4.0.2/share/swig/4.0.2/typemaps/exception.swg,58,SWIG_CATCH_STDEXCEPT@*/  /* catching std::exception  */
-    catch (std::invalid_argument& e) {
-      SWIG_exception_fail(SWIG_ValueError, e.what() );
-    } catch (std::domain_error& e) {
-      SWIG_exception_fail(SWIG_ValueError, e.what() );
-    } catch (std::overflow_error& e) {
-      SWIG_exception_fail(SWIG_OverflowError, e.what() );
-    } catch (std::out_of_range& e) {
-      SWIG_exception_fail(SWIG_IndexError, e.what() );
-    } catch (std::length_error& e) {
-      SWIG_exception_fail(SWIG_IndexError, e.what() );
-    } catch (std::runtime_error& e) {
-      SWIG_exception_fail(SWIG_RuntimeError, e.what() );
-    } catch (std::exception& e) {
-      SWIG_exception_fail(SWIG_SystemError, e.what() );
-    }
-    /*@SWIG@*/
-    catch (...) {
-      SWIG_exception_fail(SWIG_UnknownError, "unknown exception");
-    }
-  }
-  resultobj = SWIG_NewPointerObj((new fastjet::contrib::eec::EECEvent(static_cast< const fastjet::contrib::eec::EECEvent& >(result))), SWIGTYPE_p_fastjet__contrib__eec__EECEvent, SWIG_POINTER_OWN |  0 );
-  if (SWIG_IsNewObj(res4)) delete arg4;
-  return resultobj;
-fail:
-  if (SWIG_IsNewObj(res4)) delete arg4;
-  return NULL;
-}
-
 
 SWIGINTERN PyObject *_wrap_new_Multinomial2(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
   PyObject *resultobj = 0;
@@ -54804,7 +54778,6 @@ static PyMethodDef SwigMethods[] = {
 	 { "get_compression_mode", _wrap_get_compression_mode, METH_NOARGS, "get_compression_mode() -> fastjet::contrib::eec::CompressionMode"},
 	 { "set_archive_format", (PyCFunction)(void(*)(void))_wrap_set_archive_format, METH_VARARGS|METH_KEYWORDS, "set_archive_format(fastjet::contrib::eec::ArchiveFormat a)"},
 	 { "set_compression_mode", (PyCFunction)(void(*)(void))_wrap_set_compression_mode, METH_VARARGS|METH_KEYWORDS, "set_compression_mode(fastjet::contrib::eec::CompressionMode c)"},
-	 { "determine_num_threads", (PyCFunction)(void(*)(void))_wrap_determine_num_threads, METH_VARARGS|METH_KEYWORDS, "determine_num_threads(int num_threads) -> int"},
 	 { "particle_weight_name", (PyCFunction)(void(*)(void))_wrap_particle_weight_name, METH_VARARGS|METH_KEYWORDS, "particle_weight_name(fastjet::contrib::eec::ParticleWeight pw) -> std::string"},
 	 { "pairwise_distance_name", (PyCFunction)(void(*)(void))_wrap_pairwise_distance_name, METH_VARARGS|METH_KEYWORDS, "pairwise_distance_name(fastjet::contrib::eec::PairwiseDistance pd) -> std::string"},
 	 { "new_reduce_command", _wrap_new_reduce_command, METH_NOARGS, "new_reduce_command() -> reduce_command"},
@@ -55169,22 +55142,17 @@ static PyMethodDef SwigMethods[] = {
 	 { "EECHist3DLogLogId_get_covariance", (PyCFunction)(void(*)(void))_wrap_EECHist3DLogLogId_get_covariance, METH_VARARGS|METH_KEYWORDS, "EECHist3DLogLogId_get_covariance(EECHist3DLogLogId self, unsigned int hist_i=0, bool overflows=True)"},
 	 { "EECHist3DLogLogId_get_variance_bound", (PyCFunction)(void(*)(void))_wrap_EECHist3DLogLogId_get_variance_bound, METH_VARARGS|METH_KEYWORDS, "EECHist3DLogLogId_get_variance_bound(EECHist3DLogLogId self, unsigned int hist_i=0, bool overflows=True)"},
 	 { "EECHist3DLogLogId_swigregister", EECHist3DLogLogId_swigregister, METH_O, NULL},
-	 { "new_EECEvent", _wrap_new_EECEvent, METH_VARARGS, "\n"
-		"EECEvent()\n"
-		"EECEvent(EECConfig const & config, double event_weight, vectorPseudoJet pjs, vectorDouble charges)\n"
-		"EECEvent(bool use_charges, double event_weight, double const * event_ptr)\n"
-		"new_EECEvent(bool use_charges, double event_weight, double const * raw_weights, double const * dists, double const * charges) -> EECEvent\n"
-		""},
-	 { "delete_EECEvent", _wrap_delete_EECEvent, METH_O, "delete_EECEvent(EECEvent self)"},
-	 { "EECEvent_weights", _wrap_EECEvent_weights, METH_O, "EECEvent_weights(EECEvent self) -> std::vector< std::vector< double,std::allocator< double > >,std::allocator< std::vector< double,std::allocator< double > > > > const &"},
-	 { "EECEvent_dists", _wrap_EECEvent_dists, METH_O, "EECEvent_dists(EECEvent self) -> vectorDouble"},
-	 { "EECEvent_event_weight", _wrap_EECEvent_event_weight, METH_O, "EECEvent_event_weight(EECEvent self) -> double"},
-	 { "EECEvent_mult", _wrap_EECEvent_mult, METH_O, "EECEvent_mult(EECEvent self) -> unsigned int"},
-	 { "EECEvent_swigregister", EECEvent_swigregister, METH_O, NULL},
-	 { "EECEvent_swiginit", EECEvent_swiginit, METH_VARARGS, NULL},
 	 { "delete_EECBase", _wrap_delete_EECBase, METH_O, "delete_EECBase(EECBase self)"},
-	 { "EECBase__compute", (PyCFunction)(void(*)(void))_wrap_EECBase__compute, METH_VARARGS|METH_KEYWORDS, "EECBase__compute(EECBase self, EECEvent event, int thread=0)"},
-	 { "EECBase__push_back", (PyCFunction)(void(*)(void))_wrap_EECBase__push_back, METH_VARARGS|METH_KEYWORDS, "EECBase__push_back(EECBase self, EECEvent event)"},
+	 { "EECBase__compute", _wrap_EECBase__compute, METH_VARARGS, "\n"
+		"EECBase__compute(EECBase self, vectorPseudoJet pjs, vectorDouble charges={}, double event_weight=1, int thread=0)\n"
+		"EECBase__compute(EECBase self, double const * raw_weights, double const * dists, double const * charges, double event_weight=1, int thread=0)\n"
+		"EECBase__compute(EECBase self, double const * event_ptr, double event_weight=1, int thread=0)\n"
+		""},
+	 { "EECBase__push_back", _wrap_EECBase__push_back, METH_VARARGS, "\n"
+		"EECBase__push_back(EECBase self, vectorPseudoJet pjs, vectorDouble charges={}, double event_weight=1)\n"
+		"EECBase__push_back(EECBase self, double const * raw_weights, double const * dists, double const * charges, double event_weight=1)\n"
+		"EECBase__push_back(EECBase self, double const * event_ptr, double event_weight=1)\n"
+		""},
 	 { "EECBase_clear_events", _wrap_EECBase_clear_events, METH_O, "EECBase_clear_events(EECBase self)"},
 	 { "EECBase_batch_compute", _wrap_EECBase_batch_compute, METH_O, "EECBase_batch_compute(EECBase self)"},
 	 { "EECBase_config", _wrap_EECBase_config, METH_O, "EECBase_config(EECBase self) -> EECConfig const &"},
@@ -55225,7 +55193,6 @@ static PyMethodDef SwigMethods[] = {
 	 { "delete_DynamicMultinomial", _wrap_delete_DynamicMultinomial, METH_O, "delete_DynamicMultinomial(DynamicMultinomial self)"},
 	 { "DynamicMultinomial_swigregister", DynamicMultinomial_swigregister, METH_O, NULL},
 	 { "DynamicMultinomial_swiginit", DynamicMultinomial_swiginit, METH_VARARGS, NULL},
-	 { "_event_from_pjc", (PyCFunction)(void(*)(void))_wrap__event_from_pjc, METH_VARARGS|METH_KEYWORDS, "_event_from_pjc(fastjet::contrib::eec::EECConfig const & config, double event_weight, PseudoJetContainer pjc, vectorDouble charges) -> EECEvent"},
 	 { "new_Multinomial2", _wrap_new_Multinomial2, METH_NOARGS, "new_Multinomial2() -> Multinomial2"},
 	 { "Multinomial2_N", _wrap_Multinomial2_N, METH_NOARGS, "Multinomial2_N() -> unsigned int"},
 	 { "Multinomial2_set_index_0", (PyCFunction)(void(*)(void))_wrap_Multinomial2_set_index_0, METH_VARARGS|METH_KEYWORDS, "Multinomial2_set_index_0(Multinomial2 self, unsigned int ind)"},
@@ -55733,7 +55700,6 @@ static PyMethodDef SwigMethods_proxydocs[] = {
 	 { "get_compression_mode", _wrap_get_compression_mode, METH_NOARGS, "get_compression_mode() -> fastjet::contrib::eec::CompressionMode"},
 	 { "set_archive_format", (PyCFunction)(void(*)(void))_wrap_set_archive_format, METH_VARARGS|METH_KEYWORDS, "set_archive_format(fastjet::contrib::eec::ArchiveFormat a)"},
 	 { "set_compression_mode", (PyCFunction)(void(*)(void))_wrap_set_compression_mode, METH_VARARGS|METH_KEYWORDS, "set_compression_mode(fastjet::contrib::eec::CompressionMode c)"},
-	 { "determine_num_threads", (PyCFunction)(void(*)(void))_wrap_determine_num_threads, METH_VARARGS|METH_KEYWORDS, "determine_num_threads(int num_threads) -> int"},
 	 { "particle_weight_name", (PyCFunction)(void(*)(void))_wrap_particle_weight_name, METH_VARARGS|METH_KEYWORDS, "particle_weight_name(fastjet::contrib::eec::ParticleWeight pw) -> std::string"},
 	 { "pairwise_distance_name", (PyCFunction)(void(*)(void))_wrap_pairwise_distance_name, METH_VARARGS|METH_KEYWORDS, "pairwise_distance_name(fastjet::contrib::eec::PairwiseDistance pd) -> std::string"},
 	 { "new_reduce_command", _wrap_new_reduce_command, METH_NOARGS, "new_reduce_command() -> reduce_command"},
@@ -56098,22 +56064,17 @@ static PyMethodDef SwigMethods_proxydocs[] = {
 	 { "EECHist3DLogLogId_get_covariance", (PyCFunction)(void(*)(void))_wrap_EECHist3DLogLogId_get_covariance, METH_VARARGS|METH_KEYWORDS, "get_covariance(EECHist3DLogLogId self, unsigned int hist_i=0, bool overflows=True)"},
 	 { "EECHist3DLogLogId_get_variance_bound", (PyCFunction)(void(*)(void))_wrap_EECHist3DLogLogId_get_variance_bound, METH_VARARGS|METH_KEYWORDS, "get_variance_bound(EECHist3DLogLogId self, unsigned int hist_i=0, bool overflows=True)"},
 	 { "EECHist3DLogLogId_swigregister", EECHist3DLogLogId_swigregister, METH_O, NULL},
-	 { "new_EECEvent", _wrap_new_EECEvent, METH_VARARGS, "\n"
-		"EECEvent()\n"
-		"EECEvent(EECConfig const & config, double event_weight, vectorPseudoJet pjs, vectorDouble charges)\n"
-		"EECEvent(bool use_charges, double event_weight, double const * event_ptr)\n"
-		"new_EECEvent(bool use_charges, double event_weight, double const * raw_weights, double const * dists, double const * charges) -> EECEvent\n"
-		""},
-	 { "delete_EECEvent", _wrap_delete_EECEvent, METH_O, "delete_EECEvent(EECEvent self)"},
-	 { "EECEvent_weights", _wrap_EECEvent_weights, METH_O, "weights(EECEvent self) -> std::vector< std::vector< double,std::allocator< double > >,std::allocator< std::vector< double,std::allocator< double > > > > const &"},
-	 { "EECEvent_dists", _wrap_EECEvent_dists, METH_O, "dists(EECEvent self) -> vectorDouble"},
-	 { "EECEvent_event_weight", _wrap_EECEvent_event_weight, METH_O, "event_weight(EECEvent self) -> double"},
-	 { "EECEvent_mult", _wrap_EECEvent_mult, METH_O, "mult(EECEvent self) -> unsigned int"},
-	 { "EECEvent_swigregister", EECEvent_swigregister, METH_O, NULL},
-	 { "EECEvent_swiginit", EECEvent_swiginit, METH_VARARGS, NULL},
 	 { "delete_EECBase", _wrap_delete_EECBase, METH_O, "delete_EECBase(EECBase self)"},
-	 { "EECBase__compute", (PyCFunction)(void(*)(void))_wrap_EECBase__compute, METH_VARARGS|METH_KEYWORDS, "_compute(EECBase self, EECEvent event, int thread=0)"},
-	 { "EECBase__push_back", (PyCFunction)(void(*)(void))_wrap_EECBase__push_back, METH_VARARGS|METH_KEYWORDS, "_push_back(EECBase self, EECEvent event)"},
+	 { "EECBase__compute", _wrap_EECBase__compute, METH_VARARGS, "\n"
+		"_compute(EECBase self, vectorPseudoJet pjs, vectorDouble charges={}, double event_weight=1, int thread=0)\n"
+		"_compute(EECBase self, double const * raw_weights, double const * dists, double const * charges, double event_weight=1, int thread=0)\n"
+		"_compute(EECBase self, double const * event_ptr, double event_weight=1, int thread=0)\n"
+		""},
+	 { "EECBase__push_back", _wrap_EECBase__push_back, METH_VARARGS, "\n"
+		"_push_back(EECBase self, vectorPseudoJet pjs, vectorDouble charges={}, double event_weight=1)\n"
+		"_push_back(EECBase self, double const * raw_weights, double const * dists, double const * charges, double event_weight=1)\n"
+		"_push_back(EECBase self, double const * event_ptr, double event_weight=1)\n"
+		""},
 	 { "EECBase_clear_events", _wrap_EECBase_clear_events, METH_O, "clear_events(EECBase self)"},
 	 { "EECBase_batch_compute", _wrap_EECBase_batch_compute, METH_O, "batch_compute(EECBase self)"},
 	 { "EECBase_config", _wrap_EECBase_config, METH_O, "config(EECBase self) -> EECConfig const &"},
@@ -56154,7 +56115,6 @@ static PyMethodDef SwigMethods_proxydocs[] = {
 	 { "delete_DynamicMultinomial", _wrap_delete_DynamicMultinomial, METH_O, "delete_DynamicMultinomial(DynamicMultinomial self)"},
 	 { "DynamicMultinomial_swigregister", DynamicMultinomial_swigregister, METH_O, NULL},
 	 { "DynamicMultinomial_swiginit", DynamicMultinomial_swiginit, METH_VARARGS, NULL},
-	 { "_event_from_pjc", (PyCFunction)(void(*)(void))_wrap__event_from_pjc, METH_VARARGS|METH_KEYWORDS, "_event_from_pjc(fastjet::contrib::eec::EECConfig const & config, double event_weight, PseudoJetContainer pjc, vectorDouble charges) -> EECEvent"},
 	 { "new_Multinomial2", _wrap_new_Multinomial2, METH_NOARGS, "new_Multinomial2() -> Multinomial2"},
 	 { "Multinomial2_N", _wrap_Multinomial2_N, METH_NOARGS, "N() -> unsigned int"},
 	 { "Multinomial2_set_index_0", (PyCFunction)(void(*)(void))_wrap_Multinomial2_set_index_0, METH_VARARGS|METH_KEYWORDS, "set_index_0(Multinomial2 self, unsigned int ind)"},
@@ -56375,11 +56335,8 @@ static swig_type_info _swigt__p_boost__histogram__algorithm__reduce_command = {"
 static swig_type_info _swigt__p_char = {"_p_char", "char *", 0, 0, (void*)0, 0};
 static swig_type_info _swigt__p_difference_type = {"_p_difference_type", "difference_type *", 0, 0, (void*)0, 0};
 static swig_type_info _swigt__p_fastjet__JetAlgorithm = {"_p_fastjet__JetAlgorithm", "enum fastjet::JetAlgorithm *|fastjet::JetFinder *", 0, 0, (void*)0, 0};
-static swig_type_info _swigt__p_fastjet__PseudoJetContainer = {"_p_fastjet__PseudoJetContainer", "fastjet::PseudoJetContainer *", 0, 0, (void*)0, 0};
 static swig_type_info _swigt__p_fastjet__contrib__eec__DynamicMultinomial = {"_p_fastjet__contrib__eec__DynamicMultinomial", "fastjet::contrib::eec::DynamicMultinomial *", 0, 0, (void*)0, 0};
 static swig_type_info _swigt__p_fastjet__contrib__eec__EECBase = {"_p_fastjet__contrib__eec__EECBase", "fastjet::contrib::eec::EECBase *", 0, 0, (void*)0, 0};
-static swig_type_info _swigt__p_fastjet__contrib__eec__EECConfig = {"_p_fastjet__contrib__eec__EECConfig", "fastjet::contrib::eec::EECConfig *", 0, 0, (void*)0, 0};
-static swig_type_info _swigt__p_fastjet__contrib__eec__EECEvent = {"_p_fastjet__contrib__eec__EECEvent", "fastjet::contrib::eec::EECEvent *", 0, 0, (void*)0, 0};
 static swig_type_info _swigt__p_fastjet__contrib__eec__EECLongestSideT_axis__id_t = {"_p_fastjet__contrib__eec__EECLongestSideT_axis__id_t", "fastjet::contrib::eec::EECLongestSide< axis::id > *", 0, 0, (void*)0, 0};
 static swig_type_info _swigt__p_fastjet__contrib__eec__EECLongestSideT_axis__log_t = {"_p_fastjet__contrib__eec__EECLongestSideT_axis__log_t", "fastjet::contrib::eec::EECLongestSide< axis::log > *", 0, 0, (void*)0, 0};
 static swig_type_info _swigt__p_fastjet__contrib__eec__EECTriangleOPET_axis__id_axis__id_axis__id_t = {"_p_fastjet__contrib__eec__EECTriangleOPET_axis__id_axis__id_axis__id_t", "fastjet::contrib::eec::EECTriangleOPE< axis::id,axis::id,axis::id > *", 0, 0, (void*)0, 0};
@@ -56423,7 +56380,6 @@ static swig_type_info _swigt__p_std__vectorT_bh__algorithm__reduce_command_std__
 static swig_type_info _swigt__p_std__vectorT_boost__histogram__algorithm__reduce_command_std__allocatorT_boost__histogram__algorithm__reduce_command_t_t = {"_p_std__vectorT_boost__histogram__algorithm__reduce_command_std__allocatorT_boost__histogram__algorithm__reduce_command_t_t", "std::vector< boost::histogram::algorithm::reduce_command > *|std::vector< boost::histogram::algorithm::reduce_command,std::allocator< boost::histogram::algorithm::reduce_command > > *", 0, 0, (void*)0, 0};
 static swig_type_info _swigt__p_std__vectorT_double_std__allocatorT_double_t_t = {"_p_std__vectorT_double_std__allocatorT_double_t_t", "std::vector< double,std::allocator< double > > *|std::vector< double > *", 0, 0, (void*)0, 0};
 static swig_type_info _swigt__p_std__vectorT_std__arrayT_double_2_t_std__allocatorT_std__arrayT_double_2_t_t_t = {"_p_std__vectorT_std__arrayT_double_2_t_std__allocatorT_std__arrayT_double_2_t_t_t", "std::vector< std::array< double,2 > > *|std::vector< std::array< double,2 >,std::allocator< std::array< double,2 > > > *", 0, 0, (void*)0, 0};
-static swig_type_info _swigt__p_std__vectorT_std__vectorT_double_std__allocatorT_double_t_t_std__allocatorT_std__vectorT_double_std__allocatorT_double_t_t_t_t = {"_p_std__vectorT_std__vectorT_double_std__allocatorT_double_t_t_std__allocatorT_std__vectorT_double_std__allocatorT_double_t_t_t_t", "std::vector< std::vector< double,std::allocator< double > >,std::allocator< std::vector< double,std::allocator< double > > > > *", 0, 0, (void*)0, 0};
 static swig_type_info _swigt__p_std__vectorT_unsigned_int_std__allocatorT_unsigned_int_t_t = {"_p_std__vectorT_unsigned_int_std__allocatorT_unsigned_int_t_t", "std::vector< unsigned int,std::allocator< unsigned int > > *|std::vector< unsigned int > *", 0, 0, (void*)0, 0};
 static swig_type_info _swigt__p_swig__SwigPyIterator = {"_p_swig__SwigPyIterator", "swig::SwigPyIterator *", 0, 0, (void*)0, 0};
 static swig_type_info _swigt__p_value_type = {"_p_value_type", "value_type *", 0, 0, (void*)0, 0};
@@ -56441,11 +56397,8 @@ static swig_type_info *swig_type_initial[] = {
   &_swigt__p_char,
   &_swigt__p_difference_type,
   &_swigt__p_fastjet__JetAlgorithm,
-  &_swigt__p_fastjet__PseudoJetContainer,
   &_swigt__p_fastjet__contrib__eec__DynamicMultinomial,
   &_swigt__p_fastjet__contrib__eec__EECBase,
-  &_swigt__p_fastjet__contrib__eec__EECConfig,
-  &_swigt__p_fastjet__contrib__eec__EECEvent,
   &_swigt__p_fastjet__contrib__eec__EECLongestSideT_axis__id_t,
   &_swigt__p_fastjet__contrib__eec__EECLongestSideT_axis__log_t,
   &_swigt__p_fastjet__contrib__eec__EECTriangleOPET_axis__id_axis__id_axis__id_t,
@@ -56489,7 +56442,6 @@ static swig_type_info *swig_type_initial[] = {
   &_swigt__p_std__vectorT_boost__histogram__algorithm__reduce_command_std__allocatorT_boost__histogram__algorithm__reduce_command_t_t,
   &_swigt__p_std__vectorT_double_std__allocatorT_double_t_t,
   &_swigt__p_std__vectorT_std__arrayT_double_2_t_std__allocatorT_std__arrayT_double_2_t_t_t,
-  &_swigt__p_std__vectorT_std__vectorT_double_std__allocatorT_double_t_t_std__allocatorT_std__vectorT_double_std__allocatorT_double_t_t_t_t,
   &_swigt__p_std__vectorT_unsigned_int_std__allocatorT_unsigned_int_t_t,
   &_swigt__p_swig__SwigPyIterator,
   &_swigt__p_value_type,
@@ -56507,11 +56459,8 @@ static swig_cast_info _swigc__p_boost__histogram__algorithm__reduce_command[] = 
 static swig_cast_info _swigc__p_char[] = {  {&_swigt__p_char, 0, 0, 0},{0, 0, 0, 0}};
 static swig_cast_info _swigc__p_difference_type[] = {  {&_swigt__p_difference_type, 0, 0, 0},{0, 0, 0, 0}};
 static swig_cast_info _swigc__p_fastjet__JetAlgorithm[] = {  {&_swigt__p_fastjet__JetAlgorithm, 0, 0, 0},{0, 0, 0, 0}};
-static swig_cast_info _swigc__p_fastjet__PseudoJetContainer[] = {  {&_swigt__p_fastjet__PseudoJetContainer, 0, 0, 0},{0, 0, 0, 0}};
 static swig_cast_info _swigc__p_fastjet__contrib__eec__DynamicMultinomial[] = {  {&_swigt__p_fastjet__contrib__eec__DynamicMultinomial, 0, 0, 0},{0, 0, 0, 0}};
 static swig_cast_info _swigc__p_fastjet__contrib__eec__EECBase[] = {  {&_swigt__p_fastjet__contrib__eec__EECBase, 0, 0, 0},  {&_swigt__p_fastjet__contrib__eec__EECTriangleOPET_axis__id_axis__id_axis__id_t, _p_fastjet__contrib__eec__EECTriangleOPET_axis__id_axis__id_axis__id_tTo_p_fastjet__contrib__eec__EECBase, 0, 0},  {&_swigt__p_fastjet__contrib__eec__EECTriangleOPET_axis__id_axis__log_axis__id_t, _p_fastjet__contrib__eec__EECTriangleOPET_axis__id_axis__log_axis__id_tTo_p_fastjet__contrib__eec__EECBase, 0, 0},  {&_swigt__p_fastjet__contrib__eec__EECLongestSideT_axis__id_t, _p_fastjet__contrib__eec__EECLongestSideT_axis__id_tTo_p_fastjet__contrib__eec__EECBase, 0, 0},  {&_swigt__p_fastjet__contrib__eec__EECTriangleOPET_axis__log_axis__id_axis__id_t, _p_fastjet__contrib__eec__EECTriangleOPET_axis__log_axis__id_axis__id_tTo_p_fastjet__contrib__eec__EECBase, 0, 0},  {&_swigt__p_fastjet__contrib__eec__EECTriangleOPET_axis__log_axis__log_axis__id_t, _p_fastjet__contrib__eec__EECTriangleOPET_axis__log_axis__log_axis__id_tTo_p_fastjet__contrib__eec__EECBase, 0, 0},  {&_swigt__p_fastjet__contrib__eec__EECLongestSideT_axis__log_t, _p_fastjet__contrib__eec__EECLongestSideT_axis__log_tTo_p_fastjet__contrib__eec__EECBase, 0, 0},{0, 0, 0, 0}};
-static swig_cast_info _swigc__p_fastjet__contrib__eec__EECConfig[] = {  {&_swigt__p_fastjet__contrib__eec__EECConfig, 0, 0, 0},{0, 0, 0, 0}};
-static swig_cast_info _swigc__p_fastjet__contrib__eec__EECEvent[] = {  {&_swigt__p_fastjet__contrib__eec__EECEvent, 0, 0, 0},{0, 0, 0, 0}};
 static swig_cast_info _swigc__p_fastjet__contrib__eec__EECLongestSideT_axis__id_t[] = {  {&_swigt__p_fastjet__contrib__eec__EECLongestSideT_axis__id_t, 0, 0, 0},{0, 0, 0, 0}};
 static swig_cast_info _swigc__p_fastjet__contrib__eec__EECLongestSideT_axis__log_t[] = {  {&_swigt__p_fastjet__contrib__eec__EECLongestSideT_axis__log_t, 0, 0, 0},{0, 0, 0, 0}};
 static swig_cast_info _swigc__p_fastjet__contrib__eec__EECTriangleOPET_axis__id_axis__id_axis__id_t[] = {  {&_swigt__p_fastjet__contrib__eec__EECTriangleOPET_axis__id_axis__id_axis__id_t, 0, 0, 0},{0, 0, 0, 0}};
@@ -56555,7 +56504,6 @@ static swig_cast_info _swigc__p_std__vectorT_bh__algorithm__reduce_command_std__
 static swig_cast_info _swigc__p_std__vectorT_boost__histogram__algorithm__reduce_command_std__allocatorT_boost__histogram__algorithm__reduce_command_t_t[] = {  {&_swigt__p_std__vectorT_boost__histogram__algorithm__reduce_command_std__allocatorT_boost__histogram__algorithm__reduce_command_t_t, 0, 0, 0},{0, 0, 0, 0}};
 static swig_cast_info _swigc__p_std__vectorT_double_std__allocatorT_double_t_t[] = {  {&_swigt__p_std__vectorT_double_std__allocatorT_double_t_t, 0, 0, 0},{0, 0, 0, 0}};
 static swig_cast_info _swigc__p_std__vectorT_std__arrayT_double_2_t_std__allocatorT_std__arrayT_double_2_t_t_t[] = {  {&_swigt__p_std__vectorT_std__arrayT_double_2_t_std__allocatorT_std__arrayT_double_2_t_t_t, 0, 0, 0},{0, 0, 0, 0}};
-static swig_cast_info _swigc__p_std__vectorT_std__vectorT_double_std__allocatorT_double_t_t_std__allocatorT_std__vectorT_double_std__allocatorT_double_t_t_t_t[] = {  {&_swigt__p_std__vectorT_std__vectorT_double_std__allocatorT_double_t_t_std__allocatorT_std__vectorT_double_std__allocatorT_double_t_t_t_t, 0, 0, 0},{0, 0, 0, 0}};
 static swig_cast_info _swigc__p_std__vectorT_unsigned_int_std__allocatorT_unsigned_int_t_t[] = {  {&_swigt__p_std__vectorT_unsigned_int_std__allocatorT_unsigned_int_t_t, 0, 0, 0},{0, 0, 0, 0}};
 static swig_cast_info _swigc__p_swig__SwigPyIterator[] = {  {&_swigt__p_swig__SwigPyIterator, 0, 0, 0},{0, 0, 0, 0}};
 static swig_cast_info _swigc__p_value_type[] = {  {&_swigt__p_value_type, 0, 0, 0},{0, 0, 0, 0}};
@@ -56573,11 +56521,8 @@ static swig_cast_info *swig_cast_initial[] = {
   _swigc__p_char,
   _swigc__p_difference_type,
   _swigc__p_fastjet__JetAlgorithm,
-  _swigc__p_fastjet__PseudoJetContainer,
   _swigc__p_fastjet__contrib__eec__DynamicMultinomial,
   _swigc__p_fastjet__contrib__eec__EECBase,
-  _swigc__p_fastjet__contrib__eec__EECConfig,
-  _swigc__p_fastjet__contrib__eec__EECEvent,
   _swigc__p_fastjet__contrib__eec__EECLongestSideT_axis__id_t,
   _swigc__p_fastjet__contrib__eec__EECLongestSideT_axis__log_t,
   _swigc__p_fastjet__contrib__eec__EECTriangleOPET_axis__id_axis__id_axis__id_t,
@@ -56621,7 +56566,6 @@ static swig_cast_info *swig_cast_initial[] = {
   _swigc__p_std__vectorT_boost__histogram__algorithm__reduce_command_std__allocatorT_boost__histogram__algorithm__reduce_command_t_t,
   _swigc__p_std__vectorT_double_std__allocatorT_double_t_t,
   _swigc__p_std__vectorT_std__arrayT_double_2_t_std__allocatorT_std__arrayT_double_2_t_t_t,
-  _swigc__p_std__vectorT_std__vectorT_double_std__allocatorT_double_t_t_std__allocatorT_std__vectorT_double_std__allocatorT_double_t_t_t_t,
   _swigc__p_std__vectorT_unsigned_int_std__allocatorT_unsigned_int_t_t,
   _swigc__p_swig__SwigPyIterator,
   _swigc__p_value_type,

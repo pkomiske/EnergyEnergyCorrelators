@@ -142,22 +142,13 @@ struct EECosThetaMassive {
 class EECEvent {
 private:
 
-  enum LazyInitType { Default, None, Array, Custom };
-
   // actual event data
   std::vector<std::vector<double>> weights_;
   std::vector<double> dists_;
   double event_weight_;
   unsigned mult_;
 
-  // internal data
-  LazyInitType lazy_init_type_;
-  std::array<const double *, 3> ptrs_;
-
 public:
-
-  // default constructor
-  EECEvent() : event_weight_(0), mult_(0), lazy_init_type_(Default) {}
 
   // construct from vector of pseudojets and vector of charges
   EECEvent(const EECConfig & config,
@@ -165,8 +156,7 @@ public:
            const std::vector<PseudoJet> & pjs,
            const std::vector<double> & charges) :
     event_weight_(event_weight),
-    mult_(pjs.size()),
-    lazy_init_type_(None)
+    mult_(pjs.size())
   {
     // process weights
     std::vector<double> raw_weights;
@@ -256,7 +246,7 @@ public:
            const std::vector<double> & dists,
            const std::vector<double> & charges) :
     event_weight_(event_weight),
-    lazy_init_type_(None)
+    mult_(raw_weights.size())
   {
     if (dists.size() != raw_weights.size()*raw_weights.size())
       throw std::invalid_argument("dists must be size mult*mult");
@@ -264,38 +254,22 @@ public:
     if (config.use_charges && raw_weights.size() != charges.size())
       throw std::invalid_argument("lenght of charges must match the length of weights");
 
-    mult_ = raw_weights.size();
     array_init(config, raw_weights.data(), dists.data(), charges.data());
   }
 
 // SWIG is defined
 #else
 
-  // construct from pointer to array of particles using euclidean distance between the coordinates
-  EECEvent(bool use_charges, double event_weight,
-           const double * event_ptr, unsigned mult, unsigned nfeatures) :
-    event_weight_(event_weight),
-    mult_(mult),
-    lazy_init_type_(Array),
-    ptrs_{event_ptr, nullptr, nullptr}
-  {
-    if (use_charges && nfeatures != 4)
-      throw std::invalid_argument("nfeatures should be 4 when using charges");
-    else if (nfeatures != 3)
-      std::invalid_argument("nfeatures should be greater than 3 if not using charges");
-  }
-
   // construct from explicit raw weights, distances, and charges (as pointers)
-  EECEvent(bool use_charges, double event_weight,
+  EECEvent(const EECConfig & config,
+           double event_weight,
            const double * raw_weights, unsigned weights_mult,
            const double * dists, unsigned d0, unsigned d1,
            const double * charges, unsigned charges_mult) :
     event_weight_(event_weight),
-    mult_(weights_mult),
-    lazy_init_type_(Custom),
-    ptrs_{raw_weights, dists, charges}
+    mult_(weights_mult)
   {
-    if (use_charges && charges_mult != 0)
+    if (config.use_charges && charges_mult != 0)
       throw std::invalid_argument("charges present when not being used");
 
     if (charges_mult != 0 && weights_mult != charges_mult)
@@ -303,6 +277,56 @@ public:
 
     if (d0 != d1 || weights_mult != d0)
       throw std::invalid_argument("dists should be size (mult, mult)");
+
+    array_init(config, raw_weights, dists, charges);
+  }
+
+  // construct from pointer to array of particles using euclidean distance between the coordinates
+  EECEvent(const EECConfig & config,
+           double event_weight,
+           const double * event_ptr, unsigned mult, unsigned nfeatures) :
+    event_weight_(event_weight),
+    mult_(mult)
+  {
+    if (config.use_charges && nfeatures != 4)
+      throw std::invalid_argument("nfeatures should be 4 when using charges");
+    else if (nfeatures != 3)
+      std::invalid_argument("nfeatures should be greater than 3 if not using charges");
+
+    std::vector<double> raw_weights(mult);
+    dists_.resize(mult*mult);
+    for (unsigned i = 0; i < mult; i++) {
+      unsigned ixm(i*mult), ixnf(i*config.nfeatures);
+
+      // store weight
+      raw_weights[i] = event_ptr[ixnf];
+
+      // zero out diagonal
+      dists_[ixm + i] = 0;
+
+      double y_i(event_ptr[ixnf + 1]), phi_i(event_ptr[ixnf + 2]);
+      for (unsigned j = 0; j < i; j++) {
+        unsigned jxnf(j*config.nfeatures);
+        double ydiff(y_i - event_ptr[jxnf + 1]), phidiff(std::fabs(phi_i - event_ptr[jxnf + 2]));
+        if (phidiff > PI) phidiff = TWOPI - phidiff;
+
+        dists_[ixm + j] = dists_[j*mult + i] = std::sqrt(ydiff*ydiff + phidiff*phidiff);
+      }
+    }
+
+    std::vector<double> charges;
+    if (config.use_charges) {
+      charges.resize(mult);
+      for (unsigned i = 0; i < mult; i++)
+        charges[i] = event_ptr[i*config.nfeatures + 3];
+    }
+
+    // process weights and charges
+    process_weights(config, raw_weights);
+    process_charges(config, charges.data());
+
+    // check degen
+    check_degeneracy(config);
   }
 
 #endif // SWIG
@@ -334,8 +358,6 @@ private:
   void process_weights(const EECConfig & config,
                        std::vector<double> & raw_weights) {
 
-    //std::cout << "process_weights start" << std::endl;
-
     // normalize weights if requested
     if (config.norm) {
       double weight_total(0);
@@ -345,8 +367,6 @@ private:
       for (double & w : raw_weights)
         w /= weight_total;
     }
-
-    //std::cout << "process_weights normalized" << std::endl;
 
     // set internal weights according to raw weights and weight_powers
     weights_.resize(config.weight_powers.size());
@@ -360,18 +380,15 @@ private:
         for (unsigned j = 0; j < mult(); j++)
           weights_[i][j] = std::pow(raw_weights[j], config.weight_powers[i]);
     }
-    std::cout << "process_weights done" << std::endl;
   }
 
   // multiply weights[i][j] by charge[j]^charge_power[i]
   void process_charges(const EECConfig & config, const double * charges) {
-    //std::cout << "process_charges start" << std::endl;
     if (config.use_charges)
       for (unsigned i = 0; i < config.charge_powers.size(); i++)
         if (config.charge_powers[i] != 0)
           for (unsigned j = 0; j < mult(); j++)
             weights_[i][j] *= std::pow(charges[j], config.charge_powers[i]);
-    //std::cout << "process_charges done" << std::endl;
   }
 
   // fill distances from vector of pseudojets
@@ -430,76 +447,6 @@ private:
 
     // check degen
     check_degeneracy(config);
-  }
-
-  // allows EECBase to access lazy_init
-  friend class EECBase;
-
-  // lazy initialization for some of the construction methods
-  void lazy_init(const EECConfig & config) {
-    switch(lazy_init_type_) {
-      case None: return;
-
-      case Custom:
-        array_init(config, ptrs_[0], ptrs_[1], ptrs_[2]);
-        break;
-
-      case Default: {
-        std::vector<double> raw_weights;
-        process_weights(config, raw_weights);
-        break;
-      }
-
-      case Array: {
-        const double * arr(ptrs_[0]);
-
-        std::cout << "In lazy_init array" << std::endl;
-
-        std::vector<double> raw_weights(mult());
-        dists_.resize(mult()*mult());
-        for (unsigned i = 0; i < mult(); i++) {
-          unsigned ixm(i*mult()), ixnf(i*config.nfeatures);
-
-          // store weight
-          raw_weights[i] = arr[ixnf];
-
-          // zero out diagonal
-          dists_[ixm + i] = 0;
-
-          double y_i(arr[ixnf + 1]), phi_i(arr[ixnf + 2]);
-          for (unsigned j = 0; j < i; j++) {
-            unsigned jxnf(j*config.nfeatures);
-            double ydiff(y_i - arr[jxnf + 1]), phidiff(std::fabs(phi_i - arr[jxnf + 2]));
-            if (phidiff > PI) phidiff = TWOPI - phidiff;
-
-            dists_[ixm + j] = dists_[j*mult() + i] = std::sqrt(ydiff*ydiff + phidiff*phidiff);
-          }
-        }
-
-        //std::cout << "lazy_init gotten distances" << std::endl;
-
-        std::vector<double> charges;
-        if (config.use_charges) {
-          charges.resize(mult());
-          for (unsigned i = 0; i < mult(); i++)
-            charges[i] = arr[i*config.nfeatures + 3];
-        }
-
-        //std::cout << "lazy_init gotten charges" << std::endl;
-
-        // process weights and charges
-        process_weights(config, raw_weights);
-        process_charges(config, charges.data());
-
-        // check degen
-        check_degeneracy(config);
-
-        break;
-      }
-
-      default:
-        throw std::runtime_error("invalid lazy_init_type_");
-    }
   }
 
 }; // EECEvent
