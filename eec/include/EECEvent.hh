@@ -437,65 +437,68 @@ private:
 
   // lazy initialization for some of the construction methods
   void lazy_init(const EECConfig & config) {
+    switch(lazy_init_type_) {
+      case None: return;
 
-    // None means already initialized
-    if (lazy_init_type_ == None) return;
+      case Custom:
+        array_init(config, ptrs_[0], ptrs_[1], ptrs_[2]);
+        break;
 
-    // Default means we need to resize weights vector
-    else if (lazy_init_type_ == Default) {
-      std::cout << "In lazy_init default" << std::endl;
-      std::vector<double> raw_weights;
-      process_weights(config, raw_weights);
-    }
+      case Default: {
+        std::vector<double> raw_weights;
+        process_weights(config, raw_weights);
+        break;
+      }
 
-    // we have three arrays to initialize from
-    else if (lazy_init_type_ == Custom)
-      array_init(config, ptrs_[0], ptrs_[1], ptrs_[2]);
+      case Array: {
+        const double * arr(ptrs_[0]);
 
-    // lazy_init_type_ == Array
-    else {
-      const double * arr(ptrs_[0]);
+        std::cout << "In lazy_init array" << std::endl;
 
-      std::cout << "In lazy_init array" << std::endl;
+        std::vector<double> raw_weights(mult());
+        dists_.resize(mult()*mult());
+        for (unsigned i = 0; i < mult(); i++) {
+          unsigned ixm(i*mult()), ixnf(i*config.nfeatures);
 
-      std::vector<double> raw_weights(mult());
-      dists_.resize(mult()*mult());
-      for (unsigned i = 0; i < mult(); i++) {
-        unsigned ixm(i*mult()), ixnf(i*config.nfeatures);
+          // store weight
+          raw_weights[i] = arr[ixnf];
 
-        // store weight
-        raw_weights[i] = arr[ixnf];
+          // zero out diagonal
+          dists_[ixm + i] = 0;
 
-        // zero out diagonal
-        dists_[ixm + i] = 0;
+          double y_i(arr[ixnf + 1]), phi_i(arr[ixnf + 2]);
+          for (unsigned j = 0; j < i; j++) {
+            unsigned jxnf(j*config.nfeatures);
+            double ydiff(y_i - arr[jxnf + 1]), phidiff(std::fabs(phi_i - arr[jxnf + 2]));
+            if (phidiff > PI) phidiff = TWOPI - phidiff;
 
-        double y_i(arr[ixnf + 1]), phi_i(arr[ixnf + 2]);
-        for (unsigned j = 0; j < i; j++) {
-          unsigned jxnf(j*config.nfeatures);
-          double ydiff(y_i - arr[jxnf + 1]), phidiff(std::fabs(phi_i - arr[jxnf + 2]));
-          if (phidiff > PI) phidiff = TWOPI - phidiff;
-
-          dists_[ixm + j] = dists_[j*mult() + i] = std::sqrt(ydiff*ydiff + phidiff*phidiff);
+            dists_[ixm + j] = dists_[j*mult() + i] = std::sqrt(ydiff*ydiff + phidiff*phidiff);
+          }
         }
+
+        //std::cout << "lazy_init gotten distances" << std::endl;
+
+        std::vector<double> charges;
+        if (config.use_charges) {
+          charges.resize(mult());
+          for (unsigned i = 0; i < mult(); i++)
+            charges[i] = arr[i*config.nfeatures + 3];
+        }
+
+        //std::cout << "lazy_init gotten charges" << std::endl;
+
+        // process weights and charges
+        process_weights(config, raw_weights);
+        process_charges(config, charges.data());
+
+        // check degen
+        check_degeneracy(config);
+
+        break;
       }
 
-      //std::cout << "lazy_init gotten distances" << std::endl;
-
-      std::vector<double> charges;
-      if (config.use_charges) {
-        charges.resize(mult());
-        for (unsigned i = 0; i < mult(); i++)
-          charges[i] = arr[i*config.nfeatures + 3];
-      }
-
-      //std::cout << "lazy_init gotten charges" << std::endl;
-
-      // process weights and charges
-      process_weights(config, raw_weights);
-      process_charges(config, charges.data());
-
-      // check degen
-      check_degeneracy(config);
+      default:
+        throw std::runtime_error("invalid lazy_init_type_");
     }
   }
 

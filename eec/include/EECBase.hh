@@ -105,6 +105,8 @@ public:
   // compute on an EECEvent
   void compute(EECEvent & event, int thread = 0) {
 
+    std::cout << "in compute" << std::endl;
+
     // ensure event is initialized
     event.lazy_init(config());
 
@@ -173,7 +175,8 @@ public:
 
       std::cout << "  start, counter = " << start << ", " << counter << std::endl;
 
-      #pragma omp parallel for num_threads(num_threads()) default(shared) schedule(dynamic, omp_chunksize())
+      const int nt(num_threads()), ompcs(omp_chunksize());
+      #pragma omp parallel for num_threads(nt) shared(events_) schedule(dynamic, ompcs)
       for (long i = start; i < counter; i++)
         compute(events_[i], get_thread_num());
 
