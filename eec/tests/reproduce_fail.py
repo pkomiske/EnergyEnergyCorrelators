@@ -25,7 +25,14 @@ def test_longestside_sym(N, axis, use_general_eNc, num_threads, weight_powers, c
     eec(local_events, event_weights=weights)
     slow_eec(local_events, weights)
 
+    print('Done computing events')
+    sys.stdout.flush()
+
     hist, errs = eec.get_hist_errs()
+
+    print('Accessed hists')
+    sys.stdout.flush()
+
     print(np.max(np.abs(hist - slow_eec.hist)), np.max(np.abs(errs - slow_eec.errs)))
     assert epsilon_either(hist, slow_eec.hist, 10**-12, 1e-14)
     assert epsilon_either(errs, slow_eec.errs, 10**-6, 1e-7)
