@@ -14,7 +14,7 @@ def test_longestside_sym(N, axis, use_general_eNc, num_threads, weight_powers, c
     nbins = 15
     print('Creating EECLongestSide')
     eec = EECLongestSide(N, nbins, axis=axis, axis_range=(1e-5, 1.0), weight_powers=(weight_powers,), charge_powers=(charge_powers,),
-                         print_every=0, num_threads=num_threads, use_general_eNc=use_general_eNc)
+                         print_every=10, num_threads=num_threads, use_general_eNc=use_general_eNc)
     print('Created EECLongestSide')
     sys.stdout.flush()
 

@@ -1114,7 +1114,7 @@ class EECBase(object):
         for event, chs, ds, event_weight in zip(events, charges, dists, event_weights):
             eec_event = self._create_eec_event(event, chs, ds, event_weight)
             self._push_back(eec_event)
-            stored_events.append(getattr(eec_event, '_numpy_arrays', None))
+            stored_events.append(eec_event)
 
         self.batch_compute()
         self.clear_events()
