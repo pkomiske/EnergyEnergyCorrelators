@@ -1017,6 +1017,7 @@ class EECBase(object):
     clear_events = _swig_new_instance_method(_eec.EECBase_clear_events)
     batch_compute = _swig_new_instance_method(_eec.EECBase_batch_compute)
     config = _swig_new_instance_method(_eec.EECBase_config)
+    compname = _swig_new_instance_method(_eec.EECBase_compname)
     N = _swig_new_instance_method(_eec.EECBase_N)
     nfeatures = _swig_new_instance_method(_eec.EECBase_nfeatures)
     nsym = _swig_new_instance_method(_eec.EECBase_nsym)
@@ -1042,7 +1043,6 @@ class EECBase(object):
     set_print_every = _swig_new_instance_method(_eec.EECBase_set_print_every)
     set_particle_weight = _swig_new_instance_method(_eec.EECBase_set_particle_weight)
     set_pairwise_distance = _swig_new_instance_method(_eec.EECBase_set_pairwise_distance)
-    set_print_stream = _swig_new_instance_method(_eec.EECBase_set_print_stream)
     __ne__ = _swig_new_instance_method(_eec.EECBase___ne__)
     __eq__ = _swig_new_instance_method(_eec.EECBase___eq__)
 

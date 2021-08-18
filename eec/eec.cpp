@@ -45385,6 +45385,53 @@ fail:
 }
 
 
+SWIGINTERN PyObject *_wrap_EECBase_compname(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
+  PyObject *resultobj = 0;
+  fastjet::contrib::eec::EECBase *arg1 = (fastjet::contrib::eec::EECBase *) 0 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  PyObject *swig_obj[1] ;
+  std::string *result = 0 ;
+  
+  if (!args) SWIG_fail;
+  swig_obj[0] = args;
+  res1 = SWIG_ConvertPtr(swig_obj[0], &argp1,SWIGTYPE_p_fastjet__contrib__eec__EECBase, 0 |  0 );
+  if (!SWIG_IsOK(res1)) {
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "EECBase_compname" "', argument " "1"" of type '" "fastjet::contrib::eec::EECBase const *""'"); 
+  }
+  arg1 = reinterpret_cast< fastjet::contrib::eec::EECBase * >(argp1);
+  {
+    try {
+      result = (std::string *) &((fastjet::contrib::eec::EECBase const *)arg1)->compname(); 
+    }
+    /*@SWIG:/usr/local/Cellar/swig/4.0.2/share/swig/4.0.2/typemaps/exception.swg,58,SWIG_CATCH_STDEXCEPT@*/  /* catching std::exception  */
+    catch (std::invalid_argument& e) {
+      SWIG_exception_fail(SWIG_ValueError, e.what() );
+    } catch (std::domain_error& e) {
+      SWIG_exception_fail(SWIG_ValueError, e.what() );
+    } catch (std::overflow_error& e) {
+      SWIG_exception_fail(SWIG_OverflowError, e.what() );
+    } catch (std::out_of_range& e) {
+      SWIG_exception_fail(SWIG_IndexError, e.what() );
+    } catch (std::length_error& e) {
+      SWIG_exception_fail(SWIG_IndexError, e.what() );
+    } catch (std::runtime_error& e) {
+      SWIG_exception_fail(SWIG_RuntimeError, e.what() );
+    } catch (std::exception& e) {
+      SWIG_exception_fail(SWIG_SystemError, e.what() );
+    }
+    /*@SWIG@*/
+    catch (...) {
+      SWIG_exception_fail(SWIG_UnknownError, "unknown exception");
+    }
+  }
+  resultobj = SWIG_From_std_string(static_cast< std::string >(*result));
+  return resultobj;
+fail:
+  return NULL;
+}
+
+
 SWIGINTERN PyObject *_wrap_EECBase_N(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
   PyObject *resultobj = 0;
   fastjet::contrib::eec::EECBase *arg1 = (fastjet::contrib::eec::EECBase *) 0 ;
@@ -46094,7 +46141,7 @@ SWIGINTERN PyObject *_wrap_EECBase_set_weight_powers(PyObject *SWIGUNUSEDPARM(se
   PyObject *resultobj = 0;
   fastjet::contrib::eec::EECBase *arg1 = (fastjet::contrib::eec::EECBase *) 0 ;
   std::vector< double,std::allocator< double > > *arg2 = 0 ;
-  bool arg3 = (bool) true ;
+  bool arg3 = (bool) false ;
   void *argp1 = 0 ;
   int res1 = 0 ;
   int res2 = SWIG_OLDOBJ ;
@@ -46104,7 +46151,7 @@ SWIGINTERN PyObject *_wrap_EECBase_set_weight_powers(PyObject *SWIGUNUSEDPARM(se
   PyObject * obj1 = 0 ;
   PyObject * obj2 = 0 ;
   char * kwnames[] = {
-    (char *)"self",  (char *)"wps",  (char *)"_leave_valid",  NULL 
+    (char *)"self",  (char *)"wps",  (char *)"_in_constructor",  NULL 
   };
   
   if (!PyArg_ParseTupleAndKeywords(args, kwargs, "OO|O:EECBase_set_weight_powers", kwnames, &obj0, &obj1, &obj2)) SWIG_fail;
@@ -46169,7 +46216,7 @@ SWIGINTERN PyObject *_wrap_EECBase_set_charge_powers(PyObject *SWIGUNUSEDPARM(se
   PyObject *resultobj = 0;
   fastjet::contrib::eec::EECBase *arg1 = (fastjet::contrib::eec::EECBase *) 0 ;
   std::vector< unsigned int,std::allocator< unsigned int > > *arg2 = 0 ;
-  bool arg3 = (bool) true ;
+  bool arg3 = (bool) false ;
   void *argp1 = 0 ;
   int res1 = 0 ;
   int res2 = SWIG_OLDOBJ ;
@@ -46179,7 +46226,7 @@ SWIGINTERN PyObject *_wrap_EECBase_set_charge_powers(PyObject *SWIGUNUSEDPARM(se
   PyObject * obj1 = 0 ;
   PyObject * obj2 = 0 ;
   char * kwnames[] = {
-    (char *)"self",  (char *)"cps",  (char *)"_leave_valid",  NULL 
+    (char *)"self",  (char *)"cps",  (char *)"_in_constructor",  NULL 
   };
   
   if (!PyArg_ParseTupleAndKeywords(args, kwargs, "OO|O:EECBase_set_charge_powers", kwnames, &obj0, &obj1, &obj2)) SWIG_fail;
@@ -46667,66 +46714,6 @@ SWIGINTERN PyObject *_wrap_EECBase_set_pairwise_distance(PyObject *SWIGUNUSEDPAR
   {
     try {
       (arg1)->set_pairwise_distance(arg2); 
-    }
-    /*@SWIG:/usr/local/Cellar/swig/4.0.2/share/swig/4.0.2/typemaps/exception.swg,58,SWIG_CATCH_STDEXCEPT@*/  /* catching std::exception  */
-    catch (std::invalid_argument& e) {
-      SWIG_exception_fail(SWIG_ValueError, e.what() );
-    } catch (std::domain_error& e) {
-      SWIG_exception_fail(SWIG_ValueError, e.what() );
-    } catch (std::overflow_error& e) {
-      SWIG_exception_fail(SWIG_OverflowError, e.what() );
-    } catch (std::out_of_range& e) {
-      SWIG_exception_fail(SWIG_IndexError, e.what() );
-    } catch (std::length_error& e) {
-      SWIG_exception_fail(SWIG_IndexError, e.what() );
-    } catch (std::runtime_error& e) {
-      SWIG_exception_fail(SWIG_RuntimeError, e.what() );
-    } catch (std::exception& e) {
-      SWIG_exception_fail(SWIG_SystemError, e.what() );
-    }
-    /*@SWIG@*/
-    catch (...) {
-      SWIG_exception_fail(SWIG_UnknownError, "unknown exception");
-    }
-  }
-  resultobj = SWIG_Py_Void();
-  return resultobj;
-fail:
-  return NULL;
-}
-
-
-SWIGINTERN PyObject *_wrap_EECBase_set_print_stream(PyObject *SWIGUNUSEDPARM(self), PyObject *args, PyObject *kwargs) {
-  PyObject *resultobj = 0;
-  fastjet::contrib::eec::EECBase *arg1 = (fastjet::contrib::eec::EECBase *) 0 ;
-  std::ostream *arg2 = 0 ;
-  void *argp1 = 0 ;
-  int res1 = 0 ;
-  void *argp2 = 0 ;
-  int res2 = 0 ;
-  PyObject * obj0 = 0 ;
-  PyObject * obj1 = 0 ;
-  char * kwnames[] = {
-    (char *)"self",  (char *)"os",  NULL 
-  };
-  
-  if (!PyArg_ParseTupleAndKeywords(args, kwargs, "OO:EECBase_set_print_stream", kwnames, &obj0, &obj1)) SWIG_fail;
-  res1 = SWIG_ConvertPtr(obj0, &argp1,SWIGTYPE_p_fastjet__contrib__eec__EECBase, 0 |  0 );
-  if (!SWIG_IsOK(res1)) {
-    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "EECBase_set_print_stream" "', argument " "1"" of type '" "fastjet::contrib::eec::EECBase *""'"); 
-  }
-  arg1 = reinterpret_cast< fastjet::contrib::eec::EECBase * >(argp1);
-  res2 = SWIG_ConvertPtr(obj1, &argp2, SWIGTYPE_p_std__ostream,  0 );
-  if (!SWIG_IsOK(res2)) {
-    SWIG_exception_fail(SWIG_ArgError(res2), "in method '" "EECBase_set_print_stream" "', argument " "2"" of type '" "std::ostream &""'"); 
-  }
-  if (!argp2) {
-    SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in method '" "EECBase_set_print_stream" "', argument " "2"" of type '" "std::ostream &""'"); 
-  }
-  arg2 = reinterpret_cast< std::ostream * >(argp2);
-  {
-    try {
-      (arg1)->set_print_stream(*arg2); 
     }
     /*@SWIG:/usr/local/Cellar/swig/4.0.2/share/swig/4.0.2/typemaps/exception.swg,58,SWIG_CATCH_STDEXCEPT@*/  /* catching std::exception  */
     catch (std::invalid_argument& e) {
@@ -55204,6 +55191,7 @@ static PyMethodDef SwigMethods[] = {
 	 { "EECBase_clear_events", _wrap_EECBase_clear_events, METH_O, "EECBase_clear_events(EECBase self)"},
 	 { "EECBase_batch_compute", _wrap_EECBase_batch_compute, METH_O, "EECBase_batch_compute(EECBase self)"},
 	 { "EECBase_config", _wrap_EECBase_config, METH_O, "EECBase_config(EECBase self) -> EECConfig const &"},
+	 { "EECBase_compname", _wrap_EECBase_compname, METH_O, "EECBase_compname(EECBase self) -> std::string const &"},
 	 { "EECBase_N", _wrap_EECBase_N, METH_O, "EECBase_N(EECBase self) -> unsigned int"},
 	 { "EECBase_nfeatures", _wrap_EECBase_nfeatures, METH_O, "EECBase_nfeatures(EECBase self) -> unsigned int"},
 	 { "EECBase_nsym", _wrap_EECBase_nsym, METH_O, "EECBase_nsym(EECBase self) -> unsigned int"},
@@ -55219,8 +55207,8 @@ static PyMethodDef SwigMethods[] = {
 	 { "EECBase_total_weight", _wrap_EECBase_total_weight, METH_O, "EECBase_total_weight(EECBase self) -> double"},
 	 { "EECBase_particle_weight", _wrap_EECBase_particle_weight, METH_O, "EECBase_particle_weight(EECBase self) -> fastjet::contrib::eec::ParticleWeight"},
 	 { "EECBase_pairwise_distance", _wrap_EECBase_pairwise_distance, METH_O, "EECBase_pairwise_distance(EECBase self) -> fastjet::contrib::eec::PairwiseDistance"},
-	 { "EECBase_set_weight_powers", (PyCFunction)(void(*)(void))_wrap_EECBase_set_weight_powers, METH_VARARGS|METH_KEYWORDS, "EECBase_set_weight_powers(EECBase self, vectorDouble wps, bool _leave_valid=True)"},
-	 { "EECBase_set_charge_powers", (PyCFunction)(void(*)(void))_wrap_EECBase_set_charge_powers, METH_VARARGS|METH_KEYWORDS, "EECBase_set_charge_powers(EECBase self, vectorUnsigned cps, bool _leave_valid=True)"},
+	 { "EECBase_set_weight_powers", (PyCFunction)(void(*)(void))_wrap_EECBase_set_weight_powers, METH_VARARGS|METH_KEYWORDS, "EECBase_set_weight_powers(EECBase self, vectorDouble wps, bool _in_constructor=False)"},
+	 { "EECBase_set_charge_powers", (PyCFunction)(void(*)(void))_wrap_EECBase_set_charge_powers, METH_VARARGS|METH_KEYWORDS, "EECBase_set_charge_powers(EECBase self, vectorUnsigned cps, bool _in_constructor=False)"},
 	 { "EECBase_set_norm", (PyCFunction)(void(*)(void))_wrap_EECBase_set_norm, METH_VARARGS|METH_KEYWORDS, "EECBase_set_norm(EECBase self, bool n)"},
 	 { "EECBase_set_check_degen", (PyCFunction)(void(*)(void))_wrap_EECBase_set_check_degen, METH_VARARGS|METH_KEYWORDS, "EECBase_set_check_degen(EECBase self, bool check)"},
 	 { "EECBase_set_average_verts", (PyCFunction)(void(*)(void))_wrap_EECBase_set_average_verts, METH_VARARGS|METH_KEYWORDS, "EECBase_set_average_verts(EECBase self, bool averts)"},
@@ -55229,7 +55217,6 @@ static PyMethodDef SwigMethods[] = {
 	 { "EECBase_set_print_every", (PyCFunction)(void(*)(void))_wrap_EECBase_set_print_every, METH_VARARGS|METH_KEYWORDS, "EECBase_set_print_every(EECBase self, long print_every)"},
 	 { "EECBase_set_particle_weight", (PyCFunction)(void(*)(void))_wrap_EECBase_set_particle_weight, METH_VARARGS|METH_KEYWORDS, "EECBase_set_particle_weight(EECBase self, fastjet::contrib::eec::ParticleWeight pw)"},
 	 { "EECBase_set_pairwise_distance", (PyCFunction)(void(*)(void))_wrap_EECBase_set_pairwise_distance, METH_VARARGS|METH_KEYWORDS, "EECBase_set_pairwise_distance(EECBase self, fastjet::contrib::eec::PairwiseDistance pd)"},
-	 { "EECBase_set_print_stream", (PyCFunction)(void(*)(void))_wrap_EECBase_set_print_stream, METH_VARARGS|METH_KEYWORDS, "EECBase_set_print_stream(EECBase self, std::ostream & os)"},
 	 { "EECBase___ne__", (PyCFunction)(void(*)(void))_wrap_EECBase___ne__, METH_VARARGS|METH_KEYWORDS, "EECBase___ne__(EECBase self, EECBase rhs) -> bool"},
 	 { "EECBase___eq__", (PyCFunction)(void(*)(void))_wrap_EECBase___eq__, METH_VARARGS|METH_KEYWORDS, "EECBase___eq__(EECBase self, EECBase rhs) -> bool"},
 	 { "EECBase_swigregister", EECBase_swigregister, METH_O, NULL},
@@ -56133,6 +56120,7 @@ static PyMethodDef SwigMethods_proxydocs[] = {
 	 { "EECBase_clear_events", _wrap_EECBase_clear_events, METH_O, "clear_events(EECBase self)"},
 	 { "EECBase_batch_compute", _wrap_EECBase_batch_compute, METH_O, "batch_compute(EECBase self)"},
 	 { "EECBase_config", _wrap_EECBase_config, METH_O, "config(EECBase self) -> EECConfig const &"},
+	 { "EECBase_compname", _wrap_EECBase_compname, METH_O, "compname(EECBase self) -> std::string const &"},
 	 { "EECBase_N", _wrap_EECBase_N, METH_O, "N(EECBase self) -> unsigned int"},
 	 { "EECBase_nfeatures", _wrap_EECBase_nfeatures, METH_O, "nfeatures(EECBase self) -> unsigned int"},
 	 { "EECBase_nsym", _wrap_EECBase_nsym, METH_O, "nsym(EECBase self) -> unsigned int"},
@@ -56148,8 +56136,8 @@ static PyMethodDef SwigMethods_proxydocs[] = {
 	 { "EECBase_total_weight", _wrap_EECBase_total_weight, METH_O, "total_weight(EECBase self) -> double"},
 	 { "EECBase_particle_weight", _wrap_EECBase_particle_weight, METH_O, "particle_weight(EECBase self) -> fastjet::contrib::eec::ParticleWeight"},
 	 { "EECBase_pairwise_distance", _wrap_EECBase_pairwise_distance, METH_O, "pairwise_distance(EECBase self) -> fastjet::contrib::eec::PairwiseDistance"},
-	 { "EECBase_set_weight_powers", (PyCFunction)(void(*)(void))_wrap_EECBase_set_weight_powers, METH_VARARGS|METH_KEYWORDS, "set_weight_powers(EECBase self, vectorDouble wps, bool _leave_valid=True)"},
-	 { "EECBase_set_charge_powers", (PyCFunction)(void(*)(void))_wrap_EECBase_set_charge_powers, METH_VARARGS|METH_KEYWORDS, "set_charge_powers(EECBase self, vectorUnsigned cps, bool _leave_valid=True)"},
+	 { "EECBase_set_weight_powers", (PyCFunction)(void(*)(void))_wrap_EECBase_set_weight_powers, METH_VARARGS|METH_KEYWORDS, "set_weight_powers(EECBase self, vectorDouble wps, bool _in_constructor=False)"},
+	 { "EECBase_set_charge_powers", (PyCFunction)(void(*)(void))_wrap_EECBase_set_charge_powers, METH_VARARGS|METH_KEYWORDS, "set_charge_powers(EECBase self, vectorUnsigned cps, bool _in_constructor=False)"},
 	 { "EECBase_set_norm", (PyCFunction)(void(*)(void))_wrap_EECBase_set_norm, METH_VARARGS|METH_KEYWORDS, "set_norm(EECBase self, bool n)"},
 	 { "EECBase_set_check_degen", (PyCFunction)(void(*)(void))_wrap_EECBase_set_check_degen, METH_VARARGS|METH_KEYWORDS, "set_check_degen(EECBase self, bool check)"},
 	 { "EECBase_set_average_verts", (PyCFunction)(void(*)(void))_wrap_EECBase_set_average_verts, METH_VARARGS|METH_KEYWORDS, "set_average_verts(EECBase self, bool averts)"},
@@ -56158,7 +56146,6 @@ static PyMethodDef SwigMethods_proxydocs[] = {
 	 { "EECBase_set_print_every", (PyCFunction)(void(*)(void))_wrap_EECBase_set_print_every, METH_VARARGS|METH_KEYWORDS, "set_print_every(EECBase self, long print_every)"},
 	 { "EECBase_set_particle_weight", (PyCFunction)(void(*)(void))_wrap_EECBase_set_particle_weight, METH_VARARGS|METH_KEYWORDS, "set_particle_weight(EECBase self, fastjet::contrib::eec::ParticleWeight pw)"},
 	 { "EECBase_set_pairwise_distance", (PyCFunction)(void(*)(void))_wrap_EECBase_set_pairwise_distance, METH_VARARGS|METH_KEYWORDS, "set_pairwise_distance(EECBase self, fastjet::contrib::eec::PairwiseDistance pd)"},
-	 { "EECBase_set_print_stream", (PyCFunction)(void(*)(void))_wrap_EECBase_set_print_stream, METH_VARARGS|METH_KEYWORDS, "set_print_stream(EECBase self, std::ostream & os)"},
 	 { "EECBase___ne__", (PyCFunction)(void(*)(void))_wrap_EECBase___ne__, METH_VARARGS|METH_KEYWORDS, "__ne__(EECBase self, EECBase rhs) -> bool"},
 	 { "EECBase___eq__", (PyCFunction)(void(*)(void))_wrap_EECBase___eq__, METH_VARARGS|METH_KEYWORDS, "__eq__(EECBase self, EECBase rhs) -> bool"},
 	 { "EECBase_swigregister", EECBase_swigregister, METH_O, NULL},

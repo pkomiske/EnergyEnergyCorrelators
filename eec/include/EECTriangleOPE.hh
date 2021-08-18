@@ -202,7 +202,7 @@ private:
   // provides initialization of this subclass from configuration
   void init_subclass(bool events_allowed = false) {
     if (!events_allowed)
-      this->ensure_no_events();
+      ensure_no_events();
 
     switch (nsym()) {
       case 3:
@@ -211,12 +211,12 @@ private:
 
       case 2:
         compute_eec_func_ptr_ = &EECTriangleOPE::eeec_ij_sym;
-        if (!this->average_verts()) this->duplicate_histograms(3);
+        if (!average_verts()) this->duplicate_histograms(3);
         break;
 
       case 0:
         compute_eec_func_ptr_ = &EECTriangleOPE::eeec_no_sym;
-        if (!this->average_verts()) this->duplicate_histograms(6);
+        if (!average_verts()) this->duplicate_histograms(6);
         break;
 
       default:

@@ -169,7 +169,7 @@ public:
   bool operator!=(const EECLongestSide & rhs) const { return !operator==(rhs); }
   bool operator==(const EECLongestSide & rhs) const {
     return EECBase::operator==(rhs)                       &&
-           EECHist::operator==(rhs)                     &&
+           EECHist::operator==(rhs)                       &&
            use_general_eNc()     == rhs.use_general_eNc() &&
            N_choose_2_           == rhs.N_choose_2_       &&
            compute_eec_func_ptr_ == rhs.compute_eec_func_ptr_;
@@ -194,7 +194,7 @@ private:
   // provides initialization of this subclass from configuration
   void init_subclass(bool events_allowed = false) {
     if (!events_allowed)
-      this->ensure_no_events();
+      ensure_no_events();
 
     // default is general computation
     compute_eec_func_ptr_ = &EECLongestSide::eNc_sym;
@@ -219,12 +219,12 @@ private:
 
           case 2:
             compute_eec_func_ptr_ = &EECLongestSide::eeec_ij_sym;
-            if (!this->average_verts()) this->duplicate_histograms(2);
+            if (!average_verts()) this->duplicate_histograms(2);
             break;
 
           case 0:
             compute_eec_func_ptr_ = &EECLongestSide::eeec_no_sym;
-            if (!this->average_verts()) this->duplicate_histograms(3);
+            if (!average_verts()) this->duplicate_histograms(3);
             break;
 
           default:
