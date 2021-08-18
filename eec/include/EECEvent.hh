@@ -70,74 +70,65 @@ struct Momentum {
 
 // Hadronic Delta_R measure with proper checking for phi
 struct DeltaR {
-  static constexpr bool needs_reduction = true;
-  static double plain_distance(const PseudoJet & p0, const PseudoJet & p1) {
+  static double distance(const PseudoJet & p0, const PseudoJet & p1) {
     double dphiabs(std::fabs(p0.phi() - p1.phi()));
     double dy(p0.rap() - p1.rap()), dphi(dphiabs > PI ? TWOPI - dphiabs : dphiabs);
-    return dy*dy + dphi*dphi;
+    return std::sqrt(dy*dy + dphi*dphi);
   }
 };
 
 // Dot product measure normalized with transverse momenta
 struct HadronicDot {
-  static constexpr bool needs_reduction = true;
-  static double plain_distance(const PseudoJet & p0, const PseudoJet & p1) {
-    return std::max(2*fastjet::dot_product(p0, p1) / std::sqrt(p0.pt2()*p1.pt2()), 0.0);
+  static double distance(const PseudoJet & p0, const PseudoJet & p1) {
+    return std::sqrt(std::max(2*fastjet::dot_product(p0, p1) / std::sqrt(p0.pt2()*p1.pt2()), 0.0));
   }  
 };
 
 // Dot product measure normalized by energy
 struct EEDot {
-  static constexpr bool needs_reduction = true;
-  static double plain_distance(const PseudoJet & p0, const PseudoJet & p1) {
-    return std::max(2*fastjet::dot_product(p0, p1) / (p0.E()*p1.E()), 0.0);
+  static double distance(const PseudoJet & p0, const PseudoJet & p1) {
+    return std::sqrt(std::max(2*fastjet::dot_product(p0, p1) / (p0.E()*p1.E()), 0.0));
   }
 };
 
 // Massive dot product measure normalized with transverse energies
 struct HadronicDotMassive {
-  static constexpr bool needs_reduction = true;
-  static double plain_distance(const PseudoJet & p0, const PseudoJet & p1) {
-    return std::max(2*fastjet::dot_product(p0, p1) / std::sqrt(p0.Et2()*p1.Et2()), 0.0);
+  static double distance(const PseudoJet & p0, const PseudoJet & p1) {
+    return std::sqrt(std::max(2*fastjet::dot_product(p0, p1) / std::sqrt(p0.Et2()*p1.Et2()), 0.0));
   }
 };
 
 // Massive dot product measure normalized with energies
 struct EEDotMassless {
-  static constexpr bool needs_reduction = true;
-  static double plain_distance(const PseudoJet & p0, const PseudoJet & p1) {
-    return std::max(2*fastjet::dot_product(p0, p1) / std::sqrt(p0.modp2()*p1.modp2()), 0.0);
+  static double distance(const PseudoJet & p0, const PseudoJet & p1) {
+    return std::sqrt(std::max(2*fastjet::dot_product(p0, p1) / std::sqrt(p0.modp2()*p1.modp2()), 0.0));
   }
 };
 
 // Arc length between momentum vectors
 struct EEArcLength {
-  static constexpr bool needs_reduction = false;
-  static double plain_distance(const PseudoJet & p0, const PseudoJet & p1) {
+  static double distance(const PseudoJet & p0, const PseudoJet & p1) {
     return fastjet::theta(p0, p1);
   }
 };
 
 // Arc length between momentum vectors, normalized by the energy
 struct EEArcLengthMassive {
-  static constexpr bool needs_reduction = false;
-  static double plain_distance(const PseudoJet & p0, const PseudoJet & p1) {
+  static double distance(const PseudoJet & p0, const PseudoJet & p1) {
     return std::acos(std::min(1.0, std::max(-1.0, (p0.px()*p1.px() + p0.py()*p1.py() + p0.pz()*p1.pz())/(p0.E()*p1.E()))));
   }
 };
 
 // note: this doesn't usually satisfy the triangle inequality
 struct EECosTheta {
-  static constexpr bool needs_reduction = false;
-  static double plain_distance(const PseudoJet & p0, const PseudoJet & p1) {
+  static double distance(const PseudoJet & p0, const PseudoJet & p1) {
     return fastjet::cos_theta(p0, p1);
   }
 };
 
 // note: this doesn't usually satisfy the triangle inequality
 struct EECosThetaMassive {
-  static constexpr bool needs_reduction = false;
-  static double plain_distance(const PseudoJet & p0, const PseudoJet & p1) {
+  static double distance(const PseudoJet & p0, const PseudoJet & p1) {
     return std::min(1.0, std::max(-1.0, (p0.px()*p1.px() + p0.py()*p1.py() + p0.pz()*p1.pz())/(p0.E()*p1.E())));
   }
 };
@@ -362,8 +353,7 @@ private:
 
       // set weights[i][j] to weight[j]^weight_power[i]
       if (config.weight_powers[i] == 1)
-        for (unsigned j = 0; j < mult(); j++)
-          weights_[i][j] = raw_weights[j];
+        std::copy(raw_weights.begin(), raw_weights.end(), weights_[i].begin());
       else
         for (unsigned j = 0; j < mult(); j++)
           weights_[i][j] = std::pow(raw_weights[j], config.weight_powers[i]);
@@ -372,33 +362,24 @@ private:
 
   // multiply weights[i][j] by charge[j]^charge_power[i]
   void process_charges(const EECConfig & config, const double * charges) {
-    if (config.use_charges) {
-      for (unsigned i = 0; i < config.charge_powers.size(); i++) {
-        if (config.charge_powers[i] == 0) {}
-        else
+    if (config.use_charges)
+      for (unsigned i = 0; i < config.charge_powers.size(); i++)
+        if (config.charge_powers[i] != 0)
           for (unsigned j = 0; j < mult(); j++)
             weights_[i][j] *= std::pow(charges[j], config.charge_powers[i]);
-      }
-    }
   }
 
   // fill distances from vector of pseudojets
   template<class PairwiseDistance>
   void fill_distances(const std::vector<PseudoJet> & pjs, const EECConfig & config) {
     dists_.resize(mult()*mult());
+
     for (unsigned i = 0; i < mult(); i++) {
       unsigned ixm(i*mult());
       dists_[ixm + i] = 0;
 
-      const PseudoJet & pj_i(pjs[i]);
       for (unsigned j = 0; j < i; j++)
-        dists_[ixm + j] = dists_[j*mult() + i] = PairwiseDistance::plain_distance(pj_i, pjs[j]);
-    }
-
-    // turn reduced distances into distances
-    if (PairwiseDistance::needs_reduction) {
-      for (double & d : dists_)
-        d = std::sqrt(d);
+        dists_[ixm + j] = dists_[j*mult() + i] = PairwiseDistance::distance(pjs[i], pjs[j]);
     }
   }
 
@@ -479,13 +460,9 @@ private:
           double ydiff(y_i - arr[jxnf + 1]), phidiff(std::fabs(phi_i - arr[jxnf + 2]));
           if (phidiff > PI) phidiff = TWOPI - phidiff;
 
-          dists_[ixm + j] = dists_[j*mult() + i] = ydiff*ydiff + phidiff*phidiff;
+          dists_[ixm + j] = dists_[j*mult() + i] = std::sqrt(ydiff*ydiff + phidiff*phidiff);
         }
       }
-
-      // turn reduced distances into distances
-      for (double & d : dists_)
-        d = std::sqrt(d);
 
       std::vector<double> charges;
       if (config.use_charges) {

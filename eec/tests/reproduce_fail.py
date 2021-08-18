@@ -17,14 +17,15 @@ def test_longestside_sym(N, axis, use_general_eNc, num_threads, weight_powers, c
     slow_eec(local_events, weights)
 
     hist, errs = eec.get_hist_errs()
+    print(np.max(np.abs(hist - slow_eec.hist)), np.max(np.abs(errs - slow_eec.errs)))
     assert epsilon_either(hist, slow_eec.hist, 10**-12, 1e-14)
     assert epsilon_either(errs, slow_eec.errs, 10**-6, 1e-7)
 
 for N in [2, 3, 4]:
-	for axis in ['log', 'id']:
-		for use_general_eNc in [False, True]:
+    for axis in ['log', 'id']:
+        for use_general_eNc in [False, True]:
             for num_threads in [1, -1]:
-    			for weight_powers in [1, 2]:
-    				for charge_powers in [0, 1, 2]:
-    					for nparticles in [0, 1, 2, 4, 8, 16]:
-    						test_longestside_sym(N, axis, use_general_eNc, num_threads, weight_powers, charge_powers, nparticles)
+                for weight_powers in [1, 2]:
+                    for charge_powers in [0, 1, 2]:
+                        for nparticles in [0, 1, 2, 4, 8, 16]:
+                            test_longestside_sym(N, axis, use_general_eNc, num_threads, weight_powers, charge_powers, nparticles)
