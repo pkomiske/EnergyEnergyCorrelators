@@ -30,7 +30,7 @@ lname = name.lower()
 use_pyfjcore = True
 
 # whether to compile with serialization from boost libraries
-use_serialization = False
+use_serialization = True
 
 ################################################################################
 
@@ -53,9 +53,12 @@ if sys.argv[1] == 'swig':
 
     # form swig options
     if use_pyfjcore:
-        opts = '-DEEC_USE_PYFJCORE -IPyFJCore'
+        opts = '-IPyFJCore -DEEC_USE_PYFJCORE'
     else:
-        opts = '-DFASTJET_PREFIX=' + fj_prefix + ' ' + fj_cxxflags
+        opts = fj_cxxflags + ' -DFASTJET_PREFIX=' + fj_prefix
+
+    if use_serialization:
+        opts += ' -DEEC_SERIALIZATION'
 
     command = ('swig -python -c++ -fastproxy -keyword -py3 -w325,402,509,511 -Ieec/include {opts} '
                '-o {lname}/{lname}.cpp {lname}/swig/{lname}.i').format(opts=opts, lname=lname)

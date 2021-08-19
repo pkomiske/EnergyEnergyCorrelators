@@ -1023,60 +1023,20 @@ class EECBase(object):
     __eq__ = _swig_new_instance_method(_eec.EECBase___eq__)
 
     def __repr__(self):
-        return self.description()
+        return self.description().decode('utf-8')
 
 
-    def as_dict(self):
-        hist_vars = [self.get_hist_vars(i) for i in range(self.nhists())]
-        d = {
-            'name': self.__class__.__name__,
-            'description': repr(self),
-            'config': {
-                'N': self.N(),
-                'norm': self.norm(),
-                'use_charges': self.use_charges(),
-                'check_degen': self.check_degen(),
-                'average_verts': self.average_verts(),
-                'weight_powers': self.weight_powers(),
-                'charge_powers': self.charge_powers(),
-                'particle_weight': particle_weight_name(self.particle_weight()),
-                'pairwise_distance': pairwise_distance_name(self.pairwise_distance()),
-                'num_threads': self.num_threads(),
-                'nfeatures': self.nfeatures(),
-            },
-            'compname': self.compname(),
-            'nsym': self.nsym(),
-            'total_weight': self.total_weight(),
+    def __getstate__(self):
+        return (self.__getstate_internal__(),)
 
-            'nbins': tuple(self.nbins(i) for i in range(self.rank())),
-            'axes_range': tuple(self.axis_range(i) for i in range(self.rank())),
-            'rank': self.rank(),
-            'nhists': self.nhists(),
-            'event_count': self.event_counter(),
-
-            'track_covariance': self.track_covariance(),
-            'variance_bound': self.variance_bound(),
-            'variance_bound_includes_overflows': self.variance_bound_includes_overflows(),
-
-            'bin_edges': tuple(self.bin_edges(i) for i in range(self.rank())),
-            'bin_centers': tuple(self.bin_centers(i) for i in range(self.rank())),
-
-            'hist_sums': tuple(self.sum(i) for i in range(self.nhists())),
-            'hists': tuple(hist_vars[i][0] for i in range(self.nhists())),
-            'hist_vars': tuple(hist_vars[i][1] for i in range(self.nhists())),
-        }
-
-        if self.track_covariance():
-            d['covariances'] = tuple(self.get_covariance(i) for i in range(self.nhists()))
-        else:
-            d['covariances'] = self.nhists()*[None]
-
-        if self.variance_bound():
-            d['variance_bounds'] = tuple(self.get_variance_bound(i) for i in range(self.nhists()))
-        else:
-            d['variance_bounds'] = self.nhists()*[None]
-
-        return d
+    def __setstate__(self, state):
+        self.__init__(*self._default_args)
+        try:
+            self.__setstate_internal__(state[0])
+        except Exception as e:
+            raise RuntimeError('issue loading eec - check `eec.get_archive_format()`'
+                               ' and `eec.get_compression_mode()`',
+                               repr(e))
 
 
 
@@ -1280,7 +1240,12 @@ class EECLongestSideId(EECBase, EECHist1DId):
     add = _swig_new_instance_method(_eec.EECLongestSideId_add)
 
     def __repr__(self):
-        return self.description()
+        return self.description().decode('utf-8')
+
+    __getstate_internal__ = _swig_new_instance_method(_eec.EECLongestSideId___getstate_internal__)
+    __setstate_internal__ = _swig_new_instance_method(_eec.EECLongestSideId___setstate_internal__)
+
+    _default_args = (2, 1)
 
 
 # Register EECLongestSideId in _eec:
@@ -1305,7 +1270,12 @@ class EECLongestSideLog(EECBase, EECHist1DLog):
     add = _swig_new_instance_method(_eec.EECLongestSideLog_add)
 
     def __repr__(self):
-        return self.description()
+        return self.description().decode('utf-8')
+
+    __getstate_internal__ = _swig_new_instance_method(_eec.EECLongestSideLog___getstate_internal__)
+    __setstate_internal__ = _swig_new_instance_method(_eec.EECLongestSideLog___setstate_internal__)
+
+    _default_args = (2, 1)
 
 
 # Register EECLongestSideLog in _eec:
@@ -1328,7 +1298,12 @@ class EECTriangleOPEIdIdId(EECBase, EECHist3DIdIdId):
     add = _swig_new_instance_method(_eec.EECTriangleOPEIdIdId_add)
 
     def __repr__(self):
-        return self.description()
+        return self.description().decode('utf-8')
+
+    __getstate_internal__ = _swig_new_instance_method(_eec.EECTriangleOPEIdIdId___getstate_internal__)
+    __setstate_internal__ = _swig_new_instance_method(_eec.EECTriangleOPEIdIdId___setstate_internal__)
+
+    _default_args = ((1, 1, 1),)
 
 
 # Register EECTriangleOPEIdIdId in _eec:
@@ -1351,7 +1326,12 @@ class EECTriangleOPELogIdId(EECBase, EECHist3DLogIdId):
     add = _swig_new_instance_method(_eec.EECTriangleOPELogIdId_add)
 
     def __repr__(self):
-        return self.description()
+        return self.description().decode('utf-8')
+
+    __getstate_internal__ = _swig_new_instance_method(_eec.EECTriangleOPELogIdId___getstate_internal__)
+    __setstate_internal__ = _swig_new_instance_method(_eec.EECTriangleOPELogIdId___setstate_internal__)
+
+    _default_args = ((1, 1, 1),)
 
 
 # Register EECTriangleOPELogIdId in _eec:
@@ -1374,7 +1354,12 @@ class EECTriangleOPEIdLogId(EECBase, EECHist3DIdLogId):
     add = _swig_new_instance_method(_eec.EECTriangleOPEIdLogId_add)
 
     def __repr__(self):
-        return self.description()
+        return self.description().decode('utf-8')
+
+    __getstate_internal__ = _swig_new_instance_method(_eec.EECTriangleOPEIdLogId___getstate_internal__)
+    __setstate_internal__ = _swig_new_instance_method(_eec.EECTriangleOPEIdLogId___setstate_internal__)
+
+    _default_args = ((1, 1, 1),)
 
 
 # Register EECTriangleOPEIdLogId in _eec:
@@ -1397,7 +1382,12 @@ class EECTriangleOPELogLogId(EECBase, EECHist3DLogLogId):
     add = _swig_new_instance_method(_eec.EECTriangleOPELogLogId_add)
 
     def __repr__(self):
-        return self.description()
+        return self.description().decode('utf-8')
+
+    __getstate_internal__ = _swig_new_instance_method(_eec.EECTriangleOPELogLogId___getstate_internal__)
+    __setstate_internal__ = _swig_new_instance_method(_eec.EECTriangleOPELogLogId___setstate_internal__)
+
+    _default_args = ((1, 1, 1),)
 
 
 # Register EECTriangleOPELogLogId in _eec:

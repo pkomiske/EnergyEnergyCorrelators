@@ -122,8 +122,12 @@ constexpr bool HAS_SERIALIZATION_SUPPORT =
 
 // these should be accessed using the below functions
 #ifndef SWIG_PREPROCESSOR
-  static ArchiveFormat archform_ = HAS_SERIALIZATION_SUPPORT ? ArchiveFormat::Text : ArchiveFormat::NotSupported;
-  static CompressionMode compmode_ = HAS_SERIALIZATION_SUPPORT ? CompressionMode::Auto : CompressionMode::NotSupported;
+  static ArchiveFormat archform_ = HAS_SERIALIZATION_SUPPORT ?
+                                   ArchiveFormat::Text :
+                                   ArchiveFormat::NotSupported;
+  static CompressionMode compmode_ = HAS_SERIALIZATION_SUPPORT ? 
+                                     CompressionMode::Auto :
+                                     CompressionMode::NotSupported;
 #endif
 
 //-----------------------------------------------------------------------------

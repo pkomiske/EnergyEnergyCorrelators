@@ -53,7 +53,7 @@ FASTJET_ERRORS_AS_PYTHON_EXCEPTIONS(eec)
 #ifdef EEC_SERIALIZATION
 %{
 // needed to ensure bytes are returned 
-#define SWIG_PYTHON_STRICT_BYTE_CHAR}
+#define SWIG_PYTHON_STRICT_BYTE_CHAR
 %}
 %define ADD_REPR_FROM_DECODED_DESCRIPTION
   %pythoncode %{
