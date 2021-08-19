@@ -207,16 +207,16 @@ public:
 
   // access number of events that each thread has seen
   // thread -1 means total all events
-  std::size_t event_counter(int thread = -1) const {
+  std::size_t event_count(int thread = -1) const {
     if (thread >= 0)
-      return event_counters_[thread];
+      return event_counts_[thread];
 
     // thread == -1 means return the sum
-    std::size_t event_count(0);
-    for (std::size_t count : event_counters_)
-      event_count += count;
+    std::size_t tot_count(0);
+    for (std::size_t count : event_counts_)
+      tot_count += count;
 
-    return event_count;
+    return tot_count;
   }
 
   //////////////////////////
@@ -375,7 +375,7 @@ public:
         variance_bound()                    != rhs.variance_bound()                    ||
         variance_bound_includes_overflows() != rhs.variance_bound_includes_overflows() ||
         num_threads()                       != rhs.num_threads()                       ||
-        event_counter()                     != rhs.event_counter()                     ||
+        event_count()                     != rhs.event_count()                     ||
         nhists()                            != rhs.nhists())
       return false;
 
@@ -413,7 +413,7 @@ public:
     }
 
     // include events that rhs has seen in overall event counter
-    event_counters_[0] += rhs.event_counter();
+    event_counts_[0] += rhs.event_count();
 
     return *this;
   }
@@ -619,7 +619,7 @@ private:
 
     // iterate over pairs of simple_hist bins
     axis::index_type extra(overflows ? 1 : 0);
-    const double event_count(event_counter());
+    const double count(event_count());
     for (auto && x : bh::indexed(covariance_hist, get_coverage(overflows))) {
       if (x->value() == 0) continue;
 
@@ -635,7 +635,7 @@ private:
       }
 
       // only upper triangular covariance was stored, so ensure we yield correct symmetric result
-      double cov(x->value() - hist[hist_inds[0]].value()*hist[hist_inds[1]].value()/event_count);
+      double cov(x->value() - hist[hist_inds[0]].value()*hist[hist_inds[1]].value()/count);
       if (ind == indT)
         covariance[ind] = cov;
       else {
@@ -705,7 +705,7 @@ protected:
   void fill_from_single_event(int thread) {
 
     // increment number of events for this thread
-    event_counters_[thread]++;
+    event_counts_[thread]++;
 
     // for each histogram
     for (unsigned hist_i = 0; hist_i < nhists(); hist_i++) {
@@ -817,13 +817,13 @@ private:
   // these upper bound the variance of the central EEC value
   std::vector<std::vector<SimpleWeightedHist>> variance_bound_hists_;
 
-  std::vector<std::size_t> event_counters_;
+  std::vector<std::size_t> event_counts_;
   int num_threads_;
   bool track_covariance_, variance_bound_, variance_bound_includes_overflows_;
 
   void init(unsigned nhists, bool events_allowed = false) {
-    event_counters_.resize(num_threads(), 0);
-    if (!events_allowed && event_counter() != 0)
+    event_counts_.resize(num_threads(), 0);
+    if (!events_allowed && event_count() != 0)
       throw std::runtime_error("cannot alter hist settings after computing on some events");
 
     hists_.clear();
@@ -859,7 +859,7 @@ private:
   #ifdef EEC_SERIALIZATION
     template<class Archive>
     void save(Archive & ar, const unsigned int version) const {
-      ar & num_threads_ & nhists() & event_counters_
+      ar & num_threads_ & nhists() & event_counts_
          & track_covariance_
          & variance_bound_  & variance_bound_includes_overflows_;
 
@@ -878,7 +878,7 @@ private:
     template<class Archive>
     void load(Archive & ar, const unsigned int version) {
       std::size_t nh;
-      ar & num_threads_ & nh & event_counters_
+      ar & num_threads_ & nh & event_counts_
          & track_covariance_
          & variance_bound_ & variance_bound_includes_overflows_;
 

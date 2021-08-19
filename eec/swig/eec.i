@@ -107,16 +107,19 @@ using namespace fastjet::contrib::eec::hist;
 
 %define CPP_SERIALIZATION_FUNCTIONS
   std::string __getstate_internal__() {
+    if (!EEC_NAMESPACE::HAS_SERIALIZATION_SUPPORT)
+      throw std::runtime_error("serialization not supported");
+
     std::ostringstream oss;
     $self->save(oss);
     return oss.str();
   }
 
   void __setstate_internal__(const std::string & state) {
-    std::istringstream iss(state);
-    if (!iss.good())
-      throw std::runtime_error("problem creating istringstream from provided state");
+    if (!EEC_NAMESPACE::HAS_SERIALIZATION_SUPPORT)
+      throw std::runtime_error("serialization not supported");
 
+    std::istringstream iss(state);
     $self->load(iss);
   }
 %enddef
@@ -442,7 +445,7 @@ namespace EEC_NAMESPACE {
                 'axes_range': tuple(self.axis_range(i) for i in range(self.rank())),
                 'rank': self.rank(),
                 'nhists': self.nhists(),
-                'event_count': self.event_counter(),
+                'event_count': self.event_count(),
 
                 'track_covariance': self.track_covariance(),
                 'variance_bound': self.variance_bound(),

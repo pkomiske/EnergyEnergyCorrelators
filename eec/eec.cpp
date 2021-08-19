@@ -5901,7 +5901,7 @@ SWIGINTERN void fastjet_contrib_eec_hist_EECHist1D_Sl_axis_id_Sg__npy_get_hist_v
   if (*arr_out1 == NULL)
     throw std::runtime_error("failed to allocate " + std::to_string(nbytes1) + " bytes");
 /*@SWIG@*/
-        /*@SWIG:eec/swig/eec.i,130,GET_HIST_TWO_QUANTITIES@*/
+        /*@SWIG:eec/swig/eec.i,133,GET_HIST_TWO_QUANTITIES@*/
   try {
     self->get_hist_vars(*arr_out0, *arr_out1, hist_i, overflows);
   }
@@ -5922,7 +5922,7 @@ SWIGINTERN void fastjet_contrib_eec_hist_EECHist1D_Sl_axis_id_Sg__npy_get_covari
   if (*arr_out0 == NULL)
     throw std::runtime_error("failed to allocate " + std::to_string(nbytes0) + " bytes");
 /*@SWIG@*/
-        /*@SWIG:eec/swig/eec.i,141,GET_HIST_ONE_QUANTITY@*/
+        /*@SWIG:eec/swig/eec.i,144,GET_HIST_ONE_QUANTITY@*/
   try {
     self->get_covariance(*arr_out0, hist_i, overflows);
   }
@@ -5940,7 +5940,7 @@ SWIGINTERN void fastjet_contrib_eec_hist_EECHist1D_Sl_axis_id_Sg__npy_get_varian
   if (*arr_out0 == NULL)
     throw std::runtime_error("failed to allocate " + std::to_string(nbytes0) + " bytes");
 /*@SWIG@*/
-        /*@SWIG:eec/swig/eec.i,141,GET_HIST_ONE_QUANTITY@*/
+        /*@SWIG:eec/swig/eec.i,144,GET_HIST_ONE_QUANTITY@*/
   try {
     self->get_variance_bound(*arr_out0, hist_i, overflows);
   }
@@ -5965,7 +5965,7 @@ SWIGINTERN void fastjet_contrib_eec_hist_EECHist1D_Sl_axis_log_Sg__npy_get_hist_
   if (*arr_out1 == NULL)
     throw std::runtime_error("failed to allocate " + std::to_string(nbytes1) + " bytes");
 /*@SWIG@*/
-        /*@SWIG:eec/swig/eec.i,130,GET_HIST_TWO_QUANTITIES@*/
+        /*@SWIG:eec/swig/eec.i,133,GET_HIST_TWO_QUANTITIES@*/
   try {
     self->get_hist_vars(*arr_out0, *arr_out1, hist_i, overflows);
   }
@@ -5986,7 +5986,7 @@ SWIGINTERN void fastjet_contrib_eec_hist_EECHist1D_Sl_axis_log_Sg__npy_get_covar
   if (*arr_out0 == NULL)
     throw std::runtime_error("failed to allocate " + std::to_string(nbytes0) + " bytes");
 /*@SWIG@*/
-        /*@SWIG:eec/swig/eec.i,141,GET_HIST_ONE_QUANTITY@*/
+        /*@SWIG:eec/swig/eec.i,144,GET_HIST_ONE_QUANTITY@*/
   try {
     self->get_covariance(*arr_out0, hist_i, overflows);
   }
@@ -6004,7 +6004,7 @@ SWIGINTERN void fastjet_contrib_eec_hist_EECHist1D_Sl_axis_log_Sg__npy_get_varia
   if (*arr_out0 == NULL)
     throw std::runtime_error("failed to allocate " + std::to_string(nbytes0) + " bytes");
 /*@SWIG@*/
-        /*@SWIG:eec/swig/eec.i,141,GET_HIST_ONE_QUANTITY@*/
+        /*@SWIG:eec/swig/eec.i,144,GET_HIST_ONE_QUANTITY@*/
   try {
     self->get_variance_bound(*arr_out0, hist_i, overflows);
   }
@@ -6037,7 +6037,7 @@ SWIGINTERN void fastjet_contrib_eec_hist_EECHist3D_Sl_axis_id_Sc_axis_id_Sc_axis
 /*@SWIG@*/
 
 
-        /*@SWIG:eec/swig/eec.i,130,GET_HIST_TWO_QUANTITIES@*/
+        /*@SWIG:eec/swig/eec.i,133,GET_HIST_TWO_QUANTITIES@*/
   try {
     self->get_hist_vars(*arr_out0, *arr_out1, hist_i, overflows);
   }
@@ -6068,7 +6068,7 @@ SWIGINTERN void fastjet_contrib_eec_hist_EECHist3D_Sl_axis_id_Sc_axis_id_Sc_axis
 
 
 
-        /*@SWIG:eec/swig/eec.i,141,GET_HIST_ONE_QUANTITY@*/
+        /*@SWIG:eec/swig/eec.i,144,GET_HIST_ONE_QUANTITY@*/
   try {
     self->get_covariance(*arr_out0, hist_i, overflows);
   }
@@ -6090,7 +6090,7 @@ SWIGINTERN void fastjet_contrib_eec_hist_EECHist3D_Sl_axis_id_Sc_axis_id_Sc_axis
 /*@SWIG@*/
 
 
-        /*@SWIG:eec/swig/eec.i,141,GET_HIST_ONE_QUANTITY@*/
+        /*@SWIG:eec/swig/eec.i,144,GET_HIST_ONE_QUANTITY@*/
   try {
     self->get_variance_bound(*arr_out0, hist_i, overflows);
   }
@@ -6123,7 +6123,7 @@ SWIGINTERN void fastjet_contrib_eec_hist_EECHist3D_Sl_axis_log_Sc_axis_id_Sc_axi
 /*@SWIG@*/
 
 
-        /*@SWIG:eec/swig/eec.i,130,GET_HIST_TWO_QUANTITIES@*/
+        /*@SWIG:eec/swig/eec.i,133,GET_HIST_TWO_QUANTITIES@*/
   try {
     self->get_hist_vars(*arr_out0, *arr_out1, hist_i, overflows);
   }
@@ -6154,7 +6154,7 @@ SWIGINTERN void fastjet_contrib_eec_hist_EECHist3D_Sl_axis_log_Sc_axis_id_Sc_axi
 
 
 
-        /*@SWIG:eec/swig/eec.i,141,GET_HIST_ONE_QUANTITY@*/
+        /*@SWIG:eec/swig/eec.i,144,GET_HIST_ONE_QUANTITY@*/
   try {
     self->get_covariance(*arr_out0, hist_i, overflows);
   }
@@ -6176,7 +6176,7 @@ SWIGINTERN void fastjet_contrib_eec_hist_EECHist3D_Sl_axis_log_Sc_axis_id_Sc_axi
 /*@SWIG@*/
 
 
-        /*@SWIG:eec/swig/eec.i,141,GET_HIST_ONE_QUANTITY@*/
+        /*@SWIG:eec/swig/eec.i,144,GET_HIST_ONE_QUANTITY@*/
   try {
     self->get_variance_bound(*arr_out0, hist_i, overflows);
   }
@@ -6209,7 +6209,7 @@ SWIGINTERN void fastjet_contrib_eec_hist_EECHist3D_Sl_axis_id_Sc_axis_log_Sc_axi
 /*@SWIG@*/
 
 
-        /*@SWIG:eec/swig/eec.i,130,GET_HIST_TWO_QUANTITIES@*/
+        /*@SWIG:eec/swig/eec.i,133,GET_HIST_TWO_QUANTITIES@*/
   try {
     self->get_hist_vars(*arr_out0, *arr_out1, hist_i, overflows);
   }
@@ -6240,7 +6240,7 @@ SWIGINTERN void fastjet_contrib_eec_hist_EECHist3D_Sl_axis_id_Sc_axis_log_Sc_axi
 
 
 
-        /*@SWIG:eec/swig/eec.i,141,GET_HIST_ONE_QUANTITY@*/
+        /*@SWIG:eec/swig/eec.i,144,GET_HIST_ONE_QUANTITY@*/
   try {
     self->get_covariance(*arr_out0, hist_i, overflows);
   }
@@ -6262,7 +6262,7 @@ SWIGINTERN void fastjet_contrib_eec_hist_EECHist3D_Sl_axis_id_Sc_axis_log_Sc_axi
 /*@SWIG@*/
 
 
-        /*@SWIG:eec/swig/eec.i,141,GET_HIST_ONE_QUANTITY@*/
+        /*@SWIG:eec/swig/eec.i,144,GET_HIST_ONE_QUANTITY@*/
   try {
     self->get_variance_bound(*arr_out0, hist_i, overflows);
   }
@@ -6295,7 +6295,7 @@ SWIGINTERN void fastjet_contrib_eec_hist_EECHist3D_Sl_axis_log_Sc_axis_log_Sc_ax
 /*@SWIG@*/
 
 
-        /*@SWIG:eec/swig/eec.i,130,GET_HIST_TWO_QUANTITIES@*/
+        /*@SWIG:eec/swig/eec.i,133,GET_HIST_TWO_QUANTITIES@*/
   try {
     self->get_hist_vars(*arr_out0, *arr_out1, hist_i, overflows);
   }
@@ -6326,7 +6326,7 @@ SWIGINTERN void fastjet_contrib_eec_hist_EECHist3D_Sl_axis_log_Sc_axis_log_Sc_ax
 
 
 
-        /*@SWIG:eec/swig/eec.i,141,GET_HIST_ONE_QUANTITY@*/
+        /*@SWIG:eec/swig/eec.i,144,GET_HIST_ONE_QUANTITY@*/
   try {
     self->get_covariance(*arr_out0, hist_i, overflows);
   }
@@ -6348,7 +6348,7 @@ SWIGINTERN void fastjet_contrib_eec_hist_EECHist3D_Sl_axis_log_Sc_axis_log_Sc_ax
 /*@SWIG@*/
 
 
-        /*@SWIG:eec/swig/eec.i,141,GET_HIST_ONE_QUANTITY@*/
+        /*@SWIG:eec/swig/eec.i,144,GET_HIST_ONE_QUANTITY@*/
   try {
     self->get_variance_bound(*arr_out0, hist_i, overflows);
   }
@@ -6877,6 +6877,9 @@ SWIGINTERN void fastjet_contrib_eec_EECLongestSide_Sl_axis_id_Sg__add(fastjet::c
     self->operator+=(rhs);
   }
 SWIGINTERN std::string fastjet_contrib_eec_EECLongestSide_Sl_axis_id_Sg____getstate_internal__(fastjet::contrib::eec::EECLongestSide< axis::id > *self){
+    if (!fastjet::contrib::eec::HAS_SERIALIZATION_SUPPORT)
+      throw std::runtime_error("serialization not supported");
+
     std::ostringstream oss;
     self->save(oss);
     return oss.str();
@@ -7022,85 +7025,100 @@ SWIG_AsPtr_std_string (PyObject * obj, std::string **val)
 }
 
 SWIGINTERN void fastjet_contrib_eec_EECLongestSide_Sl_axis_id_Sg____setstate_internal__(fastjet::contrib::eec::EECLongestSide< axis::id > *self,std::string const &state){
-    std::istringstream iss(state);
-    if (!iss.good())
-      throw std::runtime_error("problem creating istringstream from provided state");
+    if (!fastjet::contrib::eec::HAS_SERIALIZATION_SUPPORT)
+      throw std::runtime_error("serialization not supported");
 
+    std::istringstream iss(state);
     self->load(iss);
   }
 SWIGINTERN void fastjet_contrib_eec_EECLongestSide_Sl_axis_log_Sg__add(fastjet::contrib::eec::EECLongestSide< axis::log > *self,fastjet::contrib::eec::EECLongestSide< axis::log > const &rhs){
     self->operator+=(rhs);
   }
 SWIGINTERN std::string fastjet_contrib_eec_EECLongestSide_Sl_axis_log_Sg____getstate_internal__(fastjet::contrib::eec::EECLongestSide< axis::log > *self){
+    if (!fastjet::contrib::eec::HAS_SERIALIZATION_SUPPORT)
+      throw std::runtime_error("serialization not supported");
+
     std::ostringstream oss;
     self->save(oss);
     return oss.str();
   }
 SWIGINTERN void fastjet_contrib_eec_EECLongestSide_Sl_axis_log_Sg____setstate_internal__(fastjet::contrib::eec::EECLongestSide< axis::log > *self,std::string const &state){
-    std::istringstream iss(state);
-    if (!iss.good())
-      throw std::runtime_error("problem creating istringstream from provided state");
+    if (!fastjet::contrib::eec::HAS_SERIALIZATION_SUPPORT)
+      throw std::runtime_error("serialization not supported");
 
+    std::istringstream iss(state);
     self->load(iss);
   }
 SWIGINTERN void fastjet_contrib_eec_EECTriangleOPE_Sl_axis_id_Sc_axis_id_Sc_axis_id_Sg__add(fastjet::contrib::eec::EECTriangleOPE< axis::id,axis::id,axis::id > *self,fastjet::contrib::eec::EECTriangleOPE< axis::id,axis::id,axis::id > const &rhs){
     self->operator+=(rhs);
   }
 SWIGINTERN std::string fastjet_contrib_eec_EECTriangleOPE_Sl_axis_id_Sc_axis_id_Sc_axis_id_Sg____getstate_internal__(fastjet::contrib::eec::EECTriangleOPE< axis::id,axis::id,axis::id > *self){
+    if (!fastjet::contrib::eec::HAS_SERIALIZATION_SUPPORT)
+      throw std::runtime_error("serialization not supported");
+
     std::ostringstream oss;
     self->save(oss);
     return oss.str();
   }
 SWIGINTERN void fastjet_contrib_eec_EECTriangleOPE_Sl_axis_id_Sc_axis_id_Sc_axis_id_Sg____setstate_internal__(fastjet::contrib::eec::EECTriangleOPE< axis::id,axis::id,axis::id > *self,std::string const &state){
-    std::istringstream iss(state);
-    if (!iss.good())
-      throw std::runtime_error("problem creating istringstream from provided state");
+    if (!fastjet::contrib::eec::HAS_SERIALIZATION_SUPPORT)
+      throw std::runtime_error("serialization not supported");
 
+    std::istringstream iss(state);
     self->load(iss);
   }
 SWIGINTERN void fastjet_contrib_eec_EECTriangleOPE_Sl_axis_log_Sc_axis_id_Sc_axis_id_Sg__add(fastjet::contrib::eec::EECTriangleOPE< axis::log,axis::id,axis::id > *self,fastjet::contrib::eec::EECTriangleOPE< axis::log,axis::id,axis::id > const &rhs){
     self->operator+=(rhs);
   }
 SWIGINTERN std::string fastjet_contrib_eec_EECTriangleOPE_Sl_axis_log_Sc_axis_id_Sc_axis_id_Sg____getstate_internal__(fastjet::contrib::eec::EECTriangleOPE< axis::log,axis::id,axis::id > *self){
+    if (!fastjet::contrib::eec::HAS_SERIALIZATION_SUPPORT)
+      throw std::runtime_error("serialization not supported");
+
     std::ostringstream oss;
     self->save(oss);
     return oss.str();
   }
 SWIGINTERN void fastjet_contrib_eec_EECTriangleOPE_Sl_axis_log_Sc_axis_id_Sc_axis_id_Sg____setstate_internal__(fastjet::contrib::eec::EECTriangleOPE< axis::log,axis::id,axis::id > *self,std::string const &state){
-    std::istringstream iss(state);
-    if (!iss.good())
-      throw std::runtime_error("problem creating istringstream from provided state");
+    if (!fastjet::contrib::eec::HAS_SERIALIZATION_SUPPORT)
+      throw std::runtime_error("serialization not supported");
 
+    std::istringstream iss(state);
     self->load(iss);
   }
 SWIGINTERN void fastjet_contrib_eec_EECTriangleOPE_Sl_axis_id_Sc_axis_log_Sc_axis_id_Sg__add(fastjet::contrib::eec::EECTriangleOPE< axis::id,axis::log,axis::id > *self,fastjet::contrib::eec::EECTriangleOPE< axis::id,axis::log,axis::id > const &rhs){
     self->operator+=(rhs);
   }
 SWIGINTERN std::string fastjet_contrib_eec_EECTriangleOPE_Sl_axis_id_Sc_axis_log_Sc_axis_id_Sg____getstate_internal__(fastjet::contrib::eec::EECTriangleOPE< axis::id,axis::log,axis::id > *self){
+    if (!fastjet::contrib::eec::HAS_SERIALIZATION_SUPPORT)
+      throw std::runtime_error("serialization not supported");
+
     std::ostringstream oss;
     self->save(oss);
     return oss.str();
   }
 SWIGINTERN void fastjet_contrib_eec_EECTriangleOPE_Sl_axis_id_Sc_axis_log_Sc_axis_id_Sg____setstate_internal__(fastjet::contrib::eec::EECTriangleOPE< axis::id,axis::log,axis::id > *self,std::string const &state){
-    std::istringstream iss(state);
-    if (!iss.good())
-      throw std::runtime_error("problem creating istringstream from provided state");
+    if (!fastjet::contrib::eec::HAS_SERIALIZATION_SUPPORT)
+      throw std::runtime_error("serialization not supported");
 
+    std::istringstream iss(state);
     self->load(iss);
   }
 SWIGINTERN void fastjet_contrib_eec_EECTriangleOPE_Sl_axis_log_Sc_axis_log_Sc_axis_id_Sg__add(fastjet::contrib::eec::EECTriangleOPE< axis::log,axis::log,axis::id > *self,fastjet::contrib::eec::EECTriangleOPE< axis::log,axis::log,axis::id > const &rhs){
     self->operator+=(rhs);
   }
 SWIGINTERN std::string fastjet_contrib_eec_EECTriangleOPE_Sl_axis_log_Sc_axis_log_Sc_axis_id_Sg____getstate_internal__(fastjet::contrib::eec::EECTriangleOPE< axis::log,axis::log,axis::id > *self){
+    if (!fastjet::contrib::eec::HAS_SERIALIZATION_SUPPORT)
+      throw std::runtime_error("serialization not supported");
+
     std::ostringstream oss;
     self->save(oss);
     return oss.str();
   }
 SWIGINTERN void fastjet_contrib_eec_EECTriangleOPE_Sl_axis_log_Sc_axis_log_Sc_axis_id_Sg____setstate_internal__(fastjet::contrib::eec::EECTriangleOPE< axis::log,axis::log,axis::id > *self,std::string const &state){
-    std::istringstream iss(state);
-    if (!iss.good())
-      throw std::runtime_error("problem creating istringstream from provided state");
+    if (!fastjet::contrib::eec::HAS_SERIALIZATION_SUPPORT)
+      throw std::runtime_error("serialization not supported");
 
+    std::istringstream iss(state);
     self->load(iss);
   }
 #ifdef __cplusplus
@@ -29260,7 +29278,7 @@ fail:
 }
 
 
-SWIGINTERN PyObject *_wrap_EECHistBase1DId_event_counter(PyObject *SWIGUNUSEDPARM(self), PyObject *args, PyObject *kwargs) {
+SWIGINTERN PyObject *_wrap_EECHistBase1DId_event_count(PyObject *SWIGUNUSEDPARM(self), PyObject *args, PyObject *kwargs) {
   PyObject *resultobj = 0;
   fastjet::contrib::eec::hist::EECHistBase< fastjet::contrib::eec::hist::EECHist1D< axis::id > > *arg1 = (fastjet::contrib::eec::hist::EECHistBase< fastjet::contrib::eec::hist::EECHist1D< axis::id > > *) 0 ;
   int arg2 = (int) -1 ;
@@ -29275,22 +29293,22 @@ SWIGINTERN PyObject *_wrap_EECHistBase1DId_event_counter(PyObject *SWIGUNUSEDPAR
   };
   std::size_t result;
   
-  if (!PyArg_ParseTupleAndKeywords(args, kwargs, "O|O:EECHistBase1DId_event_counter", kwnames, &obj0, &obj1)) SWIG_fail;
+  if (!PyArg_ParseTupleAndKeywords(args, kwargs, "O|O:EECHistBase1DId_event_count", kwnames, &obj0, &obj1)) SWIG_fail;
   res1 = SWIG_ConvertPtr(obj0, &argp1,SWIGTYPE_p_fastjet__contrib__eec__hist__EECHistBaseT_fastjet__contrib__eec__hist__EECHist1DT_axis__id_t_t, 0 |  0 );
   if (!SWIG_IsOK(res1)) {
-    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "EECHistBase1DId_event_counter" "', argument " "1"" of type '" "fastjet::contrib::eec::hist::EECHistBase< fastjet::contrib::eec::hist::EECHist1D< axis::id > > const *""'"); 
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "EECHistBase1DId_event_count" "', argument " "1"" of type '" "fastjet::contrib::eec::hist::EECHistBase< fastjet::contrib::eec::hist::EECHist1D< axis::id > > const *""'"); 
   }
   arg1 = reinterpret_cast< fastjet::contrib::eec::hist::EECHistBase< fastjet::contrib::eec::hist::EECHist1D< axis::id > > * >(argp1);
   if (obj1) {
     ecode2 = SWIG_AsVal_int(obj1, &val2);
     if (!SWIG_IsOK(ecode2)) {
-      SWIG_exception_fail(SWIG_ArgError(ecode2), "in method '" "EECHistBase1DId_event_counter" "', argument " "2"" of type '" "int""'");
+      SWIG_exception_fail(SWIG_ArgError(ecode2), "in method '" "EECHistBase1DId_event_count" "', argument " "2"" of type '" "int""'");
     } 
     arg2 = static_cast< int >(val2);
   }
   {
     try {
-      result = ((fastjet::contrib::eec::hist::EECHistBase< fastjet::contrib::eec::hist::EECHist1D< axis::id > > const *)arg1)->event_counter(arg2); 
+      result = ((fastjet::contrib::eec::hist::EECHistBase< fastjet::contrib::eec::hist::EECHist1D< axis::id > > const *)arg1)->event_count(arg2); 
     }
     /*@SWIG:/usr/local/Cellar/swig/4.0.2/share/swig/4.0.2/typemaps/exception.swg,58,SWIG_CATCH_STDEXCEPT@*/  /* catching std::exception  */
     catch (std::invalid_argument& e) {
@@ -31506,7 +31524,7 @@ fail:
 }
 
 
-SWIGINTERN PyObject *_wrap_EECHistBase1DLog_event_counter(PyObject *SWIGUNUSEDPARM(self), PyObject *args, PyObject *kwargs) {
+SWIGINTERN PyObject *_wrap_EECHistBase1DLog_event_count(PyObject *SWIGUNUSEDPARM(self), PyObject *args, PyObject *kwargs) {
   PyObject *resultobj = 0;
   fastjet::contrib::eec::hist::EECHistBase< fastjet::contrib::eec::hist::EECHist1D< axis::log > > *arg1 = (fastjet::contrib::eec::hist::EECHistBase< fastjet::contrib::eec::hist::EECHist1D< axis::log > > *) 0 ;
   int arg2 = (int) -1 ;
@@ -31521,22 +31539,22 @@ SWIGINTERN PyObject *_wrap_EECHistBase1DLog_event_counter(PyObject *SWIGUNUSEDPA
   };
   std::size_t result;
   
-  if (!PyArg_ParseTupleAndKeywords(args, kwargs, "O|O:EECHistBase1DLog_event_counter", kwnames, &obj0, &obj1)) SWIG_fail;
+  if (!PyArg_ParseTupleAndKeywords(args, kwargs, "O|O:EECHistBase1DLog_event_count", kwnames, &obj0, &obj1)) SWIG_fail;
   res1 = SWIG_ConvertPtr(obj0, &argp1,SWIGTYPE_p_fastjet__contrib__eec__hist__EECHistBaseT_fastjet__contrib__eec__hist__EECHist1DT_axis__log_t_t, 0 |  0 );
   if (!SWIG_IsOK(res1)) {
-    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "EECHistBase1DLog_event_counter" "', argument " "1"" of type '" "fastjet::contrib::eec::hist::EECHistBase< fastjet::contrib::eec::hist::EECHist1D< axis::log > > const *""'"); 
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "EECHistBase1DLog_event_count" "', argument " "1"" of type '" "fastjet::contrib::eec::hist::EECHistBase< fastjet::contrib::eec::hist::EECHist1D< axis::log > > const *""'"); 
   }
   arg1 = reinterpret_cast< fastjet::contrib::eec::hist::EECHistBase< fastjet::contrib::eec::hist::EECHist1D< axis::log > > * >(argp1);
   if (obj1) {
     ecode2 = SWIG_AsVal_int(obj1, &val2);
     if (!SWIG_IsOK(ecode2)) {
-      SWIG_exception_fail(SWIG_ArgError(ecode2), "in method '" "EECHistBase1DLog_event_counter" "', argument " "2"" of type '" "int""'");
+      SWIG_exception_fail(SWIG_ArgError(ecode2), "in method '" "EECHistBase1DLog_event_count" "', argument " "2"" of type '" "int""'");
     } 
     arg2 = static_cast< int >(val2);
   }
   {
     try {
-      result = ((fastjet::contrib::eec::hist::EECHistBase< fastjet::contrib::eec::hist::EECHist1D< axis::log > > const *)arg1)->event_counter(arg2); 
+      result = ((fastjet::contrib::eec::hist::EECHistBase< fastjet::contrib::eec::hist::EECHist1D< axis::log > > const *)arg1)->event_count(arg2); 
     }
     /*@SWIG:/usr/local/Cellar/swig/4.0.2/share/swig/4.0.2/typemaps/exception.swg,58,SWIG_CATCH_STDEXCEPT@*/  /* catching std::exception  */
     catch (std::invalid_argument& e) {
@@ -33752,7 +33770,7 @@ fail:
 }
 
 
-SWIGINTERN PyObject *_wrap_EECHistBaseIdIdId_event_counter(PyObject *SWIGUNUSEDPARM(self), PyObject *args, PyObject *kwargs) {
+SWIGINTERN PyObject *_wrap_EECHistBaseIdIdId_event_count(PyObject *SWIGUNUSEDPARM(self), PyObject *args, PyObject *kwargs) {
   PyObject *resultobj = 0;
   fastjet::contrib::eec::hist::EECHistBase< fastjet::contrib::eec::hist::EECHist3D< axis::id,axis::id,axis::id > > *arg1 = (fastjet::contrib::eec::hist::EECHistBase< fastjet::contrib::eec::hist::EECHist3D< axis::id,axis::id,axis::id > > *) 0 ;
   int arg2 = (int) -1 ;
@@ -33767,22 +33785,22 @@ SWIGINTERN PyObject *_wrap_EECHistBaseIdIdId_event_counter(PyObject *SWIGUNUSEDP
   };
   std::size_t result;
   
-  if (!PyArg_ParseTupleAndKeywords(args, kwargs, "O|O:EECHistBaseIdIdId_event_counter", kwnames, &obj0, &obj1)) SWIG_fail;
+  if (!PyArg_ParseTupleAndKeywords(args, kwargs, "O|O:EECHistBaseIdIdId_event_count", kwnames, &obj0, &obj1)) SWIG_fail;
   res1 = SWIG_ConvertPtr(obj0, &argp1,SWIGTYPE_p_fastjet__contrib__eec__hist__EECHistBaseT_fastjet__contrib__eec__hist__EECHist3DT_axis__id_axis__id_axis__id_t_t, 0 |  0 );
   if (!SWIG_IsOK(res1)) {
-    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "EECHistBaseIdIdId_event_counter" "', argument " "1"" of type '" "fastjet::contrib::eec::hist::EECHistBase< fastjet::contrib::eec::hist::EECHist3D< axis::id,axis::id,axis::id > > const *""'"); 
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "EECHistBaseIdIdId_event_count" "', argument " "1"" of type '" "fastjet::contrib::eec::hist::EECHistBase< fastjet::contrib::eec::hist::EECHist3D< axis::id,axis::id,axis::id > > const *""'"); 
   }
   arg1 = reinterpret_cast< fastjet::contrib::eec::hist::EECHistBase< fastjet::contrib::eec::hist::EECHist3D< axis::id,axis::id,axis::id > > * >(argp1);
   if (obj1) {
     ecode2 = SWIG_AsVal_int(obj1, &val2);
     if (!SWIG_IsOK(ecode2)) {
-      SWIG_exception_fail(SWIG_ArgError(ecode2), "in method '" "EECHistBaseIdIdId_event_counter" "', argument " "2"" of type '" "int""'");
+      SWIG_exception_fail(SWIG_ArgError(ecode2), "in method '" "EECHistBaseIdIdId_event_count" "', argument " "2"" of type '" "int""'");
     } 
     arg2 = static_cast< int >(val2);
   }
   {
     try {
-      result = ((fastjet::contrib::eec::hist::EECHistBase< fastjet::contrib::eec::hist::EECHist3D< axis::id,axis::id,axis::id > > const *)arg1)->event_counter(arg2); 
+      result = ((fastjet::contrib::eec::hist::EECHistBase< fastjet::contrib::eec::hist::EECHist3D< axis::id,axis::id,axis::id > > const *)arg1)->event_count(arg2); 
     }
     /*@SWIG:/usr/local/Cellar/swig/4.0.2/share/swig/4.0.2/typemaps/exception.swg,58,SWIG_CATCH_STDEXCEPT@*/  /* catching std::exception  */
     catch (std::invalid_argument& e) {
@@ -35998,7 +36016,7 @@ fail:
 }
 
 
-SWIGINTERN PyObject *_wrap_EECHistBaseLogIdId_event_counter(PyObject *SWIGUNUSEDPARM(self), PyObject *args, PyObject *kwargs) {
+SWIGINTERN PyObject *_wrap_EECHistBaseLogIdId_event_count(PyObject *SWIGUNUSEDPARM(self), PyObject *args, PyObject *kwargs) {
   PyObject *resultobj = 0;
   fastjet::contrib::eec::hist::EECHistBase< fastjet::contrib::eec::hist::EECHist3D< axis::log,axis::id,axis::id > > *arg1 = (fastjet::contrib::eec::hist::EECHistBase< fastjet::contrib::eec::hist::EECHist3D< axis::log,axis::id,axis::id > > *) 0 ;
   int arg2 = (int) -1 ;
@@ -36013,22 +36031,22 @@ SWIGINTERN PyObject *_wrap_EECHistBaseLogIdId_event_counter(PyObject *SWIGUNUSED
   };
   std::size_t result;
   
-  if (!PyArg_ParseTupleAndKeywords(args, kwargs, "O|O:EECHistBaseLogIdId_event_counter", kwnames, &obj0, &obj1)) SWIG_fail;
+  if (!PyArg_ParseTupleAndKeywords(args, kwargs, "O|O:EECHistBaseLogIdId_event_count", kwnames, &obj0, &obj1)) SWIG_fail;
   res1 = SWIG_ConvertPtr(obj0, &argp1,SWIGTYPE_p_fastjet__contrib__eec__hist__EECHistBaseT_fastjet__contrib__eec__hist__EECHist3DT_axis__log_axis__id_axis__id_t_t, 0 |  0 );
   if (!SWIG_IsOK(res1)) {
-    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "EECHistBaseLogIdId_event_counter" "', argument " "1"" of type '" "fastjet::contrib::eec::hist::EECHistBase< fastjet::contrib::eec::hist::EECHist3D< axis::log,axis::id,axis::id > > const *""'"); 
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "EECHistBaseLogIdId_event_count" "', argument " "1"" of type '" "fastjet::contrib::eec::hist::EECHistBase< fastjet::contrib::eec::hist::EECHist3D< axis::log,axis::id,axis::id > > const *""'"); 
   }
   arg1 = reinterpret_cast< fastjet::contrib::eec::hist::EECHistBase< fastjet::contrib::eec::hist::EECHist3D< axis::log,axis::id,axis::id > > * >(argp1);
   if (obj1) {
     ecode2 = SWIG_AsVal_int(obj1, &val2);
     if (!SWIG_IsOK(ecode2)) {
-      SWIG_exception_fail(SWIG_ArgError(ecode2), "in method '" "EECHistBaseLogIdId_event_counter" "', argument " "2"" of type '" "int""'");
+      SWIG_exception_fail(SWIG_ArgError(ecode2), "in method '" "EECHistBaseLogIdId_event_count" "', argument " "2"" of type '" "int""'");
     } 
     arg2 = static_cast< int >(val2);
   }
   {
     try {
-      result = ((fastjet::contrib::eec::hist::EECHistBase< fastjet::contrib::eec::hist::EECHist3D< axis::log,axis::id,axis::id > > const *)arg1)->event_counter(arg2); 
+      result = ((fastjet::contrib::eec::hist::EECHistBase< fastjet::contrib::eec::hist::EECHist3D< axis::log,axis::id,axis::id > > const *)arg1)->event_count(arg2); 
     }
     /*@SWIG:/usr/local/Cellar/swig/4.0.2/share/swig/4.0.2/typemaps/exception.swg,58,SWIG_CATCH_STDEXCEPT@*/  /* catching std::exception  */
     catch (std::invalid_argument& e) {
@@ -38244,7 +38262,7 @@ fail:
 }
 
 
-SWIGINTERN PyObject *_wrap_EECHistBaseIdLogId_event_counter(PyObject *SWIGUNUSEDPARM(self), PyObject *args, PyObject *kwargs) {
+SWIGINTERN PyObject *_wrap_EECHistBaseIdLogId_event_count(PyObject *SWIGUNUSEDPARM(self), PyObject *args, PyObject *kwargs) {
   PyObject *resultobj = 0;
   fastjet::contrib::eec::hist::EECHistBase< fastjet::contrib::eec::hist::EECHist3D< axis::id,axis::log,axis::id > > *arg1 = (fastjet::contrib::eec::hist::EECHistBase< fastjet::contrib::eec::hist::EECHist3D< axis::id,axis::log,axis::id > > *) 0 ;
   int arg2 = (int) -1 ;
@@ -38259,22 +38277,22 @@ SWIGINTERN PyObject *_wrap_EECHistBaseIdLogId_event_counter(PyObject *SWIGUNUSED
   };
   std::size_t result;
   
-  if (!PyArg_ParseTupleAndKeywords(args, kwargs, "O|O:EECHistBaseIdLogId_event_counter", kwnames, &obj0, &obj1)) SWIG_fail;
+  if (!PyArg_ParseTupleAndKeywords(args, kwargs, "O|O:EECHistBaseIdLogId_event_count", kwnames, &obj0, &obj1)) SWIG_fail;
   res1 = SWIG_ConvertPtr(obj0, &argp1,SWIGTYPE_p_fastjet__contrib__eec__hist__EECHistBaseT_fastjet__contrib__eec__hist__EECHist3DT_axis__id_axis__log_axis__id_t_t, 0 |  0 );
   if (!SWIG_IsOK(res1)) {
-    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "EECHistBaseIdLogId_event_counter" "', argument " "1"" of type '" "fastjet::contrib::eec::hist::EECHistBase< fastjet::contrib::eec::hist::EECHist3D< axis::id,axis::log,axis::id > > const *""'"); 
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "EECHistBaseIdLogId_event_count" "', argument " "1"" of type '" "fastjet::contrib::eec::hist::EECHistBase< fastjet::contrib::eec::hist::EECHist3D< axis::id,axis::log,axis::id > > const *""'"); 
   }
   arg1 = reinterpret_cast< fastjet::contrib::eec::hist::EECHistBase< fastjet::contrib::eec::hist::EECHist3D< axis::id,axis::log,axis::id > > * >(argp1);
   if (obj1) {
     ecode2 = SWIG_AsVal_int(obj1, &val2);
     if (!SWIG_IsOK(ecode2)) {
-      SWIG_exception_fail(SWIG_ArgError(ecode2), "in method '" "EECHistBaseIdLogId_event_counter" "', argument " "2"" of type '" "int""'");
+      SWIG_exception_fail(SWIG_ArgError(ecode2), "in method '" "EECHistBaseIdLogId_event_count" "', argument " "2"" of type '" "int""'");
     } 
     arg2 = static_cast< int >(val2);
   }
   {
     try {
-      result = ((fastjet::contrib::eec::hist::EECHistBase< fastjet::contrib::eec::hist::EECHist3D< axis::id,axis::log,axis::id > > const *)arg1)->event_counter(arg2); 
+      result = ((fastjet::contrib::eec::hist::EECHistBase< fastjet::contrib::eec::hist::EECHist3D< axis::id,axis::log,axis::id > > const *)arg1)->event_count(arg2); 
     }
     /*@SWIG:/usr/local/Cellar/swig/4.0.2/share/swig/4.0.2/typemaps/exception.swg,58,SWIG_CATCH_STDEXCEPT@*/  /* catching std::exception  */
     catch (std::invalid_argument& e) {
@@ -40490,7 +40508,7 @@ fail:
 }
 
 
-SWIGINTERN PyObject *_wrap_EECHistBaseLogLogId_event_counter(PyObject *SWIGUNUSEDPARM(self), PyObject *args, PyObject *kwargs) {
+SWIGINTERN PyObject *_wrap_EECHistBaseLogLogId_event_count(PyObject *SWIGUNUSEDPARM(self), PyObject *args, PyObject *kwargs) {
   PyObject *resultobj = 0;
   fastjet::contrib::eec::hist::EECHistBase< fastjet::contrib::eec::hist::EECHist3D< axis::log,axis::log,axis::id > > *arg1 = (fastjet::contrib::eec::hist::EECHistBase< fastjet::contrib::eec::hist::EECHist3D< axis::log,axis::log,axis::id > > *) 0 ;
   int arg2 = (int) -1 ;
@@ -40505,22 +40523,22 @@ SWIGINTERN PyObject *_wrap_EECHistBaseLogLogId_event_counter(PyObject *SWIGUNUSE
   };
   std::size_t result;
   
-  if (!PyArg_ParseTupleAndKeywords(args, kwargs, "O|O:EECHistBaseLogLogId_event_counter", kwnames, &obj0, &obj1)) SWIG_fail;
+  if (!PyArg_ParseTupleAndKeywords(args, kwargs, "O|O:EECHistBaseLogLogId_event_count", kwnames, &obj0, &obj1)) SWIG_fail;
   res1 = SWIG_ConvertPtr(obj0, &argp1,SWIGTYPE_p_fastjet__contrib__eec__hist__EECHistBaseT_fastjet__contrib__eec__hist__EECHist3DT_axis__log_axis__log_axis__id_t_t, 0 |  0 );
   if (!SWIG_IsOK(res1)) {
-    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "EECHistBaseLogLogId_event_counter" "', argument " "1"" of type '" "fastjet::contrib::eec::hist::EECHistBase< fastjet::contrib::eec::hist::EECHist3D< axis::log,axis::log,axis::id > > const *""'"); 
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "EECHistBaseLogLogId_event_count" "', argument " "1"" of type '" "fastjet::contrib::eec::hist::EECHistBase< fastjet::contrib::eec::hist::EECHist3D< axis::log,axis::log,axis::id > > const *""'"); 
   }
   arg1 = reinterpret_cast< fastjet::contrib::eec::hist::EECHistBase< fastjet::contrib::eec::hist::EECHist3D< axis::log,axis::log,axis::id > > * >(argp1);
   if (obj1) {
     ecode2 = SWIG_AsVal_int(obj1, &val2);
     if (!SWIG_IsOK(ecode2)) {
-      SWIG_exception_fail(SWIG_ArgError(ecode2), "in method '" "EECHistBaseLogLogId_event_counter" "', argument " "2"" of type '" "int""'");
+      SWIG_exception_fail(SWIG_ArgError(ecode2), "in method '" "EECHistBaseLogLogId_event_count" "', argument " "2"" of type '" "int""'");
     } 
     arg2 = static_cast< int >(val2);
   }
   {
     try {
-      result = ((fastjet::contrib::eec::hist::EECHistBase< fastjet::contrib::eec::hist::EECHist3D< axis::log,axis::log,axis::id > > const *)arg1)->event_counter(arg2); 
+      result = ((fastjet::contrib::eec::hist::EECHistBase< fastjet::contrib::eec::hist::EECHist3D< axis::log,axis::log,axis::id > > const *)arg1)->event_count(arg2); 
     }
     /*@SWIG:/usr/local/Cellar/swig/4.0.2/share/swig/4.0.2/typemaps/exception.swg,58,SWIG_CATCH_STDEXCEPT@*/  /* catching std::exception  */
     catch (std::invalid_argument& e) {
@@ -54912,7 +54930,7 @@ static PyMethodDef SwigMethods[] = {
 	 { "EECHistBase1DId_bin_edges_vec", (PyCFunction)(void(*)(void))_wrap_EECHistBase1DId_bin_edges_vec, METH_VARARGS|METH_KEYWORDS, "EECHistBase1DId_bin_edges_vec(EECHistBase1DId self, unsigned int axis=0) -> vectorDouble"},
 	 { "EECHistBase1DId_hist_size", (PyCFunction)(void(*)(void))_wrap_EECHistBase1DId_hist_size, METH_VARARGS|METH_KEYWORDS, "EECHistBase1DId_hist_size(EECHistBase1DId self, bool overflows=True, int axis=-1) -> std::size_t"},
 	 { "EECHistBase1DId_covariance_size", (PyCFunction)(void(*)(void))_wrap_EECHistBase1DId_covariance_size, METH_VARARGS|METH_KEYWORDS, "EECHistBase1DId_covariance_size(EECHistBase1DId self, bool overflows=True) -> std::size_t"},
-	 { "EECHistBase1DId_event_counter", (PyCFunction)(void(*)(void))_wrap_EECHistBase1DId_event_counter, METH_VARARGS|METH_KEYWORDS, "EECHistBase1DId_event_counter(EECHistBase1DId self, int thread=-1) -> std::size_t"},
+	 { "EECHistBase1DId_event_count", (PyCFunction)(void(*)(void))_wrap_EECHistBase1DId_event_count, METH_VARARGS|METH_KEYWORDS, "EECHistBase1DId_event_count(EECHistBase1DId self, int thread=-1) -> std::size_t"},
 	 { "EECHistBase1DId_reduce", _wrap_EECHistBase1DId_reduce, METH_VARARGS, "\n"
 		"EECHistBase1DId_reduce(EECHistBase1DId self, reduce_command rc)\n"
 		"EECHistBase1DId_reduce(EECHistBase1DId self, vectorReduceCommand rcs)\n"
@@ -54951,7 +54969,7 @@ static PyMethodDef SwigMethods[] = {
 	 { "EECHistBase1DLog_bin_edges_vec", (PyCFunction)(void(*)(void))_wrap_EECHistBase1DLog_bin_edges_vec, METH_VARARGS|METH_KEYWORDS, "EECHistBase1DLog_bin_edges_vec(EECHistBase1DLog self, unsigned int axis=0) -> vectorDouble"},
 	 { "EECHistBase1DLog_hist_size", (PyCFunction)(void(*)(void))_wrap_EECHistBase1DLog_hist_size, METH_VARARGS|METH_KEYWORDS, "EECHistBase1DLog_hist_size(EECHistBase1DLog self, bool overflows=True, int axis=-1) -> std::size_t"},
 	 { "EECHistBase1DLog_covariance_size", (PyCFunction)(void(*)(void))_wrap_EECHistBase1DLog_covariance_size, METH_VARARGS|METH_KEYWORDS, "EECHistBase1DLog_covariance_size(EECHistBase1DLog self, bool overflows=True) -> std::size_t"},
-	 { "EECHistBase1DLog_event_counter", (PyCFunction)(void(*)(void))_wrap_EECHistBase1DLog_event_counter, METH_VARARGS|METH_KEYWORDS, "EECHistBase1DLog_event_counter(EECHistBase1DLog self, int thread=-1) -> std::size_t"},
+	 { "EECHistBase1DLog_event_count", (PyCFunction)(void(*)(void))_wrap_EECHistBase1DLog_event_count, METH_VARARGS|METH_KEYWORDS, "EECHistBase1DLog_event_count(EECHistBase1DLog self, int thread=-1) -> std::size_t"},
 	 { "EECHistBase1DLog_reduce", _wrap_EECHistBase1DLog_reduce, METH_VARARGS, "\n"
 		"EECHistBase1DLog_reduce(EECHistBase1DLog self, reduce_command rc)\n"
 		"EECHistBase1DLog_reduce(EECHistBase1DLog self, vectorReduceCommand rcs)\n"
@@ -54990,7 +55008,7 @@ static PyMethodDef SwigMethods[] = {
 	 { "EECHistBaseIdIdId_bin_edges_vec", (PyCFunction)(void(*)(void))_wrap_EECHistBaseIdIdId_bin_edges_vec, METH_VARARGS|METH_KEYWORDS, "EECHistBaseIdIdId_bin_edges_vec(EECHistBaseIdIdId self, unsigned int axis=0) -> vectorDouble"},
 	 { "EECHistBaseIdIdId_hist_size", (PyCFunction)(void(*)(void))_wrap_EECHistBaseIdIdId_hist_size, METH_VARARGS|METH_KEYWORDS, "EECHistBaseIdIdId_hist_size(EECHistBaseIdIdId self, bool overflows=True, int axis=-1) -> std::size_t"},
 	 { "EECHistBaseIdIdId_covariance_size", (PyCFunction)(void(*)(void))_wrap_EECHistBaseIdIdId_covariance_size, METH_VARARGS|METH_KEYWORDS, "EECHistBaseIdIdId_covariance_size(EECHistBaseIdIdId self, bool overflows=True) -> std::size_t"},
-	 { "EECHistBaseIdIdId_event_counter", (PyCFunction)(void(*)(void))_wrap_EECHistBaseIdIdId_event_counter, METH_VARARGS|METH_KEYWORDS, "EECHistBaseIdIdId_event_counter(EECHistBaseIdIdId self, int thread=-1) -> std::size_t"},
+	 { "EECHistBaseIdIdId_event_count", (PyCFunction)(void(*)(void))_wrap_EECHistBaseIdIdId_event_count, METH_VARARGS|METH_KEYWORDS, "EECHistBaseIdIdId_event_count(EECHistBaseIdIdId self, int thread=-1) -> std::size_t"},
 	 { "EECHistBaseIdIdId_reduce", _wrap_EECHistBaseIdIdId_reduce, METH_VARARGS, "\n"
 		"EECHistBaseIdIdId_reduce(EECHistBaseIdIdId self, reduce_command rc)\n"
 		"EECHistBaseIdIdId_reduce(EECHistBaseIdIdId self, vectorReduceCommand rcs)\n"
@@ -55029,7 +55047,7 @@ static PyMethodDef SwigMethods[] = {
 	 { "EECHistBaseLogIdId_bin_edges_vec", (PyCFunction)(void(*)(void))_wrap_EECHistBaseLogIdId_bin_edges_vec, METH_VARARGS|METH_KEYWORDS, "EECHistBaseLogIdId_bin_edges_vec(EECHistBaseLogIdId self, unsigned int axis=0) -> vectorDouble"},
 	 { "EECHistBaseLogIdId_hist_size", (PyCFunction)(void(*)(void))_wrap_EECHistBaseLogIdId_hist_size, METH_VARARGS|METH_KEYWORDS, "EECHistBaseLogIdId_hist_size(EECHistBaseLogIdId self, bool overflows=True, int axis=-1) -> std::size_t"},
 	 { "EECHistBaseLogIdId_covariance_size", (PyCFunction)(void(*)(void))_wrap_EECHistBaseLogIdId_covariance_size, METH_VARARGS|METH_KEYWORDS, "EECHistBaseLogIdId_covariance_size(EECHistBaseLogIdId self, bool overflows=True) -> std::size_t"},
-	 { "EECHistBaseLogIdId_event_counter", (PyCFunction)(void(*)(void))_wrap_EECHistBaseLogIdId_event_counter, METH_VARARGS|METH_KEYWORDS, "EECHistBaseLogIdId_event_counter(EECHistBaseLogIdId self, int thread=-1) -> std::size_t"},
+	 { "EECHistBaseLogIdId_event_count", (PyCFunction)(void(*)(void))_wrap_EECHistBaseLogIdId_event_count, METH_VARARGS|METH_KEYWORDS, "EECHistBaseLogIdId_event_count(EECHistBaseLogIdId self, int thread=-1) -> std::size_t"},
 	 { "EECHistBaseLogIdId_reduce", _wrap_EECHistBaseLogIdId_reduce, METH_VARARGS, "\n"
 		"EECHistBaseLogIdId_reduce(EECHistBaseLogIdId self, reduce_command rc)\n"
 		"EECHistBaseLogIdId_reduce(EECHistBaseLogIdId self, vectorReduceCommand rcs)\n"
@@ -55068,7 +55086,7 @@ static PyMethodDef SwigMethods[] = {
 	 { "EECHistBaseIdLogId_bin_edges_vec", (PyCFunction)(void(*)(void))_wrap_EECHistBaseIdLogId_bin_edges_vec, METH_VARARGS|METH_KEYWORDS, "EECHistBaseIdLogId_bin_edges_vec(EECHistBaseIdLogId self, unsigned int axis=0) -> vectorDouble"},
 	 { "EECHistBaseIdLogId_hist_size", (PyCFunction)(void(*)(void))_wrap_EECHistBaseIdLogId_hist_size, METH_VARARGS|METH_KEYWORDS, "EECHistBaseIdLogId_hist_size(EECHistBaseIdLogId self, bool overflows=True, int axis=-1) -> std::size_t"},
 	 { "EECHistBaseIdLogId_covariance_size", (PyCFunction)(void(*)(void))_wrap_EECHistBaseIdLogId_covariance_size, METH_VARARGS|METH_KEYWORDS, "EECHistBaseIdLogId_covariance_size(EECHistBaseIdLogId self, bool overflows=True) -> std::size_t"},
-	 { "EECHistBaseIdLogId_event_counter", (PyCFunction)(void(*)(void))_wrap_EECHistBaseIdLogId_event_counter, METH_VARARGS|METH_KEYWORDS, "EECHistBaseIdLogId_event_counter(EECHistBaseIdLogId self, int thread=-1) -> std::size_t"},
+	 { "EECHistBaseIdLogId_event_count", (PyCFunction)(void(*)(void))_wrap_EECHistBaseIdLogId_event_count, METH_VARARGS|METH_KEYWORDS, "EECHistBaseIdLogId_event_count(EECHistBaseIdLogId self, int thread=-1) -> std::size_t"},
 	 { "EECHistBaseIdLogId_reduce", _wrap_EECHistBaseIdLogId_reduce, METH_VARARGS, "\n"
 		"EECHistBaseIdLogId_reduce(EECHistBaseIdLogId self, reduce_command rc)\n"
 		"EECHistBaseIdLogId_reduce(EECHistBaseIdLogId self, vectorReduceCommand rcs)\n"
@@ -55107,7 +55125,7 @@ static PyMethodDef SwigMethods[] = {
 	 { "EECHistBaseLogLogId_bin_edges_vec", (PyCFunction)(void(*)(void))_wrap_EECHistBaseLogLogId_bin_edges_vec, METH_VARARGS|METH_KEYWORDS, "EECHistBaseLogLogId_bin_edges_vec(EECHistBaseLogLogId self, unsigned int axis=0) -> vectorDouble"},
 	 { "EECHistBaseLogLogId_hist_size", (PyCFunction)(void(*)(void))_wrap_EECHistBaseLogLogId_hist_size, METH_VARARGS|METH_KEYWORDS, "EECHistBaseLogLogId_hist_size(EECHistBaseLogLogId self, bool overflows=True, int axis=-1) -> std::size_t"},
 	 { "EECHistBaseLogLogId_covariance_size", (PyCFunction)(void(*)(void))_wrap_EECHistBaseLogLogId_covariance_size, METH_VARARGS|METH_KEYWORDS, "EECHistBaseLogLogId_covariance_size(EECHistBaseLogLogId self, bool overflows=True) -> std::size_t"},
-	 { "EECHistBaseLogLogId_event_counter", (PyCFunction)(void(*)(void))_wrap_EECHistBaseLogLogId_event_counter, METH_VARARGS|METH_KEYWORDS, "EECHistBaseLogLogId_event_counter(EECHistBaseLogLogId self, int thread=-1) -> std::size_t"},
+	 { "EECHistBaseLogLogId_event_count", (PyCFunction)(void(*)(void))_wrap_EECHistBaseLogLogId_event_count, METH_VARARGS|METH_KEYWORDS, "EECHistBaseLogLogId_event_count(EECHistBaseLogLogId self, int thread=-1) -> std::size_t"},
 	 { "EECHistBaseLogLogId_reduce", _wrap_EECHistBaseLogLogId_reduce, METH_VARARGS, "\n"
 		"EECHistBaseLogLogId_reduce(EECHistBaseLogLogId self, reduce_command rc)\n"
 		"EECHistBaseLogLogId_reduce(EECHistBaseLogLogId self, vectorReduceCommand rcs)\n"
@@ -55834,7 +55852,7 @@ static PyMethodDef SwigMethods_proxydocs[] = {
 	 { "EECHistBase1DId_bin_edges_vec", (PyCFunction)(void(*)(void))_wrap_EECHistBase1DId_bin_edges_vec, METH_VARARGS|METH_KEYWORDS, "bin_edges_vec(EECHistBase1DId self, unsigned int axis=0) -> vectorDouble"},
 	 { "EECHistBase1DId_hist_size", (PyCFunction)(void(*)(void))_wrap_EECHistBase1DId_hist_size, METH_VARARGS|METH_KEYWORDS, "hist_size(EECHistBase1DId self, bool overflows=True, int axis=-1) -> std::size_t"},
 	 { "EECHistBase1DId_covariance_size", (PyCFunction)(void(*)(void))_wrap_EECHistBase1DId_covariance_size, METH_VARARGS|METH_KEYWORDS, "covariance_size(EECHistBase1DId self, bool overflows=True) -> std::size_t"},
-	 { "EECHistBase1DId_event_counter", (PyCFunction)(void(*)(void))_wrap_EECHistBase1DId_event_counter, METH_VARARGS|METH_KEYWORDS, "event_counter(EECHistBase1DId self, int thread=-1) -> std::size_t"},
+	 { "EECHistBase1DId_event_count", (PyCFunction)(void(*)(void))_wrap_EECHistBase1DId_event_count, METH_VARARGS|METH_KEYWORDS, "event_count(EECHistBase1DId self, int thread=-1) -> std::size_t"},
 	 { "EECHistBase1DId_reduce", _wrap_EECHistBase1DId_reduce, METH_VARARGS, "\n"
 		"reduce(EECHistBase1DId self, reduce_command rc)\n"
 		"reduce(EECHistBase1DId self, vectorReduceCommand rcs)\n"
@@ -55873,7 +55891,7 @@ static PyMethodDef SwigMethods_proxydocs[] = {
 	 { "EECHistBase1DLog_bin_edges_vec", (PyCFunction)(void(*)(void))_wrap_EECHistBase1DLog_bin_edges_vec, METH_VARARGS|METH_KEYWORDS, "bin_edges_vec(EECHistBase1DLog self, unsigned int axis=0) -> vectorDouble"},
 	 { "EECHistBase1DLog_hist_size", (PyCFunction)(void(*)(void))_wrap_EECHistBase1DLog_hist_size, METH_VARARGS|METH_KEYWORDS, "hist_size(EECHistBase1DLog self, bool overflows=True, int axis=-1) -> std::size_t"},
 	 { "EECHistBase1DLog_covariance_size", (PyCFunction)(void(*)(void))_wrap_EECHistBase1DLog_covariance_size, METH_VARARGS|METH_KEYWORDS, "covariance_size(EECHistBase1DLog self, bool overflows=True) -> std::size_t"},
-	 { "EECHistBase1DLog_event_counter", (PyCFunction)(void(*)(void))_wrap_EECHistBase1DLog_event_counter, METH_VARARGS|METH_KEYWORDS, "event_counter(EECHistBase1DLog self, int thread=-1) -> std::size_t"},
+	 { "EECHistBase1DLog_event_count", (PyCFunction)(void(*)(void))_wrap_EECHistBase1DLog_event_count, METH_VARARGS|METH_KEYWORDS, "event_count(EECHistBase1DLog self, int thread=-1) -> std::size_t"},
 	 { "EECHistBase1DLog_reduce", _wrap_EECHistBase1DLog_reduce, METH_VARARGS, "\n"
 		"reduce(EECHistBase1DLog self, reduce_command rc)\n"
 		"reduce(EECHistBase1DLog self, vectorReduceCommand rcs)\n"
@@ -55912,7 +55930,7 @@ static PyMethodDef SwigMethods_proxydocs[] = {
 	 { "EECHistBaseIdIdId_bin_edges_vec", (PyCFunction)(void(*)(void))_wrap_EECHistBaseIdIdId_bin_edges_vec, METH_VARARGS|METH_KEYWORDS, "bin_edges_vec(EECHistBaseIdIdId self, unsigned int axis=0) -> vectorDouble"},
 	 { "EECHistBaseIdIdId_hist_size", (PyCFunction)(void(*)(void))_wrap_EECHistBaseIdIdId_hist_size, METH_VARARGS|METH_KEYWORDS, "hist_size(EECHistBaseIdIdId self, bool overflows=True, int axis=-1) -> std::size_t"},
 	 { "EECHistBaseIdIdId_covariance_size", (PyCFunction)(void(*)(void))_wrap_EECHistBaseIdIdId_covariance_size, METH_VARARGS|METH_KEYWORDS, "covariance_size(EECHistBaseIdIdId self, bool overflows=True) -> std::size_t"},
-	 { "EECHistBaseIdIdId_event_counter", (PyCFunction)(void(*)(void))_wrap_EECHistBaseIdIdId_event_counter, METH_VARARGS|METH_KEYWORDS, "event_counter(EECHistBaseIdIdId self, int thread=-1) -> std::size_t"},
+	 { "EECHistBaseIdIdId_event_count", (PyCFunction)(void(*)(void))_wrap_EECHistBaseIdIdId_event_count, METH_VARARGS|METH_KEYWORDS, "event_count(EECHistBaseIdIdId self, int thread=-1) -> std::size_t"},
 	 { "EECHistBaseIdIdId_reduce", _wrap_EECHistBaseIdIdId_reduce, METH_VARARGS, "\n"
 		"reduce(EECHistBaseIdIdId self, reduce_command rc)\n"
 		"reduce(EECHistBaseIdIdId self, vectorReduceCommand rcs)\n"
@@ -55951,7 +55969,7 @@ static PyMethodDef SwigMethods_proxydocs[] = {
 	 { "EECHistBaseLogIdId_bin_edges_vec", (PyCFunction)(void(*)(void))_wrap_EECHistBaseLogIdId_bin_edges_vec, METH_VARARGS|METH_KEYWORDS, "bin_edges_vec(EECHistBaseLogIdId self, unsigned int axis=0) -> vectorDouble"},
 	 { "EECHistBaseLogIdId_hist_size", (PyCFunction)(void(*)(void))_wrap_EECHistBaseLogIdId_hist_size, METH_VARARGS|METH_KEYWORDS, "hist_size(EECHistBaseLogIdId self, bool overflows=True, int axis=-1) -> std::size_t"},
 	 { "EECHistBaseLogIdId_covariance_size", (PyCFunction)(void(*)(void))_wrap_EECHistBaseLogIdId_covariance_size, METH_VARARGS|METH_KEYWORDS, "covariance_size(EECHistBaseLogIdId self, bool overflows=True) -> std::size_t"},
-	 { "EECHistBaseLogIdId_event_counter", (PyCFunction)(void(*)(void))_wrap_EECHistBaseLogIdId_event_counter, METH_VARARGS|METH_KEYWORDS, "event_counter(EECHistBaseLogIdId self, int thread=-1) -> std::size_t"},
+	 { "EECHistBaseLogIdId_event_count", (PyCFunction)(void(*)(void))_wrap_EECHistBaseLogIdId_event_count, METH_VARARGS|METH_KEYWORDS, "event_count(EECHistBaseLogIdId self, int thread=-1) -> std::size_t"},
 	 { "EECHistBaseLogIdId_reduce", _wrap_EECHistBaseLogIdId_reduce, METH_VARARGS, "\n"
 		"reduce(EECHistBaseLogIdId self, reduce_command rc)\n"
 		"reduce(EECHistBaseLogIdId self, vectorReduceCommand rcs)\n"
@@ -55990,7 +56008,7 @@ static PyMethodDef SwigMethods_proxydocs[] = {
 	 { "EECHistBaseIdLogId_bin_edges_vec", (PyCFunction)(void(*)(void))_wrap_EECHistBaseIdLogId_bin_edges_vec, METH_VARARGS|METH_KEYWORDS, "bin_edges_vec(EECHistBaseIdLogId self, unsigned int axis=0) -> vectorDouble"},
 	 { "EECHistBaseIdLogId_hist_size", (PyCFunction)(void(*)(void))_wrap_EECHistBaseIdLogId_hist_size, METH_VARARGS|METH_KEYWORDS, "hist_size(EECHistBaseIdLogId self, bool overflows=True, int axis=-1) -> std::size_t"},
 	 { "EECHistBaseIdLogId_covariance_size", (PyCFunction)(void(*)(void))_wrap_EECHistBaseIdLogId_covariance_size, METH_VARARGS|METH_KEYWORDS, "covariance_size(EECHistBaseIdLogId self, bool overflows=True) -> std::size_t"},
-	 { "EECHistBaseIdLogId_event_counter", (PyCFunction)(void(*)(void))_wrap_EECHistBaseIdLogId_event_counter, METH_VARARGS|METH_KEYWORDS, "event_counter(EECHistBaseIdLogId self, int thread=-1) -> std::size_t"},
+	 { "EECHistBaseIdLogId_event_count", (PyCFunction)(void(*)(void))_wrap_EECHistBaseIdLogId_event_count, METH_VARARGS|METH_KEYWORDS, "event_count(EECHistBaseIdLogId self, int thread=-1) -> std::size_t"},
 	 { "EECHistBaseIdLogId_reduce", _wrap_EECHistBaseIdLogId_reduce, METH_VARARGS, "\n"
 		"reduce(EECHistBaseIdLogId self, reduce_command rc)\n"
 		"reduce(EECHistBaseIdLogId self, vectorReduceCommand rcs)\n"
@@ -56029,7 +56047,7 @@ static PyMethodDef SwigMethods_proxydocs[] = {
 	 { "EECHistBaseLogLogId_bin_edges_vec", (PyCFunction)(void(*)(void))_wrap_EECHistBaseLogLogId_bin_edges_vec, METH_VARARGS|METH_KEYWORDS, "bin_edges_vec(EECHistBaseLogLogId self, unsigned int axis=0) -> vectorDouble"},
 	 { "EECHistBaseLogLogId_hist_size", (PyCFunction)(void(*)(void))_wrap_EECHistBaseLogLogId_hist_size, METH_VARARGS|METH_KEYWORDS, "hist_size(EECHistBaseLogLogId self, bool overflows=True, int axis=-1) -> std::size_t"},
 	 { "EECHistBaseLogLogId_covariance_size", (PyCFunction)(void(*)(void))_wrap_EECHistBaseLogLogId_covariance_size, METH_VARARGS|METH_KEYWORDS, "covariance_size(EECHistBaseLogLogId self, bool overflows=True) -> std::size_t"},
-	 { "EECHistBaseLogLogId_event_counter", (PyCFunction)(void(*)(void))_wrap_EECHistBaseLogLogId_event_counter, METH_VARARGS|METH_KEYWORDS, "event_counter(EECHistBaseLogLogId self, int thread=-1) -> std::size_t"},
+	 { "EECHistBaseLogLogId_event_count", (PyCFunction)(void(*)(void))_wrap_EECHistBaseLogLogId_event_count, METH_VARARGS|METH_KEYWORDS, "event_count(EECHistBaseLogLogId self, int thread=-1) -> std::size_t"},
 	 { "EECHistBaseLogLogId_reduce", _wrap_EECHistBaseLogLogId_reduce, METH_VARARGS, "\n"
 		"reduce(EECHistBaseLogLogId self, reduce_command rc)\n"
 		"reduce(EECHistBaseLogLogId self, vectorReduceCommand rcs)\n"
