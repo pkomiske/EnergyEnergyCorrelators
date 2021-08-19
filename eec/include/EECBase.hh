@@ -525,6 +525,11 @@ private:
 
     // check for symmetries in the different cases
     switch (N()) {
+      case 0:
+      case 1:
+        throw std::invalid_argument("N must be 2 or greater");
+        break;
+
       case 2: {
         if (weight_powers()[0] == weight_powers()[1] && charge_powers()[0] == charge_powers()[1]) {
           config_.weight_powers = {weight_powers()[0]};

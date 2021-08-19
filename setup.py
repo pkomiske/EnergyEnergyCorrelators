@@ -122,6 +122,7 @@ else:
         if platform.system() == 'Darwin':
             cxxflags.insert(0, '-Xpreprocessor')
             libraries.append('omp')
+            ldflags.append('-Wl,-rpath,/usr/local/lib')
 
         # linux wants this flag
         else:
