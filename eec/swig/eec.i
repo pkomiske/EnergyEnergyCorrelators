@@ -343,7 +343,6 @@ namespace EEC_NAMESPACE {
   // ignore EEC functions
   %ignore argsort3;
   %ignore EECBase::operator+=;
-  %ignore EECBase::operator();
   %ignore EECLongestSide::load;
   %ignore EECLongestSide::save;
   %ignore EECTriangleOPE::load;

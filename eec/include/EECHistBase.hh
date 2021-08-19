@@ -245,12 +245,13 @@ public:
   //////////////////////////
 
   // this method wraps rc in a vector and passes on to other reduce
-  void reduce(const bh::algorithm::reduce_command & rc) {
+  // note: need full namespace in argument for proper SWIG parsing
+  void reduce(const boost::histogram::algorithm::reduce_command & rc) {
     reduce(std::vector<bh::algorithm::reduce_command>{rc});
   }
 
   // reduce histograms
-  void reduce(const std::vector<bh::algorithm::reduce_command> & rcs) {
+  void reduce(const std::vector<boost::histogram::algorithm::reduce_command> & rcs) {
 
     if (rcs.size() == 0) return;
     if (rcs.size() > 3) throw std::invalid_argument("too many reduce_commands");

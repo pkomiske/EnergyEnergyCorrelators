@@ -113,19 +113,17 @@ const double REG = 1e-100;
 const double PI = 3.14159265358979323846;
 const double TWOPI = 6.28318530717958647693;
 
-#ifdef SWIG
-constexpr bool HAS_PICKLE_SUPPORT = 
+constexpr bool HAS_SERIALIZATION_SUPPORT = 
   #ifdef EEC_SERIALIZATION
     true;
   #else
     false;
   #endif
-#endif
 
 // these should be accessed using the below functions
 #ifndef SWIG_PREPROCESSOR
-  static ArchiveFormat archform_ = HAS_PICKLE_SUPPORT ? ArchiveFormat::Text : ArchiveFormat::NotSupported;
-  static CompressionMode compmode_ = HAS_PICKLE_SUPPORT ? CompressionMode::Auto : CompressionMode::NotSupported;
+  static ArchiveFormat archform_ = HAS_SERIALIZATION_SUPPORT ? ArchiveFormat::Text : ArchiveFormat::NotSupported;
+  static CompressionMode compmode_ = HAS_SERIALIZATION_SUPPORT ? CompressionMode::Auto : CompressionMode::NotSupported;
 #endif
 
 //-----------------------------------------------------------------------------
@@ -148,7 +146,7 @@ inline void set_archive_format(ArchiveFormat a) {
   if (int(a) < 0 || int(a) > 2)
     throw std::invalid_argument("invalid archive format");
 
-  if (HAS_PICKLE_SUPPORT)
+  if (HAS_SERIALIZATION_SUPPORT)
     archform_ = a;
 }
 inline void set_compression_mode(CompressionMode c) {
@@ -162,7 +160,7 @@ inline void set_compression_mode(CompressionMode c) {
       throw std::invalid_argument("compression not available with this build");
   #endif
 
-  if (HAS_PICKLE_SUPPORT)
+  if (HAS_SERIALIZATION_SUPPORT)
     compmode_ = c;
 }
 

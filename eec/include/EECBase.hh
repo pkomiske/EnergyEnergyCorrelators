@@ -190,13 +190,42 @@ public:
         print_every++;
     }
 
-    // setup output stream
-    std::ostringstream oss(std::ios_base::ate);
-    oss.setf(std::ios_base::fixed, std::ios_base::floatfield);
-
-    // set up multithreaded loop over events
+    // variables for multithreaded loop over events
     long start(0), counter(0);
     auto start_time(std::chrono::steady_clock::now());
+
+    // make function for printing an update
+    auto print_function = [&counter, start_time, nevents]() {
+
+      // setup output stream
+      std::ostringstream oss(std::ios_base::ate);
+      oss.setf(std::ios_base::fixed, std::ios_base::floatfield);
+
+      auto diff(std::chrono::steady_clock::now() - start_time);
+      double duration(std::chrono::duration_cast<std::chrono::duration<double>>(diff).count());
+      unsigned nevents_width(std::to_string(nevents).size());
+      oss.str("  ");
+      oss << std::setw(nevents_width) << counter << " / "
+          << std::setw(nevents_width) << nevents << "  EECs computed  - "
+          << std::setprecision(2) << std::setw(6) << double(counter)/nevents*100
+          << "% completed - "
+          << std::setprecision(3) << duration << 's';
+
+      // add new line to final printing
+      if (counter == nevents) oss << '\n';
+
+      // acquire Python GIL if in SWIG in order to check for signals and print message
+      #ifdef SWIG
+        SWIG_PYTHON_THREAD_BEGIN_BLOCK;
+        std::cout << oss.str() << std::endl;
+        if (PyErr_CheckSignals() != 0)
+          throw std::runtime_error("KeyboardInterrupt received in EECBase::batch_compute");
+        SWIG_PYTHON_THREAD_END_BLOCK;
+      #else
+        std::cout << oss.str() << std::endl;
+      #endif
+    };
+
     while (counter < nevents) {
       counter += print_every;
       if (counter > nevents) counter = nevents;
@@ -213,26 +242,8 @@ public:
       start = counter;
 
       // print update
-      auto diff(std::chrono::steady_clock::now() - start_time);
-      double duration(std::chrono::duration_cast<std::chrono::duration<double>>(diff).count());
-      unsigned nevents_width(std::to_string(nevents).size());
-      oss.str("  ");
-      oss << std::setw(nevents_width) << counter << " / "
-          << std::setw(nevents_width) << nevents << "  EECs computed  - "
-          << std::setprecision(2) << std::setw(6) << double(counter)/nevents*100
-          << "% completed - "
-          << std::setprecision(3) << duration << 's';
-
-      // acquire Python GIL if in SWIG in order to check for signals and print message
-      #ifdef SWIG
-        SWIG_PYTHON_THREAD_BEGIN_BLOCK;
-        if (this->print_every() != 0) std::cout << oss.str() << std::endl;
-        if (PyErr_CheckSignals() != 0)
-          throw std::runtime_error("KeyboardInterrupt received in EECBase::batch_compute");
-        SWIG_PYTHON_THREAD_END_BLOCK;
-      #else
-        if (this->print_every() != 0) std::cout << oss.str() << std::endl;
-      #endif
+      if (this->print_every() != 0)
+        print_function();
     }
   }
 

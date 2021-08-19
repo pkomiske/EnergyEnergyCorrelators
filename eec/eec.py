@@ -482,7 +482,7 @@ cvar = _eec.cvar
 REG = cvar.REG
 PI = cvar.PI
 TWOPI = cvar.TWOPI
-HAS_PICKLE_SUPPORT = cvar.HAS_PICKLE_SUPPORT
+HAS_SERIALIZATION_SUPPORT = cvar.HAS_SERIALIZATION_SUPPORT
 
 rebin = _eec.rebin
 shrink = _eec.shrink

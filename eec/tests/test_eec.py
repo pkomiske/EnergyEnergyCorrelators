@@ -226,7 +226,7 @@ def test_triangleope(axes, num_threads, weight_powers, charge_powers, average_ve
 @pytest.mark.parametrize('N', [2, 3, 4])
 def test_pickling_longestside(N, axis, num_threads, weight_powers, charge_powers, nparticles, archform, compmode):
 
-    if eec.HAS_PICKLE_SUPPORT:
+    if eec.HAS_SERIALIZATION_SUPPORT:
         eec.set_archive_format(archform)
         eec.set_compression_mode(compmode)
 
@@ -239,7 +239,7 @@ def test_pickling_longestside(N, axis, num_threads, weight_powers, charge_powers
 
     e(local_events, event_weights=weights)
 
-    if not eec.HAS_PICKLE_SUPPORT:
+    if not eec.HAS_SERIALIZATION_SUPPORT:
         d = e.as_dict()
     else:
         with tempfile.TemporaryFile() as f:
@@ -263,7 +263,7 @@ def test_pickling_longestside(N, axis, num_threads, weight_powers, charge_powers
 @pytest.mark.parametrize('axes', [('log', 'log', 'id'), ('id', 'id', 'id'), ('log', 'id', 'id'), ('id', 'log', 'id')])
 def test_pickling_triangleope(axes, num_threads, weight_powers, charge_powers, nparticles, archform, compmode):
 
-    if eec.HAS_PICKLE_SUPPORT:
+    if eec.HAS_SERIALIZATION_SUPPORT:
         eec.set_archive_format(archform)
         eec.set_compression_mode(compmode)
     
@@ -278,7 +278,7 @@ def test_pickling_triangleope(axes, num_threads, weight_powers, charge_powers, n
 
     e(local_events, event_weights=weights)
 
-    if not eec.HAS_PICKLE_SUPPORT:
+    if not eec.HAS_SERIALIZATION_SUPPORT:
         d = e.as_dict()
     else:
         with tempfile.TemporaryFile() as f:

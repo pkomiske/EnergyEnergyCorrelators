@@ -26,9 +26,12 @@ src/%.o : src/%.cpp $(DEPDIR)/%.d | $(DEPDIR)
 	$(COMPILE.cpp)
 
 .PHONY: all clean
-all: basic_example
+all: basic_example multithreaded_example
 
 basic_example: src/basic_example.o src/cnpy.o
+	$(CXX) -o $@ $^ $(LIBRARIES)
+
+multithreaded_example: src/multithreaded_example.o src/cnpy.o
 	$(CXX) -o $@ $^ $(LIBRARIES)
 
 clean:

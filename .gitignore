@@ -9,6 +9,6 @@
 dist/
 build/
 **/.deps
-basic_example
+examples/*_example
 *.sublime-*
 **/.ipynb_checkpoints

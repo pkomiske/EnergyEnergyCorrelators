@@ -39,8 +39,11 @@ void run_eec_comp(T & eec, EventProducer * evp) {
   while (evp->next())
 
     // evp->particles() is just a vector of PseudoJets representing the particles
-    // .compute() calculates the EEC immediately on the provided particles
-    eec.compute(evp->particles());
+    // .push_back() internally stores the particles and delays computation
+    eec.push_back(evp->particles());
+
+  // run multithreaded computation
+  eec.batch_compute();
 
   // sum EEC (this should be number of events if each event has total weight 1)
   std::cout << std::setprecision(8)
