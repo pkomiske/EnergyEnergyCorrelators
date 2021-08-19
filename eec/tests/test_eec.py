@@ -240,7 +240,7 @@ def test_pickling_longestside(N, axis, num_threads, weight_powers, charge_powers
     e(local_events, event_weights=weights)
 
     if not eec.HAS_PICKLE_SUPPORT:
-        d = e.save()
+        d = e.as_dict()
     else:
         with tempfile.TemporaryFile() as f:
             pickle.dump(e, f)
@@ -279,7 +279,7 @@ def test_pickling_triangleope(axes, num_threads, weight_powers, charge_powers, n
     e(local_events, event_weights=weights)
 
     if not eec.HAS_PICKLE_SUPPORT:
-        d = e.save()
+        d = e.as_dict()
     else:
         with tempfile.TemporaryFile() as f:
             pickle.dump(e, f)
