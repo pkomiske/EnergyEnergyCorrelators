@@ -417,7 +417,7 @@ namespace EEC_NAMESPACE {
       %}
     #else
       %pythoncode %{
-        def save(self):
+        def as_dict(self):
             hist_vars = [self.get_hist_vars(i) for i in range(self.nhists())]
             d = {
                 'name': self.__class__.__name__,
