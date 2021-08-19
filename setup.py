@@ -74,7 +74,7 @@ else:
 
     # define containers of extension options
     sources = [os.path.join(lname, lname + '.cpp')]
-    cxxflags = ['-fopenmp', '-ffast-math'] + os.environ.get('CXXFLAGS', '').split()
+    cxxflags = ['-fopenmp', '-ffast-math', '-std=c++14'] + os.environ.get('CXXFLAGS', '').split()
     macros = []
     include_dirs = [np.get_include(), os.path.join('eec', 'include')]
     ldflags = []
@@ -95,7 +95,6 @@ else:
 
     # using pyfjcore
     else:
-        cxxflags.append('-std=c++14')
         macros.append(('EEC_USE_PYFJCORE', None))
         macros.append(('SWIG_TYPE_TABLE', 'fjcore'))
         include_dirs.append('PyFJCore')
@@ -120,6 +119,7 @@ else:
 
         # handle multithreading with OpenMP
         if platform.system() == 'Darwin':
+            include_dirs.append('.')
             cxxflags.insert(0, '-Xpreprocessor')
             libraries.append('omp')
             ldflags.append('-Wl,-rpath,/usr/local/lib')
