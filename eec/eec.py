@@ -570,6 +570,7 @@ class EECHistBase1DId(object):
     hist_size = _swig_new_instance_method(_eec.EECHistBase1DId_hist_size)
     covariance_size = _swig_new_instance_method(_eec.EECHistBase1DId_covariance_size)
     event_count = _swig_new_instance_method(_eec.EECHistBase1DId_event_count)
+    clear_hists = _swig_new_instance_method(_eec.EECHistBase1DId_clear_hists)
     reduce = _swig_new_instance_method(_eec.EECHistBase1DId_reduce)
     sum = _swig_new_instance_method(_eec.EECHistBase1DId_sum)
     diff_hists = _swig_new_instance_method(_eec.EECHistBase1DId_diff_hists)
@@ -623,6 +624,7 @@ class EECHistBase1DLog(object):
     hist_size = _swig_new_instance_method(_eec.EECHistBase1DLog_hist_size)
     covariance_size = _swig_new_instance_method(_eec.EECHistBase1DLog_covariance_size)
     event_count = _swig_new_instance_method(_eec.EECHistBase1DLog_event_count)
+    clear_hists = _swig_new_instance_method(_eec.EECHistBase1DLog_clear_hists)
     reduce = _swig_new_instance_method(_eec.EECHistBase1DLog_reduce)
     sum = _swig_new_instance_method(_eec.EECHistBase1DLog_sum)
     diff_hists = _swig_new_instance_method(_eec.EECHistBase1DLog_diff_hists)
@@ -676,6 +678,7 @@ class EECHistBaseIdIdId(object):
     hist_size = _swig_new_instance_method(_eec.EECHistBaseIdIdId_hist_size)
     covariance_size = _swig_new_instance_method(_eec.EECHistBaseIdIdId_covariance_size)
     event_count = _swig_new_instance_method(_eec.EECHistBaseIdIdId_event_count)
+    clear_hists = _swig_new_instance_method(_eec.EECHistBaseIdIdId_clear_hists)
     reduce = _swig_new_instance_method(_eec.EECHistBaseIdIdId_reduce)
     sum = _swig_new_instance_method(_eec.EECHistBaseIdIdId_sum)
     diff_hists = _swig_new_instance_method(_eec.EECHistBaseIdIdId_diff_hists)
@@ -729,6 +732,7 @@ class EECHistBaseLogIdId(object):
     hist_size = _swig_new_instance_method(_eec.EECHistBaseLogIdId_hist_size)
     covariance_size = _swig_new_instance_method(_eec.EECHistBaseLogIdId_covariance_size)
     event_count = _swig_new_instance_method(_eec.EECHistBaseLogIdId_event_count)
+    clear_hists = _swig_new_instance_method(_eec.EECHistBaseLogIdId_clear_hists)
     reduce = _swig_new_instance_method(_eec.EECHistBaseLogIdId_reduce)
     sum = _swig_new_instance_method(_eec.EECHistBaseLogIdId_sum)
     diff_hists = _swig_new_instance_method(_eec.EECHistBaseLogIdId_diff_hists)
@@ -782,6 +786,7 @@ class EECHistBaseIdLogId(object):
     hist_size = _swig_new_instance_method(_eec.EECHistBaseIdLogId_hist_size)
     covariance_size = _swig_new_instance_method(_eec.EECHistBaseIdLogId_covariance_size)
     event_count = _swig_new_instance_method(_eec.EECHistBaseIdLogId_event_count)
+    clear_hists = _swig_new_instance_method(_eec.EECHistBaseIdLogId_clear_hists)
     reduce = _swig_new_instance_method(_eec.EECHistBaseIdLogId_reduce)
     sum = _swig_new_instance_method(_eec.EECHistBaseIdLogId_sum)
     diff_hists = _swig_new_instance_method(_eec.EECHistBaseIdLogId_diff_hists)
@@ -835,6 +840,7 @@ class EECHistBaseLogLogId(object):
     hist_size = _swig_new_instance_method(_eec.EECHistBaseLogLogId_hist_size)
     covariance_size = _swig_new_instance_method(_eec.EECHistBaseLogLogId_covariance_size)
     event_count = _swig_new_instance_method(_eec.EECHistBaseLogLogId_event_count)
+    clear_hists = _swig_new_instance_method(_eec.EECHistBaseLogLogId_clear_hists)
     reduce = _swig_new_instance_method(_eec.EECHistBaseLogLogId_reduce)
     sum = _swig_new_instance_method(_eec.EECHistBaseLogLogId_sum)
     diff_hists = _swig_new_instance_method(_eec.EECHistBaseLogLogId_diff_hists)
@@ -1067,6 +1073,58 @@ class EECBase(object):
         self.batch_compute()
         self.clear_events()
 
+    def as_dict(self):
+        hist_vars = [self.get_hist_vars(i) for i in range(self.nhists())]
+        d = {
+            'name': self.__class__.__name__,
+            'description': repr(self),
+            'config': {
+                'N': self.N(),
+                'norm': self.norm(),
+                'use_charges': self.use_charges(),
+                'check_degen': self.check_degen(),
+                'average_verts': self.average_verts(),
+                'weight_powers': self.weight_powers(),
+                'charge_powers': self.charge_powers(),
+                'particle_weight': particle_weight_name(self.particle_weight()),
+                'pairwise_distance': pairwise_distance_name(self.pairwise_distance()),
+                'num_threads': self.num_threads(),
+                'nfeatures': self.nfeatures(),
+            },
+            'compname': self.compname(),
+            'nsym': self.nsym(),
+            'total_weight': self.total_weight(),
+
+            'nbins': tuple(self.nbins(i) for i in range(self.rank())),
+            'axes_range': tuple(self.axis_range(i) for i in range(self.rank())),
+            'rank': self.rank(),
+            'nhists': self.nhists(),
+            'event_count': self.event_count(),
+
+            'track_covariance': self.track_covariance(),
+            'variance_bound': self.variance_bound(),
+            'variance_bound_includes_overflows': self.variance_bound_includes_overflows(),
+
+            'bin_edges': tuple(self.bin_edges(i) for i in range(self.rank())),
+            'bin_centers': tuple(self.bin_centers(i) for i in range(self.rank())),
+
+            'hist_sums': tuple(self.sum(i) for i in range(self.nhists())),
+            'hists': tuple(hist_vars[i][0] for i in range(self.nhists())),
+            'hist_vars': tuple(hist_vars[i][1] for i in range(self.nhists())),
+        }
+
+        if self.track_covariance():
+            d['covariances'] = tuple(self.get_covariance(i) for i in range(self.nhists()))
+        else:
+            d['covariances'] = self.nhists()*[None]
+
+        if self.variance_bound():
+            d['variance_bounds'] = tuple(self.get_variance_bound(i) for i in range(self.nhists()))
+        else:
+            d['variance_bounds'] = self.nhists()*[None]
+
+        return d
+
 
 # Register EECBase in _eec:
 _eec.EECBase_swigregister(EECBase)
@@ -1237,6 +1295,7 @@ class EECLongestSideId(EECBase, EECHist1DId):
     description = _swig_new_instance_method(_eec.EECLongestSideId_description)
     __ne__ = _swig_new_instance_method(_eec.EECLongestSideId___ne__)
     __eq__ = _swig_new_instance_method(_eec.EECLongestSideId___eq__)
+    clear = _swig_new_instance_method(_eec.EECLongestSideId_clear)
     add = _swig_new_instance_method(_eec.EECLongestSideId_add)
 
     def __repr__(self):
@@ -1267,6 +1326,7 @@ class EECLongestSideLog(EECBase, EECHist1DLog):
     description = _swig_new_instance_method(_eec.EECLongestSideLog_description)
     __ne__ = _swig_new_instance_method(_eec.EECLongestSideLog___ne__)
     __eq__ = _swig_new_instance_method(_eec.EECLongestSideLog___eq__)
+    clear = _swig_new_instance_method(_eec.EECLongestSideLog_clear)
     add = _swig_new_instance_method(_eec.EECLongestSideLog_add)
 
     def __repr__(self):
@@ -1295,6 +1355,7 @@ class EECTriangleOPEIdIdId(EECBase, EECHist3DIdIdId):
     description = _swig_new_instance_method(_eec.EECTriangleOPEIdIdId_description)
     __ne__ = _swig_new_instance_method(_eec.EECTriangleOPEIdIdId___ne__)
     __eq__ = _swig_new_instance_method(_eec.EECTriangleOPEIdIdId___eq__)
+    clear = _swig_new_instance_method(_eec.EECTriangleOPEIdIdId_clear)
     add = _swig_new_instance_method(_eec.EECTriangleOPEIdIdId_add)
 
     def __repr__(self):
@@ -1323,6 +1384,7 @@ class EECTriangleOPELogIdId(EECBase, EECHist3DLogIdId):
     description = _swig_new_instance_method(_eec.EECTriangleOPELogIdId_description)
     __ne__ = _swig_new_instance_method(_eec.EECTriangleOPELogIdId___ne__)
     __eq__ = _swig_new_instance_method(_eec.EECTriangleOPELogIdId___eq__)
+    clear = _swig_new_instance_method(_eec.EECTriangleOPELogIdId_clear)
     add = _swig_new_instance_method(_eec.EECTriangleOPELogIdId_add)
 
     def __repr__(self):
@@ -1351,6 +1413,7 @@ class EECTriangleOPEIdLogId(EECBase, EECHist3DIdLogId):
     description = _swig_new_instance_method(_eec.EECTriangleOPEIdLogId_description)
     __ne__ = _swig_new_instance_method(_eec.EECTriangleOPEIdLogId___ne__)
     __eq__ = _swig_new_instance_method(_eec.EECTriangleOPEIdLogId___eq__)
+    clear = _swig_new_instance_method(_eec.EECTriangleOPEIdLogId_clear)
     add = _swig_new_instance_method(_eec.EECTriangleOPEIdLogId_add)
 
     def __repr__(self):
@@ -1379,6 +1442,7 @@ class EECTriangleOPELogLogId(EECBase, EECHist3DLogLogId):
     description = _swig_new_instance_method(_eec.EECTriangleOPELogLogId_description)
     __ne__ = _swig_new_instance_method(_eec.EECTriangleOPELogLogId___ne__)
     __eq__ = _swig_new_instance_method(_eec.EECTriangleOPELogLogId___eq__)
+    clear = _swig_new_instance_method(_eec.EECTriangleOPELogLogId_clear)
     add = _swig_new_instance_method(_eec.EECTriangleOPELogLogId_add)
 
     def __repr__(self):

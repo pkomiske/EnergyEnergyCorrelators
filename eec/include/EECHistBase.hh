@@ -94,11 +94,12 @@ public:
               bool variance_bound_includes_overflows) :
     nbins_(nbins),
     axes_range_(axes_range),
+    num_threads_(determine_num_threads(num_threads)),
     track_covariance_(track_covariance),
     variance_bound_(variance_bound),
     variance_bound_includes_overflows_(variance_bound_includes_overflows)
   {
-    set_num_threads(num_threads);
+    // initialize with a single histogram
     init(1);
   }
 
@@ -123,16 +124,19 @@ public:
   /////////////////
 
   void set_track_covariance(bool track) {
+    ensure_no_events();
     track_covariance_ = track;
-    init(nhists());
+    clear_hists();
   }
   void set_variance_bound(bool bound) {
+    ensure_no_events();
     variance_bound_ = bound;
-    init(nhists());
+    clear_hists();
   }
   void set_variance_bound_includes_overflows(bool include) {
+    ensure_no_events();
     variance_bound_includes_overflows_ = include;
-    init(nhists());
+    clear_hists();
   }
 
   // set number of bins for a particular axis
@@ -147,11 +151,12 @@ public:
 
   // set number of bins for several axes at once
   void set_nbins(const std::vector<unsigned> & nbins) {
+    ensure_no_events();
     if (nbins.size() > rank())
       throw std::invalid_argument("exceeded number of axes in hist");
 
     std::copy(nbins.begin(), nbins.end(), nbins_.begin());
-    init(nhists());
+    clear_hists();
   }
 
   // set new axis range
@@ -165,11 +170,12 @@ public:
   }
 
   void set_axes_range(const std::vector<std::array<double, 2>> & ranges) {
+    ensure_no_events();
     if (ranges.size() >= rank())
       throw std::invalid_argument("exceeded number of axes in hist");
 
     std::copy(ranges.begin(), ranges.end(), axes_range_.begin());
-    init(nhists());
+    clear_hists();
   }
 
   /////////////////
@@ -208,8 +214,12 @@ public:
   // access number of events that each thread has seen
   // thread -1 means total all events
   std::size_t event_count(int thread = -1) const {
-    if (thread >= 0)
-      return event_counts_[thread];
+    if (thread >= 0) {
+      if (unsigned(thread) < event_counts_.size())
+        return event_counts_[thread];
+      else
+        throw std::invalid_argument("requested thread exceeds num_threads()");
+    }
 
     // thread == -1 means return the sum
     std::size_t tot_count(0);
@@ -243,6 +253,9 @@ public:
   //////////////////////////
   // HISTOGRAM MANIPULATIONS
   //////////////////////////
+
+  // clear all histograms back to 0
+  void clear_hists() { init(nhists()); }
 
   // this method wraps rc in a vector and passes on to other reduce
   // note: need full namespace in argument for proper SWIG parsing
@@ -674,7 +687,17 @@ protected:
   typename HistTraits::AxesRange axes_range_;
 
   int num_threads() const { return num_threads_; }
-  void set_num_threads(int threads) { num_threads_ = determine_num_threads(threads); }
+  void set_num_threads(int threads) {
+    int new_threads(determine_num_threads(threads));
+    if (event_count() != 0 && new_threads < num_threads())
+      throw std::invalid_argument("cannot decrease num_threads if event_count() is non-zero");
+    
+    else if (new_threads > num_threads()) {
+      num_threads_ = new_threads;
+      clear_hists();
+    }
+    // else, new_threads == num_threads and nothing needs to be done
+  }
 
   void duplicate_histograms(unsigned nhists) {
 
@@ -821,10 +844,12 @@ private:
   int num_threads_;
   bool track_covariance_, variance_bound_, variance_bound_includes_overflows_;
 
-  void init(unsigned nhists, bool events_allowed = false) {
-    event_counts_.resize(num_threads(), 0);
-    if (!events_allowed && event_count() != 0)
+  void ensure_no_events() const {
+    if (event_count() != 0)
       throw std::runtime_error("cannot alter hist settings after computing on some events");
+  }
+
+  void init(unsigned nhists) {
 
     hists_.clear();
     per_event_hists_.clear();
@@ -835,6 +860,7 @@ private:
     per_event_hists_.resize(num_threads());
     if (track_covariance()) covariance_hists_.resize(num_threads());
     if (variance_bound()) variance_bound_hists_.resize(num_threads());
+    event_counts_.resize(num_threads(), 0);
 
     duplicate_histograms(nhists);
   }
@@ -859,12 +885,9 @@ private:
   #ifdef EEC_SERIALIZATION
     template<class Archive>
     void save(Archive & ar, const unsigned int version) const {
-      ar & num_threads_ & nhists() & event_counts_
-         & track_covariance_
-         & variance_bound_  & variance_bound_includes_overflows_;
-
-      if (version > 0)
-        ar & nbins_ & axes_range_;
+      ar & num_threads_ & nhists()
+         & track_covariance_ & variance_bound_  & variance_bound_includes_overflows_
+         & nbins_ & axes_range_ & event_count();
 
       for (unsigned hist_i = 0; hist_i < nhists(); hist_i++) {
         ar & combined_hist(hist_i);
@@ -878,15 +901,25 @@ private:
     template<class Archive>
     void load(Archive & ar, const unsigned int version) {
       std::size_t nh;
-      ar & num_threads_ & nh & event_counts_
-         & track_covariance_
-         & variance_bound_ & variance_bound_includes_overflows_;
+      ar & num_threads_ & nh;
+
+      // maximum number of threads may have changed, so check again
+      num_threads_ = determine_num_threads(num_threads());
+
+      // event_count for each thread was stored in version 0
+      event_counts_.resize(1);
+      if (version == 0) {
+        ar & event_counts_;
+        event_counts_[0] = event_count();
+      }
+
+      ar & track_covariance_ & variance_bound_ & variance_bound_includes_overflows_;
 
       if (version > 0)
-        ar & nbins_ & axes_range_;
+        ar & nbins_ & axes_range_ & event_counts_[0];
 
       // initialize with a specific number of histograms
-      init(nh, true);
+      init(nh);
 
       // for each hist, load it into thread 0
       for (unsigned hist_i = 0; hist_i < nh; hist_i++) {

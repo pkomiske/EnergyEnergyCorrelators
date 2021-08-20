@@ -194,6 +194,11 @@ public:
     return *this;
   }
 
+  void clear() {
+    EECHist::clear_hists();
+    EECBase::clear_events();
+  }
+
 private:
 
   // function pointer to the actual computation that will be run

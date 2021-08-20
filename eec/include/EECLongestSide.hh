@@ -182,6 +182,11 @@ public:
     return *this;
   }
 
+  void clear() {
+    EECHist::clear_hists();
+    EECBase::clear_events();
+  }
+
 private:
 
   // data members local to this class
