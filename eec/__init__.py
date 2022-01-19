@@ -31,9 +31,9 @@ from .eec import *
 
 # basic package info
 __author__ = 'Patrick T. Komiske III'
-__email__ = 'pkomiske@mit.edu'
+__email__ = 'pkomiske@gmail.com'
 __license__ = 'GPLv3'
-__version__ = '2.0.0a3'
+__version__ = '2.0.0b0'
 
 # Note that axis/axes is supported as well as axis_range/axes_range.
 # The "axes" version is for compatibility with EECTriangleOPE and
