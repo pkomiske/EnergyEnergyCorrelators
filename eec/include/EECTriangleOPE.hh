@@ -207,7 +207,7 @@ private:
   // provides initialization of this subclass from configuration
   void init_subclass(bool events_allowed = false) {
     if (!events_allowed)
-      ensure_no_events();
+      EECBase::ensure_no_events();
 
     switch (nsym()) {
       case 3:

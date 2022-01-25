@@ -199,7 +199,7 @@ private:
   // provides initialization of this subclass from configuration
   void init_subclass(bool events_allowed = false) {
     if (!events_allowed)
-      ensure_no_events();
+      EECBase::ensure_no_events();
 
     // default is general computation
     compute_eec_func_ptr_ = &EECLongestSide::eNc_sym;

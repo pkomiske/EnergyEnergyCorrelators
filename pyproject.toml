@@ -16,3 +16,7 @@ test-requires = ["pytest", "numpy", "scipy", "energyflow"]
 
 manylinux-x86_64-image = "ghcr.io/pkomiske/eec_manylinux2014_x86_64:latest"
 manylinux-i686-image = "ghcr.io/pkomiske/eec_manylinux2014_i686:latest"
+
+[tool.cibuildwheel.macos]
+
+test-skip = "*cp36* *cp37*"
