@@ -5,3 +5,14 @@ requires = [
     "wheel >= 0.36.0",
     "oldest-supported-numpy",
 ]
+
+[tool.cibuildwheel]
+
+skip = "pp* *musllinux*"
+test-skip = "*i686 *win32"
+
+test-command = "pytest {package}/eec"
+test-requires = ["pytest", "numpy", "scipy", "energyflow"]
+
+manylinux-x86_64-image = "ghcr.io/pkomiske/eec_manylinux2014_x86_64:latest"
+manylinux-i686-image = "ghcr.io/pkomiske/eec_manylinux2014_i686:latest"

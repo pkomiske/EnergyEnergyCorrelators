@@ -8,12 +8,6 @@ on:
 env:
   PYPI: 0
   PYPITEST: 1
-  CIBW_MANYLINUX_X86_64_IMAGE: ghcr.io/pkomiske/eec_manylinux2010_x86_64:latest
-  CIBW_MANYLINUX_I686_IMAGE: ghcr.io/pkomiske/eec_manylinux2010_i686:latest
-  CIBW_SKIP: pp* *musllinux*
-  CIBW_TEST_COMMAND: pytest {package}/eec
-  CIBW_TEST_REQUIRES: pytest numpy scipy energyflow
-  CIBW_TEST_SKIP: "*i686 *win32 cp36*"
   GHCR_TOKEN: ${{ secrets.GHCR_TOKEN }}
   TWINE_USERNAME: __token__
   TWINE_PASSWORD_PYPITEST: ${{ secrets.TWINE_PASSWORD_PYPITEST }}

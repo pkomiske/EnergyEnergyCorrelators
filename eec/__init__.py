@@ -33,7 +33,7 @@ from .eec import *
 __author__ = 'Patrick T. Komiske III'
 __email__ = 'pkomiske@gmail.com'
 __license__ = 'GPLv3'
-__version__ = '2.0.0b0'
+__version__ = '2.0.0b1'
 
 # Note that axis/axes is supported as well as axis_range/axes_range.
 # The "axes" version is for compatibility with EECTriangleOPE and
